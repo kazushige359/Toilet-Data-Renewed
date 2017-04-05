@@ -36,7 +36,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
 //         cell.bounds = CGRect(x: 0, y: 0, width: mapView.bounds.width, height: cell.bounds.height )
         //cell.bounds = CGRect(0.0, 0.0, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds))
-        //
+        /////
         
         cell.mainImageView.sd_setImage(with: URL(string: toilets[indexPath.row].urlOne))
         
