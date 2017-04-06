@@ -37,6 +37,7 @@
 		245E9F291E95DFA3006D8A31 /* UserFirstTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */; };
 		245E9F2D1E95F21B006D8A31 /* UserStartLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */; };
 		245E9F2F1E95F448006D8A31 /* StartLoginUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */; };
+		245E9F311E9605F1006D8A31 /* StartSignUpUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F301E9605F1006D8A31 /* StartSignUpUserViewController.swift */; };
 		247BB3AB1E0F26E600E4BED8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */; };
 		248DC1E41DFE6A51005C29BE /* ToiletMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DC1E31DFE6A51005C29BE /* ToiletMarkers.swift */; };
 		24A130B61DEFD300009C1A3F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A130B51DEFD300009C1A3F /* MapViewController.swift */; };
@@ -113,6 +114,7 @@
 		245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFirstTimeViewController.swift; sourceTree = "<group>"; };
 		245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserStartLoginViewController.swift; path = ../Pods/UserStartLoginViewController.swift; sourceTree = "<group>"; };
 		245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLoginUserViewController.swift; sourceTree = "<group>"; };
+		245E9F301E9605F1006D8A31 /* StartSignUpUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSignUpUserViewController.swift; sourceTree = "<group>"; };
 		247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		248DC1E31DFE6A51005C29BE /* ToiletMarkers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToiletMarkers.swift; sourceTree = "<group>"; };
 		24A130B51DEFD300009C1A3F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				2414549B1DE2C4F90066AB62 /* AppDelegate.swift */,
 				245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */,
 				245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */,
+				245E9F301E9605F1006D8A31 /* StartSignUpUserViewController.swift */,
 				2414549D1DE2C4F90066AB62 /* SignInViewController.swift */,
 				24A130B51DEFD300009C1A3F /* MapViewController.swift */,
 				247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */,
@@ -667,6 +670,7 @@
 				2420F31D1E277AE000159441 /* EditPinViewController.swift in Sources */,
 				2423A4311E25989200DD2AF4 /* ChangeDetailTableViewController.swift in Sources */,
 				24B6FB021E2C6B7700E1330A /* LocationSearchTable.swift in Sources */,
+				245E9F311E9605F1006D8A31 /* StartSignUpUserViewController.swift in Sources */,
 				24A130CC1DF769AE009C1A3F /* GeoFire.m in Sources */,
 				2423A4241E21930000DD2AF4 /* ReviewTableViewCell.swift in Sources */,
 				2418B7D31E16611B004F7022 /* YouWentTableViewController.swift in Sources */,
