@@ -11,15 +11,21 @@ import UIKit
 class StartLoginUserViewController: UIViewController {
 
     
-    @IBOutlet weak var emailTextFieldOutlet: UITextField!
+   
+    
     
     @IBOutlet weak var passwordTextFieldOutlet: UITextField!
     
-    @IBOutlet weak var buttonLoginOutlet: UIButton!
+
+   @IBOutlet weak var buttonLoginOutlet: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Login Veiw Load")
+        
+        
         
         let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
 //        
@@ -36,10 +42,31 @@ class StartLoginUserViewController: UIViewController {
         
         //buttonLoginOutlet.backgroundColor = primaryColor.cgColor
         
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(StartLoginUserViewController.dismissKeyboard))
+//        
+//        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+//        //tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+        
+        
         
         
         // Do any additional setup after loading the view.
     }
+    
+   
+    
+
+        
+        // Do any additional setup after loading the view.
+    
+
+     func dismissKeyboard() {
+    //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+      }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,9 +75,17 @@ class StartLoginUserViewController: UIViewController {
     
     @IBAction func buttonLoginAction(_ sender: Any) {
         
+        print("Login Button Clicked")
+        
         
     }
 
+    @IBAction func buttonPrivateInfoAction(_ sender: Any) {
+        
+         print("PRIVATE Button Clicked")
+        
+        
+    }
     /*
     // MARK: - Navigation
 
