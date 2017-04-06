@@ -222,164 +222,164 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
                 
                 if self.starUpdated == false {
                     
-                    print("snapshot = \(snapshot)")
-                    print("star0")
-                    let star0 = self.starRated.rating
-                    self.toilet.star1 = Int(star0)
-                    print("star1")
-                    let snapshotValue = snapshot.value as? NSDictionary
-                    
-                    let star1 = snapshotValue?["star1"] as? Int
-                    print("star1  = \(star1)")
-                    self.toilet.star2 = star1!
-                    
-                    
-                    let star2 = snapshotValue?["star2"] as? Int
-                    self.toilet.star3 = star2!
-                    
-                    let star3 = snapshotValue?["star3"] as? Int
-                    self.toilet.star4 = star3!
-                    
-                    let star4 = snapshotValue?["star4"] as? Int
-                    self.toilet.star5 = star4!
-                    
-                    let star5 = snapshotValue?["star5"] as? Int
-                    self.toilet.star6 = star5!
-                    
-                    let star6 = snapshotValue?["star6"] as? Int
-                    self.toilet.star7 = star6!
-                    
-                    let star7 = snapshotValue?["star7"] as? Int
-                    self.toilet.star8 = star7!
-                    
-                    let star8 = snapshotValue?["star8"] as? Int
-                    self.toilet.star9 = star8!
-                    
-                    let star9 = snapshotValue?["star9"] as? Int
-                    self.toilet.star10 = star9!
-                    
-                    
-                    //
-                    let wait1 = snapshotValue?["wait1"] as? Int
-                    self.toilet.wait2 = wait1!
-                    
-                    let wait2 = snapshotValue?["wait2"] as? Int
-                    self.toilet.wait3 = wait2!
-                    
-                    let wait3 = snapshotValue?["wait3"] as? Int
-                    self.toilet.wait4 = wait3!
-                    
-                    let wait4 = snapshotValue?["wait4"] as? Int
-                    self.toilet.wait5 = wait4!
-                    
-                    //                    let wait5 = snapshotValue?["wait1"] as? Int
-                    //                    self.toilet.wait2 = wait1
-                    print("reviewCount")
-                    let reviewCount = snapshotValue?["reviewCount"] as? Int
-                    print("reviewCount = \(reviewCount)")
-                    self.toilet.reviewCount = reviewCount! + 1
-                    self.manuallyReviewCount = reviewCount! + 1
-                    print("total Star")
-                    
-                    var sum = Int()
-                    let starArray:Array<Int> = [self.toilet.star1,star1!,star2!,star3!,star4!,star5!,star6!,star7!,star8!,star9!]
-                    for number in starArray {
-                        sum += number
-                    }
-                    let totalStar = sum
-                    let totalDouble = Double(totalStar)
-                    let reviewCountDouble = Double(self.toilet.reviewCount)
+//                    print("snapshot = \(snapshot)")
+//                    print("star0")
+//                    let star0 = self.starRated.rating
+//                    self.toilet.star1 = Int(star0)
+//                    print("star1")
+//                    let snapshotValue = snapshot.value as? NSDictionary
+//                    
+//                    let star1 = snapshotValue?["star1"] as? Int
+//                    print("star1  = \(star1)")
+//                    self.toilet.star2 = star1!
+//                    
+//                    
+//                    let star2 = snapshotValue?["star2"] as? Int
+//                    self.toilet.star3 = star2!
+//                    
+//                    let star3 = snapshotValue?["star3"] as? Int
+//                    self.toilet.star4 = star3!
+//                    
+//                    let star4 = snapshotValue?["star4"] as? Int
+//                    self.toilet.star5 = star4!
+//                    
+//                    let star5 = snapshotValue?["star5"] as? Int
+//                    self.toilet.star6 = star5!
+//                    
+//                    let star6 = snapshotValue?["star6"] as? Int
+//                    self.toilet.star7 = star6!
+//                    
+//                    let star7 = snapshotValue?["star7"] as? Int
+//                    self.toilet.star8 = star7!
+//                    
+//                    let star8 = snapshotValue?["star8"] as? Int
+//                    self.toilet.star9 = star8!
+//                    
+//                    let star9 = snapshotValue?["star9"] as? Int
+//                    self.toilet.star10 = star9!
+//                    
+//                    
+//                    //
+//                    let wait1 = snapshotValue?["wait1"] as? Int
+//                    self.toilet.wait2 = wait1!
+//                    
+//                    let wait2 = snapshotValue?["wait2"] as? Int
+//                    self.toilet.wait3 = wait2!
+//                    
+//                    let wait3 = snapshotValue?["wait3"] as? Int
+//                    self.toilet.wait4 = wait3!
+//                    
+//                    let wait4 = snapshotValue?["wait4"] as? Int
+//                    self.toilet.wait5 = wait4!
+//                    
+//                    //                    let wait5 = snapshotValue?["wait1"] as? Int
+//                    //                    self.toilet.wait2 = wait1
+//                    print("reviewCount")
+//                    let reviewCount = snapshotValue?["reviewCount"] as? Int
+//                    print("reviewCount = \(reviewCount)")
+//                    self.toilet.reviewCount = reviewCount! + 1
+//                    self.manuallyReviewCount = reviewCount! + 1
+//                    print("total Star")
+//                    
+//                    var sum = Int()
+//                    let starArray:Array<Int> = [self.toilet.star1,star1!,star2!,star3!,star4!,star5!,star6!,star7!,star8!,star9!]
+//                    for number in starArray {
+//                        sum += number
+//                    }
+//                    let totalStar = sum
+//                    let totalDouble = Double(totalStar)
+//                    let reviewCountDouble = Double(self.toilet.reviewCount)
                     //Commeted for very slow building
-                    
-                    print("AVEStar")
-                    var avStar = Double()
-                    if self.toilet.reviewCount >= 10{
-                        avStar = totalDouble/10
-                        print("totalDouble = \(totalDouble)")
-                        print("avStar = \(avStar)")
-                    }else{
-                        avStar = totalDouble/reviewCountDouble
-                        print("totalDouble = \(totalDouble)")
-                        print("totalDouble = \(reviewCountDouble)")
-                        print("avStar = \(avStar)")
-                        
-                        
-                        
-                    }
-                    //round(0.01*avStar)/0.01
-                    //let td1 = round(0.01*toilets[indexPath.row].distance)/0.01/1000
-                    print("0.01*avStar = \(0.01*avStar)")
-                    print("round(0.01*avStar)/0.01 = \(round(0.01*avStar)/0.01)")
-                    //(round(1000*x)/1000)
-                    self.toilet.averageStar = "\(round(10*avStar)/10)"
-                    self.manuallyAverageStar = round(10*avStar)/10
-                    // self.toilet.averageStar = round(0.01*avStar)/0.01
-                    //self.toilet.averageStar = avStar
-                    
-                    let waitInt = Int(self.waitminute)
-                    var waitSum = Int()
-                    
-                    //wait minute to int()
-                    let waitArray:Array<Int> = [waitInt!,wait1!,wait2!,wait3!,wait4!]
-                    for number in waitArray {
-                        waitSum += number
-                    }
-                    let totalWait = waitSum
-                    var avWait = Int()
-                    if self.toilet.reviewCount >= 5{
-                        avWait = totalWait/5
-                        print("totalWait = \(totalWait)")
-                        print("avWait = \(avWait)")
-                    }else{
-                        avWait = totalWait/self.toilet.reviewCount
-                        print("totalWait = \(totalWait)")
-                        print("reviewCount = \(reviewCount)")
-                        print("avWait = \(avWait)")
-                    }
-                    self.toilet.averageWait = avWait
-                    self.manuallyAverageWait = avWait
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    let addingData: [String : Any] = [
-                        "reviewCount": self.toilet.reviewCount as Int,
-                        "averageStar": "\(self.toilet.averageStar)" as String,
-                        "star1": self.toilet.star1 as Int,
-                        "star2": self.toilet.star2 as Int,
-                        "star3": self.toilet.star3 as Int,
-                        "star4": self.toilet.star4 as Int,
-                        "star5": self.toilet.star5 as Int,
-                        "star6": self.toilet.star6 as Int,
-                        "star7": self.toilet.star7 as Int,
-                        "star8": self.toilet.star8 as Int,
-                        "star9": self.toilet.star9 as Int,
-                        "star10": self.toilet.star10 as Int,
-                        "wait1": Int(self.waitminute)! as Int,
-                        "wait2": self.toilet.wait2 as Int,
-                        "wait3": self.toilet.wait3 as Int,
-                        "wait4": self.toilet.wait4 as Int,
-                        "wait5": self.toilet.wait5 as Int,
-                        "averageWait": self.toilet.averageWait as Int
-                    ]
-                    
+//                    
+//                    print("AVEStar")
+//                    var avStar = Double()
+//                    if self.toilet.reviewCount >= 10{
+//                        avStar = totalDouble/10
+//                        print("totalDouble = \(totalDouble)")
+//                        print("avStar = \(avStar)")
+//                    }else{
+//                        avStar = totalDouble/reviewCountDouble
+//                        print("totalDouble = \(totalDouble)")
+//                        print("totalDouble = \(reviewCountDouble)")
+//                        print("avStar = \(avStar)")
+//                        
+//                        
+//                        
+//                    }
+//                    //round(0.01*avStar)/0.01
+//                    //let td1 = round(0.01*toilets[indexPath.row].distance)/0.01/1000
+//                    print("0.01*avStar = \(0.01*avStar)")
+//                    print("round(0.01*avStar)/0.01 = \(round(0.01*avStar)/0.01)")
+//                    //(round(1000*x)/1000)
+//                    self.toilet.averageStar = "\(round(10*avStar)/10)"
+//                    self.manuallyAverageStar = round(10*avStar)/10
+//                    // self.toilet.averageStar = round(0.01*avStar)/0.01
+//                    //self.toilet.averageStar = avStar
+//                    
+//                    let waitInt = Int(self.waitminute)
+//                    var waitSum = Int()
+//                    
+//                    //wait minute to int()
+//                    let waitArray:Array<Int> = [waitInt!,wait1!,wait2!,wait3!,wait4!]
+//                    for number in waitArray {
+//                        waitSum += number
+//                    }
+//                    let totalWait = waitSum
+//                    var avWait = Int()
+//                    if self.toilet.reviewCount >= 5{
+//                        avWait = totalWait/5
+//                        print("totalWait = \(totalWait)")
+//                        print("avWait = \(avWait)")
+//                    }else{
+//                        avWait = totalWait/self.toilet.reviewCount
+//                        print("totalWait = \(totalWait)")
+//                        print("reviewCount = \(reviewCount)")
+//                        print("avWait = \(avWait)")
+//                    }
+//                    self.toilet.averageWait = avWait
+//                    self.manuallyAverageWait = avWait
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    let addingData: [String : Any] = [
+//                        "reviewCount": self.toilet.reviewCount as Int,
+//                        "averageStar": "\(self.toilet.averageStar)" as String,
+//                        "star1": self.toilet.star1 as Int,
+//                        "star2": self.toilet.star2 as Int,
+//                        "star3": self.toilet.star3 as Int,
+//                        "star4": self.toilet.star4 as Int,
+//                        "star5": self.toilet.star5 as Int,
+//                        "star6": self.toilet.star6 as Int,
+//                        "star7": self.toilet.star7 as Int,
+//                        "star8": self.toilet.star8 as Int,
+//                        "star9": self.toilet.star9 as Int,
+//                        "star10": self.toilet.star10 as Int,
+//                        "wait1": Int(self.waitminute)! as Int,
+//                        "wait2": self.toilet.wait2 as Int,
+//                        "wait3": self.toilet.wait3 as Int,
+//                        "wait4": self.toilet.wait4 as Int,
+//                        "wait5": self.toilet.wait5 as Int,
+//                        "averageWait": self.toilet.averageWait as Int
+//                    ]
+//                    
                     //"wait1": self.toilet.wait1 as Int
                     
                     //Commeted for the super slow building
                     
-                    
-                    toiletsRef.child(self.toilet.key).updateChildValues(addingData)
-                    print("starUpdated = \(self.starUpdated)")
-                    self.starUpdated = true
-                    print("self.starUpdated = \(self.starUpdated)")
-                    //This code creates a lot of mess
-                   
+//                    
+//                    toiletsRef.child(self.toilet.key).updateChildValues(addingData)
+//                    print("starUpdated = \(self.starUpdated)")
+//                    self.starUpdated = true
+//                    print("self.starUpdated = \(self.starUpdated)")
+//                    //This code creates a lot of mess
+//                   
                     
                     
                     

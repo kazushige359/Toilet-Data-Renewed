@@ -34,6 +34,9 @@
 		2423A4271E2245BA00DD2AF4 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A4261E2245BA00DD2AF4 /* Review.swift */; };
 		2423A42B1E23839800DD2AF4 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A42A1E23839800DD2AF4 /* AddPinViewController.swift */; };
 		2423A4311E25989200DD2AF4 /* ChangeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A4301E25989200DD2AF4 /* ChangeDetailTableViewController.swift */; };
+		245E9F291E95DFA3006D8A31 /* UserFirstTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */; };
+		245E9F2D1E95F21B006D8A31 /* UserStartLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */; };
+		245E9F2F1E95F448006D8A31 /* StartLoginUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */; };
 		247BB3AB1E0F26E600E4BED8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */; };
 		248DC1E41DFE6A51005C29BE /* ToiletMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DC1E31DFE6A51005C29BE /* ToiletMarkers.swift */; };
 		24A130B61DEFD300009C1A3F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A130B51DEFD300009C1A3F /* MapViewController.swift */; };
@@ -107,6 +110,9 @@
 		2423A4261E2245BA00DD2AF4 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		2423A42A1E23839800DD2AF4 /* AddPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
 		2423A4301E25989200DD2AF4 /* ChangeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeDetailTableViewController.swift; sourceTree = "<group>"; };
+		245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFirstTimeViewController.swift; sourceTree = "<group>"; };
+		245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserStartLoginViewController.swift; path = ../Pods/UserStartLoginViewController.swift; sourceTree = "<group>"; };
+		245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLoginUserViewController.swift; sourceTree = "<group>"; };
 		247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		248DC1E31DFE6A51005C29BE /* ToiletMarkers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToiletMarkers.swift; sourceTree = "<group>"; };
 		24A130B51DEFD300009C1A3F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +212,8 @@
 				24A130B71DF3E244009C1A3F /* Problemsolving.entitlements */,
 				2418B7D81E1B1B73004F7022 /* Class */,
 				2414549B1DE2C4F90066AB62 /* AppDelegate.swift */,
+				245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */,
+				245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */,
 				2414549D1DE2C4F90066AB62 /* SignInViewController.swift */,
 				24A130B51DEFD300009C1A3F /* MapViewController.swift */,
 				247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */,
@@ -225,6 +233,7 @@
 				2420F31E1E2A2C7400159441 /* FilterTableViewController.swift */,
 				24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */,
 				24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */,
+				245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */,
 				2423A4231E21930000DD2AF4 /* ReviewTableViewCell.xib */,
 				240128961E0A02CE002FBDE1 /* TableViewCell.xib */,
 				2414549F1DE2C4F90066AB62 /* Main.storyboard */,
@@ -642,7 +651,10 @@
 				24B6FB001E2B505C00E1330A /* Filter.swift in Sources */,
 				24B6FB061E30395900E1330A /* RighttoLeft.swift in Sources */,
 				2418B7DC1E1B6B5C004F7022 /* KansouViewController.swift in Sources */,
+				245E9F2F1E95F448006D8A31 /* StartLoginUserViewController.swift in Sources */,
+				245E9F291E95DFA3006D8A31 /* UserFirstTimeViewController.swift in Sources */,
 				24DF78961E36EB410081CDA0 /* AccountTableViewController.swift in Sources */,
+				245E9F2D1E95F21B006D8A31 /* UserStartLoginViewController.swift in Sources */,
 				2420F31F1E2A2C7400159441 /* FilterTableViewController.swift in Sources */,
 				2418B7CF1E14CCFB004F7022 /* FavoriteTableViewController.swift in Sources */,
 				24A130CF1DF769AE009C1A3F /* GFGeoHashQuery.m in Sources */,

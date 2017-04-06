@@ -150,7 +150,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
                 //print("howtoaccess = \(howtoaccess)")
                 
                 let waitingtime = snapshotValue?["waitingtime"] as? Int
-                toilet.waitingtime = waitingtime!
+                toilet.averageWait = waitingtime!
                 //print("waiting time = \(waitingtime)")
                 
                 let openinghours = snapshotValue?["openinghours"] as? String

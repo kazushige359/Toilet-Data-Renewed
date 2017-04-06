@@ -584,129 +584,129 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             //Maybe count endlessly
             
             //Array removed for the super slow building
-            var sum = Int()
-            let starArray:Array<Int> = [Int(starView.rating),toilet.star1,toilet.star2,toilet.star3,toilet.star4,toilet.star5,toilet.star6,toilet.star7,toilet.star8,toilet.star9]
-            for number in starArray {
-                sum += number
-            }
+//            var sum = Int()
+//            let starArray:Array<Int> = [Int(starView.rating),toilet.star1,toilet.star2,toilet.star3,toilet.star4,toilet.star5,toilet.star6,toilet.star7,toilet.star8,toilet.star9]
+//            for number in starArray {
+//                sum += number
+//            }
+//            
+//            let totalStar = sum
+//            let totalDouble = Double(totalStar)
+//            let reviewCountDouble = Double(self.toilet.reviewCount)
+//            let newReviewCount = toilet.reviewCount + 1
+//            let newReviewCountDouble = Double(self.toilet.reviewCount + 1)
             
-            let totalStar = sum
-            let totalDouble = Double(totalStar)
-            let reviewCountDouble = Double(self.toilet.reviewCount)
-            let newReviewCount = toilet.reviewCount + 1
-            let newReviewCountDouble = Double(self.toilet.reviewCount + 1)
-            
-            var avStar = Double()
-            if self.toilet.reviewCount >= 9{
-                //Considerd reviewCount will be added one because of this edition
-                avStar = totalDouble/10
-                print("totalDouble = \(totalDouble)")
-                print("avStar = \(avStar)")
-            }else{
-                avStar = totalDouble/newReviewCountDouble
-                //avStar = totalDouble/reviewCountDouble
-                print("totalDouble = \(totalDouble)")
-                print("totalDouble = \(reviewCountDouble)")
-                print("avStar = \(avStar)")
-            }
-            let newAvStar = round(10*avStar)/10
+//            var avStar = Double()
+//            if self.toilet.reviewCount >= 9{
+//                //Considerd reviewCount will be added one because of this edition
+//                avStar = totalDouble/10
+//                print("totalDouble = \(totalDouble)")
+//                print("avStar = \(avStar)")
+//            }else{
+//                avStar = totalDouble/newReviewCountDouble
+//                //avStar = totalDouble/reviewCountDouble
+//                print("totalDouble = \(totalDouble)")
+//                print("totalDouble = \(reviewCountDouble)")
+//                print("avStar = \(avStar)")
+//            }
+//            let newAvStar = round(10*avStar)/10
             ///
             
-            var waitSum = Int()
-            let waitArray:Array<Int> = [waitInt!,toilet.wait1,toilet.wait2,toilet.wait3,toilet.wait4]
-            for number in waitArray {
-                waitSum += number
-            }
-            let totalWait = waitSum
+//            var waitSum = Int()
+//            let waitArray:Array<Int> = [waitInt!,toilet.wait1,toilet.wait2,toilet.wait3,toilet.wait4]
+//            for number in waitArray {
+//                waitSum += number
+//            }
+//            let totalWait = waitSum
             
-            var avWait = Int()
-            if self.toilet.reviewCount >= 4{
-                //Considerd reviewCount will be added one because of this edition
-                avWait = totalWait/5
-                print("totalWait = \(totalWait)")
-                print("avWait = \(avWait)")
-            }else{
-                avWait = totalWait/newReviewCount
-                //avStar = totalDouble/reviewCountDouble
-                print("totalWait = \(totalWait)")
-                print("newReviewCount = \(newReviewCount)")
-                print("avWait = \(avWait)")
-            }
+//            var avWait = Int()
+//            if self.toilet.reviewCount >= 4{
+//                //Considerd reviewCount will be added one because of this edition
+//                avWait = totalWait/5
+//                print("totalWait = \(totalWait)")
+//                print("avWait = \(avWait)")
+//            }else{
+//                avWait = totalWait/newReviewCount
+//                //avStar = totalDouble/reviewCountDouble
+//                print("totalWait = \(totalWait)")
+//                print("newReviewCount = \(newReviewCount)")
+//                print("avWait = \(avWait)")
+//            }
             
-            let tdata : [String : Any] =
-                ["name": name as Any,
-                 "openinghours": availableTimeForDatabase as String,
-                 "type": placeCategoryLabel.text! as String,
-                 "star": starView.rating as Double,
-                 "waitingtime": waitInt! as Int,
-                 //Should be Int
-                    "urlOne":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-                    "urlTwo":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-                    "urlThree":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-                    "tid": "jfiohaiohfj",
-                    "washlet": washletLabelSwitch.isOn,
-                    "wheelchair": wheelChairLabelSwitch.isOn,
-                    "onlyFemale": onlyFemaleLabelSwitch.isOn,
-                    "unisex": unisexLabelSwitch.isOn,
-                    "makeuproom": makeroomLabelSwitch.isOn,
-                    "milkspace" : milkspaceLabelSwitch.isOn,
-                    "omutu": omutuLabelSwitch.isOn,
-                    "ostomate" : ostomateLabelSwitch.isOn,
-                    "japanesetoilet": japaneseToiletLabelSwitch.isOn,
-                    "westerntoilet": westernToiletLabelSwitch.isOn,
-                    "warmSeat": warmSeatLabelSwitch.isOn,
-                    "baggageSpace": baggageSpaceLabelSwitch.isOn,
-                    "howtoaccess": accessTextView.text,
-                    "available": true,
-                    "reviewCount": newReviewCount,
-                    "addedBy": toilet.addedBy as String,
-                    //"addedBy": FIRAuth.auth()!.currentUser!.uid,
-                    //Addedby is not goona be this one
-                    "editedBy": FIRAuth.auth()!.currentUser!.uid,
-                    
-                    "averageStar": "\(newAvStar)" as String,
-                    "star1": Int(starView.rating),
-                    "star2": toilet.star1 as Int,
-                    "star3": toilet.star2 as Int,
-                    "star4": toilet.star3 as Int,
-                    "star5": toilet.star4 as Int,
-                    "star6": toilet.star5 as Int,
-                    "star7": toilet.star6 as Int,
-                    "star8": toilet.star7 as Int,
-                    "star9": toilet.star8 as Int,
-                    "star10": toilet.star9 as Int,
-                    "wait1": waitInt! as Int,
-                    "wait2": toilet.wait1 as Int,
-                    "wait3": toilet.wait2 as Int,
-                    "wait4": toilet.wait3 as Int,
-                    "wait5": toilet.wait4 as Int,
-                    "averageWait": avWait as Int
-            ]
-            
-            //"star1": starView.rating as Double, Not sure
-            
-            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
-            toiletsRef.child(name!).updateChildValues(tdata)
+//            let tdata : [String : Any] =
+//                ["name": name as Any,
+//                 "openinghours": availableTimeForDatabase as String,
+//                 "type": placeCategoryLabel.text! as String,
+//                 "star": starView.rating as Double,
+//                 "waitingtime": waitInt! as Int,
+//                 //Should be Int
+//                    "urlOne":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
+//                    "urlTwo":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
+//                    "urlThree":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
+//                    "tid": "jfiohaiohfj",
+//                    "washlet": washletLabelSwitch.isOn,
+//                    "wheelchair": wheelChairLabelSwitch.isOn,
+//                    "onlyFemale": onlyFemaleLabelSwitch.isOn,
+//                    "unisex": unisexLabelSwitch.isOn,
+//                    "makeuproom": makeroomLabelSwitch.isOn,
+//                    "milkspace" : milkspaceLabelSwitch.isOn,
+//                    "omutu": omutuLabelSwitch.isOn,
+//                    "ostomate" : ostomateLabelSwitch.isOn,
+//                    "japanesetoilet": japaneseToiletLabelSwitch.isOn,
+//                    "westerntoilet": westernToiletLabelSwitch.isOn,
+//                    "warmSeat": warmSeatLabelSwitch.isOn,
+//                    "baggageSpace": baggageSpaceLabelSwitch.isOn,
+//                    "howtoaccess": accessTextView.text,
+//                    "available": true,
+//                    "reviewCount": newReviewCount,
+//                    "addedBy": toilet.addedBy as String,
+//                    //"addedBy": FIRAuth.auth()!.currentUser!.uid,
+//                    //Addedby is not goona be this one
+//                    "editedBy": FIRAuth.auth()!.currentUser!.uid,
+//                    
+//                    "averageStar": "\(newAvStar)" as String,
+//                    "star1": Int(starView.rating),
+//                    "star2": toilet.star1 as Int,
+//                    "star3": toilet.star2 as Int,
+//                    "star4": toilet.star3 as Int,
+//                    "star5": toilet.star4 as Int,
+//                    "star6": toilet.star5 as Int,
+//                    "star7": toilet.star6 as Int,
+//                    "star8": toilet.star7 as Int,
+//                    "star9": toilet.star8 as Int,
+//                    "star10": toilet.star9 as Int,
+//                    "wait1": waitInt! as Int,
+//                    "wait2": toilet.wait1 as Int,
+//                    "wait3": toilet.wait2 as Int,
+//                    "wait4": toilet.wait3 as Int,
+//                    "wait5": toilet.wait4 as Int,
+//                    "averageWait": avWait as Int
+//            ]
+//            
+//            //"star1": starView.rating as Double, Not sure
+//            
+//            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
+//            toiletsRef.child(name!).updateChildValues(tdata)
             //Firebase updating at 1 pm
             
             
-            //Class information changes as well
-            toilet.openinghours = availableTimeForDatabase as String
-            toilet.type = placeCategoryLabel.text! as String
-            toilet.star = starView.rating as Double
-            toilet.reviewCount = newReviewCount as Int
-            toilet.averageStar = "\(newAvStar)" as String
-            toilet.averageWait = avWait as Int
+//            //Class information changes as well
+//            toilet.openinghours = availableTimeForDatabase as String
+//            toilet.type = placeCategoryLabel.text! as String
+//            toilet.star = starView.rating as Double
+//            toilet.reviewCount = newReviewCount as Int
+//            toilet.averageStar = "\(newAvStar)" as String
+//            toilet.averageWait = avWait as Int
+//            
             
             
+//            print("tdata = \(tdata)")
+//            print("toiletsRef data is saved!!")
             
-            print("tdata = \(tdata)")
-            print("toiletsRef data is saved!!")
             
-            
-            print("star=\(starView.rating as Double)")
-            print("waitingtime=\(waitInt! as Int)")
-            print("feedback =\(feedbackTextView.text as String)")
+//            print("star=\(starView.rating as Double)")
+//            print("waitingtime=\(waitInt! as Int)")
+//            print("feedback =\(feedbackTextView.text as String)")
 //            print("=\()")
 //            print("=\()")
 //            print("=\()")
