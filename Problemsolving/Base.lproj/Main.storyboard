@@ -108,8 +108,9 @@
                     <connections>
                         <outlet property="buttonLoginOutlet" destination="qAz-ho-WaE" id="PGn-wR-uCf"/>
                         <outlet property="buttonSignUpOutlet" destination="OPo-yg-N91" id="mEB-lZ-edP"/>
-                        <segue destination="lff-Z7-ZdG" kind="showDetail" identifier="heySegue" id="QEw-CE-frq"/>
+                        <segue destination="lff-Z7-ZdG" kind="showDetail" identifier="goToLoginSegue" id="QEw-CE-frq"/>
                         <segue destination="BAh-qg-AEO" kind="showDetail" identifier="createUserSegue" id="mVH-27-BMc"/>
+                        <segue destination="1Xj-3o-A6g" kind="showDetail" identifier="skipToMapSegue" id="O2a-Bv-tnJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nV1-1g-NHv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1833,7 +1834,7 @@
                                         <rect key="frame" x="0.0" y="2097" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ILT-wG-UsC" id="28B-N0-nDJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Am2-80-Q30">
@@ -4217,7 +4218,7 @@
                                         <rect key="frame" x="0.0" y="1915" width="320" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B4z-5W-w6M" id="e5O-vO-d1v">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yza-6A-pfz">
@@ -4263,7 +4264,7 @@
                                         <rect key="frame" x="0.0" y="2096" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r54-MQ-2eS" id="qLO-b3-GHa">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiP-TO-cGY">
@@ -4480,7 +4481,7 @@
         <segue reference="FyR-YQ-Bml"/>
         <segue reference="pmY-Sg-ceS"/>
         <segue reference="iQC-Py-rff"/>
-        <segue reference="XkJ-RX-AZM"/>
+        <segue reference="O2a-Bv-tnJ"/>
         <segue reference="t9Z-o8-yTf"/>
         <segue reference="Oge-7J-LuC"/>
         <segue reference="VnR-KB-2az"/>

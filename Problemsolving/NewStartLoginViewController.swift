@@ -19,6 +19,11 @@ class NewStartLoginViewController: UIViewController {
     
     @IBOutlet weak var buttonLoginOutlet: UIButton!
     
+    var messageFrame = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,8 +61,8 @@ class NewStartLoginViewController: UIViewController {
     
 
     @IBAction func buttonLoginActionStart(_ sender: UIButton) {
-        print("Start userLogin()")
         userLogin()
+        progressBarDisplayer(msg:"ログイン中", true)
         
         //performSegue(withIdentifier:"moveLoginViewToMapSegue", sender: nil)
 
@@ -68,18 +73,21 @@ class NewStartLoginViewController: UIViewController {
         
         FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
             print("We tried to sign in")
+            self.messageFrame.removeFromSuperview()
             if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
                 
                 switch errCode {
                 case .errorCodeInvalidEmail:
                     print("invalid email")
-                case .errorCodeEmailAlreadyInUse:
-                    print("in use")
+                    self.firebaseLoginErrorShow(errorMessage: "入力されたメールアドレスに誤りがあります")
                 default:
                     print("Create User Error: \(error)")
+                    self.firebaseLoginErrorShow(errorMessage:"入力された情報に誤りがあります")
+                    
                 }    
             } else {
                 print("We signed in successfully")
+                 self.messageFrame.removeFromSuperview()
                 //FIRDatabase.database().reference().child("users").child(user!.uid).setValue(user!.email!)
                 self.performSegue(withIdentifier:"moveLoginViewToMapSegue", sender: nil)
                 
@@ -88,6 +96,19 @@ class NewStartLoginViewController: UIViewController {
      
         
         })}
+    
+    func firebaseLoginErrorShow(errorMessage: String){
+        let alertController = UIAlertController (title: "エラー", message: errorMessage, preferredStyle: .alert)
+        //Changed to action Sheet
+        
+        let errorGot = UIAlertAction(title: "了解", style: .default, handler: nil)
+        alertController.addAction(errorGot)
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+        
+            }
+
     
     
     @IBAction func buttonForgetPasswordAction(_ sender: Any) {
@@ -107,6 +128,28 @@ class NewStartLoginViewController: UIViewController {
         self.performSegue(withIdentifier:"backToFirstTimeViewSegue", sender: nil)
         
     }
+    
+    func progressBarDisplayer(msg:String, _ indicator:Bool ) {
+        print(msg)
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 200, height: 50))
+        //Chagnged x: 50 to 30
+        strLabel.text = msg
+        strLabel.textColor = UIColor.white
+        messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
+        
+        messageFrame.layer.cornerRadius = 15
+        messageFrame.backgroundColor = primaryColor
+        //messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        if indicator {
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+            activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)//witdh 50 to 200
+            activityIndicator.startAnimating()
+            messageFrame.addSubview(activityIndicator)
+        }
+        messageFrame.addSubview(strLabel)
+        view.addSubview(messageFrame)
+    }
+
 
     /*
     // MARK: - Navigation

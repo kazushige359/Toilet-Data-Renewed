@@ -26,6 +26,11 @@ class NewAccountCreateViewController: UIViewController {
     
     @IBOutlet weak var createAccountOutlet: UIButton!
     
+    var messageFrame = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +62,7 @@ class NewAccountCreateViewController: UIViewController {
     @IBAction func createNewAccountTapped(_ sender: Any) {
         print("Create New Account Tapped")
         createAccount()
-        
+        progressBarDisplayer(msg: "アカウントを作成", true)
     }
     
     func createAccount(){
@@ -66,14 +71,17 @@ class NewAccountCreateViewController: UIViewController {
             if error != nil {
                 
                 if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                   self.messageFrame.removeFromSuperview()
                     
                     switch errCode {
                     case .errorCodeInvalidEmail:
-                        print("invalid email")
+                        self.firebaseNewAccountError(errorMessage: "メールアドレスに誤りがあります。")
+ 
                     case .errorCodeEmailAlreadyInUse:
-                        print("in use")
+                         self.firebaseNewAccountError(errorMessage: "入力されたメールアドレスはすでに使われております。")
+                       
                     default:
-                        print("Create User Error: \(error!)")
+                        self.firebaseNewAccountError(errorMessage: "入力された情報に誤りがあります。")
                     }
                 }
                 
@@ -89,6 +97,7 @@ class NewAccountCreateViewController: UIViewController {
                     "totalFavoriteCount": 0
                 ]
                 FIRDatabase.database().reference().child("users").child(user!.uid).setValue(userData)
+                self.messageFrame.removeFromSuperview()
                 self.performSegue(withIdentifier:"goToMapFromNewAccountSegue", sender: nil)
                 
 
@@ -96,6 +105,17 @@ class NewAccountCreateViewController: UIViewController {
             }
         }
     }
+    func firebaseNewAccountError(errorMessage: String){
+        
+    let alertController = UIAlertController (title: "エラー", message: errorMessage, preferredStyle: .alert)
+    //Changed to action Sheet
+    
+    let errorGot = UIAlertAction(title: "了解", style: .default, handler: nil)
+    alertController.addAction(errorGot)
+    
+    self.present(alertController, animated: true, completion: nil)
+    }
+
     
 
     @IBAction func buttonForgetButtonTapped(_ sender: Any) {
@@ -117,6 +137,29 @@ class NewAccountCreateViewController: UIViewController {
         
     }
     
+    
+    
+        func progressBarDisplayer(msg:String, _ indicator:Bool ) {
+            print(msg)
+            strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 200, height: 50))
+            //Chagnged x: 50 to 30
+            strLabel.text = msg
+            strLabel.textColor = UIColor.white
+            messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
+    
+            messageFrame.layer.cornerRadius = 15
+            messageFrame.backgroundColor = primaryColor
+            //messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
+            if indicator {
+                activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+                activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)//witdh 50 to 200
+                activityIndicator.startAnimating()
+                messageFrame.addSubview(activityIndicator)
+            }
+            messageFrame.addSubview(strLabel)
+            view.addSubview(messageFrame)
+        }
+
     
     
     

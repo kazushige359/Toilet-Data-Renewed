@@ -465,11 +465,8 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
                     self.availableSwitch.isOn = true
                     self.availableLabel.text = "利用可能"
                     self.available = true
-                    
-                    
                 })
 
-         
                             nextAlertController.addAction(notfound)
                             nextAlertController.addAction(noToiletPaper)
                             nextAlertController.addAction(noFlash)
