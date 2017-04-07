@@ -1004,7 +1004,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGk-8K-chW">
-                                <rect key="frame" x="0.0" y="20" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="0Qj-pc-Jf7"/>
                                 </constraints>
@@ -1013,7 +1013,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MD2-YR-PPX">
-                                <rect key="frame" x="55" y="32.5" width="210" height="35"/>
+                                <rect key="frame" x="55" y="76.5" width="210" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="9rt-sx-6Pf"/>
                                     <constraint firstAttribute="width" constant="210" id="luD-vB-f9h"/>
@@ -1027,7 +1027,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sp9-ha-i41">
-                                <rect key="frame" x="0.0" y="212" width="320" height="356"/>
+                                <rect key="frame" x="0.0" y="256" width="320" height="312"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AA1-Fm-ZBg" userLabel="listButton">
@@ -1038,7 +1038,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="k4m-HD-3J9"/>
                                     <constraint firstAttribute="height" constant="50" id="uE2-ri-LMu"/>
                                 </constraints>
-                                <state key="normal" image="list"/>
+                                <state key="normal" image="list_image_with_background_50"/>
                                 <connections>
                                     <action selector="listButtonTapped:" destination="jJ9-rs-86P" eventType="touchUpInside" id="gRa-HO-vez"/>
                                 </connections>
@@ -1049,7 +1049,7 @@
                                     <constraint firstAttribute="height" constant="50" id="wqu-Bd-1Pi"/>
                                     <constraint firstAttribute="width" constant="50" id="zWX-3B-LIA"/>
                                 </constraints>
-                                <state key="normal" image="crosshair"/>
+                                <state key="normal" image="center_image_with_background_50"/>
                                 <connections>
                                     <action selector="centerButtonTapped:" destination="jJ9-rs-86P" eventType="touchUpInside" id="kQm-OR-FqL"/>
                                 </connections>
@@ -1083,18 +1083,18 @@
                     <navigationItem key="navigationItem" id="2FV-ga-cPg">
                         <nil key="title"/>
                         <leftBarButtonItems>
-                            <barButtonItem image="funnel" id="Bww-0F-5Oa">
+                            <barButtonItem image="funnel30" id="Bww-0F-5Oa">
                                 <connections>
                                     <action selector="filterButtonTapped:" destination="jJ9-rs-86P" id="cUZ-Fj-itD"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="search" id="ISV-zF-ELH">
+                            <barButtonItem image="search30" id="ISV-zF-ELH">
                                 <connections>
                                     <action selector="searchButtonTapped:" destination="jJ9-rs-86P" id="eD5-Vz-irB"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" image="user" id="ib6-jW-KHd">
+                        <barButtonItem key="rightBarButtonItem" image="user_image_30" id="ib6-jW-KHd">
                             <connections>
                                 <action selector="accountButtonTapped:" destination="jJ9-rs-86P" id="aYz-ww-Dno"/>
                             </connections>
@@ -1768,7 +1768,7 @@
                                         <rect key="frame" x="0.0" y="1855" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lYB-tt-G4V" id="wpK-zu-Bnn">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEr-ut-7lp">
@@ -1791,7 +1791,7 @@
                                         <rect key="frame" x="0.0" y="1915" width="320" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bkj-JA-Bj9" id="pYn-Fn-X0y">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dVL-MQ-TiX">
@@ -1834,7 +1834,7 @@
                                         <rect key="frame" x="0.0" y="2097" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ILT-wG-UsC" id="28B-N0-nDJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Am2-80-Q30">
@@ -4168,7 +4168,7 @@
                                         <rect key="frame" x="0.0" y="1738" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WBi-f3-G6q" id="KTY-3s-Hge">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAi-b0-9eB">
@@ -4218,7 +4218,7 @@
                                         <rect key="frame" x="0.0" y="1915" width="320" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B4z-5W-w6M" id="e5O-vO-d1v">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yza-6A-pfz">
@@ -4264,7 +4264,7 @@
                                         <rect key="frame" x="0.0" y="2096" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r54-MQ-2eS" id="qLO-b3-GHa">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiP-TO-cGY">
@@ -4464,18 +4464,18 @@
     </scenes>
     <resources>
         <image name="app_icon_newEdition512px" width="512" height="512"/>
-        <image name="crosshair" width="24" height="24"/>
-        <image name="funnel" width="24" height="24"/>
+        <image name="center_image_with_background_50" width="50" height="50"/>
+        <image name="funnel30" width="30" height="30"/>
         <image name="like" width="24" height="24"/>
-        <image name="list" width="24" height="24"/>
+        <image name="list_image_with_background_50" width="50" height="50"/>
         <image name="love" width="24" height="24"/>
         <image name="planet-earth" width="24" height="24"/>
         <image name="question" width="24" height="24"/>
-        <image name="search" width="24" height="24"/>
+        <image name="search30" width="30" height="30"/>
         <image name="settings" width="24" height="24"/>
         <image name="settings-1" width="24" height="24"/>
         <image name="standing-up-man-" width="24" height="24"/>
-        <image name="user" width="24" height="24"/>
+        <image name="user_image_30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FyR-YQ-Bml"/>

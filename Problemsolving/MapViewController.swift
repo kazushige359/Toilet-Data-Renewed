@@ -201,7 +201,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         searchEndButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
         
         centerButton.layer.cornerRadius = 25
-        centerButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+        centerButton.backgroundColor = UIColor.white
         centerButton.layer.shadowColor = UIColor.black.cgColor
         centerButton.layer.shadowOffset = CGSize.init(width: 0, height: 2)
         
@@ -211,7 +211,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         centerButton.layer.shouldRasterize = true
         
         listButton.layer.cornerRadius = 25
-        listButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+        listButton.backgroundColor = UIColor.white
         listButton.layer.shadowColor = UIColor.black.cgColor
         listButton.layer.shadowOffset = CGSize.init(width: 0, height: 2)
         
