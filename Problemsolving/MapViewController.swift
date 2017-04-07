@@ -134,6 +134,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var resultSearchController: UISearchController!
     var selectedPin: MKPlacemark?
     let databaseRef = FIRDatabase.database().reference()
+    let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
+
     
     @IBOutlet weak var searchEndButton: UIButton!
     @IBOutlet weak var listButton: UIButton!
@@ -143,7 +145,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var messageFrame = UIView()
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
-    let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
+    
     //Cope=ied from example
     
     override func viewDidLoad() {
@@ -159,6 +161,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
        
         self.tableView.bounds = CGRect(x: 0, y: 0, width: mapView.bounds.width, height: self.tableView.bounds.height )
         
+        let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
         
         changeStartCell()
         
@@ -232,6 +235,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
          print("filter.typeFilter = \(filter.typeFilter)")
         
         //savingToilets()
+        
+        self.navigationController?.navigationBar.tintColor = primaryColor
         
         
         progressBarDisplayer(msg:"トイレを検索中", true)
@@ -1002,7 +1007,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
  
     @IBAction func accountButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "mapToacTVSegue", sender: nil)
+        self.performSegue(withIdentifier: "userAccountInfoSegue", sender: nil)
+        
+        //self.performSegue(withIdentifier: "mapToacTVSegue", sender: nil)
+        //April 7th 10pm
     }
     
     @IBAction func filterButtonTapped(_ sender: Any) {

@@ -531,7 +531,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             print("toiletsRef data is saved!!")
             
             uploadPhotosToDatabase(nameString: name!)
-            performSegue(withIdentifier: "backACTVSegue", sender: nil)
+            performSegue(withIdentifier: "addedToiletToNewAcSegue", sender: nil)
             
         }
     

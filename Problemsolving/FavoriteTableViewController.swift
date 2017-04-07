@@ -456,7 +456,7 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     }
     @IBAction func backButtonTapped(_ sender: Any) {
         
-        performSegue(withIdentifier: "FavoriteToMyPageSegue", sender: nil)
+        performSegue(withIdentifier: "fvToAcSegue", sender: nil)
         //print("sender = \(toilets[indexPath.row])")
         
     }

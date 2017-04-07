@@ -468,7 +468,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "PostedToMyPageSegue", sender: nil)
+        performSegue(withIdentifier:"youHaveAddedToAcSegue", sender: nil)
 
     }
 

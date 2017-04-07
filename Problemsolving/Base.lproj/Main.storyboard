@@ -1120,7 +1120,7 @@
                         <outlet property="tableView" destination="sp9-ha-i41" id="PPn-ie-UIG"/>
                         <segue destination="BRG-9u-Qd2" kind="show" identifier="DetailSegue" id="pmY-Sg-ceS"/>
                         <segue destination="wg0-0K-Qyt" kind="custom" identifier="maptoFilterSegue" customClass="RighttoLeft" customModule="Problemsolving" customModuleProvider="target" id="DEo-bG-VDS"/>
-                        <segue destination="4ZO-XT-Ck5" kind="show" identifier="mapToacTVSegue" id="Oge-7J-LuC"/>
+                        <segue destination="HGG-ja-ncn" kind="custom" identifier="userAccountInfoSegue" customClass="LefttoRight" customModule="Problemsolving" id="dYX-Na-Ua2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGp-j7-PuV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1132,7 +1132,7 @@
             <objects>
                 <tableViewController id="Qj5-sP-tVq" customClass="YouWentTableViewController" customModule="Problemsolving" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="yms-ke-AVl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="770"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1164,12 +1164,12 @@
                     </navigationItem>
                     <connections>
                         <segue destination="BRG-9u-Qd2" kind="show" identifier="YoutodSegue" id="MuJ-cA-8CH"/>
-                        <segue destination="4ZO-XT-Ck5" kind="custom" identifier="YouWentToMyPageSegue" customClass="RighttoLeft" customModule="Problemsolving" id="Vji-yi-yRv"/>
+                        <segue destination="HGG-ja-ncn" kind="custom" identifier="youWentToAcSegue" customClass="RighttoLeft" customModule="Problemsolving" id="Xca-Lw-jvu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0I-Da-Szo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3739" y="1928"/>
+            <point key="canvasLocation" x="7648" y="2654"/>
         </scene>
         <!--トイレを投稿-->
         <scene sceneID="X6u-ws-05O">
@@ -1925,13 +1925,14 @@
                         <outlet property="wheelChairLabelSwitch" destination="4lI-FX-wze" id="rkf-GG-E6U"/>
                         <segue destination="pjo-H4-uHx" kind="show" identifier="backTopinSegue" id="VnR-KB-2az"/>
                         <segue destination="4ZO-XT-Ck5" kind="custom" identifier="backACTVSegue" customClass="RighttoLeft" customModule="Problemsolving" id="fPO-er-Etn"/>
+                        <segue destination="HGG-ja-ncn" kind="showDetail" identifier="addedToiletToNewAcSegue" id="u1m-RW-yG8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AYc-m0-bqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4721.25" y="3289.4366197183099"/>
         </scene>
-        <!--User Private Account View Controller-->
+        <!--マイページ-->
         <scene sceneID="CRw-GA-AcY">
             <objects>
                 <viewController id="HGG-ja-ncn" customClass="UserPrivateAccountViewController" customModule="Problemsolving" customModuleProvider="target" sceneMemberID="viewController">
@@ -1944,10 +1945,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-iy-mgy">
-                                <rect key="frame" x="110" y="48" width="100" height="100"/>
+                                <rect key="frame" x="120" y="78" width="80" height="80"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="m3S-h7-BEX"/>
-                                    <constraint firstAttribute="width" constant="100" id="oNV-Nt-ktc"/>
+                                    <constraint firstAttribute="height" constant="80" id="m3S-h7-BEX"/>
+                                    <constraint firstAttribute="width" constant="80" id="oNV-Nt-ktc"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87i-3N-Y26">
@@ -1990,7 +1991,7 @@
                                 <rect key="frame" x="39" y="223" width="24" height="24"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWF-Jc-uwc">
-                                <rect key="frame" x="138" y="158" width="45" height="21"/>
+                                <rect key="frame" x="138" y="168" width="45" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2022,6 +2023,9 @@
                                     <constraint firstAttribute="height" constant="50" id="0UT-Ge-NRz"/>
                                 </constraints>
                                 <state key="normal" title="施設を投稿する"/>
+                                <connections>
+                                    <action selector="buttonAddToiletTapped:" destination="HGG-ja-ncn" eventType="touchUpInside" id="7O5-eJ-tgJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXZ-6a-HVR">
                                 <rect key="frame" x="21" y="375" width="278" height="50"/>
@@ -2029,6 +2033,9 @@
                                     <constraint firstAttribute="height" constant="50" id="m1A-QK-OV6"/>
                                 </constraints>
                                 <state key="normal" title="お気に入りリスト"/>
+                                <connections>
+                                    <action selector="buttonFavoriteListTapped:" destination="HGG-ja-ncn" eventType="touchUpInside" id="AZY-lg-skT"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lWV-zm-c14">
                                 <rect key="frame" x="21" y="495" width="278" height="50"/>
@@ -2036,6 +2043,9 @@
                                     <constraint firstAttribute="height" constant="50" id="nvU-js-8CC"/>
                                 </constraints>
                                 <state key="normal" title="投稿した感想"/>
+                                <connections>
+                                    <action selector="buttonYourKansouTapped:" destination="HGG-ja-ncn" eventType="touchUpInside" id="ayG-pc-vIv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5LT-1J-M3A">
                                 <rect key="frame" x="21" y="435" width="278" height="50"/>
@@ -2043,6 +2053,9 @@
                                     <constraint firstAttribute="height" constant="50" id="acW-j7-DMY"/>
                                 </constraints>
                                 <state key="normal" title="以前利用した施設"/>
+                                <connections>
+                                    <action selector="buttonYouWentList:" destination="HGG-ja-ncn" eventType="touchUpInside" id="hfS-CD-SUc"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="standing-up-man-" translatesAutoresizingMaskIntoConstraints="NO" id="2l8-pf-gWi">
                                 <rect key="frame" x="250" y="223" width="24" height="24"/>
@@ -2072,7 +2085,7 @@
                             <constraint firstItem="PLb-b0-kvn" firstAttribute="centerX" secondItem="eGt-lh-ybu" secondAttribute="centerX" id="Zph-eU-BXj"/>
                             <constraint firstItem="sKH-bc-jI8" firstAttribute="centerX" secondItem="eGt-lh-ybu" secondAttribute="centerX" id="Zs5-L9-kFL"/>
                             <constraint firstItem="lWV-zm-c14" firstAttribute="top" secondItem="5LT-1J-M3A" secondAttribute="bottom" constant="10" id="Zyr-oj-QHU"/>
-                            <constraint firstItem="NZw-qu-Asl" firstAttribute="top" secondItem="OWF-Jc-uwc" secondAttribute="bottom" constant="20" id="cky-eo-3iN"/>
+                            <constraint firstItem="NZw-qu-Asl" firstAttribute="top" secondItem="OWF-Jc-uwc" secondAttribute="bottom" constant="10" id="cky-eo-3iN"/>
                             <constraint firstItem="x2Q-ZY-i49" firstAttribute="centerY" secondItem="eGt-lh-ybu" secondAttribute="centerY" id="dQJ-GM-paO"/>
                             <constraint firstItem="GOM-Tv-Wvg" firstAttribute="centerY" secondItem="eGt-lh-ybu" secondAttribute="centerY" id="eUd-gq-TBI"/>
                             <constraint firstItem="87i-3N-Y26" firstAttribute="centerX" secondItem="GOM-Tv-Wvg" secondAttribute="centerX" id="er7-lB-bCC"/>
@@ -2093,10 +2106,39 @@
                             <constraint firstItem="XXZ-6a-HVR" firstAttribute="top" secondItem="sKH-bc-jI8" secondAttribute="bottom" constant="10" id="zwH-IY-u3S"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="マイページ" id="1dX-8A-m3h">
+                        <barButtonItem key="leftBarButtonItem" image="earth_image_30" id="ZzE-gV-q6W">
+                            <connections>
+                                <action selector="buttonBackToMapTapped:" destination="HGG-ja-ncn" id="DL6-fD-whx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="settings_image_30" id="laN-rC-gIq">
+                            <connections>
+                                <action selector="buttonSettingTapped:" destination="HGG-ja-ncn" id="Q0q-da-cLj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonAddToiletOutlet" destination="sKH-bc-jI8" id="7mK-qT-Ugp"/>
+                        <outlet property="buttonFavoriteListOutlet" destination="XXZ-6a-HVR" id="dVJ-gb-Rox"/>
+                        <outlet property="buttonPostedKansou" destination="lWV-zm-c14" id="C3j-uJ-Vw5"/>
+                        <outlet property="buttonYouHaveBeenOutlet" destination="5LT-1J-M3A" id="pU8-Sg-Oqn"/>
+                        <outlet property="favoriteCountLabel" destination="NZw-qu-Asl" id="Fnu-fM-Vp4"/>
+                        <outlet property="helpedCountLabel" destination="87i-3N-Y26" id="5Gb-YF-Q0I"/>
+                        <outlet property="likeCountLabel" destination="gey-p4-Rlv" id="A9k-nU-Jjy"/>
+                        <outlet property="userImageView" destination="6zJ-iy-mgy" id="szA-T4-VOw"/>
+                        <outlet property="userNameLabel" destination="OWF-Jc-uwc" id="LQ2-Le-50K"/>
+                        <segue destination="jJ9-rs-86P" kind="custom" identifier="userAccountBackToMapSegue" customClass="RighttoLeft" customModule="Problemsolving" id="0OJ-s6-62o"/>
+                        <segue destination="22B-JZ-lhK" kind="custom" identifier="userAccountToSettingSegue" customClass="LefttoRight" customModule="Problemsolving" id="atW-3m-gu4"/>
+                        <segue destination="Rzj-Mw-RfY" kind="custom" identifier="newAcToYouHaveAddSegue" customClass="LefttoRight" customModule="Problemsolving" id="d4c-Hb-quT"/>
+                        <segue destination="154-kP-sxu" kind="custom" identifier="newAcToFavoriteList" customClass="LefttoRight" customModule="Problemsolving" id="sqa-nP-xyO"/>
+                        <segue destination="Qj5-sP-tVq" kind="custom" identifier="youHaveBeenSegue" customClass="LefttoRight" customModule="Problemsolving" id="n7m-ff-SLC"/>
+                        <segue destination="pjo-H4-uHx" kind="custom" identifier="newAcaddToiletSegue" customClass="LefttoRight" customModule="Problemsolving" id="r8I-FI-5ic"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0a-2d-w0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-639.375" y="1138.7323943661972"/>
+            <point key="canvasLocation" x="9561" y="900"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hLg-EK-fDH">
@@ -2107,7 +2149,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jY8-92-FSl"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7dW-FS-I4B">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="770"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2125,15 +2167,15 @@
                         <viewControllerLayoutGuide type="bottom" id="EDx-BF-sfP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Ki-Es-rrz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="770"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hpg-fv-YXB">
-                                <rect key="frame" x="85" y="69" width="150" height="396"/>
+                                <rect key="frame" x="85" y="113" width="150" height="150"/>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.21312000574155224" blue="0.20797052597571625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WuC-EC-waI">
-                                <rect key="frame" x="35" y="514" width="250" height="34"/>
+                                <rect key="frame" x="35" y="312" width="250" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="写真を選ぶ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2143,7 +2185,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5xs-SA-KpD">
-                                <rect key="frame" x="35" y="570" width="250" height="34"/>
+                                <rect key="frame" x="35" y="368" width="250" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="写真を保存する">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2173,11 +2215,12 @@
                         <outlet property="selectPicture" destination="WuC-EC-waI" id="9xf-2p-lLl"/>
                         <segue destination="5DP-nf-g4E" kind="show" identifier="BackAccountSegue" id="YEP-FI-Fdd"/>
                         <segue destination="4ZO-XT-Ck5" kind="custom" identifier="backNewAccountSegue" customClass="RighttoLeft" customModule="Problemsolving" id="I6o-XE-1Ul"/>
+                        <segue destination="HGG-ja-ncn" kind="custom" identifier="pcBackToAc" customClass="RighttoLeft" customModule="Problemsolving" id="RSt-1d-5nW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydJ-Lg-esQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-921" y="2129"/>
+            <point key="canvasLocation" x="8709" y="4296"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="DsZ-4i-idq">
@@ -2188,7 +2231,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ZLO-nr-GI2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x6f-GR-zH0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="770"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -2202,7 +2245,7 @@
             <objects>
                 <tableViewController id="Rzj-Mw-RfY" customClass="PostedTableViewController" customModule="Problemsolving" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Zh0-Z0-jtZ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="770"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2237,18 +2280,19 @@
                     <connections>
                         <segue destination="BRG-9u-Qd2" kind="show" identifier="postedToDetailSegue" id="zsO-RU-P4l"/>
                         <segue destination="4ZO-XT-Ck5" kind="custom" identifier="PostedToMyPageSegue" customClass="RighttoLeft" customModule="Problemsolving" id="9Ha-FR-cSb"/>
+                        <segue destination="HGG-ja-ncn" kind="custom" identifier="youHaveAddedToAcSegue" customClass="RighttoLeft" customModule="Problemsolving" id="VFN-Js-uz2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oTJ-Er-kXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="3354"/>
+            <point key="canvasLocation" x="7802" y="3758"/>
         </scene>
         <!--Setting Table View Controller-->
         <scene sceneID="hoI-sc-XEN">
             <objects>
                 <tableViewController id="22B-JZ-lhK" customClass="SettingTableViewController" customModule="Problemsolving" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="AN2-r0-7Yl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="770"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -2372,7 +2416,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heF-n4-vRD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687.5" y="982.3943661971831"/>
+            <point key="canvasLocation" x="11466" y="2654"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="aSj-xe-Qf6">
@@ -2383,18 +2427,18 @@
                         <viewControllerLayoutGuide type="bottom" id="29X-cZ-gPo"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aiV-h5-i4l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="770"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwh-mG-tSl">
-                                <rect key="frame" x="0.0" y="20" width="320" height="750"/>
+                                <rect key="frame" x="0.0" y="64" width="270" height="504"/>
                                 <color key="backgroundColor" red="0.85486577939999997" green="0.90478066810000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2RC-Fp-AES">
-                                <rect key="frame" x="85" y="43" width="150" height="190"/>
+                                <rect key="frame" x="85" y="87" width="100" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="190" id="Esc-NB-jcf"/>
                                     <constraint firstAttribute="width" secondItem="2RC-Fp-AES" secondAttribute="height" multiplier="1:1" constant="-40" id="LeN-yj-urK"/>
@@ -2402,7 +2446,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="シゲ！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Dv-Pg-MUa">
-                                <rect key="frame" x="68" y="239" width="185" height="28"/>
+                                <rect key="frame" x="68" y="233" width="185" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="XEB-vu-S28"/>
                                 </constraints>
@@ -2411,7 +2455,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lue-Vx-XvW">
-                                <rect key="frame" x="0.0" y="284" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="278" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="88A-TR-Wj8"/>
@@ -2421,7 +2465,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcp-Mn-mt8">
-                                <rect key="frame" x="0.0" y="354" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="348" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1fU-4G-4yN"/>
@@ -2431,7 +2475,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsT-Tq-1L1">
-                                <rect key="frame" x="0.0" y="424" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="418" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="RwZ-XC-jdH"/>
@@ -2441,7 +2485,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kk-eT-bhk">
-                                <rect key="frame" x="41" y="291" width="240" height="36"/>
+                                <rect key="frame" x="41" y="285" width="240" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="トイレを追加する">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2451,7 +2495,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGv-rR-gWu">
-                                <rect key="frame" x="41" y="361" width="240" height="36"/>
+                                <rect key="frame" x="41" y="355" width="240" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="お気に入りトイレ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2461,7 +2505,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4iL-F4-Mif">
-                                <rect key="frame" x="41" y="431" width="240" height="36"/>
+                                <rect key="frame" x="41" y="425" width="240" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="過去に行ったトイレ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2471,14 +2515,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrU-WT-PSq">
-                                <rect key="frame" x="0.0" y="494" width="320" height="252"/>
+                                <rect key="frame" x="0.0" y="488" width="320" height="56"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JRZ-wJ-vTw">
-                                <rect key="frame" x="41" y="504" width="240" height="232"/>
+                                <rect key="frame" x="41" y="498" width="240" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="追加したトイレ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2607,11 +2651,12 @@
                     <connections>
                         <segue destination="BRG-9u-Qd2" kind="show" identifier="ftodSegue" id="H6x-N3-lmf"/>
                         <segue destination="4ZO-XT-Ck5" kind="custom" identifier="FavoriteToMyPageSegue" customClass="RighttoLeft" customModule="Problemsolving" id="YPX-iR-2q6"/>
+                        <segue destination="HGG-ja-ncn" kind="custom" identifier="fvToAcSegue" customClass="RighttoLeft" customModule="Problemsolving" id="INs-62-dA7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Z0-yJ-7V6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5424.375" y="738.38028169014081"/>
+            <point key="canvasLocation" x="9602" y="2592"/>
         </scene>
         <!--Add Pin View Controller-->
         <scene sceneID="4ar-Hb-nlZ">
@@ -2690,7 +2735,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJL-nT-UeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2460" y="2385.211267605634"/>
+            <point key="canvasLocation" x="7723" y="1671"/>
         </scene>
         <!--マイページ-->
         <scene sceneID="7ca-wa-6Au">
@@ -2961,14 +3006,13 @@
                         <segue destination="pjo-H4-uHx" kind="show" identifier="acTVtoAddSegue" id="xd0-zx-oHX"/>
                         <segue destination="154-kP-sxu" kind="show" identifier="acTVtoFVSegue" id="BKz-Vr-Yjy"/>
                         <segue destination="Qj5-sP-tVq" kind="show" identifier="acTVtoYoubeenSegue" id="U0X-u6-9mF"/>
-                        <segue destination="22B-JZ-lhK" kind="show" identifier="acTVtoSettingSegue" id="Jfq-Gc-vFD"/>
                         <segue destination="jJ9-rs-86P" kind="custom" identifier="acTVtoMapSegue" customClass="RighttoLeft" customModule="Problemsolving" id="7wd-Nr-P0G"/>
                         <segue destination="Rzj-Mw-RfY" kind="show" identifier="acTVtoPostedListSegue" id="WnE-AM-UHK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0w-1q-htv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="1471"/>
+            <point key="canvasLocation" x="10155" y="4084"/>
         </scene>
         <!--トイレの詳細-->
         <scene sceneID="pTB-Zk-b6Q">
@@ -2983,7 +3027,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBJ-Ns-BgC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="1432"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="1388"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6iK-Eu-HGS">
                                         <rect key="frame" x="0.0" y="256" width="320" height="1044"/>
@@ -4547,7 +4591,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="2200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SBI-qP-kNB">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SBI-qP-kNB">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-0X-7xG">
@@ -4648,6 +4692,7 @@
     <resources>
         <image name="app_icon_newEdition512px" width="512" height="512"/>
         <image name="center_image_with_background_50" width="50" height="50"/>
+        <image name="earth_image_30" width="30" height="30"/>
         <image name="funnel30" width="30" height="30"/>
         <image name="like" width="24" height="24"/>
         <image name="list_image_with_background_50" width="50" height="50"/>
@@ -4657,16 +4702,21 @@
         <image name="search30" width="30" height="30"/>
         <image name="settings" width="24" height="24"/>
         <image name="settings-1" width="24" height="24"/>
+        <image name="settings_image_30" width="30" height="30"/>
         <image name="standing-up-man-" width="24" height="24"/>
         <image name="user_image_30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Wpa-8a-mYn"/>
-        <segue reference="Oge-7J-LuC"/>
-        <segue reference="7wd-Nr-P0G"/>
-        <segue reference="pmY-Sg-ceS"/>
-        <segue reference="xd0-zx-oHX"/>
-        <segue reference="Tcs-8w-6lL"/>
+        <segue reference="I6o-XE-1Ul"/>
+        <segue reference="RSt-1d-5nW"/>
+        <segue reference="sqa-nP-xyO"/>
+        <segue reference="d4c-Hb-quT"/>
+        <segue reference="r8I-FI-5ic"/>
+        <segue reference="0OJ-s6-62o"/>
+        <segue reference="n7m-ff-SLC"/>
+        <segue reference="zsO-RU-P4l"/>
+        <segue reference="O2a-Bv-tnJ"/>
         <segue reference="kHI-bB-fQV"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -470,7 +470,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
     
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "YouWentToMyPageSegue", sender: nil)
+        performSegue(withIdentifier:"youWentToAcSegue", sender: nil)
         
     }
     

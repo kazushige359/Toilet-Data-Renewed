@@ -93,7 +93,7 @@ class PictureViewController: UIViewController,UIImagePickerControllerDelegate, U
                 let downloadURL = metadata!.downloadURL()!.absoluteString
                 self.databaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
 
-                self.performSegue(withIdentifier:"backNewAccountSegue", sender: metadata!.downloadURL()!.absoluteString)
+                self.performSegue(withIdentifier:"pcBackToAc", sender: metadata!.downloadURL()!.absoluteString)
             }
         })
     }
