@@ -31,8 +31,22 @@ class NewStartLoginViewController: UIViewController {
         buttonLoginOutlet.layer.backgroundColor = primaryColor.cgColor
 
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewStartLoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        
+        
         // Do any additional setup after loading the view.
     }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+        
+    
+    
     
 
     override func didReceiveMemoryWarning() {
@@ -54,9 +68,18 @@ class NewStartLoginViewController: UIViewController {
         
         FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
             print("We tried to sign in")
-            if error != nil {
-                print("Hey we have an error : \(error)")
-            } else { print("We signed in successfully")
+            if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                
+                switch errCode {
+                case .errorCodeInvalidEmail:
+                    print("invalid email")
+                case .errorCodeEmailAlreadyInUse:
+                    print("in use")
+                default:
+                    print("Create User Error: \(error)")
+                }    
+            } else {
+                print("We signed in successfully")
                 //FIRDatabase.database().reference().child("users").child(user!.uid).setValue(user!.email!)
                 self.performSegue(withIdentifier:"moveLoginViewToMapSegue", sender: nil)
                 

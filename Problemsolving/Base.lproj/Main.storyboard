@@ -56,7 +56,7 @@
                                     <constraint firstAttribute="height" constant="60" id="o6C-If-3kH"/>
                                     <constraint firstAttribute="width" constant="280" id="whT-UL-e2w"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="ログイン">
                                     <color key="titleColor" red="0.31857550140000002" green="0.67087191339999996" blue="0.94326323270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -70,8 +70,8 @@
                                     <constraint firstAttribute="height" constant="60" id="Y66-ZY-gBI"/>
                                     <constraint firstAttribute="width" constant="280" id="jk1-zv-fO4"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="サインアップ">
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="アカウント作成">
                                     <color key="titleColor" red="0.31857550140000002" green="0.67087191339999996" blue="0.94326323270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -3559,6 +3559,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="createAccountOutlet" destination="OQD-px-ShW" id="Fgf-Mv-kzQ"/>
+                        <outlet property="emailTextField" destination="fZ1-Ln-A8r" id="MNg-H3-PyF"/>
+                        <outlet property="passwordTextField" destination="Rqy-zO-wL3" id="JZu-hS-xwq"/>
+                        <outlet property="userNameTextField" destination="7CC-MC-d2O" id="m3Z-hi-lGj"/>
                         <segue destination="lEE-Wi-WVE" kind="showDetail" identifier="backToFirstViewSegue" id="t9Z-o8-yTf"/>
                         <segue destination="1Xj-3o-A6g" kind="showDetail" identifier="goToMapFromNewAccountSegue" id="XkJ-RX-AZM"/>
                     </connections>

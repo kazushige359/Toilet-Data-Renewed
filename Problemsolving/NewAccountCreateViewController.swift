@@ -7,9 +7,22 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+
+
+
 
 class NewAccountCreateViewController: UIViewController {
 
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
+    @IBOutlet weak var userNameTextField: UITextField!
+    
     
     @IBOutlet weak var createAccountOutlet: UIButton!
     
@@ -21,10 +34,19 @@ class NewAccountCreateViewController: UIViewController {
         createAccountOutlet.layer.shadowRadius = 2.0
         createAccountOutlet.layer.backgroundColor = primaryColor.cgColor
         
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewAccountCreateViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         
 
         // Do any additional setup after loading the view.
     }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,8 +56,45 @@ class NewAccountCreateViewController: UIViewController {
     
     @IBAction func createNewAccountTapped(_ sender: Any) {
         print("Create New Account Tapped")
-        self.performSegue(withIdentifier:"goToMapFromNewAccountSegue", sender: nil)
+        createAccount()
         
+    }
+    
+    func createAccount(){
+        FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+            
+            if error != nil {
+                
+                if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                    
+                    switch errCode {
+                    case .errorCodeInvalidEmail:
+                        print("invalid email")
+                    case .errorCodeEmailAlreadyInUse:
+                        print("in use")
+                    default:
+                        print("Create User Error: \(error!)")
+                    }
+                }
+                
+            } else {
+                print("all good... continue")
+                let userData : [String : Any] = [
+                    "userName": self.userNameTextField.text! as String,
+                    "password": self.passwordTextField.text! as String,
+                    "userPhoto": "",
+                    "userEmail": self.emailTextField.text! as String,
+                    "totalLikedCount": 0,
+                    "totalHelpedCount": 0,
+                    "totalFavoriteCount": 0
+                ]
+                FIRDatabase.database().reference().child("users").child(user!.uid).setValue(userData)
+                self.performSegue(withIdentifier:"goToMapFromNewAccountSegue", sender: nil)
+                
+
+                
+            }
+        }
     }
     
 
