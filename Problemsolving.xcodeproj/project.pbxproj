@@ -35,6 +35,7 @@
 		2423A42B1E23839800DD2AF4 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A42A1E23839800DD2AF4 /* AddPinViewController.swift */; };
 		2423A4311E25989200DD2AF4 /* ChangeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A4301E25989200DD2AF4 /* ChangeDetailTableViewController.swift */; };
 		2442D1DF1E9707DC009621E7 /* NewAccountCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442D1DE1E9707DC009621E7 /* NewAccountCreateViewController.swift */; };
+		2442D1E11E9799A5009621E7 /* UserPrivateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2442D1E01E9799A5009621E7 /* UserPrivateAccountViewController.swift */; };
 		245E9F291E95DFA3006D8A31 /* UserFirstTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */; };
 		245E9F2D1E95F21B006D8A31 /* UserStartLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */; };
 		245E9F2F1E95F448006D8A31 /* StartLoginUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */; };
@@ -114,6 +115,7 @@
 		2423A42A1E23839800DD2AF4 /* AddPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
 		2423A4301E25989200DD2AF4 /* ChangeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeDetailTableViewController.swift; sourceTree = "<group>"; };
 		2442D1DE1E9707DC009621E7 /* NewAccountCreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAccountCreateViewController.swift; sourceTree = "<group>"; };
+		2442D1E01E9799A5009621E7 /* UserPrivateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPrivateAccountViewController.swift; sourceTree = "<group>"; };
 		245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFirstTimeViewController.swift; sourceTree = "<group>"; };
 		245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserStartLoginViewController.swift; path = ../Pods/UserStartLoginViewController.swift; sourceTree = "<group>"; };
 		245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLoginUserViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				2414549D1DE2C4F90066AB62 /* SignInViewController.swift */,
 				24A130B51DEFD300009C1A3F /* MapViewController.swift */,
 				247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */,
+				2442D1E01E9799A5009621E7 /* UserPrivateAccountViewController.swift */,
 				2418B7D21E16611B004F7022 /* YouWentTableViewController.swift */,
 				24DF78971E3738D80081CDA0 /* PostedTableViewController.swift */,
 				2418B7CE1E14CCFB004F7022 /* FavoriteTableViewController.swift */,
@@ -656,6 +659,7 @@
 				2418B7DA1E1B1C8E004F7022 /* PictureViewController.swift in Sources */,
 				2414549C1DE2C4F90066AB62 /* AppDelegate.swift in Sources */,
 				24A130B61DEFD300009C1A3F /* MapViewController.swift in Sources */,
+				2442D1E11E9799A5009621E7 /* UserPrivateAccountViewController.swift in Sources */,
 				2420F31B1E2742E300159441 /* EditTableViewController.swift in Sources */,
 				24B6FB001E2B505C00E1330A /* Filter.swift in Sources */,
 				24B6FB061E30395900E1330A /* RighttoLeft.swift in Sources */,
