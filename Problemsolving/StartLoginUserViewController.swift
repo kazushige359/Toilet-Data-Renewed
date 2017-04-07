@@ -74,6 +74,8 @@ class StartLoginUserViewController: UIViewController {
     }
     
     @IBAction func buttonLoginAction(_ sender: Any) {
+        performSegue(withIdentifier:"heySegue", sender: nil)
+
         
         print("Login Button Clicked")
         
