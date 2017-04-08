@@ -912,6 +912,642 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         }
     }
     
+    
+    @IBAction func availableSwitchTapped(_ sender: Any) {
+        if availableSwtichOutlet.isOn == true{
+            filter.availableFilter = true
+        }else {
+            filter.availableFilter = false
+        }
+        
+        
+        
+    }
+    
+    
+    @IBAction func japaneseSwitchTapped(_ sender: Any) {
+        if japaneseSwitchOutlet.isOn == true{
+            filter.japaneseFilter = true
+        }else {
+            filter.japaneseFilter = false
+        }
+
+    }
+    
+    @IBAction func westernSwitchTapped(_ sender: Any) {
+        if westernSwitchOutlet.isOn == true{
+            filter.westernFilter = true
+        }else {
+            filter.westernFilter = false
+        }
+
+    }
+    
+    @IBAction func onlyFemaleSwitchTapped(_ sender: Any) {
+        if onlyFemaleSwitchOutlet.isOn == true{
+        filter.onlyFemaleFilter = true
+        }else {
+        filter.onlyFemaleFilter = false
+        }
+    }
+    
+    
+    @IBAction func unisexSwitchTapped(_ sender: Any) {
+        if unisexSwitchOutlet.isOn == true{
+            filter.unisexFilter = true
+        }else {
+            filter.unisexFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func washletSwitchTapped(_ sender: Any) {
+        if washletSwitchOutlet.isOn == true{
+            filter.washletFilter = true
+        }else {
+            filter.washletFilter = false
+        }
+
+    }
+    
+    @IBAction func warmSeatSwitchTapped(_ sender: Any) {
+        if warmSeatSwitchOutlet.isOn == true{
+            filter.warmSearFilter = true
+        }else {
+            filter.warmSearFilter = false
+        }
+
+    }
+    
+    @IBAction func autoOpenSwitchTapped(_ sender: Any) {
+        if autoBenkiOpenSwitchOutlet.isOn == true{
+            filter.autoOpen = true
+        }else {
+            filter.autoOpen = false
+        }
+
+    }
+    
+    @IBAction func noVirusSwitchTapped(_ sender: Any) {
+        if noVirusSwitchOutlet.isOn == true{
+            filter.noVirusFilter = true
+        }else {
+            filter.noVirusFilter = false
+        }
+
+    }
+    
+    @IBAction func paperForBenkiSwitchTapped(_ sender: Any) {
+        if paperForBenkiSwitchOutlet.isOn == true{
+            filter.paperForBenkiFilter = true
+        }else {
+            filter.paperForBenkiFilter = false
+        }
+
+    }
+    
+    @IBAction func cleanerBenkiSwitchTapped(_ sender: Any) {
+        if cleanerForBenkiFilterSwitchOutlet.isOn == true{
+            filter.cleanerForBenkiFilter = true
+        }else {
+            filter.cleanerForBenkiFilter = false
+        }
+
+    }
+    
+    @IBAction func autoToiletWashSwitchTapped(_ sender: Any) {
+        if autoToiletWashSwitchOutlet.isOn == true{
+            filter.autoToiletWashFilter = true
+        }else {
+            filter.autoToiletWashFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func sensorHandWashSwitchTapped(_ sender: Any) {
+        if sensorHandWashSwtichOutlet.isOn == true{
+            filter.sensorHandWashFilter = true
+        }else {
+            filter.sensorHandWashFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func handSoapSwitchTapped(_ sender: Any) {
+        if handSoapSwitchOutlet.isOn == true{
+            filter.handSoapFilter = true
+        }else {
+            filter.handSoapFilter = false
+        }
+
+    }
+    
+    @IBAction func autoHandSoapSwitchTapped(_ sender: Any) {
+        if autoHandSoapSwitchOutlet.isOn == true{
+            filter.autoHandSoapFilter = true
+        }else {
+            filter.autoHandSoapFilter = false
+        }
+
+    }
+    
+    
+    
+    @IBAction func paperTowelSwitchTapped(_ sender: Any) {
+        if paperTowelSwitchOutlet.isOn == true{
+            filter.paperTowelFilter = true
+        }else {
+            filter.paperTowelFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func handDrierSwitchTapped(_ sender: Any) {
+        if handDrierSwitchOutlet.isOn == true{
+            filter.handDrierFilter = true
+        }else {
+            filter.handDrierFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func otohimeSwitchTapped(_ sender: Any) {
+        if otohimeSwitchOutlet.isOn == true{
+            filter.otohime = true
+        }else {
+            filter.otohime = false
+        }
+
+    }
+    
+    
+    @IBAction func napkinSellingSwitchTapped(_ sender: Any) {
+        if napkinSellingSwtichOutlet.isOn == true{
+            filter.napkinSelling = true
+        }else {
+            filter.napkinSelling = false
+        }
+
+    }
+    
+    
+    @IBAction func makeRoomSwitchTapped(_ sender: Any) {
+        if makeRoomSwitchOutlet.isOn == true{
+            filter.makeroomFilter = true
+        }else {
+            filter.makeroomFilter = false
+        }
+
+    }
+    
+    @IBAction func clothesSwitchTapped(_ sender: Any) {
+        if clothesSwitchOutlet.isOn == true{
+            filter.clothes = true
+        }else {
+            filter.clothes = false
+        }
+
+    }
+    
+    @IBAction func baggageSpaceSwitchTapped(_ sender: Any) {
+        if baggageSpaceSwitchOutlet.isOn == true{
+            filter.baggageSpaceFilter = true
+        }else {
+            filter.baggageSpaceFilter = false
+        }
+
+    }
+    
+    
+    
+    @IBAction func wheelchairSwitchTapped(_ sender: Any) {
+        if wheelchairSwitchOutlet.isOn == true{
+            filter.wheelchairFilter = true
+        }else {
+            filter.wheelchairFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func wheelchairAccessSwitchTapped(_ sender: Any) {
+        if wheelchairAccessSwitchOutlet.isOn == true{
+            filter.wheelchairAccessFilter = true
+        }else {
+            filter.wheelchairAccessFilter = false
+        }
+
+    }
+    
+    
+    
+    @IBAction func handrailSwitchTapped(_ sender: Any) {
+        if handrailSwitchOutlet.isOn == true{
+            filter.handrailFilter = true
+        }else {
+            filter.handrailFilter = false
+        }
+
+    }
+    
+    
+    
+    @IBAction func callHelpSwitchTapped(_ sender: Any) {
+        if callHelpSwitchOutlet.isOn == true{
+            filter.callHelpFilter = true
+        }else {
+            filter.callHelpFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func ostomateSwitchTapped(_ sender: Any) {
+        if ostomateSwitchOutlet.isOn == true{
+            filter.ostomateFilter = true
+        }else {
+            filter.ostomateFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func writtenEnglishSwitchTapped(_ sender: Any) {
+        if writtenEnglishSwitchOutlet.isOn == true{
+            filter.writtenEnglish = true
+        }else {
+            filter.writtenEnglish = false
+        }
+
+    }
+    
+    
+    
+    @IBAction func brailleSwitchTapped(_ sender: Any) {
+        if brailleSwitchOutlet.isOn == true{
+            filter.braille = true
+        }else {
+            filter.braille = false
+        }
+
+    }
+    
+    
+    @IBAction func voiceGuideSwitchTapped(_ sender: Any) {
+        if voiceGuideSwitchOutlet.isOn == true{
+            filter.voiceGuideFilter = true
+        }else {
+            filter.voiceGuideFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func fancyToiletSwitchTapped(_ sender: Any) {
+        if fancyToiletSwitchOutlet.isOn == true{
+            filter.fancy = true
+        }else {
+            filter.fancy = false
+        }
+
+    }
+    
+    
+    @IBAction func smellGoodToiletSwitchTapped(_ sender: Any) {
+        if goodSmellToiletSwitchOutlet.isOn == true{
+            filter.smell = true
+        }else {
+            filter.smell = false
+        }
+
+    }
+    
+    
+    @IBAction func confortableWideToiletSwitchTapped(_ sender: Any) {
+        if confortableWideToiletSwitchOutlet.isOn == true{
+            filter.confortableWise = true
+        }else {
+            filter.confortableWise = false
+        }
+
+    }
+    
+    
+    @IBAction func noNeedAskSwitchTapped(_ sender: Any) {
+        if noNeedAskSwitchOutlet.isOn == true{
+            filter.noNeedAsk = true
+        }else {
+            filter.noNeedAsk = false
+        }
+
+    }
+    
+    
+    @IBAction func parkingSwitchTapped(_ sender: Any) {
+        if parkingSwitchOutlet.isOn == true{
+            filter.parking = true
+        }else {
+            filter.parking = false
+        }
+
+    }
+    
+    
+    @IBAction func airConditionSwitchTapped(_ sender: Any) {
+        if airConditionSwitchOutlet.isOn == true{
+            filter.airConditionFilter = true
+        }else {
+            filter.airConditionFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func wifiSwitchTapped(_ sender: Any) {
+        if wifiSwitchOutlet.isOn == true{
+            filter.wifiFilter = true
+        }else {
+            filter.wifiFilter = false
+        }
+
+    }
+    
+    @IBAction func milkSpaceSwitchTapped(_ sender: Any) {
+        if milkSpaceSwitchOutlet.isOn == true{
+            filter.milkspaceFilter = true
+        }else {
+            filter.milkspaceFilter = false
+        }
+
+    }
+    
+    @IBAction func milkRoomOnlyFemaleSwitchTapped(_ sender: Any) {
+        if babyRoomOnlyFemaleSwitchOutlet.isOn == true{
+            filter.babyRoomOnlyFemaleFilter = true
+        }else {
+            filter.babyRoomOnlyFemaleFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func babyRoomManEnterSwitchTapped(_ sender: Any) {
+        if babyRoomMaleEnterSwitchOutlet.isOn == true{
+            filter.babyRoomMaleCanEnterFilter = true
+        }else {
+            filter.babyRoomMaleCanEnterFilter = false
+        }
+
+    }
+    
+    
+    
+    @IBAction func babyRoomPersonalSpaceSwitchTapped(_ sender: Any) {
+        if babyRoomPersonalSpaceSwitchOutlet.isOn == true{
+            filter.babyRoomPersonalSpaceFilter = true
+        }else {
+            filter.babyRoomPersonalSpaceFilter = false
+        }
+
+    }
+    
+    @IBAction func babyRoomPrivateWithLock(_ sender: Any) {
+        if babyRoomPersonalWithLockSwitchOutlet.isOn == true{
+            filter.babyRoomPersonalWithLockFilter = true
+        }else {
+            filter.babyRoomPersonalWithLockFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func babyRoomWideSwitchTapped(_ sender: Any) {
+        if babyRoomWideSpaceSwitchOutlet.isOn == true{
+            filter.babyRoomWideSpaceFilter = true
+        }else {
+            filter.babyRoomWideSpaceFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func babyCarRentalSwitchTapped(_ sender: Any) {
+        if babyCarRentalSwitchOutlet.isOn == true{
+            filter.babyCarRentalFilter = true
+        }else {
+            filter.babyCarRentalFilter = false
+        }
+
+    }
+    
+    @IBAction func babyCarAccessSwitchTapped(_ sender: Any) {
+        if babyCarAccessSwitchOutlet.isOn == true{
+            filter.babyCarAccessFilter = true
+        }else {
+            filter.babyCarAccessFilter = false
+        }
+
+    }
+    
+    @IBAction func omutuSwitchTapped(_ sender: Any) {
+        if omutuSwitchOutlet.isOn == true{
+            filter.omutuFilter = true
+        }else {
+            filter.omutuFilter = false
+        }
+
+    }
+    
+    
+    
+    @IBAction func babyHipWashingSwitchTapped(_ sender: Any) {
+        if babyHipWashingStuffSwitchOutlet.isOn == true{
+            filter.babyHipWashingStuffFilter = true
+        }else {
+            filter.babyHipWashingStuffFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func omutuTrashCanSwitchTapped(_ sender: Any) {
+        if omutuTrashCanFilter.isOn == true{
+            filter.omutuTrashCanFilter = true
+        }else {
+            filter.omutuTrashCanFilter = false
+        }
+
+    }
+    
+    @IBAction func omutuSellingSwitchTapped(_ sender: Any) {
+        if omutuSellingSwitchOutlet.isOn == true{
+            filter.omutuSelling = true
+        }else {
+            filter.omutuSelling = false
+        }
+
+    }
+    
+    @IBAction func babyRoomSinkSwitchTapped(_ sender: Any) {
+        if babySinkSwitchOutlet.isOn == true{
+            filter.babySinkFilter = true
+        }else {
+            filter.babySinkFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func babyRoomWashStandSwitchTapped(_ sender: Any) {
+        if babyWashstandSwitchOutlet.isOn == true{
+            filter.babyWashstandFilter = true
+        }else {
+            filter.babyWashstandFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func babyRoomHotWaterSwitchTapped(_ sender: Any) {
+        if babyHotWaterSwitchOutlet.isOn == true{
+            filter.babyHotWaterFilter = true
+        }else {
+            filter.babyHotWaterFilter = false
+        }
+
+    }
+    
+    @IBAction func babyRoomMicrowaveSwitchTapped(_ sender: Any) {
+        if babyMicrowaveSwitchOutlet.isOn == true{
+            filter.babyMicrowaveFilter = true
+        }else {
+            filter.babyMicrowaveFilter = false
+        }
+
+    }
+    
+    @IBAction func babyRoomWaterSellingSwitchTapped(_ sender: Any) {
+        if babySellingWaterSwitchOutlet.isOn == true{
+            filter.babySellingWaterFilter = true
+        }else {
+            filter.babySellingWaterFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func babyRoomFoodSellingSwitchTapped(_ sender: Any) {
+        if babyFoodSellingSwitchOutlet.isOn == true{
+            filter.babyFoodSellingFilter = true
+        }else {
+            filter.babyFoodSellingFilter = false
+        }
+
+    }
+    
+    @IBAction func babyRoomEatingSpaceSwitchTapped(_ sender: Any) {
+        if babyEatingSpaceSwitchOutlet.isOn == true{
+            filter.babyEatingSpaceFilter = true
+        }else {
+            filter.babyEatingSpaceFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func babyChairSwitchTapped(_ sender: Any) {
+        if babyChairSwitchOutlet.isOn == true{
+            filter.babyChairFilter = true
+        }else {
+            filter.babyChairFilter = false
+        }
+
+    }
+    
+    @IBAction func soffaSwitchTapped(_ sender: Any) {
+        if soffaSwitchOutlet.isOn == true{
+            filter.babySoffaFilter = true
+        }else {
+            filter.babySoffaFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func kidsToiletSwitchTapped(_ sender: Any) {
+        if kidsToiletSwitchOutlet.isOn == true{
+            filter.babyToiletFilter = true
+        }else {
+            filter.babyToiletFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func kidSpaceSwitchTapped(_ sender: Any) {
+        if kidsSpaceSwitchOutlet.isOn == true{
+            filter.babyKidsSpaceFilter = true
+        }else {
+            filter.babyKidsSpaceFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func heightMeasureSwitchTapped(_ sender: Any) {
+        if babyHeightMeasureSwitchOutlet.isOn == true{
+            filter.babyHeightMeasureFilter = true
+        }else {
+            filter.babyHeightMeasureFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func weightMeasureSwitchTapped(_ sender: Any) {
+        if babyWeightSwitchOutlet.isOn == true{
+            filter.babyWeightMeasureFilter = true
+        }else {
+            filter.babyWeightMeasureFilter = false
+        }
+
+    }
+    
+    @IBAction func babyRoomToySwitchTapped(_ sender: Any) {
+        if babyToySwitchOutlet.isOn == true{
+            filter.babyToyFilter = true
+        }else {
+            filter.babyToyFilter = false
+        }
+
+    }
+    
+    @IBAction func babyRoomFancySwitchTapped(_ sender: Any) {
+        if babyRoomFancySwitchOutlet.isOn == true{
+            filter.babyRoomFancyFilter = true
+        }else {
+            filter.babyRoomFancyFilter = false
+        }
+
+    }
+    
+    
+    @IBAction func babyRoomSmellGoodSwitchTapped(_ sender: Any) {
+        if babyRoomSmellGoodSwitchOutlet.isOn == true{
+            filter.babyRoomSmellGoodFilter = true
+        }else {
+            filter.babyRoomSmellGoodFilter = false
+        }
+
+    }
+    
+    
+    
 //    @IBAction func washletSwitchTapped(_ sender: Any) {
 //        
 //            if washletLabelSwitch.isOn == true{

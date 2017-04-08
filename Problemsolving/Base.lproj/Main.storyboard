@@ -525,6 +525,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oaE-qE-4Ih">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="availableSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="cUW-6z-52b"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="現在利用可能" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nx-mo-iKh">
                                                     <rect key="frame" x="28" y="10" width="104" height="39"/>
@@ -552,6 +555,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MyQ-5V-KDo">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="japaneseSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="97v-2c-FXk"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="和式トイレ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NGr-uh-qFY">
                                                     <rect key="frame" x="28" y="10" width="87" height="39"/>
@@ -579,6 +585,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mcB-ze-jzU">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="westernSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="PlV-BB-DCq"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洋式トイレ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3l-4o-NO3">
                                                     <rect key="frame" x="28" y="10" width="87" height="39"/>
@@ -606,6 +615,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B8l-gj-RoT">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="onlyFemaleSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="LuK-Cn-P83"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="女性専用トイレ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abM-54-YeQ">
                                                     <rect key="frame" x="28" y="10" width="122" height="39"/>
@@ -633,6 +645,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jlf-Bg-zEx">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="unisexSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="SPD-rx-oRk"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="男女兼用トイレ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhC-CE-85Y">
                                                     <rect key="frame" x="28" y="10" width="122" height="39"/>
@@ -670,6 +685,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fwc-QY-547">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="washletSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="ZLt-TO-1P2"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -697,6 +715,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ksR-CG-ylt">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="warmSeatSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="nJ9-bG-0qv"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -724,6 +745,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jZU-EU-zSP">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="autoOpenSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="j3M-aM-RGK"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -751,6 +775,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V4g-w4-Cdk">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="noVirusSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="HwY-en-yDJ"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -778,6 +805,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6FP-Lp-La6">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="paperForBenkiSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="dj7-qV-nfQ"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -805,6 +835,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="om7-Gp-3eK">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="cleanerBenkiSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="uyr-7V-bbI"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -832,6 +865,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QDt-N1-lIF">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="autoToiletWashSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Tiw-R1-3Hb"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -863,6 +899,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rY8-K8-epy">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="sensorHandWashSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="wFC-hU-YAB"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -890,6 +929,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3f6-2O-x8u">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="handSoapSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="61f-k4-NgM"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -917,6 +959,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A7i-va-C7F">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="autoHandSoapSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="LfJ-zj-DOH"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -944,6 +989,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZt-OM-LpU">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="paperTowelSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="a0S-hl-KIl"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -971,6 +1019,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0T9-Eb-bPB">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="handDrierSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="oUY-WK-lT5"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1002,6 +1053,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rrM-6E-FXJ">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="otohimeSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="oTy-i0-g3k"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1029,6 +1083,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFv-vZ-x7D">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="napkinSellingSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="JJp-tX-39h"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1056,6 +1113,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jnE-FY-L2c">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="makeRoomSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="ybE-eB-hUI"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1083,6 +1143,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFO-kq-kht">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="clothesSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Rh4-1J-hFT"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1110,6 +1173,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Njp-20-922">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="baggageSpaceSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="PVc-FZ-PjM"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1141,6 +1207,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0Y-rz-9ac">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="wheelchairSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="IvR-sq-NNS"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1168,6 +1237,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wM2-RK-tgT">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="wheelchairAccessSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="WT4-pi-vpx"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1195,6 +1267,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mG8-e3-q4V">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="handrailSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="gyh-An-l1R"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1222,6 +1297,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQz-2g-UGg">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="callHelpSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="B1a-fy-yXj"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1249,6 +1327,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tkm-E5-N04">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="ostomateSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="oal-r1-RbG"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1276,6 +1357,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qoa-j1-E1F">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="writtenEnglishSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="E3S-uO-sOh"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1303,6 +1387,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gJj-7j-JHT">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="brailleSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="TUG-yK-UCL"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1330,6 +1417,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5nD-j3-mF0">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="voiceGuideSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Mzl-XR-GB9"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1355,6 +1445,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LP4-tz-sUf">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="fancyToiletSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="cCa-mb-3Qs"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="おしゃれ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-7i-W5f">
                                                     <rect key="frame" x="28" y="10" width="70" height="39"/>
@@ -1382,6 +1475,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Or6-wb-7yS">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="smellGoodToiletSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Ptj-yQ-Kiy"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="良い香り" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vI6-je-ftx">
                                                     <rect key="frame" x="28" y="10" width="70" height="39"/>
@@ -1409,6 +1505,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sYQ-Yq-7ZV">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="confortableWideToiletSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="UQu-n1-mlk"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快適な広さ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ml3-GZ-Viw">
                                                     <rect key="frame" x="28" y="10" width="87" height="39"/>
@@ -1436,6 +1535,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fJK-LQ-Y7n">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="noNeedAskSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="8Lc-bW-VaM"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="声かけ不要" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syi-ZA-eht">
                                                     <rect key="frame" x="28" y="10" width="87" height="39"/>
@@ -1463,6 +1565,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iNE-Tr-8zx">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="parkingSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="z3S-tH-yhk"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="駐車場" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOZ-eA-c9B">
                                                     <rect key="frame" x="28" y="10" width="52" height="39"/>
@@ -1490,6 +1595,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tdk-uj-hRN">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="airConditionSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="ywT-Lm-G6y"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="冷暖房" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbb-Go-2JX">
                                                     <rect key="frame" x="28" y="10" width="52" height="39"/>
@@ -1517,6 +1625,9 @@
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WOc-52-fo3">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="wifiSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Qwd-bO-aYq"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="無料Wi-Fi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAd-rw-YfD">
                                                     <rect key="frame" x="28" y="10" width="76" height="39"/>
@@ -1554,6 +1665,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pt0-nA-QXn">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="milkSpaceSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="yAt-HH-HDp"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1581,6 +1695,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9zm-VK-geV">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="milkRoomOnlyFemaleSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="2KN-EH-XVo"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1608,6 +1725,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gQw-EC-D3A">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomManEnterSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="cGp-8B-6j6"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1635,6 +1755,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vIT-76-tC1">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomPersonalSpaceSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="V6D-Sa-bcy"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1662,6 +1785,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yjq-b9-HWo">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomPrivateWithLock:" destination="wg0-0K-Qyt" eventType="valueChanged" id="tW8-86-co6"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1689,6 +1815,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NHe-lY-PjM">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomWideSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="sYE-31-SOV"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1720,6 +1849,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yid-JV-I55">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyCarRentalSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="6hT-K2-KUC"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1747,6 +1879,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gqh-eG-C7n">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyCarAccessSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="JX0-xI-8sn"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1774,6 +1909,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPm-cG-psP">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="omutuSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="rwB-qr-CM6"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1801,6 +1939,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qps-XK-rdi">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyHipWashingSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="AeZ-gQ-tVW"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1828,6 +1969,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1V-wf-CDR">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="omutuTrashCanSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="E0R-5a-zL6"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1855,6 +1999,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWK-JS-6cI">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="omutuSellingSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="EVs-RS-0jg"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1886,6 +2033,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EfO-Dx-rFY">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomSinkSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="bqI-cE-Fiv"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1913,6 +2063,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KnQ-EF-GQI">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomWashStandSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="2tg-3r-YyF"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1940,6 +2093,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPB-LV-GPv">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomHotWaterSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="qJv-uj-yMm"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1967,6 +2123,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpM-OV-x5K">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomMicrowaveSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Sfu-Eb-VUL"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -1994,6 +2153,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XDb-SR-X1c">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomWaterSellingSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="5He-L8-u1f"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2021,6 +2183,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t2r-5o-QNS">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomFoodSellingSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="95T-zs-7zL"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2048,6 +2213,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1Z-3h-JWa">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomEatingSpaceSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="i8L-tk-hFJ"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2079,6 +2247,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPM-iA-g15">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyChairSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="lQx-Su-E7p"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2106,6 +2277,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xTv-rs-iPH">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="soffaSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Whh-Y1-SeV"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2133,6 +2307,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQ5-Cj-MkP">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="kidsToiletSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="g56-0n-ZQu"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2160,6 +2337,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UmT-Dz-Bs9">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="kidSpaceSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="CLb-Kb-jhv"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2187,6 +2367,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V23-gw-vFF">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="heightMeasureSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Tyo-TY-aEy"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2214,6 +2397,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WsX-5H-ySe">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="weightMeasureSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="IsG-Zm-DPx"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2241,6 +2427,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HIk-e9-iJK">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomToySwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="jRu-wW-53B"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2268,6 +2457,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zoD-RQ-bgk">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomFancySwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="aNo-bk-LA2"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -2295,6 +2487,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7nd-HO-kQP">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="babyRoomSmellGoodSwitchTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="9wm-tz-58y"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -3280,7 +3475,7 @@
                                         <rect key="frame" x="0.0" y="2089" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ILT-wG-UsC" id="28B-N0-nDJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Am2-80-Q30">
