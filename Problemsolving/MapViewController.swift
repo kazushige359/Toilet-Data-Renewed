@@ -68,7 +68,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // I got Pictures above from the Internet, so dont use them for commersial purposes
         cell.mainImageView.layer.masksToBounds = true
         cell.mainImageView.layer.cornerRadius = 8.0
-        cell.mainLabel.text = toilets[indexPath.row].key
+        cell.mainLabel.text = toilets[indexPath.row].name
         if toilets[indexPath.row].distance > 1000{
             let td1 = round(0.01*toilets[indexPath.row].distance)/0.01/1000
             print("td1 = \(td1)")
@@ -567,7 +567,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
                 toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
                 
-                print("averageStar = \(toilet.averageStar)")
                 
                 
                 
@@ -576,7 +575,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 toilet.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
                 toilet.averageWait = (snapshotValue?["averageWait"] as? Int)!
                 
-                print("averageStar = \(toilet.averageWait)")
+                
                 
                 
                 toilet.available = (snapshotValue?["available"] as? Bool)!
@@ -585,7 +584,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 toilet.onlyFemale = (snapshotValue?["onlyFemale"] as? Bool)!
                 toilet.unisex = (snapshotValue?["unisex"] as? Bool)!
                 
-                print("averageStar = \(toilet.unisex)")
+                
                 
                 
                 
@@ -605,7 +604,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 toilet.paperTowel = (snapshotValue?["paperTowel"] as? Bool)!
                 toilet.handDrier = (snapshotValue?["handDrier"] as? Bool)!
                 
-                print("averageStar = \(toilet.handDrier)")
+                
                 
                 
                 toilet.otohime = (snapshotValue?["otohime"] as? Bool)!
@@ -624,7 +623,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 toilet.braille = (snapshotValue?["braille"] as? Bool)!
                 toilet.voiceGuide = (snapshotValue?["voiceGuide"] as? Bool)!
                 
-                print("averageStarBBB = \(toilet.voiceGuide)")
+                
                 
                 
                 
@@ -650,8 +649,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 toilet.babyTrashCan = (snapshotValue?["omutuTrashCan"] as? Bool)!
                 toilet.omutuSelling = (snapshotValue?["omutuSelling"] as? Bool)!
                 
-                print("averageStarCCC = \(toilet.omutuSelling)")
                 
+
                 
                 
                 
@@ -674,7 +673,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 toilet.babyFancy = (snapshotValue?["babyFancy"] as? Bool)!
                 toilet.babySmellGood = (snapshotValue?["babySmellGood"] as? Bool)!
                 
-                print("averageStarDDD = \(toilet.babySmellGood)")
                 
                 
                 
@@ -701,165 +699,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 
                 ///////Copied from new one April 6   .....
-                
-                
-                
-//                
-//                
-//                toilet.key = key!
-//                // print("key = \(key)")
-//                toilet.loc = location!
-//                // print("loca = \(location)")
-//                let snapshotValue = snapshot.value as? NSDictionary
-//                
-//                let urlOne = snapshotValue?["urlOne"] as? String
-//                toilet.urlOne = urlOne!
-//                
-//                let urlTwo = snapshotValue?["urlTwo"] as? String
-//                toilet.urlTwo = urlTwo!
-//                
-//                let urlThree = snapshotValue?["urlThree"] as? String
-//                toilet.urlThree = urlThree!
-//                // print("url = \(url)")
-//                
-//                let type = snapshotValue?["type"] as? String
-//                toilet.type = type!
-//                // print("type = \(type)")
-//                
-//                let star = snapshotValue?["star"] as? Double
-//                toilet.star = star!
-//                
-//                let washlet = snapshotValue?["washlet"] as? Bool
-//                toilet.washlet = washlet!
-//                //  print("washlet = \(washlet)")
-//                
-//                let wheelchair = snapshotValue?["wheelchair"] as? Bool
-//                toilet.wheelchair = wheelchair!
-//                // print("wheelchair = \(wheelchair)")
-//                
-//                let onlyFemale = snapshotValue?["onlyFemale"] as? Bool
-//                toilet.onlyFemale = onlyFemale!
-//                // print("onlyFemale = \(onlyFemale)")
-//                
-//                let unisex = snapshotValue?["unisex"] as? Bool
-//                toilet.unisex = unisex!
-//                // print("unisex = \(unisex)")
-//                
-//                let makeuproom = snapshotValue?["makeuproom"] as? Bool
-//                toilet.makeuproom = makeuproom!
-//                // print("makeuproom = \(makeuproom)")
-//                
-//                let milkspace = snapshotValue?["milkspace"] as? Bool
-//                toilet.milkspace = milkspace!
-//                //  print("milkspace = \(milkspace)")
-//                
-//                let omutu = snapshotValue?["omutu"] as? Bool
-//                toilet.omutu = omutu!
-//                // print(" omutu= \(omutu)")
-//                
-//                let ostomate = snapshotValue?["ostomate"] as? Bool
-//                toilet.ostomate = ostomate!
-//                // print(" ostomate = \(ostomate)")
-//                
-//                
-//                let japanesetoilet = snapshotValue?["japanesetoilet"] as? Bool
-//                toilet.japanesetoilet = japanesetoilet!
-//                // print("japanesetoilet = \(japanesetoilet)")
-//                
-//                let westerntoilet = snapshotValue?["westerntoilet"] as? Bool
-//                toilet.westerntoilet = westerntoilet!
-//                // print("washlet = \(westerntoilet)")
-//                
-//                let warmSeat = snapshotValue?["warmSeat"] as? Bool
-//                toilet.warmSeat = warmSeat!
-//                // print("warmSeat = \(warmSeat)")
-//                
-//                let baggageSpace = snapshotValue?["baggageSpace"] as? Bool
-//                toilet.baggageSpace = baggageSpace!
-//                // print("baggageSpace = \(baggageSpace)")
-//                
-//                let available = snapshotValue?["available"] as? Bool
-//                toilet.available = available!
-//                // print("available = \(available)")
-//                
-//                let howtoaccess = snapshotValue?["howtoaccess"] as? String
-//                toilet.howtoaccess = howtoaccess!
-//                //print("howtoaccess = \(howtoaccess)")
-//                
-//                let waitingtime = snapshotValue?["waitingtime"] as? Int
-//                toilet.waitingtime = waitingtime!
-//                //print("waiting time = \(waitingtime)")
-//                
-//                let openinghours = snapshotValue?["openinghours"] as? String
-//                toilet.openinghours = openinghours!
-//                // print("openinghours = \(openinghours)")
-//                
-//                let addedBy = snapshotValue?["addedBy"] as? String
-//                toilet.addedBy = addedBy!
-//                
-//                let editedBy = snapshotValue?["editedBy"] as? String
-//                toilet.editedBy = editedBy!
-//                
-//                let averageStar = snapshotValue?["averageStar"] as? String
-//                toilet.averageStar = averageStar!
-//                print("averageStar = \(averageStar)")
-//                
-//                let star1 = snapshotValue?["star1"] as? Int
-//                toilet.star1 = star1!
-//                print("star1 = \(star1)")
-//                
-//                let star2 = snapshotValue?["star2"] as? Int
-//                toilet.star2 = star2!
-//                
-//                let star3 = snapshotValue?["star3"] as? Int
-//                toilet.star3 = star3!
-//                
-//                let star4 = snapshotValue?["star4"] as? Int
-//                toilet.star4 = star4!
-//                
-//                let star5 = snapshotValue?["star5"] as? Int
-//                toilet.star5 = star5!
-//                
-//                let star6 = snapshotValue?["star6"] as? Int
-//                toilet.star6 = star6!
-//                
-//                let star7 = snapshotValue?["star7"] as? Int
-//                toilet.star7 = star7!
-//                
-//                let star8 = snapshotValue?["star8"] as? Int
-//                toilet.star8 = star8!
-//                
-//                let star9 = snapshotValue?["star9"] as? Int
-//                toilet.star9 = star9!
-//                
-//                let reviewCount = snapshotValue?["reviewCount"] as? Int
-//                toilet.reviewCount = reviewCount!
-//                print(" reviewCount= \(reviewCount)")
-//                
-//                let wait1 = snapshotValue?["wait1"] as? Int
-//                toilet.wait1 = wait1!
-//                
-//                let wait2 = snapshotValue?["wait2"] as? Int
-//                toilet.wait2 = wait2!
-//                
-//                let wait3 = snapshotValue?["wait3"] as? Int
-//                toilet.wait3 = wait3!
-//                
-//                let wait4 = snapshotValue?["wait4"] as? Int
-//                toilet.wait4 = wait4!
-//                
-//                let wait5 = snapshotValue?["wait5"] as? Int
-//                toilet.wait5 = wait5!
-//                
-//                let averageWait = snapshotValue?["averageWait"] as? Int
-//                toilet.averageWait = averageWait!
-//                
-                //print("\(toilet.image) Look at this iamge of the toilet,.,.,")
-                
-               // let distance = location?.distance(from: center)
-                //This is not supposed to be center when user used "Search"
-                
-               // toilet.distance = Double(distance!)
+          
                 
                 if self.filter.starFilterSetted == true && toilet.star < self.filter.starFilter{
                     self.removedToilet = true
@@ -867,11 +707,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 }
                 //toilet.star to toilet.averageStar 18 Feb 14th....
                 
-                if self.filter.washletFilter == true && toilet.washlet == false {
+                
+                
+                
+                if self.filter.availableFilter == true && toilet.available == false {
                     self.removedToilet = true
                 }
                 
-                if self.filter.wheelchairFilter == true && toilet.wheelchair == false {
+                if self.filter.japaneseFilter == true && toilet.japanesetoilet == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.westernFilter == true && toilet.westerntoilet == false {
                     self.removedToilet = true
                 }
                 
@@ -883,37 +730,291 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.removedToilet = true
                 }
                 
+                
+                
+                
+                
+                if self.filter.washletFilter == true && toilet.washlet == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.warmSearFilter == true && toilet.warmSeat == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.autoOpen == true && toilet.autoOpen == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.noVirusFilter == true && toilet.noVirus == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.paperForBenkiFilter == true && toilet.paperForBenki == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.cleanerForBenkiFilter == true && toilet.cleanerForBenki == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.autoToiletWashFilter == true && toilet.autoToiletWash == false {
+                    self.removedToilet = true
+                }
+                
+                
+                
+                
+                
+                
+                if self.filter.sensorHandWashFilter == true && toilet.sensorHandWash == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.handSoapFilter == true && toilet.handSoap == false {
+                    self.removedToilet = true
+                }
+                if self.filter.autoHandSoapFilter == true && toilet.autoHandSoap == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.paperTowelFilter == true && toilet.paperTowel == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.handDrierFilter == true && toilet.handDrier == false {
+                    self.removedToilet = true
+                }
+                
+                
+                
+                
+                
+                if self.filter.otohime == true && toilet.otohime == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.napkinSelling == true && toilet.napkinSelling == false {
+                    self.removedToilet = true
+                }
+                
                 if self.filter.makeroomFilter == true && toilet.makeuproom == false {
                     self.removedToilet = true
                 }
                 
-                if self.filter.milkspaceFilter == true && toilet.milkspace == false {
+                
+                if self.filter.clothes == true && toilet.clothes == false {
                     self.removedToilet = true
                 }
                 
-                if self.filter.omutuFilter == true && toilet.omutu == false {
+                if self.filter.baggageSpaceFilter == true && toilet.baggageSpace == false {
                     self.removedToilet = true
                 }
+                
+                
+                
+                
+                
+                
+                if self.filter.wheelchairFilter == true && toilet.wheelchair == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.wheelchairAccessFilter == true && toilet.wheelchairAccess == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.handrailFilter == true && toilet.handrail == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.callHelpFilter == true && toilet.callHelp == false {
+                    self.removedToilet = true
+                }
+                
                 
                 if self.filter.ostomateFilter == true && toilet.ostomate == false {
                     self.removedToilet = true
                 }
                 
-                if self.filter.japaneseFilter == true && toilet.japanesetoilet == false {
+                if self.filter.writtenEnglish == true && toilet.english == false {
                     self.removedToilet = true
                 }
                 
-                if self.filter.westernFilter == true && toilet.westerntoilet == false {
-                    self.removedToilet = true
-                }
-                if self.filter.warmSearFilter == true && toilet.warmSeat == false {
-                    self.removedToilet = true
-                }
-                if self.filter.baggageSpaceFilter == true && toilet.baggageSpace == false {
+                if self.filter.braille == true && toilet.braille == false {
                     self.removedToilet = true
                 }
                 
-                if self.filter.availableFilter == true && toilet.available == false {
+                if self.filter.voiceGuideFilter == true && toilet.voiceGuide == false {
+                    self.removedToilet = true
+                }
+                
+                
+                
+                
+                
+                
+                if self.filter.fancy == true && toilet.fancy == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.smell == true && toilet.smell == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.confortableWise == true && toilet.conforatableWide == false {
+                    self.removedToilet = true
+                }
+                if self.filter.noNeedAsk == true && toilet.noNeedAsk == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.parking == true && toilet.parking == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.airConditionFilter == true && toilet.airCondition == false {
+                    self.removedToilet = true
+                }
+                if self.filter.wifiFilter == true && toilet.wifi == false {
+                    self.removedToilet = true
+                }
+                
+                
+                
+                
+                
+                
+                if self.filter.milkspaceFilter == true && toilet.milkspace == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyRoomOnlyFemaleFilter == true && toilet.babyroomOnlyFemale == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.babyRoomMaleCanEnterFilter == true && toilet.babyroomManCanEnter == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyRoomPersonalSpaceFilter == true && toilet.babyPersonalSpace == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyRoomPersonalWithLockFilter == true && toilet.babyPersonalSpace == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.babyRoomWideSpaceFilter == true && toilet.babyRoomWideSpace == false {
+                    self.removedToilet = true
+                }
+                
+                
+                
+                
+                if self.filter.babyCarRentalFilter == true && toilet.babyCarRental == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyCarAccessFilter == true && toilet.babyCarAccess == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.omutuFilter == true && toilet.omutu == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyHipWashingStuffFilter == true && toilet.hipWashingStuff == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.omutuTrashCanFilter == true && toilet.babyTrashCan == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.omutuSelling == true && toilet.omutuSelling == false {
+                    self.removedToilet = true
+                }
+                
+                
+                
+                
+                if self.filter.babySinkFilter == true && toilet.babyRoomSink == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyWashstandFilter == true && toilet.babyWashStand == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.babyHotWaterFilter == true && toilet.babyHotWater == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyMicrowaveFilter == true && toilet.babyMicroWave == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babySellingWaterFilter == true && toilet.babyWaterSelling == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyFoodSellingFilter == true && toilet.babyFoddSelling == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyEatingSpaceFilter == true && toilet.babyEatingSpace == false {
+                    self.removedToilet = true
+                }
+                
+                
+                
+                
+                
+                
+                if self.filter.babyChairFilter == true && toilet.babyChair == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.babySoffaFilter == true && toilet.babySoffa == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyToiletFilter == true && toilet.babyKidsToilet == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyKidsSpaceFilter == true && toilet.babyKidsSpace == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.babyHeightMeasureFilter == true && toilet.babyHeightMeasure == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyWeightMeasureFilter == true && toilet.babyWeightMeasure == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyToyFilter == true && toilet.babyToy == false {
+                    self.removedToilet = true
+                }
+                
+                
+                if self.filter.babyRoomFancyFilter == true && toilet.babyFancy == false {
+                    self.removedToilet = true
+                }
+                
+                if self.filter.babyRoomSmellGoodFilter == true && toilet.babySmellGood == false {
                     self.removedToilet = true
                 }
                 
