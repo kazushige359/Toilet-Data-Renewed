@@ -189,7 +189,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         //filter.orderStarFilter = true
         
-        if filter.distaceSetted == false{
+        if filter.distanceSetted == false{
             filter.distanceFilter = 3
         }
         
