@@ -120,30 +120,6 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBOutlet weak var goButton: UIButton!
     
     
-    @IBOutlet weak var japaneseToiletLabel: UILabel!
-    
-    @IBOutlet weak var westernToiletLabel: UILabel!
-    
-    @IBOutlet weak var femaleToiletLabel: UILabel!
-    
-    @IBOutlet weak var unisexToiletLabel: UILabel!
-    
-    @IBOutlet weak var washletLabel: UILabel!
-    
-    @IBOutlet weak var warmToiletLabel: UILabel!
-    
-    @IBOutlet weak var omutuLabel: UILabel!
-    
-    @IBOutlet weak var milkSpaceLabel: UILabel!
-    
-    @IBOutlet weak var makeRoomLabel: UILabel!
-    
-    @IBOutlet weak var baggageLabel: UILabel!
-    
-    @IBOutlet weak var wheelchairLabel: UILabel!
-    
-    @IBOutlet weak var ostomateLabel: UILabel!
-    
     @IBOutlet weak var categoryType: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
@@ -187,7 +163,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         print("reviewsSet = \(reviewsSet)")
         
         bigPicture.sd_setImage(with: URL(string: toilet.urlOne))
-        nameLabel.text = toilet.key
+        nameLabel.text = toilet.name
         categoryType.text = toilet.type
         locationAuthStatus()
         
@@ -264,58 +240,58 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         picture2.sd_setImage(with: URL(string: toilet.urlTwo))
         picture3.sd_setImage(with: URL(string: toilet.urlThree))
         
-        if toilet.washlet == true {
-            washletLabel.textColor = UIColor.black
-        }
-        
-        if toilet.wheelchair == true {
-            wheelchairLabel.textColor = UIColor.black
-        }
-        
-        if toilet.onlyFemale == true {
-            femaleToiletLabel.textColor = UIColor.black
-        }
-        
-        if toilet.unisex == true {
-            unisexToiletLabel.textColor = UIColor.black
-        }
-        
-        if toilet.makeuproom == true {
-            makeRoomLabel.textColor = UIColor.black
-        }
-        
-        if toilet.milkspace == true {
-            milkSpaceLabel.textColor = UIColor.black
-        }
-        
-        if toilet.omutu == true {
-            omutuLabel.textColor = UIColor.black
-        }
-        
-        if toilet.ostomate == true {
-            ostomateLabel.textColor = UIColor.black
-        }
-        
-        if toilet.japanesetoilet == true {
-            japaneseToiletLabel.textColor = UIColor.black
-        }
-        
-        if toilet.available == false {
-            availableLabel.textColor = UIColor.red
-        }
-        
-        if toilet.westerntoilet == true {
-            westernToiletLabel.textColor = UIColor.black
-        }
-        
-        if toilet.warmSeat == true {
-            warmToiletLabel.textColor = UIColor.black
-        }
-        
-        
-        if toilet.baggageSpace == true {
-            baggageLabel.textColor = UIColor.black
-        }
+//        if toilet.washlet == true {
+//            washletLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.wheelchair == true {
+//            wheelchairLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.onlyFemale == true {
+//            femaleToiletLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.unisex == true {
+//            unisexToiletLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.makeuproom == true {
+//            makeRoomLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.milkspace == true {
+//            milkSpaceLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.omutu == true {
+//            omutuLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.ostomate == true {
+//            ostomateLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.japanesetoilet == true {
+//            japaneseToiletLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.available == false {
+//            availableLabel.textColor = UIColor.red
+//        }
+//        
+//        if toilet.westerntoilet == true {
+//            westernToiletLabel.textColor = UIColor.black
+//        }
+//        
+//        if toilet.warmSeat == true {
+//            warmToiletLabel.textColor = UIColor.black
+//        }
+//        
+//        
+//        if toilet.baggageSpace == true {
+//            baggageLabel.textColor = UIColor.black
+//        }
         
         accessTextView.text = toilet.howtoaccess
         accessTextView.isUserInteractionEnabled = false
@@ -334,16 +310,32 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     
     
     func likedQuery(){
+        
+        print("liked Query Called")
         let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
-        youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            self.likedSet.insert(snapshot.key)
-            print("likedSet = \(self.likedSet)")
-            
-        })
+                youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+                    self.likedSet.insert(snapshot.key)
+                    print("likedSet = \(self.likedSet)")
+                    print("liked Query End")
+        
+                })
+        
+        //April 8
+        
+        
+//        let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
+//        youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+//            self.likedSet.insert(snapshot.key)
+//            print("likedSet = \(self.likedSet)")
+//            
+//        })
     }
     
     
     func reviewQuery(){
+        
+        print("review Query Called")
+
         let reviewsRef = FIRDatabase.database().reference().child("reviews")
         
         reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
@@ -355,9 +347,9 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 
                 let snapshotValue = snapshot.value as? NSDictionary
                 
-                let star = snapshotValue?["star"] as? Double
+                let star = snapshotValue?["star"] as? String
                 print("star = \(star)!!!")
-                review.star = star!
+                review.star = Double(star!)!
                 let feedback = snapshotValue?["feedback"] as? String
                 review.feedback = feedback!
                 
@@ -415,10 +407,13 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                         self.reviews.sort(){$0.timeNumbers > $1.timeNumbers}
                         self.tableView.reloadData()
                         
+                        print("review Query End")
+                        
                         //I moved codes above here because review tableview could not be loaded 26th
                         //when the value is changed, tableveiw loads again and again
                     }})}
-        })}
+        })
+    }
     
     
     @IBAction func okiniiriButtonTapped(_ sender: Any)

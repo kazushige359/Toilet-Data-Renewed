@@ -88,16 +88,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "DetailSegue", sender: toilets[indexPath.row])
+        performSegue(withIdentifier: "mapToNewDetailSegue", sender: toilets[indexPath.row])
+        
+        //April 8 18 pm 
+        
+        //mapToPlaceDetailSegue
+        //performSegue(withIdentifier: "DetailSegue", sender: toilets[indexPath.row])
         print("sender = \(toilets[indexPath.row])")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DetailSegue"{
-            let nextVC = segue.destination as! DetailViewController
-            nextVC.toilet = sender as! Toilet
-            nextVC.filter = filter
-            nextVC.search = search
+        if segue.identifier == "mapToNewDetailSegue"
+        {
+            //April 8 18 pm
+//            let nextVC = segue.destination as! PlaceDetailViewController
+//            //let nextVC = segue.destination as! DetailViewController
+//            nextVC.toilet = sender as! Toilet
+//           // nextVC.toilet = sender as! Toilet
+//            nextVC.filter = filter
+//            nextVC.search = search
+            
+            
+////////////////////Commented April 8
         }
         if segue.identifier == "maptoFilterSegue"{
             let nextVC = segue.destination as! FilterTableViewController
