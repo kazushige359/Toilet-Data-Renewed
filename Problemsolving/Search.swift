@@ -9,5 +9,5 @@
 import Foundation
 class Search {
     var searchOn = false
-    var centerSearch = CLLocation()
+    var centerSearchLocation = CLLocation()
 }

@@ -325,6 +325,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     
+    
     func savingToilets(){
         print("savingToilets()")
         let locationsRef = FIRDatabase.database().reference().child("ToiletLocations")
@@ -463,8 +464,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         print("func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation)")
         if mapHasCenteredOnce == false{
             if search.searchOn == true{
-                centerMapOnLocation(location: search.centerSearch)
-                toiletsSearch(center: search.centerSearch)
+                centerMapOnLocation(location: search.centerSearchLocation)
+                toiletsSearch(center: search.centerSearchLocation)
+                
             }else{
                 let loc = userLocation.location
                 toiletsSearch(center: loc!)
@@ -1042,7 +1044,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     let queryannotations = MKPointAnnotation()
                     
                     //if toilet.available = true{
-                    queryannotations.title = key
+                    queryannotations.title = toilet.name
                     queryannotations.coordinate = (location?.coordinate)!
                     
                     self.mapView.addAnnotation(queryannotations)
@@ -1094,7 +1096,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBAction func centerButtonTapped(_ sender: Any) {
         
         if search.searchOn == true {
-            centerMapOnLocation(location: search.centerSearch)
+            centerMapOnLocation(location: search.centerSearchLocation)
         }else {
             
             if let coord = locationManager.location?.coordinate {
@@ -1167,7 +1169,7 @@ extension MapViewController: HandleMapSearch {
         self.tableView.reloadData()
         print("dropPinZoomIn center= \(centerB)")
         search.searchOn = true
-        search.centerSearch = centerB
+        search.centerSearchLocation = centerB
         searchEndButton.isHidden = false
         searchEndLabel.isHidden = false
         print("search.searchOn = \(search.searchOn)")

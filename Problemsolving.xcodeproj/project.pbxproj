@@ -11,6 +11,7 @@
 		240128971E0A02CE002FBDE1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240128951E0A02CE002FBDE1 /* TableViewCell.swift */; };
 		240128981E0A02CE002FBDE1 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240128961E0A02CE002FBDE1 /* TableViewCell.xib */; };
 		240F79791E98CC0600EFF3CC /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */; };
+		240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F797A1E9A1FF200EFF3CC /* UserLocation.swift */; };
 		2414549C1DE2C4F90066AB62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414549B1DE2C4F90066AB62 /* AppDelegate.swift */; };
 		2414549E1DE2C4F90066AB62 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414549D1DE2C4F90066AB62 /* SignInViewController.swift */; };
 		241454A11DE2C4F90066AB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2414549F1DE2C4F90066AB62 /* Main.storyboard */; };
@@ -86,6 +87,7 @@
 		240128951E0A02CE002FBDE1 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		240128961E0A02CE002FBDE1 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		240F797A1E9A1FF200EFF3CC /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		241454981DE2C4F90066AB62 /* Problemsolving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Problemsolving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2414549B1DE2C4F90066AB62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2414549D1DE2C4F90066AB62 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				24B6FB031E2EE81500E1330A /* Search.swift */,
 				24B6FB051E30395800E1330A /* RighttoLeft.swift */,
 				24B6FB091E30399200E1330A /* LefttoRight.swift */,
+				240F797A1E9A1FF200EFF3CC /* UserLocation.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				2423A4311E25989200DD2AF4 /* ChangeDetailTableViewController.swift in Sources */,
 				24B6FB021E2C6B7700E1330A /* LocationSearchTable.swift in Sources */,
 				245E9F311E9605F1006D8A31 /* StartSignUpUserViewController.swift in Sources */,
+				240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */,
 				24A130CC1DF769AE009C1A3F /* GeoFire.m in Sources */,
 				2423A4241E21930000DD2AF4 /* ReviewTableViewCell.swift in Sources */,
 				2418B7D31E16611B004F7022 /* YouWentTableViewController.swift in Sources */,
