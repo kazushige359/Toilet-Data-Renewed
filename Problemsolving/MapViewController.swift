@@ -101,12 +101,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if segue.identifier == "mapToNewDetailSegue"
         {
             //April 8 18 pm
-//            let nextVC = segue.destination as! PlaceDetailViewController
-//            //let nextVC = segue.destination as! DetailViewController
-//            nextVC.toilet = sender as! Toilet
-//           // nextVC.toilet = sender as! Toilet
-//            nextVC.filter = filter
-//            nextVC.search = search
+            let nextVC = segue.destination as! PlaceDetailViewController
+            //let nextVC = segue.destination as! DetailViewController
+            nextVC.toilet = sender as! Toilet
+           // nextVC.toilet = sender as! Toilet
+            nextVC.filter = filter
+            nextVC.search = search
             
             
 ////////////////////Commented April 8
