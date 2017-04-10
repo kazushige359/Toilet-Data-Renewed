@@ -38,7 +38,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //cell.bounds = CGRect(0.0, 0.0, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds))
         /////
         
+        if toilet.urlOne != ""{
         cell.mainImageView.sd_setImage(with: URL(string: toilets[indexPath.row].urlOne))
+        }
         
         cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
         cell.image7.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fredflag.jpeg?alt=media&token=6f464ebc-81a9-4553-aadd-1bb4b98d2b74"))

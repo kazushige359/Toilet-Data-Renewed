@@ -217,7 +217,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         starImage.settings.filledBorderColor = UIColor.orange
         starImage.text = "\(toilet.averageStar)"
         starImage.settings.textColor = UIColor.black
-        starImage.settings.textMargin = 10
+        starImage.settings.textMargin = 20
 
         
 //        starLabel.text = "\(toilet.averageStar)"

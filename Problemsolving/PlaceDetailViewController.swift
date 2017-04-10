@@ -106,7 +106,7 @@ import Cosmos
         
         @IBOutlet weak var starImage: CosmosView!
         
-        @IBOutlet weak var starLabel: UILabel!
+        
         
         @IBOutlet weak var reviewCountLabel: UILabel!
         
@@ -537,7 +537,8 @@ import Cosmos
         
         func layoutInfoReady(){
             
-            bigPicture.sd_setImage(with: URL(string: toilet.urlOne))
+            
+            
             placeNameLabel.text = toilet.name
             locationAuthStatus()
             
@@ -616,8 +617,10 @@ import Cosmos
             starImage.settings.emptyBorderColor = UIColor.orange
             starImage.settings.filledBorderColor = UIColor.orange
             starImage.text = "\(toilet.averageStar)"
-            starImage.settings.textColor = UIColor.black
-            starImage.settings.textMargin = 10
+            starImage.settings.textColor = UIColor.orange
+            
+            starImage.settings.textFont = UIFont.boldSystemFont(ofSize: 20.0)
+            starImage.settings.textMargin = 5
             
             
             //        starLabel.text = "\(toilet.averageStar)"
@@ -639,6 +642,7 @@ import Cosmos
             
             if toilet.urlOne != ""{
                 picture1.sd_setImage(with: URL(string: toilet.urlOne))
+                bigPicture.sd_setImage(with: URL(string: toilet.urlOne))
                 
             }
             if toilet.urlTwo != ""{
