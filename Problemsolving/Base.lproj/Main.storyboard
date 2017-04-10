@@ -841,7 +841,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="yBZ-BS-W9D"/>
                                                         </constraints>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" title="全ての感想を見る"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ユーザーの感想" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kf-b7-6B4">
                                                         <rect key="frame" x="8" y="51" width="93" height="16"/>
@@ -1156,8 +1156,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YLG-z4-lEC">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="V6T-AO-LPG"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="8IG-AQ-EEa"/>
+                        <barButtonItem key="leftBarButtonItem" image="earth_image_30" id="V6T-AO-LPG">
+                            <connections>
+                                <action selector="buttonBackToMapTapped:" destination="hAD-xO-93C" id="pZd-mV-E4I"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="question_image_30" id="8IG-AQ-EEa">
+                            <connections>
+                                <action selector="buttonReportTapped:" destination="hAD-xO-93C" id="Zyh-SN-diI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1600"/>
@@ -1187,9 +1195,22 @@
                         <outlet property="picture3" destination="dRJ-lH-7UZ" id="uow-JO-aYR"/>
                         <outlet property="placeNameLabel" destination="g17-BU-J0V" id="POj-66-Egf"/>
                         <outlet property="reviewCountLabel" destination="wMm-KD-Kzc" id="zDI-KM-po4"/>
+                        <outlet property="reviewOneFeedbackTextView" destination="BEv-Yg-ucw" id="GkT-bL-mIy"/>
+                        <outlet property="reviewOneUserFavoriteCount" destination="Ll5-cy-q4x" id="HYB-MZ-WXC"/>
+                        <outlet property="reviewOneUserHelpCount" destination="hvh-Eh-peQ" id="gi0-Yd-hTk"/>
+                        <outlet property="reviewOneUserImage" destination="Qhb-37-6sZ" id="9ck-6r-qtL"/>
+                        <outlet property="reviewOneUserLikeCount" destination="39D-zn-zZ9" id="j9V-d2-0oA"/>
+                        <outlet property="reviewOneUserNameLabel" destination="K9c-oS-Ima" id="lyL-Lt-6a0"/>
+                        <outlet property="reviewTwoUserFavoriteCount" destination="BvS-Q4-H52" id="hpG-Dl-OM2"/>
+                        <outlet property="reviewTwoUserFeedbackTextView" destination="mwX-wi-Qhg" id="Ncv-XV-gFl"/>
+                        <outlet property="reviewTwoUserHelpCount" destination="5Tq-9C-F9b" id="bc3-BX-ezb"/>
+                        <outlet property="reviewTwoUserImage" destination="V98-Wx-rPb" id="gom-dW-2ik"/>
+                        <outlet property="reviewTwoUserLikeCount" destination="mej-jG-kNV" id="his-Fz-zQz"/>
+                        <outlet property="reviewTwoUserNameLabel" destination="8gP-jf-a5s" id="htY-TZ-JKc"/>
                         <outlet property="starImage" destination="UDN-vi-5Qd" id="Ewm-Dc-gdX"/>
                         <outlet property="starLabel" destination="LVU-zv-BN0" id="E0A-yg-1QD"/>
                         <outlet property="typeAndDistanceLabel" destination="voa-ve-Ctx" id="lTJ-bq-4Xf"/>
+                        <segue destination="jJ9-rs-86P" kind="custom" identifier="detailBackToMapSegue" customClass="RighttoLeft" customModule="Problemsolving" id="xMP-GP-GUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6N1-Pq-znY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -6991,6 +7012,7 @@
         <image name="photo_picture_default_100" width="100" height="100"/>
         <image name="planet-earth" width="24" height="24"/>
         <image name="question" width="24" height="24"/>
+        <image name="question_image_30" width="30" height="30"/>
         <image name="search30" width="30" height="30"/>
         <image name="settings" width="24" height="24"/>
         <image name="settings-1" width="24" height="24"/>
@@ -7002,7 +7024,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="d4c-Hb-quT"/>
         <segue reference="dYX-Na-Ua2"/>
-        <segue reference="x0r-KH-7OW"/>
+        <segue reference="xMP-GP-GUl"/>
         <segue reference="pmY-Sg-ceS"/>
         <segue reference="FyR-YQ-Bml"/>
         <segue reference="sqa-nP-xyO"/>

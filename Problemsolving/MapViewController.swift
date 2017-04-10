@@ -541,6 +541,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //    }
    
     func toiletsSearch(center: CLLocation){
+        search.centerSearchLocation = center
+        //Added April 10 2pm
+        
         print("center = \(center)")
         
         let circleQuery = geoFire.query(at: center, withRadius: self.filter.distanceFilter)
@@ -703,6 +706,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 
                 toilet.distance = Double(distance!)
+                
+                print("center MapView 555== \(center)")
+
+                
+                print("distance MapView 555== \(distance)")
+
+                print("toilet.distance MapView 555 == \(toilet.distance)")
+
 
                 
                 
