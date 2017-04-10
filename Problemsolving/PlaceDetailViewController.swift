@@ -579,9 +579,24 @@ import Cosmos
             //            backLabel2.backgroundColor = UIColor.white
             //            pictureLabel.backgroundColor = UIColor.white
             howToAccessTextView.text = "アクセス情報"
-            picture1.sd_setImage(with: URL(string: toilet.urlOne))
-            picture2.sd_setImage(with: URL(string: toilet.urlTwo))
-            picture3.sd_setImage(with: URL(string: toilet.urlThree))
+            
+            if toilet.urlOne != ""{
+                picture1.sd_setImage(with: URL(string: toilet.urlOne))
+                
+            }
+            if toilet.urlTwo != ""{
+                picture2.sd_setImage(with: URL(string: toilet.urlTwo))
+                
+            }
+            if toilet.urlThree != ""{
+                picture3.sd_setImage(with: URL(string: toilet.urlThree))
+                
+            }
+            
+            
+//            picture1.sd_setImage(with: URL(string: toilet.urlOne))
+//            picture2.sd_setImage(with: URL(string: toilet.urlTwo))
+//            picture3.sd_setImage(with: URL(string: toilet.urlThree))
             
             
             howToAccessTextView.text = toilet.howtoaccess
