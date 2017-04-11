@@ -8,10 +8,12 @@
 
 import Foundation
 
-class UserLocation{
+public class UserLocation{
     
     var location = CLLocation()
     var lat = Double()
     var lon = Double()
+    
+    //Experiment... Added April 11 
 
 }

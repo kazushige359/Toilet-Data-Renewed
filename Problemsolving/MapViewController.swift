@@ -132,7 +132,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        
 //            //April 8 18 pm
 //            //let nextVC = segue.
-//            let nextVC = segue.destination as! PlaceDetailViewController
+//            let nextVC = segue.destinationViewController
 //            nextVC.toilet = sender as! Toilet
 //            // nextVC.toilet = sender as! Toilet
 //            nextVC.filter = filter
@@ -179,6 +179,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var toilets: [Toilet] = []
     let toilet = Toilet()
     var search = Search()
+    var passingData = PassingData()
     let Star = CosmosView()
     var polyline: MKPolyline?
     
@@ -201,6 +202,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var messageFrame = UIView()
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
+    
+    
+    
     
     //Cope=ied from example
     
@@ -298,6 +302,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         
         progressBarDisplayer(msg:"トイレを検索中", true)
+        
+        
+    
+        
     }
     
     func tableViewDisappear(){

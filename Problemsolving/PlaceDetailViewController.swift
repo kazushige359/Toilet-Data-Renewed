@@ -11,87 +11,31 @@ import FirebaseDatabase
 import FirebaseAuth
 import Cosmos
     
-    class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
-        //UITableViewDelegate, UITableViewDataSource
+    class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate,
+        UITableViewDelegate, UITableViewDataSource
     {
         
-//        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-////            if reviews.count == 0{
-////                backgroundScrollView.contentSize = CGSize(width: 320,height: 1036)
-////            }
-////            if reviews.count == 1{
-////                backgroundScrollView.contentSize = CGSize(width: 320,height: 1254)
-////            }
-////            if reviews.count >= 2{
-////                backgroundScrollView.contentSize = CGSize(width: 320,height: 1432)
-////            }
-//            return reviews.count
-//        }
-//        
-//        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//            let cell = Bundle.main.loadNibNamed("ReviewTableViewCell", owner: self, options: nil)?.first as! ReviewTableViewCell
-//            
-//            cell.feedbackTextView.backgroundColor = UIColor.white
-//            cell.feedbackTextView.isUserInteractionEnabled = false
-//            
-//            cell.userPhotoImage.sd_setImage(with: URL(string: reviews[indexPath.row].userPhoto))
-//            cell.userPhotoImage.layer.masksToBounds = true
-//            cell.userPhotoImage.layer.cornerRadius = 25.5
-//            ////////////// 5 to 25.5
-//            
-//            let myColor : UIColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.1)
-//            cell.userPhotoImage.layer.borderColor = myColor.cgColor
-//            cell.userPhotoImage.layer.borderWidth = 1
-//            cell.starRatedLabel.rating = reviews[indexPath.row].star
-//            cell.feedbackTextView.text = reviews[indexPath.row].feedback
-//            cell.userNameLabel.text = reviews[indexPath.row].userName
-//            cell.dateLabel.text = reviews[indexPath.row].time
-//            cell.selectionStyle = UITableViewCellSelectionStyle.none
-//            cell.likedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount)件"
-//            cell.nextLikedCountLabel.isHidden = true
-//            cell.nextUserLikedCount.isHidden = true
-//            cell.userFavoritedCount.text = "\(reviews[indexPath.row].totalFavoriteCount)"
-//            cell.userHelpedCount.text = "\(reviews[indexPath.row].totalHelpedCount)"
-//            cell.userLikedCount.text = "\(reviews[indexPath.row].totalLikedCount)"
-//            
-//            cell.starRatedLabel.settings.filledColor = UIColor.yellow
-//            cell.starRatedLabel.settings.emptyBorderColor = UIColor.orange
-//            cell.starRatedLabel.settings.filledBorderColor = UIColor.orange
-//            
-//            
-//            cell.likeButton.addTarget(self, action: #selector(DetailViewController.buttonClicked), for: .touchUpInside)
-//            
-//            if reviews[indexPath.row].userLiked == true {
-//                cell.likeButton.setImage(UIImage(named: "like1"), for: UIControlState.normal)
-//                let nextNumber = reviews[indexPath.row].likedCount - 1
-//                let nextLikedNumber = reviews[indexPath.row].totalLikedCount - 1
-//                cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
-//                cell.nextUserLikedCount.text = "\(nextLikedNumber)"
-//            } else{
-//                let nextNumber = reviews[indexPath.row].likedCount + 1
-//                let nextLikedNumber = reviews[indexPath.row].totalLikedCount + 1
-//                cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
-//                cell.nextUserLikedCount.text = "\(nextLikedNumber)"
-//            }
-//            
-//            if reviews[indexPath.row].waitingtime == "0"{
-//                cell.waitingMinuteLabel.text = "待ちなし"
-//            }else {
-//                let waitminutes = "\(reviews[indexPath.row].waitingtime)分待ち"
-//                cell.waitingMinuteLabel.text = waitminutes}
-//            return cell
-//        }
-//        
-//        
-//        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//            return 218
-//        }
-//        
-//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//            print("didselect")
-//        }
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 100
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = UITableViewCell()
+            
+            return cell
+        }
         
-//        @IBOutlet weak var backgroundScrollView: UIScrollView!
+
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 50
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            print("didselect")
+        }
+        
+
+        @IBOutlet weak var booleansTableView: UITableView!
        
         
         @IBOutlet weak var backgroundScrollView: UIScrollView!
@@ -251,8 +195,19 @@ import Cosmos
             mapView.delegate = self
             mapView.isUserInteractionEnabled = false
             
-            buttonExampleOutlet.target = self.revealViewController()
-            buttonExampleOutlet.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+            booleansTableView.isHidden = true
+            
+            
+            let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.hideTableView))
+            view.addGestureRecognizer(tap)
+        
+            booleansTableView.delegate = self
+            booleansTableView.dataSource = self
+            
+
+            
+//            buttonExampleOutlet.target = self.revealViewController()
+//            buttonExampleOutlet.action = #selector(SWRevealViewController.rightRevealToggle(_:))
             
             
             
@@ -283,7 +238,7 @@ import Cosmos
             
            dataQuery(queryKey: toilet.key)
            likedQuery()
-            
+           
             //Commented for making table view... April 11 12pm 
             
             
@@ -963,6 +918,25 @@ import Cosmos
 //            }
 //        }
         
+        func hideTableView(){
+            
+            booleansTableView.isHidden = true
+           // backgroundScrollView.isUserInteractionEnabled = true
+
+        
+        
+        }
+        
+        func showUpTableView(){
+        
+            
+            booleansTableView.isHidden = false
+           // backgroundScrollView.isUserInteractionEnabled = false
+            
+            
+            
+        
+        }
         
         @IBAction func buttonBackToMapTapped(_ sender: Any) {
             performSegue(withIdentifier:"detailBackToMapSegue", sender: nil)
@@ -981,6 +955,12 @@ import Cosmos
             present(alertController, animated: true, completion: nil)
         }
         
+        
+        @IBAction func buttonShowDetailTapped(_ sender: Any) {
+            
+            showUpTableView()
+        
+        }
         
         
         @IBAction func buttonAddFeedbackTapped(_ sender: Any) {
