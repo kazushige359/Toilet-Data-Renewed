@@ -14,6 +14,8 @@
 		240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F797A1E9A1FF200EFF3CC /* UserLocation.swift */; };
 		240F797F1E9C62A300EFF3CC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240F797E1E9C62A300EFF3CC /* SWRevealViewController.m */; };
 		240F79811E9CC42300EFF3CC /* PassingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F79801E9CC42300EFF3CC /* PassingData.swift */; };
+		240F79881E9D9F9400EFF3CC /* BooleanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */; };
+		240F79891E9D9F9400EFF3CC /* BooleanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */; };
 		2414549C1DE2C4F90066AB62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414549B1DE2C4F90066AB62 /* AppDelegate.swift */; };
 		2414549E1DE2C4F90066AB62 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414549D1DE2C4F90066AB62 /* SignInViewController.swift */; };
 		241454A11DE2C4F90066AB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2414549F1DE2C4F90066AB62 /* Main.storyboard */; };
@@ -93,6 +95,8 @@
 		240F797D1E9C62A300EFF3CC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		240F797E1E9C62A300EFF3CC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		240F79801E9CC42300EFF3CC /* PassingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassingData.swift; sourceTree = "<group>"; };
+		240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooleanTableViewCell.swift; sourceTree = "<group>"; };
+		240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BooleanTableViewCell.xib; sourceTree = "<group>"; };
 		241454981DE2C4F90066AB62 /* Problemsolving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Problemsolving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2414549B1DE2C4F90066AB62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2414549D1DE2C4F90066AB62 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 				24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */,
 				24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */,
 				245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */,
+				240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */,
+				240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */,
 				2423A4231E21930000DD2AF4 /* ReviewTableViewCell.xib */,
 				240128961E0A02CE002FBDE1 /* TableViewCell.xib */,
 				2414549F1DE2C4F90066AB62 /* Main.storyboard */,
@@ -505,6 +511,7 @@
 				240128981E0A02CE002FBDE1 /* TableViewCell.xib in Resources */,
 				241454A91DE2C4F90066AB62 /* LaunchScreen.storyboard in Resources */,
 				2423A4251E21930000DD2AF4 /* ReviewTableViewCell.xib in Resources */,
+				240F79891E9D9F9400EFF3CC /* BooleanTableViewCell.xib in Resources */,
 				241454A61DE2C4F90066AB62 /* Assets.xcassets in Resources */,
 				241454A11DE2C4F90066AB62 /* Main.storyboard in Resources */,
 			);
@@ -708,6 +715,7 @@
 				2423A4311E25989200DD2AF4 /* ChangeDetailTableViewController.swift in Sources */,
 				24B6FB021E2C6B7700E1330A /* LocationSearchTable.swift in Sources */,
 				245E9F311E9605F1006D8A31 /* StartSignUpUserViewController.swift in Sources */,
+				240F79881E9D9F9400EFF3CC /* BooleanTableViewCell.swift in Sources */,
 				240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */,
 				24A130CC1DF769AE009C1A3F /* GeoFire.m in Sources */,
 				2423A4241E21930000DD2AF4 /* ReviewTableViewCell.swift in Sources */,
