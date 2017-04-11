@@ -43,7 +43,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
-        cell.image7.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fredflag.jpeg?alt=media&token=6f464ebc-81a9-4553-aadd-1bb4b98d2b74"))
+        
+        
+//        if !toilet.available{
+//            
+//        }
+//        cell.image7.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fredflag.jpeg?alt=media&token=6f464ebc-81a9-4553-aadd-1bb4b98d2b74"))
         // red flag
         
         cell.Star.settings.filledColor = UIColor.yellow
@@ -90,6 +95,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    
+        
+        
+//        let storyboard = UIStoryboard(name: "Main.storyboard", bundle: nil)
+//        let controller = storyboard.instantiateViewController(withIdentifier: "PlaceDetailViewController") as UIViewController
+//        
+//        controller.toilet.key = toilets[indexPath.row].key
+//        self.storyboard.instantiateViewControllerWithIdentifier("PlaceDetailViewController")
+//        var view: Dashboard = self.storyboard?.instantiateViewControllerWithIdentifier("Dashboard") as Dashboard
+
+        
+        
+       // performSegue(withIdentifier:"openRevealSegue", sender: toilets[indexPath.row])
+        
+        //April 11 1pm for creating table view drawer....
+        
+        
         performSegue(withIdentifier: "mapToNewDetailSegue", sender: toilets[indexPath.row])
         
         //April 8 18 pm 
@@ -100,6 +123,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+//        if segue.identifier == "openRevealSegue"
+//        {
+//        
+//            
+//            
+//        
+//            //April 8 18 pm
+//            //let nextVC = segue.
+//            let nextVC = segue.destination as! PlaceDetailViewController
+//            nextVC.toilet = sender as! Toilet
+//            // nextVC.toilet = sender as! Toilet
+//            nextVC.filter = filter
+//            nextVC.search = search
+//            
+//            
+//            ////////////////////Commented April 8
+//        }
+
         if segue.identifier == "mapToNewDetailSegue"
         {
             //April 8 18 pm
@@ -189,6 +231,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
         searchBar.delegate = self
+        
+        
         
         resultSearchController.hidesNavigationBarDuringPresentation = false
         resultSearchController.dimsBackgroundDuringPresentation = true

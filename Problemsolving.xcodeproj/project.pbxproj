@@ -12,6 +12,7 @@
 		240128981E0A02CE002FBDE1 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240128961E0A02CE002FBDE1 /* TableViewCell.xib */; };
 		240F79791E98CC0600EFF3CC /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */; };
 		240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F797A1E9A1FF200EFF3CC /* UserLocation.swift */; };
+		240F797F1E9C62A300EFF3CC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240F797E1E9C62A300EFF3CC /* SWRevealViewController.m */; };
 		2414549C1DE2C4F90066AB62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414549B1DE2C4F90066AB62 /* AppDelegate.swift */; };
 		2414549E1DE2C4F90066AB62 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2414549D1DE2C4F90066AB62 /* SignInViewController.swift */; };
 		241454A11DE2C4F90066AB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2414549F1DE2C4F90066AB62 /* Main.storyboard */; };
@@ -88,6 +89,8 @@
 		240128961E0A02CE002FBDE1 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		240F797A1E9A1FF200EFF3CC /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		240F797D1E9C62A300EFF3CC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		240F797E1E9C62A300EFF3CC /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		241454981DE2C4F90066AB62 /* Problemsolving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Problemsolving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2414549B1DE2C4F90066AB62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2414549D1DE2C4F90066AB62 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +198,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240F797C1E9C622C00EFF3CC /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				240F797D1E9C62A300EFF3CC /* SWRevealViewController.h */,
+				240F797E1E9C62A300EFF3CC /* SWRevealViewController.m */,
+			);
+			name = SupportFiles;
+			sourceTree = "<group>";
+		};
 		2414548F1DE2C4F90066AB62 = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +232,7 @@
 		2414549A1DE2C4F90066AB62 /* Problemsolving */ = {
 			isa = PBXGroup;
 			children = (
+				240F797C1E9C622C00EFF3CC /* SupportFiles */,
 				24A130BA1DF769AE009C1A3F /* GeoFire */,
 				24A130B71DF3E244009C1A3F /* Problemsolving.entitlements */,
 				2418B7D81E1B1B73004F7022 /* Class */,
@@ -672,6 +685,7 @@
 				24B6FB061E30395900E1330A /* RighttoLeft.swift in Sources */,
 				2418B7DC1E1B6B5C004F7022 /* KansouViewController.swift in Sources */,
 				245E9F331E963B20006D8A31 /* NewStartLoginViewController.swift in Sources */,
+				240F797F1E9C62A300EFF3CC /* SWRevealViewController.m in Sources */,
 				2442D1DF1E9707DC009621E7 /* NewAccountCreateViewController.swift in Sources */,
 				245E9F2F1E95F448006D8A31 /* StartLoginUserViewController.swift in Sources */,
 				245E9F291E95DFA3006D8A31 /* UserFirstTimeViewController.swift in Sources */,

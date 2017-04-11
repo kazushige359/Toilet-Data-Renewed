@@ -92,6 +92,7 @@ import Cosmos
 //        }
         
 //        @IBOutlet weak var backgroundScrollView: UIScrollView!
+       
         
         @IBOutlet weak var backgroundScrollView: UIScrollView!
         
@@ -131,6 +132,7 @@ import Cosmos
         @IBOutlet weak var howToAccessTextView: UILabel!
         
         @IBOutlet weak var buttonGoOutlet: UIButton!
+        @IBOutlet weak var buttonShowAllReviewsOutlet: UIButton!
         
         
         @IBOutlet weak var firstPosterPicture: UIImageView!
@@ -178,6 +180,7 @@ import Cosmos
         
         @IBOutlet weak var reviewTwoUserFeedbackTextView: UITextView!
         
+        @IBOutlet weak var buttonExampleOutlet: UIBarButtonItem!
         
 //        
 //        @IBOutlet weak var backView: UIView!
@@ -240,117 +243,51 @@ import Cosmos
         var youwentEdited = false
         var firebaseLoadedOnce = false
         var locationManager = CLLocationManager()
+        let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
+        
         
         override func viewDidLoad() {
             super.viewDidLoad()
             mapView.delegate = self
             mapView.isUserInteractionEnabled = false
             
-            dataQuery(queryKey: toilet.key)
-//            tableView.dataSource = self
-//            tableView.delegate = self
-//            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "review")
+            buttonExampleOutlet.target = self.revealViewController()
+            buttonExampleOutlet.action = #selector(SWRevealViewController.rightRevealToggle(_:))
+            
+            
+            
+            
+           // buttonShowDetailOutlet.tag = 5
+//            buttonShowDetailOutlet.addTarget(self.revealViewController(),action:#selector(SWRevealViewController.revealToggle(_:)),
+//                                             for:.touchUpInside)
+//            buttonShowDetailOutlet.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
+
+//            buttonShowDetailOutlet.addTarget(self.revealViewController(), action: Selector("revealToggle:"), for: )
+            
+            
+
+            //buttonShowDetailOutlet.addTarget(self.revealViewController())
+            
+            
+//           // booleansTableView.delegate = self
 //            
-//            print("reviewsSet = \(reviewsSet)")
-//            
-//            bigPicture.sd_setImage(with: URL(string: toilet.urlOne))
-//            placeNameLabel.text = toilet.name
-//            locationAuthStatus()
-//            
-//            let coordinate1: CLLocationCoordinate2D = toilet.loc.coordinate
-//            let pinAnnotation = MKPointAnnotation()
-//            pinAnnotation.coordinate = coordinate1
-//            mapView.addAnnotation(pinAnnotation)
-//            
-//            mapView.tintColor = UIColor.blue
-//            var focusArea = 2000
-//            
-//            if toilet.distance <= 50{
-//                focusArea = 100}else
-//                if toilet.distance <= 100{
-//                    focusArea = 200}else
-//                    if toilet.distance <= 300{
-//                        focusArea = 600}else
-//                        if toilet.distance <= 500{
-//                            focusArea = 1200}else
-//                            if toilet.distance <= 900{
-//                                focusArea = 2000}
-//            
-//            
-//            let region = MKCoordinateRegionMakeWithDistance(coordinate1, CLLocationDistance(focusArea), CLLocationDistance(focusArea))
-//            mapView.setRegion(region, animated: true)
-//            
-//            var distanceText = ""
-//            
-//            
-//            if toilet.distance > 1000{
-//                let td1 = round(0.01*toilet.distance)/0.01/1000
-//                print("td1 = \(td1)")
-//                distanceText = "\(td1)km"
-//                
-//            } else{
-//                distanceText = "\(Int(round(0.1*toilet.distance)/0.1))m"
-//            }
-//            
-//            if toilet.distance >= 1000000{
-//                let toiletD = Int(round(0.01*toilet.distance)/0.01/1000000)
-//                distanceText = "\(toiletD)Mm"
-//                print("cell.distanceLabel.text = \(toiletD)Mm")
-//            }
-//            
-//            typeAndDistanceLabel.text = toilet.type + "/" + distanceText
-//            
-//            reviewCountLabel.text = "(\(toilet.reviewCount)件)"
-//            
-////            waitingtimeLabel.text = "平均待ち時間　\(toilet.averageWait)分"
-////            // Changed to toilet.averageWait
-////            openinghoursLabel?.text = "利用可能時間　\(toilet.openinghours)"
-//            
-//            availableTimeAndWaitingTImeLabel.text = toilet.openinghours + "/" + "平均待ち　\(toilet.averageWait)分"
-//            
-//            
-//            starImage.rating = Double(toilet.averageStar)!
-//            starImage.settings.filledColor = UIColor.yellow
-//            starImage.settings.emptyBorderColor = UIColor.orange
-//            starImage.settings.filledBorderColor = UIColor.orange
-//            starImage.text = "\(toilet.averageStar)"
-//            starImage.settings.textColor = UIColor.black
-//            starImage.settings.textMargin = 10
-//            
-//            
-//            //        starLabel.text = "\(toilet.averageStar)"
-//           // pictureBackLabel.backgroundColor = UIColor.white
-//            buttonGoOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
-//            buttonKansouOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
-//            buttonEditInfoOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
-//            //okiniiriButton.backgroundColor = UIColor(red: 1.2, green: 0.4, blue: 0.4, alpha: 0.7)
-//            
-////            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-////            tableView.tableFooterView?.isHidden = true
-////            tableView.backgroundColor = UIColor.white
-//            //Added for table view empty cells
-//            
-////            backLabel1.backgroundColor = UIColor.white
-////            backLabel2.backgroundColor = UIColor.white
-////            pictureLabel.backgroundColor = UIColor.white
-//            howToAccessTextView.text = "アクセス情報"
-//            picture1.sd_setImage(with: URL(string: toilet.urlOne))
-//            picture2.sd_setImage(with: URL(string: toilet.urlTwo))
-//            picture3.sd_setImage(with: URL(string: toilet.urlThree))
-//            
-//            
-//            howToAccessTextView.text = toilet.howtoaccess
-//            howToAccessTextView.isUserInteractionEnabled = false
-//            
-//            let date = NSDate()
-//            let calendar = Calendar.current
-//            let day = calendar.component(.day, from:date as Date)
-//            let month = calendar.component(.month, from:date as Date)
-//            let year = calendar.component(.year, from:date as Date)
-//            
-//            print("yearmonthday = \(year):\(month):\(day)")
-//            
-            likedQuery()
+//            let screenSize = UIScreen.main.bounds
+//            let screenWidth = screenSize.width
+//            let screenHeight = screenSize.height
+            
+            
+         
+            
+            //backgroundScrollView.contentSize = CGSize(width: 320,height: 1036)
+            
+            
+           dataQuery(queryKey: toilet.key)
+           likedQuery()
+            
+            //Commented for making table view... April 11 12pm 
+            
+            
+            
             //reviewQuery()
         }
         
@@ -625,10 +562,23 @@ import Cosmos
             
             //        starLabel.text = "\(toilet.averageStar)"
             // pictureBackLabel.backgroundColor = UIColor.white
-            buttonGoOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
-            buttonKansouOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
-            buttonEditInfoOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+            
+            
+            
+            buttonGoOutlet.backgroundColor = primaryColor
+            buttonShowDetailOutlet.backgroundColor = primaryColor
+            
+            
+//            buttonKansouOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+//            buttonEditInfoOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+            
+            
+            
+            
+            
             //okiniiriButton.backgroundColor = UIColor(red: 1.2, green: 0.4, blue: 0.4, alpha: 0.7)
+            
+            
             
             //            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
             //            tableView.tableFooterView?.isHidden = true
@@ -653,12 +603,6 @@ import Cosmos
                 picture3.sd_setImage(with: URL(string: toilet.urlThree))
                 
             }
-            
-            
-//            picture1.sd_setImage(with: URL(string: toilet.urlOne))
-//            picture2.sd_setImage(with: URL(string: toilet.urlTwo))
-//            picture3.sd_setImage(with: URL(string: toilet.urlThree))
-            
             
             howToAccessTextView.text = toilet.howtoaccess
             howToAccessTextView.isUserInteractionEnabled = false
@@ -725,6 +669,8 @@ import Cosmos
             })
             
         }
+        
+        
 
         
         func likedQuery(){
@@ -864,13 +810,13 @@ import Cosmos
         }
         
         
-        @IBAction func goButtonTapped(_ sender: Any) {
+       func goAction() {
             
             var place: MKPlacemark!
             let coordinate1: CLLocationCoordinate2D = toilet.loc.coordinate
             place = MKPlacemark(coordinate: coordinate1)
             let destination = MKMapItem(placemark: place)
-            destination.name = toilet.key
+            destination.name = toilet.name
             let regionDistance: CLLocationDistance = 1000
             let regionSpan = MKCoordinateRegionMakeWithDistance(coordinate1, regionDistance, regionDistance)
             
@@ -1035,26 +981,20 @@ import Cosmos
             present(alertController, animated: true, completion: nil)
         }
         
-//        @IBAction func questionButtonTapped(_ sender: Any) {
-//            
-//            let alertController = UIAlertController (title: "", message: "情報の誤りを報告しますか", preferredStyle: .actionSheet)
-//            
-//            let yesAction = UIAlertAction(title: "報告する", style: .default) { (_) -> Void in
-//                
-//            }
-//            let cancelAction = UIAlertAction(title: "報告しない", style: .default, handler: nil)
-//            alertController.addAction(yesAction)
-//            alertController.addAction(cancelAction)
-//            present(alertController, animated: true, completion: nil)
-//            
-//        }
         
-//        @IBAction func MapButtonTapped(_ sender: Any) {
-//            performSegue(withIdentifier:"detailbacktoMapSegue", sender: nil)
-//        }
         
-    
-
-    ////Copied from Detail View
+        @IBAction func buttonAddFeedbackTapped(_ sender: Any) {
+            //"placeDetailToKansouSegue"
+        }
+        
+        @IBAction func buttonEditTapped(_ sender: Any) {
+            //"placeDetailToEditSegue"
+        }
+        @IBAction func buttonGoToThisPlaceTapped(_ sender: Any) {
+            goAction()
+        }
+        
+        @IBAction func buttonShowAllReviewsTapped(_ sender: Any) {
+        }
 
    }
