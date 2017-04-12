@@ -1111,18 +1111,17 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yd2-8g-5lH">
-                                                <rect key="frame" x="120" y="0.0" width="200" height="1543"/>
+                                                <rect key="frame" x="320" y="0.0" width="0.0" height="1603"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="ekx-b5-1hy"/>
-                                                    <constraint firstAttribute="height" constant="1543" id="ood-FW-XgF"/>
+                                                    <constraint firstAttribute="height" constant="1603" id="ood-FW-XgF"/>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zKw-ep-6bS">
-                                                        <rect key="frame" x="0.0" y="28" width="200" height="44"/>
+                                                        <rect key="frame" x="0.0" y="28" width="0.0" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zKw-ep-6bS" id="24c-Nf-Hmt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="backgroundColor" red="0.31764705882352939" green="0.6705882352941176" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                                         </tableViewCellContentView>
@@ -1170,6 +1169,7 @@
                                             <constraint firstItem="1TS-Bx-yML" firstAttribute="top" secondItem="mrK-Lq-Upb" secondAttribute="bottom" constant="5" id="pDC-1g-P5X"/>
                                             <constraint firstItem="QhA-GX-0Ji" firstAttribute="top" secondItem="gp0-bt-XQx" secondAttribute="bottom" id="pt6-9Q-x6i"/>
                                             <constraint firstItem="GeS-Lu-Wdy" firstAttribute="top" secondItem="DbG-6H-PBB" secondAttribute="bottom" constant="2" id="qax-te-CXz"/>
+                                            <constraint firstItem="yd2-8g-5lH" firstAttribute="leading" secondItem="z0U-ce-R7B" secondAttribute="leading" constant="320" id="rlG-x4-K1d"/>
                                             <constraint firstItem="eEl-La-u07" firstAttribute="top" secondItem="mrK-Lq-Upb" secondAttribute="bottom" constant="5" id="tux-iP-rGd"/>
                                             <constraint firstItem="DgX-VH-Bsd" firstAttribute="leading" secondItem="z0U-ce-R7B" secondAttribute="leading" id="upQ-a1-CuF"/>
                                             <constraint firstAttribute="trailing" secondItem="gp0-bt-XQx" secondAttribute="trailing" id="wbE-aV-NXZ"/>
@@ -1218,6 +1218,7 @@
                         <outlet property="availableTimeAndWaitingTImeLabel" destination="Tga-vc-bAH" id="ZgA-Iv-zmw"/>
                         <outlet property="backgroundScrollView" destination="tvF-AB-B7E" id="PeA-8x-qB7"/>
                         <outlet property="bigPicture" destination="DgX-VH-Bsd" id="olG-mu-0u0"/>
+                        <outlet property="booleanTableViewLeftConstraint" destination="rlG-x4-K1d" id="08C-ac-3Ak"/>
                         <outlet property="booleansTableView" destination="yd2-8g-5lH" id="EKG-vL-4jv"/>
                         <outlet property="buttonEditInfoOutlet" destination="hzi-jk-r4O" id="qGs-8K-qih"/>
                         <outlet property="buttonExampleOutlet" destination="c4b-2A-lHI" id="k7l-BX-yKq"/>

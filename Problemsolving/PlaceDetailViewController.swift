@@ -138,45 +138,7 @@ import Cosmos
         
         @IBOutlet weak var buttonExampleOutlet: UIBarButtonItem!
         
-//        
-//        @IBOutlet weak var backView: UIView!
-//        @IBOutlet weak var bigPicture: UIImageView!
-//        
-//        @IBOutlet weak var distanceLabel: UILabel!
-//        @IBOutlet weak var nameLabel: UILabel!
-//        
-//        @IBOutlet weak var starImage: CosmosView!
-//        
-//        @IBOutlet weak var starLabel: UILabel!
-//        @IBOutlet weak var waitingtimeLabel: UILabel!
-//        
-//        
-//        @IBOutlet weak var openinghoursLabel: UILabel!
-//        
-//        @IBOutlet weak var pictureLabel: UILabel!
-//        
-//        @IBOutlet weak var picture1: UIImageView!
-//        @IBOutlet weak var picture2: UIImageView!
-//        @IBOutlet weak var picture3: UIImageView!
-//        @IBOutlet weak var accessTextView: UITextView!
-//        @IBOutlet weak var backLabel1: UILabel!
-//        @IBOutlet weak var backLabel2: UILabel!
-//        @IBOutlet weak var availableLabel: UILabel!
-//        @IBOutlet weak var okiniiriButton: UIButton!
-//        @IBOutlet weak var kansouButton: UIButton!
-//        @IBOutlet weak var hensyuuButton: UIButton!
-//        @IBOutlet weak var goButton: UIButton!
-//        
-//        
-//        @IBOutlet weak var categoryType: UILabel!
-//        
-//        @IBOutlet weak var tableView: UITableView!
-//        
-//        @IBOutlet weak var pictureBackLabel: UILabel!
-//        
-//        @IBOutlet weak var mapView: MKMapView!
-//        
-//        @IBOutlet weak var reviewCountLabel: UILabel!
+        @IBOutlet weak var booleanTableViewLeftConstraint: NSLayoutConstraint!
         
         var waitingtime = 0
         var washlet = Bool()
@@ -208,8 +170,7 @@ import Cosmos
             mapView.delegate = self
             mapView.isUserInteractionEnabled = false
             
-            booleansTableView.isHidden = true
-            
+                        
             
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.hideTableView))
             view.addGestureRecognizer(tap)
@@ -218,6 +179,14 @@ import Cosmos
             booleansTableView.dataSource = self
             
             booleansTableView.tableFooterView = UIView()
+            
+            let screenSize = UIScreen.main.bounds
+            let screenWidth = screenSize.width
+            booleanTableViewLeftConstraint.constant = screenWidth
+            
+            print("booleanTableViewLeftConstraint.constant = \(booleanTableViewLeftConstraint.constant)")
+            
+            
             
 
             
@@ -1166,8 +1135,16 @@ import Cosmos
         
         func hideTableView(){
             
-            booleansTableView.isHidden = true
-           // backgroundScrollView.isUserInteractionEnabled = true
+            let screenSize = UIScreen.main.bounds
+            let screenWidth = screenSize.width
+            booleanTableViewLeftConstraint.constant = screenWidth
+            
+             print("AAAAbooleanTableViewLeftConstraint.constant = \(booleanTableViewLeftConstraint.constant)")
+            
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+           
 
         
         
@@ -1176,7 +1153,15 @@ import Cosmos
         func showUpTableView(){
         
             
-            booleansTableView.isHidden = false
+            booleanTableViewLeftConstraint.constant = 120
+            
+             print("CCCCbooleanTableViewLeftConstraint.constant = \(booleanTableViewLeftConstraint.constant)")
+            
+            UIView.animate(withDuration: 0.3) { 
+                self.view.layoutIfNeeded()
+            }
+            
+            
            // backgroundScrollView.isUserInteractionEnabled = false
             
             
