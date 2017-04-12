@@ -61,6 +61,7 @@
 		24B6FB041E2EE81500E1330A /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB031E2EE81500E1330A /* Search.swift */; };
 		24B6FB061E30395900E1330A /* RighttoLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB051E30395800E1330A /* RighttoLeft.swift */; };
 		24B6FB0A1E30399200E1330A /* LefttoRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB091E30399200E1330A /* LefttoRight.swift */; };
+		24CD2B4C1E9E27A800F438CE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CD2B4B1E9E27A800F438CE /* Post.swift */; };
 		24DA07F21E01357A00869655 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DA07F11E01357A00869655 /* MapKit.framework */; };
 		24DF78961E36EB410081CDA0 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */; };
 		24DF78981E3738D80081CDA0 /* PostedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DF78971E3738D80081CDA0 /* PostedTableViewController.swift */; };
@@ -160,6 +161,7 @@
 		24B6FB031E2EE81500E1330A /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		24B6FB051E30395800E1330A /* RighttoLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RighttoLeft.swift; sourceTree = "<group>"; };
 		24B6FB091E30399200E1330A /* LefttoRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LefttoRight.swift; sourceTree = "<group>"; };
+		24CD2B4B1E9E27A800F438CE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		24DA07F11E01357A00869655 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		24DF78971E3738D80081CDA0 /* PostedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostedTableViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				24B6FB091E30399200E1330A /* LefttoRight.swift */,
 				240F797A1E9A1FF200EFF3CC /* UserLocation.swift */,
 				240F79801E9CC42300EFF3CC /* PassingData.swift */,
+				24CD2B4B1E9E27A800F438CE /* Post.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				24A130CD1DF769AE009C1A3F /* GFBase32Utils.m in Sources */,
 				24DF78981E3738D80081CDA0 /* PostedTableViewController.swift in Sources */,
 				240128971E0A02CE002FBDE1 /* TableViewCell.swift in Sources */,
+				24CD2B4C1E9E27A800F438CE /* Post.swift in Sources */,
 				24B6FB0A1E30399200E1330A /* LefttoRight.swift in Sources */,
 				240F79811E9CC42300EFF3CC /* PassingData.swift in Sources */,
 				247BB3AB1E0F26E600E4BED8 /* DetailViewController.swift in Sources */,

@@ -223,9 +223,9 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
 
     
     var availableTimeOption = [
-        ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24"],
+        ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24","25","26", "27", "28","29","30"],
     ["00", "15","30","45"],
-    ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24"],
+    ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24","25","26", "27", "28","29","30"],
     ["00", "15","30","45"]
     ]
     
@@ -549,17 +549,12 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let Lat: CLLocationDegrees = pincoodinate.latitude
             let Lon: CLLocationDegrees = pincoodinate.longitude
             
+           
+            
+            
+            
             let waitInt:Int? = Int(waitminute)
             let availableTimeForDatabase = "\(time1):\(time2)〜\(time3):\(time4)"
-            geoFire!.setLocation(CLLocation(latitude: Lat, longitude: Lon), forKey: name){(error) in
-                if (error != nil) {
-                    print("An error occured: \(error)")
-                    print("in geoFire.setLocation")
-                } else {
-                    print("Saved location successfully!")
-                    print("in geoFire.setLocation")
-                }
-            }
             print("after geoFire.setLocation")
             
             print("Star ratingggggg \(starView.rating)")
@@ -573,113 +568,130 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let interval = NSDate().timeIntervalSince1970
             
+//            let tenTimesTime1 = Int()
+//                tenTimesTime1 = Int(time1)! * 10
+//            let tenTimesTime3 = Int()
+//                tenTimesTime3 = Int(time3)! * 10
+//            
+//            
+//            let openHours = tenTimesTime1 + Int(time2)!
+//            let closeHours = tenTimesTime3 + Int(time4)!
+            
+            let uid = FIRAuth.auth()!.currentUser!.uid
+            
+            
             //maybe when waitminute wasnt written aything then waitminute = 0  
             
             ///tid does not make any sense 
             
 //....     ////Copied from Android
             
-            
-           // let tdata : [String : Any] = [
-//            "name":
-//            "openAndCloseHours"
-//            "type"
-//            "urlOne"
-//            "urlTwo"
-//            "urlThree"
-//            "addedBy"
-//            "editedBy"
-//            "averageStar"
-//            "address"
-//            "howtoaccess"
-        //      "reviewOne"
-            //      "reviewTwo"
-            
+              //"waitingtime": waitInt! as Int,
 //            
-//            "openHours"
-//            "closeHours"
-//            "reviewCount"
-//            "averageWait"
-//            "toiletFloor"
-//            "latitude"
-//            "longitude"
+            var post = Post()
             
-            "available": true,
-            "japanesetoilet": japaneseToiletSwitch.isOn,
-            "westerntoilet":westernToiletSwitch.isOn,
-            "onlyFemale":onlyFemalSwitch.isOn,
-            "unisex":unisexSwitch.isOn,
-            
-            "washlet":washletSwitch.isOn,
-            "warmSeat":warmSeatSwitch.isOn,
-            "autoOpen":autoOpenBenkiSwitch.isOn,
-            "noVirus":noVirusSwitch.isOn,
-            "paperForBenki":paperForBenkiSwitch.isOn,
-            "cleanerForBenki":cleanerBenkiSwitch.isOn,
-            "nonTouchWash":autoToiletWashSwitch.isOn,
-            
-            "sensorHandWash":sensorHandWashSwitch.isOn,
-            "handSoap":handSoapSwitch.isOn,
-            "nonTouchHandSoap":autoHandSoapSwitch.isOn,
-            "paperTowel":paperTowelSwitch.isOn,
-            "handDrier":handDrierSwitch.isOn,
-            
-            "otohime":otohimeSwitch.isOn,
-            "napkinSelling":napkinSellingSwitch.isOn,
-            "makeuproom":makeRoomSwitch.isOn,
-            "clothes":clothesSwitch.isOn,
-            "baggageSpace":baggageSwitch.isOn,
-            
-            "wheelchair":wheelChairSwitch.isOn,
-            "wheelchairAccess":wheelChiarAccess.isOn,
-            "handrail":handRailSwitch.isOn,
-            "callHelp":callHelpSwitch.isOn,
-            "ostomate":ostomateSwitch.isOn,
-            "english":writtenEnglishSwitch.isOn,
-            "braille":brailleSwitch.isOn,
-            "voiceGuide":voiceGuideSwitch.isOn,
-            
-            "fancy":toiletFancySwitch.isOn,
-            "smell":toiletSmellGood.isOn,
-            "confortable":toiletWideSpaceSwitch.isOn,
-            "noNeedAsk":noNeedAskSwitch.isOn,
-            "parking":parkingSwitch.isOn,
-            "airCondition":airConditionSwitch.isOn,
-            "wifi":wifiSwitch.isOn,
-            
-            "milkspace":milkSpaceSwitch.isOn,
-            "babyRoomOnlyFemale":onlyFamaleBabyRoom.isOn,
-            "babyRoomMaleEnter":babyRoomMaleEnterSwitch.isOn,
-            "babyRoomPersonalSpace":babyRoomPersonalSpace.isOn,
-            "babyRoomPersonalSpaceWithLock":babyRoomPersonalWithLock.isOn,
-            "babyRoomWideSpace":babyRoomWideSpaceSwitch.isOn,
-            
-            "babyCarRental":babyCarRentalSwitch.isOn,
-            "babyCarAccess":babyCarAccessSwitch.isOn,
-            "omutu":omutuSwitch.isOn,
-            "hipCleaningStuff":hipWashingStuffSwitch.isOn,
-            "omutuTrashCan":omutuTrashCanSwitch.isOn,
-            "omutuSelling":omutuSellingSwitch.isOn,
-            
-            "babySink":babyRoomSinkSwitch.isOn,
-            "babyWashstand":babyWashStandSwitch.isOn,
-            "babyHotwater":babyRoomHotWaterSwitch.isOn,
-            "babyMicrowave":babyRoomMicrowaveSwitch.isOn,
-            "babyWaterSelling":babyRoomSellingWaterSwitch.isOn,
-            "babyFoodSelling":babyRoomFoodSellingSwitch.isOn,
-            "babyEatingSpace":babyRoomEatingSpace.isOn,
-            
-            "babyChair":babyChairSwitch.isOn,
-            "babySoffa":soffaSwitch.isOn,
-            "kidsToilet":kidsToiletSwitch.isOn,
-            "kidsSpace":kidsSpaceSwitch.isOn,
-            "babyHeight":heightMeasureSwitch.isOn,
-            "babyWeight":weightMeasureSwitch.isOn,
-            "babyToy":babyToySwitch.isOn,
-            "babyFancy":babyRoomFancySwitch.isOn,
-            "babySmellGood":babyRoomGoodSmellSwitch.isOn,
+            post.name = name
+            post.openAndCloseHours = availableTimeForDatabase
             
             
+            
+            let tdata : [String : Any] = []
+//           ["name":name as String,
+//            "openAndCloseHours": availableTimeForDatabase as String,
+//            "type":placeCategoryLabel.text! as String,
+//            "urlOne":"" as String,
+//            "urlTwo":"" as String,
+//            "urlThree":"" as String,
+//            "addedBy":uid,
+//            "editedBy":uid,
+//            "averageStar":"" as String,
+//            "address":"" as String,
+//            "howtoaccess":"" as String,
+//            "reviewOne":uid,
+//            "reviewTwo":"",
+//            "openHours":5000 as Int,
+//            "closeHours":5000 as Int,
+//            "reviewCount":1,
+//            "averageWait": waitInt! as Int,
+//            "toiletFloor": 1,
+//            "latitude": Lat as Double,
+//            "longitude": Lon as Double,
+//            "available": true,
+//            "japanesetoilet": japaneseToiletSwitch.isOn as Bool,
+//            "westerntoilet":westernToiletSwitch.isOn,
+//            "onlyFemale":onlyFemalSwitch.isOn,
+//            "unisex":unisexSwitch.isOn,
+//            
+//            "washlet":washletSwitch.isOn,
+//            "warmSeat":warmSeatSwitch.isOn,
+//            "autoOpen":autoOpenBenkiSwitch.isOn,
+//            "noVirus":noVirusSwitch.isOn,
+//            "paperForBenki":paperForBenkiSwitch.isOn,
+//            "cleanerForBenki":cleanerBenkiSwitch.isOn,
+//            "nonTouchWash":autoToiletWashSwitch.isOn,
+//            
+//            "sensorHandWash":sensorHandWashSwitch.isOn,
+//            "handSoap":handSoapSwitch.isOn,
+//            "nonTouchHandSoap":autoHandSoapSwitch.isOn,
+//            "paperTowel":paperTowelSwitch.isOn,
+//            "handDrier":handDrierSwitch.isOn,
+//            
+//            "otohime":otohimeSwitch.isOn,
+//            "napkinSelling":napkinSellingSwitch.isOn,
+//            "makeuproom":makeRoomSwitch.isOn,
+//            "clothes":clothesSwitch.isOn,
+//            "baggageSpace":baggageSwitch.isOn,
+//            
+//            "wheelchair":wheelChairSwitch.isOn,
+//            "wheelchairAccess":wheelChiarAccess.isOn,
+//            "handrail":handRailSwitch.isOn,
+//            "callHelp":callHelpSwitch.isOn,
+//            "ostomate":ostomateSwitch.isOn,
+//            "english":writtenEnglishSwitch.isOn,
+//            "braille":brailleSwitch.isOn,
+//            "voiceGuide":voiceGuideSwitch.isOn,
+//            
+//            "fancy":toiletFancySwitch.isOn,
+//            "smell":toiletSmellGood.isOn,
+//            "confortable":toiletWideSpaceSwitch.isOn,
+//            "noNeedAsk":noNeedAskSwitch.isOn,
+//            "parking":parkingSwitch.isOn,
+//            "airCondition":airConditionSwitch.isOn,
+//            "wifi":wifiSwitch.isOn,
+//            
+//            "milkspace":milkSpaceSwitch.isOn,
+//            "babyRoomOnlyFemale":onlyFamaleBabyRoom.isOn,
+//            "babyRoomMaleEnter":babyRoomMaleEnterSwitch.isOn,
+//            "babyRoomPersonalSpace":babyRoomPersonalSpace.isOn,
+//            "babyRoomPersonalSpaceWithLock":babyRoomPersonalWithLock.isOn,
+//            "babyRoomWideSpace":babyRoomWideSpaceSwitch.isOn,
+//            
+//            "babyCarRental":babyCarRentalSwitch.isOn,
+//            "babyCarAccess":babyCarAccessSwitch.isOn,
+//            "omutu":omutuSwitch.isOn,
+//            "hipCleaningStuff":hipWashingStuffSwitch.isOn,
+//            "omutuTrashCan":omutuTrashCanSwitch.isOn,
+//            "omutuSelling":omutuSellingSwitch.isOn,
+//            
+//            "babySink":babyRoomSinkSwitch.isOn,
+//            "babyWashstand":babyWashStandSwitch.isOn,
+//            "babyHotwater":babyRoomHotWaterSwitch.isOn,
+//            "babyMicrowave":babyRoomMicrowaveSwitch.isOn,
+//            "babyWaterSelling":babyRoomSellingWaterSwitch.isOn,
+//            "babyFoodSelling":babyRoomFoodSellingSwitch.isOn,
+//            "babyEatingSpace":babyRoomEatingSpace.isOn,
+//            
+//            "babyChair":babyChairSwitch.isOn,
+//            "babySoffa":soffaSwitch.isOn,
+//            "kidsToilet":kidsToiletSwitch.isOn,
+//            "kidsSpace":kidsSpaceSwitch.isOn,
+//            "babyHeight":heightMeasureSwitch.isOn,
+//            "babyWeight":weightMeasureSwitch.isOn,
+//            "babyToy":babyToySwitch.isOn,
+//            "babyFancy":babyRoomFancySwitch.isOn,
+//            "babySmellGood":babyRoomGoodSmellSwitch.isOn]
+//
+//            
             
             
 //.....            ////Copied from Android  April 12
@@ -731,28 +743,42 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
 //                    "averageWait": waitInt! as Int
 //            ]
             
-            let rdata : [String : Any] =
-                ["star": starView.rating as Double,
-                 "waitingtime": waitminute as String,
-                    "tid": name! as String,
-                    "available": true,
-                    "feedback": feedbackTextView.text as String,
-                    "uid": FIRAuth.auth()!.currentUser!.uid as String,
-                    "likedCount": 0,
-                    "time": dateString,
-                    "timeNumbers": interval
-                    
-                                ]
+//            let rdata : [String : Any] =
+//                ["star": starView.rating as Double,
+//                 "waitingtime": waitminute as String,
+//                    "tid": name! as String,
+//                    "available": true,
+//                    "feedback": feedbackTextView.text as String,
+//                    "uid": FIRAuth.auth()!.currentUser!.uid as String,
+//                    "likedCount": 0,
+//                    "time": dateString,
+//                    "timeNumbers": interval
+//                    
+//                                ]
 
             
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
-            //toiletsRef.child(name!).setValue(tdata)
+            toiletsRef.childByAutoId().setValue(post)
             
+            let uniqueKey = toiletsRef.key
+            //toiletsRef.setValue(post)
+            
+            
+            geoFire!.setLocation(CLLocation(latitude: Lat, longitude: Lon), forKey: uniqueKey){(error) in
+                if (error != nil) {
+                    print("An error occured: \(error)")
+                    print("in geoFire.setLocation")
+                } else {
+                    print("Saved location successfully!")
+                    print("in geoFire.setLocation")
+                }
+            }
+
             
             
             
             let reviewsRef = FIRDatabase.database().reference().child("reviews")
-            reviewsRef.childByAutoId().setValue(rdata)
+            //reviewsRef.childByAutoId().setValue(rdata)
             
             FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").child(name!).setValue(true)
             //self.toiletsRef.child(location["name"] as! String!).setValue(tdata)
