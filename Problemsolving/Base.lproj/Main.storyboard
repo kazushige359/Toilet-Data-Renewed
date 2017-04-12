@@ -1121,7 +1121,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="0.0" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zKw-ep-6bS" id="24c-Nf-Hmt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="backgroundColor" red="0.31764705882352939" green="0.6705882352941176" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                                         </tableViewCellContentView>
@@ -1202,14 +1202,11 @@
                                 <action selector="buttonBackToMapTapped:" destination="hAD-xO-93C" id="pZd-mV-E4I"/>
                             </connections>
                         </barButtonItem>
-                        <rightBarButtonItems>
-                            <barButtonItem image="question_image_30" id="8IG-AQ-EEa">
-                                <connections>
-                                    <action selector="buttonReportTapped:" destination="hAD-xO-93C" id="Zyh-SN-diI"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" id="c4b-2A-lHI"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="question_image_30" id="8IG-AQ-EEa">
+                            <connections>
+                                <action selector="buttonReportTapped:" destination="hAD-xO-93C" id="Zyh-SN-diI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="1600"/>
@@ -1221,7 +1218,6 @@
                         <outlet property="booleanTableViewLeftConstraint" destination="rlG-x4-K1d" id="08C-ac-3Ak"/>
                         <outlet property="booleansTableView" destination="yd2-8g-5lH" id="EKG-vL-4jv"/>
                         <outlet property="buttonEditInfoOutlet" destination="hzi-jk-r4O" id="qGs-8K-qih"/>
-                        <outlet property="buttonExampleOutlet" destination="c4b-2A-lHI" id="k7l-BX-yKq"/>
                         <outlet property="buttonGoOutlet" destination="mrK-Lq-Upb" id="5LQ-nD-Ygf"/>
                         <outlet property="buttonKansouOutlet" destination="lec-d6-Rmg" id="kgo-L2-M0p"/>
                         <outlet property="buttonShowAllReviewsOutlet" destination="9DV-46-Mde" id="dWQ-me-X7Z"/>
@@ -7138,18 +7134,18 @@
         <image name="user_image_30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d4c-Hb-quT"/>
-        <segue reference="dYX-Na-Ua2"/>
-        <segue reference="xMP-GP-GUl"/>
-        <segue reference="1EZ-Y5-ZPQ"/>
-        <segue reference="BYV-ZH-3Q8"/>
-        <segue reference="tGP-QY-mz7"/>
-        <segue reference="pmY-Sg-ceS"/>
-        <segue reference="sqa-nP-xyO"/>
-        <segue reference="n7m-ff-SLC"/>
-        <segue reference="r8I-FI-5ic"/>
-        <segue reference="I6o-XE-1Ul"/>
         <segue reference="kHI-bB-fQV"/>
         <segue reference="O2a-Bv-tnJ"/>
+        <segue reference="VnR-KB-2az"/>
+        <segue reference="u1m-RW-yG8"/>
+        <segue reference="fPO-er-Etn"/>
+        <segue reference="d4c-Hb-quT"/>
+        <segue reference="n7m-ff-SLC"/>
+        <segue reference="sqa-nP-xyO"/>
+        <segue reference="BYV-ZH-3Q8"/>
+        <segue reference="1EZ-Y5-ZPQ"/>
+        <segue reference="xMP-GP-GUl"/>
+        <segue reference="pmY-Sg-ceS"/>
+        <segue reference="tGP-QY-mz7"/>
     </inferredMetricsTieBreakers>
 </document>

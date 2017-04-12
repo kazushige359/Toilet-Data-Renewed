@@ -43,6 +43,9 @@ class AddPinViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func locationAuthStatus() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             mapView.showsUserLocation = true
+            centerMapOnLocation(location: locationManager.location!)
+            
+            //Added April 12 
         } else {
             locationManager.requestWhenInUseAuthorization()
         }

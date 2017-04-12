@@ -136,7 +136,6 @@ import Cosmos
         
         @IBOutlet weak var reviewTwoUserFeedbackTextView: UITextView!
         
-        @IBOutlet weak var buttonExampleOutlet: UIBarButtonItem!
         
         @IBOutlet weak var booleanTableViewLeftConstraint: NSLayoutConstraint!
         
@@ -170,7 +169,7 @@ import Cosmos
             mapView.delegate = self
             mapView.isUserInteractionEnabled = false
             
-                        
+            
             
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.hideTableView))
             view.addGestureRecognizer(tap)
