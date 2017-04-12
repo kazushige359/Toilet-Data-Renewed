@@ -16,12 +16,19 @@ import Cosmos
     {
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 100
+            return booleans.count
         }
 
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             //let cell = UITableViewCell()
-            let cell = Bundle.main.loadNibNamed("booleanCell", owner: self, options: nil)?.first as! booleanCell
+            let cell = Bundle.main.loadNibNamed("BooleanTableViewCell", owner: self, options: nil)?.first as! BooleanTableViewCell
+            
+            cell.booleanName.text = booleans[indexPath.row]
+            
+            print(" cell.booleanName.text =  \(cell.booleanName.text)")
+            
+            //cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
+            
             
             
             
@@ -181,6 +188,7 @@ import Cosmos
         var key = ""
         var loc = CLLocation()
         var reviews: [Review] = []
+        var booleans: [String] = []
         var reviewsSet = Set<String>()
         var likedSet = Set<String>()
         var toilet = Toilet()
@@ -208,6 +216,8 @@ import Cosmos
         
             booleansTableView.delegate = self
             booleansTableView.dataSource = self
+            
+            booleansTableView.tableFooterView = UIView()
             
 
             
@@ -262,8 +272,11 @@ import Cosmos
                 /////        //////Copied from new one April 6   .....
                 
                 
+                
                 self.toilet.key = queryKey
                 let snapshotValue = snapshot.value as? NSDictionary
+                
+                self.booleans.append("How are you")
                 
                 
                 self.toilet.urlOne = (snapshotValue?["urlOne"] as? String!)!
@@ -424,8 +437,236 @@ import Cosmos
                 
                 //toilet lat lng,  I have already have it
                 
+                if self.toilet.japanesetoilet{
+                    self.booleans.append("和式トイレ")
+                }
+                if self.toilet.westerntoilet{
+                    self.booleans.append("洋式トイレ")
+                }
+                if self.toilet.onlyFemale{
+                    self.booleans.append("女性専用トイレ")
+                }
+                if self.toilet.unisex{
+                    self.booleans.append("男女兼用トイレ")
+                }
+                
+                
+                if self.toilet.washlet{
+                    self.booleans.append("ウォシュレット")
+                }
+                if self.toilet.warmSeat{
+                    self.booleans.append("暖房便座")
+                }
+                if self.toilet.autoOpen{
+                    self.booleans.append("自動開閉便座")
+                }
+                if self.toilet.noVirus{
+                    self.booleans.append("抗菌便座")
+                }
+                if self.toilet.paperForBenki{
+                    self.booleans.append("便座用シート")
+                }
+                if self.toilet.cleanerForBenki{
+                    self.booleans.append("便座クリーナー")
+                }
+                if self.toilet.autoToiletWash{
+                    self.booleans.append("自動洗浄")
+                }
+                
+                
+                
+                if self.toilet.sensorHandWash{
+                    self.booleans.append("センサー式お手洗い")
+                }
+                if self.toilet.handSoap{
+                    self.booleans.append("ハンドソープ")
+                }
+
+                if self.toilet.autoHandSoap{
+                    self.booleans.append("自動ハンドソープ")
+                }
+                if self.toilet.paperTowel{
+                    self.booleans.append("ペーパータオル")
+                }
+                if self.toilet.handDrier{
+                    self.booleans.append("ハンドドライヤー")
+                }
+                
+                
+                
+                if self.toilet.otohime{
+                    self.booleans.append("音姫")
+                }
+                if self.toilet.napkinSelling{
+                    self.booleans.append("ナプキン販売機")
+                }
+                if self.toilet.makeuproom{
+                    self.booleans.append("メイクルーム")
+                }
+
+                if self.toilet.clothes{
+                    self.booleans.append("洋服掛け")
+                }
+                if self.toilet.baggageSpace{
+                    self.booleans.append("荷物置き")
+                }
+                
+                
+                
+                
+                if self.toilet.wheelchair{
+                    self.booleans.append("車イス対応")
+                }
+                if self.toilet.wheelchairAccess{
+                    self.booleans.append("車イスでアクセス可能")
+                }
+                if self.toilet.handrail{
+                    self.booleans.append("手すり")
+                }
+                if self.toilet.callHelp{
+                    self.booleans.append("呼び出しボタン")
+                }
+
+                if self.toilet.ostomate{
+                    self.booleans.append("オストメイト")
+                }
+                if self.toilet.english{
+                    self.booleans.append("英語表記")
+                }
+                if self.toilet.braille{
+                    self.booleans.append("点字案内")
+                }
+                if self.toilet.voiceGuide{
+                    self.booleans.append("音声案内")
+                }
+                
+                
+                
+                if self.toilet.fancy{
+                    self.booleans.append("おしゃれ")
+                }
+                if self.toilet.smell{
+                    self.booleans.append("良い香り")
+                }
+
+                if self.toilet.conforatableWide{
+                    self.booleans.append("快適な広さ")
+                }
+                if self.toilet.noNeedAsk{
+                    self.booleans.append("声かけ不要")
+                }
+                if self.toilet.parking{
+                    self.booleans.append("駐車場")
+                }
+                if self.toilet.airCondition{
+                    self.booleans.append("冷暖房")
+                }
+                if self.toilet.wifi{
+                    self.booleans.append("無料Wi-Fi")
+                }
+                
+                
+                if self.toilet.milkspace{
+                    self.booleans.append("授乳スペース")
+                }
+
+                if self.toilet.babyroomOnlyFemale{
+                    self.booleans.append("女性限定")
+                }
+                if self.toilet.babyroomManCanEnter{
+                    self.booleans.append("男性入室可能")
+                }
+                if self.toilet.babyPersonalSpace{
+                    self.booleans.append("個室あり")
+                }
+                if self.toilet.babyPersonalSpaceWithLock{
+                    self.booleans.append("鍵付き個室あり")
+                }
+                if self.toilet.babyRoomWideSpace{
+                    self.booleans.append("広いスペース")
+                }
+                if self.toilet.babyCarRental{
+                    self.booleans.append("ベビーカー貸し出し")
+                }
+
+                if self.toilet.babyCarAccess{
+                    self.booleans.append("ベビーカーでアクセス可能")
+                }
+                if self.toilet.omutu{
+                    self.booleans.append("おむつ交換台")
+                }
+                if self.toilet.hipWashingStuff{
+                    self.booleans.append("おしりふき")
+                }
+                if self.toilet.babyTrashCan{
+                    self.booleans.append("おむつ用ゴミ箱")
+                }
+                if self.toilet.omutuSelling{
+                    self.booleans.append("おむつ販売機")
+                }
+                
+                
+                
+                
+                if self.toilet.babyRoomSink{
+                    self.booleans.append("シンク")
+                }
+
+                if self.toilet.babyWashStand{
+                    self.booleans.append("洗面台")
+                }
+                if self.toilet.babyHotWater{
+                    self.booleans.append("給湯器")
+                }
+                if self.toilet.babyMicroWave{
+                    self.booleans.append("電子レンジ")
+                }
+                if self.toilet.babyWaterSelling{
+                    self.booleans.append("飲料販売機")
+                }
+                if self.toilet.babyFoddSelling{
+                    self.booleans.append("離乳食販売機")
+                }
+                if self.toilet.babyEatingSpace{
+                    self.booleans.append("飲食スペース")
+                }
+                
+                
+                
+
+                if self.toilet.babyChair{
+                    self.booleans.append("ベビーチェア")
+                }
+                if self.toilet.babySoffa{
+                    self.booleans.append("ソファ")
+                }
+                if self.toilet.babyKidsToilet{
+                    self.booleans.append("キッズトイレ")
+                }
+                if self.toilet.babyKidsSpace{
+                    self.booleans.append("キッズスペース")
+                }
+                if self.toilet.babyHeightMeasure{
+                    self.booleans.append("身長計")
+                }
+                if self.toilet.babyWeightMeasure{
+                    self.booleans.append("体重計")
+                }
+
+                if self.toilet.babyToy{
+                    self.booleans.append("おもちゃ")
+                }
+                if self.toilet.babyFancy{
+                    self.booleans.append("おしゃれ")
+                }
+                if self.toilet.babySmellGood{
+                    self.booleans.append("良い香り")
+                }
+                
                 
                 self.toilet.distance = Double(distance)
+                
+                self.booleansTableView.reloadData()
                 
                 self.layoutInfoReady()
             

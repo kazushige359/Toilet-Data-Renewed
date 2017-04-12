@@ -10,5 +10,6 @@ import UIKit
 
 class BooleanTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var booleanName: UILabel!
        
 }

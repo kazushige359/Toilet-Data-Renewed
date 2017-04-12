@@ -16,23 +16,28 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyS-qq-qra">
-                        <rect key="frame" x="13" y="10" width="294" height="23"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyS-qq-qra">
+                        <rect key="frame" x="18" y="10" width="289" height="23"/>
+                        <color key="backgroundColor" red="0.31764705882352939" green="0.6705882352941176" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="SyS-qq-qra" secondAttribute="trailing" constant="5" id="3Ka-Mt-v79"/>
-                    <constraint firstItem="SyS-qq-qra" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="STJ-39-kEm"/>
+                    <constraint firstItem="SyS-qq-qra" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="STJ-39-kEm"/>
                     <constraint firstAttribute="bottomMargin" secondItem="SyS-qq-qra" secondAttribute="bottom" constant="2" id="aaR-84-oMW"/>
                     <constraint firstItem="SyS-qq-qra" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="tPX-LI-xjy"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.31764705879999999" green="0.6705882353" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="booleanName" destination="SyS-qq-qra" id="o6U-eX-x4F"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>
