@@ -22,52 +22,175 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     
     @IBOutlet weak var availableTimeLabel: UITextField!
     
-    @IBOutlet weak var japaneseToiletLabel: UILabel!
     
-    @IBOutlet weak var japaneseToiletLabelSwitch: UISwitch!
-    @IBOutlet weak var westernToiletLabel: UILabel!
-   
-    @IBOutlet weak var westernToiletLabelSwitch: UISwitch!
-   
-    @IBOutlet weak var onlyFemaleLabel: UILabel!
+    @IBOutlet weak var japaneseToiletSwitch: UISwitch!
+    
+    @IBOutlet weak var westernToiletSwitch: UISwitch!
+    
+    @IBOutlet weak var onlyFemalSwitch: UISwitch!
+    
+    @IBOutlet weak var unisexSwitch: UISwitch!
+    
+    @IBOutlet weak var washletSwitch: UISwitch!
+    
+    @IBOutlet weak var warmSeatSwitch: UISwitch!
+    
+    @IBOutlet weak var autoOpenBenkiSwitch: UISwitch!
+    
+    @IBOutlet weak var noVirusSwitch: UISwitch!
+    
+    @IBOutlet weak var paperForBenkiSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var cleanerBenkiSwitch: UISwitch!
+    
+    @IBOutlet weak var autoToiletWashSwitch: UISwitch!
+    
+    @IBOutlet weak var sensorHandWashSwitch: UISwitch!
+    
+    @IBOutlet weak var handSoapSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var autoHandSoapSwitch: UISwitch!
+    
+    @IBOutlet weak var paperTowelSwitch: UISwitch!
+    
+    @IBOutlet weak var handDrierSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var otohimeSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var napkinSellingSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var makeRoomSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var clothesSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var baggageSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var wheelChairSwitch: UISwitch!
+    
+    
+    
+    @IBOutlet weak var wheelChiarAccess: UISwitch!
+    
+    
+    @IBOutlet weak var handRailSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var callHelpSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var ostomateSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var writtenEnglishSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var brailleSwitch: UISwitch!
+    
+    @IBOutlet weak var voiceGuideSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var toiletFancySwitch: UISwitch!
+    
+    
+    @IBOutlet weak var toiletSmellGood: UISwitch!
+    
+    
+    @IBOutlet weak var toiletWideSpaceSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var noNeedAskSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var parkingSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var airConditionSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var wifiSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var milkSpaceSwitch: UISwitch!
+    
+    
+    
+    @IBOutlet weak var onlyFamaleBabyRoom: UISwitch!
+    
+    
+    @IBOutlet weak var babyRoomMaleEnterSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var babyRoomPersonalSpace: UISwitch!
+    
+    
+    @IBOutlet weak var babyRoomPersonalWithLock: UISwitch!
+    
+    
+    @IBOutlet weak var babyRoomWideSpaceSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var babyCarRentalSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var babyCarAccessSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var omutuSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var hipWashingStuffSwitch: UISwitch!
+    
+    @IBOutlet weak var omutuTrashCanSwitch: UISwitch!
+    
+    @IBOutlet weak var omutuSellingSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var babyRoomSinkSwitch: UISwitch!
+    
+    @IBOutlet weak var babyWashStandSwitch: UISwitch!
+    
+    @IBOutlet weak var babyRoomHotWaterSwitch: UISwitch!
+    
+    @IBOutlet weak var babyRoomMicrowaveSwitch: UISwitch!
+    
+    @IBOutlet weak var babyRoomSellingWaterSwitch: UISwitch!
+    
+    @IBOutlet weak var babyRoomFoodSellingSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var babyRoomEatingSpace: UISwitch!
+    
+    
+    @IBOutlet weak var babyChairSwitch: UISwitch!
+    
+    @IBOutlet weak var soffaSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var kidsToiletSwitch: UISwitch!
+    
+    @IBOutlet weak var kidsSpaceSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var heightMeasureSwitch: UISwitch!
+    
+    @IBOutlet weak var weightMeasureSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var babyToySwitch: UISwitch!
+    
+    @IBOutlet weak var babyRoomFancySwitch: UISwitch!
+    
+    @IBOutlet weak var babyRoomGoodSmellSwitch: UISwitch!
+    
   
-    @IBOutlet weak var onlyFemaleLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var unisexLabel: UILabel!
-    
-    @IBOutlet weak var unisexLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var washletLabel: UILabel!
-    
-    @IBOutlet weak var washletLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var warmToiletLabel: UILabel!
-    
-    @IBOutlet weak var warmToiletLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var omutuLabel: UILabel!
-    
-    @IBOutlet weak var omutuLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var milkspaceLabel: UILabel!
-    
-    @IBOutlet weak var milkspaceLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var makeroomLabel: UILabel!
-    
-    @IBOutlet weak var makeroomLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var baggageSpaceLabel: UILabel!
-    
-    @IBOutlet weak var baggageSpaceLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var wheelChairLabel: UILabel!
-    
-    @IBOutlet weak var wheelChairLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var ostomateLabel: UILabel!
-    
-    @IBOutlet weak var ostomateLabelSwitch: UISwitch!
     
     @IBOutlet weak var accessTextView: UITextView!
     
@@ -160,19 +283,19 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         
         //Commneted 4pm 5 Feb
        
-        
-        washletLabelSwitch.isOn = false
-        wheelChairLabelSwitch.isOn = false
-        onlyFemaleLabelSwitch.isOn = false
-        unisexLabelSwitch.isOn = false
-        makeroomLabelSwitch.isOn = false
-        milkspaceLabelSwitch.isOn = false
-        omutuLabelSwitch.isOn = false
-        ostomateLabelSwitch.isOn = false
-        japaneseToiletLabelSwitch.isOn = false
-        westernToiletLabelSwitch.isOn = false
-        warmToiletLabelSwitch.isOn = false
-        baggageSpaceLabelSwitch.isOn = false
+//        
+//        washletLabelSwitch.isOn = false
+//        wheelChairLabelSwitch.isOn = false
+//        onlyFemaleLabelSwitch.isOn = false
+//        unisexLabelSwitch.isOn = false
+//        makeroomLabelSwitch.isOn = false
+//        milkspaceLabelSwitch.isOn = false
+//        omutuLabelSwitch.isOn = false
+//        ostomateLabelSwitch.isOn = false
+//        japaneseToiletLabelSwitch.isOn = false
+//        westernToiletLabelSwitch.isOn = false
+//        warmToiletLabelSwitch.isOn = false
+//        baggageSpaceLabelSwitch.isOn = false
         
         starView.rating = 3.0
         starView.settings.filledColor = UIColor.yellow
@@ -191,18 +314,18 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         //500 to 300
          mapView.setRegion(region, animated: true)
         
-         washletLabel.textColor = UIColor.gray
-         wheelChairLabel.textColor = UIColor.gray
-         onlyFemaleLabel.textColor = UIColor.gray
-         unisexLabel.textColor = UIColor.gray
-         makeroomLabel.textColor = UIColor.gray
-         milkspaceLabel.textColor = UIColor.gray
-         omutuLabel.textColor = UIColor.gray
-         ostomateLabel.textColor = UIColor.gray
-         japaneseToiletLabel.textColor = UIColor.gray
-         westernToiletLabel.textColor = UIColor.gray
-         warmToiletLabel.textColor = UIColor.gray
-         baggageSpaceLabel.textColor = UIColor.gray
+//         washletLabel.textColor = UIColor.gray
+//         wheelChairLabel.textColor = UIColor.gray
+//         onlyFemaleLabel.textColor = UIColor.gray
+//         unisexLabel.textColor = UIColor.gray
+//         makeroomLabel.textColor = UIColor.gray
+//         milkspaceLabel.textColor = UIColor.gray
+//         omutuLabel.textColor = UIColor.gray
+//         ostomateLabel.textColor = UIColor.gray
+//         japaneseToiletLabel.textColor = UIColor.gray
+//         westernToiletLabel.textColor = UIColor.gray
+//         warmToiletLabel.textColor = UIColor.gray
+//         baggageSpaceLabel.textColor = UIColor.gray
         
        
         
@@ -606,116 +729,116 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     
     
     
-    @IBAction func washletButtonTapped(_ sender: Any) {
-        if washletLabelSwitch.isOn == true {
-            washletLabel.textColor = UIColor.black
-        }else{
-            //wheelChairLabelSwitch.isOn == false
-            washletLabel.textColor = UIColor.gray
-        }
-    }
-    
-    @IBAction func wheelChairButtonTapped(_ sender: Any) {
-        if wheelChairLabelSwitch.isOn == true {
-            wheelChairLabel.textColor = UIColor.black
-        }else{
-            //wheelChairLabelSwitch.isOn == false
-             wheelChairLabel.textColor = UIColor.gray
-            
-        }}
-   
-    @IBAction func onlyFemaleButtonTapped(_ sender: Any) {
-        if onlyFemaleLabelSwitch.isOn == true {
-            onlyFemaleLabel.textColor = UIColor.black
-        }
-        else{
-            onlyFemaleLabel.textColor = UIColor.gray
-        }
-    }
-   
-    @IBAction func unisexButtonTapped(_ sender: Any) {
-        if unisexLabelSwitch.isOn == true {
-            unisexLabel.textColor = UIColor.black
-        }else{
-            unisexLabel.textColor = UIColor.gray
-        }
-    }
-    
-   
-    @IBAction func makeroomButtonTapped(_ sender: Any) {
-        if makeroomLabelSwitch.isOn == true {
-            makeroomLabel.textColor = UIColor.black
-        }else{
-            makeroomLabel.textColor = UIColor.gray
-        }
-    }
-    
-    @IBAction func milkspaceButtonTapped(_ sender: Any) {
-        if milkspaceLabelSwitch.isOn == true {
-            milkspaceLabel.textColor = UIColor.black
-        }else{
-            milkspaceLabel.textColor = UIColor.gray
-        }
-    }
-    
-    
-    @IBAction func omutuButtonTapped(_ sender: Any) {
-        if omutuLabelSwitch.isOn == true{
-            omutuLabel.textColor = UIColor.black
-        }else{
-            
-            omutuLabel.textColor = UIColor.gray
-        }
-
-    }
-   
-    @IBAction func ostomateButtonTapped(_ sender: Any) {
-        if ostomateLabelSwitch.isOn == true {
-            ostomateLabel.textColor = UIColor.black
-        }else{
-            ostomateLabel.textColor = UIColor.gray
-        }
-
-    }
-
-    @IBAction func japaneseButtonTapped(_ sender: Any) {
-        if japaneseToiletLabelSwitch.isOn == true{
-            japaneseToiletLabel.textColor = UIColor.black
-        }else{
-            japaneseToiletLabel.textColor = UIColor.gray
-        }
-
-    }
-   
-    @IBAction func westernButtonTapped(_ sender: Any) {
-        if westernToiletLabelSwitch.isOn == true{
-            westernToiletLabel.textColor = UIColor.black
-        }else{
-            
-            westernToiletLabel.textColor = UIColor.gray
-        }
-    }
-  
-    @IBAction func warmSeatButtonTapped(_ sender: Any) {
-        if warmToiletLabelSwitch.isOn == true{
-            warmToiletLabel.textColor = UIColor.black
-        }else{
-            
-            warmToiletLabel.textColor = UIColor.gray
-        }
-    }
-    
-    @IBAction func baggageSpaceButtonTapped(_ sender: Any) {
-        
-        if baggageSpaceLabelSwitch.isOn == true{
-            baggageSpaceLabel.textColor = UIColor.black
-        }else{
-            
-            baggageSpaceLabel.textColor = UIColor.gray
-        }
-
-    }
-    
+//    @IBAction func washletButtonTapped(_ sender: Any) {
+//        if washletLabelSwitch.isOn == true {
+//            washletLabel.textColor = UIColor.black
+//        }else{
+//            //wheelChairLabelSwitch.isOn == false
+//            washletLabel.textColor = UIColor.gray
+//        }
+//    }
+//    
+//    @IBAction func wheelChairButtonTapped(_ sender: Any) {
+//        if wheelChairLabelSwitch.isOn == true {
+//            wheelChairLabel.textColor = UIColor.black
+//        }else{
+//            //wheelChairLabelSwitch.isOn == false
+//             wheelChairLabel.textColor = UIColor.gray
+//            
+//        }}
+//   
+//    @IBAction func onlyFemaleButtonTapped(_ sender: Any) {
+//        if onlyFemaleLabelSwitch.isOn == true {
+//            onlyFemaleLabel.textColor = UIColor.black
+//        }
+//        else{
+//            onlyFemaleLabel.textColor = UIColor.gray
+//        }
+//    }
+//   
+//    @IBAction func unisexButtonTapped(_ sender: Any) {
+//        if unisexLabelSwitch.isOn == true {
+//            unisexLabel.textColor = UIColor.black
+//        }else{
+//            unisexLabel.textColor = UIColor.gray
+//        }
+//    }
+//    
+//   
+//    @IBAction func makeroomButtonTapped(_ sender: Any) {
+//        if makeroomLabelSwitch.isOn == true {
+//            makeroomLabel.textColor = UIColor.black
+//        }else{
+//            makeroomLabel.textColor = UIColor.gray
+//        }
+//    }
+//    
+//    @IBAction func milkspaceButtonTapped(_ sender: Any) {
+//        if milkspaceLabelSwitch.isOn == true {
+//            milkspaceLabel.textColor = UIColor.black
+//        }else{
+//            milkspaceLabel.textColor = UIColor.gray
+//        }
+//    }
+//    
+//    
+//    @IBAction func omutuButtonTapped(_ sender: Any) {
+//        if omutuLabelSwitch.isOn == true{
+//            omutuLabel.textColor = UIColor.black
+//        }else{
+//            
+//            omutuLabel.textColor = UIColor.gray
+//        }
+//
+//    }
+//   
+//    @IBAction func ostomateButtonTapped(_ sender: Any) {
+//        if ostomateLabelSwitch.isOn == true {
+//            ostomateLabel.textColor = UIColor.black
+//        }else{
+//            ostomateLabel.textColor = UIColor.gray
+//        }
+//
+//    }
+//
+//    @IBAction func japaneseButtonTapped(_ sender: Any) {
+//        if japaneseToiletLabelSwitch.isOn == true{
+//            japaneseToiletLabel.textColor = UIColor.black
+//        }else{
+//            japaneseToiletLabel.textColor = UIColor.gray
+//        }
+//
+//    }
+//   
+//    @IBAction func westernButtonTapped(_ sender: Any) {
+//        if westernToiletLabelSwitch.isOn == true{
+//            westernToiletLabel.textColor = UIColor.black
+//        }else{
+//            
+//            westernToiletLabel.textColor = UIColor.gray
+//        }
+//    }
+//  
+//    @IBAction func warmSeatButtonTapped(_ sender: Any) {
+//        if warmToiletLabelSwitch.isOn == true{
+//            warmToiletLabel.textColor = UIColor.black
+//        }else{
+//            
+//            warmToiletLabel.textColor = UIColor.gray
+//        }
+//    }
+//    
+//    @IBAction func baggageSpaceButtonTapped(_ sender: Any) {
+//        
+//        if baggageSpaceLabelSwitch.isOn == true{
+//            baggageSpaceLabel.textColor = UIColor.black
+//        }else{
+//            
+//            baggageSpaceLabel.textColor = UIColor.gray
+//        }
+//
+//    }
+//    
     
    
     
