@@ -26,14 +26,6 @@ import Cosmos
             cell.booleanName.text = booleans[indexPath.row]
             
             print(" cell.booleanName.text =  \(cell.booleanName.text)")
-            
-            //cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
-            
-            
-            
-            
-            
-            
             return cell
         }
         
@@ -48,92 +40,60 @@ import Cosmos
         
 
         @IBOutlet weak var booleansTableView: UITableView!
-       
-        
         @IBOutlet weak var backgroundScrollView: UIScrollView!
-        
         @IBOutlet weak var bigPicture: UIImageView!
-        
         @IBOutlet weak var placeNameLabel: UILabel!
-        
         @IBOutlet weak var typeAndDistanceLabel: UILabel!
-        
         @IBOutlet weak var availableTimeAndWaitingTImeLabel: UILabel!
-        
-        
         @IBOutlet weak var starImage: CosmosView!
         
         
         
         @IBOutlet weak var reviewCountLabel: UILabel!
-        
         @IBOutlet weak var mapView: MKMapView!
-        
         @IBOutlet weak var picture1: UIImageView!
-        
         @IBOutlet weak var picture2: UIImageView!
-        
         @IBOutlet weak var picture3: UIImageView!
         
       //  @IBOutlet weak var tableView: UITableView!
         
         @IBOutlet weak var buttonShowDetailOutlet: UIButton!
-        
         @IBOutlet weak var buttonKansouOutlet: UIButton!
-        
         @IBOutlet weak var buttonEditInfoOutlet: UIButton!
-        
         @IBOutlet weak var addressTextView: UILabel!
-        
         @IBOutlet weak var howToAccessTextView: UILabel!
-        
         @IBOutlet weak var buttonGoOutlet: UIButton!
         @IBOutlet weak var buttonShowAllReviewsOutlet: UIButton!
         
         
         @IBOutlet weak var firstPosterPicture: UIImageView!
         @IBOutlet weak var firstPosterNameLabel: UILabel!
-        
         @IBOutlet weak var firstPosterLikeLabel: UILabel!
-        
         @IBOutlet weak var firstPosterFavoriteLabel: UILabel!
         @IBOutlet weak var firstPosterHelpLabel: UILabel!
         
         
         
         @IBOutlet weak var lastEditerPicture: UIImageView!
-        
         @IBOutlet weak var lastEditerNameLabel: UILabel!
-        
         @IBOutlet weak var lastEditerLikeLabel: UILabel!
         @IBOutlet weak var lastEditerFavoriteLabel: UILabel!
-        
         @IBOutlet weak var lastEditerHelpLabel: UILabel!
         
         
         @IBOutlet weak var reviewOneUserImage: UIImageView!
-        
         @IBOutlet weak var reviewOneUserNameLabel: UILabel!
-        
         @IBOutlet weak var reviewOneUserLikeCount: UILabel!
-        
         @IBOutlet weak var reviewOneUserFavoriteCount: UILabel!
-        
         @IBOutlet weak var reviewOneUserHelpCount: UILabel!
-        
         @IBOutlet weak var reviewOneFeedbackTextView: UITextView!
         
         
         @IBOutlet weak var reviewTwoUserImage: UIImageView!
-        
         @IBOutlet weak var reviewTwoUserNameLabel: UILabel!
-        
         @IBOutlet weak var reviewTwoUserLikeCount: UILabel!
-        
         @IBOutlet weak var reviewTwoUserFavoriteCount: UILabel!
-        
         @IBOutlet weak var reviewTwoUserHelpCount: UILabel!
-        
         @IBOutlet weak var reviewTwoUserFeedbackTextView: UITextView!
         
         
@@ -377,7 +337,7 @@ import Cosmos
                 
                 let reviewCount = snapshotValue?["reviewCount"] as? Int
                 self.toilet.reviewCount = reviewCount!
-                print(" reviewCount= \(reviewCount)")
+                print(" reviewCount= \(String(describing: reviewCount))")
                 
                 
                 let averageWait = snapshotValue?["averageWait"] as? Int
@@ -949,6 +909,8 @@ import Cosmos
 //        }
         
         
+        
+        
         @IBAction func okiniiriButtonTapped(_ sender: Any)
         {   firebaseLoadedOnce = true
             let firebaseRef = FIRDatabase.database().reference()
@@ -959,7 +921,7 @@ import Cosmos
                 if self.favoriteAdded == false{
                     print("FVFVsnapshot = \(snapshot)")
                     print("FVFVsnapshot.key = \(snapshot.key)")
-                    print("FVFVsnapshot.value = \(snapshot.value)")
+                    print("FVFVsnapshot.value = \(String(describing: snapshot.value))")
                     let snapValue = snapshot.value as? Int
                     let newFavorite = snapValue! + 1
                     totalFavoriteCountRef.setValue(newFavorite)
@@ -974,9 +936,9 @@ import Cosmos
         }
         
         
-        @IBAction func hensyuuButtonTapped(_ sender: Any) {
-            performSegue(withIdentifier: "EditInformationSegue", sender: nil)
-        }
+//        @IBAction func hensyuuButtonTapped(_ sender: Any) {
+//            performSegue(withIdentifier: "EditInformationSegue", sender: nil)
+//        }
         
         
        func goAction() {
@@ -1000,7 +962,7 @@ import Cosmos
                 if self.youwentAdded == false{
                     print("FVFVsnapshot = \(snapshot)")
                     print("FVFVsnapshot.key = \(snapshot.key)")
-                    print("FVFVsnapshot.value = \(snapshot.value)")
+                    print("FVFVsnapshot.value = \(String(describing: snapshot.value))")
                     let snapValue = snapshot.value as? Int
                     let newHelped = snapValue! + 1
                     addedTotalHelpedCountRef.setValue(newHelped)
@@ -1012,7 +974,7 @@ import Cosmos
                 if self.youwentEdited == false{
                     print("FVFVsnapshot = \(snapshot)")
                     print("FVFVsnapshot.key = \(snapshot.key)")
-                    print("FVFVsnapshot.value = \(snapshot.value)")
+                    print("FVFVsnapshot.value = \(String(describing: snapshot.value))")
                     let snapValue = snapshot.value as? Int
                     let newHelped = snapValue! + 1
                     editedTotalHelpedCountRef.setValue(newHelped)
@@ -1041,7 +1003,9 @@ import Cosmos
                 
             }
             
-            if segue.identifier == "EditInformationSegue"{
+            
+            
+            if segue.identifier == "placeDetailToEditSegue"{
                 let nextV = segue.destination as! EditTableViewController
                 
                 let coordinate: CLLocationCoordinate2D = toilet.loc.coordinate
@@ -1198,7 +1162,9 @@ import Cosmos
         }
         
         @IBAction func buttonEditTapped(_ sender: Any) {
-            //"placeDetailToEditSegue"
+            print("edit tapped 11")
+            performSegue(withIdentifier:"placeDetailToEditSegue", sender: nil)
+            
         }
         @IBAction func buttonGoToThisPlaceTapped(_ sender: Any) {
             goAction()

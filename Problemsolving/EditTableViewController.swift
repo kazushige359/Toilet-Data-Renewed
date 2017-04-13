@@ -686,7 +686,24 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "editTabletoDetailSegue", sender: nil)
+        print("Back Buton Tapped")
+        let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
+        let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
+        let vc = navigationContoller.topViewController as! PlaceDetailViewController
+        vc.toilet = toilet
+        
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        
+        self.present(navigationContoller, animated: false, completion: nil)
+        
+        //dismiss(animated: true, completion: nil)
+        
+        //performSegue(withIdentifier: "editTabletoDetailSegue", sender: nil)
         
     }
     

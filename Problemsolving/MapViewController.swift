@@ -96,11 +96,39 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        print("Segue 111")
     
+        let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
+        let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
+        let nextVC = navigationContoller.topViewController as! PlaceDetailViewController
+        //vc.toilet = toilet
+        
+         print("Segue 222")
+        //let nextVC = segue.destination as! PlaceDetailViewController
+                   // let nextVC = segue.destination as! DetailViewController
+        nextVC.toilet = toilets[indexPath.row]
+        // nextVC.toilet = sender as! Toilet
+        nextVC.filter = filter
+        nextVC.search = search
+        
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+
+        
+        print("Segue 333")
+        
+        self.present(navigationContoller, animated: false, completion: nil)
         
         
-//        let storyboard = UIStoryboard(name: "Main.storyboard", bundle: nil)
-//        let controller = storyboard.instantiateViewController(withIdentifier: "PlaceDetailViewController") as UIViewController
+        //
+        
+        
+       //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      // let controller = storyboard.instantiateViewController(withIdentifier: "PlaceDetailViewController") as UIViewController
 //        
 //        controller.toilet.key = toilets[indexPath.row].key
 //        self.storyboard.instantiateViewControllerWithIdentifier("PlaceDetailViewController")
@@ -113,13 +141,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //April 11 1pm for creating table view drawer....
         
         
-        performSegue(withIdentifier: "mapToNewDetailSegue", sender: toilets[indexPath.row])
         
-        //April 8 18 pm 
         
-        //mapToPlaceDetailSegue
-        //performSegue(withIdentifier: "DetailSegue", sender: toilets[indexPath.row])
-        print("sender = \(toilets[indexPath.row])")
+        
+        
+//        performSegue(withIdentifier: "mapToNewDetailSegue", sender: toilets[indexPath.row])
+//        
+//        print("sender = \(toilets[indexPath.row])")
+        
+        //commented April 13 for segue programattilcaly
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -141,16 +171,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //            
 //            ////////////////////Commented April 8
 //        }
+        
+        
+        ///////
+//        let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
+//        let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
+//        let vc = navigationContoller.topViewController as! PlaceDetailViewController
+//        vc.toilet = toilet
+//
+        
+        /////
 
         if segue.identifier == "mapToNewDetailSegue"
         {
             //April 8 18 pm
-            let nextVC = segue.destination as! PlaceDetailViewController
-            //let nextVC = segue.destination as! DetailViewController
-            nextVC.toilet = sender as! Toilet
-           // nextVC.toilet = sender as! Toilet
-            nextVC.filter = filter
-            nextVC.search = search
+//            let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
+//            let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
+//            let  = navigationContoller.topViewController as! PlaceDetailViewController
+//            vc.toilet = toilet
+//
+//            //let nextVC = segue.destination as! PlaceDetailViewController
+//            //let nextVC = segue.destination as! DetailViewController
+//            nextVC.toilet = sender as! Toilet
+//           // nextVC.toilet = sender as! Toilet
+//            nextVC.filter = filter
+//            nextVC.search = search
             
             
 ////////////////////Commented April 8
