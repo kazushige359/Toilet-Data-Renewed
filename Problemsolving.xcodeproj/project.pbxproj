@@ -61,6 +61,8 @@
 		24B6FB041E2EE81500E1330A /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB031E2EE81500E1330A /* Search.swift */; };
 		24B6FB061E30395900E1330A /* RighttoLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB051E30395800E1330A /* RighttoLeft.swift */; };
 		24B6FB0A1E30399200E1330A /* LefttoRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB091E30399200E1330A /* LefttoRight.swift */; };
+		24B7EC3E1E9F180D00368644 /* PlaceDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B7EC3D1E9F180D00368644 /* PlaceDetailViewController.storyboard */; };
+		24B7EC401E9F196600368644 /* FilterTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B7EC3F1E9F196600368644 /* FilterTableViewController.storyboard */; };
 		24CD2B4C1E9E27A800F438CE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CD2B4B1E9E27A800F438CE /* Post.swift */; };
 		24DA07F21E01357A00869655 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DA07F11E01357A00869655 /* MapKit.framework */; };
 		24DF78961E36EB410081CDA0 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */; };
@@ -161,6 +163,8 @@
 		24B6FB031E2EE81500E1330A /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		24B6FB051E30395800E1330A /* RighttoLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RighttoLeft.swift; sourceTree = "<group>"; };
 		24B6FB091E30399200E1330A /* LefttoRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LefttoRight.swift; sourceTree = "<group>"; };
+		24B7EC3D1E9F180D00368644 /* PlaceDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceDetailViewController.storyboard; sourceTree = "<group>"; };
+		24B7EC3F1E9F196600368644 /* FilterTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilterTableViewController.storyboard; sourceTree = "<group>"; };
 		24CD2B4B1E9E27A800F438CE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		24DA07F11E01357A00869655 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 				2423A4231E21930000DD2AF4 /* ReviewTableViewCell.xib */,
 				240128961E0A02CE002FBDE1 /* TableViewCell.xib */,
 				2414549F1DE2C4F90066AB62 /* Main.storyboard */,
+				24B7EC3F1E9F196600368644 /* FilterTableViewController.storyboard */,
+				24B7EC3D1E9F180D00368644 /* PlaceDetailViewController.storyboard */,
 				241454A51DE2C4F90066AB62 /* Assets.xcassets */,
 				241454A71DE2C4F90066AB62 /* LaunchScreen.storyboard */,
 				241454CC1DE2C5F80066AB62 /* GoogleService-Info.plist */,
@@ -512,6 +518,8 @@
 			files = (
 				241454CD1DE2C5F80066AB62 /* GoogleService-Info.plist in Resources */,
 				240128981E0A02CE002FBDE1 /* TableViewCell.xib in Resources */,
+				24B7EC401E9F196600368644 /* FilterTableViewController.storyboard in Resources */,
+				24B7EC3E1E9F180D00368644 /* PlaceDetailViewController.storyboard in Resources */,
 				241454A91DE2C4F90066AB62 /* LaunchScreen.storyboard in Resources */,
 				2423A4251E21930000DD2AF4 /* ReviewTableViewCell.xib in Resources */,
 				240F79891E9D9F9400EFF3CC /* BooleanTableViewCell.xib in Resources */,

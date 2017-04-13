@@ -25,55 +25,101 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     @IBOutlet weak var availableTimeLabel: UITextField!
     
-    @IBOutlet weak var washletLabel: UILabel!
     
-    @IBOutlet weak var washletLabelSwitch: UISwitch!
+    ////bbbbbbbbbbbbbbbb
     
-    @IBOutlet weak var wheelChairLabel: UILabel!
-    
-    @IBOutlet weak var wheelChairLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var onlyFemaleLabel: UILabel!
-    
-    @IBOutlet weak var onlyFemaleLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var unisexLabel: UILabel!
-    
-    @IBOutlet weak var unisexLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var makeroomLabel: UILabel!
-    
-    @IBOutlet weak var makeroomLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var milkspaceLabel: UILabel!
-    
-    @IBOutlet weak var milkspaceLabelSwitch: UISwitch!
-    
-    @IBOutlet weak var omutuLabel: UILabel!
-    
-    @IBOutlet weak var omutuLabelSwitch: UISwitch!
+    @IBOutlet weak var japaneseToiletSwitch: UISwitch!
+    @IBOutlet weak var westernToiletSwitch: UISwitch!
+    @IBOutlet weak var onlyFemalSwitch: UISwitch!
+    @IBOutlet weak var unisexSwitch: UISwitch!
+    @IBOutlet weak var washletSwitch: UISwitch!
     
     
-    @IBOutlet weak var ostomateLabel: UILabel!
-    
-    @IBOutlet weak var ostomateLabelSwitch: UISwitch!
     
     
-    @IBOutlet weak var japaneseToiletLabel: UILabel!
+    @IBOutlet weak var warmSeatSwitch: UISwitch!
+    @IBOutlet weak var autoOpenBenkiSwitch: UISwitch!
+    @IBOutlet weak var noVirusSwitch: UISwitch!
+    @IBOutlet weak var paperForBenkiSwitch: UISwitch!
+    @IBOutlet weak var cleanerBenkiSwitch: UISwitch!
+    @IBOutlet weak var autoToiletWashSwitch: UISwitch!
     
-    @IBOutlet weak var japaneseToiletLabelSwitch: UISwitch!
     
-    @IBOutlet weak var westernToiletLabel: UILabel!
+    @IBOutlet weak var sensorHandWashSwitch: UISwitch!
+    @IBOutlet weak var handSoapSwitch: UISwitch!
+    @IBOutlet weak var autoHandSoapSwitch: UISwitch!
+    @IBOutlet weak var paperTowelSwitch: UISwitch!
+    @IBOutlet weak var handDrierSwitch: UISwitch!
+    @IBOutlet weak var otohimeSwitch: UISwitch!
+    @IBOutlet weak var napkinSellingSwitch: UISwitch!
+    @IBOutlet weak var makeRoomSwitch: UISwitch!
+    @IBOutlet weak var clothesSwitch: UISwitch!
+    @IBOutlet weak var baggageSwitch: UISwitch!
     
-    @IBOutlet weak var westernToiletLabelSwitch: UISwitch!
     
-    @IBOutlet weak var warmSeatLabel: UILabel!
     
-    @IBOutlet weak var warmSeatLabelSwitch: UISwitch!
     
-    @IBOutlet weak var baggageSpaceLabel: UILabel!
     
-    @IBOutlet weak var baggageSpaceLabelSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var wheelChairSwitch: UISwitch!
+    @IBOutlet weak var wheelChiarAccess: UISwitch!
+    @IBOutlet weak var handRailSwitch: UISwitch!
+    @IBOutlet weak var callHelpSwitch: UISwitch!
+    @IBOutlet weak var ostomateSwitch: UISwitch!
+    @IBOutlet weak var writtenEnglishSwitch: UISwitch!
+    @IBOutlet weak var brailleSwitch: UISwitch!
+    @IBOutlet weak var voiceGuideSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var toiletFancySwitch: UISwitch!
+    @IBOutlet weak var toiletSmellGood: UISwitch!
+    @IBOutlet weak var toiletWideSpaceSwitch: UISwitch!
+    @IBOutlet weak var noNeedAskSwitch: UISwitch!
+    @IBOutlet weak var parkingSwitch: UISwitch!
+    @IBOutlet weak var airConditionSwitch: UISwitch!
+    @IBOutlet weak var wifiSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var milkSpaceSwitch: UISwitch!
+    @IBOutlet weak var onlyFamaleBabyRoom: UISwitch!
+    @IBOutlet weak var babyRoomMaleEnterSwitch: UISwitch!
+    @IBOutlet weak var babyRoomPersonalSpace: UISwitch!
+    @IBOutlet weak var babyRoomPersonalWithLock: UISwitch!
+    @IBOutlet weak var babyRoomWideSpaceSwitch: UISwitch!
+    
+    
+    
+    @IBOutlet weak var babyCarRentalSwitch: UISwitch!
+    @IBOutlet weak var babyCarAccessSwitch: UISwitch!
+    @IBOutlet weak var omutuSwitch: UISwitch!
+    @IBOutlet weak var hipWashingStuffSwitch: UISwitch!
+    @IBOutlet weak var omutuTrashCanSwitch: UISwitch!
+    @IBOutlet weak var omutuSellingSwitch: UISwitch!
+    
+    
+    @IBOutlet weak var babyRoomSinkSwitch: UISwitch!
+    @IBOutlet weak var babyWashStandSwitch: UISwitch!
+    @IBOutlet weak var babyRoomHotWaterSwitch: UISwitch!
+    @IBOutlet weak var babyRoomMicrowaveSwitch: UISwitch!
+    @IBOutlet weak var babyRoomSellingWaterSwitch: UISwitch!
+    @IBOutlet weak var babyRoomFoodSellingSwitch: UISwitch!
+    @IBOutlet weak var babyRoomEatingSpace: UISwitch!
+    
+    
+    @IBOutlet weak var babyChairSwitch: UISwitch!
+    @IBOutlet weak var soffaSwitch: UISwitch!
+    @IBOutlet weak var kidsToiletSwitch: UISwitch!
+    @IBOutlet weak var kidsSpaceSwitch: UISwitch!
+    @IBOutlet weak var heightMeasureSwitch: UISwitch!
+    @IBOutlet weak var weightMeasureSwitch: UISwitch!
+    @IBOutlet weak var babyToySwitch: UISwitch!
+    @IBOutlet weak var babyRoomFancySwitch: UISwitch!
+    @IBOutlet weak var babyRoomGoodSmellSwitch: UISwitch!
+    
+    
+    
+   
     
     @IBOutlet weak var accessTextView: UITextView!
     
@@ -183,114 +229,6 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         //tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
-
-        
-        if toilet.washlet == true{
-            washletLabelSwitch.isOn = true
-            washletLabel.textColor = UIColor.black
-            
-        }else{
-            washletLabelSwitch.isOn = false
-            washletLabel.textColor = UIColor.gray
-            //Added at 6pm
-        }
-        
-        if toilet.wheelchair == true{
-             wheelChairLabelSwitch.isOn = true
-             wheelChairLabel.textColor = UIColor.black
-        }else{
-             wheelChairLabelSwitch.isOn = false
-             wheelChairLabel.textColor = UIColor.gray
-        }
-        
-        if toilet.onlyFemale == true{
-           onlyFemaleLabelSwitch.isOn = true
-           onlyFemaleLabel.textColor = UIColor.black
-
-        }
-        else{
-            onlyFemaleLabelSwitch.isOn = false
-            onlyFemaleLabel.textColor = UIColor.gray
-        }
-       
-        
-        if toilet.unisex == true{
-            unisexLabelSwitch.isOn = true
-            unisexLabel.textColor = UIColor.black
-        }else{
-            unisexLabelSwitch.isOn = false
-            unisexLabel.textColor = UIColor.gray
-        }
-        
-        if toilet.makeuproom == true{
-             makeroomLabelSwitch.isOn = true
-            makeroomLabel.textColor = UIColor.black
-        }else{
-            makeroomLabelSwitch.isOn = false
-            makeroomLabel.textColor = UIColor.gray
-        }
-        
-        if toilet.milkspace == true{
-            milkspaceLabelSwitch.isOn = true
-            milkspaceLabel.textColor = UIColor.black
-        }else{
-            milkspaceLabelSwitch.isOn = false
-            milkspaceLabel.textColor = UIColor.gray
-        }
-      
-        
-        if toilet.omutu == true{
-            omutuLabelSwitch.isOn = true
-            omutuLabel.textColor = UIColor.black
-
-        }else{
-            omutuLabelSwitch.isOn = false
-            omutuLabel.textColor = UIColor.gray
-
-        }
-       
-        if toilet.ostomate == true{
-            ostomateLabelSwitch.isOn = true
-            ostomateLabel.textColor = UIColor.black
-        }else{
-            ostomateLabelSwitch.isOn = false
-            ostomateLabel.textColor = UIColor.gray
-
-        }
-        
-        if toilet.japanesetoilet == true{
-            japaneseToiletLabelSwitch.isOn = true
-            japaneseToiletLabel.textColor = UIColor.black
-        }else{
-            japaneseToiletLabelSwitch.isOn = false
-            japaneseToiletLabel.textColor = UIColor.gray
-
-        }
-        
-        
-        if toilet.westerntoilet == true{
-           westernToiletLabelSwitch.isOn = true
-            westernToiletLabel.textColor = UIColor.black
-        }else{
-             westernToiletLabelSwitch.isOn = false
-           westernToiletLabel.textColor = UIColor.gray
-        }
-        
-        if toilet.warmSeat == true{
-            warmSeatLabelSwitch.isOn = true
-            warmSeatLabel.textColor = UIColor.black
-        }else{
-            warmSeatLabelSwitch.isOn = false
-            warmSeatLabel.textColor = UIColor.gray
-        }
-        
-        if toilet.baggageSpace == true{
-            baggageSpaceLabelSwitch.isOn = true
-            baggageSpaceLabel.textColor = UIColor.black
-        }else{
-            baggageSpaceLabelSwitch.isOn = false
-            baggageSpaceLabel.textColor = UIColor.gray
-        }
         
         placeNameLabel.text = toilet.key
         placeCategoryLabel.text = toilet.type
@@ -304,7 +242,258 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         let region = MKCoordinateRegionMakeWithDistance(pincoodinate, 1300, 1300)
         //500 to 300
         mapView.setRegion(region, animated: true)
+        
+        layoutSettings()
        
+    }
+    
+    func layoutSettings(){
+        if !toilet.japanesetoilet{
+            japaneseToiletSwitch.isOn = false
+        }
+        if !toilet.westerntoilet{
+            westernToiletSwitch.isOn = false
+        }
+        if !toilet.onlyFemale{
+            onlyFemalSwitch.isOn = false
+        }
+        if !toilet.unisex{
+            unisexSwitch.isOn = false
+        }
+        
+        
+        
+        
+        if !toilet.washlet{
+            washletSwitch.isOn = false
+        }
+        
+        if !toilet.warmSeat{
+            warmSeatSwitch.isOn = false
+        }
+        if !toilet.autoOpen{
+            autoOpenBenkiSwitch.isOn = false
+        }
+        if !toilet.noVirus{
+            noVirusSwitch.isOn = false
+        }
+        if !toilet.paperForBenki{
+            paperForBenkiSwitch.isOn = false
+        }
+
+        if !toilet.cleanerForBenki{
+            cleanerBenkiSwitch.isOn = false
+        }
+        if !toilet.autoToiletWash{
+            autoToiletWashSwitch.isOn = false
+        }
+        
+        
+        
+        
+        if !toilet.sensorHandWash{
+            sensorHandWashSwitch.isOn = false
+        }
+        if !toilet.handSoap{
+            handSoapSwitch.isOn = false
+        }
+        if !toilet.autoHandSoap{
+            autoHandSoapSwitch.isOn = false
+        }
+
+        if !toilet.paperTowel{
+            paperTowelSwitch.isOn = false
+        }
+        if !toilet.handDrier{
+            handDrierSwitch.isOn = false
+        }
+        
+        
+        
+        
+        if !toilet.otohime{
+            otohimeSwitch.isOn = false
+        }
+        if !toilet.napkinSelling{
+            napkinSellingSwitch.isOn = false
+        }
+        if !toilet.makeuproom{
+            makeRoomSwitch.isOn = false
+        }
+
+        if !toilet.clothes{
+            clothesSwitch.isOn = false
+        }
+        if !toilet.baggageSpace{
+            baggageSwitch.isOn = false
+        }
+        
+        
+        
+        if !toilet.wheelchair{
+            wheelChairSwitch.isOn = false
+        }
+        if !toilet.wheelchairAccess{
+            wheelChiarAccess.isOn = false
+        }
+        if !toilet.handrail{
+            handRailSwitch.isOn = false
+        }
+
+        if !toilet.callHelp{
+            callHelpSwitch.isOn = false
+        }
+        if !toilet.ostomate{
+            ostomateSwitch.isOn = false
+        }
+        if !toilet.english{
+            writtenEnglishSwitch.isOn = false
+        }
+        if !toilet.braille{
+            brailleSwitch.isOn = false
+        }
+        if !toilet.voiceGuide{
+            voiceGuideSwitch.isOn = false
+        }
+        
+        
+        
+        
+
+        if !toilet.fancy{
+            toiletFancySwitch.isOn = false
+        }
+        if !toilet.smell{
+            toiletSmellGood.isOn = false
+        }
+        if !toilet.conforatableWide{
+            toiletWideSpaceSwitch.isOn = false
+        }
+        if !toilet.noNeedAsk{
+            noNeedAskSwitch.isOn = false
+        }
+        if !toilet.parking{
+            parkingSwitch.isOn = false
+        }
+
+        if !toilet.airCondition{
+            airConditionSwitch.isOn = false
+        }
+        if !toilet.wifi{
+            wifiSwitch.isOn = false
+        }
+        
+        
+        if !toilet.milkspace{
+            milkSpaceSwitch.isOn = false
+        }
+        
+        if !toilet.babyroomOnlyFemale{
+            onlyFamaleBabyRoom.isOn = false
+        }
+        
+        if !toilet.babyroomManCanEnter{
+            babyRoomMaleEnterSwitch.isOn = false
+        }
+
+        
+        
+        if !toilet.babyPersonalSpace{
+            babyRoomPersonalSpace.isOn = false
+        }
+
+        
+        if !toilet.babyPersonalSpaceWithLock{
+            babyRoomPersonalWithLock.isOn = false
+        }
+
+        if !toilet.babyRoomWideSpace{
+            babyRoomWideSpaceSwitch.isOn = false
+        }
+
+        
+        
+        
+        if !toilet.babyCarRental{
+            babyCarRentalSwitch.isOn = false
+        }
+        if !toilet.babyCarAccess{
+            babyCarAccessSwitch.isOn = false
+        }
+        if !toilet.omutu{
+            omutuSwitch.isOn = false
+        }
+
+        if !toilet.hipWashingStuff{
+            hipWashingStuffSwitch.isOn = false
+        }
+        if !toilet.babyTrashCan{
+            omutuTrashCanSwitch.isOn = false
+        }
+        if !toilet.omutuSelling{
+            omutuSellingSwitch.isOn = false
+        }
+        
+        
+        if !toilet.babyRoomSink{
+            babyRoomSinkSwitch.isOn = false
+        }
+        if !toilet.babyWashStand{
+            babyWashStandSwitch.isOn = false
+        }
+
+        if !toilet.babyHotWater{
+            babyRoomHotWaterSwitch.isOn = false
+        }
+        if !toilet.babyMicroWave{
+            babyRoomMicrowaveSwitch.isOn = false
+        }
+        if !toilet.babyWaterSelling{
+            babyRoomSellingWaterSwitch.isOn = false
+        }
+        if !toilet.babyFoddSelling{
+            babyRoomFoodSellingSwitch.isOn = false
+        }
+        if !toilet.babyEatingSpace{
+            babyRoomEatingSpace.isOn = false
+        }
+
+        
+        
+        
+        if !toilet.babyChair{
+            babyChairSwitch.isOn = false
+        }
+        if !toilet.babySoffa{
+            soffaSwitch.isOn = false
+        }
+        if !toilet.babyKidsToilet{
+            kidsToiletSwitch.isOn = false
+        }
+        if !toilet.babyKidsSpace{
+            kidsSpaceSwitch.isOn = false
+        }
+        if !toilet.babyHeightMeasure{
+            heightMeasureSwitch.isOn = false
+        }
+
+        if !toilet.babyWeightMeasure{
+            weightMeasureSwitch.isOn = false
+        }
+        if !toilet.babyToy{
+            babyToySwitch.isOn = false
+        }
+        if !toilet.babyFancy{
+            babyRoomFancySwitch.isOn = false
+        }
+        if !toilet.babySmellGood{
+            babyRoomGoodSmellSwitch.isOn = false
+        }
+        
+        
+    
+    
+    
     }
     
     func dismissKeyboard() {
@@ -411,14 +600,14 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     
     
-    func switchIsChanged(_: UISwitch) {
-        if wheelChairLabelSwitch.isOn == true {
-            wheelChairLabel.textColor = UIColor.black
-        }else{
-            //wheelChairLabelSwitch.isOn == false
-            wheelChairLabel.textColor = UIColor.gray
-        }
-    }
+//    func switchIsChanged(_: UISwitch) {
+//        if wheelChairLabelSwitch.isOn == true {
+//            wheelChairLabel.textColor = UIColor.black
+//        }else{
+//            //wheelChairLabelSwitch.isOn == false
+//            wheelChairLabel.textColor = UIColor.gray
+//        }
+//    }
     
     
     @IBAction func setPinTapped(_ sender: Any) {
@@ -829,141 +1018,141 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     
     
-    @IBAction func washletSwitchTapped(_ sender: Any) {
-        if washletLabelSwitch.isOn == true {
-            washletLabel.textColor = UIColor.black
-            toilet.washlet = true
-        }else{
-            //wheelChairLabelSwitch.isOn == false
-            washletLabel.textColor = UIColor.gray
-            toilet.washlet = false
-        }
-    }
-    
-    @IBAction func wheelChairSwitchTapped(_ sender: Any) {
-        if wheelChairLabelSwitch.isOn == true {
-            wheelChairLabel.textColor = UIColor.black
-            toilet.wheelchair = true
-        }else{
-            //wheelChairLabelSwitch.isOn == false
-            wheelChairLabel.textColor = UIColor.gray
-            toilet.wheelchair = false
-        }
-    }
-    
-    
-    @IBAction func onlyFemaleSwitchTapped(_ sender: Any) {
-        if onlyFemaleLabelSwitch.isOn == true {
-            onlyFemaleLabel.textColor = UIColor.black
-            toilet.onlyFemale = true
-        }
-        else{
-            onlyFemaleLabel.textColor = UIColor.gray
-            toilet.onlyFemale = false
-        }
-    }
-    
-    
-    @IBAction func unisexSwitchTapped(_ sender: Any) {
-        if unisexLabelSwitch.isOn == true {
-            unisexLabel.textColor = UIColor.black
-            toilet.unisex = true
-        }else{
-            unisexLabel.textColor = UIColor.gray
-            toilet.unisex = false
-        }
-
-    }
-   
-    @IBAction func makeroomSwitchTapped(_ sender: Any) {
-        if makeroomLabelSwitch.isOn == true {
-            makeroomLabel.textColor = UIColor.black
-            toilet.makeuproom = true
-        }else{
-            makeroomLabel.textColor = UIColor.gray
-            toilet.makeuproom = false
-        }
-    }
-    
-    @IBAction func milkspaceSwitchTappd(_ sender: Any) {
-        if milkspaceLabelSwitch.isOn == true {
-            milkspaceLabel.textColor = UIColor.black
-             toilet.milkspace = true
-        }else{
-            milkspaceLabel.textColor = UIColor.gray
-            toilet.milkspace = false
-        }
-    }
-    
-    @IBAction func omutuSwitchTapped(_ sender: Any) {
-        if omutuLabelSwitch.isOn == true{
-            omutuLabel.textColor = UIColor.black
-            toilet.omutu = true
-        }else{
-            
-            omutuLabel.textColor = UIColor.gray
-             toilet.omutu = false
-        }
-    }
-    
-   
-    @IBAction func ostomateSwitchTapped(_ sender: Any) {
-        if ostomateLabelSwitch.isOn == true {
-            ostomateLabel.textColor = UIColor.black
-             toilet.ostomate = true
-        }else{
-            ostomateLabel.textColor = UIColor.gray
-            toilet.ostomate = false
-        }
-    }
-   
-    @IBAction func japaneseSwtichTapped(_ sender: Any) {
-        if japaneseToiletLabelSwitch.isOn == true{
-            japaneseToiletLabel.textColor = UIColor.black
-            toilet.japanesetoilet = true
-        }else{
-            japaneseToiletLabel.textColor = UIColor.gray
-            toilet.japanesetoilet = false
-
-        }
-    }
-   
-    
-    @IBAction func westernSwtichTapped(_ sender: Any) {
-        if westernToiletLabelSwitch.isOn == true{
-            westernToiletLabel.textColor = UIColor.black
-            toilet.westerntoilet = true
-
-        }else{
-            
-            westernToiletLabel.textColor = UIColor.gray
-            toilet.westerntoilet = false
-
-        }
-    }
-
-    @IBAction func warmSeatSwitchTapped(_ sender: Any) {
-        if warmSeatLabelSwitch.isOn == true{
-            warmSeatLabel.textColor = UIColor.black
-            toilet.warmSeat = true
-        }else{
-            
-            warmSeatLabel.textColor = UIColor.gray
-            toilet.warmSeat = false
-        }
-    }
-    
-    @IBAction func baggageSpaceSwitchTapped(_ sender: Any) {
-        if baggageSpaceLabelSwitch.isOn == true{
-            baggageSpaceLabel.textColor = UIColor.black
-            toilet.baggageSpace = true
-        }else{
-            
-            baggageSpaceLabel.textColor = UIColor.gray
-            toilet.baggageSpace = false
-
-        }
-    }
+//    @IBAction func washletSwitchTapped(_ sender: Any) {
+//        if washletLabelSwitch.isOn == true {
+//            washletLabel.textColor = UIColor.black
+//            toilet.washlet = true
+//        }else{
+//            //wheelChairLabelSwitch.isOn == false
+//            washletLabel.textColor = UIColor.gray
+//            toilet.washlet = false
+//        }
+//    }
+//    
+//    @IBAction func wheelChairSwitchTapped(_ sender: Any) {
+//        if wheelChairLabelSwitch.isOn == true {
+//            wheelChairLabel.textColor = UIColor.black
+//            toilet.wheelchair = true
+//        }else{
+//            //wheelChairLabelSwitch.isOn == false
+//            wheelChairLabel.textColor = UIColor.gray
+//            toilet.wheelchair = false
+//        }
+//    }
+//    
+//    
+//    @IBAction func onlyFemaleSwitchTapped(_ sender: Any) {
+//        if onlyFemaleLabelSwitch.isOn == true {
+//            onlyFemaleLabel.textColor = UIColor.black
+//            toilet.onlyFemale = true
+//        }
+//        else{
+//            onlyFemaleLabel.textColor = UIColor.gray
+//            toilet.onlyFemale = false
+//        }
+//    }
+//    
+//    
+//    @IBAction func unisexSwitchTapped(_ sender: Any) {
+//        if unisexLabelSwitch.isOn == true {
+//            unisexLabel.textColor = UIColor.black
+//            toilet.unisex = true
+//        }else{
+//            unisexLabel.textColor = UIColor.gray
+//            toilet.unisex = false
+//        }
+//
+//    }
+//   
+//    @IBAction func makeroomSwitchTapped(_ sender: Any) {
+//        if makeroomLabelSwitch.isOn == true {
+//            makeroomLabel.textColor = UIColor.black
+//            toilet.makeuproom = true
+//        }else{
+//            makeroomLabel.textColor = UIColor.gray
+//            toilet.makeuproom = false
+//        }
+//    }
+//    
+//    @IBAction func milkspaceSwitchTappd(_ sender: Any) {
+//        if milkspaceLabelSwitch.isOn == true {
+//            milkspaceLabel.textColor = UIColor.black
+//             toilet.milkspace = true
+//        }else{
+//            milkspaceLabel.textColor = UIColor.gray
+//            toilet.milkspace = false
+//        }
+//    }
+//    
+//    @IBAction func omutuSwitchTapped(_ sender: Any) {
+//        if omutuLabelSwitch.isOn == true{
+//            omutuLabel.textColor = UIColor.black
+//            toilet.omutu = true
+//        }else{
+//            
+//            omutuLabel.textColor = UIColor.gray
+//             toilet.omutu = false
+//        }
+//    }
+//    
+//   
+//    @IBAction func ostomateSwitchTapped(_ sender: Any) {
+//        if ostomateLabelSwitch.isOn == true {
+//            ostomateLabel.textColor = UIColor.black
+//             toilet.ostomate = true
+//        }else{
+//            ostomateLabel.textColor = UIColor.gray
+//            toilet.ostomate = false
+//        }
+//    }
+//   
+//    @IBAction func japaneseSwtichTapped(_ sender: Any) {
+//        if japaneseToiletLabelSwitch.isOn == true{
+//            japaneseToiletLabel.textColor = UIColor.black
+//            toilet.japanesetoilet = true
+//        }else{
+//            japaneseToiletLabel.textColor = UIColor.gray
+//            toilet.japanesetoilet = false
+//
+//        }
+//    }
+//   
+//    
+//    @IBAction func westernSwtichTapped(_ sender: Any) {
+//        if westernToiletLabelSwitch.isOn == true{
+//            westernToiletLabel.textColor = UIColor.black
+//            toilet.westerntoilet = true
+//
+//        }else{
+//            
+//            westernToiletLabel.textColor = UIColor.gray
+//            toilet.westerntoilet = false
+//
+//        }
+//    }
+//
+//    @IBAction func warmSeatSwitchTapped(_ sender: Any) {
+//        if warmSeatLabelSwitch.isOn == true{
+//            warmSeatLabel.textColor = UIColor.black
+//            toilet.warmSeat = true
+//        }else{
+//            
+//            warmSeatLabel.textColor = UIColor.gray
+//            toilet.warmSeat = false
+//        }
+//    }
+//    
+//    @IBAction func baggageSpaceSwitchTapped(_ sender: Any) {
+//        if baggageSpaceLabelSwitch.isOn == true{
+//            baggageSpaceLabel.textColor = UIColor.black
+//            toilet.baggageSpace = true
+//        }else{
+//            
+//            baggageSpaceLabel.textColor = UIColor.gray
+//            toilet.baggageSpace = false
+//
+//        }
+//    }
 }
 
 
