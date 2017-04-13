@@ -399,7 +399,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             geoFire!.setLocation(CLLocation(latitude: location["latitude"] as! CLLocationDegrees, longitude: location["longitude"] as! CLLocationDegrees), forKey: location["name"] as! String!){(error) in
                 if (error != nil) {
-                    print("An error occured: \(error)")
+                    print("An error occured: \(String(describing: error))")
                     
                 } else {
                     print("Saved location successfully!")
@@ -603,6 +603,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let circleQuery = geoFire.query(at: center, withRadius: self.filter.distanceFilter)
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
             //query. need to be changed
+           //
             print("HEYKey '\(key)' entered the search area and is at location '\(location)'")
             
             
@@ -749,7 +750,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 let reviewCount = snapshotValue?["reviewCount"] as? Int
                 toilet.reviewCount = reviewCount!
-                print(" reviewCount= \(reviewCount)")
+                print(" reviewCount= \(String(describing: reviewCount))")
                 
                 
                 let averageWait = snapshotValue?["averageWait"] as? Int
@@ -764,7 +765,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 print("center MapView 555== \(center)")
 
                 
-                print("distance MapView 555== \(distance)")
+                print("distance MapView 555== \(String(describing: distance))")
 
                 print("toilet.distance MapView 555 == \(toilet.distance)")
 
@@ -1176,7 +1177,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         print("searchEndTapped")
         search.searchOn = false
         let center = locationManager.location
-        print("locationManager.location = \(locationManager.location)")
+        print("locationManager.location = \(String(describing: locationManager.location))")
         centerMapOnLocation(location: center!)
         toiletsSearch(center: center!)
         searchEndLabel.isHidden = true

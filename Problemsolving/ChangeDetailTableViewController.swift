@@ -588,108 +588,107 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
               //"waitingtime": waitInt! as Int,
 //            
-            var post = Post()
+            //var post = Post()
             
-            post.name = name
-            post.openAndCloseHours = availableTimeForDatabase
+//            post.name = name!
+//            post.openAndCloseHours = availableTimeForDatabase
             
             
             
-            let tdata : [String : Any] = []
-//           ["name":name as String,
-//            "openAndCloseHours": availableTimeForDatabase as String,
-//            "type":placeCategoryLabel.text! as String,
-//            "urlOne":"" as String,
-//            "urlTwo":"" as String,
-//            "urlThree":"" as String,
-//            "addedBy":uid,
-//            "editedBy":uid,
-//            "averageStar":"" as String,
-//            "address":"" as String,
-//            "howtoaccess":"" as String,
-//            "reviewOne":uid,
-//            "reviewTwo":"",
-//            "openHours":5000 as Int,
-//            "closeHours":5000 as Int,
-//            "reviewCount":1,
-//            "averageWait": waitInt! as Int,
-//            "toiletFloor": 1,
-//            "latitude": Lat as Double,
-//            "longitude": Lon as Double,
-//            "available": true,
-//            "japanesetoilet": japaneseToiletSwitch.isOn as Bool,
-//            "westerntoilet":westernToiletSwitch.isOn,
-//            "onlyFemale":onlyFemalSwitch.isOn,
-//            "unisex":unisexSwitch.isOn,
-//            
-//            "washlet":washletSwitch.isOn,
-//            "warmSeat":warmSeatSwitch.isOn,
-//            "autoOpen":autoOpenBenkiSwitch.isOn,
-//            "noVirus":noVirusSwitch.isOn,
-//            "paperForBenki":paperForBenkiSwitch.isOn,
-//            "cleanerForBenki":cleanerBenkiSwitch.isOn,
-//            "nonTouchWash":autoToiletWashSwitch.isOn,
-//            
-//            "sensorHandWash":sensorHandWashSwitch.isOn,
-//            "handSoap":handSoapSwitch.isOn,
-//            "nonTouchHandSoap":autoHandSoapSwitch.isOn,
-//            "paperTowel":paperTowelSwitch.isOn,
-//            "handDrier":handDrierSwitch.isOn,
-//            
-//            "otohime":otohimeSwitch.isOn,
-//            "napkinSelling":napkinSellingSwitch.isOn,
-//            "makeuproom":makeRoomSwitch.isOn,
-//            "clothes":clothesSwitch.isOn,
-//            "baggageSpace":baggageSwitch.isOn,
-//            
-//            "wheelchair":wheelChairSwitch.isOn,
-//            "wheelchairAccess":wheelChiarAccess.isOn,
-//            "handrail":handRailSwitch.isOn,
-//            "callHelp":callHelpSwitch.isOn,
-//            "ostomate":ostomateSwitch.isOn,
-//            "english":writtenEnglishSwitch.isOn,
-//            "braille":brailleSwitch.isOn,
-//            "voiceGuide":voiceGuideSwitch.isOn,
-//            
-//            "fancy":toiletFancySwitch.isOn,
-//            "smell":toiletSmellGood.isOn,
-//            "confortable":toiletWideSpaceSwitch.isOn,
-//            "noNeedAsk":noNeedAskSwitch.isOn,
-//            "parking":parkingSwitch.isOn,
-//            "airCondition":airConditionSwitch.isOn,
-//            "wifi":wifiSwitch.isOn,
-//            
-//            "milkspace":milkSpaceSwitch.isOn,
-//            "babyRoomOnlyFemale":onlyFamaleBabyRoom.isOn,
-//            "babyRoomMaleEnter":babyRoomMaleEnterSwitch.isOn,
-//            "babyRoomPersonalSpace":babyRoomPersonalSpace.isOn,
-//            "babyRoomPersonalSpaceWithLock":babyRoomPersonalWithLock.isOn,
-//            "babyRoomWideSpace":babyRoomWideSpaceSwitch.isOn,
-//            
-//            "babyCarRental":babyCarRentalSwitch.isOn,
-//            "babyCarAccess":babyCarAccessSwitch.isOn,
-//            "omutu":omutuSwitch.isOn,
-//            "hipCleaningStuff":hipWashingStuffSwitch.isOn,
-//            "omutuTrashCan":omutuTrashCanSwitch.isOn,
-//            "omutuSelling":omutuSellingSwitch.isOn,
-//            
-//            "babySink":babyRoomSinkSwitch.isOn,
-//            "babyWashstand":babyWashStandSwitch.isOn,
-//            "babyHotwater":babyRoomHotWaterSwitch.isOn,
-//            "babyMicrowave":babyRoomMicrowaveSwitch.isOn,
-//            "babyWaterSelling":babyRoomSellingWaterSwitch.isOn,
-//            "babyFoodSelling":babyRoomFoodSellingSwitch.isOn,
-//            "babyEatingSpace":babyRoomEatingSpace.isOn,
-//            
-//            "babyChair":babyChairSwitch.isOn,
-//            "babySoffa":soffaSwitch.isOn,
-//            "kidsToilet":kidsToiletSwitch.isOn,
-//            "kidsSpace":kidsSpaceSwitch.isOn,
-//            "babyHeight":heightMeasureSwitch.isOn,
-//            "babyWeight":weightMeasureSwitch.isOn,
-//            "babyToy":babyToySwitch.isOn,
-//            "babyFancy":babyRoomFancySwitch.isOn,
-//            "babySmellGood":babyRoomGoodSmellSwitch.isOn]
+            let tdata : [String : Any] = ["name":name!,
+            "openAndCloseHours": availableTimeForDatabase as String,
+            "type":placeCategoryLabel.text! as String,
+            "urlOne":"" as String,
+            "urlTwo":"" as String,
+            "urlThree":"" as String,
+            "addedBy":uid,
+            "editedBy":uid,
+            "averageStar":String(starView.rating) as String,
+            "address":"" as String,
+            "howtoaccess":"" as String,
+            "reviewOne":uid,
+            "reviewTwo":"",
+            "openHours":5000 as Int,
+            "closeHours":5000 as Int,
+            "reviewCount":1,
+            "averageWait": waitInt! as Int,
+            "toiletFloor": 1,
+            "latitude": Lat as Double,
+            "longitude": Lon as Double,
+            "available": true,
+            "japanesetoilet": japaneseToiletSwitch.isOn as Bool,
+            "westerntoilet":westernToiletSwitch.isOn,
+            "onlyFemale":onlyFemalSwitch.isOn,
+            "unisex":unisexSwitch.isOn,
+            
+            "washlet":washletSwitch.isOn,
+            "warmSeat":warmSeatSwitch.isOn,
+            "autoOpen":autoOpenBenkiSwitch.isOn,
+            "noVirus":noVirusSwitch.isOn,
+            "paperForBenki":paperForBenkiSwitch.isOn,
+            "cleanerForBenki":cleanerBenkiSwitch.isOn,
+            "nonTouchWash":autoToiletWashSwitch.isOn,
+            
+            "sensorHandWash":sensorHandWashSwitch.isOn,
+            "handSoap":handSoapSwitch.isOn,
+            "nonTouchHandSoap":autoHandSoapSwitch.isOn,
+            "paperTowel":paperTowelSwitch.isOn,
+            "handDrier":handDrierSwitch.isOn,
+            
+            "otohime":otohimeSwitch.isOn,
+            "napkinSelling":napkinSellingSwitch.isOn,
+            "makeuproom":makeRoomSwitch.isOn,
+            "clothes":clothesSwitch.isOn,
+            "baggageSpace":baggageSwitch.isOn,
+            
+            "wheelchair":wheelChairSwitch.isOn,
+            "wheelchairAccess":wheelChiarAccess.isOn,
+            "handrail":handRailSwitch.isOn,
+            "callHelp":callHelpSwitch.isOn,
+            "ostomate":ostomateSwitch.isOn,
+            "english":writtenEnglishSwitch.isOn,
+            "braille":brailleSwitch.isOn,
+            "voiceGuide":voiceGuideSwitch.isOn,
+            
+            "fancy":toiletFancySwitch.isOn,
+            "smell":toiletSmellGood.isOn,
+            "confortable":toiletWideSpaceSwitch.isOn,
+            "noNeedAsk":noNeedAskSwitch.isOn,
+            "parking":parkingSwitch.isOn,
+            "airCondition":airConditionSwitch.isOn,
+            "wifi":wifiSwitch.isOn,
+            
+            "milkspace":milkSpaceSwitch.isOn,
+            "babyRoomOnlyFemale":onlyFamaleBabyRoom.isOn,
+            "babyRoomMaleEnter":babyRoomMaleEnterSwitch.isOn,
+            "babyRoomPersonalSpace":babyRoomPersonalSpace.isOn,
+            "babyRoomPersonalSpaceWithLock":babyRoomPersonalWithLock.isOn,
+            "babyRoomWideSpace":babyRoomWideSpaceSwitch.isOn,
+            
+            "babyCarRental":babyCarRentalSwitch.isOn,
+            "babyCarAccess":babyCarAccessSwitch.isOn,
+            "omutu":omutuSwitch.isOn,
+            "hipCleaningStuff":hipWashingStuffSwitch.isOn,
+            "omutuTrashCan":omutuTrashCanSwitch.isOn,
+            "omutuSelling":omutuSellingSwitch.isOn,
+            
+            "babySink":babyRoomSinkSwitch.isOn,
+            "babyWashstand":babyWashStandSwitch.isOn,
+            "babyHotwater":babyRoomHotWaterSwitch.isOn,
+            "babyMicrowave":babyRoomMicrowaveSwitch.isOn,
+            "babyWaterSelling":babyRoomSellingWaterSwitch.isOn,
+            "babyFoodSelling":babyRoomFoodSellingSwitch.isOn,
+            "babyEatingSpace":babyRoomEatingSpace.isOn,
+            
+            "babyChair":babyChairSwitch.isOn,
+            "babySoffa":soffaSwitch.isOn,
+            "kidsToilet":kidsToiletSwitch.isOn,
+            "kidsSpace":kidsSpaceSwitch.isOn,
+            "babyHeight":heightMeasureSwitch.isOn,
+            "babyWeight":weightMeasureSwitch.isOn,
+            "babyToy":babyToySwitch.isOn,
+            "babyFancy":babyRoomFancySwitch.isOn,
+            "babySmellGood":babyRoomGoodSmellSwitch.isOn] as [String : Any]
 //
 //            
             
@@ -758,15 +757,19 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
 
             
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
-            toiletsRef.childByAutoId().setValue(post)
+            let uniqueRef = toiletsRef.childByAutoId()
             
-            let uniqueKey = toiletsRef.key
+            uniqueRef.setValue(tdata)
+            
+            
+            
+        
             //toiletsRef.setValue(post)
             
             
-            geoFire!.setLocation(CLLocation(latitude: Lat, longitude: Lon), forKey: uniqueKey){(error) in
+            geoFire!.setLocation(CLLocation(latitude: Lat, longitude: Lon), forKey: uniqueRef.key){(error) in
                 if (error != nil) {
-                    print("An error occured: \(error)")
+                    print("An error occured: \(String(describing: error))")
                     print("in geoFire.setLocation")
                 } else {
                     print("Saved location successfully!")
