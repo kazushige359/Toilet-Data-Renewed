@@ -588,6 +588,9 @@
                                                                     <constraint firstAttribute="width" constant="25" id="mzg-ph-SnL"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Button" image="like"/>
+                                                                <connections>
+                                                                    <action selector="reviewOneLikeButtonTapped:" destination="hAD-xO-93C" eventType="touchUpInside" id="d4q-rt-4bq"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="いいね３件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3p6-4P-wwG">
                                                                 <rect key="frame" x="50" y="230.5" width="120" height="20.5"/>
@@ -736,6 +739,9 @@
                                                                     <constraint firstAttribute="width" constant="25" id="dIg-xw-p6g"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Button" image="like"/>
+                                                                <connections>
+                                                                    <action selector="reviewTwoLikeButtonTapped:" destination="hAD-xO-93C" eventType="touchUpInside" id="BFv-0m-dVF"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="いいね２件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mf-yb-cc2">
                                                                 <rect key="frame" x="50" y="230" width="120" height="21"/>
@@ -800,7 +806,7 @@
                                                         <rect key="frame" x="0.0" y="28" width="0.0" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zKw-ep-6bS" id="24c-Nf-Hmt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="backgroundColor" red="0.31764705882352939" green="0.6705882352941176" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                                         </tableViewCellContentView>
@@ -935,11 +941,40 @@
                         <segue destination="QrM-qp-fGl" kind="custom" identifier="detailBackToMapSegue" customClass="RighttoLeft" customModule="Problemsolving" id="xMP-GP-GUl"/>
                         <segue destination="afP-f4-DQd" kind="custom" identifier="placeDetailToEditSegue" customClass="LefttoRight" customModule="Problemsolving" id="BYV-ZH-3Q8"/>
                         <segue destination="VdN-Fj-JSZ" kind="custom" identifier="placeDetailToKansouSegue" customClass="LefttoRight" customModule="Problemsolving" id="tGP-QY-mz7"/>
+                        <segue destination="BQo-cO-7Pr" kind="custom" customClass="LefttoRight" customModule="Problemsolving" customModuleProvider="target" id="q90-CP-Uu3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6N1-Pq-znY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="16092.799999999999" y="-2124.7376311844077"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Zvd-gw-8Gz">
+            <objects>
+                <tableViewController id="BQo-cO-7Pr" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ATn-z8-cvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Tyj-3S-TXR">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tyj-3S-TXR" id="hdn-cK-CMK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BQo-cO-7Pr" id="hch-ob-UGT"/>
+                            <outlet property="delegate" destination="BQo-cO-7Pr" id="g15-wa-jEP"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNs-CA-EQo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="17364" y="-2273"/>
         </scene>
         <!--UIViewController-jJ9-rs-86P-->
         <scene sceneID="20n-Nj-aLG">

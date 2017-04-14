@@ -1174,5 +1174,14 @@ import Cosmos
         
         @IBAction func buttonShowAllReviewsTapped(_ sender: Any) {
         }
+        
+        @IBAction func reviewOneLikeButtonTapped(_ sender: Any) {
+            print("One Tapped")
+        }
+        @IBAction func reviewTwoLikeButtonTapped(_ sender: Any) {
+            print("Two Tapped")
+        }
+        
+        
 
    }

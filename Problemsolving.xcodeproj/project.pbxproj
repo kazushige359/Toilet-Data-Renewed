@@ -63,6 +63,7 @@
 		24B6FB0A1E30399200E1330A /* LefttoRight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB091E30399200E1330A /* LefttoRight.swift */; };
 		24B7EC3E1E9F180D00368644 /* PlaceDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B7EC3D1E9F180D00368644 /* PlaceDetailViewController.storyboard */; };
 		24B7EC401E9F196600368644 /* FilterTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B7EC3F1E9F196600368644 /* FilterTableViewController.storyboard */; };
+		24B7EC421EA0897900368644 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B7EC411EA0897900368644 /* ReviewTableViewController.swift */; };
 		24CD2B4C1E9E27A800F438CE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CD2B4B1E9E27A800F438CE /* Post.swift */; };
 		24DA07F21E01357A00869655 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DA07F11E01357A00869655 /* MapKit.framework */; };
 		24DF78961E36EB410081CDA0 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */; };
@@ -165,6 +166,7 @@
 		24B6FB091E30399200E1330A /* LefttoRight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LefttoRight.swift; sourceTree = "<group>"; };
 		24B7EC3D1E9F180D00368644 /* PlaceDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlaceDetailViewController.storyboard; sourceTree = "<group>"; };
 		24B7EC3F1E9F196600368644 /* FilterTableViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FilterTableViewController.storyboard; sourceTree = "<group>"; };
+		24B7EC411EA0897900368644 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		24CD2B4B1E9E27A800F438CE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		24DA07F11E01357A00869655 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */,
 				24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */,
 				245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */,
+				24B7EC411EA0897900368644 /* ReviewTableViewController.swift */,
 				240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */,
 				240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */,
 				2423A4231E21930000DD2AF4 /* ReviewTableViewCell.xib */,
@@ -706,6 +709,7 @@
 				2420F31B1E2742E300159441 /* EditTableViewController.swift in Sources */,
 				24B6FB001E2B505C00E1330A /* Filter.swift in Sources */,
 				24B6FB061E30395900E1330A /* RighttoLeft.swift in Sources */,
+				24B7EC421EA0897900368644 /* ReviewTableViewController.swift in Sources */,
 				2418B7DC1E1B6B5C004F7022 /* KansouViewController.swift in Sources */,
 				245E9F331E963B20006D8A31 /* NewStartLoginViewController.swift in Sources */,
 				240F797F1E9C62A300EFF3CC /* SWRevealViewController.m in Sources */,
