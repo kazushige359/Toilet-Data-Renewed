@@ -219,7 +219,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     
     var pickOption = ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24","25","26", "27", "28","29","30"]
     
-    var categoryOption = ["公衆トイレ","コンビニ","カフェ","レストラン","商業施設","観光地・スタジアム","仮設トイレ"]
+    var categoryOption = ["公衆トイレ","コンビニ","カフェ","レストラン","商業施設","観光地・スタジアム","仮設トイレ","一般家庭(断水時のみ)"]
 
     
     var availableTimeOption = [
@@ -783,7 +783,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let reviewsRef = FIRDatabase.database().reference().child("reviews")
             //reviewsRef.childByAutoId().setValue(rdata)
             
-            FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").child(name!).setValue(true)
+            //FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").child(name!).setValue(true)
             //self.toiletsRef.child(location["name"] as! String!).setValue(tdata)
             //print("tdata = \(tdata)")
             print("toiletsRef data is saved!!")

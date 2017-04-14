@@ -1011,6 +1011,8 @@ import Cosmos
                 let coordinate: CLLocationCoordinate2D = toilet.loc.coordinate
                 
                 nextV.toilet = toilet
+                nextV.filter = filter
+                nextV.search = search
                 
                 print("toilet.loc = \(toilet.loc)")
                 

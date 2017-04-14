@@ -107,7 +107,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     var orderOption = ["現在地から近い順","評価が高い順","感想が多い順"]
     
-    var typeOption = ["全てのトイレ","公衆トイレ","コンビニ","カフェ","レストラン","商業施設","観光地・スタジアム","仮設トイレ"]
+    var typeOption = ["全てのトイレ","公衆トイレ","コンビニ","カフェ","レストラン","商業施設","観光地・スタジアム","仮設トイレ","一般家庭(断水時のみ)"]
     
     
     var starOption = ["★","★★","★★★","★★★★"]

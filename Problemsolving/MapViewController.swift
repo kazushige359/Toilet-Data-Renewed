@@ -232,6 +232,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var removedToilet = false
     var createdArray = false
     
+    @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
+    
+    
     //Below properties were copied from mapkit tutorial
     var resultSearchController: UISearchController!
     var selectedPin: MKPlacemark?
@@ -335,9 +338,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //tap.cancelsTouchesInView = false
         
         mapView.addGestureRecognizer(tap)
-        tableView.isHidden = false
-        listButton.isHidden = true
-        centerButton.isHidden = true
+        
+//        tableView.isHidden = false
+      listButton.isHidden = true
+      centerButton.isHidden = true
         
          print("filter.typeFilter = \(filter.typeFilter)")
         
@@ -348,16 +352,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         progressBarDisplayer(msg:"トイレを検索中", true)
         
+//        let screenSize = UIScreen.main.bounds
+//        let screenHeight = screenSize.height
+//        tableViewConstraint.constant = 192
+        
         
     
         
     }
     
     func tableViewDisappear(){
-        tableView.isHidden = true
+        //tableView.isHidden = true
+        
+        if listButton.isHidden == true{
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        tableViewConstraint.constant = screenHeight
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        
+        //booleanTableViewLeftConstraint.constant = screenWidth
         listButton.isHidden = false
         centerButton.isHidden = false
         //showButtons()
+        }
     }
     
     func progressBarDisplayer(msg:String, _ indicator:Bool ) {
@@ -1187,8 +1207,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         })
     }
        @IBAction func listButtonTapped(_ sender: Any) {
+//        listButton.isHidden = true
+//        centerButton.isHidden = true
+//        ....
+        
+        //Commented April 14 for animation table view
+        
+        let screenSize = UIScreen.main.bounds
+        let screenHeight = screenSize.height
+        tableViewConstraint.constant = 192
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        
+        //booleanTableViewLeftConstraint.constant = screenWidth
         listButton.isHidden = true
         centerButton.isHidden = true
+        
+            
+            
         changeStartCell()
         if createdArray == false{
             
@@ -1201,7 +1239,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             present(alertController, animated: true, completion: nil)
        
         }
-        tableView.isHidden = false
+        //tableView.isHidden = false
     }
     
     @IBAction func centerButtonTapped(_ sender: Any) {

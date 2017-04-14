@@ -118,38 +118,24 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     @IBOutlet weak var babyRoomGoodSmellSwitch: UISwitch!
     
     
-    
-   
-    
     @IBOutlet weak var accessTextView: UITextView!
-    
-    
-    @IBOutlet weak var starView: CosmosView!
-    
-    @IBOutlet weak var waitMinutesLabel: UITextField!
-    
-    @IBOutlet weak var feedbackTextView: UITextView!
     
     @IBOutlet weak var mapView: MKMapView!
     
     
     @IBOutlet weak var setPinButton: UIButton!
-    
     @IBOutlet weak var addPictureButton: UIButton!
-    
     @IBOutlet weak var postButton: UIButton!
     
     
     @IBOutlet weak var mainImage: UIImageView!
-    
     @IBOutlet weak var subImage1: UIImageView!
-    
     @IBOutlet weak var subImage2: UIImageView!
     
     
     var pickOption = ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24","25","26", "27", "28","29","30"]
     
-    var categoryOption = ["全てのトイレ","公衆トイレ","コンビニ","カフェ","レストラン","商業施設","観光地・スタジアム","仮設トイレ"]
+    var categoryOption = ["全てのトイレ","公衆トイレ","コンビニ","カフェ","レストラン","商業施設","観光地・スタジアム","仮設トイレ","一般家庭(断水時のみ)"]
 
     
     var availableTimeOption = [
@@ -160,6 +146,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     ]
     
     var toilet = Toilet()
+    var filter = Filter()
+    var search = Search()
     
     var waitminute = ""
     // String to Int
@@ -170,7 +158,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     var returnNumber = Int()
     var pickedOption = String()
     
-    let pickerView1 = UIPickerView()
+    //let pickerView1 = UIPickerView()
     let pickerView2 = UIPickerView()
     let pickerView3 = UIPickerView()
     
@@ -199,26 +187,36 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         print("toilet.url = \(toilet.urlOne)")
         
         mapView.delegate = self
-        pickerView1.delegate = self
+        //pickerView1.delegate = self
         pickerView2.delegate = self
         pickerView3.delegate = self
-        waitMinutesLabel.inputView = pickerView1
+        //waitMinutesLabel.inputView = pickerView1
         placeCategoryLabel.inputView = pickerView2
         availableTimeLabel.inputView = pickerView3
        
-        mainImage.sd_setImage(with: URL(string: toilet.urlOne))
-        subImage1.sd_setImage(with: URL(string: toilet.urlTwo))
-        subImage2.sd_setImage(with: URL(string: toilet.urlThree))
+        if toilet.urlOne != ""{
+        
+            mainImage.sd_setImage(with: URL(string: toilet.urlOne))
+        }
+        if toilet.urlTwo != ""{
+            subImage1.sd_setImage(with: URL(string: toilet.urlTwo))
+
+        }
+        if toilet.urlThree != ""{
+            subImage2.sd_setImage(with: URL(string: toilet.urlThree))
+        }
+        
+        
         
         imagePicker.delegate = self
         
-        starView.rating = 3.0
-        
-        //Because its difficult to change int to double.....
-        
-        starView.settings.filledColor = UIColor.yellow
-        starView.settings.emptyBorderColor = UIColor.orange
-        starView.settings.filledBorderColor = UIColor.orange
+//        starView.rating = 3.0
+//        
+//        //Because its difficult to change int to double.....
+//        
+//        starView.settings.filledColor = UIColor.yellow
+//        starView.settings.emptyBorderColor = UIColor.orange
+//        starView.settings.filledBorderColor = UIColor.orange
 
         
         mapView.isUserInteractionEnabled = false
@@ -230,7 +228,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         
         view.addGestureRecognizer(tap)
         
-        placeNameLabel.text = toilet.key
+        placeNameLabel.text = toilet.name
         placeCategoryLabel.text = toilet.type
         availableTimeLabel.text = toilet.openinghours
         
@@ -504,9 +502,9 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
-        if pickerView == pickerView1 {
-            returnNumber = 1
-        }
+//        if pickerView == pickerView1 {
+//            returnNumber = 1
+//        }
         if pickerView == pickerView2 {
             returnNumber = 1
         }
@@ -521,10 +519,10 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == pickerView1 {
-            //print("pickerView1")
-            returnCount = pickOption.count
-        }
+//        if pickerView == pickerView1 {
+//            //print("pickerView1")
+//            returnCount = pickOption.count
+//        }
         if pickerView == pickerView2 {
             //print("pickerView2")
             returnCount = categoryOption.count
@@ -540,11 +538,11 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == pickerView1 {
-            //print("pickerView1")
-            pickedOption = pickOption[row]
-            
-        }
+//        if pickerView == pickerView1 {
+//            //print("pickerView1")
+//            pickedOption = pickOption[row]
+//            
+//        }
         if pickerView == pickerView2 {
             //print("pickerView2")
             pickedOption = categoryOption[row]
@@ -563,12 +561,12 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //pickerTextField.text = "待ち時間　\(pickOption[row])分"
-        if pickerView == pickerView1 {
-            
-            waitMinutesLabel.text = "待ち時間　\(pickOption[row])分"
-            numberPicked = true
-            waitminute = pickOption[row]
-        }
+//        if pickerView == pickerView1 {
+//            
+//            waitMinutesLabel.text = "待ち時間　\(pickOption[row])分"
+//            numberPicked = true
+//            waitminute = pickOption[row]
+//        }
         
         if pickerView == pickerView2 {
             placeCategoryLabel.text = categoryOption[row]
@@ -638,6 +636,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
 
     }
     
+    
+    
     @IBAction func addPictureTapped(_ sender: Any) {
         let alertController = UIAlertController (title: "どの写真を追加・変更しますか", message: "以下の選択肢からお選びください", preferredStyle: .actionSheet)
         
@@ -677,6 +677,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
 //        present(imagePicker, animated: true, completion: nil)
         //print(placeNameLabel.text)
     }
+    
     func photoUpload(){
         self.imagePicker.sourceType = .photoLibrary
         self.imagePicker.allowsEditing = true
@@ -687,10 +688,16 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     @IBAction func backButtonTapped(_ sender: Any) {
         print("Back Buton Tapped")
+        backToPlaceDetailViewSegue()
+    }
+    
+    func backToPlaceDetailViewSegue(){
         let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
         let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
         let vc = navigationContoller.topViewController as! PlaceDetailViewController
         vc.toilet = toilet
+        vc.filter = filter
+        vc.search = search
         
         let transition = CATransition()
         transition.duration = 0.4
@@ -700,11 +707,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         
         
         self.present(navigationContoller, animated: false, completion: nil)
-        
-        //dismiss(animated: true, completion: nil)
-        
-        //performSegue(withIdentifier: "editTabletoDetailSegue", sender: nil)
-        
+    
+    
     }
     
     @IBAction func postButtonBarTapped(_ sender: Any) {
@@ -714,6 +718,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         editdataExecution()
       
     }
+    
+    
     
     func editdataExecution(){
         let date = NSDate()
@@ -759,25 +765,25 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             if accessTextView.text == ""{
                 accessTextView.text = "アクセス情報"
             }
-            if waitMinutesLabel.text == ""{
-                waitminute = "0"
-            }
-            if feedbackTextView.text == ""{
-                feedbackTextView.text = "未記入"
-                //未記入？？
-            }
+//            if waitMinutesLabel.text == ""{
+//                waitminute = "0"
+//            }
+//            if feedbackTextView.text == ""{
+//                feedbackTextView.text = "未記入"
+//                //未記入？？
+//            }
             let Lat: CLLocationDegrees = pincoodinate.latitude
             let Lon: CLLocationDegrees = pincoodinate.longitude
             
-            let waitInt:Int? = Int(waitminute)
+            //let waitInt:Int? = Int(waitminute)
             let availableTimeForDatabase = "\(time1):\(time2)〜\(time3):\(time4)"
             
             
             
             
-            geoFire!.setLocation(CLLocation(latitude: Lat, longitude: Lon), forKey: name){(error) in
+            geoFire!.setLocation(CLLocation(latitude: Lat, longitude: Lon), forKey: toilet.key){(error) in
                 if (error != nil) {
-                    print("An error occured: \(error)")
+                    print("An error occured: \(String(describing: error))")
                     print("in geoFire.setLocation")
                 } else {
                     print("Saved location successfully!")
@@ -896,6 +902,111 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             //Firebase updating at 1 pm
             
             
+            //Copied from change detail view controller April 14
+            let tdata : [String : Any] = ["name":name!,
+                                          "openAndCloseHours": availableTimeForDatabase as String,
+                                          "type":placeCategoryLabel.text! as String,
+                                          "urlOne":"" as String,
+                                          "urlTwo":"" as String,
+                                          "urlThree":"" as String,
+                                          //"addedBy":uid,
+                                          //"editedBy":uid,
+                                         // "averageStar":String(starView.rating) as String,
+                                          "address":"" as String,
+                                          "howtoaccess":"" as String,
+                                          "reviewOne":"",//
+                                          "reviewTwo":"",
+                                          "openHours":5000 as Int,
+                                          "closeHours":5000 as Int,
+                                          "reviewCount":1,
+                                          //"averageWait": waitInt! as Int,
+                                          "toiletFloor": 1,
+                                          "latitude": toilet.latitude,
+                                          "longitude": toilet.longitude,
+                                          "available": true,
+                                          "japanesetoilet": japaneseToiletSwitch.isOn as Bool,
+                                          "westerntoilet":westernToiletSwitch.isOn,
+                                          "onlyFemale":onlyFemalSwitch.isOn,
+                                          "unisex":unisexSwitch.isOn,
+                                          
+                                          "washlet":washletSwitch.isOn,
+                                          "warmSeat":warmSeatSwitch.isOn,
+                                          "autoOpen":autoOpenBenkiSwitch.isOn,
+                                          "noVirus":noVirusSwitch.isOn,
+                                          "paperForBenki":paperForBenkiSwitch.isOn,
+                                          "cleanerForBenki":cleanerBenkiSwitch.isOn,
+                                          "nonTouchWash":autoToiletWashSwitch.isOn,
+                                          
+                                          "sensorHandWash":sensorHandWashSwitch.isOn,
+                                          "handSoap":handSoapSwitch.isOn,
+                                          "nonTouchHandSoap":autoHandSoapSwitch.isOn,
+                                          "paperTowel":paperTowelSwitch.isOn,
+                                          "handDrier":handDrierSwitch.isOn,
+                                          
+                                          "otohime":otohimeSwitch.isOn,
+                                          "napkinSelling":napkinSellingSwitch.isOn,
+                                          "makeuproom":makeRoomSwitch.isOn,
+                                          "clothes":clothesSwitch.isOn,
+                                          "baggageSpace":baggageSwitch.isOn,
+                                          
+                                          "wheelchair":wheelChairSwitch.isOn,
+                                          "wheelchairAccess":wheelChiarAccess.isOn,
+                                          "handrail":handRailSwitch.isOn,
+                                          "callHelp":callHelpSwitch.isOn,
+                                          "ostomate":ostomateSwitch.isOn,
+                                          "english":writtenEnglishSwitch.isOn,
+                                          "braille":brailleSwitch.isOn,
+                                          "voiceGuide":voiceGuideSwitch.isOn,
+                                          
+                                          "fancy":toiletFancySwitch.isOn,
+                                          "smell":toiletSmellGood.isOn,
+                                          "confortable":toiletWideSpaceSwitch.isOn,
+                                          "noNeedAsk":noNeedAskSwitch.isOn,
+                                          "parking":parkingSwitch.isOn,
+                                          "airCondition":airConditionSwitch.isOn,
+                                          "wifi":wifiSwitch.isOn,
+                                          
+                                          "milkspace":milkSpaceSwitch.isOn,
+                                          "babyRoomOnlyFemale":onlyFamaleBabyRoom.isOn,
+                                          "babyRoomMaleEnter":babyRoomMaleEnterSwitch.isOn,
+                                          "babyRoomPersonalSpace":babyRoomPersonalSpace.isOn,
+                                          "babyRoomPersonalSpaceWithLock":babyRoomPersonalWithLock.isOn,
+                                          "babyRoomWideSpace":babyRoomWideSpaceSwitch.isOn,
+                                          
+                                          "babyCarRental":babyCarRentalSwitch.isOn,
+                                          "babyCarAccess":babyCarAccessSwitch.isOn,
+                                          "omutu":omutuSwitch.isOn,
+                                          "hipCleaningStuff":hipWashingStuffSwitch.isOn,
+                                          "omutuTrashCan":omutuTrashCanSwitch.isOn,
+                                          "omutuSelling":omutuSellingSwitch.isOn,
+                                          
+                                          "babySink":babyRoomSinkSwitch.isOn,
+                                          "babyWashstand":babyWashStandSwitch.isOn,
+                                          "babyHotwater":babyRoomHotWaterSwitch.isOn,
+                                          "babyMicrowave":babyRoomMicrowaveSwitch.isOn,
+                                          "babyWaterSelling":babyRoomSellingWaterSwitch.isOn,
+                                          "babyFoodSelling":babyRoomFoodSellingSwitch.isOn,
+                                          "babyEatingSpace":babyRoomEatingSpace.isOn,
+                                          
+                                          "babyChair":babyChairSwitch.isOn,
+                                          "babySoffa":soffaSwitch.isOn,
+                                          "kidsToilet":kidsToiletSwitch.isOn,
+                                          "kidsSpace":kidsSpaceSwitch.isOn,
+                                          "babyHeight":heightMeasureSwitch.isOn,
+                                          "babyWeight":weightMeasureSwitch.isOn,
+                                          "babyToy":babyToySwitch.isOn,
+                                          "babyFancy":babyRoomFancySwitch.isOn,
+                                          "babySmellGood":babyRoomGoodSmellSwitch.isOn] as [String : Any]
+            
+            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
+            toiletsRef.child(toilet.key).updateChildValues(tdata)
+            
+            
+            
+            
+            //Copied from change detail view controller April 14
+            
+            
 //            //Class information changes as well
 //            toilet.openinghours = availableTimeForDatabase as String
 //            toilet.type = placeCategoryLabel.text! as String
@@ -919,20 +1030,18 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
 //            print("=\()")
 //            print("=\()")
             
-            let rdata : [String : Any] = ["uid": FIRAuth.auth()!.currentUser!.uid , "tid": name as Any, "star": starView.rating as Double , "waitingtime": "\(waitInt! as Int)" ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
-            ]
+//            let rdata : [String : Any] = ["uid": FIRAuth.auth()!.currentUser!.uid , "tid": name as Any, "star": starView.rating as Double , "waitingtime": "\(waitInt! as Int)" ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
+//            ]
             
-            let databaseRef = FIRDatabase.database().reference()
-            databaseRef.child("reviews").childByAutoId().setValue(rdata)
+//            let databaseRef = FIRDatabase.database().reference()
+//            databaseRef.child("reviews").childByAutoId().setValue(rdata)
             
             uploadPhotosToDatabase(nameString: name!)
+            backToPlaceDetailViewSegue()
 
-            performSegue(withIdentifier: "editTabletoDetailSegue", sender: nil)
+            //performSegue(withIdentifier: "editTabletoDetailSegue", sender: nil)
             
         }
-        
-
-    
     
     
     
@@ -979,47 +1088,52 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         let imagesFolder = FIRStorage.storage().reference().child("images")
         //FIRDatabase
         
-        let mainImageData = UIImageJPEGRepresentation(mainImage.image!, 0.1)!
-        let subImageData1 = UIImageJPEGRepresentation(subImage1.image!, 0.1)!
-        let subImageData2 = UIImageJPEGRepresentation(subImage2.image!, 0.1)!
-        
-        //this explicit value triggers some error!!
-        
-        print("uploadPhotosToDatabase")
-      
-        imagesFolder.child("\(nameString).urlOne.jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
-            print("We tried to upload!")
-            if error != nil {
-                print("We had an error:\(error)")
-            } else {
-                print("uploadPhotosToDatabase1")
-                print(metadata?.downloadURL() as Any)
-                let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(nameString).updateChildValues(["urlOne": downloadURL])
-                self.toilet.urlOne = downloadURL
-  
-            }
-        })
-        
-        imagesFolder.child("\(nameString).urlTwo.jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
-            print("We tried to upload!")
-            if error != nil {
-                print("We had an error:\(error)")
-            } else {
-                
-                print(metadata?.downloadURL() as Any)
-                let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(nameString).updateChildValues(["urlTwo": downloadURL])
-                self.toilet.urlTwo = downloadURL
-                
-            }
-        })
+        if mainImageReplace == true
+            
+        {
+            let mainImageData = UIImageJPEGRepresentation(mainImage.image!, 0.1)!
+            imagesFolder.child("\(nameString).urlOne.jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
+                print("We tried to upload!")
+                if error != nil {
+                    print("We had an error:\(String(describing: error))")
+                } else {
+                    print("uploadPhotosToDatabase1")
+                    print(metadata?.downloadURL() as Any)
+                    let downloadURL = metadata!.downloadURL()!.absoluteString
+                    databaseRef.child("Toilets").child(nameString).updateChildValues(["urlOne": downloadURL])
+                    self.toilet.urlOne = downloadURL
+                    
+                }
+            })
 
+        }
+        
+        if subImageReplace1 == true{
+            let subImageData1 = UIImageJPEGRepresentation(subImage1.image!, 0.1)!
+            imagesFolder.child("\(nameString).urlTwo.jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
+                print("We tried to upload!")
+                if error != nil {
+                    print("We had an error:\(String(describing: error))")
+                } else {
+                    
+                    print(metadata?.downloadURL() as Any)
+                    let downloadURL = metadata!.downloadURL()!.absoluteString
+                    databaseRef.child("Toilets").child(nameString).updateChildValues(["urlTwo": downloadURL])
+                    self.toilet.urlTwo = downloadURL
+                    
+                }
+            })
+        }
+
+        
+        if subImageReplace2 == true{
+        
+        let subImageData2 = UIImageJPEGRepresentation(subImage2.image!, 0.1)!
         
         imagesFolder.child("\(nameString).urlThree.jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
-                print("We had an error:\(error)")
+                print("We had an error:\(String(describing: error))")
             } else {
                 
                 print(metadata?.downloadURL() as Any)
@@ -1029,6 +1143,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
 
             }
         })
+            
+        }
   
     }
 
