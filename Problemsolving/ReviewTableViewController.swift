@@ -17,6 +17,8 @@ class ReviewTableViewController: UITableViewController {
     
     var reviews: [Review] = []
     var toilet = Toilet()
+    var filter = Filter()
+    var search = Search()
     var review = Review()
     var reviewsSet = Set<String>()
     var likedSet = Set<String>()
@@ -24,6 +26,10 @@ class ReviewTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        reviewQuery()
+        print("ReviewTableViewController Loaded")
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,10 +45,10 @@ class ReviewTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return reviews.count
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        // #warning Incomplete implementation, return the number of sections
+//        return reviews.count
+//    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("ReviewTableViewCell", owner: self, options: nil)?.first as! ReviewTableViewCell
@@ -64,9 +70,9 @@ class ReviewTableViewController: UITableViewController {
         cell.dateLabel.text = reviews[indexPath.row].time
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.likedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount)件"
-        cell.nextLikedCountLabel.isHidden = true
-        cell.nextUserLikedCount.isHidden = true
-        cell.userFavoritedCount.text = "\(reviews[indexPath.row].totalFavoriteCount)"
+//        cell.nextLikedCountLabel.isHidden = true
+//        cell.nextUserLikedCount.isHidden = true
+//        cell.userFavoritedCount.text = "\(reviews[indexPath.row].totalFavoriteCount)"
         cell.userHelpedCount.text = "\(reviews[indexPath.row].totalHelpedCount)"
         cell.userLikedCount.text = "\(reviews[indexPath.row].totalLikedCount)"
         
@@ -77,18 +83,18 @@ class ReviewTableViewController: UITableViewController {
         
         cell.likeButton.addTarget(self, action: #selector(DetailViewController.buttonClicked), for: .touchUpInside)
         
-        if reviews[indexPath.row].userLiked == true {
-            cell.likeButton.setImage(UIImage(named: "like1"), for: UIControlState.normal)
-            let nextNumber = reviews[indexPath.row].likedCount - 1
-            let nextLikedNumber = reviews[indexPath.row].totalLikedCount - 1
-            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
-            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
-        } else{
-            let nextNumber = reviews[indexPath.row].likedCount + 1
-            let nextLikedNumber = reviews[indexPath.row].totalLikedCount + 1
-            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
-            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
-        }
+//        if reviews[indexPath.row].userLiked == true {
+//            cell.likeButton.setImage(UIImage(named: "like1"), for: UIControlState.normal)
+//            let nextNumber = reviews[indexPath.row].likedCount - 1
+//            let nextLikedNumber = reviews[indexPath.row].totalLikedCount - 1
+////            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
+////            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
+//        } else{
+//            let nextNumber = reviews[indexPath.row].likedCount + 1
+//            let nextLikedNumber = reviews[indexPath.row].totalLikedCount + 1
+////            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
+////            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
+//        }
         
         if reviews[indexPath.row].waitingtime == "0"{
             cell.waitingMinuteLabel.text = "待ちなし"
@@ -99,14 +105,19 @@ class ReviewTableViewController: UITableViewController {
     }
 
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 255
+        
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return reviews.count
     }
     
     func reviewQuery(){
         
-        print("review Query Called")
+        print("review Query TV Called")
         
         let reviewsRef = FIRDatabase.database().reference().child("reviews")
         
@@ -181,7 +192,7 @@ class ReviewTableViewController: UITableViewController {
                         self.reviews.sort(){$0.timeNumbers > $1.timeNumbers}
                         self.tableView.reloadData()
                         
-                        print("review Query End")
+                        print("review Query TV End")
                         
                         //I moved codes above here because review tableview could not be loaded 26th
                         //when the value is changed, tableveiw loads again and again
@@ -207,7 +218,25 @@ class ReviewTableViewController: UITableViewController {
     }
 
 
+    @IBAction func backReviewsToPlaceDetailTapped(_ sender: Any) {
+        print("back to place detail")
+        performSegue(withIdentifier:"backReviewsToPlaceDetailSegue", sender: nil)
+        
+    }
    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backReviewsToPlaceDetailSegue"{
+            let nextVC = segue.destination as! PlaceDetailViewController
+            nextVC.toilet = toilet
+            nextVC.filter = filter
+            nextVC.search = search
+            
+            
+        }
+        
+
+        
+    }
     
     
     

@@ -29,54 +29,54 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("ReviewTableViewCell", owner: self, options: nil)?.first as! ReviewTableViewCell
         
-        cell.feedbackTextView.backgroundColor = UIColor.white
-        cell.feedbackTextView.isUserInteractionEnabled = false
-        
-        cell.userPhotoImage.sd_setImage(with: URL(string: reviews[indexPath.row].userPhoto))
-        cell.userPhotoImage.layer.masksToBounds = true
-        cell.userPhotoImage.layer.cornerRadius = 25.5
-        ////////////// 5 to 25.5
-        
-        let myColor : UIColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.1)
-        cell.userPhotoImage.layer.borderColor = myColor.cgColor
-        cell.userPhotoImage.layer.borderWidth = 1
-        cell.starRatedLabel.rating = reviews[indexPath.row].star
-        cell.feedbackTextView.text = reviews[indexPath.row].feedback
-        cell.userNameLabel.text = reviews[indexPath.row].userName
-        cell.dateLabel.text = reviews[indexPath.row].time
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.likedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount)件"
-        cell.nextLikedCountLabel.isHidden = true
-        cell.nextUserLikedCount.isHidden = true
-        cell.userFavoritedCount.text = "\(reviews[indexPath.row].totalFavoriteCount)"
-        cell.userHelpedCount.text = "\(reviews[indexPath.row].totalHelpedCount)"
-        cell.userLikedCount.text = "\(reviews[indexPath.row].totalLikedCount)"
-        
-        cell.starRatedLabel.settings.filledColor = UIColor.yellow
-        cell.starRatedLabel.settings.emptyBorderColor = UIColor.orange
-        cell.starRatedLabel.settings.filledBorderColor = UIColor.orange
-
-        
-        cell.likeButton.addTarget(self, action: #selector(DetailViewController.buttonClicked), for: .touchUpInside)
-        
-        if reviews[indexPath.row].userLiked == true {
-            cell.likeButton.setImage(UIImage(named: "like1"), for: UIControlState.normal)
-            let nextNumber = reviews[indexPath.row].likedCount - 1
-            let nextLikedNumber = reviews[indexPath.row].totalLikedCount - 1
-            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
-            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
-        } else{
-            let nextNumber = reviews[indexPath.row].likedCount + 1
-            let nextLikedNumber = reviews[indexPath.row].totalLikedCount + 1
-            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
-            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
-        }
-        
-        if reviews[indexPath.row].waitingtime == "0"{
-            cell.waitingMinuteLabel.text = "待ちなし"
-        }else {
-            let waitminutes = "\(reviews[indexPath.row].waitingtime)分待ち"
-            cell.waitingMinuteLabel.text = waitminutes}
+//        cell.feedbackTextView.backgroundColor = UIColor.white
+//        cell.feedbackTextView.isUserInteractionEnabled = false
+//        
+//        cell.userPhotoImage.sd_setImage(with: URL(string: reviews[indexPath.row].userPhoto))
+//        cell.userPhotoImage.layer.masksToBounds = true
+//        cell.userPhotoImage.layer.cornerRadius = 25.5
+//        ////////////// 5 to 25.5
+//        
+//        let myColor : UIColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.1)
+//        cell.userPhotoImage.layer.borderColor = myColor.cgColor
+//        cell.userPhotoImage.layer.borderWidth = 1
+//        cell.starRatedLabel.rating = reviews[indexPath.row].star
+//        cell.feedbackTextView.text = reviews[indexPath.row].feedback
+//        cell.userNameLabel.text = reviews[indexPath.row].userName
+//        cell.dateLabel.text = reviews[indexPath.row].time
+//        cell.selectionStyle = UITableViewCellSelectionStyle.none
+//        cell.likedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount)件"
+//        cell.nextLikedCountLabel.isHidden = true
+//        cell.nextUserLikedCount.isHidden = true
+//        cell.userFavoritedCount.text = "\(reviews[indexPath.row].totalFavoriteCount)"
+//        cell.userHelpedCount.text = "\(reviews[indexPath.row].totalHelpedCount)"
+//        cell.userLikedCount.text = "\(reviews[indexPath.row].totalLikedCount)"
+//        
+//        cell.starRatedLabel.settings.filledColor = UIColor.yellow
+//        cell.starRatedLabel.settings.emptyBorderColor = UIColor.orange
+//        cell.starRatedLabel.settings.filledBorderColor = UIColor.orange
+//
+//        
+//        cell.likeButton.addTarget(self, action: #selector(DetailViewController.buttonClicked), for: .touchUpInside)
+//        
+//        if reviews[indexPath.row].userLiked == true {
+//            cell.likeButton.setImage(UIImage(named: "like1"), for: UIControlState.normal)
+//            let nextNumber = reviews[indexPath.row].likedCount - 1
+//            let nextLikedNumber = reviews[indexPath.row].totalLikedCount - 1
+//            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
+//            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
+//        } else{
+//            let nextNumber = reviews[indexPath.row].likedCount + 1
+//            let nextLikedNumber = reviews[indexPath.row].totalLikedCount + 1
+//            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
+//            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
+//        }
+//        
+//        if reviews[indexPath.row].waitingtime == "0"{
+//            cell.waitingMinuteLabel.text = "待ちなし"
+//        }else {
+//            let waitminutes = "\(reviews[indexPath.row].waitingtime)分待ち"
+//            cell.waitingMinuteLabel.text = waitminutes}
         return cell
     }
     

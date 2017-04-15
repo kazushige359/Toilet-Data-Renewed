@@ -1019,6 +1019,18 @@ import Cosmos
                 nextV.pincoodinate = coordinate
             }
             
+            if segue.identifier == "placeDetailToReviewTVSegue"{
+                let nextVC = segue.destination as! ReviewTableViewController
+                
+                nextVC.toilet = toilet
+                nextVC.filter = filter
+                nextVC.search = search
+            
+            
+            
+            
+            }
+            
             if segue.identifier == "detailbacktoMapSegue"{
                 print("TEST!")
                 let nextVC = segue.destination as! MapViewController
@@ -1173,6 +1185,12 @@ import Cosmos
         }
         
         @IBAction func buttonShowAllReviewsTapped(_ sender: Any) {
+            print("Show Reviews Tapped")
+            performSegue(withIdentifier:"placeDetailToReviewTVSegue", sender: nil)
+
+            
+//            performSegue(withIdentifier:"placeDetailToReviewTVSegue", withIdentifier: <#String#>, sender: nil)
+//            "placeDetailToReviewTVSegue"
         }
         
         @IBAction func reviewOneLikeButtonTapped(_ sender: Any) {

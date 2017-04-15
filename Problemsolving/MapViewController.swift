@@ -632,13 +632,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             place = MKPlacemark(coordinate: anno.coordinate)
             let destination = MKMapItem(placemark: place)
             destination.name = (view.annotation?.title)!
+            let destionationKey = view.annotation?.subtitle
             let regionDistance: CLLocationDistance = 1000
             let regionSpan = MKCoordinateRegionMakeWithDistance(anno.coordinate, regionDistance, regionDistance)
             
             let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey:  NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking] as [String : Any]
             
             print("callout0")
-            FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youwent").child(destination.name!).setValue(destination.name!)
+           FIRDatabase.database().reference().child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).child(destionationKey as! String).setValue(true)
             print("Callout1")
             MKMapItem.openMaps(with: [destination], launchOptions: options)
         }
@@ -669,7 +670,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
             //query. need to be changed
            //
-            print("HEYKey '\(key)' entered the search area and is at location '\(location)'")
+            print("HEYKey '\(String(describing: key))' entered the search area and is at location '\(String(describing: location))'")
             
             
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
@@ -1176,6 +1177,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     
                     //if toilet.available = true{
                     queryannotations.title = toilet.name
+                    queryannotations.subtitle = toilet.key
                     queryannotations.coordinate = (location?.coordinate)!
                     
                     self.mapView.addAnnotation(queryannotations)
@@ -1213,8 +1215,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         //Commented April 14 for animation table view
         
-        let screenSize = UIScreen.main.bounds
-        let screenHeight = screenSize.height
+        // let screenSize = UIScreen.main.bounds
+        //let screenHeight = screenSize.height
         tableViewConstraint.constant = 192
         
         UIView.animate(withDuration: 0.3) {
