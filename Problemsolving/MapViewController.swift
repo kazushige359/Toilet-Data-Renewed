@@ -57,7 +57,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         cell.mainImageView.layer.cornerRadius = 8.0
         cell.mainLabel.text = toilets[indexPath.row].name
         
-        cell.distanceLabel.text = toilet.distance
+        cell.distanceLabel.text = toilets[indexPath.row].distance
+        
+        
+        
         
 //        
 //        if toilets[indexPath.row].distance > 1000{
@@ -130,9 +133,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             nextVC.filter = filter
             nextVC.search = search
         }
-        if segue.identifier == "mapToacTVSegue"{
+        if segue.identifier == "userAccountInfoSegue"{
             //Changed to new name
-            let nextVC = segue.destination as! AccountTableViewController
+            let nextVC = segue.destination as! UserPrivateAccountViewController
             nextVC.filter = filter
             nextVC.search = search
         }
@@ -271,6 +274,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         
         progressBarDisplayer(msg:"トイレを検索中", true)
+        
+//        print("PassingData.sharedInstance.welcomeMessage = \(PassingData.shared.welcomeMessage)")
+//        print("PassingData.sharedInstance.filterOn = \(PassingData.shared.filterOn)")
+//
+//        
+//        
+//        PassingData.sharedInstance.welcomeMessage = "HEY CHANGED"
+//        PassingData.sharedInstance.filterOn = false
         
     }
     
@@ -527,6 +538,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             //Added for the blue dot for user Location 18th
         }else{
             
+            
             if view == nil {
                 //There was a error once (breakpoint 10.1) 18th
                 
@@ -535,7 +547,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 view?.canShowCallout = false
                 
+                
+                
+                
                 print("view == nil called")
+                
+                
                 
                 
                 //Comment I am goona comment  lines becuase I want to replace my original subview.... April 15
@@ -561,7 +578,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
         }
         print("MKAnnotaionView Return \(String(describing: view))")
-        view?.image = UIImage(named: "like")
+        view?.image = UIImage(named: "pin_red_40_20")
         return view
         
     
@@ -884,6 +901,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 
                 toilet.distance = MapViewController.distanceCalculationGetString(destination: location!, center: center)
+                
+                print("THIS IS THE DISTANCE\(toilet.distance)")
                 
                 
                 ///////Copied from new one April 6   .....

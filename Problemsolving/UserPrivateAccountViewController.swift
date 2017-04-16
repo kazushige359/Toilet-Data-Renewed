@@ -76,6 +76,10 @@ class UserPrivateAccountViewController: UIViewController {
         
         
         
+//        print("PassingData.sharedInstance.welcomeMessage = \(PassingData.sharedInstance.welcomeMessage)")
+//         print("PassingData.sharedInstance.filterOn = \(PassingData.sharedInstance.filterOn)")
+        
+        
         
         
         
@@ -123,6 +127,25 @@ class UserPrivateAccountViewController: UIViewController {
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "newAcaddToiletSegue"{
+//            
+//            let nextVC = segue.destination as! AddPinViewController
+//            
+//            //nextVC.toilet = toilet
+//            nextVC.filter = filter
+//            nextVC.search = search
+//        }
+        
+        
+        if segue.identifier == "newAcToFavoriteList"{
+            
+            let nextVC = segue.destination as! FavoriteTableViewController
+            
+            //nextVC.toilet = toilet
+            nextVC.filter = filter
+            nextVC.search = search
+        }
+        
         if segue.identifier == "youHaveBeenSegue"{
             
             let nextVC = segue.destination as! YouWentTableViewController
@@ -130,10 +153,34 @@ class UserPrivateAccountViewController: UIViewController {
             //nextVC.toilet = toilet
             nextVC.filter = filter
             nextVC.search = search
-        
-            
-        
         }
+        
+//        if segue.identifier == "youHaveBeenSegue"{
+//            
+//            let nextVC = segue.destination as! YouWentTableViewController
+//            
+//            //nextVC.toilet = toilet
+//            nextVC.filter = filter
+//            nextVC.search = search
+//        }
+//        
+//        if segue.identifier == "youHaveBeenSegue"{
+//            
+//            let nextVC = segue.destination as! YouWentTableViewController
+//            
+//            //nextVC.toilet = toilet
+//            nextVC.filter = filter
+//            nextVC.search = search
+//        }
+//        
+//        if segue.identifier == "youHaveBeenSegue"{
+//            
+//            let nextVC = segue.destination as! YouWentTableViewController
+//            
+//            //nextVC.toilet = toilet
+//            nextVC.filter = filter
+//            nextVC.search = search
+//        }
     }
     
     

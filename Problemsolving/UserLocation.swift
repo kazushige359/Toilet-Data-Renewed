@@ -14,6 +14,7 @@ public class UserLocation{
     var lat = Double()
     var lon = Double()
     
+    
     //Experiment... Added April 11 
 
 }

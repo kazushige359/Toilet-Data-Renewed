@@ -10,6 +10,8 @@ import MapKit
 
 class AnnotationView: MKAnnotationView{
     
+    var pinLevel = 1
+    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         let hitView = super.hitTest(point, with: event)
         if (hitView != nil)

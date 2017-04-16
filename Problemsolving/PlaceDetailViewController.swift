@@ -38,6 +38,7 @@ import Cosmos
             print("didselect")
         }
         
+        @IBOutlet weak var favoriteButtonOutlet: UIButton!
 
         @IBOutlet weak var booleansTableView: UITableView!
         @IBOutlet weak var backgroundScrollView: UIScrollView!
@@ -120,6 +121,7 @@ import Cosmos
         var youwentAdded = false
         var youwentEdited = false
         var firebaseLoadedOnce = false
+        var favoriteButtonTapped = false
         var locationManager = CLLocationManager()
         let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
         
@@ -207,7 +209,7 @@ import Cosmos
                 self.toilet.key = queryKey
                 let snapshotValue = snapshot.value as? NSDictionary
                 
-                self.booleans.append("How are you")
+                self.booleans.append("この施設の設備")
                 
                 
                 self.toilet.urlOne = (snapshotValue?["urlOne"] as? String!)!
@@ -634,7 +636,7 @@ import Cosmos
             
             
             mapView.tintColor = UIColor.blue
-            var focusArea = 1200
+            let focusArea = 1200
             
 //            if toilet.distance <= 50{
 //                focusArea = 100}else
@@ -653,7 +655,7 @@ import Cosmos
 //            let region = MKCoordinateRegionMakeWithDistance(coordinate1, CLLocationDistance(focusArea), CLLocationDistance(focusArea))
             mapView.setRegion(region, animated: true)
             
-            var distanceText = toilet.distance
+            let distanceText = toilet.distance
             
             print("toiletDistance22233 == \(toilet.distance)")
 //            
@@ -918,11 +920,18 @@ import Cosmos
         
         
         
-        @IBAction func okiniiriButtonTapped(_ sender: Any)
+       
+        
+        
+        
+        
+        
+        
+        func afterFavoriteTappedAction()
         {   firebaseLoadedOnce = true
             let firebaseRef = FIRDatabase.database().reference()
-            let userRef = firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid)
-            userRef.child("favourite").child(toilet.key).setValue(true)
+            let userRef = firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
+            userRef.child(toilet.key).setValue(true)
             let totalFavoriteCountRef = firebaseRef.child("users").child(toilet.addedBy).child("totalFavoriteCount")
             totalFavoriteCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
                 if self.favoriteAdded == false{
@@ -1168,6 +1177,29 @@ import Cosmos
             alertController.addAction(yesAction)
             alertController.addAction(cancelAction)
             present(alertController, animated: true, completion: nil)
+        }
+        
+        
+        @IBAction func favoriteButtonTapped(_ sender: Any) {
+            print("Favorite Tapped")
+            let image = UIImage(named:"love_Icon_40")
+            let image2 = UIImage(named: "love_before_tap_40")
+        
+            
+                if favoriteButtonTapped == false{
+                //sender.setImage(image, forControlState: .Normal)
+                (sender as AnyObject).setImage(image, for: .normal)
+                print("Image is supposed to be replacedAAA")
+                favoriteButtonTapped = true
+                self.afterFavoriteTappedAction()
+                
+                } else{
+            
+                (sender as AnyObject).setImage(image2, for: .normal)
+                print("Image is supposed to be replacedBBB")
+                favoriteButtonTapped = false
+            
+                }
         }
         
         

@@ -47,11 +47,11 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type/ Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voa-ve-Ctx">
-                                                        <rect key="frame" x="8" y="51" width="304" height="30"/>
+                                                        <rect key="frame" x="8" y="51" width="266" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="7H7-Bv-wyT"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -60,7 +60,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="P5X-6q-lze"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -79,18 +79,31 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-9T-DJf">
+                                                        <rect key="frame" x="272" y="56" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="DKV-81-qjT"/>
+                                                            <constraint firstAttribute="height" constant="40" id="Yuj-br-GSv"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button" image="love_before_tap_40"/>
+                                                        <connections>
+                                                            <action selector="favoriteButtonTapped:" destination="hAD-xO-93C" eventType="touchUpInside" id="5Gm-Rx-p95"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="voa-ve-Ctx" firstAttribute="leading" secondItem="F5m-5K-Il4" secondAttribute="leadingMargin" id="1k5-Yj-0p6"/>
+                                                    <constraint firstItem="JuO-9T-DJf" firstAttribute="centerY" secondItem="voa-ve-Ctx" secondAttribute="centerY" constant="10" id="54Y-0s-HNq"/>
                                                     <constraint firstItem="UDN-vi-5Qd" firstAttribute="top" secondItem="Tga-vc-bAH" secondAttribute="bottom" id="Jkf-BI-czO"/>
                                                     <constraint firstItem="g17-BU-J0V" firstAttribute="leading" secondItem="F5m-5K-Il4" secondAttribute="leadingMargin" id="Q1L-Nw-8LH"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="Tga-vc-bAH" secondAttribute="trailing" id="Qk6-ar-lix"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="g17-BU-J0V" secondAttribute="trailing" id="S6A-ds-cZA"/>
                                                     <constraint firstAttribute="height" constant="150" id="TiY-9z-XIf"/>
                                                     <constraint firstItem="wMm-KD-Kzc" firstAttribute="centerY" secondItem="UDN-vi-5Qd" secondAttribute="centerY" id="VmF-sc-qi5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="JuO-9T-DJf" secondAttribute="trailing" constant="8" id="b6I-fA-ScS"/>
                                                     <constraint firstItem="Tga-vc-bAH" firstAttribute="leading" secondItem="F5m-5K-Il4" secondAttribute="leadingMargin" id="f0V-9E-zYu"/>
-                                                    <constraint firstAttribute="trailingMargin" secondItem="voa-ve-Ctx" secondAttribute="trailing" id="kM8-52-K2D"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="voa-ve-Ctx" secondAttribute="trailing" constant="38" id="kM8-52-K2D"/>
                                                     <constraint firstItem="g17-BU-J0V" firstAttribute="top" secondItem="F5m-5K-Il4" secondAttribute="topMargin" constant="3" id="rym-2O-uZ3"/>
                                                     <constraint firstItem="wMm-KD-Kzc" firstAttribute="leading" secondItem="UDN-vi-5Qd" secondAttribute="trailing" id="uLH-QQ-F65"/>
                                                     <constraint firstItem="Tga-vc-bAH" firstAttribute="top" secondItem="voa-ve-Ctx" secondAttribute="bottom" id="uUY-dz-hop"/>
@@ -931,6 +944,7 @@
                         <outlet property="buttonKansouOutlet" destination="lec-d6-Rmg" id="kgo-L2-M0p"/>
                         <outlet property="buttonShowAllReviewsOutlet" destination="9DV-46-Mde" id="dWQ-me-X7Z"/>
                         <outlet property="buttonShowDetailOutlet" destination="o9k-Q0-WAx" id="COS-Jv-tcn"/>
+                        <outlet property="favoriteButtonOutlet" destination="JuO-9T-DJf" id="rOU-ki-AMf"/>
                         <outlet property="firstPosterFavoriteLabel" destination="DOo-gd-73F" id="VIh-co-Mkx"/>
                         <outlet property="firstPosterHelpLabel" destination="eAX-of-lMJ" id="qcg-Z8-bw6"/>
                         <outlet property="firstPosterLikeLabel" destination="lSj-Ee-QUi" id="NqP-No-i07"/>
@@ -1057,6 +1071,7 @@
         <image name="earth_image_30" width="30" height="30"/>
         <image name="like" width="24" height="24"/>
         <image name="love" width="24" height="24"/>
+        <image name="love_before_tap_40" width="40" height="40"/>
         <image name="photo_picture_default_100" width="100" height="100"/>
         <image name="question_image_30" width="30" height="30"/>
         <image name="standing-up-man-" width="24" height="24"/>

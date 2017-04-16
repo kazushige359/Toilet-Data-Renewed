@@ -10,7 +10,10 @@ import Foundation
 
 class PassingData{
     
-    var key = ""
+    
+    var welcomeMessage:String = "Default Message"
+    var filterOn:Bool = true
+    static let share = PassingData()
 
 
 
