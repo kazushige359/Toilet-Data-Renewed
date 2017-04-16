@@ -34,9 +34,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
-//         cell.bounds = CGRect(x: 0, y: 0, width: mapView.bounds.width, height: cell.bounds.height )
-        //cell.bounds = CGRect(0.0, 0.0, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds))
-        /////
         
         if toilet.urlOne != ""{
         cell.mainImageView.sd_setImage(with: URL(string: toilets[indexPath.row].urlOne))
@@ -44,46 +41,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
         
-        
-//        if !toilet.available{
-//            
-//        }
-//        cell.image7.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fredflag.jpeg?alt=media&token=6f464ebc-81a9-4553-aadd-1bb4b98d2b74"))
-        // red flag
-        
         cell.Star.settings.filledColor = UIColor.yellow
         cell.Star.settings.emptyBorderColor = UIColor.orange
         cell.Star.settings.filledBorderColor = UIColor.orange
         
         cell.Star.rating = Double(toilets[indexPath.row].averageStar)!
         
-        //////////////////////////////////
+        
         cell.Star.text = "\(Double(toilets[indexPath.row].averageStar)!)(\(toilets[indexPath.row].reviewCount)件) "
         cell.Star.settings.textColor = UIColor.black
         cell.Star.settings.textMargin = 10
-        //text margin 10 to 5
         cell.Star.settings.textFont.withSize(CGFloat(50.0))
-        //30 to 50
-        
-        //Added for the auto layout
-        //////////////////////////////////
-        
-//        cell.starLabel.text = "\(toilets[indexPath.row].averageStar)"
-//        //cell.reviewCountLabel.text = "(感想\(toilets[indexPath.row].reviewCount)件)"
-//        cell.reviewCountLabel.text = "(\(toilets[indexPath.row].reviewCount))"
-        
-        // I got Pictures above from the Internet, so dont use them for commersial purposes
+       
         cell.mainImageView.layer.masksToBounds = true
         cell.mainImageView.layer.cornerRadius = 8.0
         cell.mainLabel.text = toilets[indexPath.row].name
-        if toilets[indexPath.row].distance > 1000{
-            let td1 = round(0.01*toilets[indexPath.row].distance)/0.01/1000
-            print("td1 = \(td1)")
-            cell.distanceLabel.text = "\(td1)km"
-            
-        } else{
-            cell.distanceLabel.text = "\(Int(round(0.1*toilets[indexPath.row].distance)/0.1))m"
-        }
+        
+        cell.distanceLabel.text = toilet.distance
+        
+//        
+//        if toilets[indexPath.row].distance > 1000{
+//            let td1 = round(0.01*toilets[indexPath.row].distance)/0.01/1000
+//            print("td1 = \(td1)")
+//            cell.distanceLabel.text = "\(td1)km"
+//            
+//        } else{
+//            cell.distanceLabel.text = "\(Int(round(0.1*toilets[indexPath.row].distance)/0.1))m"
+//        }
+        
+        //Commented April 16
+        
+        
         return cell
         
     }
@@ -96,18 +84,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("Segue 111")
+        
     
         let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
         let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
         let nextVC = navigationContoller.topViewController as! PlaceDetailViewController
-        //vc.toilet = toilet
         
-         print("Segue 222")
-        //let nextVC = segue.destination as! PlaceDetailViewController
-                   // let nextVC = segue.destination as! DetailViewController
+
         nextVC.toilet = toilets[indexPath.row]
-        // nextVC.toilet = sender as! Toilet
         nextVC.filter = filter
         nextVC.search = search
         
@@ -117,71 +101,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         transition.subtype = kCATransitionFromRight
         view.window!.layer.add(transition, forKey: kCATransition)
         
-
-        
-        print("Segue 333")
-        
         self.present(navigationContoller, animated: false, completion: nil)
-        
-        
-        //
-        
-        
-       //let storyboard = UIStoryboard(name: "Main", bundle: nil)
-      // let controller = storyboard.instantiateViewController(withIdentifier: "PlaceDetailViewController") as UIViewController
-//        
-//        controller.toilet.key = toilets[indexPath.row].key
-//        self.storyboard.instantiateViewControllerWithIdentifier("PlaceDetailViewController")
-//        var view: Dashboard = self.storyboard?.instantiateViewControllerWithIdentifier("Dashboard") as Dashboard
-
-        
-        
-       // performSegue(withIdentifier:"openRevealSegue", sender: toilets[indexPath.row])
-        
-        //April 11 1pm for creating table view drawer....
-        
-        
-        
-        
-        
-        
-//        performSegue(withIdentifier: "mapToNewDetailSegue", sender: toilets[indexPath.row])
-//        
-//        print("sender = \(toilets[indexPath.row])")
-        
-        //commented April 13 for segue programattilcaly
+       
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        if segue.identifier == "openRevealSegue"
-//        {
-//        
-//            
-//            
-//        
-//            //April 8 18 pm
-//            //let nextVC = segue.
-//            let nextVC = segue.destinationViewController
-//            nextVC.toilet = sender as! Toilet
-//            // nextVC.toilet = sender as! Toilet
-//            nextVC.filter = filter
-//            nextVC.search = search
-//            
-//            
-//            ////////////////////Commented April 8
-//        }
-        
-        
-        ///////
-//        let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
-//        let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
-//        let vc = navigationContoller.topViewController as! PlaceDetailViewController
-//        vc.toilet = toilet
-//
-        
-        /////
-
+       
         if segue.identifier == "mapToNewDetailSegue"
         {
             //April 8 18 pm
@@ -235,7 +160,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     
     
-    //Below properties were copied from mapkit tutorial
+    
     var resultSearchController: UISearchController!
     var selectedPin: MKPlacemark?
     let databaseRef = FIRDatabase.database().reference()
@@ -251,10 +176,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var activityIndicator = UIActivityIndicatorView()
     var strLabel = UILabel()
     
-    
-    
-    
-    //Cope=ied from example
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -273,13 +195,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         changeStartCell()
         
-        //Below properties were copied from mapkit tutorial
+        
         let locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController.searchResultsUpdater = locationSearchTable
         
         let searchBar = resultSearchController!.searchBar
-        // let searchBar = resultSearchController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Search for places"
         searchBar.delegate = self
@@ -297,7 +218,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if filter.myOrderSetted == false{
             filter.orderDistanceFilter = true
         }
-        //filter.orderStarFilter = true
         
         if filter.distanceSetted == false{
             filter.distanceFilter = 3
@@ -351,13 +271,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         
         progressBarDisplayer(msg:"トイレを検索中", true)
-        
-//        let screenSize = UIScreen.main.bounds
-//        let screenHeight = screenSize.height
-//        tableViewConstraint.constant = 192
-        
-        
-    
         
     }
     
@@ -426,7 +339,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         if toilets.count == 1 {
-//            self.tableView.frame = CGRect(x:0 , y: tableView.frame.height - 82, width: tableView.frame.width, height: 82)
             self.tableView.frame = CGRect(x:0 , y: mapView.frame.height - 82, width: tableView.frame.width, height: 82)
         }
         if toilets.count == 2 {
@@ -445,87 +357,87 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     
-    func savingToilets(){
-        print("savingToilets()")
-        let locationsRef = FIRDatabase.database().reference().child("ToiletLocations")
-        let geoFire = GeoFire(firebaseRef: locationsRef)
-        let locations = [
-            ["name": "FamilyMart 筑前山家道店","latitude": -33.888212, "longitude": 151.193686],
-            ["name": "FamilyMart 筑前原地蔵店","latitude": -33.886921, "longitude": 151.194030],
-            ["name": "F3","latitude": -33.886208, "longitude": 151.194502],
-            ["name": "F6","latitude": -33.887241, "longitude": 151.191219],
-            ["name": "F5","latitude": -33.884851, "longitude": 151.190141]
-        ]
-        
-        //under for key location["name"] as! String!
-        
-        
-        for location in locations {
-            
-            geoFire!.setLocation(CLLocation(latitude: location["latitude"] as! CLLocationDegrees, longitude: location["longitude"] as! CLLocationDegrees), forKey: location["name"] as! String!){(error) in
-                if (error != nil) {
-                    print("An error occured: \(String(describing: error))")
-                    
-                } else {
-                    print("Saved location successfully!")
-                    print("in geoFire.setLocation")
-                }
-            }
-            print("after geoFire.setLocation")
-            
-            let tdata : [String : Any] =
-                ["name": "FamilyMart",
-                 "openinghours": "07:30 〜　16:30",
-                 "type": "ConvenienceStore",
-                 "star": 3.5 ,
-                 "waitingtime": 2 ,
-                 "urlOne":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-                 "urlTwo":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-                 "urlThree":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-                 "tid": "jfiohaiohfj",
-                 "washlet": false,
-                 "wheelchair": false,
-                 "onlyFemale": true,
-                 "unisex": true,
-                 "makeuproom": false,
-                 "milkspace" : false,
-                 "omutu": false,
-                 "ostomate" : false,
-                 "japanesetoilet": false,
-                 "westerntoilet": true,
-                 "warmSeat": false,
-                 "baggageSpace": false,
-                 "howtoaccess": "アクセス情報はまだ記入されていません",
-                 "available": false,
-                 "addedBy": "us",
-                 "editedBy": "us",
-                 "reviewCount": 0,
-                 "averageStar": "0.0",
-                 "star1": 0,
-                 "star2": 0,
-                 "star3": 0,
-                 "star4": 0,
-                 "star5": 0,
-                 "star6": 0,
-                 "star7": 0,
-                 "star8": 0,
-                 "star9": 0,
-                 "star10": 0,
-                 "wait1": 0,
-                 "wait2": 0,
-                 "wait3": 0,
-                 "wait4": 0,
-                 "wait5": 0,
-                 "averageWait": 0
-            ]
-            
-            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
-            toiletsRef.child(location["name"] as! String!).setValue(tdata)
-            //self.toiletsRef.child(location["name"] as! String!).setValue(tdata)
-            print("tdata = \(tdata)")
-            print("toiletsRef data is saved!!")
-        }
-    }
+//    func savingToilets(){
+//        print("savingToilets()")
+//        let locationsRef = FIRDatabase.database().reference().child("ToiletLocations")
+//        let geoFire = GeoFire(firebaseRef: locationsRef)
+//        let locations = [
+//            ["name": "FamilyMart 筑前山家道店","latitude": -33.888212, "longitude": 151.193686],
+//            ["name": "FamilyMart 筑前原地蔵店","latitude": -33.886921, "longitude": 151.194030],
+//            ["name": "F3","latitude": -33.886208, "longitude": 151.194502],
+//            ["name": "F6","latitude": -33.887241, "longitude": 151.191219],
+//            ["name": "F5","latitude": -33.884851, "longitude": 151.190141]
+//        ]
+//        
+//        //under for key location["name"] as! String!
+//        
+//        
+//        for location in locations {
+//            
+//            geoFire!.setLocation(CLLocation(latitude: location["latitude"] as! CLLocationDegrees, longitude: location["longitude"] as! CLLocationDegrees), forKey: location["name"] as! String!){(error) in
+//                if (error != nil) {
+//                    print("An error occured: \(String(describing: error))")
+//                    
+//                } else {
+//                    print("Saved location successfully!")
+//                    print("in geoFire.setLocation")
+//                }
+//            }
+//            print("after geoFire.setLocation")
+//            
+//            let tdata : [String : Any] =
+//                ["name": "FamilyMart",
+//                 "openinghours": "07:30 〜　16:30",
+//                 "type": "ConvenienceStore",
+//                 "star": 3.5 ,
+//                 "waitingtime": 2 ,
+//                 "urlOne":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
+//                 "urlTwo":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
+//                 "urlThree":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
+//                 "tid": "jfiohaiohfj",
+//                 "washlet": false,
+//                 "wheelchair": false,
+//                 "onlyFemale": true,
+//                 "unisex": true,
+//                 "makeuproom": false,
+//                 "milkspace" : false,
+//                 "omutu": false,
+//                 "ostomate" : false,
+//                 "japanesetoilet": false,
+//                 "westerntoilet": true,
+//                 "warmSeat": false,
+//                 "baggageSpace": false,
+//                 "howtoaccess": "アクセス情報はまだ記入されていません",
+//                 "available": false,
+//                 "addedBy": "us",
+//                 "editedBy": "us",
+//                 "reviewCount": 0,
+//                 "averageStar": "0.0",
+//                 "star1": 0,
+//                 "star2": 0,
+//                 "star3": 0,
+//                 "star4": 0,
+//                 "star5": 0,
+//                 "star6": 0,
+//                 "star7": 0,
+//                 "star8": 0,
+//                 "star9": 0,
+//                 "star10": 0,
+//                 "wait1": 0,
+//                 "wait2": 0,
+//                 "wait3": 0,
+//                 "wait4": 0,
+//                 "wait5": 0,
+//                 "averageWait": 0
+//            ]
+//            
+//            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
+//            toiletsRef.child(location["name"] as! String!).setValue(tdata)
+//            //self.toiletsRef.child(location["name"] as! String!).setValue(tdata)
+//            print("tdata = \(tdata)")
+//            print("toiletsRef data is saved!!")
+//        }
+//    }
     
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
@@ -596,11 +508,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
+   // func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    //changed MKAnnotaion to ToiletMarkers April 15th
+    
+    
+//    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+//        
+//    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         let annotationIdentifier = "Toilets"
         
-        var view = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        var view = self.mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
         if annotation.isKind(of: MKUserLocation.self){
+            print("Annotaion User Return nil")
             return nil
             //Added for the blue dot for user Location 18th
         }else{
@@ -608,42 +530,159 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             if view == nil {
                 //There was a error once (breakpoint 10.1) 18th
                 
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-                view?.canShowCallout = true
-                let btn = UIButton()
-                btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-                btn.setImage(UIImage(named: "route"), for: .normal)
-                view?.rightCalloutAccessoryView = btn
+                
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                
+                view?.canShowCallout = false
+                
+                print("view == nil called")
+                
+                
+                //Comment I am goona comment  lines becuase I want to replace my original subview.... April 15
+//                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+//                view?.canShowCallout = false
+                
+                //True to false show call out
+//                let btn = UIButton()
+//                btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//                btn.setImage(UIImage(named: "route"), for: .normal)
+//                view?.rightCalloutAccessoryView = btn
+                
+                //Comment I am goona comment above lines becuase I want to replace my original subview.... April 15 
+            
+//                let averageStarLabel = UILabel()
+//                averageStarLabel.frame = CGRect(x: 0, y: 0, width: 50, height: 100)
+//                averageStarLabel.text = annotation.averageStar
+//                view?.leftCalloutAccessoryView = averageStarLabel
                 
             } else {
                 view?.annotation = annotation
+                print("else view == annotaion")
             }
         }
+        print("MKAnnotaionView Return \(String(describing: view))")
+        view?.image = UIImage(named: "like")
         return view
+        
+    
     }
     
     
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    ////Copied from Custom Annotaiton Tutorial 
+    func mapView(_ mapView: MKMapView,
+                 didSelect view: MKAnnotationView)
+    {
         
-        if let anno = view.annotation{
-            
-            var place: MKPlacemark!
-            place = MKPlacemark(coordinate: anno.coordinate)
-            let destination = MKMapItem(placemark: place)
-            destination.name = (view.annotation?.title)!
-            let destionationKey = view.annotation?.subtitle
-            let regionDistance: CLLocationDistance = 1000
-            let regionSpan = MKCoordinateRegionMakeWithDistance(anno.coordinate, regionDistance, regionDistance)
-            
-            let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey:  NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking] as [String : Any]
-            
-            print("callout0")
-           FIRDatabase.database().reference().child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).child(destionationKey as! String).setValue(true)
-            print("Callout1")
-            MKMapItem.openMaps(with: [destination], launchOptions: options)
+        // 1
+        if view.annotation is MKUserLocation
+        {
+            // Don't proceed with custom callout
+            return
+        }
+        // 2
+        let toiletAnnotation = view.annotation as! ToiletMarkers
+        let views = Bundle.main.loadNibNamed("CustomCalloutView", owner: nil, options: nil)
+        let calloutView = views?[0] as! CustomCalloutView
+        calloutView.placeNameLabel.text = toiletAnnotation.name
+        calloutView.availableWaitAndDistanceLabel.text = "平均待ち" + "\(toiletAnnotation.averageWait)" + "分/" + "\(toiletAnnotation.distance)"
+        
+        calloutView.key = toiletAnnotation.key
+        
+        print("calloutView.key = \(calloutView.key)")
+        
+//        calloutView.starbucksName.text = .name
+//        calloutView.starbucksAddress.text = starbucksAnnotation.address
+//        calloutView.starbucksPhone.text = starbucksAnnotation.phone
+        
+        //
+        let button = UIButton(frame: calloutView.lookDetailLabel.frame)
+        button.addTarget(self, action: #selector(MapViewController.lookDetailInfoFunction(sender:)), for: .touchUpInside)
+        calloutView.addSubview(button)
+       // calloutView.starbucksImage.image = starbucksAnnotation.image
+        // 3
+        calloutView.center = CGPoint(x: view.bounds.size.width / 2, y: -calloutView.bounds.size.height*0.52)
+        view.addSubview(calloutView)
+        mapView.setCenter((view.annotation?.coordinate)!, animated: true)
+    }
+    
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        if view.isKind(of: AnnotationView.self)
+        {
+            for subview in view.subviews
+            {
+                subview.removeFromSuperview()
+            }
         }
     }
+
+
+    
+    func lookDetailInfoFunction(sender: UIButton)
+    {
+        print("lookDetailInfoButtonTapped")
+        let v = sender.superview as! CustomCalloutView
+        
+        let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
+        let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
+        let nextVC = navigationContoller.topViewController as! PlaceDetailViewController
+        
+        print("lookDetailInfoButtonTapped  1111")
+       
+        nextVC.toilet.key = v.key
+        print("V.key\(v.key)")
+        nextVC.filter = filter
+        nextVC.search = search
+        
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        
+        print("lookDetailInfoButtonTapped  2222")
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+
+        
+        self.present(navigationContoller, animated: false, completion: nil)
+        
+        print("lookDetailInfoButtonTapped  3333")
+
+        
+        
+        
+//        if let url = URL(string: "telprompt://\(v.starbucksPhone.text!)"), UIApplication.shared.canOpenURL(url)
+//        {
+//            UIApplication.shared.openURL(url)
+//        }
+        
+    }
+
+    
+    
+//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//        
+//        if let anno = view.annotation{
+//            
+//            var place: MKPlacemark!
+//            place = MKPlacemark(coordinate: anno.coordinate)
+//            let destination = MKMapItem(placemark: place)
+//            destination.name = (view.annotation?.title)!
+//            let destionationKey = view.annotation?.subtitle
+//            let regionDistance: CLLocationDistance = 1000
+//            let regionSpan = MKCoordinateRegionMakeWithDistance(anno.coordinate, regionDistance, regionDistance)
+//            
+//            let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey:  NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking] as [String : Any]
+//            
+//            print("callout0")
+//            
+//           FIRDatabase.database().reference().child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).child(destionationKey!!).setValue(true)
+//            print("Callout1")
+//            MKMapItem.openMaps(with: [destination], launchOptions: options)
+//        }
+//    }
+    
+    
     
     func starfilter() { // should probably be called sort and not filter
         toilets.sort() { $0.star > $1.star } // sort the fruit by name
@@ -695,8 +734,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 let averageStar = snapshotValue?["averageStar"] as? String
                 toilet.star = Double(averageStar!)!
-                
-                
                 
                 
                 
@@ -823,25 +860,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 toilet.averageWait = averageWait!
                 
                 
-                let distance = location?.distance(from: center)
+                //let distance = location?.distance(from: center)
+                
+                //toilet.distance = Double(distance!)
+                
+              //  toilet.distance = self.distanceCalculationGetString(destination: location!, center: center)
                 
                 
-                toilet.distance = Double(distance!)
-                
-                print("center MapView 555== \(center)")
-
-                
-                print("distance MapView 555== \(String(describing: distance))")
-
-                print("toilet.distance MapView 555 == \(toilet.distance)")
-
-
-                
-                
-                
-                
-                
-                
+                toilet.distance = MapViewController.distanceCalculationGetString(destination: location!, center: center)
                 
                 
                 ///////Copied from new one April 6   .....
@@ -1173,14 +1199,46 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 if self.removedToilet == false {
                     self.toilets.append(toilet)
-                    let queryannotations = MKPointAnnotation()
+                   
+                    //let queryannotations = MKPointAnnotation()
                     
-                    //if toilet.available = true{
-                    queryannotations.title = toilet.name
-                    queryannotations.subtitle = toilet.key
+                    let queryannotations = ToiletMarkers(coordinate: (location?.coordinate)!)
+                    
+                    print("location Coodinates \(String(describing: location?.coordinate))")
+                    
+                    queryannotations.key = toilet.key
+                    queryannotations.name = toilet.name
+                    queryannotations.distance = toilet.distance
+                    queryannotations.averageStar = toilet.averageStar
+                    queryannotations.averageWait = toilet.averageWait
                     queryannotations.coordinate = (location?.coordinate)!
+                  //  queryannotations.coordinate = (location?.coordinate)!
+                    
+                    
+                    
+                    
+//                    queryannotations.title = toilet.name
+//                    queryannotations.subtitle = toilet.key
+//                    queryannotations.coordinate = (location?.coordinate)!
+                    
+                    //Commented April 15
+//                    
+//                    let queryannotations = ToiletMarkers(key: toilet.key)
+//                    
+//                    
+//                    queryannotations.key = toilet.key
+//                    queryannotations.name = toilet.name
+//                    queryannotations.distance = toilet.distance
+//                    queryannotations.averageStar = toilet.averageStar
+//                    queryannotations.averageWait = toilet.averageWait
+//
+//                    queryannotations.coordinate = (location?.coordinate)!
+                    
                     
                     self.mapView.addAnnotation(queryannotations)
+                    
+                    print("queryannotaions121\(queryannotations)")
+                    
                     
                     self.createdArray = true
 
@@ -1295,6 +1353,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         self.present(resultSearchController, animated:true, completion:nil)
     }
+    
+    
+    class func distanceCalculationGetString(destination: CLLocation, center: CLLocation) -> String{
+        var dString = ""
+        let distance = destination.distance(from: center)
+        let distanceDouble = Double(distance)
+        
+        
+        if distanceDouble >= 1000000{
+            let td0 = Int(round(0.01*distanceDouble)/0.01/1000000)
+            dString = "\(td0)Mm"
+        }else if distanceDouble > 1000{
+            let td1 = round(0.01*distanceDouble)/0.01/1000
+            dString = "\(td1)km"
+        } else {
+            dString = "\(Int(round(0.1*distanceDouble)/0.1))m"
+        }
+    
+        return dString
+    }
+    
+    
+    
 }
 
 extension MapViewController: HandleMapSearch {

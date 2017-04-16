@@ -167,40 +167,50 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
                 
                 let reviewCount = snapshotValue?["reviewCount"] as? Int
                 toilet.reviewCount = reviewCount!
-                print(" reviewCount= \(reviewCount)")
+                print(" reviewCount= \(String(describing: reviewCount))")
 
                 let averageWait = snapshotValue?["averageWait"] as? Int
                 toilet.averageWait = averageWait!
 
 
+//                
+//                firebaseRef.child("ToiletLocations").child(toilet.key).child("l").observeSingleEvent(of: .value, with: { snapshot in
+//                    if let objects = snapshot.children.allObjects as? [FIRDataSnapshot] {
+//                        
+//                        print(objects[0])
+//                        print(objects[1])
+//                        let loc0 = objects[0].value
+//                        let loc1 = objects[1].value
+//                        print("loc0 = \(loc0)")
+//                        print("loc1 = \(loc1)")
+//                        toilet.loc = CLLocation(latitude: loc0 as! CLLocationDegrees, longitude: loc1 as! CLLocationDegrees)
+//                        let location = toilet.loc
+//                        print(toilet.loc)
+//                        
+//                        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+//                            
+//                            let distance = location.distance(from: self.locationManager.location!)
+//                             toilet.distance = round(0.1*distance)/0.1
+//                             print("toilet.distance = \(toilet.distance)")
+//
+//                        } else {
+//                            self.locationManager.requestWhenInUseAuthorization()
+//                        }
+//                    }
+//                    
+//                  
+//                }
+//                )
                 
-                firebaseRef.child("ToiletLocations").child(toilet.key).child("l").observeSingleEvent(of: .value, with: { snapshot in
-                    if let objects = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                        
-                        print(objects[0])
-                        print(objects[1])
-                        let loc0 = objects[0].value
-                        let loc1 = objects[1].value
-                        print("loc0 = \(loc0)")
-                        print("loc1 = \(loc1)")
-                        toilet.loc = CLLocation(latitude: loc0 as! CLLocationDegrees, longitude: loc1 as! CLLocationDegrees)
-                        let location = toilet.loc
-                        print(toilet.loc)
-                        
-                        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-                            
-                            let distance = location.distance(from: self.locationManager.location!)
-                             toilet.distance = round(0.1*distance)/0.1
-                             print("toilet.distance = \(toilet.distance)")
-
-                        } else {
-                            self.locationManager.requestWhenInUseAuthorization()
-                        }
-                    }
-                    
-                    self.toilets.append(toilet)
-                    self.tableView.reloadData()})
-            })
+                //Commented above April 16 because of toilet.distance
+            
+                self.toilets.append(toilet)
+                self.tableView.reloadData()
+            
+            
+            }
+            
+            )
         }
         )
         
@@ -249,24 +259,26 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
         
         //cell.distanceLabel.text = "\(toilets[indexPath.row].distance)m"
         
-        if toilets[indexPath.row].distance > 1000{
-            let toiletD = round(0.01*toilets[indexPath.row].distance)/0.01/1000
-            cell.distanceLabel.text = "\(toiletD)km"
-            print("cell.distanceLabel.text = \(toiletD)km")
-            
-        } else{
-            print("toilets[indexPath.row].distance = \(toilets[indexPath.row].distance)m")
-             let toiletD = Int(round(0.1*toilets[indexPath.row].distance)/0.1)
-            cell.distanceLabel.text = "\(toiletD)m"
-             print("cell.distanceLabel.text = \(toiletD)m")
-            
-        }
-        if toilets[indexPath.row].distance >= 1000000{
-            let toiletD = Int(round(0.01*toilets[indexPath.row].distance)/0.01/1000000)
-            cell.distanceLabel.text = "\(toiletD)Mm"
-            print("cell.distanceLabel.text = \(toiletD)Mm")
-            
-        }
+//        if toilets[indexPath.row].distance > 1000{
+//            let toiletD = round(0.01*toilets[indexPath.row].distance)/0.01/1000
+//            cell.distanceLabel.text = "\(toiletD)km"
+//            print("cell.distanceLabel.text = \(toiletD)km")
+//            
+//        } else{
+//            print("toilets[indexPath.row].distance = \(toilets[indexPath.row].distance)m")
+//             let toiletD = Int(round(0.1*toilets[indexPath.row].distance)/0.1)
+//            cell.distanceLabel.text = "\(toiletD)m"
+//             print("cell.distanceLabel.text = \(toiletD)m")
+//            
+//        }
+//        if toilets[indexPath.row].distance >= 1000000{
+//            let toiletD = Int(round(0.01*toilets[indexPath.row].distance)/0.01/1000000)
+//            cell.distanceLabel.text = "\(toiletD)Mm"
+//            print("cell.distanceLabel.text = \(toiletD)Mm")
+//            
+//        }
+        
+        cell.distanceLabel.text = toilets[indexPath.row].distance
 
         
         return cell

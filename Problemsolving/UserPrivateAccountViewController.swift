@@ -122,6 +122,20 @@ class UserPrivateAccountViewController: UIViewController {
 //        }
 //    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "youHaveBeenSegue"{
+            
+            let nextVC = segue.destination as! YouWentTableViewController
+            
+            //nextVC.toilet = toilet
+            nextVC.filter = filter
+            nextVC.search = search
+        
+            
+        
+        }
+    }
+    
     
     @IBAction func buttonAddToiletTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "newAcaddToiletSegue", sender: nil)

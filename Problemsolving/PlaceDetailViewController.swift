@@ -25,7 +25,7 @@ import Cosmos
             
             cell.booleanName.text = booleans[indexPath.row]
             
-            print(" cell.booleanName.text =  \(cell.booleanName.text)")
+            print(" cell.booleanName.text =  \(String(describing: cell.booleanName.text))")
             return cell
         }
         
@@ -129,6 +129,8 @@ import Cosmos
             mapView.delegate = self
             mapView.isUserInteractionEnabled = false
             
+            print("Place Detail View Loaded")
+            
             
             
             let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.hideTableView))
@@ -191,6 +193,7 @@ import Cosmos
         
         func dataQuery(queryKey: String){
             
+            print("Data Query Called")
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
             
             
@@ -354,11 +357,13 @@ import Cosmos
                  print("toilet.loc == \(self.toilet.loc)")
                 
             
-                print("center Place Detail = \(self.search.centerSearchLocation)")
-
-                let distance = self.toilet.loc.distance(from: self.search.centerSearchLocation)
+                //print("center Place Detail = \(self.search.centerSearchLocation)")
                 
-                print("distance111 == \(distance)")
+                self.toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
+
+//                let distance = self.toilet.loc.distance(from: self.search.centerSearchLocation)
+//                
+//                print("distance111 == \(distance)")
 
                 
                 //center == user location
@@ -592,7 +597,7 @@ import Cosmos
                 }
                 
                 
-                self.toilet.distance = Double(distance)
+//                self.toilet.distance = Double(distance)
                 
                 self.booleansTableView.reloadData()
                 
@@ -629,43 +634,45 @@ import Cosmos
             
             
             mapView.tintColor = UIColor.blue
-            var focusArea = 2000
+            var focusArea = 1200
             
-            if toilet.distance <= 50{
-                focusArea = 100}else
-                if toilet.distance <= 100{
-                    focusArea = 200}else
-                    if toilet.distance <= 300{
-                        focusArea = 600}else
-                        if toilet.distance <= 500{
-                            focusArea = 1200}else
-                            if toilet.distance <= 900{
-                                focusArea = 2000}
-            
+//            if toilet.distance <= 50{
+//                focusArea = 100}else
+//                if toilet.distance <= 100{
+//                    focusArea = 200}else
+//                    if toilet.distance <= 300{
+//                        focusArea = 600}else
+//                        if toilet.distance <= 500{
+//                            focusArea = 1200}else
+//                            if toilet.distance <= 900{
+//                                focusArea = 2000}
+//            
             
              let region = MKCoordinateRegionMakeWithDistance(toiletCoordinate, CLLocationDistance(focusArea), CLLocationDistance(focusArea))
             
 //            let region = MKCoordinateRegionMakeWithDistance(coordinate1, CLLocationDistance(focusArea), CLLocationDistance(focusArea))
             mapView.setRegion(region, animated: true)
             
-            var distanceText = ""
+            var distanceText = toilet.distance
             
             print("toiletDistance22233 == \(toilet.distance)")
+//            
+//            if toilet.distance > 1000{
+//                let td1 = round(0.01*toilet.distance)/0.01/1000
+//                print("td1 = \(td1)")
+//                distanceText = "\(td1)km"
+//                
+//            } else{
+//                distanceText = "\(Int(round(0.1*toilet.distance)/0.1))m"
+//            }
+//            
+//            if toilet.distance >= 1000000{
+//                let toiletD = Int(round(0.01*toilet.distance)/0.01/1000000)
+//                distanceText = "\(toiletD)Mm"
+//                print("cell.distanceLabel.text = \(toiletD)Mm")
+//            }
             
-            if toilet.distance > 1000{
-                let td1 = round(0.01*toilet.distance)/0.01/1000
-                print("td1 = \(td1)")
-                distanceText = "\(td1)km"
-                
-            } else{
-                distanceText = "\(Int(round(0.1*toilet.distance)/0.1))m"
-            }
             
-            if toilet.distance >= 1000000{
-                let toiletD = Int(round(0.01*toilet.distance)/0.01/1000000)
-                distanceText = "\(toiletD)Mm"
-                print("cell.distanceLabel.text = \(toiletD)Mm")
-            }
             
             typeAndDistanceLabel.text = toilet.type + "/" + distanceText
             

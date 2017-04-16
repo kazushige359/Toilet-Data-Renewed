@@ -19,7 +19,7 @@ class  Toilet {
     var urlTwo = ""
     var urlThree = ""
     //var distance = ""
-    var distance = 0.0
+    var distance = ""
     
     //var openAndCloseHours = ""
     var openinghours = ""

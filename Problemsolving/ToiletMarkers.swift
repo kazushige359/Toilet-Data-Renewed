@@ -7,18 +7,25 @@
 //
 
 import UIKit
+import MapKit
 
 
 
 class ToiletMarkers: NSObject, MKAnnotation{
 
     var coordinate: CLLocationCoordinate2D
-    var key: String
+    var key = ""
+    var type = ""
+    var name = ""
+    var averageStar = ""
+    var distance =  ""
+    var averageWait = 3
     
-    init(key: String){
-        self.coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
-        self.key = key
+      init(coordinate: CLLocationCoordinate2D){
+        self.coordinate = coordinate
+        
         
     }
+    
 }
 

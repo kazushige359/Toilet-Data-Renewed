@@ -17,6 +17,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
     var toilet = Toilet()
     var toilets: [Toilet] = []
     var search = Search()
+    var filter = Filter()
     var deleteArray: [String] = []
     var locationManager = CLLocationManager()
     let firebaseRef = FIRDatabase.database().reference()
@@ -169,7 +170,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
                 toilet.babyPersonalSpace = (snapshotValue?["babyRoomPersonalSpace"] as? Bool)!
                 toilet.babyPersonalSpaceWithLock = (snapshotValue?["babyRoomPersonalSpaceWithLock"] as? Bool)!
                 toilet.babyRoomWideSpace = (snapshotValue?["babyRoomWideSpace"] as? Bool)!
-                
+
                 toilet.babyCarRental = (snapshotValue?["babyCarRental"] as? Bool)!
                 toilet.babyCarAccess = (snapshotValue?["babyCarAccess"] as? Bool)!
                 toilet.omutu = (snapshotValue?["omutu"] as? Bool)!
@@ -211,14 +212,31 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
                 
                 let averageWait = snapshotValue?["averageWait"] as? Int
                 toilet.averageWait = averageWait!
+                self.toilet.latitude = (snapshotValue?["latitude"] as? Double)!
+                self.toilet.longitude = (snapshotValue?["longitude"] as? Double)!
                 
                 
-                let distance = location?.distance(from: search.centerSearchLocation)
+                
+                self.toilet.loc = CLLocation(latitude: self.toilet.latitude, longitude: self.toilet.longitude)
+                //let distance = location?.distance(from: search.centerSearchLocation)
                 
                 
                 
-                toilet.distance = Double(distance!)
-
+                //MapViewController.distanceCalculationGetString()
+//                toilet.distance = MapViewController.distanceCalculationGetString(self.toilet.loc, self.search.centerSearchLocation)
+                //toilet.distance = MapViewController.distanceCalculationGetString(destination: CLLocation, center: CLLocation)
+                
+                
+                toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
+                
+                
+                
+//                let distance = self.toilet.loc.distance(from: self.search.centerSearchLocation)
+//
+//                
+//                
+//                toilet.distance = Double(distance)
+//
                 
 //                let snapshotValue = snapshot.value as? NSDictionary
 //                
@@ -404,25 +422,28 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
         //let meter = toilets[indexPath.row].distance
         
         //cell.distanceLabel.text = "\(toilets[indexPath.row].distance)m"
+//        
+//        if toilets[indexPath.row].distance > 1000{
+//            let toiletD = round(0.01*toilets[indexPath.row].distance)/0.01/1000
+//            cell.distanceLabel.text = "\(toiletD)km"
+//            print("cell.distanceLabel.text = \(toiletD)km")
+//            
+//        } else{
+//            print("toilets[indexPath.row].distance = \(toilets[indexPath.row].distance)m")
+//            let toiletD = Int(round(0.1*toilets[indexPath.row].distance)/0.1)
+//            cell.distanceLabel.text = "\(toiletD)m"
+//            print("cell.distanceLabel.text = \(toiletD)m")
+//            
+//        }
+//        if toilets[indexPath.row].distance >= 1000000{
+//            let toiletD = Int(round(0.01*toilets[indexPath.row].distance)/0.01/1000000)
+//            cell.distanceLabel.text = "\(toiletD)Mm"
+//            print("cell.distanceLabel.text = \(toiletD)Mm")
+//            
+//        }
         
-        if toilets[indexPath.row].distance > 1000{
-            let toiletD = round(0.01*toilets[indexPath.row].distance)/0.01/1000
-            cell.distanceLabel.text = "\(toiletD)km"
-            print("cell.distanceLabel.text = \(toiletD)km")
-            
-        } else{
-            print("toilets[indexPath.row].distance = \(toilets[indexPath.row].distance)m")
-            let toiletD = Int(round(0.1*toilets[indexPath.row].distance)/0.1)
-            cell.distanceLabel.text = "\(toiletD)m"
-            print("cell.distanceLabel.text = \(toiletD)m")
-            
-        }
-        if toilets[indexPath.row].distance >= 1000000{
-            let toiletD = Int(round(0.01*toilets[indexPath.row].distance)/0.01/1000000)
-            cell.distanceLabel.text = "\(toiletD)Mm"
-            print("cell.distanceLabel.text = \(toiletD)Mm")
-            
-        }
+        
+        cell.distanceLabel.text = toilet.distance
         
         
         return cell

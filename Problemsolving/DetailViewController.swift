@@ -173,38 +173,38 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         mapView.addAnnotation(pinAnnotation)
         
         mapView.tintColor = UIColor.blue
-        var focusArea = 2000
+        let focusArea = 1200
         
-        if toilet.distance <= 50{
-            focusArea = 100}else
-            if toilet.distance <= 100{
-                focusArea = 200}else
-                if toilet.distance <= 300{
-                    focusArea = 600}else
-                    if toilet.distance <= 500{
-                        focusArea = 1200}else
-                        if toilet.distance <= 900{
-                            focusArea = 2000}
+//        if toilet.distance <= 50{
+//            focusArea = 100}else
+//            if toilet.distance <= 100{
+//                focusArea = 200}else
+//                if toilet.distance <= 300{
+//                    focusArea = 600}else
+//                    if toilet.distance <= 500{
+//                        focusArea = 1200}else
+//                        if toilet.distance <= 900{
+//                            focusArea = 2000}
         
         
         let region = MKCoordinateRegionMakeWithDistance(coordinate1, CLLocationDistance(focusArea), CLLocationDistance(focusArea))
         mapView.setRegion(region, animated: true)
         
-        
-        if toilet.distance > 1000{
-            let td1 = round(0.01*toilet.distance)/0.01/1000
-            print("td1 = \(td1)")
-            distanceLabel.text = "\(td1)km"
-            
-        } else{
-            distanceLabel.text = "\(Int(round(0.1*toilet.distance)/0.1))m"
-        }
-        
-        if toilet.distance >= 1000000{
-            let toiletD = Int(round(0.01*toilet.distance)/0.01/1000000)
-            distanceLabel.text = "\(toiletD)Mm"
-            print("cell.distanceLabel.text = \(toiletD)Mm")
-        }
+//        
+//        if toilet.distance > 1000{
+//            let td1 = round(0.01*toilet.distance)/0.01/1000
+//            print("td1 = \(td1)")
+//            distanceLabel.text = "\(td1)km"
+//            
+//        } else{
+//            distanceLabel.text = "\(Int(round(0.1*toilet.distance)/0.1))m"
+//        }
+//        
+//        if toilet.distance >= 1000000{
+//            let toiletD = Int(round(0.01*toilet.distance)/0.01/1000000)
+//            distanceLabel.text = "\(toiletD)Mm"
+//            print("cell.distanceLabel.text = \(toiletD)Mm")
+//        }
         
         reviewCountLabel.text = "(\(toilet.reviewCount)件)"
         

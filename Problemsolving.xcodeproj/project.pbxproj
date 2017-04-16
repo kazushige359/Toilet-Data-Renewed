@@ -10,6 +10,9 @@
 		240128941E078244002FBDE1 /* Toilet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240128931E078244002FBDE1 /* Toilet.swift */; };
 		240128971E0A02CE002FBDE1 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240128951E0A02CE002FBDE1 /* TableViewCell.swift */; };
 		240128981E0A02CE002FBDE1 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240128961E0A02CE002FBDE1 /* TableViewCell.xib */; };
+		24033B971EA217A400E7B4B4 /* AnnotaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24033B961EA217A400E7B4B4 /* AnnotaionView.swift */; };
+		24033B991EA219D800E7B4B4 /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */; };
+		24033B9B1EA219F000E7B4B4 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */; };
 		240F79791E98CC0600EFF3CC /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */; };
 		240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F797A1E9A1FF200EFF3CC /* UserLocation.swift */; };
 		240F797F1E9C62A300EFF3CC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240F797E1E9C62A300EFF3CC /* SWRevealViewController.m */; };
@@ -94,6 +97,9 @@
 		240128931E078244002FBDE1 /* Toilet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toilet.swift; sourceTree = "<group>"; };
 		240128951E0A02CE002FBDE1 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		240128961E0A02CE002FBDE1 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		24033B961EA217A400E7B4B4 /* AnnotaionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotaionView.swift; sourceTree = "<group>"; };
+		24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
+		24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 		240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		240F797A1E9A1FF200EFF3CC /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		240F797D1E9C62A300EFF3CC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -280,6 +286,8 @@
 				245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */,
 				24B7EC411EA0897900368644 /* ReviewTableViewController.swift */,
 				240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */,
+				24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */,
+				24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */,
 				240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */,
 				2423A4231E21930000DD2AF4 /* ReviewTableViewCell.xib */,
 				240128961E0A02CE002FBDE1 /* TableViewCell.xib */,
@@ -328,6 +336,7 @@
 				240F797A1E9A1FF200EFF3CC /* UserLocation.swift */,
 				240F79801E9CC42300EFF3CC /* PassingData.swift */,
 				24CD2B4B1E9E27A800F438CE /* Post.swift */,
+				24033B961EA217A400E7B4B4 /* AnnotaionView.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -527,6 +536,7 @@
 				2423A4251E21930000DD2AF4 /* ReviewTableViewCell.xib in Resources */,
 				240F79891E9D9F9400EFF3CC /* BooleanTableViewCell.xib in Resources */,
 				241454A61DE2C4F90066AB62 /* Assets.xcassets in Resources */,
+				24033B991EA219D800E7B4B4 /* CustomCalloutView.xib in Resources */,
 				241454A11DE2C4F90066AB62 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,6 +714,7 @@
 				240F79791E98CC0600EFF3CC /* PlaceDetailViewController.swift in Sources */,
 				2418B7DA1E1B1C8E004F7022 /* PictureViewController.swift in Sources */,
 				2414549C1DE2C4F90066AB62 /* AppDelegate.swift in Sources */,
+				24033B9B1EA219F000E7B4B4 /* CustomCalloutView.swift in Sources */,
 				24A130B61DEFD300009C1A3F /* MapViewController.swift in Sources */,
 				2442D1E11E9799A5009621E7 /* UserPrivateAccountViewController.swift in Sources */,
 				2420F31B1E2742E300159441 /* EditTableViewController.swift in Sources */,
@@ -726,6 +737,7 @@
 				24A130CE1DF769AE009C1A3F /* GFGeoHash.m in Sources */,
 				2423A42B1E23839800DD2AF4 /* AddPinViewController.swift in Sources */,
 				2418B7D71E1A51B3004F7022 /* SettingTableViewController.swift in Sources */,
+				24033B971EA217A400E7B4B4 /* AnnotaionView.swift in Sources */,
 				2423A4271E2245BA00DD2AF4 /* Review.swift in Sources */,
 				2420F31D1E277AE000159441 /* EditPinViewController.swift in Sources */,
 				2423A4311E25989200DD2AF4 /* ChangeDetailTableViewController.swift in Sources */,
