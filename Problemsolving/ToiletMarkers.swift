@@ -19,6 +19,7 @@ class ToiletMarkers: NSObject, MKAnnotation{
     var name = ""
     var averageStar = ""
     var distance =  ""
+    var reviewCount = 1
     var averageWait = 3
     
       init(coordinate: CLLocationCoordinate2D){

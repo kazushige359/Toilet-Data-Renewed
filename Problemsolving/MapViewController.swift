@@ -585,6 +585,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let calloutView = views?[0] as! CustomCalloutView
         calloutView.placeNameLabel.text = toiletAnnotation.name
         calloutView.availableWaitAndDistanceLabel.text = "平均待ち" + "\(toiletAnnotation.averageWait)" + "分/" + "\(toiletAnnotation.distance)"
+        calloutView.starImage.rating = Double(toiletAnnotation.averageStar)!
+        //calloutView.starImage.text = toiletAnnotation.averageStar
+        calloutView.starImage.settings.filledColor = UIColor.yellow
+        calloutView.starImage.settings.emptyBorderColor = UIColor.orange
+        calloutView.starImage.settings.filledBorderColor = UIColor.orange
+        
+        
+        calloutView.starImage.text = "\(Double(toiletAnnotation.averageStar)!)(\(toiletAnnotation.reviewCount)件) "
+        calloutView.starImage.settings.textColor = UIColor.black
+        calloutView.starImage.settings.textMargin = 3
+        calloutView.starImage.settings.textFont.withSize(CGFloat(50.0))
+        
+        
+        
+        
+        
         
         calloutView.key = toiletAnnotation.key
         
@@ -1212,6 +1228,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     queryannotations.averageStar = toilet.averageStar
                     queryannotations.averageWait = toilet.averageWait
                     queryannotations.coordinate = (location?.coordinate)!
+                    queryannotations.reviewCount = toilet.reviewCount
                   //  queryannotations.coordinate = (location?.coordinate)!
                     
                     

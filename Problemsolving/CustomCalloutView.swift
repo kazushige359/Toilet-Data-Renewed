@@ -24,7 +24,6 @@ class CustomCalloutView: UIView {
     
     @IBOutlet weak var starImage: CosmosView!
     
-    @IBOutlet weak var reviewCountLabel: UILabel!
     
     var key = String()
     /*
