@@ -218,6 +218,87 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24033B9C1EA4804300E7B4B4 /* Login View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */,
+				245E9F321E963B20006D8A31 /* NewStartLoginViewController.swift */,
+				2442D1DE1E9707DC009621E7 /* NewAccountCreateViewController.swift */,
+				245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */,
+				245E9F301E9605F1006D8A31 /* StartSignUpUserViewController.swift */,
+				2414549D1DE2C4F90066AB62 /* SignInViewController.swift */,
+				245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */,
+			);
+			name = "Login View Controllers";
+			sourceTree = "<group>";
+		};
+		24033B9D1EA4809400E7B4B4 /* Account View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2418B7D21E16611B004F7022 /* YouWentTableViewController.swift */,
+				2442D1E01E9799A5009621E7 /* UserPrivateAccountViewController.swift */,
+				2418B7D61E1A51B3004F7022 /* SettingTableViewController.swift */,
+				2418B7D91E1B1C8E004F7022 /* PictureViewController.swift */,
+				24DF78971E3738D80081CDA0 /* PostedTableViewController.swift */,
+				2418B7CC1E137520004F7022 /* AccountViewController.swift */,
+				24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */,
+				2418B7CE1E14CCFB004F7022 /* FavoriteTableViewController.swift */,
+			);
+			name = "Account View Controllers";
+			sourceTree = "<group>";
+		};
+		24033B9E1EA4816900E7B4B4 /* Map View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				24A130B51DEFD300009C1A3F /* MapViewController.swift */,
+				24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */,
+				2420F31E1E2A2C7400159441 /* FilterTableViewController.swift */,
+			);
+			name = "Map View Controllers";
+			sourceTree = "<group>";
+		};
+		24033B9F1EA481D200E7B4B4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				2414549A1DE2C4F90066AB62 /* Problemsolving */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		24033BA01EA4820300E7B4B4 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */,
+				24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */,
+				240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */,
+				240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */,
+				2423A4231E21930000DD2AF4 /* ReviewTableViewCell.xib */,
+				2423A4221E21930000DD2AF4 /* ReviewTableViewCell.swift */,
+				2414549F1DE2C4F90066AB62 /* Main.storyboard */,
+				240128961E0A02CE002FBDE1 /* TableViewCell.xib */,
+				240128951E0A02CE002FBDE1 /* TableViewCell.swift */,
+				24B7EC3D1E9F180D00368644 /* PlaceDetailViewController.storyboard */,
+				24B7EC3F1E9F196600368644 /* FilterTableViewController.storyboard */,
+				241454A71DE2C4F90066AB62 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		24033BA11EA4836300E7B4B4 /* Place View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */,
+				240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */,
+				2418B7DB1E1B6B5C004F7022 /* KansouViewController.swift */,
+				2423A42A1E23839800DD2AF4 /* AddPinViewController.swift */,
+				2423A4301E25989200DD2AF4 /* ChangeDetailTableViewController.swift */,
+				2420F31A1E2742E300159441 /* EditTableViewController.swift */,
+				2420F31C1E277AE000159441 /* EditPinViewController.swift */,
+				24B7EC411EA0897900368644 /* ReviewTableViewController.swift */,
+			);
+			name = "Place View Controllers";
+			sourceTree = "<group>";
+		};
 		240F797C1E9C622C00EFF3CC /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,7 +311,7 @@
 		2414548F1DE2C4F90066AB62 = {
 			isa = PBXGroup;
 			children = (
-				2414549A1DE2C4F90066AB62 /* Problemsolving */,
+				24033B9F1EA481D200E7B4B4 /* New Group */,
 				241454B21DE2C4F90066AB62 /* ProblemsolvingTests */,
 				241454BD1DE2C4F90066AB62 /* ProblemsolvingUITests */,
 				241454991DE2C4F90066AB62 /* Products */,
@@ -254,51 +335,17 @@
 			children = (
 				240F797C1E9C622C00EFF3CC /* SupportFiles */,
 				24A130BA1DF769AE009C1A3F /* GeoFire */,
-				24A130B71DF3E244009C1A3F /* Problemsolving.entitlements */,
 				2418B7D81E1B1B73004F7022 /* Class */,
-				2414549B1DE2C4F90066AB62 /* AppDelegate.swift */,
-				245E9F281E95DFA3006D8A31 /* UserFirstTimeViewController.swift */,
-				245E9F321E963B20006D8A31 /* NewStartLoginViewController.swift */,
-				2442D1DE1E9707DC009621E7 /* NewAccountCreateViewController.swift */,
-				245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */,
-				245E9F301E9605F1006D8A31 /* StartSignUpUserViewController.swift */,
-				2414549D1DE2C4F90066AB62 /* SignInViewController.swift */,
-				24A130B51DEFD300009C1A3F /* MapViewController.swift */,
-				247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */,
-				240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */,
-				2442D1E01E9799A5009621E7 /* UserPrivateAccountViewController.swift */,
-				2418B7D21E16611B004F7022 /* YouWentTableViewController.swift */,
-				24DF78971E3738D80081CDA0 /* PostedTableViewController.swift */,
-				2418B7CE1E14CCFB004F7022 /* FavoriteTableViewController.swift */,
-				2418B7CC1E137520004F7022 /* AccountViewController.swift */,
-				240128951E0A02CE002FBDE1 /* TableViewCell.swift */,
-				2418B7D61E1A51B3004F7022 /* SettingTableViewController.swift */,
-				2418B7D91E1B1C8E004F7022 /* PictureViewController.swift */,
-				2418B7DB1E1B6B5C004F7022 /* KansouViewController.swift */,
-				2423A4221E21930000DD2AF4 /* ReviewTableViewCell.swift */,
-				2423A42A1E23839800DD2AF4 /* AddPinViewController.swift */,
-				2423A4301E25989200DD2AF4 /* ChangeDetailTableViewController.swift */,
-				2420F31A1E2742E300159441 /* EditTableViewController.swift */,
-				2420F31C1E277AE000159441 /* EditPinViewController.swift */,
-				2420F31E1E2A2C7400159441 /* FilterTableViewController.swift */,
-				24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */,
-				24DF78951E36EB410081CDA0 /* AccountTableViewController.swift */,
-				245E9F2C1E95F21B006D8A31 /* UserStartLoginViewController.swift */,
-				24B7EC411EA0897900368644 /* ReviewTableViewController.swift */,
-				240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */,
-				24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */,
-				24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */,
-				240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */,
-				2423A4231E21930000DD2AF4 /* ReviewTableViewCell.xib */,
-				240128961E0A02CE002FBDE1 /* TableViewCell.xib */,
-				2414549F1DE2C4F90066AB62 /* Main.storyboard */,
-				24B7EC3F1E9F196600368644 /* FilterTableViewController.storyboard */,
-				24B7EC3D1E9F180D00368644 /* PlaceDetailViewController.storyboard */,
+				24033B9C1EA4804300E7B4B4 /* Login View Controllers */,
+				24033B9D1EA4809400E7B4B4 /* Account View Controllers */,
+				24033B9E1EA4816900E7B4B4 /* Map View Controllers */,
+				24033BA11EA4836300E7B4B4 /* Place View Controllers */,
+				24033BA01EA4820300E7B4B4 /* Storyboards */,
 				241454A51DE2C4F90066AB62 /* Assets.xcassets */,
-				241454A71DE2C4F90066AB62 /* LaunchScreen.storyboard */,
 				241454CC1DE2C5F80066AB62 /* GoogleService-Info.plist */,
 				241454AA1DE2C4F90066AB62 /* Info.plist */,
 				241454A21DE2C4F90066AB62 /* Problemsolving.xcdatamodeld */,
+				24A130B71DF3E244009C1A3F /* Problemsolving.entitlements */,
 				24A130D11DF76BA4009C1A3F /* Problemsolving-Bridging-Header.h */,
 			);
 			path = Problemsolving;
@@ -325,6 +372,7 @@
 		2418B7D81E1B1B73004F7022 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				2414549B1DE2C4F90066AB62 /* AppDelegate.swift */,
 				248DC1E31DFE6A51005C29BE /* ToiletMarkers.swift */,
 				240128931E078244002FBDE1 /* Toilet.swift */,
 				2423A4261E2245BA00DD2AF4 /* Review.swift */,

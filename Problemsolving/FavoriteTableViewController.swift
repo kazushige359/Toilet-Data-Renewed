@@ -554,6 +554,9 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
             nextVC.filter = filter
             nextVC.search = search
             
+            
+            //ITs goona be place Detail view
+            
         }}
     
     

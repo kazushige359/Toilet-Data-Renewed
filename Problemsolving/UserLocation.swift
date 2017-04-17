@@ -10,9 +10,9 @@ import Foundation
 
 public class UserLocation{
     
-    var location = CLLocation()
-    var lat = Double()
-    var lon = Double()
+//    var location = CLLocation()
+//    var lat = Double()
+//    var lon = Double()
     
     
     //Experiment... Added April 11 
