@@ -951,6 +951,17 @@ import Cosmos
             
         }
         
+        func deleteItInMyPage(){
+        
+            let alertController = UIAlertController (title: "お気に入りリストから削除するには、マイページのお気に入りリストから削除してください", message: "", preferredStyle: .alert)
+            let addAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+            alertController.addAction(addAction)
+            present(alertController, animated: true, completion: nil)
+        
+        
+        
+        }
+        
         
 //        @IBAction func hensyuuButtonTapped(_ sender: Any) {
 //            performSegue(withIdentifier: "EditInformationSegue", sender: nil)
@@ -970,7 +981,7 @@ import Cosmos
             let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey:  NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking] as [String : Any]
             
             let firebaseRef = FIRDatabase.database().reference()
-            firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youwent").child(toilet.key).setValue(true)
+            firebaseRef.child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).child(toilet.key).setValue(true)
             
             let addedTotalHelpedCountRef = firebaseRef.child("users").child(toilet.addedBy).child("totalHelpedCount")
             
@@ -1183,8 +1194,7 @@ import Cosmos
         @IBAction func favoriteButtonTapped(_ sender: Any) {
             print("Favorite Tapped")
             let image = UIImage(named:"love_Icon_40")
-            let image2 = UIImage(named: "love_before_tap_40")
-        
+    
             
                 if favoriteButtonTapped == false{
                 //sender.setImage(image, forControlState: .Normal)
@@ -1194,11 +1204,7 @@ import Cosmos
                 self.afterFavoriteTappedAction()
                 
                 } else{
-            
-                (sender as AnyObject).setImage(image2, for: .normal)
-                print("Image is supposed to be replacedBBB")
-                favoriteButtonTapped = false
-            
+                self.deleteItInMyPage()
                 }
         }
         

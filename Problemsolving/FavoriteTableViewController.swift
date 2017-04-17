@@ -240,167 +240,6 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
         
     }
 
-    ///aaaaa
-    
-//    func firebaseQuery(){
-//        let firebaseRef = FIRDatabase.database().reference()
-//        firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid).observe(FIRDataEventType.childAdded, with: {(snapshot) in
-//            
-//            
-//            let favkey = snapshot.key
-//            
-//            
-//            firebaseRef.child("Toilets").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
-//                print(snapshot)
-//                print(snapshot.key)
-//                
-//                let toilet = Toilet()
-//                toilet.key = favkey
-//                
-//                let snapshotValue = snapshot.value as? NSDictionary
-//                  
-//                let urlOne = snapshotValue?["urlOne"] as? String
-//                toilet.urlOne = urlOne!
-//                
-//                let urlTwo = snapshotValue?["urlTwo"] as? String
-//                toilet.urlTwo = urlTwo!
-//                
-//                let urlThree = snapshotValue?["urlThree"] as? String
-//                toilet.urlThree = urlThree!
-//                // print("url = \(url)")
-//                
-//                let type = snapshotValue?["type"] as? String
-//                toilet.type = type!
-//                // print("type = \(type)")
-//                
-//                toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
-//                
-//                let washlet = snapshotValue?["washlet"] as? Bool
-//                toilet.washlet = washlet!
-//                //  print("washlet = \(washlet)")
-//                
-//                let wheelchair = snapshotValue?["wheelchair"] as? Bool
-//                toilet.wheelchair = wheelchair!
-//                // print("wheelchair = \(wheelchair)")
-//                
-//                let onlyFemale = snapshotValue?["onlyFemale"] as? Bool
-//                toilet.onlyFemale = onlyFemale!
-//                // print("onlyFemale = \(onlyFemale)")
-//                
-//                let unisex = snapshotValue?["unisex"] as? Bool
-//                toilet.unisex = unisex!
-//                // print("unisex = \(unisex)")
-//                
-//                let makeuproom = snapshotValue?["makeuproom"] as? Bool
-//                toilet.makeuproom = makeuproom!
-//                // print("makeuproom = \(makeuproom)")
-//                
-//                let milkspace = snapshotValue?["milkspace"] as? Bool
-//                toilet.milkspace = milkspace!
-//                //  print("milkspace = \(milkspace)")
-//                
-//                let omutu = snapshotValue?["omutu"] as? Bool
-//                toilet.omutu = omutu!
-//                // print(" omutu= \(omutu)")
-//                
-//                let ostomate = snapshotValue?["ostomate"] as? Bool
-//                toilet.ostomate = ostomate!
-//                // print(" ostomate = \(ostomate)")
-//                
-//                
-//                let japanesetoilet = snapshotValue?["japanesetoilet"] as? Bool
-//                toilet.japanesetoilet = japanesetoilet!
-//                // print("japanesetoilet = \(japanesetoilet)")
-//                
-//                let westerntoilet = snapshotValue?["westerntoilet"] as? Bool
-//                toilet.westerntoilet = westerntoilet!
-//                // print("washlet = \(westerntoilet)")
-//                
-//                let warmSeat = snapshotValue?["warmSeat"] as? Bool
-//                toilet.warmSeat = warmSeat!
-//                // print("warmSeat = \(warmSeat)")
-//                
-//                let baggageSpace = snapshotValue?["baggageSpace"] as? Bool
-//                toilet.baggageSpace = baggageSpace!
-//                // print("baggageSpace = \(baggageSpace)")
-//                
-//                let available = snapshotValue?["available"] as? Bool
-//                toilet.available = available!
-//                // print("available = \(available)")
-//                
-//                let howtoaccess = snapshotValue?["howtoaccess"] as? String
-//                toilet.howtoaccess = howtoaccess!
-//                //print("howtoaccess = \(howtoaccess)")
-//                
-//                let waitingtime = snapshotValue?["waitingtime"] as? Int
-//                toilet.averageWait = waitingtime!
-//                //print("waiting time = \(waitingtime)")
-//                
-//                let openinghours = snapshotValue?["openinghours"] as? String
-//                toilet.openinghours = openinghours!
-//                // print("openinghours = \(openinghours)")
-//                
-//                let addedBy = snapshotValue?["addedBy"] as? String
-//                toilet.addedBy = addedBy!
-//                
-//                let editedBy = snapshotValue?["editedBy"] as? String
-//                toilet.editedBy = editedBy!
-//                
-//                let averageStar = snapshotValue?["averageStar"] as? String
-//                toilet.averageStar = averageStar!
-//                //print("averageStar = \(averageStar)")
-//                
-//                let reviewCount = snapshotValue?["reviewCount"] as? Int
-//                toilet.reviewCount = reviewCount!
-//                print(" reviewCount= \(String(describing: reviewCount))")
-//
-//                let averageWait = snapshotValue?["averageWait"] as? Int
-//                toilet.averageWait = averageWait!
-//
-//
-////                
-////                firebaseRef.child("ToiletLocations").child(toilet.key).child("l").observeSingleEvent(of: .value, with: { snapshot in
-////                    if let objects = snapshot.children.allObjects as? [FIRDataSnapshot] {
-////                        
-////                        print(objects[0])
-////                        print(objects[1])
-////                        let loc0 = objects[0].value
-////                        let loc1 = objects[1].value
-////                        print("loc0 = \(loc0)")
-////                        print("loc1 = \(loc1)")
-////                        toilet.loc = CLLocation(latitude: loc0 as! CLLocationDegrees, longitude: loc1 as! CLLocationDegrees)
-////                        let location = toilet.loc
-////                        print(toilet.loc)
-////                        
-////                        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-////                            
-////                            let distance = location.distance(from: self.locationManager.location!)
-////                             toilet.distance = round(0.1*distance)/0.1
-////                             print("toilet.distance = \(toilet.distance)")
-////
-////                        } else {
-////                            self.locationManager.requestWhenInUseAuthorization()
-////                        }
-////                    }
-////                    
-////                  
-////                }
-////                )
-//                
-//                //Commented above April 16 because of toilet.distance
-//            
-//                self.toilets.append(toilet)
-//                self.tableView.reloadData()
-//            
-//            
-//            }
-//            
-//            )
-//        }
-//        )
-//        
-//    }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -442,61 +281,6 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
         cell.distanceLabel.text = toilets[indexPath.row].distance
         
         
-        
-
-//        
-//        let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self,
-//                                            options: nil)?.first as! TableViewCell
-//        cell.mainImageView.sd_setImage(with: URL(string: toilets[indexPath.row].urlOne))
-//        
-//        cell.image7.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fredflag.jpeg?alt=media&token=6f464ebc-81a9-4553-aadd-1bb4b98d2b74")) // red flag
-//        
-//        // I got Pictures above from the Internet, so dont use them for commersial purposes
-//        cell.mainImageView.layer.masksToBounds = true
-//        cell.mainImageView.layer.cornerRadius = 8.0
-//        
-//        
-//        cell.mainLabel.text = toilets[indexPath.row].key
-//        
-//        cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
-//        cell.Star.settings.filledColor = UIColor.yellow
-//        cell.Star.settings.emptyBorderColor = UIColor.orange
-//        cell.Star.settings.filledBorderColor = UIColor.orange
-//        cell.Star.rating = Double(toilets[indexPath.row].averageStar)!
-//        
-//        cell.Star.text = "\(Double(toilets[indexPath.row].averageStar)!)(\(toilets[indexPath.row].reviewCount)件) "
-//        cell.Star.settings.textColor = UIColor.black
-//        cell.Star.settings.textMargin = 10
-//        cell.Star.settings.textFont.withSize(CGFloat(30.0))
-////        cell.starLabel.text = "\(toilets[indexPath.row].averageStar)"
-////        cell.reviewCountLabel.text = "(感想\(toilets[indexPath.row].reviewCount)件)"
-//        
-//        //let meter = toilets[indexPath.row].distance
-//        
-//        //cell.distanceLabel.text = "\(toilets[indexPath.row].distance)m"
-//        
-////        if toilets[indexPath.row].distance > 1000{
-////            let toiletD = round(0.01*toilets[indexPath.row].distance)/0.01/1000
-////            cell.distanceLabel.text = "\(toiletD)km"
-////            print("cell.distanceLabel.text = \(toiletD)km")
-////            
-////        } else{
-////            print("toilets[indexPath.row].distance = \(toilets[indexPath.row].distance)m")
-////             let toiletD = Int(round(0.1*toilets[indexPath.row].distance)/0.1)
-////            cell.distanceLabel.text = "\(toiletD)m"
-////             print("cell.distanceLabel.text = \(toiletD)m")
-////            
-////        }
-////        if toilets[indexPath.row].distance >= 1000000{
-////            let toiletD = Int(round(0.01*toilets[indexPath.row].distance)/0.01/1000000)
-////            cell.distanceLabel.text = "\(toiletD)Mm"
-////            print("cell.distanceLabel.text = \(toiletD)Mm")
-////            
-////        }
-//        
-//        cell.distanceLabel.text = toilets[indexPath.row].distance
-
-        
         return cell
         
         
@@ -511,8 +295,22 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if multipleDeleteMode == false{
-            performSegue(withIdentifier: "ftodSegue", sender: toilets[indexPath.row])
-            print("sender = \(toilets[indexPath.row])")
+            let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
+            let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
+            let nextVC = navigationContoller.topViewController as! PlaceDetailViewController
+            
+            
+            nextVC.toilet = toilets[indexPath.row]
+            nextVC.filter = filter
+            nextVC.search = search
+            
+            let transition = CATransition()
+            transition.duration = 0.4
+            transition.type = kCATransitionPush
+            transition.subtype = kCATransitionFromRight
+            view.window!.layer.add(transition, forKey: kCATransition)
+            
+            self.present(navigationContoller, animated: false, completion: nil)
         }
         
         
@@ -548,14 +346,10 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ftodSegue"{
-            let nextVC = segue.destination as! DetailViewController
-            nextVC.toilet = sender as! Toilet
+        if segue.identifier == "fvToAcSegue"{
+            let nextVC = segue.destination as! UserPrivateAccountViewController
             nextVC.filter = filter
             nextVC.search = search
-            
-            
-            //ITs goona be place Detail view
             
         }}
     
@@ -656,7 +450,8 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     
     func multipleDeleteExecution(){
         for item in deleteArray{
-            firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("favourite").child(item).removeValue { (error, ref) in
+            
+              firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid).child(item).removeValue { (error, ref) in
                 if error != nil{
                     print("Failed to delete a cell",error!)
                     return
@@ -675,7 +470,7 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     func deleteAll(){
         
     
-    firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("favourite").removeValue { (error, ref) in
+    firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid).removeValue { (error, ref) in
                 if error != nil{
                     print("Failed to delete a cell",error!)
                     return

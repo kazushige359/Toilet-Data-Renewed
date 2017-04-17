@@ -29,7 +29,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         locationAuthStatus()
         locationManager.delegate = self
-        firebaseQuery()
+        //firebaseQuery()
         tableView.allowsMultipleSelectionDuringEditing = true
         
     }
@@ -55,162 +55,216 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
     }
     
+    //private void reviewRidQuery()
     
-    func firebaseQuery(){
-        let firebaseRef = FIRDatabase.database().reference()
-        firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            print("First Snap!!")
-            print(snapshot)
-            print(snapshot.value!)
-            
-            let favkey = snapshot.key
-            
-            
-            firebaseRef.child("Toilets").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
-                print(snapshot)
-                print(snapshot.key)
-                
-                let toilet = Toilet()
-                toilet.key = favkey
-                
-                let snapshotValue = snapshot.value as? NSDictionary
-                
-                let urlOne = snapshotValue?["urlOne"] as? String
-                toilet.urlOne = urlOne!
-                
-                let urlTwo = snapshotValue?["urlTwo"] as? String
-                toilet.urlTwo = urlTwo!
-                
-                let urlThree = snapshotValue?["urlThree"] as? String
-                toilet.urlThree = urlThree!
-                // print("url = \(url)")
-                
-                let type = snapshotValue?["type"] as? String
-                toilet.type = type!
-                // print("type = \(type)")
-                
-                let star = snapshotValue?["star"] as? Double
-                toilet.star = star!
-                
-                let washlet = snapshotValue?["washlet"] as? Bool
-                toilet.washlet = washlet!
-                //  print("washlet = \(washlet)")
-                
-                let wheelchair = snapshotValue?["wheelchair"] as? Bool
-                toilet.wheelchair = wheelchair!
-                // print("wheelchair = \(wheelchair)")
-                
-                let onlyFemale = snapshotValue?["onlyFemale"] as? Bool
-                toilet.onlyFemale = onlyFemale!
-                // print("onlyFemale = \(onlyFemale)")
-                
-                let unisex = snapshotValue?["unisex"] as? Bool
-                toilet.unisex = unisex!
-                // print("unisex = \(unisex)")
-                
-                let makeuproom = snapshotValue?["makeuproom"] as? Bool
-                toilet.makeuproom = makeuproom!
-                // print("makeuproom = \(makeuproom)")
-                
-                let milkspace = snapshotValue?["milkspace"] as? Bool
-                toilet.milkspace = milkspace!
-                //  print("milkspace = \(milkspace)")
-                
-                let omutu = snapshotValue?["omutu"] as? Bool
-                toilet.omutu = omutu!
-                // print(" omutu= \(omutu)")
-                
-                let ostomate = snapshotValue?["ostomate"] as? Bool
-                toilet.ostomate = ostomate!
-                // print(" ostomate = \(ostomate)")
-                
-                
-                let japanesetoilet = snapshotValue?["japanesetoilet"] as? Bool
-                toilet.japanesetoilet = japanesetoilet!
-                // print("japanesetoilet = \(japanesetoilet)")
-                
-                let westerntoilet = snapshotValue?["westerntoilet"] as? Bool
-                toilet.westerntoilet = westerntoilet!
-                // print("washlet = \(westerntoilet)")
-                
-                let warmSeat = snapshotValue?["warmSeat"] as? Bool
-                toilet.warmSeat = warmSeat!
-                // print("warmSeat = \(warmSeat)")
-                
-                let baggageSpace = snapshotValue?["baggageSpace"] as? Bool
-                toilet.baggageSpace = baggageSpace!
-                // print("baggageSpace = \(baggageSpace)")
-                
-                let available = snapshotValue?["available"] as? Bool
-                toilet.available = available!
-                // print("available = \(available)")
-                
-                let howtoaccess = snapshotValue?["howtoaccess"] as? String
-                toilet.howtoaccess = howtoaccess!
-                //print("howtoaccess = \(howtoaccess)")
-                
-                let waitingtime = snapshotValue?["waitingtime"] as? Int
-                toilet.averageWait = waitingtime!
-                //print("waiting time = \(waitingtime)")
-                
-                let openinghours = snapshotValue?["openinghours"] as? String
-                toilet.openinghours = openinghours!
-                // print("openinghours = \(openinghours)")
-                
-                let addedBy = snapshotValue?["addedBy"] as? String
-                toilet.addedBy = addedBy!
-                
-                let editedBy = snapshotValue?["editedBy"] as? String
-                toilet.editedBy = editedBy!
-                
-                let averageStar = snapshotValue?["averageStar"] as? String
-                toilet.averageStar = averageStar!
-                print("averageStar = \(averageStar)")
-                
-                let reviewCount = snapshotValue?["reviewCount"] as? Int
-                toilet.reviewCount = reviewCount!
-                print(" reviewCount= \(reviewCount)")
-                
-                let averageWait = snapshotValue?["averageWait"] as? Int
-                toilet.averageWait = averageWait!
-                
-                
-//                
-//                firebaseRef.child("ToiletLocations").child(toilet.key).child("l").observeSingleEvent(of: .value, with: { snapshot in
-//                    if let objects = snapshot.children.allObjects as? [FIRDataSnapshot] {
-//                        
-//                        print(objects[0])
-//                        print(objects[1])
-//                        let loc0 = objects[0].value
-//                        let loc1 = objects[1].value
-//                        print("loc0 = \(loc0)")
-//                        print("loc1 = \(loc1)")
-//                        toilet.loc = CLLocation(latitude: loc0 as! CLLocationDegrees, longitude: loc1 as! CLLocationDegrees)
-//                        let location = toilet.loc
-//                        print(toilet.loc)
-//                        
-//                        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
-//                            
-//                            let distance = location.distance(from: self.locationManager.location!)
-//                            toilet.distance = round(0.1*distance)/0.1
-//                            print("toilet.distance = \(toilet.distance)")
-//                            
-//                        } else {
-//                            self.locationManager.requestWhenInUseAuthorization()
-//                        }
-//                    }
-//                    
-//                    
-//            })
-                
-                self.toilets.append(toilet)
-                self.tableView.reloadData()})
-            
-            
-        }
-        )
+    func reviewRidQuery(){
         
+        let reviewListRef = firebaseRef.child("ReviewList").child(FIRAuth.auth()!.currentUser!.uid)
+        
+        reviewListRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+            print(snapshot)
+            
+
+            
+//            for child in snapshot.children {
+//                
+//                let childSnapshot = snapshot.childSnapshot((child, forPath: as AnyObject),.key)
+//                let someValue = childSnapshot.value["key"] as! String
+//            }
+            
+            
+//            for  in snapshot.children{
+//                
+//                let childSnapshot = snapshot.childSnapshotForPath(child.key)
+//                let someValue = childSnapshot.value["key"] as! String
+//                
+//            
+//            }
+        })
+
+        
+        //reviewListRef.queryOrderedByKey().observe(FIRDataEventType.value
+        
+//        reviewListRef.observe(<#T##eventType: FIRDataEventType##FIRDataEventType#>, andPreviousSiblingKeyWith: <#T##(FIRDataSnapshot, String?) -> Void#>, withCancel: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
+        
+        
+
+    
+    
+    
+    
+    
     }
+    
+    //commnetsReviewInfoQuery(String ridKey)
+    
+    //commentsToiletInfoQuery(String tidKey)
+    
+    
+    
+    
+    
+    
+//    
+//    func firebaseQuery(){
+//        let firebaseRef = FIRDatabase.database().reference()
+//        firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").observe(FIRDataEventType.childAdded, with: {(snapshot) in
+//            print("First Snap!!")
+//            print(snapshot)
+//            print(snapshot.value!)
+//            
+//            let favkey = snapshot.key
+//            
+//            
+//            firebaseRef.child("Toilets").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+//                print(snapshot)
+//                print(snapshot.key)
+//                
+//                let toilet = Toilet()
+//                toilet.key = favkey
+//                
+//                let snapshotValue = snapshot.value as? NSDictionary
+//                
+//                let urlOne = snapshotValue?["urlOne"] as? String
+//                toilet.urlOne = urlOne!
+//                
+//                let urlTwo = snapshotValue?["urlTwo"] as? String
+//                toilet.urlTwo = urlTwo!
+//                
+//                let urlThree = snapshotValue?["urlThree"] as? String
+//                toilet.urlThree = urlThree!
+//                // print("url = \(url)")
+//                
+//                let type = snapshotValue?["type"] as? String
+//                toilet.type = type!
+//                // print("type = \(type)")
+//                
+//                let star = snapshotValue?["star"] as? Double
+//                toilet.star = star!
+//                
+//                let washlet = snapshotValue?["washlet"] as? Bool
+//                toilet.washlet = washlet!
+//                //  print("washlet = \(washlet)")
+//                
+//                let wheelchair = snapshotValue?["wheelchair"] as? Bool
+//                toilet.wheelchair = wheelchair!
+//                // print("wheelchair = \(wheelchair)")
+//                
+//                let onlyFemale = snapshotValue?["onlyFemale"] as? Bool
+//                toilet.onlyFemale = onlyFemale!
+//                // print("onlyFemale = \(onlyFemale)")
+//                
+//                let unisex = snapshotValue?["unisex"] as? Bool
+//                toilet.unisex = unisex!
+//                // print("unisex = \(unisex)")
+//                
+//                let makeuproom = snapshotValue?["makeuproom"] as? Bool
+//                toilet.makeuproom = makeuproom!
+//                // print("makeuproom = \(makeuproom)")
+//                
+//                let milkspace = snapshotValue?["milkspace"] as? Bool
+//                toilet.milkspace = milkspace!
+//                //  print("milkspace = \(milkspace)")
+//                
+//                let omutu = snapshotValue?["omutu"] as? Bool
+//                toilet.omutu = omutu!
+//                // print(" omutu= \(omutu)")
+//                
+//                let ostomate = snapshotValue?["ostomate"] as? Bool
+//                toilet.ostomate = ostomate!
+//                // print(" ostomate = \(ostomate)")
+//                
+//                
+//                let japanesetoilet = snapshotValue?["japanesetoilet"] as? Bool
+//                toilet.japanesetoilet = japanesetoilet!
+//                // print("japanesetoilet = \(japanesetoilet)")
+//                
+//                let westerntoilet = snapshotValue?["westerntoilet"] as? Bool
+//                toilet.westerntoilet = westerntoilet!
+//                // print("washlet = \(westerntoilet)")
+//                
+//                let warmSeat = snapshotValue?["warmSeat"] as? Bool
+//                toilet.warmSeat = warmSeat!
+//                // print("warmSeat = \(warmSeat)")
+//                
+//                let baggageSpace = snapshotValue?["baggageSpace"] as? Bool
+//                toilet.baggageSpace = baggageSpace!
+//                // print("baggageSpace = \(baggageSpace)")
+//                
+//                let available = snapshotValue?["available"] as? Bool
+//                toilet.available = available!
+//                // print("available = \(available)")
+//                
+//                let howtoaccess = snapshotValue?["howtoaccess"] as? String
+//                toilet.howtoaccess = howtoaccess!
+//                //print("howtoaccess = \(howtoaccess)")
+//                
+//                let waitingtime = snapshotValue?["waitingtime"] as? Int
+//                toilet.averageWait = waitingtime!
+//                //print("waiting time = \(waitingtime)")
+//                
+//                let openinghours = snapshotValue?["openinghours"] as? String
+//                toilet.openinghours = openinghours!
+//                // print("openinghours = \(openinghours)")
+//                
+//                let addedBy = snapshotValue?["addedBy"] as? String
+//                toilet.addedBy = addedBy!
+//                
+//                let editedBy = snapshotValue?["editedBy"] as? String
+//                toilet.editedBy = editedBy!
+//                
+//                let averageStar = snapshotValue?["averageStar"] as? String
+//                toilet.averageStar = averageStar!
+//                print("averageStar = \(averageStar)")
+//                
+//                let reviewCount = snapshotValue?["reviewCount"] as? Int
+//                toilet.reviewCount = reviewCount!
+//                print(" reviewCount= \(reviewCount)")
+//                
+//                let averageWait = snapshotValue?["averageWait"] as? Int
+//                toilet.averageWait = averageWait!
+//                
+//                
+////                
+////                firebaseRef.child("ToiletLocations").child(toilet.key).child("l").observeSingleEvent(of: .value, with: { snapshot in
+////                    if let objects = snapshot.children.allObjects as? [FIRDataSnapshot] {
+////                        
+////                        print(objects[0])
+////                        print(objects[1])
+////                        let loc0 = objects[0].value
+////                        let loc1 = objects[1].value
+////                        print("loc0 = \(loc0)")
+////                        print("loc1 = \(loc1)")
+////                        toilet.loc = CLLocation(latitude: loc0 as! CLLocationDegrees, longitude: loc1 as! CLLocationDegrees)
+////                        let location = toilet.loc
+////                        print(toilet.loc)
+////                        
+////                        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+////                            
+////                            let distance = location.distance(from: self.locationManager.location!)
+////                            toilet.distance = round(0.1*distance)/0.1
+////                            print("toilet.distance = \(toilet.distance)")
+////                            
+////                        } else {
+////                            self.locationManager.requestWhenInUseAuthorization()
+////                        }
+////                    }
+////                    
+////                    
+////            })
+//                
+//                self.toilets.append(toilet)
+//                self.tableView.reloadData()})
+//            
+//            
+//        }
+//        )
+//        
+//    }
+    
+    //Commented April 17 
+    
+    
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

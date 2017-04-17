@@ -13,6 +13,8 @@
 		24033B971EA217A400E7B4B4 /* AnnotaionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24033B961EA217A400E7B4B4 /* AnnotaionView.swift */; };
 		24033B991EA219D800E7B4B4 /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */; };
 		24033B9B1EA219F000E7B4B4 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */; };
+		24033BA41EA4C99400E7B4B4 /* YourReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24033BA21EA4C99400E7B4B4 /* YourReviewTableViewCell.swift */; };
+		24033BA51EA4C99400E7B4B4 /* YourReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24033BA31EA4C99400E7B4B4 /* YourReviewTableViewCell.xib */; };
 		240F79791E98CC0600EFF3CC /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */; };
 		240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F797A1E9A1FF200EFF3CC /* UserLocation.swift */; };
 		240F797F1E9C62A300EFF3CC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240F797E1E9C62A300EFF3CC /* SWRevealViewController.m */; };
@@ -100,6 +102,8 @@
 		24033B961EA217A400E7B4B4 /* AnnotaionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotaionView.swift; sourceTree = "<group>"; };
 		24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCalloutView.xib; sourceTree = "<group>"; };
 		24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
+		24033BA21EA4C99400E7B4B4 /* YourReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourReviewTableViewCell.swift; sourceTree = "<group>"; };
+		24033BA31EA4C99400E7B4B4 /* YourReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YourReviewTableViewCell.xib; sourceTree = "<group>"; };
 		240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		240F797A1E9A1FF200EFF3CC /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		240F797D1E9C62A300EFF3CC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -280,6 +284,8 @@
 				24B7EC3D1E9F180D00368644 /* PlaceDetailViewController.storyboard */,
 				24B7EC3F1E9F196600368644 /* FilterTableViewController.storyboard */,
 				241454A71DE2C4F90066AB62 /* LaunchScreen.storyboard */,
+				24033BA21EA4C99400E7B4B4 /* YourReviewTableViewCell.swift */,
+				24033BA31EA4C99400E7B4B4 /* YourReviewTableViewCell.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 			files = (
 				241454CD1DE2C5F80066AB62 /* GoogleService-Info.plist in Resources */,
 				240128981E0A02CE002FBDE1 /* TableViewCell.xib in Resources */,
+				24033BA51EA4C99400E7B4B4 /* YourReviewTableViewCell.xib in Resources */,
 				24B7EC401E9F196600368644 /* FilterTableViewController.storyboard in Resources */,
 				24B7EC3E1E9F180D00368644 /* PlaceDetailViewController.storyboard in Resources */,
 				241454A91DE2C4F90066AB62 /* LaunchScreen.storyboard in Resources */,
@@ -789,6 +796,7 @@
 				2423A4271E2245BA00DD2AF4 /* Review.swift in Sources */,
 				2420F31D1E277AE000159441 /* EditPinViewController.swift in Sources */,
 				2423A4311E25989200DD2AF4 /* ChangeDetailTableViewController.swift in Sources */,
+				24033BA41EA4C99400E7B4B4 /* YourReviewTableViewCell.swift in Sources */,
 				24B6FB021E2C6B7700E1330A /* LocationSearchTable.swift in Sources */,
 				245E9F311E9605F1006D8A31 /* StartSignUpUserViewController.swift in Sources */,
 				240F79881E9D9F9400EFF3CC /* BooleanTableViewCell.swift in Sources */,
