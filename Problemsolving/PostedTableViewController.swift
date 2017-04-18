@@ -10,12 +10,17 @@ import UIKit
 import MapKit
 import FirebaseAuth
 import FirebaseDatabase
+import Cosmos
 
 class PostedTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate
 {
     
     var toilet = Toilet()
+    var search = Search()
+    var filter = Filter()
+    var userReviewComment = UserReviewComment()
     var toilets: [Toilet] = []
+    var commentData: [UserReviewComment] = []
     var deleteArray: [String] = []
     var locationManager = CLLocationManager()
     let firebaseRef = FIRDatabase.database().reference()
@@ -29,8 +34,10 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         locationAuthStatus()
         locationManager.delegate = self
+        reviewRidQuery()
         //firebaseQuery()
         tableView.allowsMultipleSelectionDuringEditing = true
+        print("Posted Table View Loaded")
         
     }
     
@@ -65,40 +72,80 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             print(snapshot)
             
 
-            
-//            for child in snapshot.children {
-//                
-//                let childSnapshot = snapshot.childSnapshot((child, forPath: as AnyObject),.key)
-//                let someValue = childSnapshot.value["key"] as! String
-//            }
-            
-            
-//            for  in snapshot.children{
-//                
-//                let childSnapshot = snapshot.childSnapshotForPath(child.key)
-//                let someValue = childSnapshot.value["key"] as! String
-//                
-//            
-//            }
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                for snap in snapshots
+                {
+                    let rid = snap.key
+                    
+                    self.commnetsReviewInfoQuery(ridKey: rid)
+                    print("Rid Key == \(rid)")
+                    
+                }
+            }
         })
-
-        
-        //reviewListRef.queryOrderedByKey().observe(FIRDataEventType.value
-        
-//        reviewListRef.observe(<#T##eventType: FIRDataEventType##FIRDataEventType#>, andPreviousSiblingKeyWith: <#T##(FIRDataSnapshot, String?) -> Void#>, withCancel: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
-        
-        
-
-    
-    
-    
-    
-    
     }
     
-    //commnetsReviewInfoQuery(String ridKey)
+    func commnetsReviewInfoQuery(ridKey: String){
+        
+        let reviewRef = firebaseRef.child("reviews").child(ridKey)
+        
+        reviewRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+            
+            let snapshotValue = snapshot.value as? NSDictionary
+            
+            print("reivewRef snapshot == \(snapshot)")
+            
+            
+            
+            self.userReviewComment.uid = (snapshotValue?["uid"] as? String)!
+            print("userReviewCommet.uid == \( self.userReviewComment.uid)")
+            self.userReviewComment.feedback = (snapshotValue?["feedback"] as? String)!
+            self.userReviewComment.time = (snapshotValue?["time"] as? String)!
+            self.userReviewComment.userWaitingTime = (snapshotValue?["waitingtime"] as? String)! + "分待ちました"
+
+            self.userReviewComment.userRatedStar = (snapshotValue?["star"] as? String)!
+
+            self.userReviewComment.tid = (snapshotValue?["tid"] as? String)!
+
+            self.commentsToiletInfoQuery(tidKey: self.userReviewComment.tid);
+            print("Tid Key == \(self.userReviewComment.tid)")
+        })
+        
+    }
     
-    //commentsToiletInfoQuery(String tidKey)
+    func commentsToiletInfoQuery(tidKey: String){
+        
+        
+        let toiletRef = firebaseRef.child("Toilets").child(tidKey)
+        toiletRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+            
+            let snapshotValue = snapshot.value as? NSDictionary
+            
+            self.userReviewComment.name = (snapshotValue?["name"] as? String)!
+            self.userReviewComment.urlOne = (snapshotValue?["urlOne"] as? String)!
+            self.userReviewComment.averageStar = (snapshotValue?["averageStar"] as? String)!
+            self.userReviewComment.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
+            self.userReviewComment.avWaitingTime = String((snapshotValue?["averageWait"] as? Int)!)
+            self.userReviewComment.available = (snapshotValue?["available"] as? Bool)!
+            
+            
+            self.userReviewComment.latitude = (snapshotValue?["latitude"] as? Double)!
+            self.userReviewComment.longitude = (snapshotValue?["longitude"] as? Double)!
+            
+            
+            let destinationLoc = CLLocation(latitude: self.userReviewComment.latitude, longitude: self.userReviewComment.longitude)
+            
+            
+            self.userReviewComment.distance = MapViewController.distanceCalculationGetString(destination: destinationLoc, center: self.search.centerSearchLocation)
+            
+            self.commentData.append(self.userReviewComment)
+            self.tableView.reloadData()
+        
+            
+        })
+    
+    }
     
     
     
@@ -269,70 +316,102 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return toilets.count
+        return commentData.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 82
+        return 260
         
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self,
-                                            options: nil)?.first as! TableViewCell
-        cell.mainImageView.sd_setImage(with: URL(string: toilets[indexPath.row].urlOne))
-        
-        cell.image7.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fredflag.jpeg?alt=media&token=6f464ebc-81a9-4553-aadd-1bb4b98d2b74")) // red flag
-        
-        // I got Pictures above from the Internet, so dont use them for commersial purposes
-        cell.mainImageView.layer.masksToBounds = true
-        cell.mainImageView.layer.cornerRadius = 8.0
         
         
-        cell.mainLabel.text = toilets[indexPath.row].key
+        let cell = Bundle.main.loadNibNamed("YourReviewTableViewCell", owner: self,                                   options: nil)?.first as! YourReviewTableViewCell
         
-        cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
-        cell.Star.settings.filledColor = UIColor.yellow
-        cell.Star.settings.emptyBorderColor = UIColor.orange
-        cell.Star.settings.filledBorderColor = UIColor.orange
-        cell.Star.rating = Double(toilets[indexPath.row].averageStar)!
+        cell.placeNameLabel.text = userReviewComment.name
+        cell.placeDistanceLabel.text = userReviewComment.distance
+        cell.placeStarView.rating = Double(userReviewComment.averageStar)!
+        cell.placeWaitingTime.text = userReviewComment.avWaitingTime
         
-        cell.Star.text = "\(Double(toilets[indexPath.row].averageStar)!)(\(toilets[indexPath.row].reviewCount)件) "
-        cell.Star.settings.textColor = UIColor.black
-        cell.Star.settings.textMargin = 10
-        cell.Star.settings.textFont.withSize(CGFloat(30.0))
-//        cell.starLabel.text = "\(toilets[indexPath.row].averageStar)"
-//        cell.reviewCountLabel.text = "(感想\(toilets[indexPath.row].reviewCount)件)"
+        cell.placeViewImage.sd_setImage(with: URL(string: userReviewComment.urlOne))
+    
+        if userReviewComment.available == true
+        {
+         cell.placeWarningPhoto.isHidden = true
+            
+        }
         
-        //let meter = toilets[indexPath.row].distance
+        cell.userCommentDateLabel.text = userReviewComment.time
+        cell.userRatedStarView.rating = Double(userReviewComment.userRatedStar)!
+        cell.userLikedCountLabel.text = String(userReviewComment.likedCount)
+        cell.userFeedbackTextView.text = userReviewComment.feedback
+        cell.userWaitingTimeLabel.text = userReviewComment.userWaitingTime
+        //cell.userLikedButton
         
-        //cell.distanceLabel.text = "\(toilets[indexPath.row].distance)m"
-        
-//        if toilets[indexPath.row].distance > 1000{
-//            let toiletD = round(0.01*toilets[indexPath.row].distance)/0.01/1000
-//            cell.distanceLabel.text = "\(toiletD)km"
-//            print("cell.distanceLabel.text = \(toiletD)km")
-//            
-//        } else {
-//            print("toilets[indexPath.row].distance = \(toilets[indexPath.row].distance)m")
-//            let toiletD = Int(round(0.1*toilets[indexPath.row].distance)/0.1)
-//            cell.distanceLabel.text = "\(toiletD)m"
-//            print("cell.distanceLabel.text = \(toiletD)m")
-//            
-//        }
-//        if toilets[indexPath.row].distance >= 1000000{
-//            let toiletD = Int(round(0.01*toilets[indexPath.row].distance)/0.01/1000000)
-//            cell.distanceLabel.text = "\(toiletD)Mm"
-//            print("cell.distanceLabel.text = \(toiletD)Mm")
-//            
-//        }
-
-        cell.distanceLabel.text = toilet.distance
+       
         
         
-        return cell
         
+        
+        //cell.placeStarView = userReviewComment.averageStar
+        
+        
+        
+        
+//        cell.mainImageView.sd_setImage(with: URL(string: toilets[indexPath.row].urlOne))
+//        
+//        cell.image7.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fredflag.jpeg?alt=media&token=6f464ebc-81a9-4553-aadd-1bb4b98d2b74")) // red flag
+//        
+//        // I got Pictures above from the Internet, so dont use them for commersial purposes
+//        cell.mainImageView.layer.masksToBounds = true
+//        cell.mainImageView.layer.cornerRadius = 8.0
+//        
+//        
+//        cell.mainLabel.text = toilets[indexPath.row].key
+//        
+//        cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
+//        cell.Star.settings.filledColor = UIColor.yellow
+//        cell.Star.settings.emptyBorderColor = UIColor.orange
+//        cell.Star.settings.filledBorderColor = UIColor.orange
+//        cell.Star.rating = Double(toilets[indexPath.row].averageStar)!
+//        
+//        cell.Star.text = "\(Double(toilets[indexPath.row].averageStar)!)(\(toilets[indexPath.row].reviewCount)件) "
+//        cell.Star.settings.textColor = UIColor.black
+//        cell.Star.settings.textMargin = 10
+//        cell.Star.settings.textFont.withSize(CGFloat(30.0))
+////        cell.starLabel.text = "\(toilets[indexPath.row].averageStar)"
+////        cell.reviewCountLabel.text = "(感想\(toilets[indexPath.row].reviewCount)件)"
+//        
+//        //let meter = toilets[indexPath.row].distance
+//        
+//        //cell.distanceLabel.text = "\(toilets[indexPath.row].distance)m"
+//        
+////        if toilets[indexPath.row].distance > 1000{
+////            let toiletD = round(0.01*toilets[indexPath.row].distance)/0.01/1000
+////            cell.distanceLabel.text = "\(toiletD)km"
+////            print("cell.distanceLabel.text = \(toiletD)km")
+////            
+////        } else {
+////            print("toilets[indexPath.row].distance = \(toilets[indexPath.row].distance)m")
+////            let toiletD = Int(round(0.1*toilets[indexPath.row].distance)/0.1)
+////            cell.distanceLabel.text = "\(toiletD)m"
+////            print("cell.distanceLabel.text = \(toiletD)m")
+////            
+////        }
+////        if toilets[indexPath.row].distance >= 1000000{
+////            let toiletD = Int(round(0.01*toilets[indexPath.row].distance)/0.01/1000000)
+////            cell.distanceLabel.text = "\(toiletD)Mm"
+////            print("cell.distanceLabel.text = \(toiletD)Mm")
+////            
+////        }
+//
+//        cell.distanceLabel.text = toilet.distance
+//        
+//        
+       return cell
+//        
         
         // Configure the cell...
     }

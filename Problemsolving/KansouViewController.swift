@@ -93,6 +93,8 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
 
+        
+        print("Kansou Toilet.key = \(toilet.key)")
 //        let userRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("userPhoto")
 //        userRef.queryOrderedByKey().observe(.value, with: { snapshot in
 //            
@@ -135,15 +137,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
       
         
         waitminute = pickOption[row]
-        
     
-        
-        
-        
-        
-        
-        
-        
         
     }
     
@@ -180,260 +174,131 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     }
     
     func kansouPosting(){
-//        let userRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid)
-//        print("kansouPosting")
-//        userRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
-//            //This code above will be called when the value change i guess
-//            
-//            let snapshotValue = snapshot.value as? NSDictionary
-//            
-//            let userName = snapshotValue?["userName"] as? String
-//            let userPhoto = snapshotValue?["userPhoto"] as? String
         
-            if self.numberPicked == false{
-                self.waitminute = "0"}
+        
+          print("kansouPostingCalled")
+          let originalAvStar = Double(toilet.averageStar)
+          let originalAvWait = toilet.averageWait
+          let originalReviewCount = toilet.reviewCount
+        
+        
+          let newReviewCount = originalReviewCount + 1
+          var newAvStar = Double()
+          var newWaitingTime = Int()
+        
+         
+        
+        
+        
+        if (newReviewCount > 9){
             
-            let date = NSDate()
-            let calendar = Calendar.current
+            let x = self.starRated.rating - originalAvStar!
+            let changeingValue = x / 10
             
-            let day = calendar.component(.day, from:date as Date)
-            let month = calendar.component(.month, from:date as Date)
-            let year = calendar.component(.year, from:date as Date)
+            newAvStar = originalAvStar! + changeingValue
             
-            let dateString = "\(year)年\(month)月\(day)日"
-            //print("yearmonthday = \(year)年\(month)月\(day)日")
+        } else{
             
-            let interval = NSDate().timeIntervalSince1970
+            let y = self.starRated.rating - originalAvStar!
+            let changeValue = y / Double(newReviewCount)
+            newAvStar = originalAvStar! + changeValue
             
             
-            print("kansouPosting1")
-//            
-//            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
-//            toiletsRef.child(self.key).observe(FIRDataEventType.value, with: { snapshot in
-            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
-                 toiletsRef.child(self.toilet.key).observe(FIRDataEventType.value, with: { snapshot in
+        }
+        
+        //I gotta round av star 
+        
+        let roundAvStar = Double(round(10*newAvStar)/10)
+        
+        
+        if (newReviewCount > 4){
+            
+            let c = Int(self.waitminute)! - originalAvWait
+            let changeingValue = c / 5
+            newWaitingTime = originalAvWait + changeingValue
+            
+            
+        } else{
+            
+            let d = Int(self.waitminute)! - originalAvWait
+            let changeingValue = d / newReviewCount
+            newWaitingTime = originalAvWait + changeingValue
+            
+        }
+        
+        
 
-            
-                //This code above will be called when the value change i guess
-                 print("kansouPosting2")
-                print("snapshot = \(snapshot)")
-                 print("snapshot = \(snapshot.key)")
-                 print("snapshot = \(snapshot.value)")
-                
-                if self.starUpdated == false {
-                    
-//                    print("snapshot = \(snapshot)")
-//                    print("star0")
-//                    let star0 = self.starRated.rating
-//                    self.toilet.star1 = Int(star0)
-//                    print("star1")
-//                    let snapshotValue = snapshot.value as? NSDictionary
-//                    
-//                    let star1 = snapshotValue?["star1"] as? Int
-//                    print("star1  = \(star1)")
-//                    self.toilet.star2 = star1!
-//                    
-//                    
-//                    let star2 = snapshotValue?["star2"] as? Int
-//                    self.toilet.star3 = star2!
-//                    
-//                    let star3 = snapshotValue?["star3"] as? Int
-//                    self.toilet.star4 = star3!
-//                    
-//                    let star4 = snapshotValue?["star4"] as? Int
-//                    self.toilet.star5 = star4!
-//                    
-//                    let star5 = snapshotValue?["star5"] as? Int
-//                    self.toilet.star6 = star5!
-//                    
-//                    let star6 = snapshotValue?["star6"] as? Int
-//                    self.toilet.star7 = star6!
-//                    
-//                    let star7 = snapshotValue?["star7"] as? Int
-//                    self.toilet.star8 = star7!
-//                    
-//                    let star8 = snapshotValue?["star8"] as? Int
-//                    self.toilet.star9 = star8!
-//                    
-//                    let star9 = snapshotValue?["star9"] as? Int
-//                    self.toilet.star10 = star9!
-//                    
-//                    
-//                    //
-//                    let wait1 = snapshotValue?["wait1"] as? Int
-//                    self.toilet.wait2 = wait1!
-//                    
-//                    let wait2 = snapshotValue?["wait2"] as? Int
-//                    self.toilet.wait3 = wait2!
-//                    
-//                    let wait3 = snapshotValue?["wait3"] as? Int
-//                    self.toilet.wait4 = wait3!
-//                    
-//                    let wait4 = snapshotValue?["wait4"] as? Int
-//                    self.toilet.wait5 = wait4!
-//                    
-//                    //                    let wait5 = snapshotValue?["wait1"] as? Int
-//                    //                    self.toilet.wait2 = wait1
-//                    print("reviewCount")
-//                    let reviewCount = snapshotValue?["reviewCount"] as? Int
-//                    print("reviewCount = \(reviewCount)")
-//                    self.toilet.reviewCount = reviewCount! + 1
-//                    self.manuallyReviewCount = reviewCount! + 1
-//                    print("total Star")
-//                    
-//                    var sum = Int()
-//                    let starArray:Array<Int> = [self.toilet.star1,star1!,star2!,star3!,star4!,star5!,star6!,star7!,star8!,star9!]
-//                    for number in starArray {
-//                        sum += number
-//                    }
-//                    let totalStar = sum
-//                    let totalDouble = Double(totalStar)
-//                    let reviewCountDouble = Double(self.toilet.reviewCount)
-                    //Commeted for very slow building
-//                    
-//                    print("AVEStar")
-//                    var avStar = Double()
-//                    if self.toilet.reviewCount >= 10{
-//                        avStar = totalDouble/10
-//                        print("totalDouble = \(totalDouble)")
-//                        print("avStar = \(avStar)")
-//                    }else{
-//                        avStar = totalDouble/reviewCountDouble
-//                        print("totalDouble = \(totalDouble)")
-//                        print("totalDouble = \(reviewCountDouble)")
-//                        print("avStar = \(avStar)")
-//                        
-//                        
-//                        
-//                    }
-//                    //round(0.01*avStar)/0.01
-//                    //let td1 = round(0.01*toilets[indexPath.row].distance)/0.01/1000
-//                    print("0.01*avStar = \(0.01*avStar)")
-//                    print("round(0.01*avStar)/0.01 = \(round(0.01*avStar)/0.01)")
-//                    //(round(1000*x)/1000)
-//                    self.toilet.averageStar = "\(round(10*avStar)/10)"
-//                    self.manuallyAverageStar = round(10*avStar)/10
-//                    // self.toilet.averageStar = round(0.01*avStar)/0.01
-//                    //self.toilet.averageStar = avStar
-//                    
-//                    let waitInt = Int(self.waitminute)
-//                    var waitSum = Int()
-//                    
-//                    //wait minute to int()
-//                    let waitArray:Array<Int> = [waitInt!,wait1!,wait2!,wait3!,wait4!]
-//                    for number in waitArray {
-//                        waitSum += number
-//                    }
-//                    let totalWait = waitSum
-//                    var avWait = Int()
-//                    if self.toilet.reviewCount >= 5{
-//                        avWait = totalWait/5
-//                        print("totalWait = \(totalWait)")
-//                        print("avWait = \(avWait)")
-//                    }else{
-//                        avWait = totalWait/self.toilet.reviewCount
-//                        print("totalWait = \(totalWait)")
-//                        print("reviewCount = \(reviewCount)")
-//                        print("avWait = \(avWait)")
-//                    }
-//                    self.toilet.averageWait = avWait
-//                    self.manuallyAverageWait = avWait
-//                    
-//                    
-//                    
-//                    
-//                    
-//                    
-//                    
-//                    
-//                    
-//                    
-//                    let addingData: [String : Any] = [
-//                        "reviewCount": self.toilet.reviewCount as Int,
-//                        "averageStar": "\(self.toilet.averageStar)" as String,
-//                        "star1": self.toilet.star1 as Int,
-//                        "star2": self.toilet.star2 as Int,
-//                        "star3": self.toilet.star3 as Int,
-//                        "star4": self.toilet.star4 as Int,
-//                        "star5": self.toilet.star5 as Int,
-//                        "star6": self.toilet.star6 as Int,
-//                        "star7": self.toilet.star7 as Int,
-//                        "star8": self.toilet.star8 as Int,
-//                        "star9": self.toilet.star9 as Int,
-//                        "star10": self.toilet.star10 as Int,
-//                        "wait1": Int(self.waitminute)! as Int,
-//                        "wait2": self.toilet.wait2 as Int,
-//                        "wait3": self.toilet.wait3 as Int,
-//                        "wait4": self.toilet.wait4 as Int,
-//                        "wait5": self.toilet.wait5 as Int,
-//                        "averageWait": self.toilet.averageWait as Int
-//                    ]
-//                    
-                    //"wait1": self.toilet.wait1 as Int
-                    
-                    //Commeted for the super slow building
-                    
-//                    
-//                    toiletsRef.child(self.toilet.key).updateChildValues(addingData)
-//                    print("starUpdated = \(self.starUpdated)")
-//                    self.starUpdated = true
-//                    print("self.starUpdated = \(self.starUpdated)")
-//                    //This code creates a lot of mess
-//                   
-                    
-                    
-                    
-                }
-                // firebaseUpdated = true
-                //(["yourKey": yourValue])
-                
-                
-                
-                
-                
-                let data : [String : Any] = ["uid": FIRAuth.auth()!.currentUser!.uid , "tid": self.toilet.key, "star": self.starRated.rating , "waitingtime": self.waitminute ,"feedback": self.textView.text, "available": self.available, "time": dateString, "timeNumbers":interval, "likedCount":0
-                ]
-                
-                
-                
-                
-                let databaseRef = FIRDatabase.database().reference()
-                //databaseRef.child("reviews").child(key).setValue(data)
-                if self.reviewUpdated == false{
-                    databaseRef.child("reviews").childByAutoId().setValue(data)
-                    
-                    
-                    //databaseRef.child("Toilets").child(self.key).child("reviews").setValue(data)
-                    //Commented above code bacuase i dont think its neccesarry
-                    
-                    self.reviewUpdated = true
-                    print("self.reviewUpdated = \(self.reviewUpdated)")
-                    
-                }})
-            //child(FIRAuth.auth()!.currentUser!.uid).child("youwent").child(toilet.key).setValue(toilet.key)
-            
-            if self.available == false {
-                print("unavailable")
-                
-            }
+//....................        add reviewInfo in reviews child
+        if self.numberPicked == false{
+            self.waitminute = "0"}
         
-//            toilet.averageStar = manuallyAverageStar
-//            toilet.averageWait = manuallyAverageWait
-//            toilet.reviewCount = manuallyReviewCount
+        let date = NSDate()
+        let calendar = Calendar.current
         
+        let day = calendar.component(.day, from:date as Date)
+        let month = calendar.component(.month, from:date as Date)
+        let year = calendar.component(.year, from:date as Date)
         
+        let dateString = "\(year)-\(month)-\(day)"
         
-//            _ = self.navigationController?.popViewController(animated: true)
-       // }
-       // )
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        //print("yearmonthday = \(year)年\(month)月\(day)日")
+        
+        let interval = NSDate().timeIntervalSince1970
+        
+        let reviewData : [String : Any] = ["uid": uid , "tid": self.toilet.key, "star": String(self.starRated.rating) , "waitingtime": self.waitminute ,"feedback": self.textView.text, "available": self.available, "time": dateString, "timeNumbers":interval, "likedCount":0
+        ]
 
-    
-    
-    
+        
+          let reviewRef = FIRDatabase.database().reference().child("reviews").childByAutoId()
+        
+          reviewRef.setValue(reviewData)
+        
+        
+        
+          let rid = reviewRef.key
+        
+        
+        
+         print("this is the new rid = \(rid) Print ")
+        
+        let reviewListRef = FIRDatabase.database().reference().child("ReviewList").child(uid)
+        
+          reviewListRef.child(rid).setValue(true)
+        
+        let toiletRef = FIRDatabase.database().reference().child("Toilets").child(toilet.key)
+        
+        //toiletRef.updateChildValues("averageStar": "3.0")
+        
+        //let newAvStar =
+        
+        let tdata : [String : Any] = ["averageStar": String(roundAvStar),
+                                      "averageWait": newWaitingTime,
+                                      "reviewCount": newReviewCount,
+                                      "available": self.available]
+        
+        
+        toiletRef.updateChildValues(tdata)
+        
+        print("kansouPosting()Ended")
+        
+        moveBackToPlaceDetailVeiwController()
+        
+        
+
+        
+        
+        
     }
+
+
+
+
+
     @IBAction func kansouButtonTapped(_ sender: Any) {
         kansouPosting()
-        performSegue(withIdentifier: "backToDetail", sender: nil)
+        
+        
                }
     
     
@@ -494,28 +359,41 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         }
     }
     
-    @IBAction func backButtonTapped(_ sender: Any) {
-        performSegue(withIdentifier: "backToDetail", sender: nil)
+    @IBAction func backBarButtonTapped(_ sender: Any) {
+        moveBackToPlaceDetailVeiwController()
         
+    }
+    
+    func moveBackToPlaceDetailVeiwController(){
+    
+    
+        
+        let storyboard = UIStoryboard(name: "PlaceDetailViewController", bundle: nil)
+        let navigationContoller = storyboard.instantiateViewController(withIdentifier: "PlaceNavigationController") as! UINavigationController
+        let nextVC = navigationContoller.topViewController as! PlaceDetailViewController
+        
+        
+        nextVC.toilet.key = toilet.key
+        nextVC.filter = filter
+        nextVC.search = search
+        
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        self.present(navigationContoller, animated: false, completion: nil)
+
     }
     
     @IBAction func kansouPostButtonTapped(_ sender: Any) {
         kansouPosting()
-        performSegue(withIdentifier: "backToDetail", sender: nil)
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToDetail"{
-            let nextVC = segue.destination as! DetailViewController
-            nextVC.toilet = toilet
-            nextVC.filter = filter
-            nextVC.search = search
-        }
 
-    
-    
-            
-    }}
+
+}
 
 
 

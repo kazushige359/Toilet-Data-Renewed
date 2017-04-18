@@ -1326,12 +1326,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         changeStartCell()
         if createdArray == false{
             
-            let alertController = UIAlertController (title: "トイレが見つかりませんでした", message: "検索条件を変更してください", preferredStyle: .alert)
+            let alertController = UIAlertController (title: "トイレが見つかりませんでした", message: "検索条件を変更しますか？", preferredStyle: .alert)
             
-            let okayAction = UIAlertAction(title: "了解", style: .default, handler: nil)
+            let okayAction = UIAlertAction(title: "はい", style: .default){ (_) -> Void in
+                self.performSegue(withIdentifier: "maptoFilterSegue", sender: nil)
+            }
+            let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
             //let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
             //alertController.addAction(cancelAction)
             alertController.addAction(okayAction)
+            alertController.addAction(cancelAction)
             present(alertController, animated: true, completion: nil)
        
         }

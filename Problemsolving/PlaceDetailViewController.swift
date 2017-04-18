@@ -1218,6 +1218,26 @@ import Cosmos
         
         @IBAction func buttonAddFeedbackTapped(_ sender: Any) {
             //"placeDetailToKansouSegue"
+            
+        
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let navigationContoller = storyboard.instantiateViewController(withIdentifier: "KansouNavigationViewController") as! UINavigationController
+            let nextVC = navigationContoller.topViewController as! KansouViewController
+            
+            
+            nextVC.toilet = toilet
+            nextVC.filter = filter
+            nextVC.search = search
+            
+            let transition = CATransition()
+            transition.duration = 0.4
+            transition.type = kCATransitionPush
+            transition.subtype = kCATransitionFromRight
+            view.window!.layer.add(transition, forKey: kCATransition)
+            
+            self.present(navigationContoller, animated: false, completion: nil)
+            
+
         }
         
         @IBAction func buttonEditTapped(_ sender: Any) {

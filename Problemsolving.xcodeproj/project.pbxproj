@@ -15,6 +15,7 @@
 		24033B9B1EA219F000E7B4B4 /* CustomCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */; };
 		24033BA41EA4C99400E7B4B4 /* YourReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24033BA21EA4C99400E7B4B4 /* YourReviewTableViewCell.swift */; };
 		24033BA51EA4C99400E7B4B4 /* YourReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24033BA31EA4C99400E7B4B4 /* YourReviewTableViewCell.xib */; };
+		24033BA71EA58DF800E7B4B4 /* UserReviewComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24033BA61EA58DF800E7B4B4 /* UserReviewComment.swift */; };
 		240F79791E98CC0600EFF3CC /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */; };
 		240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240F797A1E9A1FF200EFF3CC /* UserLocation.swift */; };
 		240F797F1E9C62A300EFF3CC /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 240F797E1E9C62A300EFF3CC /* SWRevealViewController.m */; };
@@ -104,6 +105,7 @@
 		24033B9A1EA219F000E7B4B4 /* CustomCalloutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCalloutView.swift; sourceTree = "<group>"; };
 		24033BA21EA4C99400E7B4B4 /* YourReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourReviewTableViewCell.swift; sourceTree = "<group>"; };
 		24033BA31EA4C99400E7B4B4 /* YourReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YourReviewTableViewCell.xib; sourceTree = "<group>"; };
+		24033BA61EA58DF800E7B4B4 /* UserReviewComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReviewComment.swift; sourceTree = "<group>"; };
 		240F79781E98CC0600EFF3CC /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		240F797A1E9A1FF200EFF3CC /* UserLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		240F797D1E9C62A300EFF3CC /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				240F79801E9CC42300EFF3CC /* PassingData.swift */,
 				24CD2B4B1E9E27A800F438CE /* Post.swift */,
 				24033B961EA217A400E7B4B4 /* AnnotaionView.swift */,
+				24033BA61EA58DF800E7B4B4 /* UserReviewComment.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -801,6 +804,7 @@
 				245E9F311E9605F1006D8A31 /* StartSignUpUserViewController.swift in Sources */,
 				240F79881E9D9F9400EFF3CC /* BooleanTableViewCell.swift in Sources */,
 				240F797B1E9A1FF200EFF3CC /* UserLocation.swift in Sources */,
+				24033BA71EA58DF800E7B4B4 /* UserReviewComment.swift in Sources */,
 				24A130CC1DF769AE009C1A3F /* GeoFire.m in Sources */,
 				2423A4241E21930000DD2AF4 /* ReviewTableViewCell.swift in Sources */,
 				2418B7D31E16611B004F7022 /* YouWentTableViewController.swift in Sources */,
