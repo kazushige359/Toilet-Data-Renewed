@@ -155,15 +155,14 @@ class UserPrivateAccountViewController: UIViewController {
             nextVC.search = search
         }
         
-//        if segue.identifier == "youHaveBeenSegue"{
-//            
-//            let nextVC = segue.destination as! YouWentTableViewController
-//            
-//            //nextVC.toilet = toilet
-//            nextVC.filter = filter
-//            nextVC.search = search
-//        }
-//        
+        if segue.identifier == "newAcToYouHaveAddSegue"{
+            
+            let nextVC = segue.destination as! PostedTableViewController
+            
+            nextVC.filter = filter
+            nextVC.search = search
+        }
+//
 //        if segue.identifier == "youHaveBeenSegue"{
 //            
 //            let nextVC = segue.destination as! YouWentTableViewController
