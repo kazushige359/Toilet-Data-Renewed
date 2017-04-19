@@ -86,7 +86,7 @@ class PictureViewController: UIViewController,UIImagePickerControllerDelegate, U
         imagesFolder.child("\(uuid).jpg").put(imageData, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
-                print("We had an error:\(error)")
+                print("We had an error:\(String(describing: error))")
             } else {
                 
                 print(metadata?.downloadURL() as Any)

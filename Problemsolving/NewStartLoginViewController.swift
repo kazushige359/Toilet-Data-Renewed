@@ -81,7 +81,7 @@ class NewStartLoginViewController: UIViewController {
                     print("invalid email")
                     self.firebaseLoginErrorShow(errorMessage: "入力されたメールアドレスに誤りがあります")
                 default:
-                    print("Create User Error: \(error)")
+                    print("Create User Error: \(String(describing: error))")
                     self.firebaseLoginErrorShow(errorMessage:"入力された情報に誤りがあります")
                     
                 }    

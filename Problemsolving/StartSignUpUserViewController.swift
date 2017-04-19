@@ -79,7 +79,7 @@ class StartSignUpUserViewController: UIViewController
         FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
             print("We tried to sign in")
             if error != nil {
-                print("Hey we have an error : \(error)")
+                print("Hey we have an error : \(String(describing: error))")
             } else { print("We signed in successfully")
                 let userData : [String : Any] = [
                     "userName": self.userNameTextField.text! as String,

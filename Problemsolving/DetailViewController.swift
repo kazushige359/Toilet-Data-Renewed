@@ -342,13 +342,13 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             if self.firebaseLoadedOnce == false{
                 print("snapshot = \(snapshot)")
                 print("snapshot.key = \(snapshot.key)")
-                print("snapshot.value = \(snapshot.value)")
+                print("snapshot.value = \(String(describing: snapshot.value))")
                 let review = Review()
                 
                 let snapshotValue = snapshot.value as? NSDictionary
                 
                 let star = snapshotValue?["star"] as? String
-                print("star = \(star)!!!")
+                print("star = \(String(describing: star))!!!")
                 review.star = Double(star!)!
                 let feedback = snapshotValue?["feedback"] as? String
                 review.feedback = feedback!
@@ -426,7 +426,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
             if self.favoriteAdded == false{
                 print("FVFVsnapshot = \(snapshot)")
                 print("FVFVsnapshot.key = \(snapshot.key)")
-                print("FVFVsnapshot.value = \(snapshot.value)")
+                print("FVFVsnapshot.value = \(String(describing: snapshot.value))")
                 let snapValue = snapshot.value as? Int
                 let newFavorite = snapValue! + 1
                 totalFavoriteCountRef.setValue(newFavorite)
@@ -465,9 +465,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         addedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentAdded == false{
-                print("FVFVsnapshot = \(snapshot)")
-                print("FVFVsnapshot.key = \(snapshot.key)")
-                print("FVFVsnapshot.value = \(snapshot.value)")
+              
                 let snapValue = snapshot.value as? Int
                 let newHelped = snapValue! + 1
                 addedTotalHelpedCountRef.setValue(newHelped)
@@ -477,10 +475,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         let editedTotalHelpedCountRef = firebaseRef.child("users").child(toilet.editedBy).child("totalHelpedCount")
         editedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentEdited == false{
-                print("FVFVsnapshot = \(snapshot)")
-                print("FVFVsnapshot.key = \(snapshot.key)")
-                print("FVFVsnapshot.value = \(snapshot.value)")
-                let snapValue = snapshot.value as? Int
+                               let snapValue = snapshot.value as? Int
                 let newHelped = snapValue! + 1
                 editedTotalHelpedCountRef.setValue(newHelped)
                 self.youwentEdited = true
@@ -592,7 +587,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 
                 youLikedRef.child(likedID).removeValue { (error, ref) in
                     if error != nil {
-                        print("error \(error)")
+                        print("error \(String(describing: error))")
                     }
                 }
             }

@@ -722,15 +722,15 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     
     func editdataExecution(){
-        let date = NSDate()
-        let calendar = Calendar.current
+//        let date = NSDate()
+//        let calendar = Calendar.current
         
-        let day = calendar.component(.day, from:date as Date)
-        let month = calendar.component(.month, from:date as Date)
-        let year = calendar.component(.year, from:date as Date)
+//        let day = calendar.component(.day, from:date as Date)
+//        let month = calendar.component(.month, from:date as Date)
+//        let year = calendar.component(.year, from:date as Date)
         
-        let dateString = "\(year)年\(month)月\(day)日"
-        let interval = NSDate().timeIntervalSince1970
+//        let dateString = "\(year)年\(month)月\(day)日"
+//        let interval = NSDate().timeIntervalSince1970
         
         
         

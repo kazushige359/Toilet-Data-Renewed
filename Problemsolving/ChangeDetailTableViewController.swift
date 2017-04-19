@@ -561,20 +561,20 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             print("after geoFire.setLocation")
             
             print("Star ratingggggg \(starView.rating)")
-            let date = NSDate()
-            let calendar = Calendar.current
+         //   let date = NSDate()
+//            let calendar = Calendar.current
 
             
             
-            let second = calendar.component(.second, from: date as Date)
-            
-            
-            let day = calendar.component(.day, from:date as Date)
-            let month = calendar.component(.month, from:date as Date)
-            let year = calendar.component(.year, from:date as Date)
-            //let dateString = "\(year)年\(month)月\(day)日"
-            
-            let interval = NSDate().timeIntervalSince1970
+//            let second = calendar.component(.second, from: date as Date)
+//            
+//            
+//            let day = calendar.component(.day, from:date as Date)
+//            let month = calendar.component(.month, from:date as Date)
+//            let year = calendar.component(.year, from:date as Date)
+//            //let dateString = "\(year)年\(month)月\(day)日"
+//            
+//            let interval = NSDate().timeIntervalSince1970
             
 //            let tenTimesTime1 = Int()
 //                tenTimesTime1 = Int(time1)! * 10
@@ -790,7 +790,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             
             
-            let reviewsRef = FIRDatabase.database().reference().child("reviews")
+           // let reviewsRef = FIRDatabase.database().reference().child("reviews")
             //reviewsRef.childByAutoId().setValue(rdata)
             
             //FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").child(name!).setValue(true)

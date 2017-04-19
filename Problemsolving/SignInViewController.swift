@@ -60,7 +60,7 @@ class SignInViewController: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
             print("We tried to sign in")
             if error != nil {
-                print("Hey we have an error : \(error)")
+                print("Hey we have an error : \(String(describing: error))")
                 self.errorMessage.isHidden = false
             } else { print("We signed in successfully")
                 FIRDatabase.database().reference().child("users").child(user!.uid).child("userName").setValue(user!.email!)
@@ -73,7 +73,7 @@ class SignInViewController: UIViewController {
             print("We tried to create a user")
             
             if error != nil {
-                print("Hey we have an error:\(error)")
+                print("Hey we have an error:\(String(describing: error))")
             } else {
                 self.errorMessage2.isHidden = false
                 print("Created User successfully!")

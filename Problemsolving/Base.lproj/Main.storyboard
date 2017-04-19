@@ -3359,7 +3359,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="28X-QU-tg2">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" id="28X-QU-tg2">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="28X-QU-tg2" id="2Ds-fL-UoJ">
@@ -5882,11 +5882,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="5500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SBI-qP-kNB">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SBI-qP-kNB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="5500"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-0X-7xG">
-                                <rect key="frame" x="0.0" y="428" width="320" height="140"/>
+                                <rect key="frame" x="0.0" y="5360" width="320" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="XZf-z4-XPF"/>
                                 </constraints>
@@ -5916,7 +5916,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DC3-0X-7xG" firstAttribute="top" secondItem="y07-Ig-OeP" secondAttribute="bottom" constant="408" id="4Gh-hY-HKM"/>
+                            <constraint firstItem="SBI-qP-kNB" firstAttribute="leading" secondItem="pwC-CZ-P57" secondAttribute="leading" id="44b-sy-G9u"/>
                             <constraint firstItem="mQR-YR-Pdq" firstAttribute="centerX" secondItem="pwC-CZ-P57" secondAttribute="centerX" id="72O-fm-DMx"/>
                             <constraint firstItem="mQR-YR-Pdq" firstAttribute="centerX" secondItem="SBI-qP-kNB" secondAttribute="centerX" id="BtH-bl-4Gl"/>
                             <constraint firstItem="6p5-a1-q3q" firstAttribute="leading" secondItem="mQR-YR-Pdq" secondAttribute="leading" id="DWd-6f-4vx"/>
@@ -5926,8 +5926,10 @@
                             <constraint firstItem="6p5-a1-q3q" firstAttribute="top" secondItem="mQR-YR-Pdq" secondAttribute="bottom" id="F8K-CW-S3a"/>
                             <constraint firstItem="mQR-YR-Pdq" firstAttribute="centerX" secondItem="DC3-0X-7xG" secondAttribute="centerX" id="LDh-Ao-RbV"/>
                             <constraint firstItem="SBI-qP-kNB" firstAttribute="top" secondItem="pwC-CZ-P57" secondAttribute="top" id="Lr1-kU-dzD"/>
+                            <constraint firstItem="SBI-qP-kNB" firstAttribute="top" secondItem="pwC-CZ-P57" secondAttribute="top" id="Qnr-Y4-8Pi"/>
                             <constraint firstItem="SBI-qP-kNB" firstAttribute="bottom" secondItem="wnF-h7-jeR" secondAttribute="top" id="V5z-1P-97g"/>
                             <constraint firstItem="SBI-qP-kNB" firstAttribute="leading" secondItem="DC3-0X-7xG" secondAttribute="leading" id="bEi-U8-Sxx"/>
+                            <constraint firstAttribute="trailing" secondItem="SBI-qP-kNB" secondAttribute="trailing" id="bLE-Dc-cZt"/>
                             <constraint firstAttribute="bottomMargin" secondItem="DC3-0X-7xG" secondAttribute="bottom" id="v0D-qp-Shg"/>
                         </constraints>
                     </view>
@@ -6031,7 +6033,7 @@
         <image name="user_image_30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dYX-Na-Ua2"/>
+        <segue reference="INs-62-dA7"/>
         <segue reference="0OJ-s6-62o"/>
         <segue reference="kHI-bB-fQV"/>
         <segue reference="XkJ-RX-AZM"/>
