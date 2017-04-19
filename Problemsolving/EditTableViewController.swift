@@ -1036,7 +1036,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
 //            let databaseRef = FIRDatabase.database().reference()
 //            databaseRef.child("reviews").childByAutoId().setValue(rdata)
             
-            uploadPhotosToDatabase(nameString: name!)
+            uploadPhotosToDatabase(tid: toilet.key)
             backToPlaceDetailViewSegue()
 
             //performSegue(withIdentifier: "editTabletoDetailSegue", sender: nil)
@@ -1083,7 +1083,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         imagePicker.dismiss(animated: true, completion: nil)
     }
 
-    func uploadPhotosToDatabase(nameString : String){
+    func uploadPhotosToDatabase(tid : String){
         let databaseRef = FIRDatabase.database().reference()
         let imagesFolder = FIRStorage.storage().reference().child("images")
         //FIRDatabase
@@ -1092,7 +1092,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
         {
             let mainImageData = UIImageJPEGRepresentation(mainImage.image!, 0.1)!
-            imagesFolder.child("\(nameString).urlOne.jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child("\(tid).urlOne.jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1100,7 +1100,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                     print("uploadPhotosToDatabase1")
                     print(metadata?.downloadURL() as Any)
                     let downloadURL = metadata!.downloadURL()!.absoluteString
-                    databaseRef.child("Toilets").child(nameString).updateChildValues(["urlOne": downloadURL])
+                    databaseRef.child("Toilets").child(tid).updateChildValues(["urlOne": downloadURL])
                     self.toilet.urlOne = downloadURL
                     
                 }
@@ -1110,7 +1110,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         
         if subImageReplace1 == true{
             let subImageData1 = UIImageJPEGRepresentation(subImage1.image!, 0.1)!
-            imagesFolder.child("\(nameString).urlTwo.jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child("\(tid).urlTwo.jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1118,7 +1118,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                     
                     print(metadata?.downloadURL() as Any)
                     let downloadURL = metadata!.downloadURL()!.absoluteString
-                    databaseRef.child("Toilets").child(nameString).updateChildValues(["urlTwo": downloadURL])
+                    databaseRef.child("Toilets").child(tid).updateChildValues(["urlTwo": downloadURL])
                     self.toilet.urlTwo = downloadURL
                     
                 }
@@ -1130,7 +1130,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         
         let subImageData2 = UIImageJPEGRepresentation(subImage2.image!, 0.1)!
         
-        imagesFolder.child("\(nameString).urlThree.jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
+        imagesFolder.child("\(tid).urlThree.jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
                 print("We had an error:\(String(describing: error))")
@@ -1138,7 +1138,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                 
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(nameString).updateChildValues(["urlThree": downloadURL])
+                databaseRef.child("Toilets").child(tid).updateChildValues(["urlThree": downloadURL])
                 self.toilet.urlThree = downloadURL
 
             }

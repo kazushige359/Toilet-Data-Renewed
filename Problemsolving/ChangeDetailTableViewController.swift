@@ -253,6 +253,9 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     var subImageReplace1 = false
     var subImageReplace2 = false
     
+    let interval = NSDate().timeIntervalSince1970
+    let uid = FIRAuth.auth()!.currentUser!.uid
+    
     
     
 //    let availableTimeForDatabase = "\(time1):\(time2)〜\(time3):\(time4)"
@@ -561,10 +564,15 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let date = NSDate()
             let calendar = Calendar.current
 
+            
+            
+            let second = calendar.component(.second, from: date as Date)
+            
+            
             let day = calendar.component(.day, from:date as Date)
             let month = calendar.component(.month, from:date as Date)
             let year = calendar.component(.year, from:date as Date)
-            let dateString = "\(year)年\(month)月\(day)日"
+            //let dateString = "\(year)年\(month)月\(day)日"
             
             let interval = NSDate().timeIntervalSince1970
             
@@ -577,7 +585,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
 //            let openHours = tenTimesTime1 + Int(time2)!
 //            let closeHours = tenTimesTime3 + Int(time4)!
             
-            let uid = FIRAuth.auth()!.currentUser!.uid
+            
             
             
             //maybe when waitminute wasnt written aything then waitminute = 0  
@@ -761,6 +769,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             uniqueRef.setValue(tdata)
             
+            let generatedTid = uniqueRef.key
+            
             
             
         
@@ -788,7 +798,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             //print("tdata = \(tdata)")
             print("toiletsRef data is saved!!")
             
-            uploadPhotosToDatabase(nameString: name!)
+            uploadPhotosToDatabase(tid: generatedTid)
             performSegue(withIdentifier: "addedToiletToNewAcSegue", sender: nil)
             
         }
@@ -796,7 +806,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     }
     
     
-    func uploadPhotosToDatabase(nameString : String){
+    func uploadPhotosToDatabase(tid : String){
         let databaseRef = FIRDatabase.database().reference()
         let imagesFolder = FIRStorage.storage().reference().child("images")
         //FIRDatabase
@@ -809,42 +819,42 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         
         print("uploadPhotosToDatabase")
         
-        imagesFolder.child("\(nameString).urlOne.jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
+        imagesFolder.child("\(tid).urlOne.jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
-                print("We had an error:\(error)")
+                print("We had an error:\(String(describing: error))")
             } else {
                 print("uploadPhotosToDatabase1")
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(nameString).updateChildValues(["urlOne": downloadURL])
+                databaseRef.child("Toilets").child(tid).updateChildValues(["urlOne": downloadURL])
                 
             }
         })
         
-        imagesFolder.child("\(nameString).urlTwo.jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
+        imagesFolder.child("\(tid).urlTwo.jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
-                print("We had an error:\(error)")
+                print("We had an error:\(String(describing: error))")
             } else {
                 
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(nameString).updateChildValues(["urlTwo": downloadURL])
+                databaseRef.child("Toilets").child(tid).updateChildValues(["urlTwo": downloadURL])
                 
             }
         })
         
         
-        imagesFolder.child("\(nameString).urlThree.jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
+        imagesFolder.child("\(tid).urlThree.jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
-                print("We had an error:\(error)")
+                print("We had an error:\(String(describing: error))")
             } else {
                 
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(nameString).updateChildValues(["urlThree": downloadURL])
+                databaseRef.child("Toilets").child(tid).updateChildValues(["urlThree": downloadURL])
                 
             }
         })

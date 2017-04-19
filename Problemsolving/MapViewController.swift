@@ -35,7 +35,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         
-        if toilet.urlOne != ""{
+        if toilets[indexPath.row].urlOne != ""{
         cell.mainImageView.sd_setImage(with: URL(string: toilets[indexPath.row].urlOne))
         }
         
