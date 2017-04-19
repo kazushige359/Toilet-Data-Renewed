@@ -119,8 +119,8 @@
                             <constraint firstItem="7NT-v2-5u0" firstAttribute="top" secondItem="fQg-0l-Gwu" secondAttribute="top" constant="10" id="puI-Qh-8sS"/>
                         </constraints>
                     </view>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="このトイレ最高です。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SgG-vN-ody">
-                        <rect key="frame" x="8" y="100" width="304" height="129.5"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="このトイレ最高です。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SgG-vN-ody">
+                        <rect key="frame" x="8" y="105" width="304" height="121"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -164,14 +164,14 @@
                     <constraint firstItem="fQg-0l-Gwu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="R9C-a0-uAQ"/>
                     <constraint firstAttribute="trailing" secondItem="SgG-vN-ody" secondAttribute="trailing" constant="8" id="Uh7-B3-ixt"/>
                     <constraint firstItem="fQg-0l-Gwu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WeT-A0-toQ"/>
+                    <constraint firstItem="SgG-vN-ody" firstAttribute="top" secondItem="fQg-0l-Gwu" secondAttribute="bottom" constant="5" id="b83-Og-IXt"/>
                     <constraint firstItem="fQg-0l-Gwu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bFo-kU-1gJ"/>
+                    <constraint firstItem="Pdo-c7-NUg" firstAttribute="top" secondItem="SgG-vN-ody" secondAttribute="bottom" constant="5" id="bph-2c-P7U"/>
                     <constraint firstItem="7DS-Lx-Twk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="jhL-Ly-uDV"/>
                     <constraint firstItem="0eV-j9-8G5" firstAttribute="leading" secondItem="7DS-Lx-Twk" secondAttribute="trailing" constant="10" id="mXW-zl-t50"/>
                     <constraint firstItem="MvZ-cE-X8b" firstAttribute="centerY" secondItem="7DS-Lx-Twk" secondAttribute="centerY" id="nha-1c-dks"/>
                     <constraint firstItem="0eV-j9-8G5" firstAttribute="centerY" secondItem="7DS-Lx-Twk" secondAttribute="centerY" id="p6G-bB-A7J"/>
-                    <constraint firstAttribute="bottom" secondItem="SgG-vN-ody" secondAttribute="bottom" constant="25" id="s0q-iU-IHA"/>
                     <constraint firstItem="Pdo-c7-NUg" firstAttribute="centerY" secondItem="7DS-Lx-Twk" secondAttribute="centerY" id="sQa-0y-da1"/>
-                    <constraint firstItem="SgG-vN-ody" firstAttribute="top" secondItem="fQg-0l-Gwu" secondAttribute="bottom" id="smt-lt-Ei0"/>
                     <constraint firstAttribute="bottom" secondItem="7DS-Lx-Twk" secondAttribute="bottom" constant="2" id="z4a-4k-UgI"/>
                 </constraints>
             </tableViewCellContentView>

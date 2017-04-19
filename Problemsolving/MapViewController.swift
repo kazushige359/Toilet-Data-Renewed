@@ -234,7 +234,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         searchEndLabel.backgroundColor = UIColor.white
-        searchEndButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+        searchEndButton.backgroundColor = primaryColor
         
         centerButton.layer.cornerRadius = 25
         centerButton.backgroundColor = UIColor.white

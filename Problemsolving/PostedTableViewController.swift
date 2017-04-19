@@ -19,14 +19,17 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     var search = Search()
     var filter = Filter()
     //var userReviewComment = UserReviewComment()
-    var toilets: [Toilet] = []
+    //var toilets: [Toilet] = []
     var commentData: [UserReviewComment] = []
     var deleteArray: [String] = []
+    var allRidArray: [String] = []
     var locationManager = CLLocationManager()
     let firebaseRef = FIRDatabase.database().reference()
     var multipleDeleteMode = false
     
+    let uid = FIRAuth.auth()!.currentUser!.uid
     var geoFire: GeoFire!
+    var firstViewLoaded = false
     
     
     override func viewDidLoad() {
@@ -49,17 +52,23 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        print(toilets[indexPath.row])
-        print(toilets[indexPath.row].key)
-        firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").child(toilets[indexPath.row].key).removeValue { (error, ref) in
+        
+        firebaseRef.child("ReviewList").child(uid).child(commentData[indexPath.row].key).removeValue { (error, ref) in
             if error != nil{
                 print("Failed to delete a cell",error!)
                 return
             }
         }
         
-        self.toilets.remove(at:indexPath.row)
+        firebaseRef.child("reviews").child(commentData[indexPath.row].key).removeValue { (error, ref) in
+            if error != nil{
+                print("Failed to delete a cell",error!)
+                return
+            }
+        }
+        
+        
+        self.commentData.remove(at:indexPath.row)
         //self.toilets.remove(at: toilets[indexPath.row])
         self.tableView.reloadData()
         
@@ -69,13 +78,14 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     
     func reviewRidQuery(){
         
+        print("reviewRidQuery Called")
         
         let reviewListRef = firebaseRef.child("ReviewList").child(FIRAuth.auth()!.currentUser!.uid)
         
         reviewListRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
             print(snapshot)
             
-
+            
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
                 for snap in snapshots
@@ -83,7 +93,9 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
                     let rid = snap.key
                     
                     self.commnetsReviewInfoQuery(ridKey: rid)
+                    self.allRidArray.append(rid)
                     print("Rid Key == \(rid)")
+                    
                     
                 }
             }
@@ -92,15 +104,22 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     
     func commnetsReviewInfoQuery(ridKey: String){
         
+       
+        
+        print("commnetsReviewInfoQueryCalled")
         let userReviewComment = UserReviewComment()
         
         let reviewRef = firebaseRef.child("reviews").child(ridKey)
         
         reviewRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
             
+             if self.firstViewLoaded == false {
+            
             let snapshotValue = snapshot.value as? NSDictionary
             
             print("reivewRef snapshot == \(snapshot)")
+            
+            userReviewComment.key = ridKey
             
             
             
@@ -109,13 +128,13 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             userReviewComment.feedback = (snapshotValue?["feedback"] as? String)!
             userReviewComment.time = (snapshotValue?["time"] as? String)!
             userReviewComment.userWaitingTime = (snapshotValue?["waitingtime"] as? String)! + "分待ちました"
-
+            
             userReviewComment.userRatedStar = (snapshotValue?["star"] as? String)!
-
+            
             userReviewComment.tid = (snapshotValue?["tid"] as? String)!
             
             let tidKey = userReviewComment.tid
-
+            
             
             let toiletRef = self.firebaseRef.child("Toilets").child(tidKey)
             toiletRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
@@ -143,15 +162,21 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
                 self.tableView.reloadData()
                 
                 
+                
+                
+                
+            
             })
-
-//            self.commentsToiletInfoQuery(tidKey: self.userReviewComment.tid);
-//            print("Tid Key == \(self.userReviewComment.tid)")
+            }
+            
+            
+            //            self.commentsToiletInfoQuery(tidKey: self.userReviewComment.tid);
+            //            print("Tid Key == \(self.userReviewComment.tid)")
             
             
         })
         
-    }
+        }
     
     
     
@@ -160,10 +185,10 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         return commentData.count
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 260
-//        
-//    }
+    //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return 260
+    //
+    //    }
     
     //commented for adding wrap content
     
@@ -172,20 +197,6 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         let cell = Bundle.main.loadNibNamed("YourReviewTableViewCell", owner: self, options: nil)?.first as! YourReviewTableViewCell
         
-//        cell.Star.settings.filledColor = UIColor.yellow
-//        cell.Star.settings.emptyBorderColor = UIColor.orange
-//        cell.Star.settings.filledBorderColor = UIColor.orange
-//        
-//        cell.Star.rating = Double(toilets[indexPath.row].averageStar)!
-//        
-//        
-//        cell.Star.text = "\(Double(toilets[indexPath.row].averageStar)!)(\(toilets[indexPath.row].reviewCount)件) "
-//        cell.Star.settings.textColor = UIColor.black
-//        cell.Star.settings.textMargin = 10
-//        cell.Star.settings.textFont.withSize(CGFloat(50.0))
-        
-        
-
         cell.placeNameLabel.text = commentData[indexPath.row].name
         
         cell.placeDistanceLabel.text =  commentData[indexPath.row].distance
@@ -203,13 +214,13 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         cell.placeWaitingTime.text = "平均待ち" +  commentData[indexPath.row].avWaitingTime + "分"
         if  commentData[indexPath.row].urlOne != ""{
             
-        cell.placeViewImage.sd_setImage(with: URL(string:  commentData[indexPath.row].urlOne))
-        
+            cell.placeViewImage.sd_setImage(with: URL(string:  commentData[indexPath.row].urlOne))
+            
         }
-    
+        
         if  commentData[indexPath.row].available == true
         {
-         cell.placeWarningPhoto.isHidden = true
+            cell.placeWarningPhoto.isHidden = true
             
         }
         
@@ -230,7 +241,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         cell.userWaitingTimeLabel.text =  commentData[indexPath.row].userWaitingTime
         
         return cell
-
+        
     }
     
     
@@ -241,8 +252,8 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if multipleDeleteMode == false{
-//            performSegue(withIdentifier: "postedToDetailSegue", sender: commentData[indexPath.row])
-//            print("sender = \(toilets[indexPath.row])")
+            //            performSegue(withIdentifier: "postedToDetailSegue", sender: commentData[indexPath.row])
+            //            print("sender = \(toilets[indexPath.row])")
             
             print("Table view did select")
             
@@ -261,29 +272,26 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             transition.subtype = kCATransitionFromRight
             view.window!.layer.add(transition, forKey: kCATransition)
             
-               print("Table view Segue Called")
+            print("Table view Segue Called")
             
-        
+            
             
             self.present(navigationContoller, animated: false, completion: nil)
             
             print("Table view Segue Ended")
-
+            
             
             
         }
         
         
-        if self.deleteArray.contains(commentData[indexPath.row].key
-){
+        if self.deleteArray.contains(commentData[indexPath.row].key){
             print("AlreadyIntheArray")
         }else{
             
-            self.deleteArray.append(commentData[indexPath.row].key
-)
+            self.deleteArray.append(commentData[indexPath.row].key)
             
             print(deleteArray)
-            
             
         }
     }
@@ -299,7 +307,6 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             self.deleteArray.remove(at: indexPath.row)
         }
         
-        
         print(deleteArray)
         
     }
@@ -309,22 +316,22 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     //        print("sender = \(toilets[indexPath.row])")
     //    }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "postedToDetailSegue"{
-//            let nextVC = segue.destination as! DetailViewController
-//            nextVC.toilet = sender as! Toilet
-//            
-//        }}
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "postedToDetailSegue"{
+    //            let nextVC = segue.destination as! DetailViewController
+    //            nextVC.toilet = sender as! Toilet
+    //
+    //        }}
     
     
     
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "youHaveAddedToAcSegue"{
-                let nextVC = segue.destination as! UserPrivateAccountViewController
-                nextVC.filter = filter
-                nextVC.search = search
-    
-            }}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "youHaveAddedToAcSegue"{
+            let nextVC = segue.destination as! UserPrivateAccountViewController
+            nextVC.filter = filter
+            nextVC.search = search
+            
+        }}
     
     
     
@@ -359,8 +366,8 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     
     
     @IBAction func deleteButtonTapped(_ sender: Any) {
-    
-
+        
+        
         if multipleDeleteMode == true{
             let alertController2 = UIAlertController (title: "選択されたトイレを本当に削除しますか", message: "", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "はい", style: .default) { (_) -> Void in
@@ -396,10 +403,6 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
                 alertController3.addAction(noAction)
                 self.present(alertController3, animated: true, completion: nil)
                 
-                
-                
-                
-                
             }
             
             let onlydeleteAction = UIAlertAction(title: "選択削除する", style: .default) { (_) -> Void in
@@ -421,43 +424,84 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     
     
     func multipleDeleteExecution(){
+        firstViewLoaded = true
+        //        for item in deleteArray{
+        //            firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").child(item).removeValue { (error, ref) in
+        //                if error != nil{
+        //                    print("Failed to delete a cell",error!)
+        //                    return
+        //                }
+        //
+        //                if let idx = self.commentData.index(where: {$0.key == item}) {
+        //                    print("idx = \(idx)")
+        //                    self.commentData.remove(at: idx)
+        //                }
+        //                self.tableView.reloadData()
+        //            }
+        //        }
+        
         for item in deleteArray{
-            firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").child(item).removeValue { (error, ref) in
+            firebaseRef.child("ReviewList").child(uid).child(item).removeValue { (error, ref) in
                 if error != nil{
                     print("Failed to delete a cell",error!)
                     return
                 }
                 
-                if let idx = self.toilets.index(where: {$0.key == item}) {
-                    print("idx = \(idx)")
-                    self.toilets.remove(at: idx)
-                }
-                self.tableView.reloadData()
             }
+            
+            firebaseRef.child("reviews").child(item).removeValue { (error, ref) in
+                if error != nil{
+                    print("Failed to delete a cell",error!)
+                    return
+                }
+                
+            }
+            
+            if let idx = self.commentData.index(where: {$0.key == item}) {
+                    print("idx = \(idx)")
+                    self.commentData.remove(at: idx)
+                }
+            
+                self.tableView.reloadData()
+            
         }
         
     }
     
     func deleteAll(){
         
+        firstViewLoaded = true
         
-        firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").removeValue { (error, ref) in
+        
+        firebaseRef.child("ReviewList").child(uid).removeValue { (error, ref) in
             if error != nil{
                 print("Failed to delete a cell",error!)
                 return
             }
         }
         
-        self.toilets.removeAll()
+        for item in allRidArray{
+            
+            firebaseRef.child("reviews").child(item).removeValue { (error, ref) in
+                if error != nil{
+                    print("Failed to delete a cell",error!)
+                    return
+                }
+                
+            }
+            
+        }
+
+        self.commentData.removeAll()
         self.tableView.reloadData()
     }
     
     
     @IBAction func backButtonTapped(_ sender: Any) {
         performSegue(withIdentifier:"youHaveAddedToAcSegue", sender: nil)
-
+        
     }
-
+    
     
 }
 
