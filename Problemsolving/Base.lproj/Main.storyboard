@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lEE-Wi-WVE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lEE-Wi-WVE">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -730,21 +730,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dVL-MQ-TiX">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_picture_default_100" translatesAutoresizingMaskIntoConstraints="NO" id="dVL-MQ-TiX">
                                                     <rect key="frame" x="110" y="12" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="6un-c9-XfD"/>
                                                         <constraint firstAttribute="width" constant="100" id="XOU-dn-ESn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lYW-Ia-zhy">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_picture_default_100" translatesAutoresizingMaskIntoConstraints="NO" id="lYW-Ia-zhy">
                                                     <rect key="frame" x="217" y="12" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="8ex-Cv-5PE"/>
                                                         <constraint firstAttribute="height" constant="100" id="cs1-ly-i5s"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4jR-pW-XaC">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_picture_default_100" translatesAutoresizingMaskIntoConstraints="NO" id="4jR-pW-XaC">
                                                     <rect key="frame" x="3" y="12" width="100" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="5R1-ex-VQ9"/>
@@ -6033,7 +6033,7 @@
         <image name="user_image_30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dYX-Na-Ua2"/>
+        <segue reference="u1m-RW-yG8"/>
         <segue reference="0OJ-s6-62o"/>
         <segue reference="kHI-bB-fQV"/>
         <segue reference="XkJ-RX-AZM"/>

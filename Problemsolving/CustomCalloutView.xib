@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -44,11 +44,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2c-cF-2jQ" customClass="CosmosView" customModule="Cosmos">
-                    <rect key="frame" x="5" y="51" width="170" height="29"/>
+                    <rect key="frame" x="5" y="51" width="230" height="29"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                             <real key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                            <integer key="value" value="2"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
@@ -63,6 +66,7 @@
                 <constraint firstItem="sZj-ZO-NNU" firstAttribute="top" secondItem="a2c-cF-2jQ" secondAttribute="bottom" constant="2" id="IQI-k9-QMd"/>
                 <constraint firstAttribute="trailing" secondItem="joG-2c-ZgR" secondAttribute="trailing" constant="3" id="Iur-LO-o8I"/>
                 <constraint firstAttribute="trailing" secondItem="sZj-ZO-NNU" secondAttribute="trailing" constant="5" id="N3D-Dh-zfV"/>
+                <constraint firstAttribute="trailing" secondItem="a2c-cF-2jQ" secondAttribute="trailing" constant="5" id="OP8-21-vtZ"/>
                 <constraint firstItem="sLg-Ej-GQp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="P7O-Bp-qvH"/>
                 <constraint firstItem="joG-2c-ZgR" firstAttribute="top" secondItem="sLg-Ej-GQp" secondAttribute="bottom" constant="2" id="VC9-x3-Fa0"/>
                 <constraint firstAttribute="trailing" secondItem="sLg-Ej-GQp" secondAttribute="trailing" constant="1" id="WM5-Pd-wOJ"/>

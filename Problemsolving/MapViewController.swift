@@ -537,40 +537,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return nil
             //Added for the blue dot for user Location 18th
         }else{
-            
-            
+           
             if view == nil {
+                
+                
                 //There was a error once (breakpoint 10.1) 18th
                 
                 
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 
+                
+                
+                
                 view?.canShowCallout = false
                 
                 
-                
-                
                 print("view == nil called")
-                
-                
-                
-                
-                //Comment I am goona comment  lines becuase I want to replace my original subview.... April 15
-//                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-//                view?.canShowCallout = false
-                
-                //True to false show call out
-//                let btn = UIButton()
-//                btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//                btn.setImage(UIImage(named: "route"), for: .normal)
-//                view?.rightCalloutAccessoryView = btn
-                
-                //Comment I am goona comment above lines becuase I want to replace my original subview.... April 15 
-            
-//                let averageStarLabel = UILabel()
-//                averageStarLabel.frame = CGRect(x: 0, y: 0, width: 50, height: 100)
-//                averageStarLabel.text = annotation.averageStar
-//                view?.leftCalloutAccessoryView = averageStarLabel
                 
             } else {
                 view?.annotation = annotation
@@ -579,6 +561,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         print("MKAnnotaionView Return \(String(describing: view))")
         view?.image = UIImage(named: "pin_red_40_20")
+        
         return view
         
     
@@ -1236,6 +1219,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.toilets.append(toilet)
                    
                     //let queryannotations = MKPointAnnotation()
+                    //let starValue = Double(toilet.averageStar)
                     
                     let queryannotations = ToiletMarkers(coordinate: (location?.coordinate)!)
                     

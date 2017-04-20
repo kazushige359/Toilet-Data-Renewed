@@ -24,9 +24,8 @@ class ToiletMarkers: NSObject, MKAnnotation{
     var pinOne = ""
     var pinTwo = ""
     
-      init(coordinate: CLLocationCoordinate2D){
+    init(coordinate: CLLocationCoordinate2D){
         self.coordinate = coordinate
-        
         
     }
     

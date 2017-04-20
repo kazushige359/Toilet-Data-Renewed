@@ -17,204 +17,111 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
 
     
     @IBOutlet weak var placeNameLabel: UITextField!
-    
     @IBOutlet weak var placeCategoryLabel: UITextField!
-    
     @IBOutlet weak var availableTimeLabel: UITextField!
     
     
     @IBOutlet weak var japaneseToiletSwitch: UISwitch!
-    
     @IBOutlet weak var westernToiletSwitch: UISwitch!
-    
     @IBOutlet weak var onlyFemalSwitch: UISwitch!
-    
     @IBOutlet weak var unisexSwitch: UISwitch!
     
     @IBOutlet weak var washletSwitch: UISwitch!
-    
     @IBOutlet weak var warmSeatSwitch: UISwitch!
-    
     @IBOutlet weak var autoOpenBenkiSwitch: UISwitch!
-    
     @IBOutlet weak var noVirusSwitch: UISwitch!
-    
     @IBOutlet weak var paperForBenkiSwitch: UISwitch!
-    
-    
     @IBOutlet weak var cleanerBenkiSwitch: UISwitch!
-    
     @IBOutlet weak var autoToiletWashSwitch: UISwitch!
     
     @IBOutlet weak var sensorHandWashSwitch: UISwitch!
-    
     @IBOutlet weak var handSoapSwitch: UISwitch!
-    
-    
     @IBOutlet weak var autoHandSoapSwitch: UISwitch!
-    
     @IBOutlet weak var paperTowelSwitch: UISwitch!
-    
     @IBOutlet weak var handDrierSwitch: UISwitch!
     
     
     @IBOutlet weak var otohimeSwitch: UISwitch!
-    
-    
     @IBOutlet weak var napkinSellingSwitch: UISwitch!
-    
-    
     @IBOutlet weak var makeRoomSwitch: UISwitch!
-    
-    
     @IBOutlet weak var clothesSwitch: UISwitch!
-    
-    
     @IBOutlet weak var baggageSwitch: UISwitch!
     
     
     @IBOutlet weak var wheelChairSwitch: UISwitch!
-    
-    
-    
     @IBOutlet weak var wheelChiarAccess: UISwitch!
-    
-    
     @IBOutlet weak var handRailSwitch: UISwitch!
-    
-    
     @IBOutlet weak var callHelpSwitch: UISwitch!
-    
-    
     @IBOutlet weak var ostomateSwitch: UISwitch!
-    
-    
     @IBOutlet weak var writtenEnglishSwitch: UISwitch!
-    
-    
     @IBOutlet weak var brailleSwitch: UISwitch!
-    
     @IBOutlet weak var voiceGuideSwitch: UISwitch!
     
     
     @IBOutlet weak var toiletFancySwitch: UISwitch!
-    
-    
     @IBOutlet weak var toiletSmellGood: UISwitch!
-    
-    
     @IBOutlet weak var toiletWideSpaceSwitch: UISwitch!
-    
-    
     @IBOutlet weak var noNeedAskSwitch: UISwitch!
-    
-    
     @IBOutlet weak var parkingSwitch: UISwitch!
-    
-    
     @IBOutlet weak var airConditionSwitch: UISwitch!
-    
-    
     @IBOutlet weak var wifiSwitch: UISwitch!
     
     
     @IBOutlet weak var milkSpaceSwitch: UISwitch!
-    
-    
-    
     @IBOutlet weak var onlyFamaleBabyRoom: UISwitch!
-    
-    
     @IBOutlet weak var babyRoomMaleEnterSwitch: UISwitch!
-    
-    
     @IBOutlet weak var babyRoomPersonalSpace: UISwitch!
-    
-    
     @IBOutlet weak var babyRoomPersonalWithLock: UISwitch!
-    
-    
     @IBOutlet weak var babyRoomWideSpaceSwitch: UISwitch!
     
     
     @IBOutlet weak var babyCarRentalSwitch: UISwitch!
-    
-    
     @IBOutlet weak var babyCarAccessSwitch: UISwitch!
-    
-    
     @IBOutlet weak var omutuSwitch: UISwitch!
-    
-    
     @IBOutlet weak var hipWashingStuffSwitch: UISwitch!
-    
     @IBOutlet weak var omutuTrashCanSwitch: UISwitch!
-    
     @IBOutlet weak var omutuSellingSwitch: UISwitch!
     
     
     @IBOutlet weak var babyRoomSinkSwitch: UISwitch!
-    
     @IBOutlet weak var babyWashStandSwitch: UISwitch!
-    
     @IBOutlet weak var babyRoomHotWaterSwitch: UISwitch!
-    
     @IBOutlet weak var babyRoomMicrowaveSwitch: UISwitch!
-    
     @IBOutlet weak var babyRoomSellingWaterSwitch: UISwitch!
-    
     @IBOutlet weak var babyRoomFoodSellingSwitch: UISwitch!
-    
-    
     @IBOutlet weak var babyRoomEatingSpace: UISwitch!
     
     
     @IBOutlet weak var babyChairSwitch: UISwitch!
-    
     @IBOutlet weak var soffaSwitch: UISwitch!
-    
-    
     @IBOutlet weak var kidsToiletSwitch: UISwitch!
-    
     @IBOutlet weak var kidsSpaceSwitch: UISwitch!
-    
-    
     @IBOutlet weak var heightMeasureSwitch: UISwitch!
-    
     @IBOutlet weak var weightMeasureSwitch: UISwitch!
-    
-    
     @IBOutlet weak var babyToySwitch: UISwitch!
-    
     @IBOutlet weak var babyRoomFancySwitch: UISwitch!
-    
     @IBOutlet weak var babyRoomGoodSmellSwitch: UISwitch!
     
   
     
     @IBOutlet weak var accessTextView: UITextView!
-    
-    
     @IBOutlet weak var starView: CosmosView!
-    
     @IBOutlet weak var waitMinutesLabel: UITextField!
-    
     @IBOutlet weak var feedbackTextView: UITextView!
-    
     @IBOutlet weak var mapView: MKMapView!
 
     
     @IBOutlet weak var setPinButton: UIButton!
-    
     @IBOutlet weak var addPictureButton: UIButton!
-    
     @IBOutlet weak var postButton: UIButton!
     
     @IBOutlet weak var mainImageView: UIImageView!
-    
     @IBOutlet weak var subImageOne: UIImageView!
-    
     @IBOutlet weak var subImageTwo: UIImageView!
+    
+    var mainImageChanged = false
+    var subImageOneChanged = false
+    var subImageTwoChanged = false
     
     
     var pickOption = ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24","25","26", "27", "28","29","30"]
@@ -256,14 +163,12 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     let interval = NSDate().timeIntervalSince1970
     let uid = FIRAuth.auth()!.currentUser!.uid
     
-    
-    
-//    let availableTimeForDatabase = "\(time1):\(time2)〜\(time3):\(time4)"
-    
     var pincoodinate = CLLocationCoordinate2D()
     
     var geoFire: GeoFire!
     var geoFireRef: FIRDatabaseReference!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -280,30 +185,17 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
        
         imagePicker.delegate = self
         
-        mainImageView.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fimage-add-button.png?alt=media&token=3f65b9db-d269-4ea2-aedd-e8f36daa7e8f"))
-        subImageOne.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fimage-add-button.png?alt=media&token=3f65b9db-d269-4ea2-aedd-e8f36daa7e8f"))
-        subImageTwo.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fimage-add-button.png?alt=media&token=3f65b9db-d269-4ea2-aedd-e8f36daa7e8f"))
+//        mainImageView.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fimage-add-button.png?alt=media&token=3f65b9db-d269-4ea2-aedd-e8f36daa7e8f"))
+//        subImageOne.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fimage-add-button.png?alt=media&token=3f65b9db-d269-4ea2-aedd-e8f36daa7e8f"))
+//        subImageTwo.sd_setImage(with: URL(string: "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fimage-add-button.png?alt=media&token=3f65b9db-d269-4ea2-aedd-e8f36daa7e8f"))
         
-        //Commneted 4pm 5 Feb
-       
-//        
-//        washletLabelSwitch.isOn = false
-//        wheelChairLabelSwitch.isOn = false
-//        onlyFemaleLabelSwitch.isOn = false
-//        unisexLabelSwitch.isOn = false
-//        makeroomLabelSwitch.isOn = false
-//        milkspaceLabelSwitch.isOn = false
-//        omutuLabelSwitch.isOn = false
-//        ostomateLabelSwitch.isOn = false
-//        japaneseToiletLabelSwitch.isOn = false
-//        westernToiletLabelSwitch.isOn = false
-//        warmToiletLabelSwitch.isOn = false
-//        baggageSpaceLabelSwitch.isOn = false
         
         starView.rating = 3.0
         starView.settings.filledColor = UIColor.yellow
         starView.settings.emptyBorderColor = UIColor.orange
         starView.settings.filledBorderColor = UIColor.orange
+        
+        
 
         
         
@@ -316,24 +208,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
          let region = MKCoordinateRegionMakeWithDistance(pincoodinate, 1300, 1300)
         //500 to 300
          mapView.setRegion(region, animated: true)
-        
-//         washletLabel.textColor = UIColor.gray
-//         wheelChairLabel.textColor = UIColor.gray
-//         onlyFemaleLabel.textColor = UIColor.gray
-//         unisexLabel.textColor = UIColor.gray
-//         makeroomLabel.textColor = UIColor.gray
-//         milkspaceLabel.textColor = UIColor.gray
-//         omutuLabel.textColor = UIColor.gray
-//         ostomateLabel.textColor = UIColor.gray
-//         japaneseToiletLabel.textColor = UIColor.gray
-//         westernToiletLabel.textColor = UIColor.gray
-//         warmToiletLabel.textColor = UIColor.gray
-//         baggageSpaceLabel.textColor = UIColor.gray
-        
-       
-        
-       
-
+     
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ChangeDetailTableViewController.dismissKeyboard))
         
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
@@ -502,12 +377,15 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         
         if mainImageReplace == true{
             uploadingPlace = mainImageView
+            mainImageChanged = true
         }
         if subImageReplace1 == true{
             uploadingPlace = subImageOne
+            subImageOneChanged = true
         }
         if subImageReplace2 == true{
             uploadingPlace = subImageTwo
+            subImageTwoChanged = true
         }
         
         uploadingPlace?.image = image
@@ -516,7 +394,59 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     }
 
     
-    func updateFirebase(){
+    func startUpload(){
+        
+        let lat: CLLocationDegrees = pincoodinate.latitude
+        let lon: CLLocationDegrees = pincoodinate.longitude
+        
+        print("getAddressCalled")
+        var addressString = ""
+        let location = CLLocation(latitude: lat, longitude: lon) //changed!!!
+        print(location)
+        
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            print(location)
+            
+            if error != nil {
+                print("Problem Reverse geocoder failed with error" + (error?.localizedDescription)!)
+                self.toiletDataUpload(Address: "")
+                
+                //func call??
+                
+            }
+            
+            if (placemarks?.count)! > 0 {
+                let pm = placemarks?[0]
+                //addressString = "\(pm!.thoroughfare)\(pm!.postalCode)\(pm!.locality)\(pm!.country)"
+                addressString =  (pm?.locality)! + "/" + (pm?.thoroughfare)! + "/" + (pm?.name)!
+                
+                //addressString = String(describing: pm?.locality)
+                self.toiletDataUpload(Address: addressString)
+
+                
+                print("addressStringGetAddress: \(addressString)")
+                
+                //func call??
+                // print(pm?.locality ?? <#default value#>)
+            }
+            else {
+                print("Problem with the data received from geocoder")
+                self.toiletDataUpload(Address: "")
+
+                
+                //func call??
+            }
+        })
+        
+        
+    }
+    
+
+    
+    func toiletDataUpload(Address: String){
+        
+        
+        
         let name = placeNameLabel.text
         if name == "" {
             print("name == nil")
@@ -546,11 +476,14 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 waitminute = "0"
             }
             if feedbackTextView.text == ""{
-                feedbackTextView.text = "未記入"
+                feedbackTextView.text = ""
                 
             }
+           
             let Lat: CLLocationDegrees = pincoodinate.latitude
             let Lon: CLLocationDegrees = pincoodinate.longitude
+            
+            
             
            
             
@@ -561,46 +494,6 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             print("after geoFire.setLocation")
             
             print("Star ratingggggg \(starView.rating)")
-         //   let date = NSDate()
-//            let calendar = Calendar.current
-
-            
-            
-//            let second = calendar.component(.second, from: date as Date)
-//            
-//            
-//            let day = calendar.component(.day, from:date as Date)
-//            let month = calendar.component(.month, from:date as Date)
-//            let year = calendar.component(.year, from:date as Date)
-//            //let dateString = "\(year)年\(month)月\(day)日"
-//            
-//            let interval = NSDate().timeIntervalSince1970
-            
-//            let tenTimesTime1 = Int()
-//                tenTimesTime1 = Int(time1)! * 10
-//            let tenTimesTime3 = Int()
-//                tenTimesTime3 = Int(time3)! * 10
-//            
-//            
-//            let openHours = tenTimesTime1 + Int(time2)!
-//            let closeHours = tenTimesTime3 + Int(time4)!
-            
-            
-            
-            
-            //maybe when waitminute wasnt written aything then waitminute = 0  
-            
-            ///tid does not make any sense 
-            
-//....     ////Copied from Android
-            
-              //"waitingtime": waitInt! as Int,
-//            
-            //var post = Post()
-            
-//            post.name = name!
-//            post.openAndCloseHours = availableTimeForDatabase
-            
             
             
             let tdata : [String : Any] = ["name":name!,
@@ -612,7 +505,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             "addedBy":uid,
             "editedBy":uid,
             "averageStar":String(starView.rating) as String,
-            "address":"" as String,
+            "address":Address as String,
             "howtoaccess":"" as String,
             "reviewOne":uid,
             "reviewTwo":"",
@@ -697,72 +590,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             "babyToy":babyToySwitch.isOn,
             "babyFancy":babyRoomFancySwitch.isOn,
             "babySmellGood":babyRoomGoodSmellSwitch.isOn] as [String : Any]
-//
-//            
-            
-            
-//.....            ////Copied from Android  April 12
-//            let tdata : [String : Any] =
-//                ["name": name as Any,
-//                 "openinghours": availableTimeForDatabase as String,
-//                 "type": placeCategoryLabel.text! as String,
-//                 "star": starView.rating as Double,
-//                 "waitingtime": waitInt! as Int,
-//                 //Should be Int
-//                    "urlOne": "",
-//                    "urlTwo":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-//                    "urlThree":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-//                    "tid": "jfiohaiohfj",
-//                    "washlet": washletLabelSwitch.isOn,
-//                    "wheelchair": wheelChairLabelSwitch.isOn,
-//                    "onlyFemale": onlyFemaleLabelSwitch.isOn,
-//                    "unisex": unisexLabelSwitch.isOn,
-//                    "makeuproom": makeroomLabelSwitch.isOn,
-//                    "milkspace" : milkspaceLabelSwitch.isOn,
-//                    "omutu": omutuLabelSwitch.isOn,
-//                    "ostomate" : ostomateLabelSwitch.isOn,
-//                    "japanesetoilet": japaneseToiletLabelSwitch.isOn,
-//                    "westerntoilet": westernToiletLabelSwitch.isOn,
-//                    "warmSeat": warmToiletLabelSwitch.isOn,
-//                    "baggageSpace": baggageSpaceLabelSwitch.isOn,
-//                    "howtoaccess": accessTextView.text,
-//                    "available": true,
-//                    "reviewCount": 1,
-//                    "addedBy": FIRAuth.auth()!.currentUser!.uid,
-//                    "editedBy": FIRAuth.auth()!.currentUser!.uid,
-//                    "averageStar": "\(starView.rating)",
-//                        //as Double,
-//                    "star1": Int(starView.rating),
-//                    "star2": 0,
-//                    "star3": 0,
-//                    "star4": 0,
-//                    "star5": 0,
-//                    "star6": 0,
-//                    "star7": 0,
-//                    "star8": 0,
-//                    "star9": 0,
-//                    "star10": 0,
-//                    "wait1": waitInt! as Int,
-//                    "wait2": 0,
-//                    "wait3": 0,
-//                    "wait4": 0,
-//                    "wait5": 0,
-//                    "averageWait": waitInt! as Int
-//            ]
-            
-//            let rdata : [String : Any] =
-//                ["star": starView.rating as Double,
-//                 "waitingtime": waitminute as String,
-//                    "tid": name! as String,
-//                    "available": true,
-//                    "feedback": feedbackTextView.text as String,
-//                    "uid": FIRAuth.auth()!.currentUser!.uid as String,
-//                    "likedCount": 0,
-//                    "time": dateString,
-//                    "timeNumbers": interval
-//                    
-//                                ]
-
+           
             
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
             let uniqueRef = toiletsRef.childByAutoId()
@@ -788,16 +616,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             }
 
             
-            
-            
-           // let reviewsRef = FIRDatabase.database().reference().child("reviews")
-            //reviewsRef.childByAutoId().setValue(rdata)
-            
-            //FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youPosted").child(name!).setValue(true)
-            //self.toiletsRef.child(location["name"] as! String!).setValue(tdata)
-            //print("tdata = \(tdata)")
-            print("toiletsRef data is saved!!")
-            
+            reviewDataUpload(tid: generatedTid)
             uploadPhotosToDatabase(tid: generatedTid)
             performSegue(withIdentifier: "addedToiletToNewAcSegue", sender: nil)
             
@@ -805,21 +624,64 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     
     }
     
+    func reviewDataUpload(tid: String){
+        
+        if waitMinutesLabel.text == ""{
+            waitminute = "0"
+        }
+        if feedbackTextView.text == ""{
+            feedbackTextView.text = ""
+            
+        }
+        
+        
+        let date = NSDate()
+        let calendar = Calendar.current
+        
+        let day = calendar.component(.day, from:date as Date)
+        let month = calendar.component(.month, from:date as Date)
+        let year = calendar.component(.year, from:date as Date)
+        
+        let dateString = "\(year)-\(month)-\(day)"
+        
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        
+        
+        let interval = NSDate().timeIntervalSince1970
+        
+        
+        
+        let reviewData : [String : Any] = ["uid": uid , "tid": tid, "star": String(starView.rating) as String, "waitingtime": self.waitminute ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
+        ]
+        
+        let reviewRef = FIRDatabase.database().reference().child("reviews").childByAutoId()
+        
+        reviewRef.setValue(reviewData)
+        
+        
+        let rid = reviewRef.key
+        
+        
+        let reviewListRef = FIRDatabase.database().reference().child("ReviewList").child(uid)
+        
+        reviewListRef.child(rid).setValue(true)
+        
+    }
+    
     
     func uploadPhotosToDatabase(tid : String){
         let databaseRef = FIRDatabase.database().reference()
         let imagesFolder = FIRStorage.storage().reference().child("images")
-        //FIRDatabase
+        
+        let photoRef = FIRDatabase.database().reference().child("Images")
+
+        if mainImageChanged == true{
+            //upload main image pircute
         
         let mainImageData = UIImageJPEGRepresentation(mainImageView.image!, 0.1)!
-        let subImageData1 = UIImageJPEGRepresentation(subImageOne.image!, 0.1)!
-        let subImageData2 = UIImageJPEGRepresentation(subImageTwo.image!, 0.1)!
+        let mainUuid = UUID().uuidString
         
-        //this explicit value triggers some error!!
-        
-        print("uploadPhotosToDatabase")
-        
-        imagesFolder.child("\(tid).urlOne.jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
+        imagesFolder.child("\(mainUuid).jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
                 print("We had an error:\(String(describing: error))")
@@ -831,8 +693,18 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 
             }
         })
+            photoRef.child(mainUuid).setValue(uid)
+            
+        }
         
-        imagesFolder.child("\(tid).urlTwo.jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
+        if subImageOneChanged == true{
+            //upload sub image One pircute
+
+        
+         let subImageData1 = UIImageJPEGRepresentation(subImageOne.image!, 0.1)!
+         let subOneUuid = UUID().uuidString
+        
+        imagesFolder.child("\(subOneUuid).jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
                 print("We had an error:\(String(describing: error))")
@@ -844,9 +716,17 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 
             }
         })
+            
+            photoRef.child(subOneUuid).setValue(uid)
+        }
         
+        if subImageTwoChanged == true{
+            //upload sub image Two pircute
         
-        imagesFolder.child("\(tid).urlThree.jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
+        let subImageData2 = UIImageJPEGRepresentation(subImageTwo.image!, 0.1)!
+        let subTwoUuid = UUID().uuidString
+        
+        imagesFolder.child("\(subTwoUuid).jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
                 print("We had an error:\(String(describing: error))")
@@ -858,10 +738,17 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 
             }
         })
+            photoRef.child(subTwoUuid).setValue(uid)
+            
+        }
         
     }
+    
+    
     @IBAction func postButtonTapped(_ sender: Any) {
-        updateFirebase()
+        startUpload()
+        //toiletDataUpload()
+       // updateFirebase()
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -869,123 +756,10 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     }
     
     @IBAction func postTabTapped(_ sender: Any) {
-        updateFirebase()
+        startUpload()
+        //toiletDataUpload()
+        //updateFirebase()
     }
-    
-    
-    
-//    @IBAction func washletButtonTapped(_ sender: Any) {
-//        if washletLabelSwitch.isOn == true {
-//            washletLabel.textColor = UIColor.black
-//        }else{
-//            //wheelChairLabelSwitch.isOn == false
-//            washletLabel.textColor = UIColor.gray
-//        }
-//    }
-//    
-//    @IBAction func wheelChairButtonTapped(_ sender: Any) {
-//        if wheelChairLabelSwitch.isOn == true {
-//            wheelChairLabel.textColor = UIColor.black
-//        }else{
-//            //wheelChairLabelSwitch.isOn == false
-//             wheelChairLabel.textColor = UIColor.gray
-//            
-//        }}
-//   
-//    @IBAction func onlyFemaleButtonTapped(_ sender: Any) {
-//        if onlyFemaleLabelSwitch.isOn == true {
-//            onlyFemaleLabel.textColor = UIColor.black
-//        }
-//        else{
-//            onlyFemaleLabel.textColor = UIColor.gray
-//        }
-//    }
-//   
-//    @IBAction func unisexButtonTapped(_ sender: Any) {
-//        if unisexLabelSwitch.isOn == true {
-//            unisexLabel.textColor = UIColor.black
-//        }else{
-//            unisexLabel.textColor = UIColor.gray
-//        }
-//    }
-//    
-//   
-//    @IBAction func makeroomButtonTapped(_ sender: Any) {
-//        if makeroomLabelSwitch.isOn == true {
-//            makeroomLabel.textColor = UIColor.black
-//        }else{
-//            makeroomLabel.textColor = UIColor.gray
-//        }
-//    }
-//    
-//    @IBAction func milkspaceButtonTapped(_ sender: Any) {
-//        if milkspaceLabelSwitch.isOn == true {
-//            milkspaceLabel.textColor = UIColor.black
-//        }else{
-//            milkspaceLabel.textColor = UIColor.gray
-//        }
-//    }
-//    
-//    
-//    @IBAction func omutuButtonTapped(_ sender: Any) {
-//        if omutuLabelSwitch.isOn == true{
-//            omutuLabel.textColor = UIColor.black
-//        }else{
-//            
-//            omutuLabel.textColor = UIColor.gray
-//        }
-//
-//    }
-//   
-//    @IBAction func ostomateButtonTapped(_ sender: Any) {
-//        if ostomateLabelSwitch.isOn == true {
-//            ostomateLabel.textColor = UIColor.black
-//        }else{
-//            ostomateLabel.textColor = UIColor.gray
-//        }
-//
-//    }
-//
-//    @IBAction func japaneseButtonTapped(_ sender: Any) {
-//        if japaneseToiletLabelSwitch.isOn == true{
-//            japaneseToiletLabel.textColor = UIColor.black
-//        }else{
-//            japaneseToiletLabel.textColor = UIColor.gray
-//        }
-//
-//    }
-//   
-//    @IBAction func westernButtonTapped(_ sender: Any) {
-//        if westernToiletLabelSwitch.isOn == true{
-//            westernToiletLabel.textColor = UIColor.black
-//        }else{
-//            
-//            westernToiletLabel.textColor = UIColor.gray
-//        }
-//    }
-//  
-//    @IBAction func warmSeatButtonTapped(_ sender: Any) {
-//        if warmToiletLabelSwitch.isOn == true{
-//            warmToiletLabel.textColor = UIColor.black
-//        }else{
-//            
-//            warmToiletLabel.textColor = UIColor.gray
-//        }
-//    }
-//    
-//    @IBAction func baggageSpaceButtonTapped(_ sender: Any) {
-//        
-//        if baggageSpaceLabelSwitch.isOn == true{
-//            baggageSpaceLabel.textColor = UIColor.black
-//        }else{
-//            
-//            baggageSpaceLabel.textColor = UIColor.gray
-//        }
-//
-//    }
-//    
-    
-   
     
     
 
