@@ -152,7 +152,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var toilets: [Toilet] = []
     let toilet = Toilet()
     var search = Search()
-    var passingData = PassingData()
+   // var passingData = PassingData()
     let Star = CosmosView()
     var polyline: MKPolyline?
     
@@ -538,7 +538,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             //Added for the blue dot for user Location 18th
         }else{
            
-            if view == nil {
+            if annotation.isKind(of: StarOneMarker.self){
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "pin_one_yellow_30-1")
+            } else if annotation.isKind(of: StarTwoMarker.self){
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "pin_two_blue_30")
+            } else if annotation.isKind(of: StarThreeMarker.self){
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "pin_three_red_ 30")
+            } else if annotation.isKind(of: StarFourMarker.self){
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "pin_four_parple_30")
+            } else if annotation.isKind(of: StarFiveMarker.self){
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "pin_five_orange_30-1")
+            } else if view == nil {
                 
                 
                 //There was a error once (breakpoint 10.1) 18th
@@ -551,16 +576,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 view?.canShowCallout = false
                 
+                view?.image = UIImage(named: "pin_red_40_20")
+
+                
                 
                 print("view == nil called")
                 
             } else {
                 view?.annotation = annotation
                 print("else view == annotaion")
+                
+                view?.image = UIImage(named: "pin_red_40_20")
+
             }
         }
-        print("MKAnnotaionView Return \(String(describing: view))")
-        view?.image = UIImage(named: "pin_red_40_20")
+        //print("MKAnnotaionView Return \(String(describing: view))")
         
         return view
         
@@ -1219,8 +1249,87 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.toilets.append(toilet)
                    
                     //let queryannotations = MKPointAnnotation()
-                    //let starValue = Double(toilet.averageStar)
+                    let starValueDouble = Double(toilet.averageStar)
+                    let starValueInt = Int(starValueDouble!)
                     
+                    print("starValueDouble111 = \(String(describing: starValueDouble))")
+                        
+                    print("starValueInt111 = \(starValueInt)")
+                    if starValueInt < 2{
+                        let starOneMarker = StarOneMarker(coordinate: (location?.coordinate)!)
+                        
+                        
+                        starOneMarker.key = toilet.key
+                        starOneMarker.name = toilet.name
+                        starOneMarker.distance = toilet.distance
+                        starOneMarker.averageStar = toilet.averageStar
+                        starOneMarker.averageWait = toilet.averageWait
+                        starOneMarker.coordinate = (location?.coordinate)!
+                        starOneMarker.reviewCount = toilet.reviewCount
+                        
+                        self.mapView.addAnnotation(starOneMarker)
+    
+                    } else if starValueInt < 3{
+                        let starTwoMarker = StarTwoMarker(coordinate: (location?.coordinate)!)
+                        
+                        starTwoMarker.key = toilet.key
+                        starTwoMarker.name = toilet.name
+                        starTwoMarker.distance = toilet.distance
+                        starTwoMarker.averageStar = toilet.averageStar
+                        starTwoMarker.averageWait = toilet.averageWait
+                        starTwoMarker.coordinate = (location?.coordinate)!
+                        starTwoMarker.reviewCount = toilet.reviewCount
+                        
+                        self.mapView.addAnnotation(starTwoMarker)
+                        
+                        
+                        
+                    } else if starValueInt < 4{
+                        let starThreeMarker = StarThreeMarker(coordinate: (location?.coordinate)!)
+                        
+                        
+                        starThreeMarker.key = toilet.key
+                        starThreeMarker.name = toilet.name
+                        starThreeMarker.distance = toilet.distance
+                        starThreeMarker.averageStar = toilet.averageStar
+                        starThreeMarker.averageWait = toilet.averageWait
+                        starThreeMarker.coordinate = (location?.coordinate)!
+                        starThreeMarker.reviewCount = toilet.reviewCount
+                        
+                        self.mapView.addAnnotation(starThreeMarker)
+                        
+                    } else if starValueInt < 5{
+                        let starFourMarker = StarFourMarker(coordinate: (location?.coordinate)!)
+                        
+                        
+                        starFourMarker.key = toilet.key
+                        starFourMarker.name = toilet.name
+                        starFourMarker.distance = toilet.distance
+                        starFourMarker.averageStar = toilet.averageStar
+                        starFourMarker.averageWait = toilet.averageWait
+                        starFourMarker.coordinate = (location?.coordinate)!
+                        starFourMarker.reviewCount = toilet.reviewCount
+                        
+                        self.mapView.addAnnotation(starFourMarker)
+                        
+                    } else if starValueInt == 5{
+                     let starFiveMarker = StarFiveMarker(coordinate: (location?.coordinate)!)
+                     
+                        
+                        starFiveMarker.key = toilet.key
+                        starFiveMarker.name = toilet.name
+                        starFiveMarker.distance = toilet.distance
+                        starFiveMarker.averageStar = toilet.averageStar
+                        starFiveMarker.averageWait = toilet.averageWait
+                        starFiveMarker.coordinate = (location?.coordinate)!
+                        starFiveMarker.reviewCount = toilet.reviewCount
+                        
+                        self.mapView.addAnnotation(starFiveMarker)
+
+
+                    } else{
+                    
+                        
                     let queryannotations = ToiletMarkers(coordinate: (location?.coordinate)!)
                     
                     print("location Coodinates \(String(describing: location?.coordinate))")
@@ -1232,32 +1341,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     queryannotations.averageWait = toilet.averageWait
                     queryannotations.coordinate = (location?.coordinate)!
                     queryannotations.reviewCount = toilet.reviewCount
-                  //  queryannotations.coordinate = (location?.coordinate)!
-                    
-                    
-                    
-                    
-//                    queryannotations.title = toilet.name
-//                    queryannotations.subtitle = toilet.key
-//                    queryannotations.coordinate = (location?.coordinate)!
-                    
-                    //Commented April 15
-//                    
-//                    let queryannotations = ToiletMarkers(key: toilet.key)
-//                    
-//                    
-//                    queryannotations.key = toilet.key
-//                    queryannotations.name = toilet.name
-//                    queryannotations.distance = toilet.distance
-//                    queryannotations.averageStar = toilet.averageStar
-//                    queryannotations.averageWait = toilet.averageWait
-//
-//                    queryannotations.coordinate = (location?.coordinate)!
-                    
-                    
                     self.mapView.addAnnotation(queryannotations)
+                        
+                    
                     
                     print("queryannotaions121\(queryannotations)")
+                        
+                    }
                     
                     
                     self.createdArray = true

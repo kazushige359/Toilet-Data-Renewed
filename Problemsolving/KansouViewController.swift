@@ -186,6 +186,10 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
           var newAvStar = Double()
           var newWaitingTime = Int()
         
+        if self.waitminute == ""{
+         self.waitminute = "0"
+        
+        }
          
         
         

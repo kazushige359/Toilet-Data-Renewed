@@ -8,14 +8,8 @@
 
 import Foundation
 
-class PassingData{
+class PassingData: ToiletMarkers{
     
-//    
-//    var welcomeMessage:String = "Default Message"
-//    var filterOn:Bool = true
-//    static let share = PassingData()
-//
-
 
 
 }
