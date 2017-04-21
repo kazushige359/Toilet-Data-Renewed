@@ -146,7 +146,11 @@ import Cosmos
         var lastEditerHelpCountAdded = false
         var reviewOneLikeAlreadyTapped = false
         var reviewTwoLikeAlreadyTapped = false
+        var userAlreadyLogin = false
 
+        
+        let firebaseRef = FIRDatabase.database().reference()
+        let currentUserId = FIRAuth.auth()?.currentUser?.uid
         
         var locationManager = CLLocationManager()
         let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
@@ -177,8 +181,8 @@ import Cosmos
             
             
             dataQuery(queryKey: toilet.key)
-            favoriteListQuery()
-            thumbsUpQuery()
+            userLoginCheck()
+            
             
            
             //Commented for making table view... April 11 12pm 
@@ -187,6 +191,50 @@ import Cosmos
             
             //reviewQuery()
         }
+        
+        func userLoginCheck(){
+            
+            let userRef = firebaseRef.child("Users")
+            
+            userRef.child(currentUserId!).observe(.value, with: { snapshot in
+                
+                if ( snapshot.value is NSNull ) {
+                    print("(User did not found)")
+                    
+                } else {
+                    print(snapshot.value!)
+                    print("User Find")
+                    self.favoriteListQuery()
+                    self.thumbsUpQuery()
+                    
+                    self.userAlreadyLogin = true
+                }
+            })
+            
+        }
+
+        func showPleaseLogin(){
+            let alertController = UIAlertController (title: "この機能を使用するためにはログインが必要です", message: "ログインをしますか？", preferredStyle: .alert)
+            
+            let settingsAction = UIAlertAction(title: "はい", style: .default) { (_) -> Void in
+                
+                print("Move to first time view controller")
+                let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "UserFirstTimeViewController") as! UserFirstTimeViewController
+                //self.(vc, sender: self)
+                print("Move to first time view controller Over")
+                self.present(vc, animated: true, completion: nil)
+            }
+            let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+            
+            alertController.addAction(settingsAction)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true, completion: nil)
+            
+            
+            
+        }
+
         
         func dataQuery(queryKey: String){
             
@@ -1123,8 +1171,16 @@ import Cosmos
         
         @IBAction func kansouButtonTapped(_ sender: Any) {
             
-            performSegue(withIdentifier: "kansouSegue", sender: nil)
-            print(toilet.key)
+            if userAlreadyLogin == true{
+                
+                performSegue(withIdentifier: "kansouSegue", sender: nil)
+                print(toilet.key)
+                
+            }else{
+                showPleaseLogin()
+                
+            }
+            
         }
         
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -1287,19 +1343,34 @@ import Cosmos
         }
         
         @IBAction func buttonReportTapped(_ sender: Any) {
-            let alertController = UIAlertController (title: "", message: "情報の誤りを報告しますか", preferredStyle: .actionSheet)
             
-            let yesAction = UIAlertAction(title: "報告する", style: .default) { (_) -> Void in
+            if userAlreadyLogin == true{
+                let alertController = UIAlertController (title: "", message: "情報の誤りを報告しますか", preferredStyle: .actionSheet)
+                
+                let yesAction = UIAlertAction(title: "報告する", style: .default) { (_) -> Void in
+                    
+                }
+                let cancelAction = UIAlertAction(title: "報告しない", style: .default, handler: nil)
+                alertController.addAction(yesAction)
+                alertController.addAction(cancelAction)
+                present(alertController, animated: true, completion: nil)
+                
+            }else{
+                showPleaseLogin()
                 
             }
-            let cancelAction = UIAlertAction(title: "報告しない", style: .default, handler: nil)
-            alertController.addAction(yesAction)
-            alertController.addAction(cancelAction)
-            present(alertController, animated: true, completion: nil)
+           
         }
         
         
         @IBAction func favoriteButtonTapped(_ sender: Any) {
+            if userAlreadyLogin == false{
+                showPleaseLogin()
+                
+            }else{
+                
+                
+            
             print("Favorite Tapped")
             let image = UIImage(named:"love_Icon_40")
     
@@ -1314,6 +1385,7 @@ import Cosmos
                 } else{
                 self.deleteItInMyPage()
                 }
+            }
         }
         
         
@@ -1326,6 +1398,12 @@ import Cosmos
         
         @IBAction func buttonAddFeedbackTapped(_ sender: Any) {
             //"placeDetailToKansouSegue"
+            if userAlreadyLogin == false{
+                showPleaseLogin()
+                
+            }else{
+                
+
             
         
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -1344,6 +1422,7 @@ import Cosmos
             view.window!.layer.add(transition, forKey: kCATransition)
             
             self.present(navigationContoller, animated: false, completion: nil)
+            }
             
 
         }
@@ -1370,9 +1449,16 @@ import Cosmos
 
         
         @IBAction func buttonEditTapped(_ sender: Any) {
+            if userAlreadyLogin == false{
+                showPleaseLogin()
+                
+            }else{
+                
+
             print("edit tapped 11")
             progressBarDisplayer(msg:"", true)
             performSegue(withIdentifier:"placeDetailToEditSegue", sender: nil)
+            }
             
         }
         @IBAction func buttonGoToThisPlaceTapped(_ sender: Any) {
@@ -1389,6 +1475,13 @@ import Cosmos
         }
         
         @IBAction func reviewOneLikeButtonTapped(_ sender: Any) {
+            
+            if userAlreadyLogin == false{
+                showPleaseLogin()
+                
+            }else{
+                
+
             
             
             
@@ -1410,11 +1503,19 @@ import Cosmos
             
             }
             
+            }
 
          
             
         }
         @IBAction func reviewTwoLikeButtonTapped(_ sender: Any) {
+            
+            if userAlreadyLogin == false{
+                showPleaseLogin()
+                
+            }else{
+                
+
         
             let imageColored = UIImage(named:"like_colored_25")
             let image = UIImage(named:"thumbsUp_black_image_25")
@@ -1434,6 +1535,7 @@ import Cosmos
             }
 
               }
+        }
         
         
 

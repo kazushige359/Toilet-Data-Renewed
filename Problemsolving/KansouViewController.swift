@@ -296,8 +296,6 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         moveBackToPlaceDetailVeiwController()
         
         
-
-        
         
         
     }
