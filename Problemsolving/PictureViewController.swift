@@ -28,7 +28,7 @@ class PictureViewController: UIViewController,UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        databaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("userPhoto").queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+        databaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("userPhoto").queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
             //g to l at 2pm 20th
             
             self.imageView.sd_setImage(with: URL(string:snapshot.value as! String))
@@ -91,7 +91,7 @@ class PictureViewController: UIViewController,UIImagePickerControllerDelegate, U
                 
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                self.databaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
+                self.databaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
 
                 self.performSegue(withIdentifier:"pcBackToAc", sender: metadata!.downloadURL()!.absoluteString)
             }

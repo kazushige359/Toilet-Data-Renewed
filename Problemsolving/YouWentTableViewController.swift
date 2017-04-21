@@ -44,7 +44,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
         print(indexPath.row)
         print(toilets[indexPath.row])
         print(toilets[indexPath.row].key)
-        firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youwent").child(toilets[indexPath.row].key).removeValue { (error, ref) in
+        firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("youwent").child(toilets[indexPath.row].key).removeValue { (error, ref) in
             if error != nil{
                 print("Failed to delete a cell",error!)
                 return

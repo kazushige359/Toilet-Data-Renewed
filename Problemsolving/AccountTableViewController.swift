@@ -43,7 +43,7 @@ class AccountTableViewController: UITableViewController {
     }
     
     func userInfo(){
-     let userRef = firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid)
+     let userRef = firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid)
         userRef.observe(FIRDataEventType.value, with: {(snapshot) in
             let snapshotValue = snapshot.value as? NSDictionary
             let userName = snapshotValue?["userName"] as? String

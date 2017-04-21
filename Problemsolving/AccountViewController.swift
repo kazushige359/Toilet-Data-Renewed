@@ -33,7 +33,7 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("userPhoto").queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+        firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("userPhoto").queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
             //g to l at 2pm 20th
            
             print("snapshot = \(snapshot)")

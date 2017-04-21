@@ -2678,7 +2678,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-iy-mgy">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_default_80" translatesAutoresizingMaskIntoConstraints="NO" id="6zJ-iy-mgy">
                                 <rect key="frame" x="120" y="78" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="m3S-h7-BEX"/>
@@ -6030,6 +6030,7 @@
         <image name="settings-1" width="24" height="24"/>
         <image name="settings_image_30" width="30" height="30"/>
         <image name="standing-up-man-" width="24" height="24"/>
+        <image name="user_default_80" width="80" height="80"/>
         <image name="user_image_30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

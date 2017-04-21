@@ -542,7 +542,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
-                view?.image = UIImage(named: "pin_one_yellow_30-1")
+                view?.image = UIImage(named: "pin_one_yellow_30-2")
             } else if annotation.isKind(of: StarTwoMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false

@@ -21,12 +21,13 @@ class ReviewTableViewController: UITableViewController {
     var search = Search()
     var review = Review()
     var reviewsSet = Set<String>()
-    var likedSet = Set<String>()
+    var thumbsUpSet = Set<String>()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        thumbsUpQuery()
         reviewQuery()
         print("ReviewTableViewController Loaded")
         
@@ -122,9 +123,21 @@ class ReviewTableViewController: UITableViewController {
         
         print("review Query TV Called")
         
-        let reviewsRef = FIRDatabase.database().reference().child("reviews")
+       // let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
-        reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
+        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toilet.key)
+        
+        let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
+        toiletReviewsRef.observe(.childAdded, with: { snapshot in
+            
+            //get rid key 
+            
+            let ridKey = snapshot.key
+            
+            reviewsRef.child(ridKey).observe(FIRDataEventType.value, with: { snapshot in
+               
+        
+//        reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
             //if self.firebaseLoadedOnce == false
             //{
                 print("snapshot = \(snapshot)")
@@ -158,13 +171,13 @@ class ReviewTableViewController: UITableViewController {
                 
                 review.rid = snapshot.key
                 
-                if self.likedSet.contains(review.rid){
+                if self.thumbsUpSet.contains(review.rid){
                     print("self.likedSet.contains(review.rid)")
                     review.userLiked = true
                 }
                 
                 
-                let userRef = FIRDatabase.database().reference().child("users")
+                let userRef = FIRDatabase.database().reference().child("Users")
                 userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
                     //if self.firebaseLoadedOnce == false
                     //{
@@ -199,26 +212,38 @@ class ReviewTableViewController: UITableViewController {
                         
                         //I moved codes above here because review tableview could not be loaded 26th
                         //when the value is changed, tableveiw loads again and again
-                    }
-        //}
-        )}
-    //    }
-    )
-    }
+                        }
+        
+                )}
+            )
+        }
+   )}
 
     
-    func likedQuery(){
+    func thumbsUpQuery(){
         
-        print("liked Query Called")
-        let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
-        youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            self.likedSet.insert(snapshot.key)
-            print("likedSet = \(self.likedSet)")
-            print("liked Query End")
+        print("thumbsUpQuery( Called")
+        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
+        thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+            self.thumbsUpSet.insert(snapshot.key)
+            
             
         })
         
     }
+    
+//    func likedQuery(){
+//        
+//        print("liked Query Called")
+//        let youLikedRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
+//        youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+//            self.likedSet.insert(snapshot.key)
+//            print("likedSet = \(self.likedSet)")
+//            print("liked Query End")
+//            
+//        })
+//        
+//    }
 
 
     @IBAction func backReviewsToPlaceDetailTapped(_ sender: Any) {

@@ -90,7 +90,7 @@ class StartSignUpUserViewController: UIViewController
                     "totalHelpedCount": 0,
                     "totalFavoriteCount": 0
                 ]
-                FIRDatabase.database().reference().child("users").child(user!.uid).setValue(userData)
+                FIRDatabase.database().reference().child("Users").child(user!.uid).setValue(userData)
                 
                // self.performSegue(withIdentifier: "signinsegue", sender: nil)
             }

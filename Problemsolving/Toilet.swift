@@ -20,6 +20,8 @@ class  Toilet {
     var urlThree = ""
     //var distance = ""
     var distance = ""
+    var reviewOne = ""
+    var reviewTwo = ""
     
     //var openAndCloseHours = ""
     var openinghours = ""

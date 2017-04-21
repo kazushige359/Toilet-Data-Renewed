@@ -123,6 +123,11 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     var subImageOneChanged = false
     var subImageTwoChanged = false
     
+    let toiletNewId = UUID().uuidString
+    let reviewNewId = UUID().uuidString
+    
+    
+    
     
     var pickOption = ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24","25","26", "27", "28","29","30"]
     
@@ -507,7 +512,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             "averageStar":String(starView.rating) as String,
             "address":Address as String,
             "howtoaccess":"" as String,
-            "reviewOne":uid,
+            "reviewOne":reviewNewId,
             "reviewTwo":"",
             "openHours":5000 as Int,
             "closeHours":5000 as Int,
@@ -593,11 +598,11 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
            
             
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
-            let uniqueRef = toiletsRef.childByAutoId()
+            let uniqueRef = toiletsRef.child(toiletNewId)
             
             uniqueRef.setValue(tdata)
             
-            let generatedTid = uniqueRef.key
+//            let generatedTid = uniqueRef.key
             
             
             
@@ -605,7 +610,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             //toiletsRef.setValue(post)
             
             
-            geoFire!.setLocation(CLLocation(latitude: Lat, longitude: Lon), forKey: uniqueRef.key){(error) in
+            geoFire!.setLocation(CLLocation(latitude: Lat, longitude: Lon), forKey: toiletNewId){(error) in
                 if (error != nil) {
                     print("An error occured: \(String(describing: error))")
                     print("in geoFire.setLocation")
@@ -616,15 +621,15 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             }
 
             
-            reviewDataUpload(tid: generatedTid)
-            uploadPhotosToDatabase(tid: generatedTid)
+            reviewDataUpload()
+            uploadPhotosToDatabase()
             performSegue(withIdentifier: "addedToiletToNewAcSegue", sender: nil)
             
         }
     
     }
     
-    func reviewDataUpload(tid: String){
+    func reviewDataUpload(){
         
         if waitMinutesLabel.text == ""{
             waitminute = "0"
@@ -651,25 +656,29 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         
         
         
-        let reviewData : [String : Any] = ["uid": uid , "tid": tid, "star": String(starView.rating) as String, "waitingtime": self.waitminute ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
+        let reviewData : [String : Any] = ["uid": uid , "tid": toiletNewId, "star": String(starView.rating) as String, "waitingtime": self.waitminute ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
         ]
         
-        let reviewRef = FIRDatabase.database().reference().child("reviews").childByAutoId()
+        let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").childByAutoId()
         
         reviewRef.setValue(reviewData)
         
         
-        let rid = reviewRef.key
+        //let rid = reviewRef.key
         
         
         let reviewListRef = FIRDatabase.database().reference().child("ReviewList").child(uid)
         
-        reviewListRef.child(rid).setValue(true)
+        reviewListRef.child(reviewNewId).setValue(true)
+        
+        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toiletNewId)
+        
+        toiletReviewsRef.child(reviewNewId).setValue(true)
         
     }
     
     
-    func uploadPhotosToDatabase(tid : String){
+    func uploadPhotosToDatabase(){
         let databaseRef = FIRDatabase.database().reference()
         let imagesFolder = FIRStorage.storage().reference().child("images")
         
@@ -689,7 +698,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 print("uploadPhotosToDatabase1")
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(tid).updateChildValues(["urlOne": downloadURL])
+                databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlOne": downloadURL])
                 
             }
         })
@@ -712,7 +721,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(tid).updateChildValues(["urlTwo": downloadURL])
+                databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlTwo": downloadURL])
                 
             }
         })
@@ -734,7 +743,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                databaseRef.child("Toilets").child(tid).updateChildValues(["urlThree": downloadURL])
+                databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlThree": downloadURL])
                 
             }
         })

@@ -1032,9 +1032,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
 //            let rdata : [String : Any] = ["uid": FIRAuth.auth()!.currentUser!.uid , "tid": name as Any, "star": starView.rating as Double , "waitingtime": "\(waitInt! as Int)" ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
 //            ]
-            
-//            let databaseRef = FIRDatabase.database().reference()
-//            databaseRef.child("reviews").childByAutoId().setValue(rdata)
+          
             
             uploadPhotosToDatabase(tid: toilet.key)
             backToPlaceDetailViewSegue()

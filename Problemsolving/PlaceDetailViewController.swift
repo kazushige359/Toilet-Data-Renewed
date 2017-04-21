@@ -89,6 +89,11 @@ import Cosmos
         @IBOutlet weak var reviewOneUserHelpCount: UILabel!
         @IBOutlet weak var reviewOneFeedbackTextView: UITextView!
         
+        @IBOutlet weak var reviewOneThumbUpButtonOutlet: UIButton!
+        @IBOutlet weak var reviewOneThumbUpCountLabel: UILabel!
+        @IBOutlet weak var reviewOneWaitingMinuteLabel: UILabel!
+        @IBOutlet weak var reviewOneDateStringLabel: UILabel!
+        
         
         @IBOutlet weak var reviewTwoUserImage: UIImageView!
         @IBOutlet weak var reviewTwoUserNameLabel: UILabel!
@@ -98,7 +103,21 @@ import Cosmos
         @IBOutlet weak var reviewTwoUserFeedbackTextView: UITextView!
         
         
+        @IBOutlet weak var reviewTwoThumbUpButtonOutlet: UIButton!
+        
+        @IBOutlet weak var reviewTwoThumbUpCountLabel: UILabel!
+              
+        
+        @IBOutlet weak var reviewTwoWatingTImeLabel: UILabel!
+        
+        @IBOutlet weak var reviewTwoDateStringOutlet: UILabel!
+        
+        
         @IBOutlet weak var booleanTableViewLeftConstraint: NSLayoutConstraint!
+        
+        var messageFrame = UIView()
+        var activityIndicator = UIActivityIndicatorView()
+        var strLabel = UILabel()
         
         var waitingtime = 0
         var washlet = Bool()
@@ -112,7 +131,8 @@ import Cosmos
         var reviews: [Review] = []
         var booleans: [String] = []
         var reviewsSet = Set<String>()
-        var likedSet = Set<String>()
+        var thumbsUpSet = Set<String>()
+        var favoriteSet = Set<String>()
         var toilet = Toilet()
         var review = Review()
         var filter = Filter()
@@ -150,41 +170,10 @@ import Cosmos
             print("booleanTableViewLeftConstraint.constant = \(booleanTableViewLeftConstraint.constant)")
             
             
+            dataQuery(queryKey: toilet.key)
+            favoriteListQuery()
+            thumbsUpQuery()
             
-
-            
-//            buttonExampleOutlet.target = self.revealViewController()
-//            buttonExampleOutlet.action = #selector(SWRevealViewController.rightRevealToggle(_:))
-            
-            
-            
-            
-           // buttonShowDetailOutlet.tag = 5
-//            buttonShowDetailOutlet.addTarget(self.revealViewController(),action:#selector(SWRevealViewController.revealToggle(_:)),
-//                                             for:.touchUpInside)
-//            buttonShowDetailOutlet.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
-
-//            buttonShowDetailOutlet.addTarget(self.revealViewController(), action: Selector("revealToggle:"), for: )
-            
-            
-
-            //buttonShowDetailOutlet.addTarget(self.revealViewController())
-            
-            
-//           // booleansTableView.delegate = self
-//            
-//            let screenSize = UIScreen.main.bounds
-//            let screenWidth = screenSize.width
-//            let screenHeight = screenSize.height
-            
-            
-         
-            
-            //backgroundScrollView.contentSize = CGSize(width: 320,height: 1036)
-            
-            
-           dataQuery(queryKey: toilet.key)
-           likedQuery()
            
             //Commented for making table view... April 11 12pm 
             
@@ -220,6 +209,26 @@ import Cosmos
                 self.toilet.addedBy = (snapshotValue?["addedBy"] as? String)!
                 self.toilet.editedBy = (snapshotValue?["editedBy"] as? String)!
                 self.toilet.openinghours = (snapshotValue?["openAndCloseHours"] as? String)!
+                
+                
+                print("Review One Query Called")
+                self.toilet.reviewOne = (snapshotValue?["reviewOne"] as? String!)!
+                
+                self.toilet.reviewTwo = (snapshotValue?["reviewTwo"] as? String!)!
+                
+                
+                
+                if self.toilet.reviewOne != ""{
+                self.reviewOneQuery(ridOne: self.toilet.reviewOne)
+                }
+                
+                if self.toilet.reviewTwo != ""{
+                    self.reviewTwoQuery(ridTwo: self.toilet.reviewTwo)
+                }
+                
+                
+                
+                
                 
                 let averageStar = snapshotValue?["averageStar"] as? String
                 self.toilet.star = Double(averageStar!)!
@@ -289,8 +298,6 @@ import Cosmos
                 
                 
                 
-                
-                
                 self.toilet.fancy = (snapshotValue?["fancy"] as? Bool)!
                 self.toilet.smell = (snapshotValue?["smell"] as? Bool)!
                 self.toilet.conforatableWide = (snapshotValue?["confortable"] as? Bool)!
@@ -313,11 +320,7 @@ import Cosmos
                 self.toilet.babyTrashCan = (snapshotValue?["omutuTrashCan"] as? Bool)!
                 self.toilet.omutuSelling = (snapshotValue?["omutuSelling"] as? Bool)!
                 
-                
-                
-                
-                
-                
+            
                 self.toilet.babyRoomSink = (snapshotValue?["babySink"] as? Bool)!
                 self.toilet.babyWashStand = (snapshotValue?["babyWashstand"] as? Bool)!
                 self.toilet.babyHotWater = (snapshotValue?["babyHotwater"] as? Bool)!
@@ -363,14 +366,7 @@ import Cosmos
                 
                 self.toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
 
-//                let distance = self.toilet.loc.distance(from: self.search.centerSearchLocation)
-//                
-//                print("distance111 == \(distance)")
 
-                
-                //center == user location
-                
-                //toilet lat lng,  I have already have it
                 
                 if self.toilet.japanesetoilet{
                     self.booleans.append("和式トイレ")
@@ -760,7 +756,7 @@ import Cosmos
         }
         
         func firstPosterQuery(){
-            let userRef = FIRDatabase.database().reference().child("users")
+            let userRef = FIRDatabase.database().reference().child("Users")
             userRef.child(toilet.addedBy).observe(FIRDataEventType.value, with: { snapshot in
                 
                  let snapshotValue = snapshot.value as? NSDictionary
@@ -776,16 +772,24 @@ import Cosmos
                 let userFavotiteCount = (snapshotValue?["totalFavoriteCount"] as? Int)!
                 let userHelpedCount = (snapshotValue?["totalHelpedCount"] as? Int)!
                 
+                let newHelpCount = userHelpedCount + 1
+                
                 self.firstPosterLikeLabel.text = "\(userLikeCount)"
                 self.firstPosterFavoriteLabel.text = "\(userFavotiteCount)"
                 self.firstPosterHelpLabel.text = "\(userHelpedCount)"
+                
+                let newData : [String : Any] = ["totalHelpedCount": newHelpCount]
+                
+
+                
+                userRef.child(self.toilet.addedBy).updateChildValues(newData)
             })
             
         }
         
         
         func lastEditerQuery(){
-            let userRef = FIRDatabase.database().reference().child("users")
+            let userRef = FIRDatabase.database().reference().child("Users")
             userRef.child(toilet.editedBy).observe(FIRDataEventType.value, with: { snapshot in
                 
                 let snapshotValue = snapshot.value as? NSDictionary
@@ -801,9 +805,20 @@ import Cosmos
                 let userFavotiteCount = (snapshotValue?["totalFavoriteCount"] as? Int)!
                 let userHelpedCount = (snapshotValue?["totalHelpedCount"] as? Int)!
                 
+                let newHelpCount = userHelpedCount + 1
+
+                
+                
+                
                 self.lastEditerLikeLabel.text = "\(userLikeCount)"
                 self.lastEditerFavoriteLabel.text = "\(userFavotiteCount)"
                 self.lastEditerHelpLabel.text = "\(userHelpedCount)"
+                
+                 let newData : [String : Any] = ["totalHelpedCount": newHelpCount]
+                
+                
+                 userRef.child(self.toilet.editedBy).updateChildValues(newData)
+                
             })
             
         }
@@ -811,111 +826,228 @@ import Cosmos
         
 
         
-        func likedQuery(){
+        func thumbsUpQuery(){
             
-            print("liked Query Called")
-            let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
-            youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-                self.likedSet.insert(snapshot.key)
-                print("likedSet = \(self.likedSet)")
-                print("liked Query End")
+            print("thumbsUpQuery( Called")
+            let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
+            thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+                self.thumbsUpSet.insert(snapshot.key)
+
                 
             })
             
-            //April 8
-            
-            
-            //        let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
-            //        youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            //            self.likedSet.insert(snapshot.key)
-            //            print("likedSet = \(self.likedSet)")
-            //
-            //        })
         }
         
         
-//        func reviewQuery(){
+        func favoriteListQuery(){
+            
+            print("liked Query Called")
+            let favoriteRef = FIRDatabase.database().reference().child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
+            favoriteRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+                self.favoriteSet.insert(snapshot.key)
+                print("Favorite List insert\(snapshot.key)")
+                
+                if self.favoriteSet.contains(self.toilet.key){
+                    let image = UIImage(named:"love_Icon_40")
+                    self.favoriteButtonOutlet.setImage(image, for: .normal)
+                    print("Image is supposed to be replacedAAA")
+                    self.favoriteButtonTapped = true
+                }
+                
+            })
+        }
+
+//        func likedQuery(){
 //            
-//            print("review Query Called")
-//            
-//            let reviewsRef = FIRDatabase.database().reference().child("reviews")
-//            
-//            reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
-//                if self.firebaseLoadedOnce == false{
-//                    print("snapshot = \(snapshot)")
-//                    print("snapshot.key = \(snapshot.key)")
-//                    print("snapshot.value = \(snapshot.value)")
-//                    let review = Review()
-//                    
-//                    let snapshotValue = snapshot.value as? NSDictionary
-//                    
-//                    let star = snapshotValue?["star"] as? String
-//                    print("star = \(star)!!!")
-//                    review.star = Double(star!)!
-//                    let feedback = snapshotValue?["feedback"] as? String
-//                    review.feedback = feedback!
-//                    
-//                    let time = snapshotValue?["time"] as? String
-//                    review.time = time!
-//                    print("review.time = \(review.time)")
-//                    
-//                    let waitingtime = snapshotValue?["waitingtime"] as? String
-//                    review.waitingtime = waitingtime!
-//                    
-//                    let timeNumbers = snapshotValue?["timeNumbers"] as? Double
-//                    review.timeNumbers = timeNumbers!
-//                    
-//                    let likedCount = snapshotValue?["likedCount"] as? Int
-//                    review.likedCount = likedCount!
-//                    
-//                    let uid = snapshotValue?["uid"] as? String
-//                    review.uid = uid!
-//                    
-//                    review.rid = snapshot.key
-//                    
-//                    if self.likedSet.contains(review.rid){
-//                        print("self.likedSet.contains(review.rid)")
-//                        review.userLiked = true
-//                    }
-//                    
-//                    
-//                    let userRef = FIRDatabase.database().reference().child("users")
-//                    userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
-//                        if self.firebaseLoadedOnce == false{
-//                            print("userRef.child(uid!).observe(.childAdded, with: { snapshot in")
-//                            print("snapshot = \(snapshot)")
-//                            
-//                            let snapshotValue = snapshot.value as? NSDictionary
-//                            
-//                            let userName = snapshotValue?["userName"] as? String
-//                            review.userName = userName!
-//                            print("review.userName = \(review.userName)")
-//                            
-//                            let userPhoto = snapshotValue?["userPhoto"] as? String
-//                            review.userPhoto = userPhoto!
-//                            print("review.userPhoto = \(review.userPhoto)")
-//                            
-//                            let totalFavoriteCount = snapshotValue?["totalFavoriteCount"] as? Int
-//                            review.totalFavoriteCount = totalFavoriteCount!
-//                            
-//                            let totalHelpedCount = snapshotValue?["totalHelpedCount"] as? Int
-//                            review.totalHelpedCount = totalHelpedCount!
-//                            
-//                            let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
-//                            review.totalLikedCount = totalLikedCount!
-//                            
-//                            self.reviews.append(review)
-//                            self.reviewsSet.insert(snapshot.key)
-//                            self.reviews.sort(){$0.timeNumbers > $1.timeNumbers}
-//                            self.tableView.reloadData()
-//                            
-//                            print("review Query End")
-//                            
-//                            //I moved codes above here because review tableview could not be loaded 26th
-//                            //when the value is changed, tableveiw loads again and again
-//                        }})}
+//            print("liked Query Called")
+//            let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
+//            youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+//                self.likedSet.insert(snapshot.key)
+//                print("likedSet = \(self.likedSet)")
+//                print("liked Query End")
+//                
 //            })
+//            
+//            //April 8
+//            
+//            
+//            //        let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
+//            //        youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+//            //            self.likedSet.insert(snapshot.key)
+//            //            print("likedSet = \(self.likedSet)")
+//            //            
+//            //        })
 //        }
+
+        
+        
+        func reviewOneQuery(ridOne: String){
+            
+            print("Tid = \(toilet.key)")
+            print("Rid One = \(ridOne)")
+            
+            let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
+        
+            reviewsRef.child(ridOne).observe(FIRDataEventType.value, with: { snapshot in
+                if self.firebaseLoadedOnce == false{
+                    let review = Review()
+                    let snapshotValue = snapshot.value as? NSDictionary
+                    
+                    let star = snapshotValue?["star"] as? String
+                    
+                    review.star = Double(star!)!
+                    let feedback = snapshotValue?["feedback"] as? String
+                    review.feedback = feedback!
+                    
+                    let time = snapshotValue?["time"] as? String
+                    review.time = time!
+                    print("review.time = \(review.time)")
+                    
+                    let waitingtime = snapshotValue?["waitingtime"] as? String
+                    review.waitingtime = waitingtime! + "分待ちました"
+                    
+                    let timeNumbers = snapshotValue?["timeNumbers"] as? Double
+                    review.timeNumbers = timeNumbers!
+                    
+                    let likedCount = snapshotValue?["likedCount"] as? Int
+                    review.likedCount = likedCount!
+                    
+                    let uid = snapshotValue?["uid"] as? String
+                    review.uid = uid!
+                    
+                    review.rid = snapshot.key
+                    
+                    if self.thumbsUpSet.contains(review.rid){
+                        print("self.likedSet.contains(review.rid)")
+                        review.userLiked = true
+                    }
+                    
+                    
+                    let userRef = FIRDatabase.database().reference().child("Users")
+                    userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
+                        if self.firebaseLoadedOnce == false{
+                            print("snapshot = \(snapshot)")
+                            
+                            let snapshotValue = snapshot.value as? NSDictionary
+                            
+                            let userName = snapshotValue?["userName"] as? String
+                            review.userName = userName!
+                            print("review.userName = \(review.userName)")
+                            
+                            let userPhoto = snapshotValue?["userPhoto"] as? String
+                            review.userPhoto = userPhoto!
+                            print("review.userPhoto = \(review.userPhoto)")
+                            
+                            let totalFavoriteCount = snapshotValue?["totalFavoriteCount"] as? Int
+                            review.totalFavoriteCount = totalFavoriteCount!
+                            
+                            let totalHelpedCount = snapshotValue?["totalHelpedCount"] as? Int
+                            review.totalHelpedCount = totalHelpedCount!
+                            
+                            let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
+                            review.totalLikedCount = totalLikedCount!
+                            
+                             self.reviewOneUserImage.sd_setImage(with: URL(string: review.userPhoto))
+                             self.reviewOneUserNameLabel.text = review.userName
+
+                             self.reviewOneUserLikeCount.text = String(review.totalLikedCount)
+                             self.reviewOneUserFavoriteCount.text = String(review.totalFavoriteCount)
+                             self.reviewOneUserHelpCount.text = String(review.totalHelpedCount)
+                            
+                             self.reviewOneFeedbackTextView.text = review.feedback
+                             self.reviewOneThumbUpCountLabel.text = String(review.likedCount)
+                             self.reviewOneDateStringLabel.text = review.time
+                             self.reviewOneWaitingMinuteLabel.text = review.waitingtime
+
+                        }})}
+            })
+        }
+        
+        
+        func reviewTwoQuery(ridTwo: String){
+            
+            print("Rid Two = \(ridTwo)")
+
+            
+            let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
+            
+            reviewsRef.child(ridTwo).observe(FIRDataEventType.value, with: { snapshot in
+                if self.firebaseLoadedOnce == false{
+                    let review = Review()
+                    let snapshotValue = snapshot.value as? NSDictionary
+                    
+                    let star = snapshotValue?["star"] as? String
+                    
+                    review.star = Double(star!)!
+                    let feedback = snapshotValue?["feedback"] as? String
+                    review.feedback = feedback!
+                    
+                    let time = snapshotValue?["time"] as? String
+                    review.time = time!
+                    print("review.time = \(review.time)")
+                    
+                    let waitingtime = snapshotValue?["waitingtime"] as? String
+                    review.waitingtime = waitingtime! + "分待ちました"
+                    
+                    let timeNumbers = snapshotValue?["timeNumbers"] as? Double
+                    review.timeNumbers = timeNumbers!
+                    
+                    let likedCount = snapshotValue?["likedCount"] as? Int
+                    review.likedCount = likedCount!
+                    
+                    let uid = snapshotValue?["uid"] as? String
+                    review.uid = uid!
+                    
+                    review.rid = snapshot.key
+                    
+                    if self.thumbsUpSet.contains(review.rid){
+                        print("self.likedSet.contains(review.rid)")
+                        review.userLiked = true
+                    }
+                    
+                    
+                    let userRef = FIRDatabase.database().reference().child("Users")
+                    userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
+                        if self.firebaseLoadedOnce == false{
+                            print("snapshot = \(snapshot)")
+                            
+                            let snapshotValue = snapshot.value as? NSDictionary
+                            
+                            let userName = snapshotValue?["userName"] as? String
+                            review.userName = userName!
+                            print("review.userName = \(review.userName)")
+                            
+                            let userPhoto = snapshotValue?["userPhoto"] as? String
+                            review.userPhoto = userPhoto!
+                            print("review.userPhoto = \(review.userPhoto)")
+                            
+                            let totalFavoriteCount = snapshotValue?["totalFavoriteCount"] as? Int
+                            review.totalFavoriteCount = totalFavoriteCount!
+                            
+                            let totalHelpedCount = snapshotValue?["totalHelpedCount"] as? Int
+                            review.totalHelpedCount = totalHelpedCount!
+                            
+                            let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
+                            review.totalLikedCount = totalLikedCount!
+                            
+                            
+                            
+                            self.reviewTwoUserImage.sd_setImage(with: URL(string: review.userPhoto))
+                            self.reviewTwoUserNameLabel.text = review.userName
+                            
+                            self.reviewTwoUserLikeCount.text = String(review.totalLikedCount)
+                            self.reviewTwoUserFavoriteCount.text = String(review.totalFavoriteCount)
+                            self.reviewTwoUserHelpCount.text = String(review.totalHelpedCount)
+                            
+                            self.reviewTwoUserFeedbackTextView.text = review.feedback
+                            self.reviewTwoThumbUpCountLabel.text = String(review.likedCount)
+                            self.reviewTwoDateStringOutlet.text = review.time
+                            self.reviewTwoWatingTImeLabel.text = review.waitingtime
+                            
+                        }})}
+            })
+        }
+
         
         
         
@@ -932,7 +1064,7 @@ import Cosmos
             let firebaseRef = FIRDatabase.database().reference()
             let userRef = firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
             userRef.child(toilet.key).setValue(true)
-            let totalFavoriteCountRef = firebaseRef.child("users").child(toilet.addedBy).child("totalFavoriteCount")
+            let totalFavoriteCountRef = firebaseRef.child("Users").child(toilet.addedBy).child("totalFavoriteCount")
             totalFavoriteCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
                 if self.favoriteAdded == false{
                     print("FVFVsnapshot = \(snapshot)")
@@ -958,9 +1090,9 @@ import Cosmos
             alertController.addAction(addAction)
             present(alertController, animated: true, completion: nil)
         
-        
-        
         }
+        
+        
         
         
 //        @IBAction func hensyuuButtonTapped(_ sender: Any) {
@@ -983,7 +1115,7 @@ import Cosmos
             let firebaseRef = FIRDatabase.database().reference()
             firebaseRef.child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).child(toilet.key).setValue(true)
             
-            let addedTotalHelpedCountRef = firebaseRef.child("users").child(toilet.addedBy).child("totalHelpedCount")
+            let addedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.addedBy).child("totalHelpedCount")
             
             addedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
                 if self.youwentAdded == false{
@@ -996,7 +1128,7 @@ import Cosmos
                     self.youwentAdded = true
                 }})
             
-            let editedTotalHelpedCountRef = firebaseRef.child("users").child(toilet.editedBy).child("totalHelpedCount")
+            let editedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.editedBy).child("totalHelpedCount")
             editedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
                 if self.youwentEdited == false{
                     print("FVFVsnapshot = \(snapshot)")
@@ -1240,8 +1372,30 @@ import Cosmos
 
         }
         
+        func progressBarDisplayer(msg:String, _ indicator:Bool ) {
+            print(msg)
+            strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 200, height: 50))
+            strLabel.text = msg
+            strLabel.textColor = UIColor.white
+            messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
+            
+            messageFrame.layer.cornerRadius = 15
+            messageFrame.backgroundColor = primaryColor
+            //messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
+            if indicator {
+                activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+                activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)//witdh 50 to 200
+                activityIndicator.startAnimating()
+                messageFrame.addSubview(activityIndicator)
+            }
+            messageFrame.addSubview(strLabel)
+            view.addSubview(messageFrame)
+        }
+
+        
         @IBAction func buttonEditTapped(_ sender: Any) {
             print("edit tapped 11")
+            progressBarDisplayer(msg:"", true)
             performSegue(withIdentifier:"placeDetailToEditSegue", sender: nil)
             
         }
@@ -1259,10 +1413,32 @@ import Cosmos
         }
         
         @IBAction func reviewOneLikeButtonTapped(_ sender: Any) {
-            print("One Tapped")
+            
+            
+            //
+            
         }
         @IBAction func reviewTwoLikeButtonTapped(_ sender: Any) {
-            print("Two Tapped")
+            let image = UIImage(named:"like_colored_25")
+            
+            (sender as AnyObject).setImage(image, for: .normal)
+            
+            
+
+//            
+//            if favoriteButtonTapped == false{
+//                //sender.setImage(image, forControlState: .Normal)
+//                (sender as AnyObject).setImage(image, for: .normal)
+//                print("Image is supposed to be replacedAAA")
+//                favoriteButtonTapped = true
+//                self.afterFavoriteTappedAction()
+//                
+//            } else{
+//                self.deleteItInMyPage()
+//            }
+
+//            reviewTwoThumbUpButtonOutlet.setImage(, for: <#T##UIControlState#>)
+//            print("Two Tapped")
         }
         
         

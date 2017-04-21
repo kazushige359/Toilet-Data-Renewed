@@ -96,7 +96,7 @@ class NewAccountCreateViewController: UIViewController {
                     "totalHelpedCount": 0,
                     "totalFavoriteCount": 0
                 ]
-                FIRDatabase.database().reference().child("users").child(user!.uid).setValue(userData)
+                FIRDatabase.database().reference().child("Users").child(user!.uid).setValue(userData)
                 self.messageFrame.removeFromSuperview()
                 self.performSegue(withIdentifier:"goToMapFromNewAccountSegue", sender: nil)
                 

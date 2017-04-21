@@ -965,18 +965,26 @@
                         <outlet property="picture3" destination="dRJ-lH-7UZ" id="uow-JO-aYR"/>
                         <outlet property="placeNameLabel" destination="g17-BU-J0V" id="POj-66-Egf"/>
                         <outlet property="reviewCountLabel" destination="wMm-KD-Kzc" id="zDI-KM-po4"/>
+                        <outlet property="reviewOneDateStringLabel" destination="cSQ-kV-Ysa" id="FVi-G3-5gv"/>
                         <outlet property="reviewOneFeedbackTextView" destination="BEv-Yg-ucw" id="GkT-bL-mIy"/>
+                        <outlet property="reviewOneThumbUpButtonOutlet" destination="Di4-Cw-Dk8" id="phE-23-10T"/>
+                        <outlet property="reviewOneThumbUpCountLabel" destination="3p6-4P-wwG" id="I38-fi-e2h"/>
                         <outlet property="reviewOneUserFavoriteCount" destination="Ll5-cy-q4x" id="HYB-MZ-WXC"/>
                         <outlet property="reviewOneUserHelpCount" destination="hvh-Eh-peQ" id="gi0-Yd-hTk"/>
                         <outlet property="reviewOneUserImage" destination="Qhb-37-6sZ" id="9ck-6r-qtL"/>
                         <outlet property="reviewOneUserLikeCount" destination="39D-zn-zZ9" id="j9V-d2-0oA"/>
                         <outlet property="reviewOneUserNameLabel" destination="K9c-oS-Ima" id="lyL-Lt-6a0"/>
+                        <outlet property="reviewOneWaitingMinuteLabel" destination="gEX-D8-Yis" id="fh7-ww-Dwx"/>
+                        <outlet property="reviewTwoDateStringOutlet" destination="sHS-hI-HDW" id="cnc-yU-QtG"/>
+                        <outlet property="reviewTwoThumbUpButtonOutlet" destination="d9F-Fh-lXM" id="vda-hO-ckR"/>
+                        <outlet property="reviewTwoThumbUpCountLabel" destination="2Mf-yb-cc2" id="cxA-eW-zlI"/>
                         <outlet property="reviewTwoUserFavoriteCount" destination="BvS-Q4-H52" id="hpG-Dl-OM2"/>
                         <outlet property="reviewTwoUserFeedbackTextView" destination="mwX-wi-Qhg" id="Ncv-XV-gFl"/>
                         <outlet property="reviewTwoUserHelpCount" destination="5Tq-9C-F9b" id="bc3-BX-ezb"/>
                         <outlet property="reviewTwoUserImage" destination="V98-Wx-rPb" id="gom-dW-2ik"/>
                         <outlet property="reviewTwoUserLikeCount" destination="mej-jG-kNV" id="his-Fz-zQz"/>
                         <outlet property="reviewTwoUserNameLabel" destination="8gP-jf-a5s" id="htY-TZ-JKc"/>
+                        <outlet property="reviewTwoWatingTImeLabel" destination="zvX-At-lpc" id="gWR-Xe-aSY"/>
                         <outlet property="starImage" destination="UDN-vi-5Qd" id="Ewm-Dc-gdX"/>
                         <outlet property="typeAndDistanceLabel" destination="voa-ve-Ctx" id="lTJ-bq-4Xf"/>
                         <segue destination="QrM-qp-fGl" kind="custom" identifier="detailBackToMapSegue" customClass="RighttoLeft" customModule="Problemsolving" id="xMP-GP-GUl"/>
@@ -1002,7 +1010,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tyj-3S-TXR" id="hdn-cK-CMK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

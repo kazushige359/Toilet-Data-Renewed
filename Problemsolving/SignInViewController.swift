@@ -63,7 +63,7 @@ class SignInViewController: UIViewController {
                 print("Hey we have an error : \(String(describing: error))")
                 self.errorMessage.isHidden = false
             } else { print("We signed in successfully")
-                FIRDatabase.database().reference().child("users").child(user!.uid).child("userName").setValue(user!.email!)
+                FIRDatabase.database().reference().child("Users").child(user!.uid).child("userName").setValue(user!.email!)
                 
                 self.performSegue(withIdentifier: "signinsegue", sender: nil)}
         })}
@@ -78,7 +78,7 @@ class SignInViewController: UIViewController {
                 self.errorMessage2.isHidden = false
                 print("Created User successfully!")
                 
-                let userRef = FIRDatabase.database().reference().child("users").child(user!.uid)
+                let userRef = FIRDatabase.database().reference().child("Users").child(user!.uid)
                 let data : [String : Any] = ["userName":user!.email!,"userPhoto": "https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fdefault%20picture.png?alt=media&token=b407a188-5a9d-4b0f-8b43-3bf6c2060573","email":user!.email!,"totalLikedCount":0,"totalHelpedCount":0, "totalFavoriteCount":0
                 ]
                 

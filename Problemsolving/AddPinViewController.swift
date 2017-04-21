@@ -21,13 +21,19 @@ class AddPinViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     var annotationAdded = false
     let annotation = MKPointAnnotation()
     
+    var messageFrame = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+    var strLabel = UILabel()
+    let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
         backLabel.backgroundColor = UIColor.white
-        sendLocationButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+        sendLocationButton.backgroundColor = primaryColor
 
         let uilgr = UILongPressGestureRecognizer(target: self, action: #selector(AddPinViewController.action(gestureRecognizer:)))
         uilgr.minimumPressDuration = 1.0
@@ -81,6 +87,26 @@ class AddPinViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         mapView.setRegion(coordinateRegion, animated: false)
     }
     
+    func progressBarDisplayer(msg:String, _ indicator:Bool ) {
+        print(msg)
+        strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 200, height: 50))
+        strLabel.text = msg
+        strLabel.textColor = UIColor.white
+        messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
+        
+        messageFrame.layer.cornerRadius = 15
+        messageFrame.backgroundColor = primaryColor
+        //messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        if indicator {
+            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.white)
+            activityIndicator.frame = CGRect(x: 0, y: 0, width: 50, height: 50)//witdh 50 to 200
+            activityIndicator.startAnimating()
+            messageFrame.addSubview(activityIndicator)
+        }
+        messageFrame.addSubview(strLabel)
+        view.addSubview(messageFrame)
+    }
+
     
     func action(gestureRecognizer:UIGestureRecognizer){
         if annotationAdded == true {
@@ -99,7 +125,9 @@ class AddPinViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
   
     @IBAction func sendLocationButtonTapped(_ sender: Any) {
         if annotationAdded == true{
+        progressBarDisplayer(msg:"", true)
         performSegue(withIdentifier: "pintodatailSegue", sender: nil)
+            
         print(annotation.coordinate)
         }
         

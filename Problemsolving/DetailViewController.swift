@@ -312,7 +312,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func likedQuery(){
         
         print("liked Query Called")
-        let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
+        let youLikedRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
                 youLikedRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
                     self.likedSet.insert(snapshot.key)
                     print("likedSet = \(self.likedSet)")
@@ -336,7 +336,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         print("review Query Called")
 
-        let reviewsRef = FIRDatabase.database().reference().child("reviews")
+        let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
         reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
             if self.firebaseLoadedOnce == false{
@@ -377,7 +377,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 }
                 
                 
-                let userRef = FIRDatabase.database().reference().child("users")
+                let userRef = FIRDatabase.database().reference().child("Users")
                 userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
                     if self.firebaseLoadedOnce == false{
                         print("userRef.child(uid!).observe(.childAdded, with: { snapshot in")
@@ -419,9 +419,9 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     @IBAction func okiniiriButtonTapped(_ sender: Any)
     {   firebaseLoadedOnce = true
         let firebaseRef = FIRDatabase.database().reference()
-        let userRef = firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid)
+        let userRef = firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid)
         userRef.child("favourite").child(toilet.key).setValue(true)
-        let totalFavoriteCountRef = firebaseRef.child("users").child(toilet.addedBy).child("totalFavoriteCount")
+        let totalFavoriteCountRef = firebaseRef.child("Users").child(toilet.addedBy).child("totalFavoriteCount")
         totalFavoriteCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.favoriteAdded == false{
                 print("FVFVsnapshot = \(snapshot)")
@@ -459,9 +459,9 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey:  NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking] as [String : Any]
         
         let firebaseRef = FIRDatabase.database().reference()
-        firebaseRef.child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youwent").child(toilet.key).setValue(true)
+        firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("youwent").child(toilet.key).setValue(true)
         
-        let addedTotalHelpedCountRef = firebaseRef.child("users").child(toilet.addedBy).child("totalHelpedCount")
+        let addedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.addedBy).child("totalHelpedCount")
         
         addedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentAdded == false{
@@ -472,7 +472,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
                 self.youwentAdded = true
             }})
         
-        let editedTotalHelpedCountRef = firebaseRef.child("users").child(toilet.editedBy).child("totalHelpedCount")
+        let editedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.editedBy).child("totalHelpedCount")
         editedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentEdited == false{
                                let snapValue = snapshot.value as? Int
@@ -553,14 +553,14 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
     func buttonClicked(sender:UIButton) {
         print("like button is clickedddddd")
         firebaseLoadedOnce = true
-        let youLikedRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
+        let youLikedRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("youLiked")
         let buttonRow = sender.tag
         let likedID = reviews[buttonRow].rid
         let addLikeCount = reviews[buttonRow].likedCount + 1
         let removeLikeCount = reviews[buttonRow].likedCount - 1
         let firebaseRef = FIRDatabase.database().reference()
-        let likedRef = firebaseRef.child("reviews").child(reviews[buttonRow].rid).child("likedCount")
-        let userTotalLikedRef = firebaseRef.child("users").child(reviews[buttonRow].uid).child("totalLikedCount")
+        let likedRef = firebaseRef.child("ReviewInfo").child(reviews[buttonRow].rid).child("likedCount")
+        let userTotalLikedRef = firebaseRef.child("Users").child(reviews[buttonRow].uid).child("totalLikedCount")
         let addTotalLikeCount = reviews[buttonRow].totalLikedCount + 1
         let removeTotalLikeCount = reviews[buttonRow].totalLikedCount - 1
         

@@ -88,7 +88,7 @@ class NewStartLoginViewController: UIViewController {
             } else {
                 print("We signed in successfully")
                  self.messageFrame.removeFromSuperview()
-                //FIRDatabase.database().reference().child("users").child(user!.uid).setValue(user!.email!)
+                
                 self.performSegue(withIdentifier:"moveLoginViewToMapSegue", sender: nil)
                 
             }

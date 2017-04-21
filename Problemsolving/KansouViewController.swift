@@ -254,7 +254,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         ]
 
         
-          let reviewRef = FIRDatabase.database().reference().child("reviews").childByAutoId()
+          let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").childByAutoId()
         
           reviewRef.setValue(reviewData)
         
@@ -270,6 +270,10 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
           reviewListRef.child(rid).setValue(true)
         
+        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toilet.key)
+        
+          toiletReviewsRef.child(rid).setValue(true)
+        
         let toiletRef = FIRDatabase.database().reference().child("Toilets").child(toilet.key)
         
         //toiletRef.updateChildValues("averageStar": "3.0")
@@ -279,7 +283,10 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         let tdata : [String : Any] = ["averageStar": String(roundAvStar),
                                       "averageWait": newWaitingTime,
                                       "reviewCount": newReviewCount,
-                                      "available": self.available]
+                                      "available": self.available,
+                                      "reviewOne": rid,
+                                      "reviewTwo": toilet.reviewOne
+                                            ]
         
         
         toiletRef.updateChildValues(tdata)

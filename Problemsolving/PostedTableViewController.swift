@@ -60,7 +60,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             }
         }
         
-        firebaseRef.child("reviews").child(commentData[indexPath.row].key).removeValue { (error, ref) in
+        firebaseRef.child("ReviewInfo").child(commentData[indexPath.row].key).removeValue { (error, ref) in
             if error != nil{
                 print("Failed to delete a cell",error!)
                 return
@@ -109,7 +109,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         print("commnetsReviewInfoQueryCalled")
         let userReviewComment = UserReviewComment()
         
-        let reviewRef = firebaseRef.child("reviews").child(ridKey)
+        let reviewRef = firebaseRef.child("ReviewInfo").child(ridKey)
         
         reviewRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
             
@@ -449,7 +449,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
                 
             }
             
-            firebaseRef.child("reviews").child(item).removeValue { (error, ref) in
+            firebaseRef.child("ReviewInfo").child(item).removeValue { (error, ref) in
                 if error != nil{
                     print("Failed to delete a cell",error!)
                     return
@@ -482,7 +482,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         for item in allRidArray{
             
-            firebaseRef.child("reviews").child(item).removeValue { (error, ref) in
+            firebaseRef.child("ReviewInfo").child(item).removeValue { (error, ref) in
                 if error != nil{
                     print("Failed to delete a cell",error!)
                     return
