@@ -142,6 +142,12 @@ import Cosmos
         var youwentEdited = false
         var firebaseLoadedOnce = false
         var favoriteButtonTapped = false
+        var firstEditerHelpCountAdded = false
+        var lastEditerHelpCountAdded = false
+        var reviewOneLikeAlreadyTapped = false
+        var reviewTwoLikeAlreadyTapped = false
+
+        
         var locationManager = CLLocationManager()
         let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
         
@@ -654,31 +660,11 @@ import Cosmos
             let distanceText = toilet.distance
             
             print("toiletDistance22233 == \(toilet.distance)")
-//            
-//            if toilet.distance > 1000{
-//                let td1 = round(0.01*toilet.distance)/0.01/1000
-//                print("td1 = \(td1)")
-//                distanceText = "\(td1)km"
-//                
-//            } else{
-//                distanceText = "\(Int(round(0.1*toilet.distance)/0.1))m"
-//            }
-//            
-//            if toilet.distance >= 1000000{
-//                let toiletD = Int(round(0.01*toilet.distance)/0.01/1000000)
-//                distanceText = "\(toiletD)Mm"
-//                print("cell.distanceLabel.text = \(toiletD)Mm")
-//            }
-            
             
             
             typeAndDistanceLabel.text = toilet.type + "/" + distanceText
             
             reviewCountLabel.text = "(\(toilet.reviewCount)件)"
-            
-            //            waitingtimeLabel.text = "平均待ち時間　\(toilet.averageWait)分"
-            //            // Changed to toilet.averageWait
-            //            openinghoursLabel?.text = "利用可能時間　\(toilet.openinghours)"
             
             availableTimeAndWaitingTImeLabel.text = toilet.openinghours + "/" + "平均待ち　\(toilet.averageWait)分"
             
@@ -702,26 +688,6 @@ import Cosmos
             buttonGoOutlet.backgroundColor = primaryColor
             buttonShowDetailOutlet.backgroundColor = primaryColor
             
-            
-//            buttonKansouOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
-//            buttonEditInfoOutlet.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
-            
-            
-            
-            
-            
-            //okiniiriButton.backgroundColor = UIColor(red: 1.2, green: 0.4, blue: 0.4, alpha: 0.7)
-            
-            
-            
-            //            tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-            //            tableView.tableFooterView?.isHidden = true
-            //            tableView.backgroundColor = UIColor.white
-            //Added for table view empty cells
-            
-            //            backLabel1.backgroundColor = UIColor.white
-            //            backLabel2.backgroundColor = UIColor.white
-            //            pictureLabel.backgroundColor = UIColor.white
             howToAccessTextView.text = "アクセス情報"
             
             if toilet.urlOne != ""{
@@ -759,6 +725,8 @@ import Cosmos
             let userRef = FIRDatabase.database().reference().child("Users")
             userRef.child(toilet.addedBy).observe(FIRDataEventType.value, with: { snapshot in
                 
+                if self.firstEditerHelpCountAdded == false{
+                
                  let snapshotValue = snapshot.value as? NSDictionary
                  self.firstPosterNameLabel.text = (snapshotValue?["userName"] as? String!)!
                  let imageURL = (snapshotValue?["userPhoto"] as? String!)!
@@ -776,13 +744,16 @@ import Cosmos
                 
                 self.firstPosterLikeLabel.text = "\(userLikeCount)"
                 self.firstPosterFavoriteLabel.text = "\(userFavotiteCount)"
-                self.firstPosterHelpLabel.text = "\(userHelpedCount)"
+                self.firstPosterHelpLabel.text = "\(newHelpCount)"
                 
                 let newData : [String : Any] = ["totalHelpedCount": newHelpCount]
                 
 
                 
                 userRef.child(self.toilet.addedBy).updateChildValues(newData)
+                    
+                    self.firstEditerHelpCountAdded = true
+                }
             })
             
         }
@@ -791,6 +762,8 @@ import Cosmos
         func lastEditerQuery(){
             let userRef = FIRDatabase.database().reference().child("Users")
             userRef.child(toilet.editedBy).observe(FIRDataEventType.value, with: { snapshot in
+                
+                if self.lastEditerHelpCountAdded == false{
                 
                 let snapshotValue = snapshot.value as? NSDictionary
                 self.lastEditerNameLabel.text = (snapshotValue?["userName"] as? String!)!
@@ -812,12 +785,15 @@ import Cosmos
                 
                 self.lastEditerLikeLabel.text = "\(userLikeCount)"
                 self.lastEditerFavoriteLabel.text = "\(userFavotiteCount)"
-                self.lastEditerHelpLabel.text = "\(userHelpedCount)"
+                self.lastEditerHelpLabel.text = "\(newHelpCount)"
                 
-                 let newData : [String : Any] = ["totalHelpedCount": newHelpCount]
+                let newData : [String : Any] = ["totalHelpedCount": newHelpCount]
                 
                 
                  userRef.child(self.toilet.editedBy).updateChildValues(newData)
+                    
+                    self.lastEditerHelpCountAdded = true
+                }
                 
             })
             
@@ -1415,31 +1391,49 @@ import Cosmos
         @IBAction func reviewOneLikeButtonTapped(_ sender: Any) {
             
             
-            //
+            
+            let imageColored = UIImage(named:"like_colored_25")
+            let image = UIImage(named:"thumbsUp_black_image_25")
+
+            
+            if self.reviewOneLikeAlreadyTapped == false{
+            
+             (sender as AnyObject).setImage(imageColored, for: .normal)
+             self.reviewOneLikeAlreadyTapped = true
+             
+            
+            }else {
+            
+              (sender as AnyObject).setImage(image, for: .normal)
+             self.reviewOneLikeAlreadyTapped = false
+                
+            
+            }
+            
+
+         
             
         }
         @IBAction func reviewTwoLikeButtonTapped(_ sender: Any) {
-            let image = UIImage(named:"like_colored_25")
+        
+            let imageColored = UIImage(named:"like_colored_25")
+            let image = UIImage(named:"thumbsUp_black_image_25")
             
-            (sender as AnyObject).setImage(image, for: .normal)
             
-            
+            if self.reviewTwoLikeAlreadyTapped == false{
+                
+                (sender as AnyObject).setImage(imageColored, for: .normal)
+                self.reviewTwoLikeAlreadyTapped = true
+                
+            }else {
+                
+                (sender as AnyObject).setImage(image, for: .normal)
+                self.reviewTwoLikeAlreadyTapped = false
+                
+                
+            }
 
-//            
-//            if favoriteButtonTapped == false{
-//                //sender.setImage(image, forControlState: .Normal)
-//                (sender as AnyObject).setImage(image, for: .normal)
-//                print("Image is supposed to be replacedAAA")
-//                favoriteButtonTapped = true
-//                self.afterFavoriteTappedAction()
-//                
-//            } else{
-//                self.deleteItInMyPage()
-//            }
-
-//            reviewTwoThumbUpButtonOutlet.setImage(, for: <#T##UIControlState#>)
-//            print("Two Tapped")
-        }
+              }
         
         
 

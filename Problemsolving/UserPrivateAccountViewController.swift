@@ -212,27 +212,17 @@ class UserPrivateAccountViewController: UIViewController {
         
         let settingsAction = UIAlertAction(title: "はい", style: .default) { (_) -> Void in
             
-            print("Moving back to first time view controller ")
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let nextVC = storyboard.instantiateViewController(withIdentifier: "UserFirstTimeViewController") as! UserFirstTimeViewController
-            //let nextVC = navigationContoller.topViewController as! PlaceDetailViewController
-            
-            
-//            nextVC.toilet = toilets[indexPath.row]
-//            nextVC.filter = filter
-//            nextVC.search = search
-            
-            let transition = CATransition()
-            transition.duration = 0.4
-            transition.type = kCATransitionPush
-            transition.subtype = kCATransitionFromRight
-            self.view.window!.layer.add(transition, forKey: kCATransition)
-            
-            self.present(nextVC, animated: false, completion: nil)
+            print("Move to first time view controller")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "UserFirstTimeViewController") as! UserFirstTimeViewController
+            //self.(vc, sender: self)
+            print("Move to first time view controller Over")
+            self.present(vc, animated: true, completion: nil)
         }
         let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
-        alertController.addAction(cancelAction)
+        
         alertController.addAction(settingsAction)
+        alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
 
     
@@ -283,12 +273,12 @@ class UserPrivateAccountViewController: UIViewController {
     
     @IBAction func buttonBackToMapTapped(_ sender: Any) {
         
-        if userAlreadyLogin == true{
+        
             self.performSegue(withIdentifier: "userAccountBackToMapSegue", sender: nil)
-        }else{
-            showPleaseLogin()
+        
+        
             
-        }
+        
         
         
         

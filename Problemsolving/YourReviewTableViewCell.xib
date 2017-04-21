@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="259.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lQB-2g-ie2">
@@ -119,7 +119,7 @@
                                     <constraint firstAttribute="width" constant="25" id="4Kb-I0-4Ii"/>
                                     <constraint firstAttribute="height" constant="25" id="hiT-FT-Hqq"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="like"/>
+                                <state key="normal" title="Button" image="thumbsUp_black_image_25"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="いいね４件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqZ-QJ-4fo">
                                 <rect key="frame" x="50" y="154.5" width="80" height="17"/>
@@ -225,7 +225,7 @@
     </objects>
     <resources>
         <image name="danger_image_25" width="25" height="25"/>
-        <image name="like" width="24" height="24"/>
         <image name="photo_picture_default_100" width="100" height="100"/>
+        <image name="thumbsUp_black_image_25" width="25" height="25"/>
     </resources>
 </document>

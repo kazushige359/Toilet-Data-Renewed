@@ -659,7 +659,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         let reviewData : [String : Any] = ["uid": uid , "tid": toiletNewId, "star": String(starView.rating) as String, "waitingtime": self.waitminute ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
         ]
         
-        let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").childByAutoId()
+        let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").child(reviewNewId)
         
         reviewRef.setValue(reviewData)
         

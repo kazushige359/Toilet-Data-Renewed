@@ -266,7 +266,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="YfH-bf-piH">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbsUp_black_image_25" translatesAutoresizingMaskIntoConstraints="NO" id="YfH-bf-piH">
                                                                         <rect key="frame" x="2" y="48" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="25" id="FcY-BD-qwe"/>
@@ -279,7 +279,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="xcc-Gd-qwX">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love_Icon_40" translatesAutoresizingMaskIntoConstraints="NO" id="xcc-Gd-qwX">
                                                                         <rect key="frame" x="45" y="48" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="25" id="0d4-7G-d92"/>
@@ -292,7 +292,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="standing-up-man-" translatesAutoresizingMaskIntoConstraints="NO" id="IBB-Xc-bNF">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_man_image_25" translatesAutoresizingMaskIntoConstraints="NO" id="IBB-Xc-bNF">
                                                                         <rect key="frame" x="85" y="48" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="Fu8-Am-MCe"/>
@@ -381,7 +381,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="AEj-E5-GMn">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbsUp_black_image_25" translatesAutoresizingMaskIntoConstraints="NO" id="AEj-E5-GMn">
                                                                         <rect key="frame" x="2" y="48" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="D4G-KT-GwA"/>
@@ -394,7 +394,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="eyD-BP-zjL">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love_Icon_40" translatesAutoresizingMaskIntoConstraints="NO" id="eyD-BP-zjL">
                                                                         <rect key="frame" x="45" y="48" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="25" id="bcV-IS-AQj"/>
@@ -407,7 +407,7 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="standing-up-man-" translatesAutoresizingMaskIntoConstraints="NO" id="7UT-fK-JVM">
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_man_image_25" translatesAutoresizingMaskIntoConstraints="NO" id="7UT-fK-JVM">
                                                                         <rect key="frame" x="85" y="48" width="25" height="25"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="25" id="jku-V7-g7p"/>
@@ -513,7 +513,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="YhL-Hq-ZAR">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbsUp_black_image_25" translatesAutoresizingMaskIntoConstraints="NO" id="YhL-Hq-ZAR">
                                                                                 <rect key="frame" x="2" y="48" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="25" id="PEA-EB-oAc"/>
@@ -526,7 +526,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="Nch-de-t3R">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love_Icon_40" translatesAutoresizingMaskIntoConstraints="NO" id="Nch-de-t3R">
                                                                                 <rect key="frame" x="45" y="48" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="25" id="ZdA-mM-cAW"/>
@@ -539,7 +539,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="standing-up-man-" translatesAutoresizingMaskIntoConstraints="NO" id="mke-Qf-V8W">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_man_image_25" translatesAutoresizingMaskIntoConstraints="NO" id="mke-Qf-V8W">
                                                                                 <rect key="frame" x="85" y="48" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="25" id="ayz-3J-5Wa"/>
@@ -607,7 +607,7 @@
                                                                     <constraint firstAttribute="height" constant="25" id="iXW-Y7-L5e"/>
                                                                     <constraint firstAttribute="width" constant="25" id="mzg-ph-SnL"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button" image="like"/>
+                                                                <state key="normal" title="Button" image="thumbsUp_black_image_25"/>
                                                                 <connections>
                                                                     <action selector="reviewOneLikeButtonTapped:" destination="hAD-xO-93C" eventType="touchUpInside" id="d4q-rt-4bq"/>
                                                                 </connections>
@@ -675,7 +675,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="like" translatesAutoresizingMaskIntoConstraints="NO" id="XGk-cz-wHc">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbsUp_black_image_25" translatesAutoresizingMaskIntoConstraints="NO" id="XGk-cz-wHc">
                                                                                 <rect key="frame" x="2" y="48" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="25" id="99Q-Yv-t85"/>
@@ -688,7 +688,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="ICY-pd-z9h">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love_Icon_40" translatesAutoresizingMaskIntoConstraints="NO" id="ICY-pd-z9h">
                                                                                 <rect key="frame" x="45" y="48" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="25" id="A37-Jd-Dhe"/>
@@ -701,7 +701,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="standing-up-man-" translatesAutoresizingMaskIntoConstraints="NO" id="ZrP-la-EwL">
+                                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_man_image_25" translatesAutoresizingMaskIntoConstraints="NO" id="ZrP-la-EwL">
                                                                                 <rect key="frame" x="85" y="48" width="25" height="25"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="25" id="ahO-zH-bc2"/>
@@ -770,7 +770,7 @@
                                                                     <constraint firstAttribute="height" constant="25" id="7tE-bF-QpV"/>
                                                                     <constraint firstAttribute="width" constant="25" id="dIg-xw-p6g"/>
                                                                 </constraints>
-                                                                <state key="normal" title="Button" image="like"/>
+                                                                <state key="normal" title="Button" image="thumbsUp_black_image_25"/>
                                                                 <connections>
                                                                     <action selector="reviewTwoLikeButtonTapped:" destination="hAD-xO-93C" eventType="touchUpInside" id="BFv-0m-dVF"/>
                                                                 </connections>
@@ -1079,13 +1079,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="black_man_image_25" width="25" height="25"/>
         <image name="earth_image_30" width="30" height="30"/>
-        <image name="like" width="24" height="24"/>
-        <image name="love" width="24" height="24"/>
+        <image name="love_Icon_40" width="40" height="40"/>
         <image name="love_before_tap_40" width="40" height="40"/>
         <image name="photo_picture_default_100" width="100" height="100"/>
         <image name="question_image_30" width="30" height="30"/>
-        <image name="standing-up-man-" width="24" height="24"/>
+        <image name="thumbsUp_black_image_25" width="25" height="25"/>
         <image name="user_default_80" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
