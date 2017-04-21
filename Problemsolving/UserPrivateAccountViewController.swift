@@ -99,7 +99,8 @@ class UserPrivateAccountViewController: UIViewController {
                 } else {
                     print(snapshot.value!)
                     print("User Find")
-                    userInfo()
+                    self.userInfo()
+                    self.userAlreadyLogin = true
                 }
         })
         
@@ -206,35 +207,103 @@ class UserPrivateAccountViewController: UIViewController {
 //        }
     }
     
+    func showPleaseLogin(){
+        let alertController = UIAlertController (title: "この機能を使用するためにはログインが必要です", message: "ログインをしますか？", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "はい", style: .default) { (_) -> Void in
+            
+            print("Moving back to first time view controller ")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextVC = storyboard.instantiateViewController(withIdentifier: "UserFirstTimeViewController") as! UserFirstTimeViewController
+            //let nextVC = navigationContoller.topViewController as! PlaceDetailViewController
+            
+            
+//            nextVC.toilet = toilets[indexPath.row]
+//            nextVC.filter = filter
+//            nextVC.search = search
+            
+            let transition = CATransition()
+            transition.duration = 0.4
+            transition.type = kCATransitionPush
+            transition.subtype = kCATransitionFromRight
+            self.view.window!.layer.add(transition, forKey: kCATransition)
+            
+            self.present(nextVC, animated: false, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        present(alertController, animated: true, completion: nil)
+
+    
+    
+    }
     
     @IBAction func buttonAddToiletTapped(_ sender: Any) {
+        if userAlreadyLogin == true{
         self.performSegue(withIdentifier: "newAcaddToiletSegue", sender: nil)
+        } else{
+        
+            showPleaseLogin()
+        }
         
     }
     
     @IBAction func buttonFavoriteListTapped(_ sender: Any) {
+        if userAlreadyLogin == true{
         self.performSegue(withIdentifier: "newAcToFavoriteList", sender: nil)
+        }else{
+            showPleaseLogin()
+                
+            }
         
     }
     
     @IBAction func buttonYouWentList(_ sender: Any) {
+        if userAlreadyLogin == true{
         self.performSegue(withIdentifier: "youHaveBeenSegue", sender: nil)
-        
-        
+    }else{
+    showPleaseLogin()
+    
     }
     
+    
+    }
+
     @IBAction func buttonYourKansouTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "newAcToYouHaveAddSegue", sender: nil)
+        if userAlreadyLogin == true{
+             self.performSegue(withIdentifier: "newAcToYouHaveAddSegue", sender: nil)
+        }else{
+            showPleaseLogin()
+            
+        }
+       
         
     }
     
     @IBAction func buttonBackToMapTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "userAccountBackToMapSegue", sender: nil)
+        
+        if userAlreadyLogin == true{
+            self.performSegue(withIdentifier: "userAccountBackToMapSegue", sender: nil)
+        }else{
+            showPleaseLogin()
+            
+        }
+        
+        
         
     }
     
     @IBAction func buttonSettingTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "userAccountToSettingSegue", sender: nil)
+        if userAlreadyLogin == true{
+             self.performSegue(withIdentifier: "userAccountToSettingSegue", sender: nil)
+            
+        }else{
+            showPleaseLogin()
+            
+        }
+
+       
         
     }
     

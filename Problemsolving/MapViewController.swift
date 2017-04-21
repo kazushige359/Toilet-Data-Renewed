@@ -166,7 +166,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var resultSearchController: UISearchController!
     var selectedPin: MKPlacemark?
-    let databaseRef = FIRDatabase.database().reference()
+    var databaseRef: FIRDatabaseReference!
     let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
 
     
@@ -183,6 +183,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        databaseRef = FIRDatabase.database().reference()
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
         geoFireRef = FIRDatabase.database().reference().child("ToiletLocations")
