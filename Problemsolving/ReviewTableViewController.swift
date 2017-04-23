@@ -22,17 +22,27 @@ class ReviewTableViewController: UITableViewController {
     var review = Review()
     var reviewsSet = Set<String>()
     var thumbsUpSet = Set<String>()
+    var firebaseLoaded = false
+    
+    let firebaseRef = FIRDatabase.database().reference()
+    let currentUserId = FIRAuth.auth()?.currentUser?.uid
+    
+    var userAlreadyLogin = false
+    let imageColored = UIImage(named:"like_colored_25")
+    let imageBlack = UIImage(named:"thumbsUp_black_image_25")
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        thumbsUpQuery()
-        reviewQuery()
+        
         print("ReviewTableViewController Loaded")
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 255
+        
+        userLoginCheck()
         
 
         // Uncomment the following line to preserve selection between presentations
@@ -42,10 +52,27 @@ class ReviewTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func userLoginCheck(){
+        
+        let userRef = firebaseRef.child("Users")
+        
+        userRef.child(currentUserId!).observe(.value, with: { snapshot in
+            
+            if ( snapshot.value is NSNull ) {
+                print("(User did not found)")
+                self.reviewQuery()
+               
+                
+            } else {
+                print("User Find")
+                self.thumbsUpQuery()
+
+                self.userAlreadyLogin = true
+            }
+        })
+        
     }
+
 
     // MARK: - Table view data source
 
@@ -84,8 +111,51 @@ class ReviewTableViewController: UITableViewController {
         cell.starRatedLabel.settings.emptyBorderColor = UIColor.orange
         cell.starRatedLabel.settings.filledBorderColor = UIColor.orange
         
+//        cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount + 1)"
+//        cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount + 1)件"
+//        cell.likedCountLabel.isHidden = false
+//        cell.userLikedCount.isHidden = false
+//        cell.nextLikedCountLabel.isHidden = true
+//        cell.nextUserLikedCount.isHidden = true
         
-        cell.likeButton.addTarget(self, action: #selector(DetailViewController.buttonClicked), for: .touchUpInside)
+        cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
+        
+        if reviews[indexPath.row].userLiked == true{
+            //Already Tapped
+            cell.buttonClicked = true
+            cell.likedCountLabel.isHidden = false
+            cell.userLikedCount.isHidden = false
+            cell.nextLikedCountLabel.isHidden = true
+            cell.nextUserLikedCount.isHidden = true
+
+//         cell.likedCountLabel.isHidden = 
+//         cell.userLikedCount.isHidden = false
+//         cell.nextLikedCountLabel.isHidden = false
+//         cell.nextUserLikedCount.isHidden = false
+         cell.likeButton.setImage(imageColored, for: .normal)
+         cell.likeButton.tag = indexPath.row
+         //cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
+         cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount - 1)"
+         cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount - 1)件"
+        } else{
+        
+            //Not Tapped Yet
+            cell.buttonClicked = false
+            cell.likedCountLabel.isHidden = false
+            cell.userLikedCount.isHidden = false
+            cell.nextLikedCountLabel.isHidden = true
+            cell.nextUserLikedCount.isHidden = true
+            cell.likeButton.setImage(imageBlack, for: .normal)
+            cell.likeButton.tag = indexPath.row
+            //cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
+            cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount + 1)"
+            cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount + 1)件"
+        
+        
+        
+        
+        }
+        
         
 //        if reviews[indexPath.row].userLiked == true {
 //            cell.likeButton.setImage(UIImage(named: "like1"), for: UIControlState.normal)
@@ -108,16 +178,129 @@ class ReviewTableViewController: UITableViewController {
         return cell
     }
 
+    
+    func reviewLikeButtonTapped(sender: UIButton) {
+        
+        let buttonRow = sender.tag
+        print("ButtonRow = \(buttonRow)")
+        self.firebaseLoaded = true
+        
+       // let a = reviews[buttonRow].likedCount
+//        var totalUserThumbsUpCount = reviews[buttonRow].totalLikedCount
+//        var reviewLikeCount = reviews[buttonRow].likedCount
+        
+        
+        print("reviews[buttonRow].rid = \(reviews[buttonRow].rid)")
+       // print("reviews[buttonRow].likedCount = \(a)")
+        
+        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
+        let userRef = FIRDatabase.database().reference().child("Users").child(reviews[buttonRow].uid)
+        let reviewInfoRef = FIRDatabase.database().reference().child("ReviewInfo").child(reviews[buttonRow].rid)
+        
+        if userAlreadyLogin == false{
+            //showPleaseLogin()
+            
+        }else{
+            
+            if reviews[buttonRow].userLiked == false{
+                
+                
+        
+//                //Tap
+
+              //  sender.setImage(imageColored, for: .normal)
+               // reviews[buttonRow].userLiked = true
+                
+//                let totalUserThumbsUpCount = reviews[buttonRow].totalLikedCount
+//                let reviewLikeCount = reviews[buttonRow].likedCount
+                
+                
+                
+                
+//.............
+//                totalUserThumbsUpCount = totalUserThumbsUpCount + 1
+//                reviewLikeCount = reviewLikeCount + 1
+//                thumbsUpRef.child(reviews[buttonRow].rid).setValue(true)
+//                self.thumbsUpSet.insert(reviews[buttonRow].rid)
+//                let userInfoUpdate: [String : Any] = ["totalLikedCount": totalUserThumbsUpCount]
+//                userRef.updateChildValues(userInfoUpdate)
+//                
+//                let reviewInfoUpdate: [String : Any] = ["likedCount": reviewLikeCount]
+//                reviewInfoRef.updateChildValues(reviewInfoUpdate)
+//............. April 24
+                
+                
+
+                
+                
+                
+//                
+//                (sender as AnyObject).setImage(imageColored, for: .normal)
+//                self.reviewTwoLikeAlreadyTapped = true
+//                
+              
+//
+//                self.reviewTwoUserTotalLikeOriginalCount = self.reviewTwoUserTotalLikeOriginalCount + 1
+//                self.reviewTwoThumbOriginalCount = self.reviewTwoThumbOriginalCount + 1
+//
+//                
+                
+//                self.reviewTwoUserLikeCount.text = String(totalUserThumbsUpCount)
+//                self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbOriginalCount) + "件"
+//
+//                
+//                //update firebase data
+//                
+//                
+//                
+              //
+//                
+          }else{
+                
+               // sender.setImage(imageBlack, for: .normal)
+                //reviews[buttonRow].userLiked = false
+
+//                
+//                
+//                //UnTap
+//                
+//                self.reviewTwoUserTotalLikeOriginalCount = self.reviewTwoUserTotalLikeOriginalCount - 1
+//                self.reviewTwoThumbOriginalCount = self.reviewTwoThumbOriginalCount - 1
+//                
+//                (sender as AnyObject).setImage(imageBlack, for: .normal)
+//                
+//                thumbsUpRef.child(self.toilet.reviewTwo).removeValue()
+//                
+//                self.reviewTwoUserLikeCount.text = String(self.reviewTwoUserTotalLikeOriginalCount)
+//                self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbOriginalCount) + "件"
+//                
+//                let userInfoUpdate: [String : Any] = ["totalLikedCount": self.reviewTwoUserTotalLikeOriginalCount]
+//                userRef.updateChildValues(userInfoUpdate)
+//                
+//                let reviewInfoUpdate: [String : Any] = ["likedCount": self.reviewTwoThumbOriginalCount]
+//                reviewInfoRef.updateChildValues(reviewInfoUpdate)
+//                
+//                self.reviewTwoLikeAlreadyTapped = false
+//                
+           }
+            
+        }
+    }
+
 
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 255
 //        
 //    }
     
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return reviews.count
     }
+    
+    
     
     func reviewQuery(){
         
@@ -132,9 +315,13 @@ class ReviewTableViewController: UITableViewController {
             
             //get rid key 
             
+            
+            
             let ridKey = snapshot.key
             
             reviewsRef.child(ridKey).observe(FIRDataEventType.value, with: { snapshot in
+                
+                if self.firebaseLoaded == false{
                
         
 //        reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
@@ -171,16 +358,14 @@ class ReviewTableViewController: UITableViewController {
                 
                 review.rid = snapshot.key
                 
-                if self.thumbsUpSet.contains(review.rid){
-                    print("self.likedSet.contains(review.rid)")
-                    review.userLiked = true
-                }
+               
                 
                 
                 let userRef = FIRDatabase.database().reference().child("Users")
                 userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
                     //if self.firebaseLoadedOnce == false
                     //{
+                     if self.firebaseLoaded == false{
                         print("userRef.child(uid!).observe(.childAdded, with: { snapshot in")
                         print("snapshot = \(snapshot)")
                         
@@ -212,12 +397,24 @@ class ReviewTableViewController: UITableViewController {
                         
                         //I moved codes above here because review tableview could not be loaded 26th
                         //when the value is changed, tableveiw loads again and again
-                        }
+                    
+                       if self.thumbsUpSet.contains(review.rid){
+                          print("thummbUPSet contails\(review.rid)")
+                          review.userLiked = true
+                       }
+                    }//Firebase Loaded Once == false
+                    }
         
-                )}
+                )
+                }//Firebase Loaded Once == false
+                
+                
+                }
             )
-        }
-   )}
+            }
+            
+   )
+}
 
     
     func thumbsUpQuery(){
@@ -229,6 +426,9 @@ class ReviewTableViewController: UITableViewController {
             
             
         })
+        
+        reviewQuery()
+
         
     }
     
