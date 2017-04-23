@@ -115,57 +115,40 @@ class ReviewTableViewController: UITableViewController {
         cell.userLikedCount.isHidden = false
         cell.nextLikedCountLabel.isHidden = true
         cell.nextUserLikedCount.isHidden = true
+       
         
-//        cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount + 1)"
-//        cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount + 1)件"
-//        cell.likedCountLabel.isHidden = false
-//        cell.userLikedCount.isHidden = false
-//        cell.nextLikedCountLabel.isHidden = true
-//        cell.nextUserLikedCount.isHidden = true
         
-        cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
         
         if reviews[indexPath.row].userLiked == true{
-            //Already Tapped
-//            cell.userLiked = true
-            //changed to button Clicked false April 23
-            
-//            cell.likedCountLabel.isHidden = false
-//            cell.userLikedCount.isHidden = false
-//            cell.nextLikedCountLabel.isHidden = true
-//            cell.nextUserLikedCount.isHidden = true
-
-//         cell.likedCountLabel.isHidden = 
-//         cell.userLikedCount.isHidden = false
-//         cell.nextLikedCountLabel.isHidden = false
-//         cell.nextUserLikedCount.isHidden = false
+         
          cell.likeButton.setImage(imageColored, for: .normal)
             
-         //cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
+         
          cell.likeButton.tag = indexPath.row
-         //cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
+            
+//         reviews[indexPath.row].totalLikedCount = reviews[indexPath.row].totalLikedCount - 1
+//         reviews[indexPath.row].likedCount = reviews[indexPath.row].likedCount - 1
+            
+            
+         
          cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount - 1)"
          cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount - 1)件"
             
+         cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
+            
         } else{
         
-            //Not Tapped Yet
-//            cell.userLiked = false
-//            cell.likedCountLabel.isHidden = false
-//            cell.userLikedCount.isHidden = false
-//            cell.nextLikedCountLabel.isHidden = true
-//            cell.nextUserLikedCount.isHidden = true
+          
             cell.likeButton.setImage(imageBlack, for: .normal)
-            //cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
+            
+//            reviews[indexPath.row].totalLikedCount = reviews[indexPath.row].totalLikedCount + 1
+//             reviews[indexPath.row].likedCount = reviews[indexPath.row].likedCount + 1
             cell.likeButton.tag = indexPath.row
-            //cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
             cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount + 1)"
             cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount + 1)件"
             
+            cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
             
-
-        
-        
         
         
         }
@@ -218,14 +201,16 @@ class ReviewTableViewController: UITableViewController {
             
             if reviews[buttonRow].userLiked == false{
                 
-                
-                
-                
-        
-                //Tap
+                               //Tap
 
                sender.setImage(imageColored, for: .normal)
-                reviews[buttonRow].userLiked = true
+               reviews[buttonRow].userLiked = true
+                
+                
+                
+                
+                
+                
 
                // reviews[buttonRow].userLiked = true
                 
@@ -236,15 +221,15 @@ class ReviewTableViewController: UITableViewController {
                 
                 
 //.............
-//                totalUserThumbsUpCount = totalUserThumbsUpCount + 1
-//                reviewLikeCount = reviewLikeCount + 1
-//                thumbsUpRef.child(reviews[buttonRow].rid).setValue(true)
-//                self.thumbsUpSet.insert(reviews[buttonRow].rid)
-//                let userInfoUpdate: [String : Any] = ["totalLikedCount": totalUserThumbsUpCount]
-//                userRef.updateChildValues(userInfoUpdate)
-//                
-//                let reviewInfoUpdate: [String : Any] = ["likedCount": reviewLikeCount]
-//                reviewInfoRef.updateChildValues(reviewInfoUpdate)
+                let totalUserThumbsUpCount = reviews[buttonRow].totalLikedCount + 1
+                let reviewLikeCount = reviews[buttonRow].likedCount + 1
+                thumbsUpRef.child(reviews[buttonRow].rid).setValue(true)
+                self.thumbsUpSet.insert(reviews[buttonRow].rid)
+                let userInfoUpdate: [String : Any] = ["totalLikedCount": totalUserThumbsUpCount]
+                userRef.updateChildValues(userInfoUpdate)
+                
+                let reviewInfoUpdate: [String : Any] = ["likedCount": reviewLikeCount]
+                reviewInfoRef.updateChildValues(reviewInfoUpdate)
 //............. April 24
                 
                 
@@ -287,6 +272,20 @@ class ReviewTableViewController: UITableViewController {
 //                
                 sender.setImage(imageBlack, for: .normal)
                 reviews[buttonRow].userLiked = false
+                
+                let totalUserThumbsUpCount = reviews[buttonRow].totalLikedCount - 1
+                let reviewLikeCount = reviews[buttonRow].likedCount - 1
+                
+                thumbsUpRef.child(reviews[buttonRow].rid).removeValue()
+                self.thumbsUpSet.remove(reviews[buttonRow].rid)
+                //self.thumbsUpSet.insert(reviews[buttonRow].rid)
+                
+                let userInfoUpdate: [String : Any] = ["totalLikedCount": totalUserThumbsUpCount]
+                userRef.updateChildValues(userInfoUpdate)
+                
+                let reviewInfoUpdate: [String : Any] = ["likedCount": reviewLikeCount]
+                reviewInfoRef.updateChildValues(reviewInfoUpdate)
+
 //                
 //                thumbsUpRef.child(self.toilet.reviewTwo).removeValue()
 //                
