@@ -101,9 +101,7 @@ class ReviewTableViewController: UITableViewController {
         cell.dateLabel.text = reviews[indexPath.row].time
         cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.likedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount)件"
-//        cell.nextLikedCountLabel.isHidden = true
-//        cell.nextUserLikedCount.isHidden = true
-//        cell.userFavoritedCount.text = "\(reviews[indexPath.row].totalFavoriteCount)"
+
         cell.userHelpedCount.text = "\(reviews[indexPath.row].totalHelpedCount)"
         cell.userLikedCount.text = "\(reviews[indexPath.row].totalLikedCount)"
         
@@ -126,11 +124,6 @@ class ReviewTableViewController: UITableViewController {
          
          cell.likeButton.tag = indexPath.row
             
-//         reviews[indexPath.row].totalLikedCount = reviews[indexPath.row].totalLikedCount - 1
-//         reviews[indexPath.row].likedCount = reviews[indexPath.row].likedCount - 1
-            
-            
-         
          cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount - 1)"
          cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount - 1)件"
             
@@ -140,9 +133,7 @@ class ReviewTableViewController: UITableViewController {
         
           
             cell.likeButton.setImage(imageBlack, for: .normal)
-            
-//            reviews[indexPath.row].totalLikedCount = reviews[indexPath.row].totalLikedCount + 1
-//             reviews[indexPath.row].likedCount = reviews[indexPath.row].likedCount + 1
+           
             cell.likeButton.tag = indexPath.row
             cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount + 1)"
             cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount + 1)件"
@@ -152,20 +143,6 @@ class ReviewTableViewController: UITableViewController {
         
         
         }
-        
-        
-//        if reviews[indexPath.row].userLiked == true {
-//            cell.likeButton.setImage(UIImage(named: "like1"), for: UIControlState.normal)
-//            let nextNumber = reviews[indexPath.row].likedCount - 1
-//            let nextLikedNumber = reviews[indexPath.row].totalLikedCount - 1
-////            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
-////            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
-//        } else{
-//            let nextNumber = reviews[indexPath.row].likedCount + 1
-//            let nextLikedNumber = reviews[indexPath.row].totalLikedCount + 1
-////            cell.nextLikedCountLabel.text = "いいね\(nextNumber)件"
-////            cell.nextUserLikedCount.text = "\(nextLikedNumber)"
-//        }
         
         if reviews[indexPath.row].waitingtime == "0"{
             cell.waitingMinuteLabel.text = "待ちなし"
@@ -182,13 +159,10 @@ class ReviewTableViewController: UITableViewController {
         print("ButtonRow = \(buttonRow)")
         self.firebaseLoaded = true
         
-       // let a = reviews[buttonRow].likedCount
-//        var totalUserThumbsUpCount = reviews[buttonRow].totalLikedCount
-//        var reviewLikeCount = reviews[buttonRow].likedCount
         
         
         print("reviews[buttonRow].rid = \(reviews[buttonRow].rid)")
-       // print("reviews[buttonRow].likedCount = \(a)")
+       
         
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
         let userRef = FIRDatabase.database().reference().child("Users").child(reviews[buttonRow].uid)
@@ -201,26 +175,13 @@ class ReviewTableViewController: UITableViewController {
             
             if reviews[buttonRow].userLiked == false{
                 
-                               //Tap
+                //Tap
 
                sender.setImage(imageColored, for: .normal)
                reviews[buttonRow].userLiked = true
                 
                 
-                
-                
-                
-                
 
-               // reviews[buttonRow].userLiked = true
-                
-//                let totalUserThumbsUpCount = reviews[buttonRow].totalLikedCount
-//                let reviewLikeCount = reviews[buttonRow].likedCount
-                
-                
-                
-                
-//.............
                 let totalUserThumbsUpCount = reviews[buttonRow].totalLikedCount + 1
                 let reviewLikeCount = reviews[buttonRow].likedCount + 1
                 thumbsUpRef.child(reviews[buttonRow].rid).setValue(true)
@@ -230,46 +191,12 @@ class ReviewTableViewController: UITableViewController {
                 
                 let reviewInfoUpdate: [String : Any] = ["likedCount": reviewLikeCount]
                 reviewInfoRef.updateChildValues(reviewInfoUpdate)
-//............. April 24
-                
-                
-
-                
-                
-                
-//                
-//                (sender as AnyObject).setImage(imageColored, for: .normal)
-//                self.reviewTwoLikeAlreadyTapped = true
-//                
-              
-//
-//                self.reviewTwoUserTotalLikeOriginalCount = self.reviewTwoUserTotalLikeOriginalCount + 1
-//                self.reviewTwoThumbOriginalCount = self.reviewTwoThumbOriginalCount + 1
-//
-//                
-                
-//                self.reviewTwoUserLikeCount.text = String(totalUserThumbsUpCount)
-//                self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbOriginalCount) + "件"
-//
-//                
-//                //update firebase data
-//                
-//                
-//                
-              //
-//                
+  
           }else{
                 
-               // sender.setImage(imageBlack, for: .normal)
-                //reviews[buttonRow].userLiked = false
-
-//                
-//                
+                
 //                UnTap
-//                
-//                self.reviewTwoUserTotalLikeOriginalCount = self.reviewTwoUserTotalLikeOriginalCount - 1
-//                self.reviewTwoThumbOriginalCount = self.reviewTwoThumbOriginalCount - 1
-//                
+         
                 sender.setImage(imageBlack, for: .normal)
                 reviews[buttonRow].userLiked = false
                 
@@ -285,21 +212,6 @@ class ReviewTableViewController: UITableViewController {
                 
                 let reviewInfoUpdate: [String : Any] = ["likedCount": reviewLikeCount]
                 reviewInfoRef.updateChildValues(reviewInfoUpdate)
-
-//                
-//                thumbsUpRef.child(self.toilet.reviewTwo).removeValue()
-//                
-//                self.reviewTwoUserLikeCount.text = String(self.reviewTwoUserTotalLikeOriginalCount)
-//                self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbOriginalCount) + "件"
-//                
-//                let userInfoUpdate: [String : Any] = ["totalLikedCount": self.reviewTwoUserTotalLikeOriginalCount]
-//                userRef.updateChildValues(userInfoUpdate)
-//                
-//                let reviewInfoUpdate: [String : Any] = ["likedCount": self.reviewTwoThumbOriginalCount]
-//                reviewInfoRef.updateChildValues(reviewInfoUpdate)
-//                
-//                self.reviewTwoLikeAlreadyTapped = false
-//                
            }
             
         }
