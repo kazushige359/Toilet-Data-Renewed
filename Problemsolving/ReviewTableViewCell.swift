@@ -70,6 +70,8 @@ class ReviewTableViewCell: UITableViewCell {
     
     var buttonClicked = false
     
+    //var userLiked = false
+    
     let imageColored = UIImage(named:"like_colored_25")
     let imageBlack = UIImage(named:"thumbsUp_black_image_25")
 
@@ -78,21 +80,27 @@ class ReviewTableViewCell: UITableViewCell {
     @IBAction func likeButtonTapped(_ sender: Any) {
             if buttonClicked == false{
             //Button Not Tapped Yet
+                
             likedCountLabel.isHidden = true
             userLikedCount.isHidden = true
             nextLikedCountLabel.isHidden = false
             nextUserLikedCount.isHidden = false
             buttonClicked = true
-            likeButton.setImage(imageColored, for: .normal)
+            //likeButton.setImage(imageColored, for: .normal)
+                
+                print("button click")
                 }else{
             //button already tapped
+                
             likedCountLabel.isHidden = false
             userLikedCount.isHidden = false
             nextLikedCountLabel.isHidden = true
             nextUserLikedCount.isHidden = true
         
             buttonClicked = false
-            likeButton.setImage(imageBlack, for: .normal)
+            //likeButton.setImage(imageBlack, for: .normal)
+                
+                 print("button unclick ")
                     
             }
                 
