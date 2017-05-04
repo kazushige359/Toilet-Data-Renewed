@@ -32,30 +32,59 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var paperTowelSwitchOutlet: UISwitch!
     @IBOutlet weak var handDrierSwitchOutlet: UISwitch!
     
-    @IBOutlet weak var otohimeSwitchOutlet: UISwitch!
-    @IBOutlet weak var napkinSellingSwtichOutlet: UISwitch!
-    @IBOutlet weak var makeRoomSwitchOutlet: UISwitch!
+    
+    //others one 
+    @IBOutlet weak var fancyToiletSwitchOutlet: UISwitch!
+    @IBOutlet weak var goodSmellToiletSwitchOutlet: UISwitch!
+    @IBOutlet weak var confortableWideToiletSwitchOutlet: UISwitch!
     @IBOutlet weak var clothesSwitchOutlet: UISwitch!
     @IBOutlet weak var baggageSpaceSwitchOutlet: UISwitch!
     
     
-    @IBOutlet weak var wheelchairSwitchOutlet: UISwitch!
-    @IBOutlet weak var wheelchairAccessSwitchOutlet: UISwitch!
-    @IBOutlet weak var handrailSwitchOutlet: UISwitch!
-    @IBOutlet weak var callHelpSwitchOutlet: UISwitch!
-    @IBOutlet weak var ostomateSwitchOutlet: UISwitch!
-    @IBOutlet weak var writtenEnglishSwitchOutlet: UISwitch!
-    @IBOutlet weak var brailleSwitchOutlet: UISwitch!
-    @IBOutlet weak var voiceGuideSwitchOutlet: UISwitch!
-    
-    
-    @IBOutlet weak var fancyToiletSwitchOutlet: UISwitch!
-    @IBOutlet weak var goodSmellToiletSwitchOutlet: UISwitch!
-    @IBOutlet weak var confortableWideToiletSwitchOutlet: UISwitch!
+    //others two
     @IBOutlet weak var noNeedAskSwitchOutlet: UISwitch!
+    @IBOutlet weak var writtenEnglishSwitchOutlet: UISwitch!
     @IBOutlet weak var parkingSwitchOutlet: UISwitch!
     @IBOutlet weak var airConditionSwitchOutlet: UISwitch!
     @IBOutlet weak var wifiSwitchOutlet: UISwitch!
+
+    
+    
+    //For ladys 
+    
+    @IBOutlet weak var otohimeSwitchOutlet: UISwitch!
+    @IBOutlet weak var napkinSellingSwtichOutlet: UISwitch!
+    @IBOutlet weak var makeRoomSwitchOutlet: UISwitch!
+    @IBOutlet weak var ladyOmutu: UISwitch!
+    @IBOutlet weak var ladyBabyChairOutlet: UISwitch!
+    @IBOutlet weak var ladyBabyChairGoodOutlet: UISwitch!
+    @IBOutlet weak var ladyBabyCarAccessOutlet: UISwitch!
+    
+    
+    
+    
+    
+    //For men
+    
+    @IBOutlet weak var maleOmutuOutlet: UISwitch!
+    @IBOutlet weak var maleBabyChiarOutlet: UISwitch!
+    @IBOutlet weak var maleBabyChairGood: UISwitch!
+    @IBOutlet weak var maleBabyCarAccessOutlet: UISwitch!
+    
+    
+    //For family 
+    
+    @IBOutlet weak var wheelchairSwitchOutlet: UISwitch!
+    @IBOutlet weak var wheelchairAccessSwitchOutlet: UISwitch!
+    @IBOutlet weak var autoDoorSwitchOutlet: UISwitch!
+    @IBOutlet weak var callHelpSwitchOutlet: UISwitch!
+    @IBOutlet weak var ostomateSwitchOutlet: UISwitch!
+    @IBOutlet weak var brailleSwitchOutlet: UISwitch!
+    @IBOutlet weak var voiceGuideSwitchOutlet: UISwitch!
+    @IBOutlet weak var familyOmutuOutlet: UISwitch!
+    @IBOutlet weak var familyBabyChairOutlet: UISwitch!
+    
+    
     
     
     @IBOutlet weak var milkSpaceSwitchOutlet: UISwitch!
@@ -277,28 +306,56 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         paperTowelSwitchOutlet.isOn = false
         handDrierSwitchOutlet.isOn = false
         
-        otohimeSwitchOutlet.isOn = false
-        napkinSellingSwtichOutlet.isOn = false
-        makeRoomSwitchOutlet.isOn = false
-        clothesSwitchOutlet.isOn = false
-        baggageSpaceSwitchOutlet.isOn = false
         
-        wheelchairSwitchOutlet.isOn = false
-        wheelchairAccessSwitchOutlet.isOn = false
-        handrailSwitchOutlet.isOn = false
-        callHelpSwitchOutlet.isOn = false
-        ostomateSwitchOutlet.isOn = false
-        writtenEnglishSwitchOutlet.isOn = false
-        brailleSwitchOutlet.isOn = false
-        voiceGuideSwitchOutlet.isOn = false
+        //Other things one
         
         fancyToiletSwitchOutlet.isOn = false
         goodSmellToiletSwitchOutlet.isOn = false
         confortableWideToiletSwitchOutlet.isOn = false
+        clothesSwitchOutlet.isOn = false
+        baggageSpaceSwitchOutlet.isOn = false
+        
+        
+        //Other things two
         noNeedAskSwitchOutlet.isOn = false
+        writtenEnglishSwitchOutlet.isOn = false
         parkingSwitchOutlet.isOn = false
         airConditionSwitchOutlet.isOn = false
         wifiSwitchOutlet.isOn = false
+
+        
+        
+        //For ladys 
+        
+        otohimeSwitchOutlet.isOn = false
+        napkinSellingSwtichOutlet.isOn = false
+        makeRoomSwitchOutlet.isOn = false
+        ladyOmutu.isOn = false
+        ladyBabyChairOutlet.isOn = false
+        ladyBabyChairGoodOutlet.isOn = false
+        ladyBabyCarAccessOutlet.isOn = false
+        
+        //For men 
+        
+        maleOmutuOutlet.isOn = false
+        maleBabyChiarOutlet.isOn = false
+        maleBabyChairGood.isOn = false
+        maleBabyCarAccessOutlet.isOn = false
+        
+        
+        
+        //For Family
+        
+        wheelchairSwitchOutlet.isOn = false
+        wheelchairAccessSwitchOutlet.isOn = false
+        autoDoorSwitchOutlet.isOn = false
+        callHelpSwitchOutlet.isOn = false
+        ostomateSwitchOutlet.isOn = false
+        brailleSwitchOutlet.isOn = false
+        voiceGuideSwitchOutlet.isOn = false
+        familyOmutuOutlet.isOn = false
+        familyBabyChairOutlet.isOn = false
+       
         
         milkSpaceSwitchOutlet.isOn = false
         babyRoomOnlyFemaleSwitchOutlet.isOn = false
@@ -405,63 +462,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         }
         
         
-        
-        if filter.otohime == true{
-            otohimeSwitchOutlet.isOn = true
-        }
-
-        
-        
-        if filter.napkinSelling == true{
-            napkinSellingSwtichOutlet.isOn = true
-        }
-        
-        if filter.makeroomFilter == true{
-            makeRoomSwitchOutlet.isOn = true
-        }
-        
-        if filter.clothes == true{
-            clothesSwitchOutlet.isOn = true
-        }
-        
-        if filter.baggageSpaceFilter == true{
-            baggageSpaceSwitchOutlet.isOn = true
-        }
-        if filter.wheelchairFilter == true{
-            wheelchairSwitchOutlet.isOn = true
-        }
-        
-        if filter.wheelchairAccessFilter == true{
-            wheelchairAccessSwitchOutlet.isOn = true
-        }
-
-        
-        
-        if filter.autoDoorFilter == true{
-            handrailSwitchOutlet.isOn = true
-        }
-        
-        if filter.callHelpFilter == true{
-            callHelpSwitchOutlet.isOn = true
-        }
-        
-        if filter.ostomateFilter == true{
-            ostomateSwitchOutlet.isOn = true
-        }
-        
-        if filter.writtenEnglish == true{
-            writtenEnglishSwitchOutlet.isOn = true
-        }
-        if filter.braille == true{
-            brailleSwitchOutlet.isOn = true
-        }
-        
-        if filter.voiceGuideFilter == true{
-            voiceGuideSwitchOutlet.isOn = true
-        }
-
-        
-        
+        // For other things one 
         if filter.fancy == true{
             fancyToiletSwitchOutlet.isOn = true
         }
@@ -474,9 +475,29 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
             confortableWideToiletSwitchOutlet.isOn = true
         }
         
+        if filter.clothes == true{
+            clothesSwitchOutlet.isOn = true
+        }
+        
+        if filter.baggageSpaceFilter == true{
+            baggageSpaceSwitchOutlet.isOn = true
+        }
+
+        
+        //For other things two 
+        
+        
+       
+        
         if filter.noNeedAsk == true{
             noNeedAskSwitchOutlet.isOn = true
         }
+        
+        if filter.writtenEnglish == true{
+            writtenEnglishSwitchOutlet.isOn = true
+        }
+        
+        
         if filter.parking == true{
             parkingSwitchOutlet.isOn = true
         }
@@ -484,12 +505,117 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         if filter.airConditionFilter == true{
             airConditionSwitchOutlet.isOn = true
         }
-
+        
         
         if filter.wifiFilter == true{
             wifiSwitchOutlet.isOn = true
         }
         
+
+        
+        
+        //For ladys 
+        
+        
+        if filter.otohime == true{
+            otohimeSwitchOutlet.isOn = true
+        }
+        
+        
+        if filter.napkinSelling == true{
+            napkinSellingSwtichOutlet.isOn = true
+        }
+        
+        if filter.makeroomFilter == true{
+            makeRoomSwitchOutlet.isOn = true
+        }
+        
+        if filter.ladyOmutu == true{
+            ladyOmutu.isOn = true
+        }
+
+        
+        if filter.ladyBabyChair == true{
+            ladyBabyChairOutlet.isOn = true
+        }
+
+        
+        if filter.ladyBabyChairGood == true{
+            ladyBabyChairGoodOutlet.isOn = true
+        }
+
+        
+        if filter.ladyBabyCarAccess == true{
+            ladyBabyCarAccessOutlet.isOn = true
+        }
+
+
+        
+        
+        //For males 
+        
+        
+        if filter.maleOmutu == true{
+            maleOmutuOutlet.isOn = true
+        }
+
+        if filter.maleBabyChair == true{
+            maleBabyChiarOutlet.isOn = true
+        }
+
+        if filter.maleBabyChairgood == true{
+            maleBabyChairGood.isOn = true
+        }
+
+        if filter.maleBabyCarAccess == true{
+             maleBabyCarAccessOutlet.isOn = true
+        }
+
+        
+        //For family 
+        
+        
+        
+        
+        if filter.wheelchairFilter == true{
+            wheelchairSwitchOutlet.isOn = true
+        }
+        
+        if filter.wheelchairAccessFilter == true{
+            wheelchairAccessSwitchOutlet.isOn = true
+        }
+
+        
+        
+        if filter.autoDoorFilter == true{
+            autoDoorSwitchOutlet.isOn = true
+        }
+        
+        if filter.callHelpFilter == true{
+            callHelpSwitchOutlet.isOn = true
+        }
+        
+        if filter.ostomateFilter == true{
+            ostomateSwitchOutlet.isOn = true
+        }
+        
+        if filter.braille == true{
+            brailleSwitchOutlet.isOn = true
+        }
+        
+        if filter.voiceGuideFilter == true{
+            voiceGuideSwitchOutlet.isOn = true
+        }
+        
+        if filter.familyOmutu == true{
+            familyOmutuOutlet.isOn = true
+        }
+
+        if filter.familyBabyChair == true{
+            familyBabyChairOutlet.isOn = true
+        }
+
+
         
         
         
@@ -963,6 +1089,9 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     }
     
     
+    //Benki Funtion
+    
+    
     @IBAction func washletSwitchTapped(_ sender: Any) {
         if washletSwitchOutlet.isOn == true{
             filter.washletFilter = true
@@ -1027,6 +1156,8 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     }
     
     
+    //Washstand Funtion
+    
     @IBAction func sensorHandWashSwitchTapped(_ sender: Any) {
         if sensorHandWashSwtichOutlet.isOn == true{
             filter.sensorHandWashFilter = true
@@ -1077,13 +1208,126 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     }
     
     
+    //Others one 
+    
+    
+    @IBAction func fancyToiletSwitchTapped(_ sender: Any) {
+        if fancyToiletSwitchOutlet.isOn == true{
+            filter.fancy = true
+        }else {
+            filter.fancy = false
+        }
+        
+    }
+    
+    
+    @IBAction func smellGoodToiletSwitchTapped(_ sender: Any) {
+        if goodSmellToiletSwitchOutlet.isOn == true{
+            filter.smell = true
+        }else {
+            filter.smell = false
+        }
+        
+    }
+    
+    
+    @IBAction func confortableWideToiletSwitchTapped(_ sender: Any) {
+        if confortableWideToiletSwitchOutlet.isOn == true{
+            filter.confortableWise = true
+        }else {
+            filter.confortableWise = false
+        }
+        
+    }
+
+    
+    
+    
+    @IBAction func clothesSwitchTapped(_ sender: Any) {
+        if clothesSwitchOutlet.isOn == true{
+            filter.clothes = true
+        }else {
+            filter.clothes = false
+        }
+        
+    }
+    
+    @IBAction func baggageSpaceSwitchTapped(_ sender: Any) {
+        if baggageSpaceSwitchOutlet.isOn == true{
+            filter.baggageSpaceFilter = true
+        }else {
+            filter.baggageSpaceFilter = false
+        }
+        
+    }
+    
+
+    //Others two
+    
+    
+    @IBAction func noNeedAskSwitchTapped(_ sender: Any) {
+        if noNeedAskSwitchOutlet.isOn == true{
+            filter.noNeedAsk = true
+        }else {
+            filter.noNeedAsk = false
+        }
+        
+    }
+    
+    
+    @IBAction func writtenEnglishSwitchTapped(_ sender: Any) {
+        if writtenEnglishSwitchOutlet.isOn == true{
+            filter.writtenEnglish = true
+        }else {
+            filter.writtenEnglish = false
+        }
+        
+    }
+    
+    
+    
+    @IBAction func parkingSwitchTapped(_ sender: Any) {
+        if parkingSwitchOutlet.isOn == true{
+            filter.parking = true
+        }else {
+            filter.parking = false
+        }
+        
+    }
+    
+    
+    @IBAction func airConditionSwitchTapped(_ sender: Any) {
+        if airConditionSwitchOutlet.isOn == true{
+            filter.airConditionFilter = true
+        }else {
+            filter.airConditionFilter = false
+        }
+        
+    }
+    
+    
+    @IBAction func wifiSwitchTapped(_ sender: Any) {
+        if wifiSwitchOutlet.isOn == true{
+            filter.wifiFilter = true
+        }else {
+            filter.wifiFilter = false
+        }
+        
+    }
+
+    
+    
+    //For ladys 
+    
+    
     @IBAction func otohimeSwitchTapped(_ sender: Any) {
         if otohimeSwitchOutlet.isOn == true{
             filter.otohime = true
+            print("Otohime Tapped")
         }else {
             filter.otohime = false
         }
-
+        
     }
     
     
@@ -1093,7 +1337,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         }else {
             filter.napkinSelling = false
         }
-
+        
     }
     
     
@@ -1103,26 +1347,90 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         }else {
             filter.makeroomFilter = false
         }
-
+        
     }
     
-    @IBAction func clothesSwitchTapped(_ sender: Any) {
-        if clothesSwitchOutlet.isOn == true{
-            filter.clothes = true
+    @IBAction func ladyOmutuSwitchTapped(_ sender: Any) {
+        
+        if ladyOmutu.isOn == true{
+            filter.ladyOmutu = true
         }else {
-            filter.clothes = false
+            filter.ladyOmutu = false
         }
 
     }
     
-    @IBAction func baggageSpaceSwitchTapped(_ sender: Any) {
-        if baggageSpaceSwitchOutlet.isOn == true{
-            filter.baggageSpaceFilter = true
+    
+    @IBAction func ladyBabyChairTapped(_ sender: Any) {
+        if ladyBabyChairOutlet.isOn == true{
+            filter.ladyBabyChair = true
         }else {
-            filter.baggageSpaceFilter = false
+            filter.ladyBabyChair = false
         }
-
     }
+    
+    
+    @IBAction func ladyBabyChairGoodTapped(_ sender: Any) {
+        if ladyBabyChairGoodOutlet.isOn == true{
+            filter.ladyBabyChairGood = true
+        }else {
+            filter.ladyBabyChairGood = false
+        }
+    }
+    
+    @IBAction func ladyBabyCarAccessTapped(_ sender: Any) {
+        if ladyBabyCarAccessOutlet.isOn == true{
+            filter.ladyBabyCarAccess = true
+        }else {
+            filter.ladyBabyCarAccess = false
+        }
+    }
+    
+
+    
+    
+    //For men 
+    
+    
+    @IBAction func maleOmutuSwitchTapped(_ sender: Any) {
+        if maleOmutuOutlet.isOn == true{
+            filter.maleOmutu = true
+        }else {
+            filter.maleOmutu = false
+        }
+    }
+    
+    @IBAction func maleBabyChairTapped(_ sender: Any) {
+        if maleBabyChiarOutlet.isOn == true{
+            filter.maleBabyChair = true
+        }else {
+            filter.maleBabyChair = false
+        }
+    }
+    
+    @IBAction func maleBabyChairGoodTapped(_ sender: Any) {
+        if maleBabyChairGood.isOn == true{
+            filter.maleBabyChairgood = true
+        }else {
+            filter.maleBabyChairgood = false
+        }
+    }
+    
+    @IBAction func maleBabyCarAccessTapped(_ sender: Any) {
+        if maleBabyCarAccessOutlet.isOn == true{
+            filter.maleBabyCarAccess = true
+        }else {
+            filter.maleBabyCarAccess = false
+        }
+    }
+    
+    
+    
+    
+    
+    
+    //For family
+    
     
     
     
@@ -1147,15 +1455,16 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     
     
-    @IBAction func handrailSwitchTapped(_ sender: Any) {
-        if handrailSwitchOutlet.isOn == true{
+    @IBAction func autoDoorSwitchTapped(_ sender: Any) {
+        if autoDoorSwitchOutlet.isOn == true{
             filter.autoDoorFilter = true
         }else {
             filter.autoDoorFilter = false
         }
-
+        
     }
     
+    //Should be changed this....
     
     
     @IBAction func callHelpSwitchTapped(_ sender: Any) {
@@ -1177,16 +1486,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
 
     }
     
-    
-    @IBAction func writtenEnglishSwitchTapped(_ sender: Any) {
-        if writtenEnglishSwitchOutlet.isOn == true{
-            filter.writtenEnglish = true
-        }else {
-            filter.writtenEnglish = false
-        }
 
-    }
-    
     
     
     @IBAction func brailleSwitchTapped(_ sender: Any) {
@@ -1208,75 +1508,23 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
 
     }
     
-    
-    @IBAction func fancyToiletSwitchTapped(_ sender: Any) {
-        if fancyToiletSwitchOutlet.isOn == true{
-            filter.fancy = true
+    @IBAction func familyOmutuSwitchTapped(_ sender: Any) {
+        if familyOmutuOutlet.isOn == true{
+            filter.familyOmutu = true
         }else {
-            filter.fancy = false
+            filter.familyOmutu = false
         }
-
+    }
+    
+    @IBAction func familyBabySwitchTapped(_ sender: Any) {
+        if familyBabyChairOutlet.isOn == true{
+            filter.familyBabyChair = true
+        }else {
+            filter.familyBabyChair = false
+        }
     }
     
     
-    @IBAction func smellGoodToiletSwitchTapped(_ sender: Any) {
-        if goodSmellToiletSwitchOutlet.isOn == true{
-            filter.smell = true
-        }else {
-            filter.smell = false
-        }
-
-    }
-    
-    
-    @IBAction func confortableWideToiletSwitchTapped(_ sender: Any) {
-        if confortableWideToiletSwitchOutlet.isOn == true{
-            filter.confortableWise = true
-        }else {
-            filter.confortableWise = false
-        }
-
-    }
-    
-    
-    @IBAction func noNeedAskSwitchTapped(_ sender: Any) {
-        if noNeedAskSwitchOutlet.isOn == true{
-            filter.noNeedAsk = true
-        }else {
-            filter.noNeedAsk = false
-        }
-
-    }
-    
-    
-    @IBAction func parkingSwitchTapped(_ sender: Any) {
-        if parkingSwitchOutlet.isOn == true{
-            filter.parking = true
-        }else {
-            filter.parking = false
-        }
-
-    }
-    
-    
-    @IBAction func airConditionSwitchTapped(_ sender: Any) {
-        if airConditionSwitchOutlet.isOn == true{
-            filter.airConditionFilter = true
-        }else {
-            filter.airConditionFilter = false
-        }
-
-    }
-    
-    
-    @IBAction func wifiSwitchTapped(_ sender: Any) {
-        if wifiSwitchOutlet.isOn == true{
-            filter.wifiFilter = true
-        }else {
-            filter.wifiFilter = false
-        }
-
-    }
     
     @IBAction func milkSpaceSwitchTapped(_ sender: Any) {
         if milkSpaceSwitchOutlet.isOn == true{
@@ -1548,122 +1796,6 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     }
     
     
-    
-//    @IBAction func washletSwitchTapped(_ sender: Any) {
-//        
-//            if washletLabelSwitch.isOn == true{
-//                filter.washletFilter = true
-//            }else {
-//                filter.washletFilter = false
-//            }
-//    }
-//    
-//    
-//    @IBAction func wheelChairSwitchTapped(_ sender: Any) {
-//        if wheelchairLabelSwitch.isOn == true{
-//            filter.wheelchairFilter = true
-//        }else {
-//            filter.wheelchairFilter = false
-//        }
-//
-//    }
-//  
-//    @IBAction func onlyFemaleSwitchTapped(_ sender: Any) {
-//        if onlyFemaleSwitch.isOn == true{
-//            filter.onlyFemaleFilter = true
-//        }else {
-//            filter.onlyFemaleFilter = false
-//        }
-//    }
-//    
-//    @IBAction func unisexSwtichTapped(_ sender: Any) {
-//        if unisexLabelSwitch.isOn == true{
-//            filter.unisexFilter = true
-//        }else {
-//            filter.unisexFilter = false
-//        }
-//    }
-//  
-//    @IBAction func makeroomSwitch(_ sender: Any) {
-//        if makeroomLabelSwtich.isOn == true{
-//            filter.makeroomFilter = true
-//        }else {
-//            filter.makeroomFilter = false
-//        }
-//    }
-//   
-//    @IBAction func milkspaceSwtich(_ sender: Any) {
-//        if milkspaceLabelSwitch.isOn == true{
-//            filter.milkspaceFilter = true
-//        }else {
-//            filter.milkspaceFilter = false
-//        }
-//    }
-//    
-//    @IBAction func omutuSwitchTapped(_ sender: Any) {
-//        if omutuLabelSwitch.isOn == true{
-//            filter.omutuFilter = true
-//        }else {
-//            filter.omutuFilter = false
-//        }
-//    }
-//
-//    @IBAction func ostomateSwitchTapped(_ sender: Any) {
-//        if ostomateLabelSwitch.isOn == true{
-//            filter.ostomateFilter = true
-//        }else {
-//            filter.ostomateFilter = false
-//        }
-//    }
-// 
-//    @IBAction func japaneseSwitchTapped(_ sender: Any) {
-//        if japaneseLabelSwitch.isOn == true{
-//            filter.japaneseFilter = true
-//        }else {
-//            filter.japaneseFilter = false
-//        }
-//
-//    }
-//  
-//    @IBAction func westernSwitchTapped(_ sender: Any) {
-//        if westernLabelSwitch.isOn == true{
-//            filter.westernFilter = true
-//        }else {
-//            filter.westernFilter = false
-//        }
-//
-//    }
-//    
-//   
-//    @IBAction func availableSwitchTapped(_ sender: Any) {
-//        if availableLabelSwitch.isOn == true{
-//            filter.availableFilter = true
-//        }else {
-//            filter.availableFilter = false
-//        }
-//    }
-//    
-//    @IBAction func warmSeatSwitchTapped(_ sender: Any) {
-//        if warmSeatSwitch.isOn == true{
-//            filter.warmSearFilter = true
-//        }else {
-//            filter.warmSearFilter = false
-//        }
-//
-//    }
-//    
-//    @IBAction func baggageSwitchTapped(_ sender: Any) {
-//        
-//        if baggageSpaceLabelSwitch.isOn == true{
-//            filter.baggageSpaceFilter = true
-//        }else {
-//            filter.baggageSpaceFilter = false
-//        }
-//    }
-//    
-   
-    
-   
     
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
