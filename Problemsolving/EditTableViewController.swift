@@ -229,7 +229,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         view.addGestureRecognizer(tap)
         
         placeNameLabel.text = toilet.name
-        placeCategoryLabel.text = toilet.type
+        placeCategoryLabel.text = String(toilet.type)
         availableTimeLabel.text = toilet.openinghours
         
         let pinAnnotation = MKPointAnnotation()
@@ -334,8 +334,11 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         if !toilet.wheelchairAccess{
             wheelChiarAccess.isOn = false
         }
-        if !toilet.handrail{
+        if !toilet.autoDoor{
+            
             handRailSwitch.isOn = false
+            
+            //Should change name ot autoDoor Switch......
         }
 
         if !toilet.callHelp{

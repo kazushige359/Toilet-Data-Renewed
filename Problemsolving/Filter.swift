@@ -43,7 +43,7 @@ class Filter {
     var orderStarFilter = false;
     var orderReviewFilter = false;
     var typeFilterOn = false;
-    var typeFilter = "全てのトイレ";
+    var typeFilter = 0;
     
     var availableFilter = false;
     var japaneseFilter = false;
@@ -66,29 +66,53 @@ class Filter {
     var paperTowelFilter = false;
     var handDrierFilter = false;
     
-    var otohime = false;
-    var napkinSelling = false;
-    var makeroomFilter = false;
+    
+    //others one
+    var fancy = false;
+    var smell = false;
+    var confortableWise = false;
     var clothes = false;
     var baggageSpaceFilter = false;
     
+    //others two 
+    
+    var noNeedAsk = false;
+    var writtenEnglish = false;
+    var parking = false;
+    var airConditionFilter = false;
+    var wifiFilter = false;
+    
+    
+    //for ladys 
+    var otohime = false;
+    var napkinSelling = false;
+    var makeroomFilter = false;
+    var ladyOmutu = false;
+    var ladyBabyChair = false;
+    var ladyBabyChairGood = false
+    var ladyBabyCarAccess = false
+    
+    
+    //for men 
+    var maleOmutu = false
+    var maleBabyChair = false
+    var maleBabyChairgood = false
+    var maleBabyCarAccess = false
+    
+    //for family room
     var wheelchairFilter = false;
     var wheelchairAccessFilter = false;
     var handrailFilter = false;
     var callHelpFilter = false;
     var ostomateFilter = false;
-    var writtenEnglish = false;
     var braille = false;
     var voiceGuideFilter = false;
+    var familyOmutu = false
+    var familyBabyChair = false
     
     
-    var fancy = false;
-    var smell = false;
-    var confortableWise = false;
-    var noNeedAsk = false;
-    var parking = false;
-    var airConditionFilter = false;
-    var wifiFilter = false;
+    
+   
     
     var milkspaceFilter = false;
     var babyRoomOnlyFemaleFilter = false;

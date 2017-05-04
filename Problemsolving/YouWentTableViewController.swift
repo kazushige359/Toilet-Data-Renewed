@@ -80,8 +80,8 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
                 let urlOne = snapshotValue?["urlOne"] as? String
                 toilet.urlOne = urlOne!
                 
-                let type = snapshotValue?["type"] as? String
-                toilet.type = type!
+//                let type = snapshotValue?["type"] as? Integer
+//                toilet.type = type!
                 // print("type = \(type)")
                 
                 let averageStar = snapshotValue?["averageStar"] as? String
@@ -92,7 +92,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
                 
                 
                 toilet.name = (snapshotValue?["name"] as? String)!
-                toilet.type = (snapshotValue?["type"] as? String)!
+                toilet.type = (snapshotValue?["type"] as? Int)!
                 toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
                 toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
                 
@@ -145,7 +145,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
                 
                 toilet.wheelchair = (snapshotValue?["wheelchair"] as? Bool)!
                 toilet.wheelchairAccess = (snapshotValue?["wheelchairAccess"] as? Bool)!
-                toilet.handrail = (snapshotValue?["handrail"] as? Bool)!
+                toilet.autoDoor = (snapshotValue?["autoDoor"] as? Bool)!
                 toilet.callHelp = (snapshotValue?["callHelp"] as? Bool)!
                 toilet.ostomate = (snapshotValue?["ostomate"] as? Bool)!
                 toilet.english = (snapshotValue?["english"] as? Bool)!

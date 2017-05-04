@@ -13,7 +13,7 @@ class  Toilet {
     
     
     var key = ""
-    var type = ""
+    var type = 0
     var name = ""
     var urlOne = ""
     var urlTwo = ""
@@ -54,39 +54,72 @@ class  Toilet {
     var paperTowel = false
     var handDrier = false
     
-    var otohime = false
-    var napkinSelling = false
-    var makeuproom = false
-    var clothes = false
-    var baggageSpace = false
-    
-    
-    var wheelchair = false
-    var wheelchairAccess = false
-    var handrail = false
-    var callHelp = false
-    var ostomate = false
-    var english = false
-    var braille = false
-    var voiceGuide = false
-    
+    //others one 
     
     var fancy = false
     var smell = false
     var conforatableWide = false
+    var clothes = false
+    var baggageSpace = false
+
+    
+    
+    //others two 
     var noNeedAsk = false
+    var english = false
     var parking = false
     var airCondition = false
     var wifi = false
+    
+    
+    //ladys 
+    
+    var otohime = false
+    var napkinSelling = false
+    var makeuproom = false
+    var ladyOmutu = false
+    var ladyBabyChair = false
+    var ladyBabyChairGood = false
+    var ladyBabyCarAccess = false
+    
+    
+
+    
+    //men
+    var maleOmutu = false
+    var maleBabyChair = false
+    var maleBabyChairGood = false
+    var maleBabyCarAccess = false
+    
+    
+    //family restroom 
+    
+    var wheelchair = false
+    var wheelchairAccess = false
+    var autoDoor = false
+    var callHelp = false
+    var ostomate = false
+    var braille = false
+    var voiceGuide = false
+    var familyOmutu = false
+    var familyBabyChair = false
+    
+    
+    
+    
+   
+   
+    
+    
+    
     var milkspace = false
-    
-    
-    
     var babyroomOnlyFemale = false
     var babyroomManCanEnter = false
     var babyPersonalSpace = false
     var babyPersonalSpaceWithLock = false
     var babyRoomWideSpace = false
+    
+    
     var babyCarRental = false
     var babyCarAccess = false
     var omutu = false
@@ -94,12 +127,18 @@ class  Toilet {
     var babyTrashCan = false
     var omutuSelling = false
     var babyFoddSelling = false
+    
+    
+    
     var babyRoomSink = false
     var babyWashStand = false
     var babyHotWater = false
     var babyMicroWave = false
     var babyWaterSelling = false
     var babyEatingSpace = false
+    
+    
+    
     var babyChair = false
     var babySoffa = false
     var babyKidsToilet = false

@@ -775,8 +775,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 let urlOne = snapshotValue?["urlOne"] as? String
                 toilet.urlOne = urlOne!
                 
-                let type = snapshotValue?["type"] as? String
-                toilet.type = type!
+//                let type = snapshotValue?["type"] as? Inte
+//                toilet.type = type!
                 // print("type = \(type)")
                 
                 let averageStar = snapshotValue?["averageStar"] as? String
@@ -785,7 +785,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 
                 toilet.name = (snapshotValue?["name"] as? String)!
-                toilet.type = (snapshotValue?["type"] as? String)!
+                toilet.type = (snapshotValue?["type"] as? Int)!
                 toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
                 toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
                 
@@ -838,7 +838,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
                 toilet.wheelchair = (snapshotValue?["wheelchair"] as? Bool)!
                 toilet.wheelchairAccess = (snapshotValue?["wheelchairAccess"] as? Bool)!
-                toilet.handrail = (snapshotValue?["handrail"] as? Bool)!
+                toilet.autoDoor = (snapshotValue?["autoDoor"] as? Bool)!
                 toilet.callHelp = (snapshotValue?["callHelp"] as? Bool)!
                 toilet.ostomate = (snapshotValue?["ostomate"] as? Bool)!
                 toilet.english = (snapshotValue?["english"] as? Bool)!
@@ -1046,7 +1046,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.removedToilet = true
                 }
                 
-                if self.filter.handrailFilter == true && toilet.handrail == false {
+                if self.filter.handrailFilter == true && toilet.autoDoor == false {
                     self.removedToilet = true
                 }
                 
@@ -1239,12 +1239,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.removedToilet = true
                 }
                 
-                if self.filter.typeFilterOn == true {
-                    if self.filter.typeFilter != toilet.type{
-                    self.removedToilet = true
-                    }
-                    print("toilet.type = \(toilet.type)")
-                }
+//                if self.filter.typeFilterOn == true {
+//                    if self.filter.typeFilter != toilet.type{
+//                    self.removedToilet = true
+//                    }
+//                    print("toilet.type = \(toilet.type)")
+//                }
+                
+                //Changed toilet type String to Integer
                 
                 if self.removedToilet == false {
                     self.toilets.append(toilet)

@@ -857,36 +857,37 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
       //  if typeActualSearch
         
                 if typeField.text == typeOption[0]{
+                    filter.typeFilter = 0
                     filter.typeFilterOn = false
                    // filter.starFilterSetted = true
                 }
                 if typeField.text == typeOption[1]{
                      filter.typeFilterOn = true
-                     filter.typeFilter = "公衆トイレ"
+                     filter.typeFilter = 1
                 }
                 if typeField.text == typeOption[2]{
                     filter.typeFilterOn = true
-                    filter.typeFilter = "コンビニ"
+                    filter.typeFilter = 2
                 }
                 if typeField.text == typeOption[3]{
                     filter.typeFilterOn = true
-                    filter.typeFilter = "カフェ"
+                    filter.typeFilter = 3
                 }
                 if typeField.text == typeOption[4]{
                     filter.typeFilterOn = true
-                    filter.typeFilter = "レストラン"
+                    filter.typeFilter = 4
                 }
                 if typeField.text == typeOption[5]{
                     filter.typeFilterOn = true
-                    filter.typeFilter = "商業施設"
+                    filter.typeFilter = 5
                 }
                 if typeField.text == typeOption[6]{
                     filter.typeFilterOn = true
-                    filter.typeFilter = "観光地・スタジアム"
+                    filter.typeFilter = 6
                 }
                 if typeField.text == typeOption[7]{
                     filter.typeFilterOn = true
-                    filter.typeFilter = "仮設トイレ"
+                    filter.typeFilter = 7
                 }
           
         print("filter.typeFilter = \(filter.typeFilter)")

@@ -323,7 +323,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             
             self.toilet.name = (snapshotValue?["name"] as? String)!
-            self.toilet.type = (snapshotValue?["type"] as? String)!
+            self.toilet.type = (snapshotValue?["type"] as? Int)!
             self.toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
             self.toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
             
@@ -376,7 +376,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             self.toilet.wheelchair = (snapshotValue?["wheelchair"] as? Bool)!
             self.toilet.wheelchairAccess = (snapshotValue?["wheelchairAccess"] as? Bool)!
-            self.toilet.handrail = (snapshotValue?["handrail"] as? Bool)!
+            self.toilet.autoDoor = (snapshotValue?["autoDoor"] as? Bool)!
             self.toilet.callHelp = (snapshotValue?["callHelp"] as? Bool)!
             self.toilet.ostomate = (snapshotValue?["ostomate"] as? Bool)!
             self.toilet.english = (snapshotValue?["english"] as? Bool)!
@@ -538,8 +538,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             if self.toilet.wheelchairAccess{
                 self.booleans.append("車イスでアクセス可能")
             }
-            if self.toilet.handrail{
-                self.booleans.append("手すり")
+            if self.toilet.autoDoor{
+                self.booleans.append("自動ドア")
             }
             if self.toilet.callHelp{
                 self.booleans.append("呼び出しボタン")
@@ -743,7 +743,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         print("toiletDistance22233 == \(toilet.distance)")
         
         
-        typeAndDistanceLabel.text = toilet.type + "/" + distanceText
+        typeAndDistanceLabel.text = String(toilet.type) + "/" + distanceText
         
         reviewCountLabel.text = "(\(toilet.reviewCount)件)"
         

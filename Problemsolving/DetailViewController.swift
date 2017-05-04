@@ -164,7 +164,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         bigPicture.sd_setImage(with: URL(string: toilet.urlOne))
         nameLabel.text = toilet.name
-        categoryType.text = toilet.type
+        categoryType.text = String(toilet.type)
         locationAuthStatus()
         
         let coordinate1: CLLocationCoordinate2D = toilet.loc.coordinate
