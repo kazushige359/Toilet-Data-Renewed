@@ -50,35 +50,58 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     @IBOutlet weak var autoHandSoapSwitch: UISwitch!
     @IBOutlet weak var paperTowelSwitch: UISwitch!
     @IBOutlet weak var handDrierSwitch: UISwitch!
-    @IBOutlet weak var otohimeSwitch: UISwitch!
-    @IBOutlet weak var napkinSellingSwitch: UISwitch!
-    @IBOutlet weak var makeRoomSwitch: UISwitch!
-    @IBOutlet weak var clothesSwitch: UISwitch!
-    @IBOutlet weak var baggageSwitch: UISwitch!
     
     
-    
-    
-    
-    
-    
-    @IBOutlet weak var wheelChairSwitch: UISwitch!
-    @IBOutlet weak var wheelChiarAccess: UISwitch!
-    @IBOutlet weak var handRailSwitch: UISwitch!
-    @IBOutlet weak var callHelpSwitch: UISwitch!
-    @IBOutlet weak var ostomateSwitch: UISwitch!
-    @IBOutlet weak var writtenEnglishSwitch: UISwitch!
-    @IBOutlet weak var brailleSwitch: UISwitch!
-    @IBOutlet weak var voiceGuideSwitch: UISwitch!
-    
-    
+    //Other things one
     @IBOutlet weak var toiletFancySwitch: UISwitch!
     @IBOutlet weak var toiletSmellGood: UISwitch!
     @IBOutlet weak var toiletWideSpaceSwitch: UISwitch!
+    @IBOutlet weak var clothesSwitch: UISwitch!
+    @IBOutlet weak var baggageSwitch: UISwitch!
+    
+    //Other things two 
+    
     @IBOutlet weak var noNeedAskSwitch: UISwitch!
+    @IBOutlet weak var writtenEnglishSwitch: UISwitch!
     @IBOutlet weak var parkingSwitch: UISwitch!
     @IBOutlet weak var airConditionSwitch: UISwitch!
     @IBOutlet weak var wifiSwitch: UISwitch!
+
+    
+    
+    //For ladys 
+    @IBOutlet weak var otohimeSwitch: UISwitch!
+    @IBOutlet weak var napkinSellingSwitch: UISwitch!
+    @IBOutlet weak var makeRoomSwitch: UISwitch!
+    @IBOutlet weak var ladyOmutuSwitch: UISwitch!
+    @IBOutlet weak var ladyBabyChairSwitch: UISwitch!
+    @IBOutlet weak var ladyBabyChairGoodSwitch: UISwitch!
+    @IBOutlet weak var ladyBabyCarAccess: UISwitch!
+    
+    //For males 
+    
+    @IBOutlet weak var maleOmutuSwitch: UISwitch!
+    @IBOutlet weak var maleBabyChairSwitch: UISwitch!
+    @IBOutlet weak var maleBabyChairGood: UISwitch!
+    @IBOutlet weak var maleBabyCarAccess: UISwitch!
+    
+    
+    
+    //For family
+    @IBOutlet weak var wheelChairSwitch: UISwitch!
+    @IBOutlet weak var wheelChiarAccess: UISwitch!
+    
+    @IBOutlet weak var autoDoorSwitch: UISwitch!
+    @IBOutlet weak var callHelpSwitch: UISwitch!
+    @IBOutlet weak var ostomateSwitch: UISwitch!
+    @IBOutlet weak var brailleSwitch: UISwitch!
+    @IBOutlet weak var voiceGuideSwitch: UISwitch!
+    @IBOutlet weak var familyOmutuSwitch: UISwitch!
+    @IBOutlet weak var familyBabyChairSwitch: UISwitch!
+    
+    //Family omutu...
+    
+    
     
     
     @IBOutlet weak var milkSpaceSwitch: UISwitch!
@@ -306,7 +329,53 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             handDrierSwitch.isOn = false
         }
         
+        //Other things one
         
+        if !toilet.fancy{
+            toiletFancySwitch.isOn = false
+        }
+        if !toilet.smell{
+            toiletSmellGood.isOn = false
+        }
+        if !toilet.conforatableWide{
+            toiletWideSpaceSwitch.isOn = false
+        }
+        
+        if !toilet.clothes{
+            clothesSwitch.isOn = false
+        }
+        if !toilet.baggageSpace{
+            baggageSwitch.isOn = false
+        }
+        
+        
+        //Other things two 
+       
+    
+        if !toilet.noNeedAsk{
+            noNeedAskSwitch.isOn = false
+        }
+        
+        if !toilet.english{
+            writtenEnglishSwitch.isOn = false
+        }
+        
+        
+        if !toilet.parking{
+            parkingSwitch.isOn = false
+        }
+        
+        if !toilet.airCondition{
+            airConditionSwitch.isOn = false
+        }
+        if !toilet.wifi{
+            wifiSwitch.isOn = false
+        }
+        
+
+        
+        
+        //For ladys 
         
         
         if !toilet.otohime{
@@ -319,15 +388,40 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             makeRoomSwitch.isOn = false
         }
 
-        if !toilet.clothes{
-            clothesSwitch.isOn = false
-        }
-        if !toilet.baggageSpace{
-            baggageSwitch.isOn = false
+        if !toilet.ladyOmutu{
+            ladyOmutuSwitch.isOn = false
         }
         
+        if !toilet.ladyBabyChair{
+            ladyBabyChairSwitch.isOn = false
+        }
+        
+        if !toilet.ladyBabyChairGood{
+            ladyBabyChairGoodSwitch.isOn = false
+        }
+        
+        if !toilet.ladyBabyCarAccess{
+            ladyBabyCarAccess.isOn = false
+        }
+        
+        //For males 
+        
+        if !toilet.maleOmutu {
+           maleOmutuSwitch.isOn = false
+        }
+        if !toilet.maleBabyChair {
+            maleBabyChairSwitch.isOn = false
+        }
+        if !toilet.maleBabyChairGood {
+            maleBabyChairGood.isOn = false
+        }
+        if !toilet.maleBabyCarAccess {
+            maleBabyCarAccess.isOn = false
+        }
         
         
+        //For family 
+                
         if !toilet.wheelchair{
             wheelChairSwitch.isOn = false
         }
@@ -336,9 +430,9 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         }
         if !toilet.autoDoor{
             
-            handRailSwitch.isOn = false
+            autoDoorSwitch.isOn = false
+        
             
-            //Should change name ot autoDoor Switch......
         }
 
         if !toilet.callHelp{
@@ -347,42 +441,22 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         if !toilet.ostomate{
             ostomateSwitch.isOn = false
         }
-        if !toilet.english{
-            writtenEnglishSwitch.isOn = false
-        }
+      
         if !toilet.braille{
             brailleSwitch.isOn = false
         }
         if !toilet.voiceGuide{
             voiceGuideSwitch.isOn = false
         }
+        if !toilet.familyOmutu {
+            familyOmutuSwitch.isOn = false
+        }
+        if !toilet.familyBabyChair {
+            familyBabyChairSwitch.isOn = false
+        }
         
         
         
-        
-
-        if !toilet.fancy{
-            toiletFancySwitch.isOn = false
-        }
-        if !toilet.smell{
-            toiletSmellGood.isOn = false
-        }
-        if !toilet.conforatableWide{
-            toiletWideSpaceSwitch.isOn = false
-        }
-        if !toilet.noNeedAsk{
-            noNeedAskSwitch.isOn = false
-        }
-        if !toilet.parking{
-            parkingSwitch.isOn = false
-        }
-
-        if !toilet.airCondition{
-            airConditionSwitch.isOn = false
-        }
-        if !toilet.wifi{
-            wifiSwitch.isOn = false
-        }
         
         
         if !toilet.milkspace{
@@ -906,100 +980,129 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             
             //Copied from change detail view controller April 14
-            let tdata : [String : Any] = ["name":name!,
-                                          "openAndCloseHours": availableTimeForDatabase as String,
-                                          "type":placeCategoryLabel.text! as String,
-                                          "urlOne":"" as String,
-                                          "urlTwo":"" as String,
-                                          "urlThree":"" as String,
-                                          //"addedBy":uid,
-                                          //"editedBy":uid,
-                                         // "averageStar":String(starView.rating) as String,
-                                          "address":"" as String,
-                                          "howtoaccess":"" as String,
-                                          "reviewOne":"",//
-                                          "reviewTwo":"",
-                                          "openHours":5000 as Int,
-                                          "closeHours":5000 as Int,
-                                          "reviewCount":1,
-                                          //"averageWait": waitInt! as Int,
-                                          "toiletFloor": 1,
-                                          "latitude": toilet.latitude,
-                                          "longitude": toilet.longitude,
-                                          "available": true,
-                                          "japanesetoilet": japaneseToiletSwitch.isOn as Bool,
-                                          "westerntoilet":westernToiletSwitch.isOn,
-                                          "onlyFemale":onlyFemalSwitch.isOn,
-                                          "unisex":unisexSwitch.isOn,
-                                          
-                                          "washlet":washletSwitch.isOn,
-                                          "warmSeat":warmSeatSwitch.isOn,
-                                          "autoOpen":autoOpenBenkiSwitch.isOn,
-                                          "noVirus":noVirusSwitch.isOn,
-                                          "paperForBenki":paperForBenkiSwitch.isOn,
-                                          "cleanerForBenki":cleanerBenkiSwitch.isOn,
-                                          "nonTouchWash":autoToiletWashSwitch.isOn,
-                                          
-                                          "sensorHandWash":sensorHandWashSwitch.isOn,
-                                          "handSoap":handSoapSwitch.isOn,
-                                          "nonTouchHandSoap":autoHandSoapSwitch.isOn,
-                                          "paperTowel":paperTowelSwitch.isOn,
-                                          "handDrier":handDrierSwitch.isOn,
-                                          
-                                          "otohime":otohimeSwitch.isOn,
-                                          "napkinSelling":napkinSellingSwitch.isOn,
-                                          "makeuproom":makeRoomSwitch.isOn,
-                                          "clothes":clothesSwitch.isOn,
-                                          "baggageSpace":baggageSwitch.isOn,
-                                          
-                                          "wheelchair":wheelChairSwitch.isOn,
-                                          "wheelchairAccess":wheelChiarAccess.isOn,
-                                          "handrail":handRailSwitch.isOn,
-                                          "callHelp":callHelpSwitch.isOn,
-                                          "ostomate":ostomateSwitch.isOn,
-                                          "english":writtenEnglishSwitch.isOn,
-                                          "braille":brailleSwitch.isOn,
-                                          "voiceGuide":voiceGuideSwitch.isOn,
-                                          
-                                          "fancy":toiletFancySwitch.isOn,
-                                          "smell":toiletSmellGood.isOn,
-                                          "confortable":toiletWideSpaceSwitch.isOn,
-                                          "noNeedAsk":noNeedAskSwitch.isOn,
-                                          "parking":parkingSwitch.isOn,
-                                          "airCondition":airConditionSwitch.isOn,
-                                          "wifi":wifiSwitch.isOn,
-                                          
-                                          "milkspace":milkSpaceSwitch.isOn,
-                                          "babyRoomOnlyFemale":onlyFamaleBabyRoom.isOn,
-                                          "babyRoomMaleEnter":babyRoomMaleEnterSwitch.isOn,
-                                          "babyRoomPersonalSpace":babyRoomPersonalSpace.isOn,
-                                          "babyRoomPersonalSpaceWithLock":babyRoomPersonalWithLock.isOn,
-                                          "babyRoomWideSpace":babyRoomWideSpaceSwitch.isOn,
-                                          
-                                          "babyCarRental":babyCarRentalSwitch.isOn,
-                                          "babyCarAccess":babyCarAccessSwitch.isOn,
-                                          "omutu":omutuSwitch.isOn,
-                                          "hipCleaningStuff":hipWashingStuffSwitch.isOn,
-                                          "omutuTrashCan":omutuTrashCanSwitch.isOn,
-                                          "omutuSelling":omutuSellingSwitch.isOn,
-                                          
-                                          "babySink":babyRoomSinkSwitch.isOn,
-                                          "babyWashstand":babyWashStandSwitch.isOn,
-                                          "babyHotwater":babyRoomHotWaterSwitch.isOn,
-                                          "babyMicrowave":babyRoomMicrowaveSwitch.isOn,
-                                          "babyWaterSelling":babyRoomSellingWaterSwitch.isOn,
-                                          "babyFoodSelling":babyRoomFoodSellingSwitch.isOn,
-                                          "babyEatingSpace":babyRoomEatingSpace.isOn,
-                                          
-                                          "babyChair":babyChairSwitch.isOn,
-                                          "babySoffa":soffaSwitch.isOn,
-                                          "kidsToilet":kidsToiletSwitch.isOn,
-                                          "kidsSpace":kidsSpaceSwitch.isOn,
-                                          "babyHeight":heightMeasureSwitch.isOn,
-                                          "babyWeight":weightMeasureSwitch.isOn,
-                                          "babyToy":babyToySwitch.isOn,
-                                          "babyFancy":babyRoomFancySwitch.isOn,
-                                          "babySmellGood":babyRoomGoodSmellSwitch.isOn] as [String : Any]
+            
+            
+            let tdata : [String : Any] = [
+                "name":name!,
+                "openAndCloseHours": availableTimeForDatabase as String,
+                "type":placeCategoryLabel.text! as String,
+                "urlOne":"" as String,
+                "urlTwo":"" as String,
+                "urlThree":"" as String,
+                //"addedBy":uid,
+                //"editedBy":uid,
+                // "averageStar":String(starView.rating) as String,
+                "address":"" as String,
+                "howtoaccess":"" as String,
+                "reviewOne":"",//
+                "reviewTwo":"",
+                "openHours":5000 as Int,
+                "closeHours":5000 as Int,
+                "reviewCount":1,
+                //"averageWait": waitInt! as Int,
+                "toiletFloor": 1,
+                "latitude": toilet.latitude,
+                "longitude": toilet.longitude,
+                "available": true,
+                "japanesetoilet": japaneseToiletSwitch.isOn as Bool,
+                "westerntoilet":westernToiletSwitch.isOn,
+                "onlyFemale":onlyFemalSwitch.isOn,
+                "unisex":unisexSwitch.isOn,
+                
+                "washlet":washletSwitch.isOn,
+                "warmSeat":warmSeatSwitch.isOn,
+                "autoOpen":autoOpenBenkiSwitch.isOn,
+                "noVirus":noVirusSwitch.isOn,
+                "paperForBenki":paperForBenkiSwitch.isOn,
+                "cleanerForBenki":cleanerBenkiSwitch.isOn,
+                "nonTouchWash":autoToiletWashSwitch.isOn,
+                
+                "sensorHandWash":sensorHandWashSwitch.isOn,
+                "handSoap":handSoapSwitch.isOn,
+                "nonTouchHandSoap":autoHandSoapSwitch.isOn,
+                "paperTowel":paperTowelSwitch.isOn,
+                "handDrier":handDrierSwitch.isOn,
+                
+                //Other things one
+                "fancy":toiletFancySwitch.isOn,
+                "smell":toiletSmellGood.isOn,
+                "confortable":toiletWideSpaceSwitch.isOn,
+                "clothes":clothesSwitch.isOn,
+                "baggageSpace":baggageSwitch.isOn,
+                
+                
+                
+                //Other things two
+                "noNeedAsk":noNeedAskSwitch.isOn,
+                "english":writtenEnglishSwitch.isOn,
+                "parking":parkingSwitch.isOn,
+                "airCondition":airConditionSwitch.isOn,
+                "wifi":wifiSwitch.isOn,
+                
+                
+                
+                //For ladys
+                "otohime":otohimeSwitch.isOn,
+                "napkinSelling":napkinSellingSwitch.isOn,
+                "makeuproom":makeRoomSwitch.isOn,
+                "ladyOmutu":ladyOmutuSwitch.isOn,
+                "ladyBabyChair":ladyBabyChairSwitch.isOn,
+                "ladyBabyChairGood":ladyBabyChairGoodSwitch.isOn,
+                "ladyBabyCarAccess":ladyBabyCarAccess.isOn,
+                
+                
+                
+                //For males
+                "maleOmutu":maleOmutuSwitch.isOn,
+                "maleBabyChair":maleBabyChairSwitch.isOn,
+                "maleBabyChairGood":maleBabyChairGood.isOn,
+                "maleBabyCarAccess":maleBabyCarAccess.isOn,
+                
+                
+                //For family
+                "wheelchair":wheelChairSwitch.isOn,
+                "wheelchairAccess":wheelChiarAccess.isOn,
+                "autoDoor":autoDoorSwitch.isOn,
+                "callHelp":callHelpSwitch.isOn,
+                "ostomate":ostomateSwitch.isOn,
+                "braille":brailleSwitch.isOn,
+                "voiceGuide":voiceGuideSwitch.isOn,
+                "familyOmutu":familyOmutuSwitch.isOn,
+                "familyBabyChair": familyBabyChairSwitch.isOn,
+                
+               
+                
+                "milkspace":milkSpaceSwitch.isOn,
+                "babyRoomOnlyFemale":onlyFamaleBabyRoom.isOn,
+                "babyRoomMaleEnter":babyRoomMaleEnterSwitch.isOn,
+                "babyRoomPersonalSpace":babyRoomPersonalSpace.isOn,
+                "babyRoomPersonalSpaceWithLock":babyRoomPersonalWithLock.isOn,
+                "babyRoomWideSpace":babyRoomWideSpaceSwitch.isOn,
+                
+                "babyCarRental":babyCarRentalSwitch.isOn,
+                "babyCarAccess":babyCarAccessSwitch.isOn,
+                "omutu":omutuSwitch.isOn,
+                "hipCleaningStuff":hipWashingStuffSwitch.isOn,
+                "omutuTrashCan":omutuTrashCanSwitch.isOn,
+                "omutuSelling":omutuSellingSwitch.isOn,
+                
+                "babySink":babyRoomSinkSwitch.isOn,
+                "babyWashstand":babyWashStandSwitch.isOn,
+                "babyHotwater":babyRoomHotWaterSwitch.isOn,
+                "babyMicrowave":babyRoomMicrowaveSwitch.isOn,
+                "babyWaterSelling":babyRoomSellingWaterSwitch.isOn,
+                "babyFoodSelling":babyRoomFoodSellingSwitch.isOn,
+                "babyEatingSpace":babyRoomEatingSpace.isOn,
+                
+                "babyChair":babyChairSwitch.isOn,
+                "babySoffa":soffaSwitch.isOn,
+                "kidsToilet":kidsToiletSwitch.isOn,
+                "kidsSpace":kidsSpaceSwitch.isOn,
+                "babyHeight":heightMeasureSwitch.isOn,
+                "babyWeight":weightMeasureSwitch.isOn,
+                "babyToy":babyToySwitch.isOn,
+                "babyFancy":babyRoomFancySwitch.isOn,
+                "babySmellGood":babyRoomGoodSmellSwitch.isOn] as [String : Any]
             
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
             toiletsRef.child(toilet.key).updateChildValues(tdata)
@@ -1017,7 +1120,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
 //            toilet.reviewCount = newReviewCount as Int
 //            toilet.averageStar = "\(newAvStar)" as String
 //            toilet.averageWait = avWait as Int
-//            
+//
             
             
 //            print("tdata = \(tdata)")
@@ -1049,10 +1152,10 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        
+//
 //        if segue.identifier == "editPintoEditDetailSegue"{
 //            let nextV = segue.destination as! EditTableViewController
-//            
+//
 //            nextV.toilet.key = toilet.key
 //            print("toilet.key = \(toilet.key)")
 //        }
@@ -1149,145 +1252,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
   
     }
 
-    
-    
-    
-//    @IBAction func washletSwitchTapped(_ sender: Any) {
-//        if washletLabelSwitch.isOn == true {
-//            washletLabel.textColor = UIColor.black
-//            toilet.washlet = true
-//        }else{
-//            //wheelChairLabelSwitch.isOn == false
-//            washletLabel.textColor = UIColor.gray
-//            toilet.washlet = false
-//        }
-//    }
-//    
-//    @IBAction func wheelChairSwitchTapped(_ sender: Any) {
-//        if wheelChairLabelSwitch.isOn == true {
-//            wheelChairLabel.textColor = UIColor.black
-//            toilet.wheelchair = true
-//        }else{
-//            //wheelChairLabelSwitch.isOn == false
-//            wheelChairLabel.textColor = UIColor.gray
-//            toilet.wheelchair = false
-//        }
-//    }
-//    
-//    
-//    @IBAction func onlyFemaleSwitchTapped(_ sender: Any) {
-//        if onlyFemaleLabelSwitch.isOn == true {
-//            onlyFemaleLabel.textColor = UIColor.black
-//            toilet.onlyFemale = true
-//        }
-//        else{
-//            onlyFemaleLabel.textColor = UIColor.gray
-//            toilet.onlyFemale = false
-//        }
-//    }
-//    
-//    
-//    @IBAction func unisexSwitchTapped(_ sender: Any) {
-//        if unisexLabelSwitch.isOn == true {
-//            unisexLabel.textColor = UIColor.black
-//            toilet.unisex = true
-//        }else{
-//            unisexLabel.textColor = UIColor.gray
-//            toilet.unisex = false
-//        }
-//
-//    }
-//   
-//    @IBAction func makeroomSwitchTapped(_ sender: Any) {
-//        if makeroomLabelSwitch.isOn == true {
-//            makeroomLabel.textColor = UIColor.black
-//            toilet.makeuproom = true
-//        }else{
-//            makeroomLabel.textColor = UIColor.gray
-//            toilet.makeuproom = false
-//        }
-//    }
-//    
-//    @IBAction func milkspaceSwitchTappd(_ sender: Any) {
-//        if milkspaceLabelSwitch.isOn == true {
-//            milkspaceLabel.textColor = UIColor.black
-//             toilet.milkspace = true
-//        }else{
-//            milkspaceLabel.textColor = UIColor.gray
-//            toilet.milkspace = false
-//        }
-//    }
-//    
-//    @IBAction func omutuSwitchTapped(_ sender: Any) {
-//        if omutuLabelSwitch.isOn == true{
-//            omutuLabel.textColor = UIColor.black
-//            toilet.omutu = true
-//        }else{
-//            
-//            omutuLabel.textColor = UIColor.gray
-//             toilet.omutu = false
-//        }
-//    }
-//    
-//   
-//    @IBAction func ostomateSwitchTapped(_ sender: Any) {
-//        if ostomateLabelSwitch.isOn == true {
-//            ostomateLabel.textColor = UIColor.black
-//             toilet.ostomate = true
-//        }else{
-//            ostomateLabel.textColor = UIColor.gray
-//            toilet.ostomate = false
-//        }
-//    }
-//   
-//    @IBAction func japaneseSwtichTapped(_ sender: Any) {
-//        if japaneseToiletLabelSwitch.isOn == true{
-//            japaneseToiletLabel.textColor = UIColor.black
-//            toilet.japanesetoilet = true
-//        }else{
-//            japaneseToiletLabel.textColor = UIColor.gray
-//            toilet.japanesetoilet = false
-//
-//        }
-//    }
-//   
-//    
-//    @IBAction func westernSwtichTapped(_ sender: Any) {
-//        if westernToiletLabelSwitch.isOn == true{
-//            westernToiletLabel.textColor = UIColor.black
-//            toilet.westerntoilet = true
-//
-//        }else{
-//            
-//            westernToiletLabel.textColor = UIColor.gray
-//            toilet.westerntoilet = false
-//
-//        }
-//    }
-//
-//    @IBAction func warmSeatSwitchTapped(_ sender: Any) {
-//        if warmSeatLabelSwitch.isOn == true{
-//            warmSeatLabel.textColor = UIColor.black
-//            toilet.warmSeat = true
-//        }else{
-//            
-//            warmSeatLabel.textColor = UIColor.gray
-//            toilet.warmSeat = false
-//        }
-//    }
-//    
-//    @IBAction func baggageSpaceSwitchTapped(_ sender: Any) {
-//        if baggageSpaceLabelSwitch.isOn == true{
-//            baggageSpaceLabel.textColor = UIColor.black
-//            toilet.baggageSpace = true
-//        }else{
-//            
-//            baggageSpaceLabel.textColor = UIColor.gray
-//            toilet.baggageSpace = false
-//
-//        }
-//    }
-}
+  }
 
 
 
