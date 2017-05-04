@@ -102,7 +102,7 @@ class Filter {
     //for family room
     var wheelchairFilter = false;
     var wheelchairAccessFilter = false;
-    var handrailFilter = false;
+    var autoDoorFilter = false;
     var callHelpFilter = false;
     var ostomateFilter = false;
     var braille = false;

@@ -437,7 +437,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
 
         
         
-        if filter.handrailFilter == true{
+        if filter.autoDoorFilter == true{
             handrailSwitchOutlet.isOn = true
         }
         
@@ -1149,9 +1149,9 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     @IBAction func handrailSwitchTapped(_ sender: Any) {
         if handrailSwitchOutlet.isOn == true{
-            filter.handrailFilter = true
+            filter.autoDoorFilter = true
         }else {
-            filter.handrailFilter = false
+            filter.autoDoorFilter = false
         }
 
     }

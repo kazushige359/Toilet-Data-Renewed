@@ -1046,7 +1046,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.removedToilet = true
                 }
                 
-                if self.filter.handrailFilter == true && toilet.autoDoor == false {
+                if self.filter.autoDoorFilter == true && toilet.autoDoor == false {
                     self.removedToilet = true
                 }
                 
