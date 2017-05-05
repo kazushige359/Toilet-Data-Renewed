@@ -44,7 +44,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         cell.Star.settings.filledColor = UIColor.yellow
         cell.Star.settings.emptyBorderColor = UIColor.orange
         cell.Star.settings.filledBorderColor = UIColor.orange
-        
         cell.Star.rating = Double(toilets[indexPath.row].averageStar)!
         
         
@@ -268,6 +267,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
       centerButton.isHidden = true
         
          print("filter.typeFilter = \(filter.typeFilter)")
+        
+        
+        let stringText = "japanese_toilet".localized
+        print("This is the string Text 888\(stringText)")
+        
         
         //savingToilets()
         
@@ -1444,6 +1448,12 @@ extension MapViewController: HandleMapSearch {
         searchEndLabel.isHidden = false
         print("search.searchOn = \(search.searchOn)")
         print(search.searchOn)
+    }
+}
+
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
     }
 }
 //Copied from Mapkit tutorial

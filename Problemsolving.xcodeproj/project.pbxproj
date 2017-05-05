@@ -71,6 +71,7 @@
 		24B670F11EBC87B00087A11E /* BooleanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */; };
 		24B670F21EBC87B80087A11E /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */; };
 		24B670F31EBC889A0087A11E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 241454A51DE2C4F90066AB62 /* Assets.xcassets */; };
+		24B670F41EBD3B5D0087A11E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24CDD1CE1EBC19DD002F7710 /* Localizable.strings */; };
 		24B6FB001E2B505C00E1330A /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FAFF1E2B505C00E1330A /* Filter.swift */; };
 		24B6FB021E2C6B7700E1330A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */; };
 		24B6FB041E2EE81500E1330A /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB031E2EE81500E1330A /* Search.swift */; };
@@ -617,6 +618,7 @@
 				24B670F11EBC87B00087A11E /* BooleanTableViewCell.xib in Resources */,
 				24B670EE1EBC87920087A11E /* YourReviewTableViewCell.xib in Resources */,
 				24B670E91EBC389C0087A11E /* Main.storyboard in Resources */,
+				24B670F41EBD3B5D0087A11E /* Localizable.strings in Resources */,
 				24B670EA1EBC86E10087A11E /* LaunchScreen.storyboard in Resources */,
 				24B670F21EBC87B80087A11E /* CustomCalloutView.xib in Resources */,
 				24B670F01EBC87A60087A11E /* ReviewTableViewCell.xib in Resources */,
