@@ -186,6 +186,7 @@
 		24A130CB1DF769AE009C1A3F /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
 		24A130D11DF76BA4009C1A3F /* Problemsolving-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Problemsolving-Bridging-Header.h"; sourceTree = "<group>"; };
 		24B670E71EBC2DA10087A11E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24B670F51EBD43760087A11E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		24B6FAFF1E2B505C00E1330A /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		24B6FB031E2EE81500E1330A /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
@@ -889,6 +890,7 @@
 			children = (
 				241454A01DE2C4F90066AB62 /* Base */,
 				24CDD1BF1EBC01F3002F7710 /* ja */,
+				24B670F51EBD43760087A11E /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
