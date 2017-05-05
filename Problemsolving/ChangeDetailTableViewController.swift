@@ -41,30 +41,64 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     @IBOutlet weak var handDrierSwitch: UISwitch!
     
     
-    @IBOutlet weak var otohimeSwitch: UISwitch!
-    @IBOutlet weak var napkinSellingSwitch: UISwitch!
-    @IBOutlet weak var makeRoomSwitch: UISwitch!
+    
+    //Other things one
+    @IBOutlet weak var toiletFancySwitch: UISwitch!
+    @IBOutlet weak var toiletSmellGood: UISwitch!
+    @IBOutlet weak var toiletWideSpaceSwitch: UISwitch!
     @IBOutlet weak var clothesSwitch: UISwitch!
     @IBOutlet weak var baggageSwitch: UISwitch!
     
     
-    @IBOutlet weak var wheelChairSwitch: UISwitch!
-    @IBOutlet weak var wheelChiarAccess: UISwitch!
-    @IBOutlet weak var handRailSwitch: UISwitch!
-    @IBOutlet weak var callHelpSwitch: UISwitch!
-    @IBOutlet weak var ostomateSwitch: UISwitch!
-    @IBOutlet weak var writtenEnglishSwitch: UISwitch!
-    @IBOutlet weak var brailleSwitch: UISwitch!
-    @IBOutlet weak var voiceGuideSwitch: UISwitch!
+    //Other things two 
     
-    
-    @IBOutlet weak var toiletFancySwitch: UISwitch!
-    @IBOutlet weak var toiletSmellGood: UISwitch!
-    @IBOutlet weak var toiletWideSpaceSwitch: UISwitch!
     @IBOutlet weak var noNeedAskSwitch: UISwitch!
+    @IBOutlet weak var writtenEnglishSwitch: UISwitch!
     @IBOutlet weak var parkingSwitch: UISwitch!
     @IBOutlet weak var airConditionSwitch: UISwitch!
     @IBOutlet weak var wifiSwitch: UISwitch!
+
+    
+    
+    //For ladys 
+    
+    @IBOutlet weak var otohimeSwitch: UISwitch!
+    @IBOutlet weak var napkinSellingSwitch: UISwitch!
+    @IBOutlet weak var makeRoomSwitch: UISwitch!
+    @IBOutlet weak var ladyOmutuSwitch: UISwitch!
+    @IBOutlet weak var ladyBabyChairSwitch: UISwitch!
+    @IBOutlet weak var ladyBabyChairGoodSwitch: UISwitch!
+    @IBOutlet weak var ladyBabyCarAccessSwitch: UISwitch!
+    
+    
+    //For men 
+    
+    @IBOutlet weak var maleOmutuSwitch: UISwitch!
+    @IBOutlet weak var maleBabyChairSwitch: UISwitch!
+    @IBOutlet weak var maleBabyChairGoodSwitch: UISwitch!
+    @IBOutlet weak var maleBabyCarAccess: UISwitch!
+    
+    
+    
+    
+    
+    //For family 
+
+    
+    
+    @IBOutlet weak var wheelChairSwitch: UISwitch!
+    @IBOutlet weak var wheelChiarAccess: UISwitch!
+    @IBOutlet weak var autoDoorSwitch: UISwitch!
+    @IBOutlet weak var callHelpSwitch: UISwitch!
+    @IBOutlet weak var ostomateSwitch: UISwitch!
+    @IBOutlet weak var brailleSwitch: UISwitch!
+    @IBOutlet weak var voiceGuideSwitch: UISwitch!
+    
+    @IBOutlet weak var familyOmutuSwitch: UISwitch!
+    
+    @IBOutlet weak var familyBabyChairSwitch: UISwitch!
+    
+    
     
     
     @IBOutlet weak var milkSpaceSwitch: UISwitch!
@@ -503,7 +537,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let tdata : [String : Any] = ["name":name!,
             "openAndCloseHours": availableTimeForDatabase as String,
-            "type":placeCategoryLabel.text! as String,
+            "type": 0,
             "urlOne":"" as String,
             "urlTwo":"" as String,
             "urlThree":"" as String,
@@ -541,28 +575,48 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             "paperTowel":paperTowelSwitch.isOn,
             "handDrier":handDrierSwitch.isOn,
             
-            "otohime":otohimeSwitch.isOn,
-            "napkinSelling":napkinSellingSwitch.isOn,
-            "makeuproom":makeRoomSwitch.isOn,
-            "clothes":clothesSwitch.isOn,
-            "baggageSpace":baggageSwitch.isOn,
+            //For other one
+                "fancy":toiletFancySwitch.isOn,
+                "smell":toiletSmellGood.isOn,
+                "confortable":toiletWideSpaceSwitch.isOn,
+                "clothes":clothesSwitch.isOn,
+                "baggageSpace":baggageSwitch.isOn,
+                
+            //For other two
+                "noNeedAsk":noNeedAskSwitch.isOn,
+                "english":writtenEnglishSwitch.isOn,
+                "parking":parkingSwitch.isOn,
+                "airCondition":airConditionSwitch.isOn,
+                "wifi":wifiSwitch.isOn,
+                
+            //For lady
+                "otohime":otohimeSwitch.isOn,
+                "napkinSelling":napkinSellingSwitch.isOn,
+                "makeuproom":makeRoomSwitch.isOn,
+                "ladyOmutu":ladyOmutuSwitch.isOn,
+                "ladyBabyChair": ladyBabyChairSwitch.isOn,
+                "ladyBabyChairGood": ladyBabyChairGoodSwitch.isOn,
+                "ladyBabyCarAccess": ladyBabyCarAccessSwitch.isOn,
+            //For male 
+                "maleOmutu": maleOmutuSwitch.isOn,
+                "maleBabyChair": maleBabyChairSwitch.isOn,
+                "maleBabyChairGood": maleBabyChairGoodSwitch.isOn,
+                "maleBabyCarAccess": maleBabyCarAccess.isOn,
+                
+            //For family
+            
             
             "wheelchair":wheelChairSwitch.isOn,
             "wheelchairAccess":wheelChiarAccess.isOn,
-            "handrail":handRailSwitch.isOn,
+            "autoDoor":autoDoorSwitch.isOn,
             "callHelp":callHelpSwitch.isOn,
             "ostomate":ostomateSwitch.isOn,
-            "english":writtenEnglishSwitch.isOn,
             "braille":brailleSwitch.isOn,
             "voiceGuide":voiceGuideSwitch.isOn,
+            "familyOmutu": familyOmutuSwitch.isOn,
+            "familyBabyChair": familyBabyChairSwitch.isOn,
             
-            "fancy":toiletFancySwitch.isOn,
-            "smell":toiletSmellGood.isOn,
-            "confortable":toiletWideSpaceSwitch.isOn,
-            "noNeedAsk":noNeedAskSwitch.isOn,
-            "parking":parkingSwitch.isOn,
-            "airCondition":airConditionSwitch.isOn,
-            "wifi":wifiSwitch.isOn,
+            
             
             "milkspace":milkSpaceSwitch.isOn,
             "babyRoomOnlyFemale":onlyFamaleBabyRoom.isOn,

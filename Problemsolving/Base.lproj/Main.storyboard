@@ -1609,8 +1609,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手すり" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-DJ-2Q2">
-                                                    <rect key="frame" x="28" y="10" width="52" height="39"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自動ドア" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-DJ-2Q2">
+                                                    <rect key="frame" x="28" y="10" width="69.5" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2616,6 +2616,7 @@
                         <outlet property="accessTextView" destination="KFl-9N-fFX" id="wGZ-kL-7x1"/>
                         <outlet property="addPictureButton" destination="SEr-ut-7lp" id="sOe-4L-lRE"/>
                         <outlet property="airConditionSwitch" destination="Hb3-HU-Y39" id="4oX-St-5r9"/>
+                        <outlet property="autoDoorSwitch" destination="NMu-hN-Z4D" id="cse-Q3-0I6"/>
                         <outlet property="autoHandSoapSwitch" destination="DSa-pY-f0s" id="zbs-mV-J90"/>
                         <outlet property="autoOpenBenkiSwitch" destination="w3Q-T4-Vyv" id="NNc-Yl-5Ky"/>
                         <outlet property="autoToiletWashSwitch" destination="lJl-iC-anA" id="hRA-s8-EG3"/>
@@ -2642,17 +2643,26 @@
                         <outlet property="callHelpSwitch" destination="WWI-Rn-fY6" id="Ye4-lR-Yi6"/>
                         <outlet property="cleanerBenkiSwitch" destination="axp-Th-dJf" id="IWy-Si-5A6"/>
                         <outlet property="clothesSwitch" destination="gcj-9O-f6a" id="PWk-jS-VU2"/>
+                        <outlet property="familyBabyChairSwitch" destination="QAd-Uq-xKH" id="cjj-RG-hJi"/>
+                        <outlet property="familyOmutuSwitch" destination="oLF-gT-Rzp" id="yA4-zT-rUm"/>
                         <outlet property="feedbackTextView" destination="3Zf-kb-u6H" id="Mts-Z2-rUO"/>
                         <outlet property="handDrierSwitch" destination="MU4-pQ-AqV" id="zDx-VO-Jtt"/>
-                        <outlet property="handRailSwitch" destination="NMu-hN-Z4D" id="Rgp-NV-gAJ"/>
                         <outlet property="handSoapSwitch" destination="ZBv-Z9-b9I" id="pPm-X4-UgH"/>
                         <outlet property="heightMeasureSwitch" destination="eSe-z9-hge" id="fKL-IE-1CG"/>
                         <outlet property="hipWashingStuffSwitch" destination="vlg-cB-T3c" id="Hy4-Yh-od0"/>
                         <outlet property="japaneseToiletSwitch" destination="Mi2-o2-o91" id="3Gc-CD-F0U"/>
                         <outlet property="kidsSpaceSwitch" destination="L8X-4N-AXt" id="4R2-dX-aLQ"/>
                         <outlet property="kidsToiletSwitch" destination="CDC-u8-iSS" id="FHC-lQ-jpH"/>
+                        <outlet property="ladyBabyCarAccessSwitch" destination="TBO-J8-uAt" id="FFG-bk-eYB"/>
+                        <outlet property="ladyBabyChairGoodSwitch" destination="70q-a6-osc" id="HZI-bJ-WNp"/>
+                        <outlet property="ladyBabyChairSwitch" destination="5NO-Hc-TQi" id="W8w-TQ-WQa"/>
+                        <outlet property="ladyOmutuSwitch" destination="iEi-mM-Oaq" id="XGB-UD-Bkk"/>
                         <outlet property="mainImageView" destination="4jR-pW-XaC" id="aLy-KZ-HL4"/>
                         <outlet property="makeRoomSwitch" destination="tBv-1u-Res" id="ram-t0-vYJ"/>
+                        <outlet property="maleBabyCarAccess" destination="yuV-c9-NAt" id="7GO-AI-0pY"/>
+                        <outlet property="maleBabyChairGoodSwitch" destination="5Te-2r-al5" id="NQH-gH-RnY"/>
+                        <outlet property="maleBabyChairSwitch" destination="3dV-k9-7go" id="aah-Yz-hMu"/>
+                        <outlet property="maleOmutuSwitch" destination="ysE-Wa-NhH" id="wYU-96-Cf5"/>
                         <outlet property="mapView" destination="Plh-Tt-qj5" id="vRK-Cl-rjr"/>
                         <outlet property="milkSpaceSwitch" destination="B4r-Lz-LpW" id="0ed-JQ-ltw"/>
                         <outlet property="napkinSellingSwitch" destination="PX8-ag-kAf" id="lfJ-gi-jZm"/>

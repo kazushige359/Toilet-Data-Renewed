@@ -421,7 +421,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         
         
         //For family 
-                
+        
         if !toilet.wheelchair{
             wheelChairSwitch.isOn = false
         }
@@ -985,7 +985,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             let tdata : [String : Any] = [
                 "name":name!,
                 "openAndCloseHours": availableTimeForDatabase as String,
-                "type":placeCategoryLabel.text! as String,
+                "type": 0,
                 "urlOne":"" as String,
                 "urlTwo":"" as String,
                 "urlThree":"" as String,
