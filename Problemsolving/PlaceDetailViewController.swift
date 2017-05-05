@@ -216,6 +216,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
         
+        
+        
         //Commented for making table view... April 11 12pm
         
         

@@ -369,89 +369,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     
-//    func savingToilets(){
-//        print("savingToilets()")
-//        let locationsRef = FIRDatabase.database().reference().child("ToiletLocations")
-//        let geoFire = GeoFire(firebaseRef: locationsRef)
-//        let locations = [
-//            ["name": "FamilyMart 筑前山家道店","latitude": -33.888212, "longitude": 151.193686],
-//            ["name": "FamilyMart 筑前原地蔵店","latitude": -33.886921, "longitude": 151.194030],
-//            ["name": "F3","latitude": -33.886208, "longitude": 151.194502],
-//            ["name": "F6","latitude": -33.887241, "longitude": 151.191219],
-//            ["name": "F5","latitude": -33.884851, "longitude": 151.190141]
-//        ]
-//        
-//        //under for key location["name"] as! String!
-//        
-//        
-//        for location in locations {
-//            
-//            geoFire!.setLocation(CLLocation(latitude: location["latitude"] as! CLLocationDegrees, longitude: location["longitude"] as! CLLocationDegrees), forKey: location["name"] as! String!){(error) in
-//                if (error != nil) {
-//                    print("An error occured: \(String(describing: error))")
-//                    
-//                } else {
-//                    print("Saved location successfully!")
-//                    print("in geoFire.setLocation")
-//                }
-//            }
-//            print("after geoFire.setLocation")
-//            
-//            let tdata : [String : Any] =
-//                ["name": "FamilyMart",
-//                 "openinghours": "07:30 〜　16:30",
-//                 "type": "ConvenienceStore",
-//                 "star": 3.5 ,
-//                 "waitingtime": 2 ,
-//                 "urlOne":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-//                 "urlTwo":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-//                 "urlThree":"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2FFamilyMart.picture.jpg?alt=media&token=0de63d07-fb5e-4534-a423-796d1b5b44af",
-//                 "tid": "jfiohaiohfj",
-//                 "washlet": false,
-//                 "wheelchair": false,
-//                 "onlyFemale": true,
-//                 "unisex": true,
-//                 "makeuproom": false,
-//                 "milkspace" : false,
-//                 "omutu": false,
-//                 "ostomate" : false,
-//                 "japanesetoilet": false,
-//                 "westerntoilet": true,
-//                 "warmSeat": false,
-//                 "baggageSpace": false,
-//                 "howtoaccess": "アクセス情報はまだ記入されていません",
-//                 "available": false,
-//                 "addedBy": "us",
-//                 "editedBy": "us",
-//                 "reviewCount": 0,
-//                 "averageStar": "0.0",
-//                 "star1": 0,
-//                 "star2": 0,
-//                 "star3": 0,
-//                 "star4": 0,
-//                 "star5": 0,
-//                 "star6": 0,
-//                 "star7": 0,
-//                 "star8": 0,
-//                 "star9": 0,
-//                 "star10": 0,
-//                 "wait1": 0,
-//                 "wait2": 0,
-//                 "wait3": 0,
-//                 "wait4": 0,
-//                 "wait5": 0,
-//                 "averageWait": 0
-//            ]
-//            
-//            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
-//            toiletsRef.child(location["name"] as! String!).setValue(tdata)
-//            //self.toiletsRef.child(location["name"] as! String!).setValue(tdata)
-//            print("tdata = \(tdata)")
-//            print("toiletsRef data is saved!!")
-//        }
-//    }
-    
-    
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         if allInitialDataLoaded == true{
             
@@ -498,7 +415,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func centerMapOnLocation(location: CLLocation) {
         changeSettings()
+        print("mapCentered Called 888")
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 2000, 2000)
+        //2000 to 1000
+        //May 5
         mapView.setRegion(coordinateRegion, animated: false)
         
     }
@@ -506,6 +426,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         print("func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation)")
         if mapHasCenteredOnce == false{
+            print("mapCentered888")
             if search.searchOn == true{
                 centerMapOnLocation(location: search.centerSearchLocation)
                 toiletsSearch(center: search.centerSearchLocation)

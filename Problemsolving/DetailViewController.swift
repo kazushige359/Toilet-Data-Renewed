@@ -165,10 +165,20 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         bigPicture.sd_setImage(with: URL(string: toilet.urlOne))
         nameLabel.text = toilet.name
         
-        var typeString = ""
-        if toilet.type == 0 {
-        //
-        }
+        //var typeString = ""
+        
+        var val = "japanese_toilet".localized(lang: "en")
+        var jVal = "japanese_toilet".localized(lang: "jp")
+        
+        print("val = \(val)")
+        print("jVal = \(jVal)")
+        
+        
+        
+        
+//        if toilet.type == 0 {
+//        
+//        }
         categoryType.text = String(toilet.type)
         locationAuthStatus()
         
