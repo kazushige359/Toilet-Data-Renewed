@@ -8,6 +8,17 @@
 
 
 
+"all_category" = "全てのトイレ";
+"public_restroom" = "公衆トイレ";
+"convenience_store" = "コンビニエンスストア";
+"caffe" = "カフェ";
+"restaurant" = "レストラン";
+"shopping_center" = "商業施設";
+"tourist_places" = "観光地";
+"stadium" = "スタジアム";
+"portable_toilet" = "仮設トイレ";
+"home_toilet" = "一般家庭(断水時のみ)";
+
 
 
 "japanese_toilet" = "和式トイレ";

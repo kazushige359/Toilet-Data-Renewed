@@ -8,8 +8,25 @@
 
 
 
-
+//Map View
 "showAverageWait" = "Average";
+
+
+
+
+//Filter Search
+
+//Category
+"all_category" = "All Category";
+"public_restroom" = "Public Restroom";
+"convenience_store" = "Convenience Store";
+"caffe" = "Caffe";
+"restaurant" = "Restaurant";
+"shopping_center" = "Shopping Center";
+"tourist_places" = "Tourist Places";
+"stadium" = "Stadium";
+"portable_toilet" = "Portable Toilet";
+"home_toilet" = "Home Toilet (During Power Outage)";
 
 
 "japanese_toilet" = "Japanese Toilet";

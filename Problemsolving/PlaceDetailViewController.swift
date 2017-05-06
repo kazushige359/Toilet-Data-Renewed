@@ -745,8 +745,33 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         print("toiletDistance22233 == \(toilet.distance)")
         
+        var typeString = ""
         
-        typeAndDistanceLabel.text = String(toilet.type) + "/" + distanceText
+        
+        if toilet.type == 0{
+            typeString = "public_restroom".localized
+        } else if toilet.type == 1{
+            typeString = "convenience_store".localized
+        } else if toilet.type == 2{
+            typeString = "caffe".localized
+        } else if toilet.type == 3{
+            typeString = "restaurant".localized
+        } else if toilet.type == 4{
+            typeString = "shopping_center".localized
+
+        } else if toilet.type == 5{
+            typeString = "tourist_places".localized
+        } else if toilet.type == 6{
+            typeString = "stadium".localized
+            
+        } else if toilet.type == 7{
+            typeString = "portable_toilet".localized
+        } else if toilet.type == 8{
+            typeString = "home_toilet".localized
+        }
+
+        
+        typeAndDistanceLabel.text = typeString + "/" + distanceText
         
         reviewCountLabel.text = "(\(toilet.reviewCount)件)"
         
