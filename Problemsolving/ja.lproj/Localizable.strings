@@ -7,5 +7,53 @@
 */
 
 
-    "japanese_toilet" = "和式トイレ";
 
+
+
+"japanese_toilet" = "和式トイレ";
+"western_toilet" = "洋式トイレ";
+"female_toilet" = "女性専用トイレ";
+"unisex_toilet" = "男女兼用トイレ";
+"washlet" = "ウォシュレット";
+
+"toilet_warm_seat" = "暖房便座";
+"automated_open_toilet_seat" = "自動開閉便座";
+"antibackterial_toilet_seat" = "抗菌便座";
+"toilet_seat_paper" = "便座用シート";
+"toilet_seat_cleaner" = "便座クリーナー";
+"autoamted_washing" = "自動洗浄";
+
+//Im tired next time i will finish it
+
+
+"sensor_hand_wash" = "センサー式お手洗い";
+"hand_soap" = "Hand Soap";
+"automated_hand_soap" = "Automated Hand Soap";
+"paper_towel" = "Paper Towel";
+"hand_drier" = "Hand Drier";
+
+"otohime" = "Toilet Flushing Sound Simulator";
+"sanitary_napkin_vending_machine" = "Sanitary Napkin Vending Machine";
+"powder_room" = "Powder Room";
+"clothes_hanger" = "Clothes Hanger";
+"bag_hanger" = "Bag Hanger";
+
+
+"wheelchair" = "Wheelchair";
+"wheelchait_accessible" = "Wheelchair_Accessible";
+"automated_open_door" = "Automated Opem Door";
+"button_for_calling_help" = "Button for Calling Help";
+"ostomate" = "Stoma Toilet";
+"english" = "Signs Written in English";
+"braille" = "Toilet Braille Sign";
+"voice_guide" = "Voice Guide";
+
+
+
+"fancy" = "Stylish Room";
+"smell" = "Smell Good";
+"confortable wide" = "Wide Space";
+"noNeedAsk" = "No need permission";
+"parking" = "Parking Space";
+"airconditioner" = "Air Conditioner";
+"wifi" = "Free Wi-Fi";

@@ -456,35 +456,36 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
             
             
+                        
             
             if self.toilet.japanesetoilet{
-                self.booleans.append("和式トイレ")
+                self.booleans.append("japanese_toilet".localized)
             }
             if self.toilet.westerntoilet{
-                self.booleans.append("洋式トイレ")
+                self.booleans.append("western_toilet".localized)
             }
             if self.toilet.onlyFemale{
-                self.booleans.append("女性専用トイレ")
+                self.booleans.append("female_toilet".localized)
             }
             if self.toilet.unisex{
-                self.booleans.append("男女兼用トイレ")
+                self.booleans.append("unisex_toilet".localized)
             }
             
             
             if self.toilet.washlet{
-                self.booleans.append("ウォシュレット")
+                self.booleans.append("washlet".localized)
             }
             if self.toilet.warmSeat{
-                self.booleans.append("暖房便座")
+                self.booleans.append("toilet_warm_seat".localized)
             }
             if self.toilet.autoOpen{
-                self.booleans.append("自動開閉便座")
+                self.booleans.append("automated_open_toilet_seat".localized)
             }
             if self.toilet.noVirus{
-                self.booleans.append("抗菌便座")
+                self.booleans.append("antibackterial_toilet_seat".localized)
             }
             if self.toilet.paperForBenki{
-                self.booleans.append("便座用シート")
+                self.booleans.append("toilet_seat_paper".localized)
             }
             if self.toilet.cleanerForBenki{
                 self.booleans.append("便座クリーナー")
