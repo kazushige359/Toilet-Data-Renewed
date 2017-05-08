@@ -1394,6 +1394,12 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="70q-a6-osc">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
                                                 </switch>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NOi-VD-Yrl">
+                                                    <rect key="frame" x="194" y="19" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="ladyBabyChairTapped:" destination="Xk6-NJ-1fG" eventType="touchUpInside" id="yHt-w4-3ui"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="uCd-Mp-w2S" firstAttribute="top" secondItem="p5Y-o2-0kT" secondAttribute="topMargin" constant="2" id="4mK-JM-L9e"/>
@@ -1402,6 +1408,8 @@
                                                 <constraint firstItem="70q-a6-osc" firstAttribute="top" secondItem="p5Y-o2-0kT" secondAttribute="topMargin" constant="6" id="cam-cp-gk3"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="uCd-Mp-w2S" secondAttribute="bottom" constant="2" id="cpb-GK-Qjb"/>
                                                 <constraint firstItem="uCd-Mp-w2S" firstAttribute="leading" secondItem="p5Y-o2-0kT" secondAttribute="leadingMargin" constant="20" id="qta-vY-qhQ"/>
+                                                <constraint firstItem="NOi-VD-Yrl" firstAttribute="leading" secondItem="uCd-Mp-w2S" secondAttribute="trailing" constant="10" id="wgo-F1-XhP"/>
+                                                <constraint firstItem="NOi-VD-Yrl" firstAttribute="centerY" secondItem="uCd-Mp-w2S" secondAttribute="centerY" id="yy1-rW-TzJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1506,12 +1514,20 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5Te-2r-al5">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
                                                 </switch>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYy-hU-frd">
+                                                    <rect key="frame" x="194" y="18" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="maleBabyChairTapped:" destination="Xk6-NJ-1fG" eventType="touchUpInside" id="g7M-YI-M5q"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ew7-P5-XZT" secondAttribute="bottom" constant="2" id="6kf-KC-Kpq"/>
                                                 <constraint firstItem="ew7-P5-XZT" firstAttribute="leading" secondItem="XoE-7G-W1d" secondAttribute="leadingMargin" constant="20" id="HEB-gO-oBj"/>
+                                                <constraint firstItem="fYy-hU-frd" firstAttribute="leading" secondItem="ew7-P5-XZT" secondAttribute="trailing" constant="10" id="TDu-Mk-ejb"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="5Te-2r-al5" secondAttribute="bottom" constant="6" id="Zu1-ut-vuu"/>
                                                 <constraint firstItem="ew7-P5-XZT" firstAttribute="top" secondItem="XoE-7G-W1d" secondAttribute="topMargin" constant="2" id="aJv-Ht-C07"/>
+                                                <constraint firstItem="fYy-hU-frd" firstAttribute="centerY" secondItem="ew7-P5-XZT" secondAttribute="centerY" id="eRZ-09-7Dq"/>
                                                 <constraint firstItem="5Te-2r-al5" firstAttribute="top" secondItem="XoE-7G-W1d" secondAttribute="topMargin" constant="6" id="jrj-Ng-CId"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="5Te-2r-al5" secondAttribute="trailing" constant="10" id="oOB-1d-oPP"/>
                                             </constraints>
@@ -4556,13 +4572,21 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3MC-Sq-eYf">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
                                                 </switch>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVS-RY-Jd2">
+                                                    <rect key="frame" x="194" y="18" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="ladyBabyChairInfoTapped:" destination="ZDZ-5W-82U" eventType="touchUpInside" id="Emy-zf-JG9"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="3MC-Sq-eYf" firstAttribute="top" secondItem="xGT-cR-U67" secondAttribute="topMargin" constant="6" id="101-vh-al1"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="3MC-Sq-eYf" secondAttribute="bottom" constant="6" id="AaY-Xw-Xgh"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="3MC-Sq-eYf" secondAttribute="trailing" constant="10" id="CLj-2G-UqV"/>
+                                                <constraint firstItem="HVS-RY-Jd2" firstAttribute="centerY" secondItem="O75-qX-ceJ" secondAttribute="centerY" id="Gh6-aR-kgb"/>
                                                 <constraint firstItem="O75-qX-ceJ" firstAttribute="top" secondItem="xGT-cR-U67" secondAttribute="topMargin" constant="2" id="Wrb-pK-zm3"/>
                                                 <constraint firstItem="O75-qX-ceJ" firstAttribute="leading" secondItem="xGT-cR-U67" secondAttribute="leadingMargin" constant="20" id="dr5-qO-3B9"/>
+                                                <constraint firstItem="HVS-RY-Jd2" firstAttribute="leading" secondItem="O75-qX-ceJ" secondAttribute="trailing" constant="10" id="i9F-C0-Nch"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="O75-qX-ceJ" secondAttribute="bottom" constant="2" id="yqO-S7-XT2"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -4668,9 +4692,17 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vqp-Xu-CGm">
                                                     <rect key="frame" x="253" y="14" width="51" height="31"/>
                                                 </switch>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xl-pR-BKM">
+                                                    <rect key="frame" x="194" y="19" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="maleBabyChairInfoTapped:" destination="ZDZ-5W-82U" eventType="touchUpInside" id="L9K-mC-gqH"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="5Xl-pR-BKM" firstAttribute="leading" secondItem="Nbc-3S-ugr" secondAttribute="trailing" constant="10" id="1oq-je-sLe"/>
                                                 <constraint firstItem="Vqp-Xu-CGm" firstAttribute="top" secondItem="wdw-aw-43m" secondAttribute="topMargin" constant="6" id="Dyh-dx-r1c"/>
+                                                <constraint firstItem="5Xl-pR-BKM" firstAttribute="centerY" secondItem="Nbc-3S-ugr" secondAttribute="centerY" id="FFj-sY-kgI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Vqp-Xu-CGm" secondAttribute="trailing" constant="10" id="T5q-uo-HAU"/>
                                                 <constraint firstItem="Nbc-3S-ugr" firstAttribute="leading" secondItem="wdw-aw-43m" secondAttribute="leadingMargin" constant="20" id="cOZ-LL-eRP"/>
                                                 <constraint firstItem="Nbc-3S-ugr" firstAttribute="top" secondItem="wdw-aw-43m" secondAttribute="topMargin" constant="2" id="hOy-Gb-fcg"/>

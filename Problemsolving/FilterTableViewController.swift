@@ -64,6 +64,8 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     
     
+    
+    
     //For men
     
     @IBOutlet weak var maleOmutuOutlet: UISwitch!
@@ -1807,6 +1809,31 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
 
     }
     
+    func safeBabyChairCondition(){
+    
+        let alertController = UIAlertController (title: "安全なベビーチェア", message: "安全なベビーチェアとは、ドアの鍵やボタンから十分に距離がある位置に設置されているものです。", preferredStyle: .alert)
+        
+        
+        let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        
+                //let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+       // let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+       // alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+   
+    
+    @IBAction func ladyBabyChairInfoTapped(_ sender: Any) {
+        safeBabyChairCondition()
+    }
+    
+    @IBAction func maleBabyChairInfoTapped(_ sender: Any) {
+        safeBabyChairCondition()
+
+        
+    }
     
     
     

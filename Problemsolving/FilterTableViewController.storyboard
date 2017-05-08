@@ -1120,13 +1120,21 @@
                                                         <action selector="ladyBabyChairGoodTapped:" destination="wg0-0K-Qyt" eventType="valueChanged" id="Osz-mK-PmB"/>
                                                     </connections>
                                                 </switch>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5A7-pJ-EI9">
+                                                    <rect key="frame" x="194" y="18" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="ladyBabyChairInfoTapped:" destination="wg0-0K-Qyt" eventType="touchUpInside" id="U7k-kb-DwU"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="X8C-7p-Tb5" firstAttribute="top" secondItem="KXu-Az-clp" secondAttribute="topMargin" constant="6" id="1xN-f2-7tL"/>
+                                                <constraint firstItem="5A7-pJ-EI9" firstAttribute="leading" secondItem="7tm-Il-Z0j" secondAttribute="trailing" constant="10" id="68E-3N-BRa"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="7tm-Il-Z0j" secondAttribute="bottom" constant="2" id="Dqt-hi-U4x"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="X8C-7p-Tb5" secondAttribute="bottom" constant="6" id="JUw-l1-BBI"/>
                                                 <constraint firstItem="7tm-Il-Z0j" firstAttribute="top" secondItem="KXu-Az-clp" secondAttribute="topMargin" constant="2" id="TJf-dk-ilm"/>
                                                 <constraint firstItem="7tm-Il-Z0j" firstAttribute="leading" secondItem="KXu-Az-clp" secondAttribute="leadingMargin" constant="20" id="WJu-W3-1g4"/>
+                                                <constraint firstItem="5A7-pJ-EI9" firstAttribute="centerY" secondItem="7tm-Il-Z0j" secondAttribute="centerY" id="Y7L-tN-Yd9"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="X8C-7p-Tb5" secondAttribute="trailing" constant="10" id="ol6-dE-Yjl"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1244,13 +1252,21 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gFr-k5-vIQ">
+                                                    <rect key="frame" x="194" y="18" width="22" height="22"/>
+                                                    <connections>
+                                                        <action selector="maleBabyChairInfoTapped:" destination="wg0-0K-Qyt" eventType="touchUpInside" id="eGu-ny-qSD"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="VLf-8M-xP8" secondAttribute="bottom" constant="6" id="5GM-cG-W1F"/>
+                                                <constraint firstItem="gFr-k5-vIQ" firstAttribute="leading" secondItem="ZUQ-r2-1dm" secondAttribute="trailing" constant="10" id="5m7-k1-a34"/>
                                                 <constraint firstItem="ZUQ-r2-1dm" firstAttribute="top" secondItem="rj8-v5-2Mm" secondAttribute="topMargin" constant="2" id="FVF-jA-UIR"/>
                                                 <constraint firstItem="VLf-8M-xP8" firstAttribute="top" secondItem="rj8-v5-2Mm" secondAttribute="topMargin" constant="6" id="JNN-Cm-ahF"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="VLf-8M-xP8" secondAttribute="trailing" constant="10" id="epf-Ak-R34"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ZUQ-r2-1dm" secondAttribute="bottom" constant="2" id="fMY-aA-gZT"/>
+                                                <constraint firstItem="gFr-k5-vIQ" firstAttribute="centerY" secondItem="ZUQ-r2-1dm" secondAttribute="centerY" id="wTA-P3-p9G"/>
                                                 <constraint firstItem="ZUQ-r2-1dm" firstAttribute="leading" secondItem="rj8-v5-2Mm" secondAttribute="leadingMargin" constant="20" id="zsw-So-Oha"/>
                                             </constraints>
                                         </tableViewCellContentView>

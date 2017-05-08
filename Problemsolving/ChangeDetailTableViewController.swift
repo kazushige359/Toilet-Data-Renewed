@@ -71,6 +71,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     @IBOutlet weak var ladyBabyCarAccessSwitch: UISwitch!
     
     
+    
+    
     //For men 
     
     @IBOutlet weak var maleOmutuSwitch: UISwitch!
@@ -806,6 +808,32 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         }
         
     }
+    
+    func safeBabyChairCondition(){
+        
+        let alertController = UIAlertController (title: "安全なベビーチェア", message: "安全なベビーチェアとは、ドアの鍵やボタンから十分に距離がある位置に設置されているものです。", preferredStyle: .alert)
+        
+        
+        let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        
+        //let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        // let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+        // alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+
+    
+    @IBAction func ladyBabyChairTapped(_ sender: Any) {
+        safeBabyChairCondition()
+    }
+    
+    
+    @IBAction func maleBabyChairTapped(_ sender: Any) {
+        safeBabyChairCondition()
+    }
+    
     
     
     @IBAction func postButtonTapped(_ sender: Any) {
