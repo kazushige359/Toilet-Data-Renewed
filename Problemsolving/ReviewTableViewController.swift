@@ -113,6 +113,14 @@ class ReviewTableViewController: UITableViewController {
         cell.userLikedCount.isHidden = false
         cell.nextLikedCountLabel.isHidden = true
         cell.nextUserLikedCount.isHidden = true
+        
+        
+        cell.reviewReportButton.tag = indexPath.row
+        cell.reviewReportButton.addTarget(self, action: #selector(reviewReportButtonTapped(sender:)), for: .allTouchEvents)
+        
+        
+        
+//        cell.reviewReportButton.addTarget(self, action: #selector(ReviewTableViewController.reviewReportButtonTapped(sender:)), for:.touchUpInside)
        
         
         
@@ -215,6 +223,25 @@ class ReviewTableViewController: UITableViewController {
            }
             
         }
+    }
+    
+    
+    func reviewReportButtonTapped(sender: UIButton){
+        print("ReviewReport Tapped 777")
+        let buttonRow = sender.tag
+        print("ButtonRow = \(buttonRow)")
+        
+        let alertController = UIAlertController (title: "Report??", message: "Oh well", preferredStyle: .actionSheet)
+        
+        
+        let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        present(alertController, animated: true, completion: nil)
+    
+
+    
     }
 
 

@@ -149,51 +149,61 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="いいね４件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eV-j9-8G5">
-                        <rect key="frame" x="50" y="231" width="100" height="18"/>
+                        <rect key="frame" x="50" y="231.5" width="90" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="oTf-DQ-RVp"/>
+                            <constraint firstAttribute="width" constant="90" id="oTf-DQ-RVp"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="いいね４件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5l-Tf-PmN">
-                        <rect key="frame" x="50" y="231" width="100" height="18"/>
+                        <rect key="frame" x="50" y="231.5" width="90" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="Mj5-NO-Pxh"/>
+                            <constraint firstAttribute="width" constant="90" id="Mj5-NO-Pxh"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="３分待ち" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvZ-cE-X8b">
-                        <rect key="frame" x="155" y="231" width="61.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="145" y="231.5" width="57.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017/4/1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdo-c7-NUg">
-                        <rect key="frame" x="253" y="231" width="59" height="18"/>
+                        <rect key="frame" x="212.5" y="231" width="59" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uqf-AK-gQl">
+                        <rect key="frame" x="287" y="227.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="Suz-iU-yZ9"/>
+                            <constraint firstAttribute="height" constant="25" id="rfN-rH-3rv"/>
+                        </constraints>
+                        <state key="normal" image="question_20_dark"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="N5l-Tf-PmN" firstAttribute="centerY" secondItem="7DS-Lx-Twk" secondAttribute="centerY" id="0He-uQ-Qro"/>
                     <constraint firstItem="MvZ-cE-X8b" firstAttribute="leading" secondItem="0eV-j9-8G5" secondAttribute="trailing" constant="5" id="D2i-kv-NIX"/>
                     <constraint firstItem="SgG-vN-ody" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="GF9-aG-XTD"/>
                     <constraint firstItem="fQg-0l-Gwu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="GsS-Ae-sUJ"/>
+                    <constraint firstItem="Uqf-AK-gQl" firstAttribute="centerY" secondItem="7DS-Lx-Twk" secondAttribute="centerY" id="HC6-5c-yo1"/>
                     <constraint firstItem="fQg-0l-Gwu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="LNL-uH-r8x"/>
-                    <constraint firstAttribute="trailing" secondItem="Pdo-c7-NUg" secondAttribute="trailing" constant="8" id="OIz-a2-cf1"/>
                     <constraint firstItem="N5l-Tf-PmN" firstAttribute="leading" secondItem="7DS-Lx-Twk" secondAttribute="trailing" constant="10" id="Ozk-aV-JKT"/>
                     <constraint firstItem="fQg-0l-Gwu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="R9C-a0-uAQ"/>
                     <constraint firstAttribute="trailing" secondItem="SgG-vN-ody" secondAttribute="trailing" constant="8" id="Uh7-B3-ixt"/>
                     <constraint firstItem="fQg-0l-Gwu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="WeT-A0-toQ"/>
+                    <constraint firstAttribute="trailing" secondItem="Uqf-AK-gQl" secondAttribute="trailing" constant="8" id="YZ6-Ej-OI2"/>
                     <constraint firstItem="SgG-vN-ody" firstAttribute="top" secondItem="fQg-0l-Gwu" secondAttribute="bottom" constant="5" id="b83-Og-IXt"/>
                     <constraint firstItem="fQg-0l-Gwu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bFo-kU-1gJ"/>
                     <constraint firstItem="Pdo-c7-NUg" firstAttribute="top" secondItem="SgG-vN-ody" secondAttribute="bottom" constant="5" id="bph-2c-P7U"/>
                     <constraint firstItem="7DS-Lx-Twk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="jhL-Ly-uDV"/>
+                    <constraint firstItem="Pdo-c7-NUg" firstAttribute="leading" secondItem="MvZ-cE-X8b" secondAttribute="trailing" constant="10" id="mVk-JT-pyh"/>
                     <constraint firstItem="0eV-j9-8G5" firstAttribute="leading" secondItem="7DS-Lx-Twk" secondAttribute="trailing" constant="10" id="mXW-zl-t50"/>
                     <constraint firstItem="MvZ-cE-X8b" firstAttribute="centerY" secondItem="7DS-Lx-Twk" secondAttribute="centerY" id="nha-1c-dks"/>
                     <constraint firstItem="0eV-j9-8G5" firstAttribute="centerY" secondItem="7DS-Lx-Twk" secondAttribute="centerY" id="p6G-bB-A7J"/>
@@ -209,6 +219,7 @@
                 <outlet property="likedCountLabel" destination="0eV-j9-8G5" id="U3i-nO-qM5"/>
                 <outlet property="nextLikedCountLabel" destination="N5l-Tf-PmN" id="Prv-rb-9w8"/>
                 <outlet property="nextUserLikedCount" destination="uv4-Lh-Wob" id="Xms-kX-muC"/>
+                <outlet property="reviewReportButton" destination="Uqf-AK-gQl" id="PwN-iK-mEr"/>
                 <outlet property="starRatedLabel" destination="bS7-9T-wO0" id="Da4-Rs-Brl"/>
                 <outlet property="userFavoriteCount" destination="M1M-wS-YET" id="aOF-fO-0lc"/>
                 <outlet property="userHelpedCount" destination="ZUL-ar-qz0" id="w4p-lN-JYJ"/>
@@ -223,6 +234,7 @@
     <resources>
         <image name="black_man_image_25" width="25" height="25"/>
         <image name="love_Icon_40" width="40" height="40"/>
+        <image name="question_20_dark" width="20" height="20"/>
         <image name="thumbsUp_black_image_25" width="25" height="25"/>
         <image name="user_default_80" width="80" height="80"/>
     </resources>

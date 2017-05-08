@@ -38,6 +38,7 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var nextLikedCountLabel: UILabel!
     
     
+    @IBOutlet weak var reviewReportButton: UIButton!
     
     
     
@@ -105,6 +106,9 @@ class ReviewTableViewCell: UITableViewCell {
             }
                 
         }
+    
+    
+    
     
 //    @IBAction func likeButtonTapped(_ sender: Any) {
 //        if buttonClicked == false{
