@@ -71,6 +71,7 @@
 		24B670F21EBC87B80087A11E /* CustomCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24033B981EA219D800E7B4B4 /* CustomCalloutView.xib */; };
 		24B670F31EBC889A0087A11E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 241454A51DE2C4F90066AB62 /* Assets.xcassets */; };
 		24B670F41EBD3B5D0087A11E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 24CDD1CE1EBC19DD002F7710 /* Localizable.strings */; };
+		24B670F71EC012100087A11E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B670F61EC012100087A11E /* Reachability.swift */; };
 		24B6FB001E2B505C00E1330A /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FAFF1E2B505C00E1330A /* Filter.swift */; };
 		24B6FB021E2C6B7700E1330A /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */; };
 		24B6FB041E2EE81500E1330A /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B6FB031E2EE81500E1330A /* Search.swift */; };
@@ -186,6 +187,7 @@
 		24A130D11DF76BA4009C1A3F /* Problemsolving-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Problemsolving-Bridging-Header.h"; sourceTree = "<group>"; };
 		24B670E71EBC2DA10087A11E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B670F51EBD43760087A11E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		24B670F61EC012100087A11E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		24B6FAFF1E2B505C00E1330A /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		24B6FB011E2C6B7600E1330A /* LocationSearchTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		24B6FB031E2EE81500E1330A /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				24033B961EA217A400E7B4B4 /* AnnotaionView.swift */,
 				24033BA61EA58DF800E7B4B4 /* UserReviewComment.swift */,
 				24CDD1C61EBC04B3002F7710 /* Localizer.swift */,
+				24B670F61EC012100087A11E /* Reachability.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				2418B7CD1E137520004F7022 /* AccountViewController.swift in Sources */,
 				240F79791E98CC0600EFF3CC /* PlaceDetailViewController.swift in Sources */,
 				243DFF2A1EA8467C0000BF71 /* StarFiveMarker.swift in Sources */,
+				24B670F71EC012100087A11E /* Reachability.swift in Sources */,
 				2418B7DA1E1B1C8E004F7022 /* PictureViewController.swift in Sources */,
 				2414549C1DE2C4F90066AB62 /* AppDelegate.swift in Sources */,
 				243DFF221EA8402F0000BF71 /* StarOneMarker.swift in Sources */,

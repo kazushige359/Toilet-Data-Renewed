@@ -19,6 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        
+        do {
+            Network.reachability = try Reachability(hostname: "www.google.com")
+            do {
+                try Network.reachability?.start()
+            } catch let error as Network.Error {
+                print(error)
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+        
+        //Network find
+        
+        
+        
 //        GMSServices.provideAPIKey("AIzaSyDWH5HmmI10AucXGcVqtPsKt5DAHU6voAk")
 ////        GMSServices.provideAPIKey("AIzaSyBlLfsKhDxHEiFIGWtowR4hYe8K8WdYbac")
         

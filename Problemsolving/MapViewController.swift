@@ -158,6 +158,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var filter = Filter()
     var removedToilet = false
     var createdArray = false
+    var wifiAlert = false
     
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     
@@ -287,6 +288,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         print("this is the user Id \(userID)")
         
+        NotificationCenter.default.addObserver(self, selector: #selector(statusManager), name: .flagsChanged, object: Network.reachability)
+        updateUserInterface()
+        
+        
         
         
         
@@ -300,6 +305,79 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        PassingData.sharedInstance.filterOn = false
         
     }
+    
+    func updateUserInterface() {
+        guard let status = Network.reachability?.status else { return }
+        switch status {
+        case .unreachable:
+            view.backgroundColor = .red
+        case .wifi:
+            view.backgroundColor = .green
+        case .wwan:
+            view.backgroundColor = .yellow
+        }
+        print("Reachability Summary")
+        print("Status:", status)
+        print("HostName:", Network.reachability?.hostname ?? "nil")
+        print("Reachable:", Network.reachability?.isReachable ?? "nil")
+        print("Wifi:", Network.reachability?.isReachableViaWiFi ?? "nil")
+        
+        if Network.reachability?.isReachableViaWiFi == false {
+        
+            useWifi()
+        }
+    }
+    
+    func noNetwork(){
+    
+        let alertController = UIAlertController (title: "Netword", message: "cannot find", preferredStyle: .alert)
+        
+        
+        let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    func useWifi(){
+        if wifiAlert == false{
+            wifiAlert = true
+    
+        let alertController = UIAlertController (title: "Wifi設定", message: "マップ機能の精度が良くなります！", preferredStyle: .alert)
+            
+            
+        
+        let settingsAction = UIAlertAction(title: "はい", style: .default) { (_) -> Void in
+            
+            guard let settingsUrl = URL(string: "App-Prefs:root=WIFI") else {
+                return
+            }
+            
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        
+        }
+        //let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        present(alertController, animated: true, completion: nil)
+        }
+        
+        
+    
+    }
+    
+    func statusManager(_ notification: NSNotification) {
+        updateUserInterface()
+    }
+    
     
     func tableViewDisappear(){
         //tableView.isHidden = true
