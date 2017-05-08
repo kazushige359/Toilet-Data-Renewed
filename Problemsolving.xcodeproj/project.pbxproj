@@ -59,7 +59,6 @@
 		24A130CE1DF769AE009C1A3F /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A130C71DF769AE009C1A3F /* GFGeoHash.m */; };
 		24A130CF1DF769AE009C1A3F /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A130C91DF769AE009C1A3F /* GFGeoHashQuery.m */; };
 		24A130D01DF769AE009C1A3F /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A130CB1DF769AE009C1A3F /* GFQuery.m */; };
-		24B670E81EBC2DA10087A11E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24B670E71EBC2DA10087A11E /* Info.plist */; };
 		24B670E91EBC389C0087A11E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2414549F1DE2C4F90066AB62 /* Main.storyboard */; };
 		24B670EA1EBC86E10087A11E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 241454A71DE2C4F90066AB62 /* LaunchScreen.storyboard */; };
 		24B670EB1EBC86F60087A11E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 243DFF2B1EA9CCE60000BF71 /* Login.storyboard */; };
@@ -624,7 +623,6 @@
 				24B670F21EBC87B80087A11E /* CustomCalloutView.xib in Resources */,
 				24B670F01EBC87A60087A11E /* ReviewTableViewCell.xib in Resources */,
 				24B670F31EBC889A0087A11E /* Assets.xcassets in Resources */,
-				24B670E81EBC2DA10087A11E /* Info.plist in Resources */,
 				24B670EF1EBC87980087A11E /* TableViewCell.xib in Resources */,
 				24B670EB1EBC86F60087A11E /* Login.storyboard in Resources */,
 				24B670EC1EBC87150087A11E /* PlaceDetailViewController.storyboard in Resources */,

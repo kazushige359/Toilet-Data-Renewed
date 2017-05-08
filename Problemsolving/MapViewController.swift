@@ -280,6 +280,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         progressBarDisplayer(msg:"トイレを検索中", true)
         
+        
+        let userID = FIRAuth.auth()!.currentUser!.uid
+        
+        
+        
+        print("this is the user Id \(userID)")
+        
+        
+        
+        
+        
 //        print("PassingData.sharedInstance.welcomeMessage = \(PassingData.shared.welcomeMessage)")
 //        print("PassingData.sharedInstance.filterOn = \(PassingData.shared.filterOn)")
 //
@@ -468,27 +479,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
-                view?.image = UIImage(named: "pin_one_yellow_30-2")
+                view?.image = UIImage(named: "pin_one_primary_30")
             } else if annotation.isKind(of: StarTwoMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
-                view?.image = UIImage(named: "pin_two_blue_30")
+                view?.image = UIImage(named: "pin_two_primary_30")
             } else if annotation.isKind(of: StarThreeMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
-                view?.image = UIImage(named: "pin_three_red_ 30")
+                view?.image = UIImage(named: "pin_three_primary_ 30")
             } else if annotation.isKind(of: StarFourMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
-                view?.image = UIImage(named: "pin_four_parple_30")
+                view?.image = UIImage(named: "pin_four_primary_30")
             } else if annotation.isKind(of: StarFiveMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
-                view?.image = UIImage(named: "pin_five_orange_30-1")
+                view?.image = UIImage(named: "pin_five_primary_30")
             } else if view == nil {
                 
                 
@@ -677,623 +688,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         print("center = \(center)")
         
+        print("Radius = \(self.filter.distanceFilter)")
+        
         let circleQuery = geoFire.query(at: center, withRadius: self.filter.distanceFilter)
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
-            //query. need to be changed
-           //
-            print("HEYKey '\(String(describing: key))' entered the search area and is at location '\(String(describing: location))'")
             
+            print("HEYKey '\(String(describing: key))' entered the search area and is at location '\(String(describing: location))'")
             
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
             
-            //Question quertOrderedByKey??
-            //toiletsRef.child(key!).queryOrderedByKey().observe(........ 12pm 14th Feb
-            
             toiletsRef.child(key!).observe(FIRDataEventType.value, with: { snapshot in
-                let toilet = Toilet()
-        /////        //////Copied from new one April 6   .....
-                
-                
-                toilet.key = key!
-                let snapshotValue = snapshot.value as? NSDictionary
-                
-                let urlOne = snapshotValue?["urlOne"] as? String
-                toilet.urlOne = urlOne!
-                
-//                let type = snapshotValue?["type"] as? Inte
-//                toilet.type = type!
-                // print("type = \(type)")
-                
-                let averageStar = snapshotValue?["averageStar"] as? String
-                toilet.star = Double(averageStar!)!
-                
-                
-                
-                toilet.name = (snapshotValue?["name"] as? String)!
-                toilet.type = (snapshotValue?["type"] as? Int)!
-                toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
-                toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
-                
-                
-                
-                
-                toilet.openHours = (snapshotValue?["openHours"] as? Int)!
-                toilet.closeHours = (snapshotValue?["closeHours"] as? Int)!
-                toilet.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
-                toilet.averageWait = (snapshotValue?["averageWait"] as? Int)!
-                
-                
-                
-                
-                toilet.available = (snapshotValue?["available"] as? Bool)!
-                toilet.japanesetoilet = (snapshotValue?["japanesetoilet"] as? Bool)!
-                toilet.westerntoilet = (snapshotValue?["westerntoilet"] as? Bool)!
-                toilet.onlyFemale = (snapshotValue?["onlyFemale"] as? Bool)!
-                toilet.unisex = (snapshotValue?["unisex"] as? Bool)!
-                
-                
-                
-                
-                
-                toilet.washlet = (snapshotValue?["washlet"] as? Bool)!
-                toilet.warmSeat = (snapshotValue?["warmSeat"] as? Bool)!
-                toilet.autoOpen = (snapshotValue?["autoOpen"] as? Bool)!
-                toilet.noVirus = (snapshotValue?["noVirus"] as? Bool)!
-                toilet.paperForBenki = (snapshotValue?["paperForBenki"] as? Bool)!
-                toilet.cleanerForBenki = (snapshotValue?["cleanerForBenki"] as? Bool)!
-                toilet.autoToiletWash = (snapshotValue?["nonTouchWash"] as? Bool)!
-                
-                
-                
-                toilet.sensorHandWash = (snapshotValue?["sensorHandWash"] as? Bool)!
-                toilet.handSoap = (snapshotValue?["handSoap"] as? Bool)!
-                toilet.autoHandSoap = (snapshotValue?["nonTouchHandSoap"] as? Bool)!
-                toilet.paperTowel = (snapshotValue?["paperTowel"] as? Bool)!
-                toilet.handDrier = (snapshotValue?["handDrier"] as? Bool)!
-                
-                
-                
-                
-                toilet.otohime = (snapshotValue?["otohime"] as? Bool)!
-                toilet.napkinSelling = (snapshotValue?["napkinSelling"] as? Bool)!
-                toilet.makeuproom = (snapshotValue?["makeuproom"] as? Bool)!
-                toilet.clothes = (snapshotValue?["clothes"] as? Bool)!
-                toilet.baggageSpace = (snapshotValue?["baggageSpace"] as? Bool)!
-                
-                
-                toilet.wheelchair = (snapshotValue?["wheelchair"] as? Bool)!
-                toilet.wheelchairAccess = (snapshotValue?["wheelchairAccess"] as? Bool)!
-                toilet.autoDoor = (snapshotValue?["autoDoor"] as? Bool)!
-                toilet.callHelp = (snapshotValue?["callHelp"] as? Bool)!
-                toilet.ostomate = (snapshotValue?["ostomate"] as? Bool)!
-                toilet.english = (snapshotValue?["english"] as? Bool)!
-                toilet.braille = (snapshotValue?["braille"] as? Bool)!
-                toilet.voiceGuide = (snapshotValue?["voiceGuide"] as? Bool)!
-                
-                
-                
-                
-                
-                toilet.fancy = (snapshotValue?["fancy"] as? Bool)!
-                toilet.smell = (snapshotValue?["smell"] as? Bool)!
-                toilet.conforatableWide = (snapshotValue?["confortable"] as? Bool)!
-                toilet.noNeedAsk = (snapshotValue?["noNeedAsk"] as? Bool)!
-                toilet.parking = (snapshotValue?["parking"] as? Bool)!
-                toilet.airCondition = (snapshotValue?["airCondition"] as? Bool)!
-                toilet.wifi = (snapshotValue?["wifi"] as? Bool)!
-                
-                toilet.milkspace = (snapshotValue?["milkspace"] as? Bool)!
-                toilet.babyroomOnlyFemale = (snapshotValue?["babyRoomOnlyFemale"] as? Bool)!
-                toilet.babyroomManCanEnter = (snapshotValue?["babyRoomMaleEnter"] as? Bool)!
-                toilet.babyPersonalSpace = (snapshotValue?["babyRoomPersonalSpace"] as? Bool)!
-                toilet.babyPersonalSpaceWithLock = (snapshotValue?["babyRoomPersonalSpaceWithLock"] as? Bool)!
-                toilet.babyRoomWideSpace = (snapshotValue?["babyRoomWideSpace"] as? Bool)!
-                
-                toilet.babyCarRental = (snapshotValue?["babyCarRental"] as? Bool)!
-                toilet.babyCarAccess = (snapshotValue?["babyCarAccess"] as? Bool)!
-                toilet.omutu = (snapshotValue?["omutu"] as? Bool)!
-                toilet.hipWashingStuff = (snapshotValue?["hipCleaningStuff"] as? Bool)!
-                toilet.babyTrashCan = (snapshotValue?["omutuTrashCan"] as? Bool)!
-                toilet.omutuSelling = (snapshotValue?["omutuSelling"] as? Bool)!
-                
-                
 
-                
-                
-                
-                toilet.babyRoomSink = (snapshotValue?["babySink"] as? Bool)!
-                toilet.babyWashStand = (snapshotValue?["babyWashstand"] as? Bool)!
-                toilet.babyHotWater = (snapshotValue?["babyHotwater"] as? Bool)!
-                toilet.babyMicroWave = (snapshotValue?["babyMicrowave"] as? Bool)!
-                toilet.babyWaterSelling = (snapshotValue?["babyWaterSelling"] as? Bool)!
-                toilet.babyFoddSelling = (snapshotValue?["babyFoodSelling"] as? Bool)!
-                toilet.babyEatingSpace = (snapshotValue?["babyEatingSpace"] as? Bool)!
-                
-                
-                toilet.babyChair = (snapshotValue?["babyChair"] as? Bool)!
-                toilet.babySoffa = (snapshotValue?["babySoffa"] as? Bool)!
-                toilet.babyKidsToilet = (snapshotValue?["kidsToilet"] as? Bool)!
-                toilet.babyKidsSpace = (snapshotValue?["kidsSpace"] as? Bool)!
-                toilet.babyHeightMeasure = (snapshotValue?["babyHeight"] as? Bool)!
-                toilet.babyWeightMeasure = (snapshotValue?["babyWeight"] as? Bool)!
-                toilet.babyToy = (snapshotValue?["babyToy"] as? Bool)!
-                toilet.babyFancy = (snapshotValue?["babyFancy"] as? Bool)!
-                toilet.babySmellGood = (snapshotValue?["babySmellGood"] as? Bool)!
-                
-                
-                
-                
-                let reviewCount = snapshotValue?["reviewCount"] as? Int
-                toilet.reviewCount = reviewCount!
-                print(" reviewCount= \(String(describing: reviewCount))")
-                
-                
-                let averageWait = snapshotValue?["averageWait"] as? Int
-                toilet.averageWait = averageWait!
-                
-                
-                //let distance = location?.distance(from: center)
-                
-                //toilet.distance = Double(distance!)
-                
-              //  toilet.distance = self.distanceCalculationGetString(destination: location!, center: center)
-                
-                
-                toilet.distance = MapViewController.distanceCalculationGetString(destination: location!, center: center)
-                
-                print("THIS IS THE DISTANCE\(toilet.distance)")
-                
-                
-                ///////Copied from new one April 6   .....
-          
-                
-                if self.filter.starFilterSetted == true && toilet.star < self.filter.starFilter{
-                    self.removedToilet = true
-                    
-                }
-                //toilet.star to toilet.averageStar 18 Feb 14th....
-                
-                
-                
-                
-                if self.filter.availableFilter == true && toilet.available == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.japaneseFilter == true && toilet.japanesetoilet == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.westernFilter == true && toilet.westerntoilet == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.onlyFemaleFilter == true && toilet.onlyFemale == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.unisexFilter == true && toilet.unisex == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                
-                if self.filter.washletFilter == true && toilet.washlet == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.warmSearFilter == true && toilet.warmSeat == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.autoOpen == true && toilet.autoOpen == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.noVirusFilter == true && toilet.noVirus == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.paperForBenkiFilter == true && toilet.paperForBenki == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.cleanerForBenkiFilter == true && toilet.cleanerForBenki == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.autoToiletWashFilter == true && toilet.autoToiletWash == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                
-                
-                if self.filter.sensorHandWashFilter == true && toilet.sensorHandWash == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.handSoapFilter == true && toilet.handSoap == false {
-                    self.removedToilet = true
-                }
-                if self.filter.autoHandSoapFilter == true && toilet.autoHandSoap == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.paperTowelFilter == true && toilet.paperTowel == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.handDrierFilter == true && toilet.handDrier == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                
-                if self.filter.otohime == true && toilet.otohime == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.napkinSelling == true && toilet.napkinSelling == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.makeroomFilter == true && toilet.makeuproom == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.clothes == true && toilet.clothes == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.baggageSpaceFilter == true && toilet.baggageSpace == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                
-                
-                if self.filter.wheelchairFilter == true && toilet.wheelchair == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.wheelchairAccessFilter == true && toilet.wheelchairAccess == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.autoDoorFilter == true && toilet.autoDoor == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.callHelpFilter == true && toilet.callHelp == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.ostomateFilter == true && toilet.ostomate == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.writtenEnglish == true && toilet.english == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.braille == true && toilet.braille == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.voiceGuideFilter == true && toilet.voiceGuide == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                
-                
-                if self.filter.fancy == true && toilet.fancy == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.smell == true && toilet.smell == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.confortableWise == true && toilet.conforatableWide == false {
-                    self.removedToilet = true
-                }
-                if self.filter.noNeedAsk == true && toilet.noNeedAsk == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.parking == true && toilet.parking == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.airConditionFilter == true && toilet.airCondition == false {
-                    self.removedToilet = true
-                }
-                if self.filter.wifiFilter == true && toilet.wifi == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                
-                
-                if self.filter.milkspaceFilter == true && toilet.milkspace == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyRoomOnlyFemaleFilter == true && toilet.babyroomOnlyFemale == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.babyRoomMaleCanEnterFilter == true && toilet.babyroomManCanEnter == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyRoomPersonalSpaceFilter == true && toilet.babyPersonalSpace == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyRoomPersonalWithLockFilter == true && toilet.babyPersonalSpace == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.babyRoomWideSpaceFilter == true && toilet.babyRoomWideSpace == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                if self.filter.babyCarRentalFilter == true && toilet.babyCarRental == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyCarAccessFilter == true && toilet.babyCarAccess == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.omutuFilter == true && toilet.omutu == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyHipWashingStuffFilter == true && toilet.hipWashingStuff == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.omutuTrashCanFilter == true && toilet.babyTrashCan == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.omutuSelling == true && toilet.omutuSelling == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                if self.filter.babySinkFilter == true && toilet.babyRoomSink == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyWashstandFilter == true && toilet.babyWashStand == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.babyHotWaterFilter == true && toilet.babyHotWater == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyMicrowaveFilter == true && toilet.babyMicroWave == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babySellingWaterFilter == true && toilet.babyWaterSelling == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyFoodSellingFilter == true && toilet.babyFoddSelling == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyEatingSpaceFilter == true && toilet.babyEatingSpace == false {
-                    self.removedToilet = true
-                }
-                
-                
-                
-                
-                
-                
-                if self.filter.babyChairFilter == true && toilet.babyChair == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.babySoffaFilter == true && toilet.babySoffa == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyToiletFilter == true && toilet.babyKidsToilet == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyKidsSpaceFilter == true && toilet.babyKidsSpace == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.babyHeightMeasureFilter == true && toilet.babyHeightMeasure == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyWeightMeasureFilter == true && toilet.babyWeightMeasure == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyToyFilter == true && toilet.babyToy == false {
-                    self.removedToilet = true
-                }
-                
-                
-                if self.filter.babyRoomFancyFilter == true && toilet.babyFancy == false {
-                    self.removedToilet = true
-                }
-                
-                if self.filter.babyRoomSmellGoodFilter == true && toilet.babySmellGood == false {
-                    self.removedToilet = true
-                }
-                
-//                if self.filter.typeFilterOn == true {
-//                    if self.filter.typeFilter != toilet.type{
-//                    self.removedToilet = true
-//                    }
-//                    print("toilet.type = \(toilet.type)")
-//                }
-                
-                //Changed toilet type String to Integer
-                
-                if self.removedToilet == false {
-                    self.toilets.append(toilet)
-                   
-                    //let queryannotations = MKPointAnnotation()
-                    let starValueDouble = Double(toilet.averageStar)
-                    let starValueInt = Int(starValueDouble!)
-                    
-                    print("starValueDouble111 = \(String(describing: starValueDouble))")
-                        
-                    print("starValueInt111 = \(starValueInt)")
-                    if starValueInt < 2{
-                        let starOneMarker = StarOneMarker(coordinate: (location?.coordinate)!)
-                        
-                        
-                        starOneMarker.key = toilet.key
-                        starOneMarker.name = toilet.name
-                        starOneMarker.distance = toilet.distance
-                        starOneMarker.averageStar = toilet.averageStar
-                        starOneMarker.averageWait = toilet.averageWait
-                        starOneMarker.coordinate = (location?.coordinate)!
-                        starOneMarker.reviewCount = toilet.reviewCount
-                        
-                        self.mapView.addAnnotation(starOneMarker)
-    
-                    } else if starValueInt < 3{
-                        let starTwoMarker = StarTwoMarker(coordinate: (location?.coordinate)!)
-                        
-                        starTwoMarker.key = toilet.key
-                        starTwoMarker.name = toilet.name
-                        starTwoMarker.distance = toilet.distance
-                        starTwoMarker.averageStar = toilet.averageStar
-                        starTwoMarker.averageWait = toilet.averageWait
-                        starTwoMarker.coordinate = (location?.coordinate)!
-                        starTwoMarker.reviewCount = toilet.reviewCount
-                        
-                        self.mapView.addAnnotation(starTwoMarker)
-                        
-                        
-                        
-                    } else if starValueInt < 4{
-                        let starThreeMarker = StarThreeMarker(coordinate: (location?.coordinate)!)
-                        
-                        
-                        starThreeMarker.key = toilet.key
-                        starThreeMarker.name = toilet.name
-                        starThreeMarker.distance = toilet.distance
-                        starThreeMarker.averageStar = toilet.averageStar
-                        starThreeMarker.averageWait = toilet.averageWait
-                        starThreeMarker.coordinate = (location?.coordinate)!
-                        starThreeMarker.reviewCount = toilet.reviewCount
-                        
-                        self.mapView.addAnnotation(starThreeMarker)
-                        
-                    } else if starValueInt < 5{
-                        let starFourMarker = StarFourMarker(coordinate: (location?.coordinate)!)
-                        
-                        
-                        starFourMarker.key = toilet.key
-                        starFourMarker.name = toilet.name
-                        starFourMarker.distance = toilet.distance
-                        starFourMarker.averageStar = toilet.averageStar
-                        starFourMarker.averageWait = toilet.averageWait
-                        starFourMarker.coordinate = (location?.coordinate)!
-                        starFourMarker.reviewCount = toilet.reviewCount
-                        
-                        self.mapView.addAnnotation(starFourMarker)
-                        
-                    } else if starValueInt == 5{
-                     let starFiveMarker = StarFiveMarker(coordinate: (location?.coordinate)!)
-                     
-                        
-                        starFiveMarker.key = toilet.key
-                        starFiveMarker.name = toilet.name
-                        starFiveMarker.distance = toilet.distance
-                        starFiveMarker.averageStar = toilet.averageStar
-                        starFiveMarker.averageWait = toilet.averageWait
-                        starFiveMarker.coordinate = (location?.coordinate)!
-                        starFiveMarker.reviewCount = toilet.reviewCount
-                        
-                        self.mapView.addAnnotation(starFiveMarker)
-
-
-                    } else{
-                    
-                        
-                    let queryannotations = ToiletMarkers(coordinate: (location?.coordinate)!)
-                    
-                    print("location Coodinates \(String(describing: location?.coordinate))")
-                    
-                    queryannotations.key = toilet.key
-                    queryannotations.name = toilet.name
-                    queryannotations.distance = toilet.distance
-                    queryannotations.averageStar = toilet.averageStar
-                    queryannotations.averageWait = toilet.averageWait
-                    queryannotations.coordinate = (location?.coordinate)!
-                    queryannotations.reviewCount = toilet.reviewCount
-                    self.mapView.addAnnotation(queryannotations)
-                        
-                    
-                    
-                    print("queryannotaions121\(queryannotations)")
-                        
-                    }
-                    
-                    
-                    self.createdArray = true
-
-                    self.tableView.reloadData()
-                    if self.filter.orderDistanceFilter == true {
-                        self.toilets.sort() { $0.distance < $1.distance }
-                    }
-                    if self.filter.orderStarFilter == true{
-                        self.toilets.sort() { $0.star > $1.star }
-                    }
-                    if self.filter.orderReviewFilter == true{
-                        self.toilets.sort() { $0.reviewCount > $1.reviewCount }
-                    }
-                    
-                    
-                }
-                self.removedToilet = false
+            self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
         })
         circleQuery?.observeReady({
@@ -1304,6 +710,628 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.changeStartCell()
         })
     }
+    
+    
+
+    
+    func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String, location: CLLocation?, center: CLLocation){
+        let toilet = Toilet()
+        
+        
+        let snapshotValue = snapshot.value as? NSDictionary
+        
+        //Type Filter
+        toilet.type = (snapshotValue?["type"] as? Int)!
+        
+        if self.filter.typeFilterOn == true && self.filter.typeFilter != toilet.type {
+            return
+        }
+        
+        //Gotta Make sure the integet is the right  May 8
+
+        
+        
+        
+        //Star Filter
+        let averageStar = snapshotValue?["averageStar"] as? String
+        toilet.star = Double(averageStar!)!
+        
+        if self.filter.starFilterSetted == true && toilet.star < self.filter.starFilter{
+            return
+        }
+        
+        //Available Filter
+        toilet.openHours = (snapshotValue?["openHours"] as? Int)!
+        toilet.closeHours = (snapshotValue?["closeHours"] as? Int)!
+        
+//        if self.filter.availableFilter == true && toilet.openHours  {
+//            return
+//        }
+        
+        //Opening Hours Filter
+        
+        toilet.available = (snapshotValue?["available"] as? Bool)!
+       
+        if self.filter.availableFilter == true && toilet.available == false {
+            return
+        }
+        
+        
+        //Boolean Filters
+        
+        //Basic Info
+        toilet.japanesetoilet = (snapshotValue?["japanesetoilet"] as? Bool)!
+        if self.filter.japaneseFilter == true && toilet.japanesetoilet == false {
+            return
+        }
+        
+        toilet.westerntoilet = (snapshotValue?["westerntoilet"] as? Bool)!
+        if self.filter.westernFilter == true && toilet.westerntoilet == false {
+            return
+        }
+        
+        
+        toilet.onlyFemale = (snapshotValue?["onlyFemale"] as? Bool)!
+        if self.filter.onlyFemaleFilter == true && toilet.onlyFemale == false {
+            return
+        }
+        
+
+        toilet.unisex = (snapshotValue?["unisex"] as? Bool)!
+        if self.filter.unisexFilter == true && toilet.unisex == false {
+            return
+        }
+        
+
+        
+        //Toilet Seat
+        toilet.washlet = (snapshotValue?["washlet"] as? Bool)!
+        if self.filter.washletFilter == true && toilet.washlet == false {
+            return
+        }
+
+        toilet.warmSeat = (snapshotValue?["warmSeat"] as? Bool)!
+        if self.filter.warmSearFilter == true && toilet.warmSeat == false {
+            return
+        }
+    
+        toilet.autoOpen = (snapshotValue?["autoOpen"] as? Bool)!
+        if self.filter.autoOpen == true && toilet.autoOpen == false {
+            return
+        }
+        
+        toilet.noVirus = (snapshotValue?["noVirus"] as? Bool)!
+        if self.filter.noVirusFilter == true && toilet.noVirus == false {
+            return
+        }
+        
+        toilet.paperForBenki = (snapshotValue?["paperForBenki"] as? Bool)!
+        if self.filter.paperForBenkiFilter == true && toilet.paperForBenki == false {
+            return
+        }
+        
+        toilet.cleanerForBenki = (snapshotValue?["cleanerForBenki"] as? Bool)!
+        if self.filter.cleanerForBenkiFilter == true && toilet.cleanerForBenki == false {
+            return
+        }
+
+        toilet.autoToiletWash = (snapshotValue?["nonTouchWash"] as? Bool)!
+        if self.filter.autoToiletWashFilter == true && toilet.autoToiletWash == false {
+            return
+        }
+        
+        
+    
+        //Washstand
+        toilet.sensorHandWash = (snapshotValue?["sensorHandWash"] as? Bool)!
+        if self.filter.sensorHandWashFilter == true && toilet.sensorHandWash == false {
+            return
+        }
+        
+        toilet.handSoap = (snapshotValue?["handSoap"] as? Bool)!
+        if self.filter.handSoapFilter == true && toilet.handSoap == false {
+            return
+        }
+
+        toilet.autoHandSoap = (snapshotValue?["nonTouchHandSoap"] as? Bool)!
+        if self.filter.autoHandSoapFilter == true && toilet.autoHandSoap == false {
+            return
+        }
+        
+        toilet.paperTowel = (snapshotValue?["paperTowel"] as? Bool)!
+        if self.filter.paperTowelFilter == true && toilet.paperTowel == false {
+            return
+        }
+        
+        toilet.handDrier = (snapshotValue?["handDrier"] as? Bool)!
+        if self.filter.handDrierFilter == true && toilet.handDrier == false {
+            return
+        }
+        
+        
+        
+        
+        
+        //Other things one
+        toilet.fancy = (snapshotValue?["fancy"] as? Bool)!
+        if self.filter.fancy == true && toilet.fancy == false {
+            return
+        }
+        toilet.smell = (snapshotValue?["smell"] as? Bool)!
+        if self.filter.smell == true && toilet.smell == false {
+            return
+        }
+
+        toilet.conforatableWide = (snapshotValue?["confortable"] as? Bool)!
+        if self.filter.confortableWise == true && toilet.conforatableWide == false {
+            return
+        }
+        
+        toilet.clothes = (snapshotValue?["clothes"] as? Bool)!
+        if self.filter.clothes == true && toilet.clothes == false {
+            return
+        }
+        
+        toilet.baggageSpace = (snapshotValue?["baggageSpace"] as? Bool)!
+        if self.filter.baggageSpaceFilter == true && toilet.baggageSpace == false {
+            return
+        }
+
+        
+        //Other things two
+        toilet.noNeedAsk = (snapshotValue?["noNeedAsk"] as? Bool)!
+        if self.filter.noNeedAsk == true && toilet.noNeedAsk == false {
+             return
+        }
+        toilet.english = (snapshotValue?["english"] as? Bool)!
+        if self.filter.writtenEnglish == true && toilet.english == false {
+             return
+        }
+        toilet.parking = (snapshotValue?["parking"] as? Bool)!
+        if self.filter.parking == true && toilet.parking == false {
+             return
+        }
+        toilet.airCondition = (snapshotValue?["airCondition"] as? Bool)!
+        if self.filter.airConditionFilter == true && toilet.airCondition == false {
+             return
+        }
+
+        toilet.wifi = (snapshotValue?["wifi"] as? Bool)!
+        if self.filter.wifiFilter == true && toilet.wifi == false {
+             return
+        }
+        
+        
+        
+        //Ladys
+        
+        toilet.otohime = (snapshotValue?["otohime"] as? Bool)!
+        if self.filter.otohime == true && toilet.otohime == false {
+             return
+        }
+        toilet.napkinSelling = (snapshotValue?["napkinSelling"] as? Bool)!
+        if self.filter.napkinSelling == true && toilet.napkinSelling == false {
+             return
+        }
+        
+        toilet.makeuproom = (snapshotValue?["makeuproom"] as? Bool)!
+        if self.filter.makeroomFilter == true && toilet.makeuproom == false {
+             return
+        }
+        
+        toilet.ladyOmutu = (snapshotValue?["ladyOmutu"] as? Bool)!
+        if self.filter.ladyOmutu == true && toilet.ladyOmutu == false {
+            return
+        }
+        
+        toilet.ladyBabyChair = (snapshotValue?["ladyBabyChair"] as? Bool)!
+        if self.filter.ladyBabyChair == true && toilet.ladyBabyChair == false {
+            return
+        }
+        toilet.ladyBabyChairGood = (snapshotValue?["ladyBabyChairGood"] as? Bool)!
+        if self.filter.ladyBabyChairGood == true && toilet.ladyBabyChairGood == false {
+            return
+        }
+        toilet.ladyBabyCarAccess = (snapshotValue?["ladyBabyCarAccess"] as? Bool)!
+        if self.filter.ladyBabyCarAccess == true && toilet.ladyBabyCarAccess == false {
+            return
+        }
+        
+    
+        //Men 
+        toilet.maleOmutu = (snapshotValue?["maleOmutu"] as? Bool)!
+        if self.filter.maleOmutu == true && toilet.maleOmutu == false {
+            return
+        }
+        toilet.maleBabyChair = (snapshotValue?["maleBabyChair"] as? Bool)!
+        if self.filter.maleBabyChair == true && toilet.maleBabyChair == false {
+            return
+        }
+        toilet.maleBabyChairGood = (snapshotValue?["maleBabyChairGood"] as? Bool)!
+        if self.filter.maleBabyChairgood == true && toilet.maleBabyChairGood == false {
+            return
+        }
+        toilet.maleBabyCarAccess = (snapshotValue?["maleBabyCarAccess"] as? Bool)!
+        if self.filter.maleBabyCarAccess == true && toilet.maleBabyCarAccess == false {
+            return
+        }
+        
+        
+        //Family
+        
+        toilet.wheelchair = (snapshotValue?["wheelchair"] as? Bool)!
+        if self.filter.wheelchairFilter == true && toilet.wheelchair == false {
+            return
+        }
+        toilet.wheelchairAccess = (snapshotValue?["wheelchairAccess"] as? Bool)!
+        if self.filter.wheelchairAccessFilter == true && toilet.wheelchairAccess == false {
+            return
+        }
+        
+        toilet.autoDoor = (snapshotValue?["autoDoor"] as? Bool)!
+        if self.filter.autoDoorFilter == true && toilet.autoDoor == false {
+            return
+        }
+        
+        toilet.callHelp = (snapshotValue?["callHelp"] as? Bool)!
+        if self.filter.callHelpFilter == true && toilet.callHelp == false {
+            return
+        }
+
+        toilet.ostomate = (snapshotValue?["ostomate"] as? Bool)!
+        if self.filter.ostomateFilter == true && toilet.ostomate == false {
+            return
+        }
+        
+        toilet.braille = (snapshotValue?["braille"] as? Bool)!
+        if self.filter.braille == true && toilet.braille == false {
+            return
+        }
+        
+        toilet.voiceGuide = (snapshotValue?["voiceGuide"] as? Bool)!
+        if self.filter.voiceGuideFilter == true && toilet.voiceGuide == false {
+            return
+        }
+        
+        toilet.familyOmutu = (snapshotValue?["familyOmutu"] as? Bool)!
+        if self.filter.familyOmutu == true && toilet.familyOmutu == false {
+            return
+        }
+        toilet.familyBabyChair = (snapshotValue?["familyBabyChair"] as? Bool)!
+        if self.filter.familyBabyChair == true && toilet.familyBabyChair == false {
+            return
+        }
+        
+        
+        //Milk Room One 
+        
+        toilet.milkspace = (snapshotValue?["milkspace"] as? Bool)!
+        if self.filter.milkspaceFilter == true && toilet.milkspace == false {
+            return
+        }
+        toilet.babyroomOnlyFemale = (snapshotValue?["babyRoomOnlyFemale"] as? Bool)!
+        if self.filter.babyRoomOnlyFemaleFilter == true && toilet.babyroomOnlyFemale == false {
+            return
+        }
+        
+        toilet.babyroomManCanEnter = (snapshotValue?["babyRoomMaleEnter"] as? Bool)!
+        if self.filter.babyRoomMaleCanEnterFilter == true && toilet.babyroomManCanEnter == false{
+            return
+        }
+        
+        
+        toilet.babyPersonalSpace = (snapshotValue?["babyRoomPersonalSpace"] as? Bool)!
+        if self.filter.babyRoomPersonalSpaceFilter == true && toilet.babyPersonalSpace == false {
+            return
+        }
+        
+        toilet.babyPersonalSpaceWithLock = (snapshotValue?["babyRoomPersonalSpaceWithLock"] as? Bool)!
+        if self.filter.babyRoomPersonalWithLockFilter == true && toilet.babyPersonalSpace == false {
+            return
+        }
+        
+        toilet.babyRoomWideSpace = (snapshotValue?["babyRoomWideSpace"] as? Bool)!
+        if self.filter.babyRoomWideSpaceFilter == true && toilet.babyRoomWideSpace == false {
+            return
+        }
+
+        
+        
+        //MIlk Room Two
+        toilet.babyCarRental = (snapshotValue?["babyCarRental"] as? Bool)!
+        if self.filter.babyCarRentalFilter == true && toilet.babyCarRental == false {
+            return
+        }
+
+        toilet.babyCarAccess = (snapshotValue?["babyCarAccess"] as? Bool)!
+        if self.filter.babyCarAccessFilter == true && toilet.babyCarAccess == false {
+            return
+        }
+        
+        toilet.omutu = (snapshotValue?["omutu"] as? Bool)!
+        if self.filter.omutuFilter == true && toilet.omutu == false {
+            return
+        }
+        
+        toilet.hipWashingStuff = (snapshotValue?["hipCleaningStuff"] as? Bool)!
+        if self.filter.babyHipWashingStuffFilter == true && toilet.hipWashingStuff == false {
+            return
+        }
+        
+        toilet.babyTrashCan = (snapshotValue?["omutuTrashCan"] as? Bool)!
+        if self.filter.omutuTrashCanFilter == true && toilet.babyTrashCan == false {
+            return
+        }
+        
+        toilet.omutuSelling = (snapshotValue?["omutuSelling"] as? Bool)!
+        if self.filter.omutuSelling == true && toilet.omutuSelling == false {
+            return
+        }
+
+        
+        //Milk Room 3
+        
+        toilet.babyRoomSink = (snapshotValue?["babySink"] as? Bool)!
+        if self.filter.babySinkFilter == true && toilet.babyRoomSink == false {
+            return
+        }
+
+        toilet.babyWashStand = (snapshotValue?["babyWashstand"] as? Bool)!
+        if self.filter.babyWashstandFilter == true && toilet.babyWashStand == false {
+            return
+        }
+        toilet.babyHotWater = (snapshotValue?["babyHotwater"] as? Bool)!
+        if self.filter.babyHotWaterFilter == true && toilet.babyHotWater == false {
+            return
+        }
+        toilet.babyMicroWave = (snapshotValue?["babyMicrowave"] as? Bool)!
+        if self.filter.babyMicrowaveFilter == true && toilet.babyMicroWave == false {
+            return
+        }
+        toilet.babyWaterSelling = (snapshotValue?["babyWaterSelling"] as? Bool)!
+        if self.filter.babySellingWaterFilter == true && toilet.babyWaterSelling == false {
+            return
+        }
+        toilet.babyFoddSelling = (snapshotValue?["babyFoodSelling"] as? Bool)!
+        if self.filter.babyFoodSellingFilter == true && toilet.babyFoddSelling == false {
+            return
+        }
+        
+        toilet.babyEatingSpace = (snapshotValue?["babyEatingSpace"] as? Bool)!
+        if self.filter.babyEatingSpaceFilter == true && toilet.babyEatingSpace == false {
+            return
+        }
+        
+        
+        
+        
+        //Milk Room 4
+        
+        
+        toilet.babyChair = (snapshotValue?["babyChair"] as? Bool)!
+        if self.filter.babyChairFilter == true && toilet.babyChair == false {
+            return
+        }
+        toilet.babySoffa = (snapshotValue?["babySoffa"] as? Bool)!
+        if self.filter.babySoffaFilter == true && toilet.babySoffa == false {
+            return
+        }
+
+        toilet.babyKidsToilet = (snapshotValue?["kidsToilet"] as? Bool)!
+        if self.filter.babyToiletFilter == true && toilet.babyKidsToilet == false {
+            return
+        }
+        
+        toilet.babyKidsSpace = (snapshotValue?["kidsSpace"] as? Bool)!
+        if self.filter.babyKidsSpaceFilter == true && toilet.babyKidsSpace == false {
+            return
+        }
+        
+        
+        toilet.babyHeightMeasure = (snapshotValue?["babyHeight"] as? Bool)!
+        if self.filter.babyHeightMeasureFilter == true && toilet.babyHeightMeasure == false {
+            return
+        }
+        toilet.babyWeightMeasure = (snapshotValue?["babyWeight"] as? Bool)!
+        if self.filter.babyWeightMeasureFilter == true && toilet.babyWeightMeasure == false {
+            return
+        }
+
+        toilet.babyToy = (snapshotValue?["babyToy"] as? Bool)!
+        if self.filter.babyToyFilter == true && toilet.babyToy == false {
+            return
+        }
+        toilet.babyFancy = (snapshotValue?["babyFancy"] as? Bool)!
+        if self.filter.babyRoomFancyFilter == true && toilet.babyFancy == false {
+            return
+        }
+        toilet.babySmellGood = (snapshotValue?["babySmellGood"] as? Bool)!
+        if self.filter.babyRoomSmellGoodFilter == true && toilet.babySmellGood == false {
+            return
+        }
+        
+        
+        
+        //Boolean Filters Complete
+        
+        
+        toilet.key = key
+        
+        
+        let urlOne = snapshotValue?["urlOne"] as? String
+        toilet.urlOne = urlOne!
+        
+        toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
+        //There are toilet star and toilet averageStar Maybe Redundant??
+        
+        
+//        let averageStar = snapshotValue?["averageStar"] as? String
+//        toilet.star = Double(averageStar!)!
+        
+        
+        
+        
+        
+        
+        toilet.name = (snapshotValue?["name"] as? String)!
+//        toilet.type = (snapshotValue?["type"] as? Int)!
+        toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
+        //toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
+        
+        
+        
+        
+//        toilet.openHours = (snapshotValue?["openHours"] as? Int)!
+//        toilet.closeHours = (snapshotValue?["closeHours"] as? Int)!
+        toilet.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
+        toilet.averageWait = (snapshotValue?["averageWait"] as? Int)!
+        
+        
+        
+        let reviewCount = snapshotValue?["reviewCount"] as? Int
+        toilet.reviewCount = reviewCount!
+        print(" reviewCount= \(String(describing: reviewCount))")
+        
+        
+        let averageWait = snapshotValue?["averageWait"] as? Int
+        toilet.averageWait = averageWait!
+        
+        
+        //let distance = location?.distance(from: center)
+        
+        //toilet.distance = Double(distance!)
+        
+        //  toilet.distance = self.distanceCalculationGetString(destination: location!, center: center)
+        
+        toilet.distance = MapViewController.distanceCalculationGetString(destination: location!, center: center)
+        
+        print("THIS IS THE DISTANCE\(toilet.distance)")
+        
+        
+        self.toilets.append(toilet)
+        
+        //let queryannotations = MKPointAnnotation()
+        let starValueDouble = Double(toilet.star)
+        print("starValueDouble = \(starValueDouble)")
+        let starValueInt = Int(starValueDouble)
+        print("starValueInt = \(starValueInt)")
+        
+        print("starValueDouble111 = \(String(describing: starValueDouble))")
+        
+        print("starValueInt111 = \(starValueInt)")
+        if starValueInt < 2{
+            let starOneMarker = StarOneMarker(coordinate: (location?.coordinate)!)
+            
+            
+            starOneMarker.key = toilet.key
+            starOneMarker.name = toilet.name
+            starOneMarker.distance = toilet.distance
+            starOneMarker.averageStar = toilet.averageStar
+            starOneMarker.averageWait = toilet.averageWait
+            starOneMarker.coordinate = (location?.coordinate)!
+            starOneMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starOneMarker)
+            
+        } else if starValueInt < 3{
+            let starTwoMarker = StarTwoMarker(coordinate: (location?.coordinate)!)
+            
+            starTwoMarker.key = toilet.key
+            starTwoMarker.name = toilet.name
+            starTwoMarker.distance = toilet.distance
+            starTwoMarker.averageStar = toilet.averageStar
+            starTwoMarker.averageWait = toilet.averageWait
+            starTwoMarker.coordinate = (location?.coordinate)!
+            starTwoMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starTwoMarker)
+            
+            
+            
+        } else if starValueInt < 4{
+            let starThreeMarker = StarThreeMarker(coordinate: (location?.coordinate)!)
+            
+            
+            starThreeMarker.key = toilet.key
+            starThreeMarker.name = toilet.name
+            starThreeMarker.distance = toilet.distance
+            starThreeMarker.averageStar = toilet.averageStar
+            starThreeMarker.averageWait = toilet.averageWait
+            starThreeMarker.coordinate = (location?.coordinate)!
+            starThreeMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starThreeMarker)
+            
+        } else if starValueInt < 5{
+            let starFourMarker = StarFourMarker(coordinate: (location?.coordinate)!)
+            
+            
+            starFourMarker.key = toilet.key
+            starFourMarker.name = toilet.name
+            starFourMarker.distance = toilet.distance
+            starFourMarker.averageStar = toilet.averageStar
+            starFourMarker.averageWait = toilet.averageWait
+            starFourMarker.coordinate = (location?.coordinate)!
+            starFourMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starFourMarker)
+            
+        } else if starValueInt == 5{
+            let starFiveMarker = StarFiveMarker(coordinate: (location?.coordinate)!)
+            
+            
+            starFiveMarker.key = toilet.key
+            starFiveMarker.name = toilet.name
+            starFiveMarker.distance = toilet.distance
+            starFiveMarker.averageStar = toilet.averageStar
+            starFiveMarker.averageWait = toilet.averageWait
+            starFiveMarker.coordinate = (location?.coordinate)!
+            starFiveMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starFiveMarker)
+            
+            
+        } else{
+            
+            
+            let queryannotations = ToiletMarkers(coordinate: (location?.coordinate)!)
+            
+            print("location Coodinates \(String(describing: location?.coordinate))")
+            
+            queryannotations.key = toilet.key
+            queryannotations.name = toilet.name
+            queryannotations.distance = toilet.distance
+            queryannotations.averageStar = toilet.averageStar
+            queryannotations.averageWait = toilet.averageWait
+            queryannotations.coordinate = (location?.coordinate)!
+            queryannotations.reviewCount = toilet.reviewCount
+            self.mapView.addAnnotation(queryannotations)
+            
+            
+            
+            print("queryannotaions121\(queryannotations)")
+            
+        }
+        
+        
+        self.createdArray = true
+        
+        self.tableView.reloadData()
+        if self.filter.orderDistanceFilter == true {
+            self.toilets.sort() { $0.distance < $1.distance }
+        }
+        if self.filter.orderStarFilter == true{
+            self.toilets.sort() { $0.star > $1.star }
+        }
+        if self.filter.orderReviewFilter == true{
+            self.toilets.sort() { $0.reviewCount > $1.reviewCount }
+        }
+    
+    
+    }
+    
+    
+    
        @IBAction func listButtonTapped(_ sender: Any) {
 //        listButton.isHidden = true
 //        centerButton.isHidden = true
@@ -1323,8 +1351,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         listButton.isHidden = true
         centerButton.isHidden = true
         
-            
-            
+        
+        
         changeStartCell()
         if createdArray == false{
             

@@ -167,11 +167,11 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate, MKMapVi
         
         //var typeString = ""
         
-        var val = "japanese_toilet".localized(lang: "en")
-        var jVal = "japanese_toilet".localized(lang: "jp")
-        
-        print("val = \(val)")
-        print("jVal = \(jVal)")
+//        var val = "japanese_toilet".localized(lang: "en")
+//        var jVal = "japanese_toilet".localized(lang: "jp")
+//        
+//        print("val = \(val)")
+//        print("jVal = \(jVal)")
         
         
         
