@@ -34,6 +34,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     var manuallyAverageStar = Double()
     var manuallyAverageWait = Int()
     var manuallyReviewCount = Int()
+    var firebaseOnceLoaded = false
     
     
    // var interval = NSDate().timeIntervalSince1970
@@ -317,61 +318,190 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     @IBAction func availableButtonTapped(_ sender: Any) {
         if availableSwitch.isOn {
         availableLabel.text = "利用可能"
-        available = true}
-        
-        else {
+        available = true} else {
             availableLabel.text = "利用不可"
             available = false
             
-            let alertController = UIAlertController (title: "確認", message: "このトイレが利用できませんでしたか？", preferredStyle: .actionSheet)
-            //Changed to action Sheet
+            self.isThereProblem()
             
-            let noAction = UIAlertAction(title: "利用できなかった", style: .default, handler: {(alert:
-                UIAlertAction!) in
-                let nextAlertController = UIAlertController (title: "お願い", message: "トイレが利用できなかった理由を教えてください", preferredStyle: .actionSheet)
-                
-                let notfound = UIAlertAction(title: "トイレが見つからなかったから", style: .default, handler: nil)
-                let noWater = UIAlertAction(title: "断水していたから", style: .default, handler: nil)
-                let noFlash = UIAlertAction(title: "トイレがつまっていたから", style: .default, handler: nil)
-                let noToiletPaper = UIAlertAction(title: "トイレットペーパーが無かったから", style: .default, handler: nil)
-                let stillYes = UIAlertAction(title: "いいえ、利用することができた", style: .default, handler: {(alert:
-                    UIAlertAction!) in
-                    self.availableSwitch.isOn = true
-                    self.availableLabel.text = "利用可能"
-                    self.available = true
-                })
-
-                            nextAlertController.addAction(notfound)
-                            nextAlertController.addAction(noToiletPaper)
-                            nextAlertController.addAction(noFlash)
-                            nextAlertController.addAction(noWater)
-                            nextAlertController.addAction(stillYes)
-                
-   
-                self.present(nextAlertController, animated: true, completion: nil)
-                  })
-            
-            let yesAction = UIAlertAction(title: "利用できた", style: .default, handler: {(alert:
-                UIAlertAction!) in
-            self.availableSwitch.isOn = true
-            self.availableLabel.text = "利用可能"
-            self.available = true
-            
-                
-            })
-
-            alertController.addAction(yesAction)
-            alertController.addAction(noAction)
-            present(alertController, animated: true, completion: nil)
-            
-
         }
     }
     
+    func isThereProblem(){
+        let alertController = UIAlertController (title: "確認", message: "このトイレが利用できませんでしたか？", preferredStyle: .actionSheet)
+        
+        
+        let noAction = UIAlertAction(title: "利用できなかった", style: .default, handler: {(alert:
+            UIAlertAction!) in
+            self.whatIsTheProblem()
+
+       })
+        
+        let yesAction = UIAlertAction(title: "利用できた", style: .default, handler: {(alert:
+            UIAlertAction!) in
+            self.availableSwitch.isOn = true
+            self.availableLabel.text = "利用可能"
+            self.available = true
+        })
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        present(alertController, animated: true, completion: nil)
+    
+    }
+
+    func whatIsTheProblem(){
+        
+        var problemString = ""
+        
+        
+    
+        let nextAlertController = UIAlertController (title: "お願い", message: "トイレが利用できなかった理由を教えてください", preferredStyle: .actionSheet)
+        
+        
+        let notfound = UIAlertAction(title: "トイレが見つからなかったから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "Could not find the Toilet"
+            self.problemUpload(problemString: problemString)
+        })
+        
+        let waterLeakage =  UIAlertAction(title: "漏水していたから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "Water Leakage"
+            self.problemUpload(problemString: problemString)
+
+        })
+
+        let waterOutage = UIAlertAction(title: "断水していたから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "Water Outage"
+            self.problemUpload(problemString: problemString)
+
+        })
+    
+        
+        let noFlash = UIAlertAction(title: "トイレがつまっていたから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "No Flush"
+            self.problemUpload(problemString: problemString)
+
+        })
+        
+
+        let noToiletPaper = UIAlertAction(title: "トイレットペーパーが無かったから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "No Toilet Paper"
+            self.problemUpload(problemString: problemString)
+
+        })
+        
+        
+        
+        
+        let stillYes = UIAlertAction(title: "いいえ、利用することができた", style: .default, handler: {(alert:
+            UIAlertAction!) in
+            self.availableSwitch.isOn = true
+            self.availableLabel.text = "利用可能"
+            self.available = true
+            return
+        })
+        
+        nextAlertController.addAction(notfound)
+        nextAlertController.addAction(noToiletPaper)
+        nextAlertController.addAction(noFlash)
+        nextAlertController.addAction(waterLeakage)
+        nextAlertController.addAction(waterOutage)
+        nextAlertController.addAction(stillYes)
+        
+        
+        self.present(nextAlertController, animated: true, completion: nil)
+    }
+    
+    func problemUpload(problemString: String){
+    
+        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletProblems")
+        let tpid = UUID().uuidString
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        let date = NSDate()
+        let calendar = Calendar.current
+        
+        let minute = calendar.component(.minute, from:date as Date)
+        let hour = calendar.component(.hour, from:date as Date)
+        let day = calendar.component(.day, from:date as Date)
+        let month = calendar.component(.month, from:date as Date)
+        let year = calendar.component(.year, from:date as Date)
+        
+        let timeString = "\(year)/\(month)/\(day)-\(hour):\(minute)"
+    
+        let interval = NSDate().timeIntervalSince1970
+        
+        
+        
+        let tpData : [String : Any] = ["uid": uid,
+                                       "tid": toilet.key,
+                                       "time": timeString,
+                                       "timeNumbers": interval,
+                                       "problem": problemString
+            
+        ]
+
+        toiletProblemsRef.child(tpid).setValue(tpData)
+        
+        countToiletWarning()
+        
+    }
+
+    func countToiletWarning(){
+        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletWarnings")
+        
+        toiletProblemsRef.child(toilet.key).observe(FIRDataEventType.value, with: { snapshot in
+            
+            if self.firebaseOnceLoaded == false{
+                self.firebaseOnceLoaded = true
+            
+            if snapshot.exists(){
+                
+                let getValue = snapshot.value as! Int
+                 print("getValue = \(getValue)")
+                let newNumber = getValue + 1
+                print("newNumber = \(newNumber)")
+
+                toiletProblemsRef.child(self.toilet.key).setValue(newNumber)
+                
+                self.showYourReviewPostedMessage()
+                //go Back to previos navigation
+                
+            } else {
+                self.showYourReviewPostedMessage()
+
+                
+               toiletProblemsRef.child(self.toilet.key).setValue(1)
+            
+            }
+        }
+        })
+    }
+
+    func showYourReviewPostedMessage(){
+        
+        let alertController = UIAlertController (title: "ありがとうございます", message: "あなたの感想が投稿されました", preferredStyle: .alert)
+        
+    
+        let yesAction = UIAlertAction(title: "はい", style: .default, handler: {(alert:
+            UIAlertAction!) in
+            self.moveBackToPlaceDetailVeiwController()
+           
+        })
+        alertController.addAction(yesAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
     @IBAction func backBarButtonTapped(_ sender: Any) {
         moveBackToPlaceDetailVeiwController()
         
     }
+    
+    
     
     func moveBackToPlaceDetailVeiwController(){
     
@@ -389,7 +519,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         let transition = CATransition()
         transition.duration = 0.4
         transition.type = kCATransitionPush
-        transition.subtype = kCATransitionFromLeft
+        transition.subtype = kCATransitionFromRight
         view.window!.layer.add(transition, forKey: kCATransition)
         
         self.present(navigationContoller, animated: false, completion: nil)
