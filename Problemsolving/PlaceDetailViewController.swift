@@ -1458,6 +1458,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             let alertController = UIAlertController (title: "", message: "情報の誤りを報告しますか", preferredStyle: .actionSheet)
             
             let yesAction = UIAlertAction(title: "報告する", style: .default) { (_) -> Void in
+                self.toiletReportStart()
                 
             }
             let cancelAction = UIAlertAction(title: "報告しない", style: .default, handler: nil)
@@ -1471,6 +1472,102 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         }
         
     }
+    
+    func toiletReportStart(){
+        
+        var problemString = ""
+        let nextAlertController = UIAlertController (title: "お願い", message: "問題だと思う点を教えてください", preferredStyle: .actionSheet)
+        
+        let wrongPhoto = UIAlertAction(title: "施設の写真が不適切である", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "the picture of this place is not appropriate"
+            self.toiletProblemUpload(problemString: problemString)
+        })
+        
+        let wrongInfo =  UIAlertAction(title: "施設の情報が正確でない", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "the infomation of this place is not correct"
+            self.toiletProblemUpload(problemString: problemString)
+            
+        })
+        
+        let firstPosterNotAppropriate = UIAlertAction(title: "投稿者の名前または写真が適切ではない", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "Fisrt Poster Not Appropriate"
+            self.toiletProblemUpload(problemString: problemString)
+            
+        })
+        
+        
+        let lastEditerNotAppropriate = UIAlertAction(title: "編集者の名前または写真が適切ではない", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "Last Editer Not Appropriate"
+            self.toiletProblemUpload(problemString: problemString)
+            
+        })
+        
+        
+        
+        let stillYes = UIAlertAction(title: "いいえ、問題はありません", style: .default, handler: {(alert:
+            UIAlertAction!) in
+            return
+        })
+        
+        nextAlertController.addAction(wrongPhoto)
+        nextAlertController.addAction(wrongInfo)
+        nextAlertController.addAction(firstPosterNotAppropriate)
+        nextAlertController.addAction(lastEditerNotAppropriate)
+        nextAlertController.addAction(stillYes)
+        
+        
+        self.present(nextAlertController, animated: true, completion: nil)
+
+        
+    
+    
+    
+    }
+    
+    func toiletProblemUpload(problemString: String){
+        
+        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletInfoProblems")
+        let rpid = UUID().uuidString
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        let date = NSDate()
+        let calendar = Calendar.current
+        
+        let minute = calendar.component(.minute, from:date as Date)
+        let hour = calendar.component(.hour, from:date as Date)
+        let day = calendar.component(.day, from:date as Date)
+        let month = calendar.component(.month, from:date as Date)
+        let year = calendar.component(.year, from:date as Date)
+        
+        let timeString = "\(year)/\(month)/\(day)-\(hour):\(minute)"
+        
+        let interval = NSDate().timeIntervalSince1970
+        
+       
+            
+            
+        
+        let rpData : [String : Any] = ["uid": uid,
+                                           "tid": toilet.key,
+                                           "time": timeString,
+                                           "timeNumbers": interval,
+                                           "problem": problemString
+                
+            ]
+            
+            toiletProblemsRef.child(rpid).setValue(rpData)
+            showYourReviewPostedMessage()
+        
+        
+    }
+    
+
+    
+    
+    
     
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
@@ -1591,6 +1688,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         //            "placeDetailToReviewTVSegue"
     }
     
+    
+    
     @IBAction func reviewOneLikeButtonTapped(_ sender: Any) {
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
         let userRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid)
@@ -1674,6 +1773,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
     }
+    
+    
     @IBAction func reviewTwoLikeButtonTapped(_ sender: Any) {
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
         let userRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid)
@@ -1759,18 +1860,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let alertController = UIAlertController (title: "この感想に問題がありますか？", message: "Oh well", preferredStyle: .actionSheet)
         
-    
-        
         let yesAction = UIAlertAction(title: "はい", style: .default, handler: {(alert:
             UIAlertAction!) in
-            
             self.whatIsTheProblem()
-            
-            
         })
-        
         let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
-        
         
         alertController.addAction(yesAction)
         alertController.addAction(cancelAction)
@@ -1782,10 +1876,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     func whatIsTheProblem(){
         
         var problemString = ""
-        
-        
         let nextAlertController = UIAlertController (title: "お願い", message: "問題だと思う点を教えてください", preferredStyle: .actionSheet)
-        
         
         let wrongInfo = UIAlertAction(title: "感想の内容に誤りがあるから", style: .default, handler: {(alert:UIAlertAction!) in
             
@@ -1831,6 +1922,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         self.present(nextAlertController, animated: true, completion: nil)
     }
+    
+    
+    
+    
     
     
     func problemUpload(problemString: String){
