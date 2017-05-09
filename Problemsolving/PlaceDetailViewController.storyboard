@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -624,14 +625,22 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017/4/2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSQ-kV-Ysa">
-                                                                <rect key="frame" x="254.5" y="232" width="57.5" height="17"/>
+                                                                <rect key="frame" x="199" y="232" width="57.5" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MN6-ID-h7W">
+                                                                <rect key="frame" x="292" y="229.5" width="20" height="22"/>
+                                                                <state key="normal" image="question_20_dark"/>
+                                                                <connections>
+                                                                    <action selector="reviewOneReportButtonTapped:" destination="hAD-xO-93C" eventType="touchUpInside" id="D4j-ia-0cW"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
+                                                            <constraint firstItem="MN6-ID-h7W" firstAttribute="centerY" secondItem="Di4-Cw-Dk8" secondAttribute="centerY" id="1Lw-y3-y5F"/>
                                                             <constraint firstItem="qv2-KJ-MvI" firstAttribute="leading" secondItem="JLZ-GN-d9M" secondAttribute="leading" id="9qh-jS-g8r"/>
                                                             <constraint firstItem="3p6-4P-wwG" firstAttribute="centerY" secondItem="Di4-Cw-Dk8" secondAttribute="centerY" id="Dam-yI-h7u"/>
                                                             <constraint firstItem="gEX-D8-Yis" firstAttribute="leading" secondItem="3p6-4P-wwG" secondAttribute="trailing" constant="10" id="G1g-dS-Gjv"/>
@@ -640,10 +649,11 @@
                                                             <constraint firstItem="cSQ-kV-Ysa" firstAttribute="centerY" secondItem="Di4-Cw-Dk8" secondAttribute="centerY" id="P3x-aP-rD9"/>
                                                             <constraint firstAttribute="trailing" secondItem="BEv-Yg-ucw" secondAttribute="trailing" constant="8" id="WA0-8M-KgP"/>
                                                             <constraint firstAttribute="bottom" secondItem="BEv-Yg-ucw" secondAttribute="bottom" constant="25" id="bLb-YJ-CpV"/>
+                                                            <constraint firstItem="cSQ-kV-Ysa" firstAttribute="leading" secondItem="gEX-D8-Yis" secondAttribute="trailing" constant="10" id="czc-Uu-45s"/>
                                                             <constraint firstItem="BEv-Yg-ucw" firstAttribute="leading" secondItem="JLZ-GN-d9M" secondAttribute="leading" constant="8" id="d8z-Da-jQy"/>
                                                             <constraint firstAttribute="bottom" secondItem="Di4-Cw-Dk8" secondAttribute="bottom" constant="2" id="dDd-6t-p5E"/>
                                                             <constraint firstItem="gEX-D8-Yis" firstAttribute="centerY" secondItem="Di4-Cw-Dk8" secondAttribute="centerY" id="em3-3T-aon"/>
-                                                            <constraint firstAttribute="trailing" secondItem="cSQ-kV-Ysa" secondAttribute="trailing" constant="8" id="oL7-sK-mne"/>
+                                                            <constraint firstAttribute="trailing" secondItem="MN6-ID-h7W" secondAttribute="trailing" constant="8" id="nhd-Oi-QkW"/>
                                                             <constraint firstItem="qv2-KJ-MvI" firstAttribute="top" secondItem="JLZ-GN-d9M" secondAttribute="top" id="sG0-Rf-SWx"/>
                                                             <constraint firstAttribute="trailing" secondItem="qv2-KJ-MvI" secondAttribute="trailing" id="w5s-jy-urX"/>
                                                             <constraint firstItem="3p6-4P-wwG" firstAttribute="leading" secondItem="Di4-Cw-Dk8" secondAttribute="trailing" constant="10" id="yzR-SQ-WyK"/>
@@ -784,11 +794,18 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017/4/1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHS-hI-HDW">
-                                                                <rect key="frame" x="256.5" y="232.5" width="55.5" height="17"/>
+                                                                <rect key="frame" x="199" y="232.5" width="55.5" height="17"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0c0-7b-Jfr">
+                                                                <rect key="frame" x="292" y="229.5" width="20" height="22"/>
+                                                                <state key="normal" image="question_20_dark"/>
+                                                                <connections>
+                                                                    <action selector="reviewTwoReportButtonTapped:" destination="hAD-xO-93C" eventType="touchUpInside" id="a0P-k9-g11"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
@@ -799,12 +816,14 @@
                                                             <constraint firstAttribute="trailing" secondItem="mwX-wi-Qhg" secondAttribute="trailing" constant="8" id="DpX-ie-zhp"/>
                                                             <constraint firstItem="sHS-hI-HDW" firstAttribute="centerY" secondItem="d9F-Fh-lXM" secondAttribute="centerY" id="Ge0-Hu-zoN"/>
                                                             <constraint firstItem="fbW-l2-KSA" firstAttribute="top" secondItem="cTa-aH-D51" secondAttribute="top" id="MLa-8B-s7F"/>
-                                                            <constraint firstAttribute="trailing" secondItem="sHS-hI-HDW" secondAttribute="trailing" constant="8" id="S7O-0t-Rbo"/>
+                                                            <constraint firstAttribute="trailing" secondItem="0c0-7b-Jfr" secondAttribute="trailing" constant="8" id="U2U-vy-RtC"/>
+                                                            <constraint firstItem="sHS-hI-HDW" firstAttribute="leading" secondItem="zvX-At-lpc" secondAttribute="trailing" constant="10" id="ZKO-QL-Dd4"/>
                                                             <constraint firstItem="fbW-l2-KSA" firstAttribute="leading" secondItem="cTa-aH-D51" secondAttribute="leading" id="ahp-60-K9a"/>
                                                             <constraint firstItem="zvX-At-lpc" firstAttribute="centerY" secondItem="d9F-Fh-lXM" secondAttribute="centerY" id="cRH-v7-5A3"/>
                                                             <constraint firstItem="zvX-At-lpc" firstAttribute="leading" secondItem="2Mf-yb-cc2" secondAttribute="trailing" constant="10" id="jVe-PJ-eoe"/>
                                                             <constraint firstItem="2Mf-yb-cc2" firstAttribute="leading" secondItem="d9F-Fh-lXM" secondAttribute="trailing" constant="10" id="q6v-e0-w5f"/>
                                                             <constraint firstAttribute="bottom" secondItem="mwX-wi-Qhg" secondAttribute="bottom" constant="25" id="qNS-QO-W95"/>
+                                                            <constraint firstItem="0c0-7b-Jfr" firstAttribute="centerY" secondItem="d9F-Fh-lXM" secondAttribute="centerY" id="t84-B3-Cha"/>
                                                             <constraint firstItem="mwX-wi-Qhg" firstAttribute="top" secondItem="fbW-l2-KSA" secondAttribute="bottom" id="uEG-a7-pbK"/>
                                                             <constraint firstItem="d9F-Fh-lXM" firstAttribute="leading" secondItem="cTa-aH-D51" secondAttribute="leading" constant="15" id="xcH-FD-7d9"/>
                                                         </constraints>
@@ -1077,6 +1096,7 @@
         <image name="love_Icon_40" width="40" height="40"/>
         <image name="love_before_tap_40" width="40" height="40"/>
         <image name="photo_picture_default_100" width="100" height="100"/>
+        <image name="question_20_dark" width="20" height="20"/>
         <image name="question_image_30" width="30" height="30"/>
         <image name="thumbsUp_black_image_25" width="25" height="25"/>
         <image name="user_default_80" width="80" height="80"/>

@@ -31,6 +31,8 @@ class ReviewTableViewController: UITableViewController {
     let imageColored = UIImage(named:"like_colored_25")
     let imageBlack = UIImage(named:"thumbsUp_black_image_25")
     
+    var firebaseOnceLoaded = false
+    var postRid = ""
     
     
     override func viewDidLoad() {
@@ -229,20 +231,169 @@ class ReviewTableViewController: UITableViewController {
     func reviewReportButtonTapped(sender: UIButton){
         print("ReviewReport Tapped 777")
         let buttonRow = sender.tag
+        let rid = reviews[buttonRow].rid
+        postRid = rid
         print("ButtonRow = \(buttonRow)")
         
-        let alertController = UIAlertController (title: "Report??", message: "Oh well", preferredStyle: .actionSheet)
+        let alertController = UIAlertController (title: "この感想に問題がありますか？", message: "Oh well", preferredStyle: .actionSheet)
         
         
-        let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        //let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        
+        let yesAction = UIAlertAction(title: "はい", style: .default, handler: {(alert:
+            UIAlertAction!) in
+            
+            self.whatIsTheProblem()
+            
+            
+        })
+
         let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+        
+        
+        alertController.addAction(yesAction)
         alertController.addAction(cancelAction)
-        alertController.addAction(settingsAction)
         present(alertController, animated: true, completion: nil)
-    
+        
+    }
 
     
+    func whatIsTheProblem(){
+        
+        var problemString = ""
+        
+        
+        let nextAlertController = UIAlertController (title: "お願い", message: "問題だと思う点を教えてください", preferredStyle: .actionSheet)
+        
+        
+        let wrongInfo = UIAlertAction(title: "感想の内容に誤りがあるから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "The content of the review is not correct"
+            self.problemUpload(problemString: problemString)
+        })
+        
+        let reviewNotRelevent =  UIAlertAction(title: "感想の内容に不適切な表現があるから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "The content of the review is not relevent"
+            self.problemUpload(problemString: problemString)
+            
+        })
+        
+        let pictureNotAppropriate = UIAlertAction(title: "感想を投稿したユーザーの写真が適切ではないから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "The picture of the user is not appropriate"
+            self.problemUpload(problemString: problemString)
+            
+        })
+        
+        
+        let nameNotAppropriate = UIAlertAction(title: "感想を投稿したユーザーの名前が適切ではないから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            problemString = "The name of the user is not appropriate"
+            self.problemUpload(problemString: problemString)
+            
+        })
+        
+       
+        
+        let stillYes = UIAlertAction(title: "いいえ、問題はありません", style: .default, handler: {(alert:
+            UIAlertAction!) in
+            return
+        })
+        
+        nextAlertController.addAction(wrongInfo)
+        nextAlertController.addAction(reviewNotRelevent)
+        nextAlertController.addAction(pictureNotAppropriate)
+        nextAlertController.addAction(nameNotAppropriate)
+        nextAlertController.addAction(stillYes)
+        
+        
+        self.present(nextAlertController, animated: true, completion: nil)
     }
+    
+    
+    func problemUpload(problemString: String){
+        
+        let toiletProblemsRef = FIRDatabase.database().reference().child("ReviewProblems")
+        let rpid = UUID().uuidString
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        let date = NSDate()
+        let calendar = Calendar.current
+        
+        let minute = calendar.component(.minute, from:date as Date)
+        let hour = calendar.component(.hour, from:date as Date)
+        let day = calendar.component(.day, from:date as Date)
+        let month = calendar.component(.month, from:date as Date)
+        let year = calendar.component(.year, from:date as Date)
+        
+        let timeString = "\(year)/\(month)/\(day)-\(hour):\(minute)"
+        
+        let interval = NSDate().timeIntervalSince1970
+        
+        if postRid != ""{
+        
+        
+        
+        
+        let rpData : [String : Any] = ["uid": uid,
+                                       "rid": postRid,
+                                       "time": timeString,
+                                       "timeNumbers": interval,
+                                       "problem": problemString
+            
+        ]
+        
+        toiletProblemsRef.child(rpid).setValue(rpData)
+        
+        countReviewWarning()
+        }
+        
+    }
+    
+    func countReviewWarning(){
+        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarnings")
+        
+        reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
+            
+            if self.firebaseOnceLoaded == false{
+                self.firebaseOnceLoaded = true
+                
+                if snapshot.exists(){
+                    
+                    let getValue = snapshot.value as! Int
+                    print("getValue = \(getValue)")
+                    let newNumber = getValue + 1
+                    print("newNumber = \(newNumber)")
+                    
+                    reviewWarningsRef.child(self.postRid).setValue(newNumber)
+                    
+                    self.showYourReviewPostedMessage()
+                    //go Back to previos navigation
+                    
+                } else {
+                    self.showYourReviewPostedMessage()
+                    
+                    
+                    reviewWarningsRef.child(self.postRid).setValue(1)
+                    
+                }
+            }
+        })
+    }
+    
+    func showYourReviewPostedMessage(){
+        
+        let alertController = UIAlertController (title: "ありがとうございます", message: "あなたの報告が完了しました", preferredStyle: .alert)
+        
+        
+        let yesAction = UIAlertAction(title: "はい", style: .default, handler: nil);  alertController.addAction(yesAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
+
+
+    
 
 
 //    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
