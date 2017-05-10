@@ -282,11 +282,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         progressBarDisplayer(msg:"トイレを検索中", true)
         
         
-        let userID = FIRAuth.auth()!.currentUser!.uid
+        
+//        var FIRAuth.auth()!.currentUser! = FIRUser()
+//        let userID = FIRAuth.auth()!.currentUser!.uid
+        
+        if FIRAuth.auth()!.currentUser != nil{
+            //Current user exists
+            print("User Found")
+            let userID = FIRAuth.auth()!.currentUser!.uid
+            
+        } else {
+            print("User Not Found")
+            anonymousLogin()
+
+        
+        
+        }
+        
+        //Commeted May 11
         
         
         
-        print("this is the user Id \(userID)")
+        //print("this is the user Id \(userID)")
         
         NotificationCenter.default.addObserver(self, selector: #selector(statusManager), name: .flagsChanged, object: Network.reachability)
         updateUserInterface()
@@ -303,6 +320,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        
 //        PassingData.sharedInstance.welcomeMessage = "HEY CHANGED"
 //        PassingData.sharedInstance.filterOn = false
+        
+    }
+    
+    func anonymousLogin(){
+        print("anonymouLogin Called")
+        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+            if error != nil{
+                print("Error \(String(describing: error))")
+                return
+            }else {
+            
+                print("User Sigin In Anonymously Uid \(user!.uid)")
+            
+            }
+        })
+     
+        
+        
+        
         
     }
     

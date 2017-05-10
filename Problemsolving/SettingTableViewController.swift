@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingTableViewController: UITableViewController {
 
@@ -26,7 +27,7 @@ class SettingTableViewController: UITableViewController {
         if indexPath.row == 0 {
         performSegue(withIdentifier: "changeNameSegue", sender: nil)
         print("indexPath.row == 0")
-    }
+        }
         if indexPath.row == 1 {
             performSegue(withIdentifier: "PictureSegue", sender: nil)
               print("indexPath.row == 1")
@@ -36,9 +37,45 @@ class SettingTableViewController: UITableViewController {
         performSegue(withIdentifier: "aboutThisAppSegue", sender: nil)
         print("indexPath.row == 2")
         
-        
         }
         
+        
+        if indexPath.row == 5 {
+            print("indexPath.row == 5")
+
+            logoutStart()
+            
+        }
+        
+        
+    }
+    
+    
+    func logoutStart(){
+        print("LogoutStart 1")
+        try! FIRAuth.auth()!.signOut()
+        
+        print("LogoutStart 2")
+        
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "UserFirstTimeViewController") as! UserFirstTimeViewController
+       // let nextVC = navigationContoller.topViewController as! PlaceDetailViewController
+        
+        
+        let transition = CATransition()
+        transition.duration = 0.4
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        self.present(nextVC, animated: false, completion: nil)
+        
+        
+        
+//        if let storyboard = self.storyboard {
+//            let vc = storyboard.instantiateViewController(withIdentifier: "UserFirstTimeViewController") as! UINavigationController
+//            self.present(vc, animated: false, completion: nil)
+//        }
     }
     
 //
