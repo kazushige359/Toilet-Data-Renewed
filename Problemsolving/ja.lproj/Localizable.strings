@@ -8,6 +8,43 @@
 
 
 
+//Filter Search
+
+
+
+"orderedByDistance" = "現在地から近い順";
+"orderedByReviewCounts" = "感想が多い順";
+"orderedByStars" = "評価が高い順";
+
+"less500" = "500m以内";
+"less1000" = "1km以内";
+"less3000" = "3km以内";
+"less5000" = "5km以内";
+
+"starNumber" = "星の数を検索";
+
+
+
+
+
+
+"one_star" = "★以上";
+"two_star" = "★★以上";
+"three_star" = "★★★以上";
+"four_star" = "★★★★以上";
+
+"safeBabyChair" = "安全なベビーチェア";
+
+"safeBabyChairDescription" = "安全なベビーチェアとは、ドアの鍵やボタンから十分に距離がある位置に設置されているものです";
+
+//Simple Strings
+"yes" = "はい";
+"no" = "いいえ";
+
+
+
+
+
 "all_category" = "全てのトイレ";
 "public_restroom" = "公衆トイレ";
 "convenience_store" = "コンビニエンスストア";

@@ -1,0 +1,285 @@
+
+/* Class = "UILabel"; text = "ベビーキープ"; ObjectID = "0Iv-oz-vIf"; */
+"0Iv-oz-vIf.text" = "ベビーキープ";
+
+/* Class = "UILabel"; text = "音姫"; ObjectID = "0PX-DL-9kv"; */
+"0PX-DL-9kv.text" = "音姫";
+
+/* Class = "UILabel"; text = "現在利用可能"; ObjectID = "1Nx-mo-iKh"; */
+"1Nx-mo-iKh.text" = "現在利用可能";
+
+/* Class = "UILabel"; text = "おむつ交換台"; ObjectID = "2Pk-xS-IN3"; */
+"2Pk-xS-IN3.text" = "おむつ交換台";
+
+/* Class = "UILabel"; text = "自動ハンドソープ"; ObjectID = "3wl-JP-Riu"; */
+"3wl-JP-Riu.text" = "自動ハンドソープ";
+
+/* Class = "UILabel"; text = "おむつ販売機"; ObjectID = "4fN-A9-im7"; */
+"4fN-A9-im7.text" = "おむつ販売機";
+
+/* Class = "UILabel"; text = "おもちゃ"; ObjectID = "54M-J0-t7k"; */
+"54M-J0-t7k.text" = "おもちゃ";
+
+/* Class = "UILabel"; text = "男性入室可能"; ObjectID = "58U-Ux-jIQ"; */
+"58U-Ux-jIQ.text" = "男性入室可能";
+
+/* Class = "UILabel"; text = "ベビーカーでアクセス可能"; ObjectID = "5t5-09-PKi"; */
+"5t5-09-PKi.text" = "ベビーカーでアクセス可能";
+
+/* Class = "UILabel"; text = "給湯器"; ObjectID = "6sw-JO-TnS"; */
+"6sw-JO-TnS.text" = "給湯器";
+
+/* Class = "UILabel"; text = "飲食スペース"; ObjectID = "7im-Ee-woL"; */
+"7im-Ee-woL.text" = "飲食スペース";
+
+/* Class = "UILabel"; text = "安全なベビーチェア"; ObjectID = "7tm-Il-Z0j"; */
+"7tm-Il-Z0j.text" = "安全なベビーチェア";
+
+/* Class = "UILabel"; text = "便座用シート"; ObjectID = "8GI-tj-Ysi"; */
+"8GI-tj-Ysi.text" = "便座用シート";
+
+/* Class = "UITableViewSection"; headerTitle = "2　ベビールームについて"; ObjectID = "8Uw-57-dmd"; */
+"8Uw-57-dmd.headerTitle" = "2　ベビールームについて";
+
+/* Class = "UILabel"; text = "ハンドドライヤー"; ObjectID = "9KG-Sy-ojR"; */
+"9KG-Sy-ojR.text" = "ハンドドライヤー";
+
+/* Class = "UIBarButtonItem"; title = "検索"; ObjectID = "9cl-B4-4UY"; */
+"9cl-B4-4UY.title" = "検索";
+
+/* Class = "UILabel"; text = "おむつ交換台"; ObjectID = "9k3-Rj-La6"; */
+"9k3-Rj-La6.text" = "おむつ交換台";
+
+/* Class = "UIButton"; normalTitle = "この条件で検索"; ObjectID = "AGq-Zi-g7s"; */
+"AGq-Zi-g7s.normalTitle" = "この条件で検索";
+
+/* Class = "UILabel"; text = "ベビーカーでアクセス可能"; ObjectID = "BeG-Qc-brI"; */
+"BeG-Qc-brI.text" = "ベビーカーでアクセス可能";
+
+/* Class = "UILabel"; text = "英語表記"; ObjectID = "CRI-5I-dD4"; */
+"CRI-5I-dD4.text" = "英語表記";
+
+/* Class = "UILabel"; text = "広いスペース"; ObjectID = "ChX-YJ-Asd"; */
+"ChX-YJ-Asd.text" = "広いスペース";
+
+/* Class = "UILabel"; text = "洗面台"; ObjectID = "E3j-gc-Mbh"; */
+"E3j-gc-Mbh.text" = "洗面台";
+
+/* Class = "UILabel"; text = "男女兼用トイレ"; ObjectID = "HhC-CE-85Y"; */
+"HhC-CE-85Y.text" = "男女兼用トイレ";
+
+/* Class = "UITableViewSection"; headerTitle = "4　ベビールームについて"; ObjectID = "I3w-iu-7ne"; */
+"I3w-iu-7ne.headerTitle" = "4　ベビールームについて";
+
+/* Class = "UILabel"; text = "無料Wi-Fi"; ObjectID = "JAd-rw-YfD"; */
+"JAd-rw-YfD.text" = "無料Wi-Fi";
+
+/* Class = "UILabel"; text = "個室あり"; ObjectID = "JIg-ha-2bp"; */
+"JIg-ha-2bp.text" = "個室あり";
+
+/* Class = "UILabel"; text = "ベビーチェア"; ObjectID = "JeK-Kf-Icx"; */
+"JeK-Kf-Icx.text" = "ベビーチェア";
+
+/* Class = "UILabel"; text = "点字案内"; ObjectID = "K9b-EE-mfK"; */
+"K9b-EE-mfK.text" = "点字案内";
+
+/* Class = "UILabel"; text = "鍵付き個室あり"; ObjectID = "KGA-CY-Ad4"; */
+"KGA-CY-Ad4.text" = "鍵付き個室あり";
+
+/* Class = "UILabel"; text = "自動開閉便座"; ObjectID = "KGa-k2-KXk"; */
+"KGa-k2-KXk.text" = "自動開閉便座";
+
+/* Class = "UITableViewSection"; headerTitle = "検索"; ObjectID = "Kqd-8W-1S1"; */
+"Kqd-8W-1S1.headerTitle" = "検索";
+
+/* Class = "UILabel"; text = "おむつ交換台"; ObjectID = "LG0-Iv-SjK"; */
+"LG0-Iv-SjK.text" = "おむつ交換台";
+
+/* Class = "UILabel"; text = "洋服掛け"; ObjectID = "LHq-zk-0Qa"; */
+"LHq-zk-0Qa.text" = "洋服掛け";
+
+/* Class = "UILabel"; text = "快適な広さ"; ObjectID = "Ml3-GZ-Viw"; */
+"Ml3-GZ-Viw.text" = "快適な広さ";
+
+/* Class = "UILabel"; text = "和式トイレ"; ObjectID = "NGr-uh-qFY"; */
+"NGr-uh-qFY.text" = "和式トイレ";
+
+/* Class = "UILabel"; text = "抗菌便座"; ObjectID = "NZt-sB-vlf"; */
+"NZt-sB-vlf.text" = "抗菌便座";
+
+/* Class = "UILabel"; text = "ハンドソープ"; ObjectID = "Nhw-0H-gfb"; */
+"Nhw-0H-gfb.text" = "ハンドソープ";
+
+/* Class = "UITableViewSection"; headerTitle = "機能"; ObjectID = "O9u-Qb-JxJ"; */
+"O9u-Qb-JxJ.headerTitle" = "機能";
+
+/* Class = "UITableViewSection"; headerTitle = "2,その他"; ObjectID = "OhT-V5-65Y"; */
+"OhT-V5-65Y.headerTitle" = "2,その他";
+
+/* Class = "UILabel"; text = "荷物置き"; ObjectID = "QVl-eZ-nIn"; */
+"QVl-eZ-nIn.text" = "荷物置き";
+
+/* Class = "UILabel"; text = "おむつ用ゴミ箱"; ObjectID = "Qld-gm-xoo"; */
+"Qld-gm-xoo.text" = "おむつ用ゴミ箱";
+
+/* Class = "UILabel"; text = "車イスでアクセス可能"; ObjectID = "RG2-PT-P7H"; */
+"RG2-PT-P7H.text" = "車イスでアクセス可能";
+
+/* Class = "UILabel"; text = "飲料自販機"; ObjectID = "TGe-jP-aaS"; */
+"TGe-jP-aaS.text" = "飲料自販機";
+
+/* Class = "UILabel"; text = "自動洗浄"; ObjectID = "TdY-mB-tTe"; */
+"TdY-mB-tTe.text" = "自動洗浄";
+
+/* Class = "UILabel"; text = "車イス対応"; ObjectID = "U0j-2h-KNF"; */
+"U0j-2h-KNF.text" = "車イス対応";
+
+/* Class = "UILabel"; text = "ベビーチェア"; ObjectID = "USU-rc-hOB"; */
+"USU-rc-hOB.text" = "ベビーチェア";
+
+/* Class = "UILabel"; text = "暖房便座"; ObjectID = "UZQ-Zh-42r"; */
+"UZQ-Zh-42r.text" = "暖房便座";
+
+/* Class = "UILabel"; text = "音声案内"; ObjectID = "Uc6-ua-y6d"; */
+"Uc6-ua-y6d.text" = "音声案内";
+
+/* Class = "UILabel"; text = "キッズトイレ"; ObjectID = "Ucf-72-pj6"; */
+"Ucf-72-pj6.text" = "キッズトイレ";
+
+/* Class = "UITableViewSection"; headerTitle = "並び順"; ObjectID = "VKi-DX-r3F"; */
+"VKi-DX-r3F.headerTitle" = "並び順";
+
+/* Class = "UILabel"; text = "離乳食販売"; ObjectID = "WJV-Gy-Okx"; */
+"WJV-Gy-Okx.text" = "離乳食販売";
+
+/* Class = "UIBarButtonItem"; title = "戻る"; ObjectID = "Xtr-4t-MQ9"; */
+"Xtr-4t-MQ9.title" = "戻る";
+
+/* Class = "UITableViewSection"; headerTitle = "距離"; ObjectID = "YbK-0S-N2V"; */
+"YbK-0S-N2V.headerTitle" = "距離";
+
+/* Class = "UILabel"; text = "安全なベビーチェア"; ObjectID = "ZUQ-r2-1dm"; */
+"ZUQ-r2-1dm.text" = "安全なベビーチェア";
+
+/* Class = "UILabel"; text = "ペーパータオル"; ObjectID = "ZZL-GC-qkf"; */
+"ZZL-GC-qkf.text" = "ペーパータオル";
+
+/* Class = "UILabel"; text = "ベビーカーでアクセス可能"; ObjectID = "aCP-Pq-M1x"; */
+"aCP-Pq-M1x.text" = "ベビーカーでアクセス可能";
+
+/* Class = "UILabel"; text = "体重計"; ObjectID = "aJ9-wX-kSf"; */
+"aJ9-wX-kSf.text" = "体重計";
+
+/* Class = "UILabel"; text = "ベビーカー貸し出し"; ObjectID = "aNO-8x-jd5"; */
+"aNO-8x-jd5.text" = "ベビーカー貸し出し";
+
+/* Class = "UILabel"; text = "女性専用トイレ"; ObjectID = "abM-54-YeQ"; */
+"abM-54-YeQ.text" = "女性専用トイレ";
+
+/* Class = "UILabel"; text = "おむつ交換台"; ObjectID = "bH5-Lw-xY5"; */
+"bH5-Lw-xY5.text" = "おむつ交換台";
+
+/* Class = "UITableViewSection"; headerTitle = "設備"; ObjectID = "bLz-lJ-Z1y"; */
+"bLz-lJ-Z1y.headerTitle" = "設備";
+
+/* Class = "UILabel"; text = "良い香り"; ObjectID = "bfU-zY-Gzh"; */
+"bfU-zY-Gzh.text" = "良い香り";
+
+/* Class = "UILabel"; text = "自動ドア"; ObjectID = "biB-PT-BD2"; */
+"biB-PT-BD2.text" = "自動ドア";
+
+/* Class = "UILabel"; text = "便座クリーナー"; ObjectID = "ctL-dS-xZb"; */
+"ctL-dS-xZb.text" = "便座クリーナー";
+
+/* Class = "UILabel"; text = "おしゃれ"; ObjectID = "cx9-7i-W5f"; */
+"cx9-7i-W5f.text" = "おしゃれ";
+
+/* Class = "UILabel"; text = "ナプキン販売機"; ObjectID = "d5o-wF-Ych"; */
+"d5o-wF-Ych.text" = "ナプキン販売機";
+
+/* Class = "UITableViewSection"; headerTitle = "1　ベビールームについて"; ObjectID = "dD4-tY-tND"; */
+"dD4-tY-tND.headerTitle" = "1　ベビールームについて";
+
+/* Class = "UITableViewSection"; headerTitle = "3　ベビールームについて"; ObjectID = "dOw-Bq-blw"; */
+"dOw-Bq-blw.headerTitle" = "3　ベビールームについて";
+
+/* Class = "UITableViewSection"; headerTitle = "女性トイレ"; ObjectID = "e29-cr-hZk"; */
+"e29-cr-hZk.headerTitle" = "女性トイレ";
+
+/* Class = "UITableViewSection"; headerTitle = "多目的トイレ"; ObjectID = "eXU-06-ebW"; */
+"eXU-06-ebW.headerTitle" = "多目的トイレ";
+
+/* Class = "UILabel"; text = "駐車場"; ObjectID = "gOZ-eA-c9B"; */
+"gOZ-eA-c9B.text" = "駐車場";
+
+/* Class = "UILabel"; text = "女性限定"; ObjectID = "gQ3-cJ-oEI"; */
+"gQ3-cJ-oEI.text" = "女性限定";
+
+/* Class = "UILabel"; text = "おしりふき"; ObjectID = "ghR-Gp-K0S"; */
+"ghR-Gp-K0S.text" = "おしりふき";
+
+/* Class = "UILabel"; text = "おしゃれ"; ObjectID = "gxy-M3-1mK"; */
+"gxy-M3-1mK.text" = "おしゃれ";
+
+/* Class = "UITableViewSection"; headerTitle = "男性トイレ"; ObjectID = "hcR-hl-PdP"; */
+"hcR-hl-PdP.headerTitle" = "男性トイレ";
+
+/* Class = "UILabel"; text = "冷暖房"; ObjectID = "jbb-Go-2JX"; */
+"jbb-Go-2JX.text" = "冷暖房";
+
+/* Class = "UILabel"; text = "呼び出しボタン"; ObjectID = "kaT-Vo-8BW"; */
+"kaT-Vo-8BW.text" = "呼び出しボタン";
+
+/* Class = "UILabel"; text = "電子レンジ"; ObjectID = "owu-2N-bfa"; */
+"owu-2N-bfa.text" = "電子レンジ";
+
+/* Class = "UITableViewSection"; headerTitle = "洗面台設備"; ObjectID = "q8m-zd-jHQ"; */
+"q8m-zd-jHQ.headerTitle" = "洗面台設備";
+
+/* Class = "UITableViewSection"; headerTitle = "詳細"; ObjectID = "qMC-FM-yw6"; */
+"qMC-FM-yw6.headerTitle" = "詳細";
+
+/* Class = "UILabel"; text = "身長計"; ObjectID = "sgE-i3-esr"; */
+"sgE-i3-esr.text" = "身長計";
+
+/* Class = "UILabel"; text = "声かけ不要"; ObjectID = "syi-ZA-eht"; */
+"syi-ZA-eht.text" = "声かけ不要";
+
+/* Class = "UILabel"; text = "授乳スペース"; ObjectID = "uBg-lR-7jR"; */
+"uBg-lR-7jR.text" = "授乳スペース";
+
+/* Class = "UILabel"; text = "キッズスペース"; ObjectID = "uR5-JG-nef"; */
+"uR5-JG-nef.text" = "キッズスペース";
+
+/* Class = "UINavigationItem"; title = "条件検索"; ObjectID = "uhw-GG-ihP"; */
+"uhw-GG-ihP.title" = "条件検索";
+
+/* Class = "UILabel"; text = "シンク"; ObjectID = "v8G-TL-d9L"; */
+"v8G-TL-d9L.text" = "シンク";
+
+/* Class = "UILabel"; text = "良い香り"; ObjectID = "vI6-je-ftx"; */
+"vI6-je-ftx.text" = "良い香り";
+
+/* Class = "UILabel"; text = "ウォシュレット"; ObjectID = "vQw-w2-Ezk"; */
+"vQw-w2-Ezk.text" = "ウォシュレット";
+
+/* Class = "UILabel"; text = "ベビーチェア"; ObjectID = "vZN-NC-hka"; */
+"vZN-NC-hka.text" = "ベビーチェア";
+
+/* Class = "UILabel"; text = "ソファ"; ObjectID = "wSM-bF-kXW"; */
+"wSM-bF-kXW.text" = "ソファ";
+
+/* Class = "UITableViewSection"; headerTitle = "1,その他"; ObjectID = "wzu-GH-AW1"; */
+"wzu-GH-AW1.headerTitle" = "1,その他";
+
+/* Class = "UILabel"; text = "オストメイト"; ObjectID = "xJc-X5-1pW"; */
+"xJc-X5-1pW.text" = "オストメイト";
+
+/* Class = "UILabel"; text = "パウダールーム"; ObjectID = "yyS-Zi-o5u"; */
+"yyS-Zi-o5u.text" = "パウダールーム";
+
+/* Class = "UILabel"; text = "洋式トイレ"; ObjectID = "z3l-4o-NO3"; */
+"z3l-4o-NO3.text" = "洋式トイレ";
+
+/* Class = "UILabel"; text = "センサー式お手洗い"; ObjectID = "zqo-E3-wMO"; */
+"zqo-E3-wMO.text" = "センサー式お手洗い";

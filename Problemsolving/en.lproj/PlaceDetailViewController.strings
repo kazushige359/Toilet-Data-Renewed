@@ -1,0 +1,129 @@
+
+/* Class = "UILabel"; text = "ユーザーの感想"; ObjectID = "0Kf-b7-6B4"; */
+"0Kf-b7-6B4.text" = "Reviews";
+
+/* Class = "UILabel"; text = "いいね２件"; ObjectID = "2Mf-yb-cc2"; */
+"2Mf-yb-cc2.text" = "Like 2";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "39D-zn-zZ9"; */
+"39D-zn-zZ9.text" = "0";
+
+/* Class = "UILabel"; text = "いいね３件"; ObjectID = "3p6-4P-wwG"; */
+"3p6-4P-wwG.text" = "Like 3";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "5Tq-9C-F9b"; */
+"5Tq-9C-F9b.text" = "0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8gP-jf-a5s"; */
+"8gP-jf-a5s.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "全ての感想を見る"; ObjectID = "9DV-46-Mde"; */
+"9DV-46-Mde.normalTitle" = "More Reviews";
+
+/* Class = "UINavigationItem"; title = "全ての感想"; ObjectID = "Azl-Yh-a4c"; */
+"Azl-Yh-a4c.title" = "More Reviews";
+
+/* Class = "UILabel"; text = "投稿者"; ObjectID = "BE5-b3-CJn"; */
+"BE5-b3-CJn.text" = "First Poster";
+
+/* Class = "UITextView"; text = "トイレがとても綺麗でした。ありがとうございます。"; ObjectID = "BEv-Yg-ucw"; */
+"BEv-Yg-ucw.text" = "It was one of the best toilets I have ever seen in my life. It was awesome!!";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "BvS-Q4-H52"; */
+"BvS-Q4-H52.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "DOo-gd-73F"; */
+"DOo-gd-73F.text" = "0";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "DbG-6H-PBB"; */
+"DbG-6H-PBB.text" = "Address";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Di4-Cw-Dk8"; */
+"Di4-Cw-Dk8.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "How To Access"; ObjectID = "GeS-Lu-Wdy"; */
+"GeS-Lu-Wdy.text" = "How To Access";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "JuO-9T-DJf"; */
+"JuO-9T-DJf.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "K9c-oS-Ima"; */
+"K9c-oS-Ima.text" = "Label";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "Ll5-cy-q4x"; */
+"Ll5-cy-q4x.text" = "0";
+
+/* Class = "UILabel"; text = "AvailableTime/Waiting TIme"; ObjectID = "Tga-vc-bAH"; */
+"Tga-vc-bAH.text" = "AvailableTime/Waiting TIme";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XTF-go-VHN"; */
+"XTF-go-VHN.text" = "Label";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "ZrG-rb-0nw"; */
+"ZrG-rb-0nw.text" = "0";
+
+/* Class = "UILabel"; text = "2017/4/2"; ObjectID = "cSQ-kV-Ysa"; */
+"cSQ-kV-Ysa.text" = "2017/4/2";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "d9F-Fh-lXM"; */
+"d9F-Fh-lXM.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "eAX-of-lMJ"; */
+"eAX-of-lMJ.text" = "0";
+
+/* Class = "UILabel"; text = "Place Name"; ObjectID = "g17-BU-J0V"; */
+"g17-BU-J0V.text" = "Place Name";
+
+/* Class = "UILabel"; text = "３分待ち"; ObjectID = "gEX-D8-Yis"; */
+"gEX-D8-Yis.text" = "Waited 3 m";
+
+/* Class = "UIBarButtonItem"; title = "戻る"; ObjectID = "hEi-em-jVh"; */
+"hEi-em-jVh.title" = "Back";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "hvh-Eh-peQ"; */
+"hvh-Eh-peQ.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "編集"; ObjectID = "hzi-jk-r4O"; */
+"hzi-jk-r4O.normalTitle" = "Edit";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "lSj-Ee-QUi"; */
+"lSj-Ee-QUi.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "感想"; ObjectID = "lec-d6-Rmg"; */
+"lec-d6-Rmg.normalTitle" = "Review";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "mej-jG-kNV"; */
+"mej-jG-kNV.text" = "0";
+
+/* Class = "UIButton"; normalTitle = "この施設に行く"; ObjectID = "mrK-Lq-Upb"; */
+"mrK-Lq-Upb.normalTitle" = "Go to this place";
+
+/* Class = "UITextView"; text = "トイレがとても綺麗でした。ありがとうございます。"; ObjectID = "mwX-wi-Qhg"; */
+"mwX-wi-Qhg.text" = "It was one of the best toilets I have ever seen in my life. It was awesome!!";
+
+/* Class = "UIButton"; normalTitle = "詳細を見る"; ObjectID = "o9k-Q0-WAx"; */
+"o9k-Q0-WAx.normalTitle" = "See the details";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "ogn-Gl-Nhw"; */
+"ogn-Gl-Nhw.text" = "0";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "pnG-bc-vh0"; */
+"pnG-bc-vh0.text" = "0";
+
+/* Class = "UILabel"; text = "最終編集者"; ObjectID = "q6e-fU-qF4"; */
+"q6e-fU-qF4.text" = "Last Editer";
+
+/* Class = "UILabel"; text = "2017/4/1"; ObjectID = "sHS-hI-HDW"; */
+"sHS-hI-HDW.text" = "2017/4/1";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "tBS-w1-VYH"; */
+"tBS-w1-VYH.text" = "Label";
+
+/* Class = "UILabel"; text = "Type/ Distance"; ObjectID = "voa-ve-Ctx"; */
+"voa-ve-Ctx.text" = "Type/ Distance";
+
+/* Class = "UILabel"; text = "(21)"; ObjectID = "wMm-KD-Kzc"; */
+"wMm-KD-Kzc.text" = "(21)";
+
+/* Class = "UILabel"; text = "４分待ち"; ObjectID = "zvX-At-lpc"; */
+"zvX-At-lpc.text" = "Average Wait 3m";

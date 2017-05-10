@@ -16,6 +16,43 @@
 
 //Filter Search
 
+"orderedByDistance" = "Distance";
+"orderedByReviewCounts" = "Review Counts";
+"orderedByStars" = "Stars";
+
+"one_star" = "More than ★";
+"two_star" = "More than ★★";
+"three_star" = "More than ★★★";
+"four_star" = "More than ★★★★";
+
+"less500" = "Less than 500m";
+"less1000" = "Less than 1km";
+"less3000" = "Less than 3km";
+"less5000" = "Less than 5km";
+
+"starNumber" = "The number of stars";
+
+
+
+
+
+"safeBabyChair" = "Safe Baby Chair";
+
+"safeBabyChairDescription" = "Safe baby chair means it is not near buttons or the lock of the door";
+
+//Simple Strings
+
+"yes" = "Yes";
+"no" = "No";
+
+
+
+
+
+
+
+
+
 //Category
 "all_category" = "All Category";
 "public_restroom" = "Public Restroom";

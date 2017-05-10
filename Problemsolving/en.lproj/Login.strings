@@ -1,0 +1,72 @@
+
+/* Class = "UIButton"; normalTitle = "Toilet Dataサービス利用規約"; ObjectID = "1MP-Yu-46z"; */
+"1MP-Yu-46z.normalTitle" = "Toilet Data Service Policy";
+
+/* Class = "UITextField"; placeholder = "ユーザーネーム"; ObjectID = "7CC-MC-d2O"; */
+"7CC-MC-d2O.placeholder" = "User Name";
+
+/* Class = "UIBarButtonItem"; title = "戻る"; ObjectID = "7d8-xj-Seq"; */
+"7d8-xj-Seq.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "パスワードを忘れましたか？"; ObjectID = "7pE-Bf-TKI"; */
+"7pE-Bf-TKI.normalTitle" = "Did you forget your password？";
+
+/* Class = "UIButton"; normalTitle = "スキップ"; ObjectID = "9sL-La-f0P"; */
+"9sL-La-f0P.normalTitle" = "Skip";
+
+/* Class = "UILabel"; text = "ログインすることにより、あなたはToilet Dataサービス利用規約と個人情報保護方針に同意することとします。"; ObjectID = "DoR-j3-LRQ"; */
+"DoR-j3-LRQ.text" = "ログインすることにより、あなたはToilet Dataサービス利用規約と個人情報保護方針に同意することとします。";
+ //I dont know
+
+/* Class = "UILabel"; text = "お届けします。"; ObjectID = "E2w-p6-C1Q"; */   //I dont know
+"E2w-p6-C1Q.text" = "";
+
+
+
+/* Class = "UIButton"; normalTitle = "個人情報保護方針"; ObjectID = "Hp9-Gw-pR8"; */ //I dont know
+"Hp9-Gw-pR8.normalTitle" = "個人情報保護方針";
+
+/* Class = "UILabel"; text = "Toilet Dataへようこそ"; ObjectID = "L93-cd-Bvx"; */
+"L93-cd-Bvx.text" = "Welcome To Toilet Data";
+
+/* Class = "UIButton"; normalTitle = "アカウント作成"; ObjectID = "OPo-yg-N91"; */
+"OPo-yg-N91.normalTitle" = "Sign up";
+
+/* Class = "UIButton"; normalTitle = "アカウント作成"; ObjectID = "OQD-px-ShW"; */
+"OQD-px-ShW.normalTitle" = "Sign up";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "R0n-58-AU8"; */
+"R0n-58-AU8.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "パスワード"; ObjectID = "Rqy-zO-wL3"; */
+"Rqy-zO-wL3.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "ログイン"; ObjectID = "YdC-ti-a4R"; */
+"YdC-ti-a4R.normalTitle" = "Log in";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "bDh-TY-vNm"; */
+"bDh-TY-vNm.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "メールアドレス"; ObjectID = "fZ1-Ln-A8r"; */
+"fZ1-Ln-A8r.placeholder" = "email";
+
+/* Class = "UIButton"; normalTitle = "個人情報保護方針"; ObjectID = "mhj-qY-N4d"; */
+"mhj-qY-N4d.normalTitle" = "個人情報保護方針";
+
+/* Class = "UILabel"; text = "アカウントを作成することにより、あなたはToilet Dataサービス利用規約と個人情報保護方針に同意することとします。"; ObjectID = "ns3-tA-mGk"; */
+"ns3-tA-mGk.text" = "アカウントを作成することにより、あなたはToilet Dataサービス利用規約と個人情報保護方針に同意することとします。";
+
+/* Class = "UIBarButtonItem"; title = "戻る"; ObjectID = "pCi-5o-MD8"; */
+"pCi-5o-MD8.title" = "Cancel";
+
+/* Class = "UIButton"; normalTitle = "ログイン"; ObjectID = "qAz-ho-WaE"; */
+"qAz-ho-WaE.normalTitle" = "Log in";
+
+/* Class = "UIButton"; normalTitle = "Toilet Dataサービス利用規約"; ObjectID = "qvH-81-Ed8"; */
+"qvH-81-Ed8.normalTitle" = "Toilet Data Service Policy";
+
+/* Class = "UIButton"; normalTitle = "パスワードを忘れましたか？"; ObjectID = "sdS-Kc-h1n"; */
+"sdS-Kc-h1n.normalTitle" = "Did you forget your password？";
+
+/* Class = "UILabel"; text = "あなたにぴったりのトイレを"; ObjectID = "xyn-eA-1fV"; */
+"xyn-eA-1fV.text" = "Find the best toilets near you";

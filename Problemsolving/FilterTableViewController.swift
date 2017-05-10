@@ -134,9 +134,14 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var starSearchField: UITextField!
     
     
-    var distanceOption = ["0.5km以内","1km以内","3km以内","5km以内","10km以内"]
+    var distanceOption = ["less500".localized,"less1000".localized,"less3000".localized,"less5000".localized]
     
-    var orderOption = ["現在地から近い順","評価が高い順","感想が多い順"]
+    
+    
+    var orderOption = [
+        "orderedByDistance".localized,
+        "orderedByReviewCounts".localized,
+        "orderedByStars".localized]
     
 //    var typeOption = ["全てのトイレ","公衆トイレ","コンビニ","カフェ","レストラン","商業施設","観光地・スタジアム","仮設トイレ","一般家庭(断水時のみ)"]
     
@@ -196,106 +201,61 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
          print("search.searchOn = \(search.searchOn)")
         
         
+        
+       
         if filter.distanceSetted == true{
-            distanceField.text = "現在地から\(filter.distanceFilter)km以内"
+            distanceField.text = "\(filter.distanceFilter)km"
         }else{
-            distanceField.placeholder = "現在地から3km以内"
+            distanceField.placeholder = "3km"
         }
      
         if filter.myOrderSetted == true{
             if filter.orderDistanceFilter == true{
-                 orderField.text = "現在地から近い順"
+                 orderField.text = "orderedByDistance".localized
             }
             if filter.orderStarFilter == true{
-                orderField.text = "評価が高い順"
+                orderField.text = "orderedByStars".localized
             }
             if filter.orderReviewFilter == true{
-                orderField.text = "感想が多い順"
+                orderField.text = "orderedByReviewCounts".localized
             }
         }else{
-            orderField.placeholder = "現在地から近い順"
+            orderField.placeholder = "orderedByDistance".localized
                 }
         //orderField.placeholder = "現在地から近い順"
         
         if filter.typeFilterOn == true{
          typeField.text = "\(filter.typeFilter)を検索"
         }else{
-        typeField.placeholder = "すべてのトイレを検索"}
+            
+        typeField.placeholder = "all_category".localized
+        
+        }
+        
         
         
         
         
         if filter.starFilterSetted == true{
             if filter.starFilter == 1.0{
-                starSearchField.text = "★以上を検索"
+                starSearchField.text = "one_star".localized
             }
             if filter.starFilter == 2.0{
-                 starSearchField.text = "★★以上を検索"
+                 starSearchField.text = "two_star".localized
             }
             if filter.starFilter == 3.0{
-                 starSearchField.text = "★★★以上を検索"
+                 starSearchField.text = "three_star".localized
             }
             if filter.starFilter == 4.0{
-                 starSearchField.text = "★★★★以上を検索"
+                 starSearchField.text = "four_star".localized
             }
-        }else {starSearchField.placeholder = "星の数を検索"}
-//        
+        }else {
+            starSearchField.placeholder = "starNumber".localized
+        }
+
         
         filterCheck()
-//        washletLabelSwitch.isOn = false
-//        wheelchairLabelSwitch.isOn = false
-//        onlyFemaleSwitch.isOn = false
-//        unisexLabelSwitch.isOn = false
-//        makeroomLabelSwtich.isOn = false
-//        milkspaceLabelSwitch.isOn = false
-//        omutuLabelSwitch.isOn = false
-//        ostomateLabelSwitch.isOn = false
-//        japaneseLabelSwitch.isOn = false
-//        westernLabelSwitch.isOn = false
-//        warmSeatSwitch.isOn = false
-//        baggageSpaceLabelSwitch.isOn = false
-//        availableLabelSwitch.isOn = false
-//        
-//        
-//        if filter.washletFilter == true{
-//        washletLabelSwitch.isOn = true
-//        }
-//        if filter.wheelchairFilter == true{
-//            wheelchairLabelSwitch.isOn = true
-//        }
-//        if filter.onlyFemaleFilter == true{
-//            onlyFemaleSwitch.isOn = true
-//        }
-//        if filter.unisexFilter == true{
-//            unisexLabelSwitch.isOn = true
-//        }
-//        if filter.makeroomFilter == true{
-//            makeroomLabelSwtich.isOn = true
-//        }
-//        if filter.milkspaceFilter == true{
-//            milkspaceLabelSwitch.isOn = true
-//        }
-//        if filter.omutuFilter == true{
-//            omutuLabelSwitch.isOn = true
-//        }
-//        if filter.ostomateFilter == true{
-//            ostomateLabelSwitch.isOn = true
-//        }
-//        if filter.japaneseFilter == true{
-//            japaneseLabelSwitch.isOn = true
-//        }
-//        if filter.westernFilter == true{
-//            westernLabelSwitch.isOn = true
-//        }
-//        if filter.warmSearFilter == true{
-//            warmSeatSwitch.isOn = true
-//        }
-//        if filter.baggageSpaceFilter == true{
-//            baggageSpaceLabelSwitch.isOn = true
-//        }
-//        if filter.availableFilter == true{
-//            availableLabelSwitch.isOn = true
-//        }
+
     }
     
     func filterCheck(){
@@ -808,7 +768,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
             //pickerTextField.text = "待ち時間　\(pickOption[row])分"
             if pickerView == pickerView1 {
                 
-                distanceField.text = "現在地から\(distanceOption[row])"
+                distanceField.text = "\(distanceOption[row])"
             }
             
             if pickerView == pickerView2 {
@@ -820,11 +780,11 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
                 typeField.text = typeOption[row]
 //                let typeActualSearch = typeOption[row]
 //                print("typeActualSearch = \(typeActualSearch)")
-                print("\(typeOption[row])を検索")
+                
             }
             
             if pickerView == pickerView4 {
-                starSearchField.text = "\(starOption[row])以上を検索"
+                starSearchField.text = "\(starOption[row])"
             }
         
 
@@ -844,7 +804,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         if pickerView == pickerView3 {
             //print("pickerView3")
             pickedOption = typeOption[row]
-            print("pickedOption = \(pickedOption)")
+            
             
         }
         if pickerView == pickerView4 {
@@ -950,11 +910,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
             filter.distanceFilter = 5
             filter.distanceSetted = true
         }
-        if pickedOption == distanceOption[4]{
-            filter.distanceFilter = 10
-            filter.distanceSetted = true
-        }
-        
+               
         if pickedOption == orderOption[0]{
             filter.orderDistanceFilter = true
             filter.orderStarFilter = false
@@ -1811,10 +1767,11 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     func safeBabyChairCondition(){
     
-        let alertController = UIAlertController (title: "安全なベビーチェア", message: "安全なベビーチェアとは、ドアの鍵やボタンから十分に距離がある位置に設置されているものです。", preferredStyle: .alert)
+        
+        let alertController = UIAlertController (title: "safeBabyChair".localized, message: "safeBabyChairDescription".localized, preferredStyle: .alert)
         
         
-        let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+        let settingsAction = UIAlertAction(title: "yes".localized , style: .default, handler: nil)
         
                 //let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
        // let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
