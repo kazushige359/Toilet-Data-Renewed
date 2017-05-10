@@ -20,6 +20,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     @IBOutlet weak var placeCategoryLabel: UITextField!
     @IBOutlet weak var availableTimeLabel: UITextField!
     
+    @IBOutlet weak var toiletFloorPickLabel: UITextField!
+    
     
     @IBOutlet weak var japaneseToiletSwitch: UISwitch!
     @IBOutlet weak var westernToiletSwitch: UISwitch!
@@ -163,6 +165,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     let reviewNewId = UUID().uuidString
     
     
+    var floorOption = ["地下3階","地下2階","地下1階","1階","2階","3階","4階","5階","6階","7階","8階","9階","10階","11階","12階","13階","14階","15階","16階","17階","18階"]
     
     
     var pickOption = ["0","1", "2", "3","4","5","6", "7", "8","9","10","11", "12", "13","14","15","16", "17", "18","19","20","21", "22", "23","24","25","26", "27", "28","29","30"]
@@ -189,6 +192,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     let pickerView1 = UIPickerView()
     let pickerView2 = UIPickerView()
     let pickerView3 = UIPickerView()
+    let pickerView4 = UIPickerView()
     
     var time1 = "0"
     var time2 = "00"
@@ -220,9 +224,11 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         pickerView1.delegate = self
         pickerView2.delegate = self
         pickerView3.delegate = self
+        pickerView4.delegate = self
         waitMinutesLabel.inputView = pickerView1
         placeCategoryLabel.inputView = pickerView2
         availableTimeLabel.inputView = pickerView3
+        toiletFloorPickLabel.inputView = pickerView4
        
         imagePicker.delegate = self
         
@@ -276,6 +282,10 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         if pickerView == pickerView3 {
             returnNumber = availableTimeOption.count
         }
+        
+        if pickerView == pickerView4{
+            returnNumber = 1
+        }
 
         return returnNumber
       // return 1
@@ -296,6 +306,13 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             //print("pickerView3")
             returnCount = availableTimeOption[component].count
         }
+        
+        if pickerView == pickerView4 {
+            //print("pickerView2")
+            returnCount = floorOption.count
+        }
+        
+        
         
         
         
@@ -318,6 +335,14 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             pickedOption = availableTimeOption[component][row]
             
         }
+        
+        if pickerView == pickerView4 {
+            //print("pickerView3")
+            pickedOption = floorOption[row]
+
+            
+        }
+        
         
           return pickedOption
         
@@ -356,6 +381,11 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         default: break
             
             }}
+        
+        if pickerView == pickerView4 {
+            toiletFloorPickLabel.text = floorOption[row]
+        }
+
     }
     
     

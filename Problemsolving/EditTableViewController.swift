@@ -25,6 +25,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     @IBOutlet weak var availableTimeLabel: UITextField!
     
+    @IBOutlet weak var toiletFloorLabel: UITextField!
     
     ////bbbbbbbbbbbbbbbb
     
@@ -181,7 +182,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     var returnNumber = Int()
     var pickedOption = String()
     
-    //let pickerView1 = UIPickerView()
+    let pickerView1 = UIPickerView()
     let pickerView2 = UIPickerView()
     let pickerView3 = UIPickerView()
     
@@ -199,6 +200,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     var mainImageChanged = false
     var subImageOneChanged = false
     var subImageTwoChanged = false
+    var toiletFloorPickedNumber = 0
     
     var geoFire: GeoFire!
     var geoFireRef: FIRDatabaseReference!
@@ -210,10 +212,10 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         print("toilet.url = \(toilet.urlOne)")
         
         mapView.delegate = self
-        //pickerView1.delegate = self
+        pickerView1.delegate = self
         pickerView2.delegate = self
         pickerView3.delegate = self
-        //waitMinutesLabel.inputView = pickerView1
+        toiletFloorLabel.inputView = pickerView1
         placeCategoryLabel.inputView = pickerView2
         availableTimeLabel.inputView = pickerView3
        
@@ -579,9 +581,9 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
-//        if pickerView == pickerView1 {
-//            returnNumber = 1
-//        }
+        if pickerView == pickerView1 {
+            returnNumber = 1
+        }
         if pickerView == pickerView2 {
             returnNumber = 1
         }
@@ -596,10 +598,10 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        if pickerView == pickerView1 {
-//            //print("pickerView1")
-//            returnCount = pickOption.count
-//        }
+        if pickerView == pickerView1 {
+            //print("pickerView1")
+            returnCount = pickOption.count
+        }
         if pickerView == pickerView2 {
             //print("pickerView2")
             returnCount = categoryOption.count
@@ -615,11 +617,11 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        if pickerView == pickerView1 {
-//            //print("pickerView1")
-//            pickedOption = pickOption[row]
-//            
-//        }
+        if pickerView == pickerView1 {
+            //print("pickerView1")
+            pickedOption = pickOption[row]
+            
+        }
         if pickerView == pickerView2 {
             //print("pickerView2")
             pickedOption = categoryOption[row]
@@ -637,13 +639,18 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //pickerTextField.text = "待ち時間　\(pickOption[row])分"
-//        if pickerView == pickerView1 {
-//            
-//            waitMinutesLabel.text = "待ち時間　\(pickOption[row])分"
+        
+        if pickerView == pickerView1 {
+             toiletFloorLabel.text = "トイレ　\(pickOption[row])階"
+            
+             toiletFloorPickedNumber = Int(pickOption[row])!
+            
+             print("toiletFloorPick = \(toiletFloorPickedNumber)")
+            
+//            waitMinutesLabel.text = pickOption[row]
 //            numberPicked = true
 //            waitminute = pickOption[row]
-//        }
+        }
         
         if pickerView == pickerView2 {
             placeCategoryLabel.text = categoryOption[row]
@@ -1000,7 +1007,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                 "closeHours":5000 as Int,
                 "reviewCount":1,
                 //"averageWait": waitInt! as Int,
-                "toiletFloor": 1,
+                "toiletFloor": toiletFloorPickedNumber,
                 "latitude": toilet.latitude,
                 "longitude": toilet.longitude,
                 "available": true,
