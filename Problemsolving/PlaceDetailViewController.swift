@@ -175,6 +175,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     var userAlreadyLogin = false
     var firebaseOnceLoaded = false
     var postRid = ""
+    var suspiciosUserId = ""
+    var reviewReportOnceUploaded = false
+    var userReportOnceUploaded = false
+    var reviewOnePoster = ""
+    var reviewTwoPoster = ""
     
     
     
@@ -1007,6 +1012,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 let uid = snapshotValue?["uid"] as? String
                 review.uid = uid!
                 
+                self.reviewOnePoster = review.uid
+                
                 review.rid = snapshot.key
                 
                 
@@ -1111,6 +1118,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 let uid = snapshotValue?["uid"] as? String
                 review.uid = uid!
+                
+                self.reviewTwoPoster = review.uid
                 
                 review.rid = snapshot.key
                 
@@ -1558,8 +1567,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
             ]
             
-            toiletProblemsRef.child(rpid).setValue(rpData)
-            showYourReviewPostedMessage()
+        toiletProblemsRef.child(rpid).setValue(rpData)
+        
+        suspiciosUserId = toilet.editedBy
+        userWarningListUpload()
+        
         
         
     }
@@ -1845,13 +1857,15 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     @IBAction func reviewOneReportButtonTapped(_ sender: Any) {
        postRid = toilet.reviewOne
+       suspiciosUserId = reviewOnePoster
        reviewReportStart()
     }
     
     
     @IBAction func reviewTwoReportButtonTapped(_ sender: Any) {
         postRid = toilet.reviewTwo
-         reviewReportStart()
+        suspiciosUserId = reviewTwoPoster
+        reviewReportStart()
     }
     
     
@@ -1961,41 +1975,94 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             toiletProblemsRef.child(rpid).setValue(rpData)
             
-            countReviewWarning()
+            
+            
+            reviewWarningListUpload()
+            userWarningListUpload()
         }
         
     }
     
-    func countReviewWarning(){
-        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarnings")
+    func reviewWarningListUpload(){
+        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        reviewWarningsRef.child(postRid).child(uid).setValue(true)
+        
+        reviewWarningListCount()
+        
+        
+        }
+    
+    func reviewWarningListCount(){
+        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
         
         reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
             
-            if self.firebaseOnceLoaded == false{
-                self.firebaseOnceLoaded = true
+            if self.reviewReportOnceUploaded == false{
+                self.reviewReportOnceUploaded = true
                 
-                if snapshot.exists(){
-                    
-                    let getValue = snapshot.value as! Int
-                    print("getValue = \(getValue)")
-                    let newNumber = getValue + 1
-                    print("newNumber = \(newNumber)")
-                    
-                    reviewWarningsRef.child(self.postRid).setValue(newNumber)
-                    
-                    self.showYourReviewPostedMessage()
-                    //go Back to previos navigation
-                    
-                } else {
-                    self.showYourReviewPostedMessage()
-                    
-                    
-                    reviewWarningsRef.child(self.postRid).setValue(1)
-                    
-                }
+                let countNumber = snapshot.childrenCount
+                self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
+                
+                
+                
             }
         })
     }
+    
+    func reviewWarningCountUploadToDatabase(countNumber: Int){
+        let reviewWarningCountRef = FIRDatabase.database().reference().child("ReviewWarningCount")
+        
+        reviewWarningCountRef.child(postRid).setValue(countNumber)
+        
+        showYourReviewPostedMessage()
+        
+        
+
+    }
+    
+    
+    
+    func userWarningListUpload(){
+        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
+        
+        userWarningListCount()
+        
+        
+    }
+    
+    func userWarningListCount(){
+        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+        
+        userWarningsRef.child(suspiciosUserId).observe(FIRDataEventType.value, with: { snapshot in
+            
+            if self.userReportOnceUploaded == false{
+                self.userReportOnceUploaded = true
+                
+                let countNumber = snapshot.childrenCount
+                self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
+                
+                
+                
+            }
+        })
+    }
+    
+    func userWarningCountUploadToDatabase(countNumber: Int){
+        let userWarningCountRef = FIRDatabase.database().reference().child("UserWarningCount")
+        
+        userWarningCountRef.child(suspiciosUserId).setValue(countNumber)
+        
+        showYourReviewPostedMessage()
+        
+        
+        
+    }
+
+    
+    
     
     func showYourReviewPostedMessage(){
         

@@ -35,6 +35,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     var manuallyAverageWait = Int()
     var manuallyReviewCount = Int()
     var firebaseOnceLoaded = false
+    var toiletReportOnceUploaded = false
     
     
    // var interval = NSDate().timeIntervalSince1970
@@ -446,40 +447,84 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
 
         toiletProblemsRef.child(tpid).setValue(tpData)
         
-        countToiletWarning()
+        toiletWarningListUpload()
         
     }
-
-    func countToiletWarning(){
-        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletWarnings")
+    
+    
+    ////
+    func toiletWarningListUpload(){
+        let toiletWarningsRef = FIRDatabase.database().reference().child("ToiletWarningList")
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        toiletWarningsRef.child(toilet.key).child(uid).setValue(true)
         
-        toiletProblemsRef.child(toilet.key).observe(FIRDataEventType.value, with: { snapshot in
+        toiletWarningListCount()
+        
+        
+    }
+    
+    func toiletWarningListCount(){
+        let toiletWarningsRef = FIRDatabase.database().reference().child("ToiletWarningList")
+        
+        toiletWarningsRef.child(toilet.key).observe(FIRDataEventType.value, with: { snapshot in
             
-            if self.firebaseOnceLoaded == false{
-                self.firebaseOnceLoaded = true
-            
-            if snapshot.exists(){
+            if self.toiletReportOnceUploaded == false{
+                self.toiletReportOnceUploaded = true
                 
-                let getValue = snapshot.value as! Int
-                 print("getValue = \(getValue)")
-                let newNumber = getValue + 1
-                print("newNumber = \(newNumber)")
-
-                toiletProblemsRef.child(self.toilet.key).setValue(newNumber)
+                let countNumber = snapshot.childrenCount
+                self.toiletWarningCountUploadToDatabase(countNumber: Int(countNumber))
                 
-                self.showYourReviewPostedMessage()
-                //go Back to previos navigation
                 
-            } else {
-                self.showYourReviewPostedMessage()
-
                 
-               toiletProblemsRef.child(self.toilet.key).setValue(1)
-            
             }
-        }
         })
     }
+    
+    func toiletWarningCountUploadToDatabase(countNumber: Int){
+        let toiletWarningCountRef = FIRDatabase.database().reference().child("ToiletWarningCount")
+        
+        toiletWarningCountRef.child(toilet.key).setValue(countNumber)
+        
+        showYourReviewPostedMessage()
+        
+        
+        
+    }
+
+    
+    
+    ////
+
+//    func countToiletWarning(){
+//        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletWarnings")
+//        
+//        toiletProblemsRef.child(toilet.key).observe(FIRDataEventType.value, with: { snapshot in
+//            
+//            if self.firebaseOnceLoaded == false{
+//                self.firebaseOnceLoaded = true
+//            
+//            if snapshot.exists(){
+//                
+//                let getValue = snapshot.value as! Int
+//                 print("getValue = \(getValue)")
+//                let newNumber = getValue + 1
+//                print("newNumber = \(newNumber)")
+//
+//                toiletProblemsRef.child(self.toilet.key).setValue(newNumber)
+//                
+//                self.showYourReviewPostedMessage()
+//                //go Back to previos navigation
+//                
+//            } else {
+//                self.showYourReviewPostedMessage()
+//
+//                
+//               toiletProblemsRef.child(self.toilet.key).setValue(1)
+//            
+//            }
+//        }
+//        })
+//    }
 
     func showYourReviewPostedMessage(){
         

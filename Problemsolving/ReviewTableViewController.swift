@@ -33,6 +33,9 @@ class ReviewTableViewController: UITableViewController {
     
     var firebaseOnceLoaded = false
     var postRid = ""
+    var reviewReportOnceUploaded = false
+    var userReportOnceUploaded = false
+    var suspiciosUserId = ""
     
     
     override func viewDidLoad() {
@@ -233,6 +236,7 @@ class ReviewTableViewController: UITableViewController {
         let buttonRow = sender.tag
         let rid = reviews[buttonRow].rid
         postRid = rid
+        suspiciosUserId = reviews[buttonRow].uid
         print("ButtonRow = \(buttonRow)")
         
         let alertController = UIAlertController (title: "この感想に問題がありますか？", message: "Oh well", preferredStyle: .actionSheet)
@@ -345,41 +349,126 @@ class ReviewTableViewController: UITableViewController {
         
         toiletProblemsRef.child(rpid).setValue(rpData)
         
-        countReviewWarning()
+        reviewWarningListUpload()
+        userWarningListUpload()
         }
         
     }
     
-    func countReviewWarning(){
-        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarnings")
+    
+    
+    
+    ///
+    func reviewWarningListUpload(){
+    let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+    let uid = FIRAuth.auth()!.currentUser!.uid
+    reviewWarningsRef.child(postRid).child(uid).setValue(true)
+    
+    reviewWarningListCount()
+    
+    
+     }
+
+    func reviewWarningListCount(){
+    let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+    
+    reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
         
-        reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
+        if self.reviewReportOnceUploaded == false{
+            self.reviewReportOnceUploaded = true
             
-            if self.firebaseOnceLoaded == false{
-                self.firebaseOnceLoaded = true
+            let countNumber = snapshot.childrenCount
+            self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
+            
+            
+            
+        }
+    })
+    }
+
+func reviewWarningCountUploadToDatabase(countNumber: Int){
+    let reviewWarningCountRef = FIRDatabase.database().reference().child("ReviewWarningCount")
+    
+    reviewWarningCountRef.child(postRid).setValue(countNumber)
+    
+    showYourReviewPostedMessage()
+    
+    
+    
+}
+    
+    func userWarningListUpload(){
+        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+        let uid = FIRAuth.auth()!.currentUser!.uid
+        userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
+        
+        userWarningListCount()
+        
+        
+    }
+    
+    func userWarningListCount(){
+        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+        
+        userWarningsRef.child(suspiciosUserId).observe(FIRDataEventType.value, with: { snapshot in
+            
+            if self.userReportOnceUploaded == false{
+                self.userReportOnceUploaded = true
                 
-                if snapshot.exists(){
-                    
-                    let getValue = snapshot.value as! Int
-                    print("getValue = \(getValue)")
-                    let newNumber = getValue + 1
-                    print("newNumber = \(newNumber)")
-                    
-                    reviewWarningsRef.child(self.postRid).setValue(newNumber)
-                    
-                    self.showYourReviewPostedMessage()
-                    //go Back to previos navigation
-                    
-                } else {
-                    self.showYourReviewPostedMessage()
-                    
-                    
-                    reviewWarningsRef.child(self.postRid).setValue(1)
-                    
-                }
+                let countNumber = snapshot.childrenCount
+                self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
+                
+                
+                
             }
         })
     }
+    
+    func userWarningCountUploadToDatabase(countNumber: Int){
+        let userWarningCountRef = FIRDatabase.database().reference().child("UserWarningCount")
+        
+        userWarningCountRef.child(suspiciosUserId).setValue(countNumber)
+        
+        
+        
+    }
+
+    
+    
+
+
+    ////
+
+//    func countReviewWarning(){
+//        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarnings")
+//        
+//        reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
+//            
+//            if self.firebaseOnceLoaded == false{
+//                self.firebaseOnceLoaded = true
+//                
+//                if snapshot.exists(){
+//                    
+//                    let getValue = snapshot.value as! Int
+//                    print("getValue = \(getValue)")
+//                    let newNumber = getValue + 1
+//                    print("newNumber = \(newNumber)")
+//                    
+//                    reviewWarningsRef.child(self.postRid).setValue(newNumber)
+//                    
+//                    self.showYourReviewPostedMessage()
+//                    //go Back to previos navigation
+//                    
+//                } else {
+//                    self.showYourReviewPostedMessage()
+//                    
+//                    
+//                    reviewWarningsRef.child(self.postRid).setValue(1)
+//                    
+//                }
+//            }
+//        })
+//    }
     
     func showYourReviewPostedMessage(){
         
