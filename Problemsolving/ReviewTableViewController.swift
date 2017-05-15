@@ -33,8 +33,8 @@ class ReviewTableViewController: UITableViewController {
     
     var firebaseOnceLoaded = false
     var postRid = ""
-    var reviewReportOnceUploaded = false
-    var userReportOnceUploaded = false
+    //var reviewReportOnceUploaded = false
+    //var userReportOnceUploaded = false
     var suspiciosUserId = ""
     
     
@@ -368,23 +368,37 @@ class ReviewTableViewController: UITableViewController {
     
     
      }
-
-    func reviewWarningListCount(){
-    let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
     
-    reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
+    func reviewWarningListCount(){
+        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
         
-        if self.reviewReportOnceUploaded == false{
-            self.reviewReportOnceUploaded = true
+        
+        reviewWarningsRef.child(postRid).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             
-            let countNumber = snapshot.childrenCount
-            self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
-            
-            
-            
-        }
-    })
+                let countNumber = snapshot.childrenCount
+                self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
+        })
     }
+
+//    func reviewWarningListCount(){
+//    let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+//    
+//        
+//    reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
+//        
+//        if self.reviewReportOnceUploaded == false{
+//            self.reviewReportOnceUploaded = true
+//            
+//            let countNumber = snapshot.childrenCount
+//            self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
+//            
+//            
+//            
+//        }
+//    })
+//    }
+    
+    
 
 func reviewWarningCountUploadToDatabase(countNumber: Int){
     let reviewWarningCountRef = FIRDatabase.database().reference().child("ReviewWarningCount")
@@ -407,22 +421,39 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         
     }
     
-    func userWarningListCount(){
-        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
-        
-        userWarningsRef.child(suspiciosUserId).observe(FIRDataEventType.value, with: { snapshot in
-            
-            if self.userReportOnceUploaded == false{
-                self.userReportOnceUploaded = true
+    
+    
+   
+    
+        func userWarningListCount(){
+            let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+    
+            userWarningsRef.child(suspiciosUserId).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+    
+                    let countNumber = snapshot.childrenCount
+                    self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
+    
                 
-                let countNumber = snapshot.childrenCount
-                self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
-                
-                
-                
-            }
-        })
-    }
+            })
+        }
+
+    
+//    func userWarningListCount(){
+//        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+//        
+//        userWarningsRef.child(suspiciosUserId).observe(FIRDataEventType.value, with: { snapshot in
+//            
+//            if self.userReportOnceUploaded == false{
+//                self.userReportOnceUploaded = true
+//                
+//                let countNumber = snapshot.childrenCount
+//                self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
+//                
+//                
+//                
+//            }
+//        })
+//    }
     
     func userWarningCountUploadToDatabase(countNumber: Int){
         let userWarningCountRef = FIRDatabase.database().reference().child("UserWarningCount")
