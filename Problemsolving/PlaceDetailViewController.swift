@@ -180,6 +180,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
 //    var userReportOnceUploaded = false
     var reviewOnePoster = ""
     var reviewTwoPoster = ""
+    var firstPosterFavoriteNumber = 0
+    var lastEditerFavoriteNumber = 0
     
     
     
@@ -858,6 +860,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 let userFavotiteCount = (snapshotValue?["totalFavoriteCount"] as? Int)!
                 let userHelpedCount = (snapshotValue?["totalHelpedCount"] as? Int)!
                 
+                self.firstPosterFavoriteNumber = userFavotiteCount
                 let newHelpCount = userHelpedCount + 1
                 
                 self.firstPosterLikeLabel.text = "\(userLikeCount)"
@@ -895,6 +898,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 let userLikeCount = (snapshotValue?["totalLikedCount"] as? Int)!
                 let userFavotiteCount = (snapshotValue?["totalFavoriteCount"] as? Int)!
                 let userHelpedCount = (snapshotValue?["totalHelpedCount"] as? Int)!
+                
+                self.lastEditerFavoriteNumber = userFavotiteCount
                 
                 let newHelpCount = userHelpedCount + 1
                 
@@ -1222,17 +1227,53 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let firebaseRef = FIRDatabase.database().reference()
         let userRef = firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
         userRef.child(toilet.key).setValue(true)
-        let totalFavoriteCountRef = firebaseRef.child("Users").child(toilet.addedBy).child("totalFavoriteCount")
-        totalFavoriteCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
-            if self.favoriteAdded == false{
-                print("FVFVsnapshot = \(snapshot)")
-                print("FVFVsnapshot.key = \(snapshot.key)")
-                print("FVFVsnapshot.value = \(String(describing: snapshot.value))")
-                let snapValue = snapshot.value as? Int
-                let newFavorite = snapValue! + 1
-                totalFavoriteCountRef.setValue(newFavorite)
-                self.favoriteAdded = true
-            }})
+        
+        print("afterFavoriteTappedAction Called")
+        
+        
+        if toilet.addedBy != ""{
+            
+             print("afterFavoriteTappedAction Added")
+            let firstPosterFavoriteCountRef = firebaseRef.child("Users").child(toilet.addedBy)
+            
+            let tdata : [String : Any] = ["totalFavoriteCount": firstPosterFavoriteNumber + 1]
+            firstPosterFavoriteCountRef.updateChildValues(tdata)
+            
+        
+        }
+        
+        if toilet.editedBy != ""{
+            print("afterFavoriteTappedAction edited")
+            
+            let lastEditerFavoriteCountRef = firebaseRef.child("Users").child(toilet.editedBy)
+            
+            let tdata : [String : Any] = ["totalFavoriteCount": lastEditerFavoriteNumber + 1]
+            lastEditerFavoriteCountRef.updateChildValues(tdata)
+
+        }
+        
+//        totalFavoriteCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
+//            if self.favoriteAdded == false{
+//                print("FVFVsnapshot = \(snapshot)")
+//                print("FVFVsnapshot.key = \(snapshot.key)")
+//                print("FVFVsnapshot.value = \(String(describing: snapshot.value))")
+//                let snapValue = snapshot.value as? Int
+//                let newFavorite = snapValue! + 1
+//                totalFavoriteCountRef.setValue(newFavorite)
+//                self.favoriteAdded = true
+//            }})
+        
+        
+        
+        
+        //Added single event observer May 16 
+        
+       
+        
+        
+        
+        
+
         
         let alertController = UIAlertController (title: "お気に入りに追加されました", message: "", preferredStyle: .alert)
         let addAction = UIAlertAction(title: "はい", style: .default, handler: nil)
