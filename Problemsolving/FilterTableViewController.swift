@@ -1792,6 +1792,15 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         
     }
     
+    func queryPathDecision(){
+        
+            
+    
+    
+    
+    
+    }
+    
     
     
     @IBAction func cancelButtonTapped(_ sender: Any) {

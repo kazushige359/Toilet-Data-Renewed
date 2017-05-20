@@ -807,7 +807,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let circleQuery = geoFire.query(at: center, withRadius: self.filter.distanceFilter)
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
             
-            print("HEYKey '\(String(describing: key))' entered the search area and is at location '\(String(describing: location))'")
+            print("555'\(String(describing: key))' entered the search area and is at location '\(String(describing: location))'")
             
             let toiletsRef = FIRDatabase.database().reference().child("Toilets")
             
@@ -831,6 +831,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String, location: CLLocation?, center: CLLocation){
         let toilet = Toilet()
         
+        print("555 createTableViewFor \(key)")
         
         let snapshotValue = snapshot.value as? NSDictionary
         

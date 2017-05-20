@@ -258,7 +258,10 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
           let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").childByAutoId()
         
-          reviewRef.setValue(reviewData)
+        reviewRef.updateChildValues(reviewData)
+        
+        //May 19 changed set() to update()....
+        //  reviewRef.setValue(reviewData)
         
         
         

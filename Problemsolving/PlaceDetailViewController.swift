@@ -995,6 +995,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 let review = Review()
                 let snapshotValue = snapshot.value as? NSDictionary
                 
+                print("Snapshot 88888 = \(snapshot)")
+                
                 let star = snapshotValue?["star"] as? String
                 
                 review.star = Double(star!)!
