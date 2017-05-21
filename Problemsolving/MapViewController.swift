@@ -886,10 +886,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         
-        toilet.onlyFemale = (snapshotValue?["onlyFemale"] as? Bool)!
-        if self.filter.onlyFemaleFilter == true && toilet.onlyFemale == false {
-            return
+        
+        if self.filter.onlyFemaleFilter == true {
+            toilet.onlyFemale = (snapshotValue?["onlyFemale"] as? Bool)!
+            if toilet.onlyFemale == false{
+                return
+            }
         }
+        //if self.filter.onlyFemaleFilter == true && toilet.onlyFemale == false {
+        //    return
+        //}
         
 
         toilet.unisex = (snapshotValue?["unisex"] as? Bool)!

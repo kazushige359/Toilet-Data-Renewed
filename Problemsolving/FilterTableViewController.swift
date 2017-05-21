@@ -172,8 +172,10 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     
     var search = Search()
+    
 
     var filter = Filter()
+    var queryPath = QueryPath()
     var filters: [Filter] = []
 
    
@@ -844,6 +846,11 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         print("searchButtonTapped")
+        
+        print("Query Chekck is gonna be called")
+
+        
+        queryPathCheck()
 //        if washletLabelSwitch.isOn == true{
 //            filter.washletFilter = true
 //        }
@@ -1792,9 +1799,167 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         
     }
     
-    func queryPathDecision(){
+    func queryPathCheck(){
         
+        
+        if filter.availableFilter || filter.japaneseFilter || filter.westernFilter || filter.onlyFemaleFilter || filter.unisexFilter {
+            queryPath.unit1 = true
+            queryPath.groupOneMember = true
             
+        
+        
+        }
+        
+        if filter.washletFilter || filter.warmSearFilter || filter.autoOpen || filter.noVirusFilter || filter.paperForBenkiFilter || filter.cleanerForBenkiFilter || filter.autoToiletWashFilter  {
+            queryPath.unit2 = true
+            queryPath.groupOneMember = true
+            
+        }
+        if filter.sensorHandWashFilter || filter.handSoapFilter || filter.autoHandSoapFilter || filter.paperTowelFilter || filter.handDrierFilter {
+            queryPath.unit3 = true
+            queryPath.groupOneMember = true
+            
+        }
+        if filter.fancy || filter.smell || filter.confortableWise || filter.clothes || filter.baggageSpaceFilter {
+            queryPath.unit4 = true
+            queryPath.groupOneMember = true
+            
+        }
+        if filter.noNeedAsk || filter.writtenEnglish || filter.parking
+        || filter.airConditionFilter || filter.wifiFilter {
+            queryPath.unit5 = true
+            queryPath.groupOneMember = true
+            
+        }
+        if filter.otohime || filter.napkinSelling || filter.makeroomFilter || filter.ladyOmutu || filter.ladyBabyChair || filter.ladyBabyChairGood || filter.ladyBabyCarAccess {
+            queryPath.unit6 = true
+            queryPath.groupTwoMember = true
+            
+        }
+        if filter.maleOmutu || filter.maleBabyChair || filter.maleBabyChairgood || filter.maleBabyCarAccess  {
+            queryPath.unit7 = true
+            queryPath.groupTwoMember = true
+            
+        }
+        if filter.wheelchairFilter || filter.wheelchairAccessFilter || filter.autoDoorFilter || filter.callHelpFilter || filter.ostomateFilter || filter.braille || filter.voiceGuideFilter || filter.familyOmutu || filter.familyBabyChair{
+            queryPath.unit8 = true
+            queryPath.groupTwoMember = true
+            
+        }
+        if filter.milkspaceFilter || filter.babyRoomOnlyFemaleFilter || filter.babyRoomMaleCanEnterFilter || filter.babyRoomPersonalSpaceFilter || filter.babyRoomPersonalWithLockFilter || filter.babyRoomWideSpaceFilter{
+            queryPath.unit9 = true
+            queryPath.groupThreeMember = true
+            
+        }
+        if filter.babyCarRentalFilter || filter.babyCarAccessFilter || filter.omutuFilter || filter.babyHipWashingStuffFilter || filter.omutuTrashCanFilter || filter.omutuSelling{
+            queryPath.unit10 = true
+            queryPath.groupThreeMember = true
+            
+        }
+        if filter.babySinkFilter || filter.babyWashstandFilter || filter.babyHotWaterFilter || filter.babyMicrowaveFilter || filter.babySellingWaterFilter || filter.babyFoodSellingFilter || filter.babyEatingSpaceFilter{
+            queryPath.unit11 = true
+            queryPath.groupThreeMember = true
+            
+        }
+        
+        if filter.babyChairFilter || filter.babySoffaFilter || filter.babyToiletFilter || filter.babyKidsSpaceFilter || filter.babyHeightMeasureFilter || filter.babyWeightMeasureFilter || filter.babyToyFilter || filter.babyRoomFancyFilter || filter.babyRoomSmellGoodFilter{
+            queryPath.unit12 = true
+            queryPath.groupThreeMember = true
+            
+        }
+        
+        if  queryPath.unit1 && queryPath.unit2 || queryPath.unit1 && queryPath.unit3 || queryPath.unit1  && queryPath.unit4||queryPath.unit1 && queryPath.unit5 || queryPath.unit2 && queryPath.unit3 || queryPath.unit2  && queryPath.unit4||queryPath.unit2 && queryPath.unit5 || queryPath.unit3  && queryPath.unit4||queryPath.unit3  && queryPath.unit5||queryPath.unit4  && queryPath.unit5 {
+            queryPath.group1 = true
+        }
+        
+        if (( queryPath.unit6 && queryPath.unit7) || (queryPath.unit6 && queryPath.unit8) || (queryPath.unit7  && queryPath.unit8)) {
+            queryPath.group2 = true
+        }
+        
+        if (( queryPath.unit9 && queryPath.unit10) || (queryPath.unit9 && queryPath.unit11) || (queryPath.unit9  && queryPath.unit12) || (queryPath.unit10 && queryPath.unit11) || (queryPath.unit10 && queryPath.unit12) || (queryPath.unit11 && queryPath.unit12)) {
+            queryPath.group3 = true
+        }
+        
+        if ( queryPath.groupOneMember && queryPath.groupTwoMember){
+            queryPath.half1 = true
+
+        }
+        
+        if ( queryPath.groupTwoMember && queryPath.groupThreeMember){
+            queryPath.half2 = true
+            
+        }
+        if (queryPath.groupOneMember  && queryPath.groupThreeMember){
+            queryPath.all = true
+            
+        }
+
+        
+        if ( queryPath.group1 && queryPath.group2) {
+            queryPath.half1 = true
+        }
+        
+        if ( queryPath.group2 && queryPath.group3) {
+            queryPath.half2 = true
+        }
+        
+        if ( queryPath.half1 && queryPath.half2 ) || ( queryPath.group1 && queryPath.group3) {
+            queryPath.all = true
+        }
+        
+        
+        
+        print("This is the queryPath  77777 \(decideQueryPath())")
+    
+    }
+    
+    func decideQueryPath() -> String{
+        
+        
+        if queryPath.all == true{
+           return "All"
+        } else if queryPath.half1 == true{
+           return "Half1"
+        } else if queryPath.half2 == true{
+           return "Half2"
+        } else if queryPath.group1 == true{
+            return "Group1"
+        } else if queryPath.group2 == true{
+            return "Group2"
+        }else if queryPath.group3 == true{
+            return "Group3"
+        } else if queryPath.unit1 == true{
+            return "Unit1"
+        } else if queryPath.unit2 == true{
+            return "Unit2"
+        } else if queryPath.unit3 == true{
+            return "Unit3"
+        } else if queryPath.unit4 == true{
+            return "Unit4"
+        } else if queryPath.unit5 == true{
+            return "Unit5"
+        } else if queryPath.unit6 == true{
+            return "Unit6"
+        } else if queryPath.unit7 == true{
+            return "Unit7"
+        } else if queryPath.unit8 == true{
+            return "Unit8"
+        } else if queryPath.unit9 == true{
+            return "Unit9"
+        } else if queryPath.unit10 == true{
+            return "Unit10"
+        } else if queryPath.unit11 == true{
+            return "Unit11"
+        } else if queryPath.unit12 == true{
+            return "Unit12"
+        } else {
+            return "NoFilter"
+        
+        }
+    
+    
+        
+    
     
     
     
@@ -1805,6 +1970,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         print("cancelButtonTapped")
+        
        
          performSegue(withIdentifier: "CanneltoMapSegue", sender: nil)
 //         _ = self.navigationController?.popViewController(animated: true)
