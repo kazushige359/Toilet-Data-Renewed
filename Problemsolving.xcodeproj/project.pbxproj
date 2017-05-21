@@ -123,7 +123,7 @@
 		240F79801E9CC42300EFF3CC /* PassingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassingData.swift; sourceTree = "<group>"; };
 		240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooleanTableViewCell.swift; sourceTree = "<group>"; };
 		240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BooleanTableViewCell.xib; sourceTree = "<group>"; };
-		241454981DE2C4F90066AB62 /* Problemsolving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Problemsolving.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		241454981DE2C4F90066AB62 /* Toilet Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toilet Data.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2414549B1DE2C4F90066AB62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2414549D1DE2C4F90066AB62 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		241454A01DE2C4F90066AB62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 		241454991DE2C4F90066AB62 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				241454981DE2C4F90066AB62 /* Problemsolving.app */,
+				241454981DE2C4F90066AB62 /* Toilet Data.app */,
 				241454AF1DE2C4F90066AB62 /* ProblemsolvingTests.xctest */,
 				241454BA1DE2C4F90066AB62 /* ProblemsolvingUITests.xctest */,
 			);
@@ -521,7 +521,7 @@
 			);
 			name = Problemsolving;
 			productName = Problemsolving;
-			productReference = 241454981DE2C4F90066AB62 /* Problemsolving.app */;
+			productReference = 241454981DE2C4F90066AB62 /* Toilet Data.app */;
 			productType = "com.apple.product-type.application";
 		};
 		241454AE1DE2C4F90066AB62 /* ProblemsolvingTests */ = {
@@ -1066,7 +1066,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "Hiro-333.Problemsolving";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Toilet Data";
 				SWIFT_OBJC_BRIDGING_HEADER = "Problemsolving/Problemsolving-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
@@ -1085,7 +1085,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "Hiro-333.Problemsolving";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Toilet Data";
 				SWIFT_OBJC_BRIDGING_HEADER = "Problemsolving/Problemsolving-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;

@@ -593,7 +593,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let noFilterData: [String : Any] = ["name":name!,
                                                 "type": 0,
-                                                "urlOne":"" as String,
+                                                "urlOne":newUrlOne,
                                                 "averageStar":String(starView.rating) as String,
                                                 "reviewCount":1,
                                                 "averageWait": waitInt! as Int,
@@ -602,7 +602,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitOneData: [String : Any] = ["name":name!,
                                                "type": 0,
-                                               "urlOne":"" as String,
+                                               "urlOne":newUrlOne,
                                                "averageStar":String(starView.rating) as String,
                                                "openHours":5000 as Int,
                                                "closeHours":5000 as Int,
@@ -618,7 +618,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitTwoData: [String : Any] = ["name":name!,
                                                "type": 0,
-                                               "urlOne":"" as String,
+                                               "urlOne":newUrlOne,
                                                "averageStar":String(starView.rating) as String,
                                                "reviewCount":1,
                                                "averageWait": waitInt! as Int,
@@ -636,7 +636,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitThreeData: [String : Any] = ["name":name!,
                                                  "type": 0,
-                                                 "urlOne":"" as String,
+                                                 "urlOne":newUrlOne,
                                                  "averageStar":String(starView.rating) as String,
                                                  "reviewCount":1,
                                                  "averageWait": waitInt! as Int,
@@ -651,7 +651,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitFourData: [String : Any] = ["name":name!,
                                                 "type": 0,
-                                                "urlOne":"" as String,
+                                                "urlOne":newUrlOne,
                                                 "averageStar":String(starView.rating) as String,
                                                 "reviewCount":1,
                                                 "averageWait": waitInt! as Int,
@@ -667,7 +667,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitFiveData: [String : Any] = ["name":name!,
                                                 "type": 0,
-                                                "urlOne":"" as String,
+                                                "urlOne":newUrlOne,
                                                 "averageStar":String(starView.rating) as String,
                                                 "reviewCount":1,
                                                 "averageWait": waitInt! as Int,
@@ -686,7 +686,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitSixData: [String : Any] = ["name":name!,
                                                "type": 0,
-                                               "urlOne":"" as String,
+                                               "urlOne":newUrlOne,
                                                "averageStar":String(starView.rating) as String,
                                                "reviewCount":1,
                                                "averageWait": waitInt! as Int,
@@ -703,7 +703,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitSevenData: [String : Any] = ["name":name!,
                                                  "type": 0,
-                                                 "urlOne":"" as String,
+                                                 "urlOne":newUrlOne,
                                                  "averageStar":String(starView.rating) as String,
                                                  "reviewCount":1,
                                                  "averageWait": waitInt! as Int,
@@ -718,7 +718,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitEightData: [String : Any] = ["name":name!,
                                                  "type": 0,
-                                                 "urlOne":"" as String,
+                                                 "urlOne":newUrlOne,
                                                  "averageStar":String(starView.rating) as String,
                                                  "reviewCount":1,
                                                  "averageWait": waitInt! as Int,
@@ -738,7 +738,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitNineData: [String : Any] = ["name":name!,
                                                 "type": 0,
-                                                "urlOne":"" as String,
+                                                "urlOne":newUrlOne,
                                                 "averageStar":String(starView.rating) as String,
                                                 "reviewCount":1,
                                                 "averageWait": waitInt! as Int,
@@ -756,7 +756,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitTenData: [String : Any] = ["name":name!,
                                                "type": 0,
-                                               "urlOne":"" as String,
+                                               "urlOne":newUrlOne,
                                                "averageStar":String(starView.rating) as String,
                                                "reviewCount":1,
                                                "averageWait": waitInt! as Int,
@@ -773,7 +773,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitElevenData: [String : Any] = ["name":name!,
                                                   "type": 0,
-                                                  "urlOne":"" as String,
+                                                  "urlOne":newUrlOne,
                                                   "averageStar":String(starView.rating) as String,
                                                   "reviewCount":1,
                                                   "averageWait": waitInt! as Int,
@@ -792,7 +792,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let unitTwelveData: [String : Any] = ["name":name!,
                                                   "type": 0,
-                                                  "urlOne":"" as String,
+                                                  "urlOne":newUrlOne,
                                                   "averageStar":String(starView.rating) as String,
                                                   "reviewCount":1,
                                                   "averageWait": waitInt! as Int,
@@ -815,7 +815,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let groupOneData: [String : Any] =
                 ["name":name!,
                  "type": 0,
-                 "urlOne":"" as String,
+                 "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
                  "openHours":5000 as Int,
                  "closeHours":5000 as Int,
@@ -862,7 +862,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let groupTwoData: [String : Any] =
                 ["name":name!,
                  "type": 0,
-                 "urlOne":"" as String,
+                 "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
                  "reviewCount":1,
                  "averageWait": waitInt! as Int,
@@ -896,7 +896,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let groupThreeData: [String : Any] =
                 ["name":name!,
                  "type": 0,
-                 "urlOne":"" as String,
+                 "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
                  "reviewCount":1,
                  "averageWait": waitInt! as Int,
@@ -942,7 +942,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let halfOneData: [String : Any] =
                 ["name":name!,
                  "type": 0,
-                 "urlOne":"" as String,
+                 "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
                  "openHours":5000 as Int,
                  "closeHours":5000 as Int,
@@ -1012,7 +1012,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let halfTwoData: [String : Any] =
                 ["name":name!,
                  "type": 0,
-                 "urlOne":"" as String,
+                 "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
                  "reviewCount":1,
                  "averageWait": waitInt! as Int,
@@ -1079,7 +1079,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let allFilterData: [String : Any] =
                 ["name":name!,
                  "type": 0,
-                 "urlOne":"" as String,
+                 "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
                  "openHours":5000 as Int,
                  "closeHours":5000 as Int,
@@ -1188,9 +1188,9 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 "name":name!,
                 "openAndCloseHours": availableTimeForDatabase as String,
                 "type": 0,
-                "urlOne":"" as String,
-                "urlTwo":"" as String,
-                "urlThree":"" as String,
+                "urlOne":newUrlOne,
+                "urlTwo":newUrlTwo,
+                "urlThree":newUrlThree,
                 "addedBy":uid,
                 "editedBy":uid,
                 "averageStar":String(starView.rating) as String,
@@ -1416,9 +1416,9 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     
     func uploadPhotosToDatabase(){
         let databaseRef = FIRDatabase.database().reference()
-        let imagesFolder = FIRStorage.storage().reference().child("images")
+        let imagesFolder = FIRStorage.storage().reference().child("ToiletPhoto")
         
-        let photoRef = FIRDatabase.database().reference().child("Images")
+        //let photoRef = FIRDatabase.database().reference().child("Images")
         
         if mainImageChanged == true{
             //upload main image pircute
@@ -1426,7 +1426,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let mainImageData = UIImageJPEGRepresentation(mainImageView.image!, 0.1)!
             let mainUuid = UUID().uuidString
             
-            imagesFolder.child("\(mainUuid).jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child(toiletNewId).child("\(mainUuid).jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1434,12 +1434,12 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                     print("uploadPhotosToDatabase1")
                     print(metadata?.downloadURL() as Any)
                     let downloadURL = metadata!.downloadURL()!.absoluteString
-                    newUrlOne = downloadURL
+                    self.newUrlOne = downloadURL
                     //databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlOne": downloadURL])
                     
                 }
             })
-            photoRef.child(mainUuid).setValue(uid)
+            //photoRef.child(mainUuid).setValue(uid)
             
         }
         
@@ -1450,7 +1450,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let subImageData1 = UIImageJPEGRepresentation(subImageOne.image!, 0.1)!
             let subOneUuid = UUID().uuidString
             
-            imagesFolder.child("\(subOneUuid).jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child(toiletNewId).child("\(subOneUuid).jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1458,14 +1458,14 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                     
                     print(metadata?.downloadURL() as Any)
                     let downloadURL = metadata!.downloadURL()!.absoluteString
-                    newUrlTwo = downloadURL
+                    self.newUrlTwo = downloadURL
                     //databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlTwo": downloadURL]
                     
                     
                 }
             })
             
-            photoRef.child(subOneUuid).setValue(uid)
+            //photoRef.child(subOneUuid).setValue(uid)
         }
         
         if subImageTwoChanged == true{
@@ -1474,7 +1474,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let subImageData2 = UIImageJPEGRepresentation(subImageTwo.image!, 0.1)!
             let subTwoUuid = UUID().uuidString
             
-            imagesFolder.child("\(subTwoUuid).jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child(toiletNewId).child("\(subTwoUuid).jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1482,12 +1482,12 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                     
                     print(metadata?.downloadURL() as Any)
                     let downloadURL = metadata!.downloadURL()!.absoluteString
-                    newUrlThree = downloadURL
+                    self.newUrlThree = downloadURL
                     //databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlThree": downloadURL])
                     
                 }
             })
-            photoRef.child(subTwoUuid).setValue(uid)
+            //photoRef.child(subTwoUuid).setValue(uid)
             
         }
         
