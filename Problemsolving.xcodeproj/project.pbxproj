@@ -23,7 +23,6 @@
 		241454A41DE2C4F90066AB62 /* Problemsolving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 241454A21DE2C4F90066AB62 /* Problemsolving.xcdatamodeld */; };
 		241454B41DE2C4F90066AB62 /* ProblemsolvingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241454B31DE2C4F90066AB62 /* ProblemsolvingTests.swift */; };
 		241454BF1DE2C4F90066AB62 /* ProblemsolvingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241454BE1DE2C4F90066AB62 /* ProblemsolvingUITests.swift */; };
-		241454CD1DE2C5F80066AB62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 241454CC1DE2C5F80066AB62 /* GoogleService-Info.plist */; };
 		2418B7CD1E137520004F7022 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418B7CC1E137520004F7022 /* AccountViewController.swift */; };
 		2418B7CF1E14CCFB004F7022 /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418B7CE1E14CCFB004F7022 /* FavoriteTableViewController.swift */; };
 		2418B7D11E14D260004F7022 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2418B7D01E14D260004F7022 /* User.swift */; };
@@ -38,6 +37,7 @@
 		2423A4271E2245BA00DD2AF4 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A4261E2245BA00DD2AF4 /* Review.swift */; };
 		2423A42B1E23839800DD2AF4 /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A42A1E23839800DD2AF4 /* AddPinViewController.swift */; };
 		2423A4311E25989200DD2AF4 /* ChangeDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2423A4301E25989200DD2AF4 /* ChangeDetailTableViewController.swift */; };
+		24289EE71ED24EA30063684B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 24289EE61ED24EA30063684B /* GoogleService-Info.plist */; };
 		243DFF221EA8402F0000BF71 /* StarOneMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243DFF211EA8402F0000BF71 /* StarOneMarker.swift */; };
 		243DFF241EA846510000BF71 /* StarTwoMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243DFF231EA846510000BF71 /* StarTwoMarker.swift */; };
 		243DFF261EA846600000BF71 /* StarThreeMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243DFF251EA846600000BF71 /* StarThreeMarker.swift */; };
@@ -123,7 +123,7 @@
 		240F79801E9CC42300EFF3CC /* PassingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassingData.swift; sourceTree = "<group>"; };
 		240F79861E9D9F9400EFF3CC /* BooleanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooleanTableViewCell.swift; sourceTree = "<group>"; };
 		240F79871E9D9F9400EFF3CC /* BooleanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BooleanTableViewCell.xib; sourceTree = "<group>"; };
-		241454981DE2C4F90066AB62 /* Toilet Data.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toilet Data.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		241454981DE2C4F90066AB62 /* Problemsolving.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Problemsolving.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2414549B1DE2C4F90066AB62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2414549D1DE2C4F90066AB62 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		241454A01DE2C4F90066AB62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,7 +136,6 @@
 		241454BA1DE2C4F90066AB62 /* ProblemsolvingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProblemsolvingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		241454BE1DE2C4F90066AB62 /* ProblemsolvingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProblemsolvingUITests.swift; sourceTree = "<group>"; };
 		241454C01DE2C4F90066AB62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		241454CC1DE2C5F80066AB62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2418B7CC1E137520004F7022 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		2418B7CE1E14CCFB004F7022 /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
 		2418B7D01E14D260004F7022 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -152,6 +151,7 @@
 		2423A4261E2245BA00DD2AF4 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		2423A42A1E23839800DD2AF4 /* AddPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
 		2423A4301E25989200DD2AF4 /* ChangeDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeDetailTableViewController.swift; sourceTree = "<group>"; };
+		24289EE61ED24EA30063684B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		243DFF211EA8402F0000BF71 /* StarOneMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarOneMarker.swift; sourceTree = "<group>"; };
 		243DFF231EA846510000BF71 /* StarTwoMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarTwoMarker.swift; sourceTree = "<group>"; };
 		243DFF251EA846600000BF71 /* StarThreeMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarThreeMarker.swift; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 		241454991DE2C4F90066AB62 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				241454981DE2C4F90066AB62 /* Toilet Data.app */,
+				241454981DE2C4F90066AB62 /* Problemsolving.app */,
 				241454AF1DE2C4F90066AB62 /* ProblemsolvingTests.xctest */,
 				241454BA1DE2C4F90066AB62 /* ProblemsolvingUITests.xctest */,
 			);
@@ -381,9 +381,9 @@
 				24033BA11EA4836300E7B4B4 /* Place View Controllers */,
 				24033BA01EA4820300E7B4B4 /* Storyboards */,
 				241454A51DE2C4F90066AB62 /* Assets.xcassets */,
-				241454CC1DE2C5F80066AB62 /* GoogleService-Info.plist */,
 				24B670E71EBC2DA10087A11E /* Info.plist */,
 				241454A21DE2C4F90066AB62 /* Problemsolving.xcdatamodeld */,
+				24289EE61ED24EA30063684B /* GoogleService-Info.plist */,
 				24A130B71DF3E244009C1A3F /* Problemsolving.entitlements */,
 				24A130D11DF76BA4009C1A3F /* Problemsolving-Bridging-Header.h */,
 				24CDD1CE1EBC19DD002F7710 /* Localizable.strings */,
@@ -521,7 +521,7 @@
 			);
 			name = Problemsolving;
 			productName = Problemsolving;
-			productReference = 241454981DE2C4F90066AB62 /* Toilet Data.app */;
+			productReference = 241454981DE2C4F90066AB62 /* Problemsolving.app */;
 			productType = "com.apple.product-type.application";
 		};
 		241454AE1DE2C4F90066AB62 /* ProblemsolvingTests */ = {
@@ -626,6 +626,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24289EE71ED24EA30063684B /* GoogleService-Info.plist in Resources */,
 				24B670F11EBC87B00087A11E /* BooleanTableViewCell.xib in Resources */,
 				24B670EE1EBC87920087A11E /* YourReviewTableViewCell.xib in Resources */,
 				24B670E91EBC389C0087A11E /* Main.storyboard in Resources */,
@@ -638,7 +639,6 @@
 				24B670EB1EBC86F60087A11E /* Login.storyboard in Resources */,
 				24B671011EC2DC190087A11E /* PlaceDetailViewController.storyboard in Resources */,
 				24B670FA1EC2ACFA0087A11E /* FilterTableViewController.storyboard in Resources */,
-				241454CD1DE2C5F80066AB62 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1066,7 +1066,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "Hiro-333.Problemsolving";
-				PRODUCT_NAME = "Toilet Data";
+				PRODUCT_NAME = Problemsolving;
 				SWIFT_OBJC_BRIDGING_HEADER = "Problemsolving/Problemsolving-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
@@ -1085,7 +1085,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "Hiro-333.Problemsolving";
-				PRODUCT_NAME = "Toilet Data";
+				PRODUCT_NAME = Problemsolving;
 				SWIFT_OBJC_BRIDGING_HEADER = "Problemsolving/Problemsolving-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
