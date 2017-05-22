@@ -256,47 +256,132 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         ]
 
         
-          let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").childByAutoId()
         
-        reviewRef.updateChildValues(reviewData)
+         // let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").childByAutoId()
+        
+       // reviewRef.updateChildValues(reviewData)
         
         //May 19 changed set() to update()....
         //  reviewRef.setValue(reviewData)
         
+        let rid = UUID().uuidString
         
         
-          let rid = reviewRef.key
         
         
         
-         print("this is the new rid = \(rid) Print ")
+       //  print("this is the new rid = \(rid) Print ")
         
-        let reviewListRef = FIRDatabase.database().reference().child("ReviewList").child(uid)
+       // let reviewListRef = FIRDatabase.database().reference().child("ReviewList").child(uid)
         
-          reviewListRef.child(rid).setValue(true)
+         // reviewListRef.child(rid).setValue(true)
         
-        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toilet.key)
+      //  let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toilet.key)
         
-          toiletReviewsRef.child(rid).setValue(true)
+        //  toiletReviewsRef.child(rid).setValue(true)
         
-        let toiletRef = FIRDatabase.database().reference().child("Toilets").child(toilet.key)
+        //let toiletRef = FIRDatabase.database().reference().child("Toilets").child(toilet.key)
         
         //toiletRef.updateChildValues("averageStar": "3.0")
         
         //let newAvStar =
         
-        let tdata : [String : Any] = ["averageStar": String(roundAvStar),
-                                      "averageWait": newWaitingTime,
-                                      "reviewCount": newReviewCount,
-                                      "available": self.available,
-                                      "reviewOne": rid,
-                                      "reviewTwo": toilet.reviewOne
-                                            ]
         
         
-        toiletRef.updateChildValues(tdata)
         
-        print("kansouPosting()Ended")
+      // let tdata : [String : Any] = ["averageStar": String(roundAvStar),
+        //                              "averageWait": newWaitingTime,
+          ///                            "reviewCount": newReviewCount,
+             //                         "available": self.available,
+               //                       "reviewOne": rid,
+                 //                     "reviewTwo": toilet.reviewOne
+                   //                         ]
+        
+        
+        
+        
+        
+        
+        let mutipleData = ["ReviewInfo/\(rid)": reviewData,
+                           "ReviewList/\(uid)/\(rid)": true,
+                           "ToiletReviews/\(toilet.key)/\(rid)": true,
+                           "ToiletView/\(toilet.key)/averageStar": String(roundAvStar),
+                           "ToiletView/\(toilet.key)/averageWait": newWaitingTime,
+                           "ToiletView/\(toilet.key)/reviewCount": newReviewCount,
+                           "ToiletView/\(toilet.key)/reviewOne": rid,
+                           "ToiletView/\(toilet.key)/reviewTwo": toilet.reviewOne,
+                           "NoFilter/\(toilet.key)/averageStar": String(roundAvStar),
+                           "NoFilter/\(toilet.key)/averageWait": newWaitingTime,
+                           "NoFilter/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitOne/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitOne/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitOne/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitTwo/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitTwo/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitTwo/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitThree/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitThree/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitThree/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitFour/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitFour/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitFour/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitFive/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitFive/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitFive/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitSix/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitSix/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitSix/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitSeven/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitSeven/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitSeven/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitEight/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitEight/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitEight/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitNine/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitNine/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitNine/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitTen/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitTen/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitTen/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitEleven/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitEleven/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitEleven/\(toilet.key)/reviewCount": newReviewCount,
+                           "UnitTwelve/\(toilet.key)/averageStar": String(roundAvStar),
+                           "UnitTwelve/\(toilet.key)/averageWait": newWaitingTime,
+                           "UnitTwelve/\(toilet.key)/reviewCount": newReviewCount,
+                           "GroupOne/\(toilet.key)/averageStar": String(roundAvStar),
+                           "GroupOne/\(toilet.key)/averageWait": newWaitingTime,
+                           "GroupOne/\(toilet.key)/reviewCount": newReviewCount,
+                           "GroupTwo/\(toilet.key)/averageStar": String(roundAvStar),
+                           "GroupTwo/\(toilet.key)/averageWait": newWaitingTime,
+                           "GroupTwo/\(toilet.key)/reviewCount": newReviewCount,
+                           "GroupThree/\(toilet.key)/averageStar": String(roundAvStar),
+                           "GroupThree/\(toilet.key)/averageWait": newWaitingTime,
+                           "GroupThree/\(toilet.key)/reviewCount": newReviewCount,
+                           "HalfOne/\(toilet.key)/averageStar": String(roundAvStar),
+                           "HalfOne/\(toilet.key)/averageWait": newWaitingTime,
+                           "HalfOne/\(toilet.key)/reviewCount": newReviewCount,
+                           "HalfTwo/\(toilet.key)/averageStar": String(roundAvStar),
+                           "HalfTwo/\(toilet.key)/averageWait": newWaitingTime,
+                           "HalfTwo/\(toilet.key)/reviewCount": newReviewCount,
+                           "AllFilter/\(toilet.key)/averageStar": String(roundAvStar),
+                           "AllFilter/\(toilet.key)/averageWait": newWaitingTime,
+                           "AllFilter/\(toilet.key)/reviewCount": newReviewCount
+                           ] as [String : Any]
+        
+        let firebaseRef = FIRDatabase.database().reference()
+        
+        firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
+            if error != nil{
+                print("Error = \(String(describing: error))")
+
+                
+            }else{
+                //Success
+                
+            }
+        })
+
         
         moveBackToPlaceDetailVeiwController()
         
@@ -461,73 +546,9 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         let uid = FIRAuth.auth()!.currentUser!.uid
         toiletWarningsRef.child(toilet.key).child(uid).setValue(true)
         
-        toiletWarningListCount()
-        
         
     }
     
-    func toiletWarningListCount(){
-        let toiletWarningsRef = FIRDatabase.database().reference().child("ToiletWarningList")
-        
-        toiletWarningsRef.child(toilet.key).observe(FIRDataEventType.value, with: { snapshot in
-            
-            if self.toiletReportOnceUploaded == false{
-                self.toiletReportOnceUploaded = true
-                
-                let countNumber = snapshot.childrenCount
-                self.toiletWarningCountUploadToDatabase(countNumber: Int(countNumber))
-                
-                
-                
-            }
-        })
-    }
-    
-    func toiletWarningCountUploadToDatabase(countNumber: Int){
-        let toiletWarningCountRef = FIRDatabase.database().reference().child("ToiletWarningCount")
-        
-        toiletWarningCountRef.child(toilet.key).setValue(countNumber)
-        
-        showYourReviewPostedMessage()
-        
-        
-        
-    }
-
-    
-    
-    ////
-
-//    func countToiletWarning(){
-//        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletWarnings")
-//        
-//        toiletProblemsRef.child(toilet.key).observe(FIRDataEventType.value, with: { snapshot in
-//            
-//            if self.firebaseOnceLoaded == false{
-//                self.firebaseOnceLoaded = true
-//            
-//            if snapshot.exists(){
-//                
-//                let getValue = snapshot.value as! Int
-//                 print("getValue = \(getValue)")
-//                let newNumber = getValue + 1
-//                print("newNumber = \(newNumber)")
-//
-//                toiletProblemsRef.child(self.toilet.key).setValue(newNumber)
-//                
-//                self.showYourReviewPostedMessage()
-//                //go Back to previos navigation
-//                
-//            } else {
-//                self.showYourReviewPostedMessage()
-//
-//                
-//               toiletProblemsRef.child(self.toilet.key).setValue(1)
-//            
-//            }
-//        }
-//        })
-//    }
 
     func showYourReviewPostedMessage(){
         

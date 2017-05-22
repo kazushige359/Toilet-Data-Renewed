@@ -69,7 +69,7 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
             let favkey = snapshot.key
             
             
-            firebaseRef.child("Toilets").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+            firebaseRef.child("ToiletView").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
                 print(snapshot)
                 print(snapshot.key)
                 
