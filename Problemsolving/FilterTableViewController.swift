@@ -1917,42 +1917,61 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         
         
         if queryPath.all == true{
+           filter.queryPath = 18
            return "All"
         } else if queryPath.half1 == true{
+           filter.queryPath = 16
            return "Half1"
         } else if queryPath.half2 == true{
+           filter.queryPath = 17
            return "Half2"
         } else if queryPath.group1 == true{
+            filter.queryPath = 13
             return "Group1"
         } else if queryPath.group2 == true{
+            filter.queryPath = 14
             return "Group2"
         }else if queryPath.group3 == true{
+            filter.queryPath = 15
             return "Group3"
         } else if queryPath.unit1 == true{
+            filter.queryPath = 1
             return "Unit1"
         } else if queryPath.unit2 == true{
+            filter.queryPath = 2
             return "Unit2"
         } else if queryPath.unit3 == true{
+            filter.queryPath = 3
             return "Unit3"
         } else if queryPath.unit4 == true{
+            filter.queryPath = 4
             return "Unit4"
         } else if queryPath.unit5 == true{
+            filter.queryPath = 5
             return "Unit5"
         } else if queryPath.unit6 == true{
+            filter.queryPath = 6
             return "Unit6"
         } else if queryPath.unit7 == true{
+            filter.queryPath = 7
             return "Unit7"
         } else if queryPath.unit8 == true{
+            filter.queryPath = 8
             return "Unit8"
         } else if queryPath.unit9 == true{
+            filter.queryPath = 9
             return "Unit9"
         } else if queryPath.unit10 == true{
+            filter.queryPath = 10
             return "Unit10"
         } else if queryPath.unit11 == true{
+            filter.queryPath = 11
             return "Unit11"
         } else if queryPath.unit12 == true{
+            filter.queryPath = 12
             return "Unit12"
         } else {
+            filter.queryPath = 0
             return "NoFilter"
         
         }

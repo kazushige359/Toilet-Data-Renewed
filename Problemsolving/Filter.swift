@@ -34,6 +34,7 @@ class Filter {
 //    var baggageSpaceFilter = false
 //    var availableFilter = false
     
+    var queryPath = 0;
     var distanceSetted = false;
     var distanceFilter = 3.0;
     var starFilterSetted = false;

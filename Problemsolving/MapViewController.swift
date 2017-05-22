@@ -864,25 +864,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        }
         
         //Opening Hours Filter
-        
-        toilet.available = (snapshotValue?["available"] as? Bool)!
        
-        if self.filter.availableFilter == true && toilet.available == false {
-            return
-        }
+        
+        
+            toilet.available = (snapshotValue?["available"] as? Bool)!
+            if toilet.available == false{
+                return
+            }
+        
+        
+        //Available is different from other boolean values becuase every data has available boolean. //May 22
+        
         
         
         //Boolean Filters
         
         //Basic Info
-        toilet.japanesetoilet = (snapshotValue?["japanesetoilet"] as? Bool)!
-        if self.filter.japaneseFilter == true && toilet.japanesetoilet == false {
-            return
+        
+        
+        if self.filter.japaneseFilter == true {
+            toilet.japanesetoilet = (snapshotValue?["japanesetoilet"] as? Bool)!
+            if toilet.japanesetoilet == false{
+                return
+            }
         }
         
-        toilet.westerntoilet = (snapshotValue?["westerntoilet"] as? Bool)!
-        if self.filter.westernFilter == true && toilet.westerntoilet == false {
-            return
+        
+        if self.filter.westernFilter == true {
+            toilet.westerntoilet = (snapshotValue?["westerntoilet"] as? Bool)!
+            if toilet.westerntoilet == false{
+                return
+            }
         }
         
         
@@ -893,80 +905,126 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 return
             }
         }
+        
+        
+        
         //if self.filter.onlyFemaleFilter == true && toilet.onlyFemale == false {
         //    return
         //}
         
-
-        toilet.unisex = (snapshotValue?["unisex"] as? Bool)!
-        if self.filter.unisexFilter == true && toilet.unisex == false {
-            return
+        if self.filter.unisexFilter == true {
+            toilet.unisex = (snapshotValue?["unisex"] as? Bool)!
+            if toilet.unisex == false{
+                return
+            }
         }
         
-
+       
+        
         
         //Toilet Seat
-        toilet.washlet = (snapshotValue?["washlet"] as? Bool)!
-        if self.filter.washletFilter == true && toilet.washlet == false {
-            return
+        
+        
+        if self.filter.washletFilter == true {
+            toilet.washlet = (snapshotValue?["washlet"] as? Bool)!
+            if toilet.washlet == false{
+                return
+            }
         }
 
-        toilet.warmSeat = (snapshotValue?["warmSeat"] as? Bool)!
-        if self.filter.warmSearFilter == true && toilet.warmSeat == false {
-            return
+       
+        if self.filter.warmSearFilter == true {
+            toilet.warmSeat = (snapshotValue?["warmSeat"] as? Bool)!
+            if toilet.warmSeat == false{
+                return
+            }
         }
+        
     
-        toilet.autoOpen = (snapshotValue?["autoOpen"] as? Bool)!
-        if self.filter.autoOpen == true && toilet.autoOpen == false {
-            return
+        if self.filter.autoOpen == true {
+            toilet.autoOpen = (snapshotValue?["autoOpen"] as? Bool)!
+            if toilet.autoOpen == false{
+                return
+            }
         }
         
-        toilet.noVirus = (snapshotValue?["noVirus"] as? Bool)!
-        if self.filter.noVirusFilter == true && toilet.noVirus == false {
-            return
+    
+        
+        if self.filter.noVirusFilter == true {
+             toilet.noVirus = (snapshotValue?["noVirus"] as? Bool)!
+            if toilet.noVirus == false{
+                return
+            }
         }
         
-        toilet.paperForBenki = (snapshotValue?["paperForBenki"] as? Bool)!
-        if self.filter.paperForBenkiFilter == true && toilet.paperForBenki == false {
-            return
+        if self.filter.paperForBenkiFilter == true {
+            toilet.paperForBenki = (snapshotValue?["paperForBenki"] as? Bool)!
+            if toilet.paperForBenki == false{
+                return
+            }
         }
         
-        toilet.cleanerForBenki = (snapshotValue?["cleanerForBenki"] as? Bool)!
-        if self.filter.cleanerForBenkiFilter == true && toilet.cleanerForBenki == false {
-            return
+        if self.filter.cleanerForBenkiFilter == true {
+            toilet.cleanerForBenki = (snapshotValue?["cleanerForBenki"] as? Bool)!
+            if toilet.cleanerForBenki == false{
+                return
+            }
         }
 
-        toilet.autoToiletWash = (snapshotValue?["nonTouchWash"] as? Bool)!
-        if self.filter.autoToiletWashFilter == true && toilet.autoToiletWash == false {
-            return
+       
+        if self.filter.autoToiletWashFilter == true {
+            toilet.autoToiletWash = (snapshotValue?["nonTouchWash"] as? Bool)!
+            if toilet.autoToiletWash == false{
+                return
+            }
         }
         
         
     
         //Washstand
-        toilet.sensorHandWash = (snapshotValue?["sensorHandWash"] as? Bool)!
-        if self.filter.sensorHandWashFilter == true && toilet.sensorHandWash == false {
-            return
+        
+        
+        if self.filter.sensorHandWashFilter == true {
+            toilet.sensorHandWash = (snapshotValue?["sensorHandWash"] as? Bool)!
+            if toilet.sensorHandWash == false{
+                return
+            }
         }
         
-        toilet.handSoap = (snapshotValue?["handSoap"] as? Bool)!
-        if self.filter.handSoapFilter == true && toilet.handSoap == false {
-            return
+       
+        
+        if self.filter.handSoapFilter == true {
+            toilet.handSoap = (snapshotValue?["handSoap"] as? Bool)!
+            if toilet.handSoap == false{
+                return
+            }
         }
 
-        toilet.autoHandSoap = (snapshotValue?["nonTouchHandSoap"] as? Bool)!
-        if self.filter.autoHandSoapFilter == true && toilet.autoHandSoap == false {
-            return
+        
+        if self.filter.autoHandSoapFilter == true {
+            toilet.autoHandSoap = (snapshotValue?["nonTouchHandSoap"] as? Bool)!
+            if toilet.autoHandSoap == false{
+                return
+            }
         }
         
-        toilet.paperTowel = (snapshotValue?["paperTowel"] as? Bool)!
-        if self.filter.paperTowelFilter == true && toilet.paperTowel == false {
-            return
+        
+        
+        if self.filter.paperTowelFilter == true {
+            toilet.paperTowel = (snapshotValue?["paperTowel"] as? Bool)!
+            if toilet.paperTowel == false{
+                return
+            }
         }
         
-        toilet.handDrier = (snapshotValue?["handDrier"] as? Bool)!
-        if self.filter.handDrierFilter == true && toilet.handDrier == false {
-            return
+        
+        
+        
+        if self.filter.handDrierFilter == true {
+            toilet.handDrier = (snapshotValue?["handDrier"] as? Bool)!
+            if toilet.handDrier == false{
+                return
+            }
         }
         
         
@@ -974,301 +1032,520 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         
         //Other things one
-        toilet.fancy = (snapshotValue?["fancy"] as? Bool)!
-        if self.filter.fancy == true && toilet.fancy == false {
-            return
-        }
-        toilet.smell = (snapshotValue?["smell"] as? Bool)!
-        if self.filter.smell == true && toilet.smell == false {
-            return
-        }
-
-        toilet.conforatableWide = (snapshotValue?["confortable"] as? Bool)!
-        if self.filter.confortableWise == true && toilet.conforatableWide == false {
-            return
+       
+        if self.filter.fancy == true {
+            toilet.fancy = (snapshotValue?["fancy"] as? Bool)!
+            if toilet.fancy == false{
+                return
+            }
         }
         
-        toilet.clothes = (snapshotValue?["clothes"] as? Bool)!
-        if self.filter.clothes == true && toilet.clothes == false {
-            return
+        
+        if self.filter.smell == true {
+            toilet.smell = (snapshotValue?["smell"] as? Bool)!
+            if toilet.smell == false{
+                return
+            }
         }
         
-        toilet.baggageSpace = (snapshotValue?["baggageSpace"] as? Bool)!
-        if self.filter.baggageSpaceFilter == true && toilet.baggageSpace == false {
-            return
+    
+        if self.filter.confortableWise == true {
+            toilet.conforatableWide = (snapshotValue?["confortable"] as? Bool)!
+            if toilet.conforatableWide == false{
+                return
+            }
+        }
+        
+    
+        
+        if self.filter.clothes == true {
+            toilet.clothes = (snapshotValue?["clothes"] as? Bool)!
+            if toilet.clothes == false{
+                return
+            }
+        }
+        
+       
+        if self.filter.baggageSpaceFilter == true {
+            toilet.baggageSpace = (snapshotValue?["baggageSpace"] as? Bool)!
+            if toilet.baggageSpace == false{
+                return
+            }
         }
 
         
         //Other things two
-        toilet.noNeedAsk = (snapshotValue?["noNeedAsk"] as? Bool)!
-        if self.filter.noNeedAsk == true && toilet.noNeedAsk == false {
-             return
+       
+        
+        if self.filter.noNeedAsk == true {
+            toilet.noNeedAsk = (snapshotValue?["noNeedAsk"] as? Bool)!
+            if toilet.noNeedAsk == false{
+                return
+            }
         }
-        toilet.english = (snapshotValue?["english"] as? Bool)!
-        if self.filter.writtenEnglish == true && toilet.english == false {
-             return
+        
+        
+        
+        if self.filter.writtenEnglish == true {
+            toilet.english = (snapshotValue?["english"] as? Bool)!
+            if toilet.english == false{
+                return
+            }
         }
-        toilet.parking = (snapshotValue?["parking"] as? Bool)!
-        if self.filter.parking == true && toilet.parking == false {
-             return
+        
+        
+        if self.filter.parking == true {
+            toilet.parking = (snapshotValue?["parking"] as? Bool)!
+            if toilet.parking == false{
+                return
+            }
         }
-        toilet.airCondition = (snapshotValue?["airCondition"] as? Bool)!
-        if self.filter.airConditionFilter == true && toilet.airCondition == false {
-             return
+        
+        
+        if self.filter.airConditionFilter == true {
+            toilet.airCondition = (snapshotValue?["airCondition"] as? Bool)!
+            if toilet.airCondition == false{
+                return
+            }
         }
 
-        toilet.wifi = (snapshotValue?["wifi"] as? Bool)!
-        if self.filter.wifiFilter == true && toilet.wifi == false {
-             return
+       
+        if self.filter.wifiFilter == true {
+            toilet.wifi = (snapshotValue?["wifi"] as? Bool)!
+            if toilet.wifi == false{
+                return
+            }
         }
         
         
         
         //Ladys
         
-        toilet.otohime = (snapshotValue?["otohime"] as? Bool)!
-        if self.filter.otohime == true && toilet.otohime == false {
-             return
-        }
-        toilet.napkinSelling = (snapshotValue?["napkinSelling"] as? Bool)!
-        if self.filter.napkinSelling == true && toilet.napkinSelling == false {
-             return
+        
+        
+        if self.filter.otohime == true {
+            toilet.otohime = (snapshotValue?["otohime"] as? Bool)!
+            if toilet.otohime == false{
+                return
+            }
         }
         
-        toilet.makeuproom = (snapshotValue?["makeuproom"] as? Bool)!
-        if self.filter.makeroomFilter == true && toilet.makeuproom == false {
-             return
+        
+        
+        if self.filter.napkinSelling == true {
+            toilet.napkinSelling = (snapshotValue?["napkinSelling"] as? Bool)!
+            if toilet.napkinSelling == false{
+                return
+            }
         }
         
-        toilet.ladyOmutu = (snapshotValue?["ladyOmutu"] as? Bool)!
-        if self.filter.ladyOmutu == true && toilet.ladyOmutu == false {
-            return
+        
+    
+        if self.filter.makeroomFilter == true {
+            toilet.makeuproom = (snapshotValue?["makeuproom"] as? Bool)!
+            if toilet.makeuproom == false{
+                return
+            }
         }
         
-        toilet.ladyBabyChair = (snapshotValue?["ladyBabyChair"] as? Bool)!
-        if self.filter.ladyBabyChair == true && toilet.ladyBabyChair == false {
-            return
+        
+        if self.filter.ladyOmutu == true {
+             toilet.ladyOmutu = (snapshotValue?["ladyOmutu"] as? Bool)!
+            if toilet.ladyOmutu == false{
+                return
+            }
         }
-        toilet.ladyBabyChairGood = (snapshotValue?["ladyBabyChairGood"] as? Bool)!
-        if self.filter.ladyBabyChairGood == true && toilet.ladyBabyChairGood == false {
-            return
+        
+        
+        
+        if self.filter.ladyBabyChair == true {
+            toilet.ladyBabyChair = (snapshotValue?["ladyBabyChair"] as? Bool)!
+            if toilet.ladyBabyChair == false{
+                return
+            }
         }
-        toilet.ladyBabyCarAccess = (snapshotValue?["ladyBabyCarAccess"] as? Bool)!
-        if self.filter.ladyBabyCarAccess == true && toilet.ladyBabyCarAccess == false {
-            return
+        
+        
+        
+        if self.filter.ladyBabyChairGood == true {
+            toilet.ladyBabyChairGood = (snapshotValue?["ladyBabyChairGood"] as? Bool)!
+            if toilet.ladyBabyChairGood == false{
+                return
+            }
         }
+        
+        
+        
+        if self.filter.ladyBabyCarAccess == true {
+            toilet.ladyBabyCarAccess = (snapshotValue?["ladyBabyCarAccess"] as? Bool)!
+            if toilet.ladyBabyCarAccess == false{
+                return
+            }
+        }
+        
+        
         
     
         //Men 
-        toilet.maleOmutu = (snapshotValue?["maleOmutu"] as? Bool)!
-        if self.filter.maleOmutu == true && toilet.maleOmutu == false {
-            return
+       
+        
+        if self.filter.maleOmutu == true {
+            toilet.maleOmutu = (snapshotValue?["maleOmutu"] as? Bool)!
+            if toilet.maleOmutu == false{
+                return
+            }
         }
-        toilet.maleBabyChair = (snapshotValue?["maleBabyChair"] as? Bool)!
-        if self.filter.maleBabyChair == true && toilet.maleBabyChair == false {
-            return
+        
+       
+        
+        if self.filter.maleBabyChair == true {
+            toilet.maleBabyChair = (snapshotValue?["maleBabyChair"] as? Bool)!
+            if toilet.maleBabyChair == false{
+                return
+            }
         }
-        toilet.maleBabyChairGood = (snapshotValue?["maleBabyChairGood"] as? Bool)!
-        if self.filter.maleBabyChairgood == true && toilet.maleBabyChairGood == false {
-            return
+       
+        
+        
+        if self.filter.maleBabyChairgood == true {
+            toilet.maleBabyChairGood = (snapshotValue?["maleBabyChairGood"] as? Bool)!
+            if toilet.maleBabyChairGood == false{
+                return
+            }
         }
-        toilet.maleBabyCarAccess = (snapshotValue?["maleBabyCarAccess"] as? Bool)!
-        if self.filter.maleBabyCarAccess == true && toilet.maleBabyCarAccess == false {
-            return
+        
+       
+        
+        if self.filter.maleBabyCarAccess == true {
+            toilet.maleBabyCarAccess = (snapshotValue?["maleBabyCarAccess"] as? Bool)!
+            if toilet.maleBabyCarAccess == false{
+                return
+            }
         }
         
         
         //Family
         
-        toilet.wheelchair = (snapshotValue?["wheelchair"] as? Bool)!
-        if self.filter.wheelchairFilter == true && toilet.wheelchair == false {
-            return
-        }
-        toilet.wheelchairAccess = (snapshotValue?["wheelchairAccess"] as? Bool)!
-        if self.filter.wheelchairAccessFilter == true && toilet.wheelchairAccess == false {
-            return
+        
+        
+        if self.filter.wheelchairFilter == true {
+            toilet.wheelchair = (snapshotValue?["wheelchair"] as? Bool)!
+            if toilet.wheelchair == false{
+                return
+            }
         }
         
-        toilet.autoDoor = (snapshotValue?["autoDoor"] as? Bool)!
-        if self.filter.autoDoorFilter == true && toilet.autoDoor == false {
-            return
+
+        
+        if self.filter.wheelchairAccessFilter == true {
+            toilet.wheelchairAccess = (snapshotValue?["wheelchairAccess"] as? Bool)!
+            if toilet.wheelchairAccess == false{
+                return
+            }
         }
         
-        toilet.callHelp = (snapshotValue?["callHelp"] as? Bool)!
-        if self.filter.callHelpFilter == true && toilet.callHelp == false {
-            return
+        
+        
+        if self.filter.autoDoorFilter == true {
+            toilet.autoDoor = (snapshotValue?["autoDoor"] as? Bool)!
+            if toilet.autoDoor == false {
+                return
+            }
+        }
+        
+        
+        if self.filter.callHelpFilter == true {
+            toilet.callHelp = (snapshotValue?["callHelp"] as? Bool)!
+            if toilet.callHelp == false{
+                return
+            }
         }
 
-        toilet.ostomate = (snapshotValue?["ostomate"] as? Bool)!
-        if self.filter.ostomateFilter == true && toilet.ostomate == false {
-            return
+        
+        if self.filter.ostomateFilter == true {
+            toilet.ostomate = (snapshotValue?["ostomate"] as? Bool)!
+            if toilet.ostomate == false{
+                return
+            }
         }
         
-        toilet.braille = (snapshotValue?["braille"] as? Bool)!
-        if self.filter.braille == true && toilet.braille == false {
-            return
+        if self.filter.braille == true {
+            toilet.braille = (snapshotValue?["braille"] as? Bool)!
+            if toilet.braille == false{
+                return
+            }
         }
         
-        toilet.voiceGuide = (snapshotValue?["voiceGuide"] as? Bool)!
-        if self.filter.voiceGuideFilter == true && toilet.voiceGuide == false {
-            return
+        
+        if self.filter.voiceGuideFilter == true {
+            toilet.voiceGuide = (snapshotValue?["voiceGuide"] as? Bool)!
+            if toilet.voiceGuide == false{
+                return
+            }
         }
         
-        toilet.familyOmutu = (snapshotValue?["familyOmutu"] as? Bool)!
-        if self.filter.familyOmutu == true && toilet.familyOmutu == false {
-            return
+        
+        if self.filter.familyOmutu == true {
+            toilet.familyOmutu = (snapshotValue?["familyOmutu"] as? Bool)!
+            if toilet.familyOmutu == false{
+                return
+            }
         }
-        toilet.familyBabyChair = (snapshotValue?["familyBabyChair"] as? Bool)!
-        if self.filter.familyBabyChair == true && toilet.familyBabyChair == false {
-            return
+        
+        
+        if self.filter.familyBabyChair == true {
+            toilet.familyBabyChair = (snapshotValue?["familyBabyChair"] as? Bool)!
+            if toilet.familyBabyChair == false{
+                return
+            }
         }
         
         
         //Milk Room One 
         
-        toilet.milkspace = (snapshotValue?["milkspace"] as? Bool)!
-        if self.filter.milkspaceFilter == true && toilet.milkspace == false {
-            return
-        }
-        toilet.babyroomOnlyFemale = (snapshotValue?["babyRoomOnlyFemale"] as? Bool)!
-        if self.filter.babyRoomOnlyFemaleFilter == true && toilet.babyroomOnlyFemale == false {
-            return
-        }
-        
-        toilet.babyroomManCanEnter = (snapshotValue?["babyRoomMaleEnter"] as? Bool)!
-        if self.filter.babyRoomMaleCanEnterFilter == true && toilet.babyroomManCanEnter == false{
-            return
+        if self.filter.milkspaceFilter == true{
+            toilet.milkspace = (snapshotValue?["milkspace"] as? Bool)!
+
+            if toilet.milkspace == false{
+                return
+            }
         }
         
-        
-        toilet.babyPersonalSpace = (snapshotValue?["babyRoomPersonalSpace"] as? Bool)!
-        if self.filter.babyRoomPersonalSpaceFilter == true && toilet.babyPersonalSpace == false {
-            return
+        if self.filter.babyRoomOnlyFemaleFilter == true {
+            toilet.babyroomOnlyFemale = (snapshotValue?["babyRoomOnlyFemale"] as? Bool)!
+            if toilet.babyroomOnlyFemale == false{
+                return
+            }
         }
         
-        toilet.babyPersonalSpaceWithLock = (snapshotValue?["babyRoomPersonalSpaceWithLock"] as? Bool)!
-        if self.filter.babyRoomPersonalWithLockFilter == true && toilet.babyPersonalSpace == false {
-            return
+    
+        
+        if self.filter.babyRoomMaleCanEnterFilter == true {
+            toilet.babyroomManCanEnter = (snapshotValue?["babyRoomMaleEnter"] as? Bool)!
+            if toilet.babyroomManCanEnter == false{
+                return
+            }
         }
         
-        toilet.babyRoomWideSpace = (snapshotValue?["babyRoomWideSpace"] as? Bool)!
-        if self.filter.babyRoomWideSpaceFilter == true && toilet.babyRoomWideSpace == false {
-            return
+        
+        if self.filter.babyRoomPersonalSpaceFilter == true {
+            toilet.babyPersonalSpace = (snapshotValue?["babyRoomPersonalSpace"] as? Bool)!
+            if toilet.babyPersonalSpace == false{
+                return
+            }
+        }
+        
+        
+        if self.filter.babyRoomPersonalWithLockFilter == true{
+            toilet.babyPersonalSpaceWithLock = (snapshotValue?["babyRoomPersonalSpaceWithLock"] as? Bool)!
+            if toilet.babyPersonalSpace == false{
+                return
+            }
+        }
+        
+        
+        if self.filter.babyRoomWideSpaceFilter == true {
+            toilet.babyRoomWideSpace = (snapshotValue?["babyRoomWideSpace"] as? Bool)!
+            if toilet.babyRoomWideSpace == false{
+                return
+            }
         }
 
         
         
         //MIlk Room Two
-        toilet.babyCarRental = (snapshotValue?["babyCarRental"] as? Bool)!
-        if self.filter.babyCarRentalFilter == true && toilet.babyCarRental == false {
-            return
+        
+        
+        if self.filter.babyCarRentalFilter == true {
+            toilet.babyCarRental = (snapshotValue?["babyCarRental"] as? Bool)!
+            if toilet.babyCarRental == false{
+                return
+            }
         }
 
-        toilet.babyCarAccess = (snapshotValue?["babyCarAccess"] as? Bool)!
-        if self.filter.babyCarAccessFilter == true && toilet.babyCarAccess == false {
-            return
+       
+        
+        if self.filter.babyCarAccessFilter == true{
+            toilet.babyCarAccess = (snapshotValue?["babyCarAccess"] as? Bool)!
+            if toilet.babyCarAccess == false{
+                return
+            }
         }
         
-        toilet.omutu = (snapshotValue?["omutu"] as? Bool)!
-        if self.filter.omutuFilter == true && toilet.omutu == false {
-            return
+        
+        if self.filter.omutuFilter == true {
+            toilet.omutu = (snapshotValue?["omutu"] as? Bool)!
+            if toilet.omutu == false{
+                return
+            }
+        }
+       
+        
+        if self.filter.babyHipWashingStuffFilter == true {
+            toilet.hipWashingStuff = (snapshotValue?["hipCleaningStuff"] as? Bool)!
+            if toilet.hipWashingStuff == false{
+                return
+            }
         }
         
-        toilet.hipWashingStuff = (snapshotValue?["hipCleaningStuff"] as? Bool)!
-        if self.filter.babyHipWashingStuffFilter == true && toilet.hipWashingStuff == false {
-            return
+        
+        if self.filter.omutuTrashCanFilter == true {
+            toilet.babyTrashCan = (snapshotValue?["omutuTrashCan"] as? Bool)!
+            if toilet.babyTrashCan == false{
+                return
+            }
         }
         
-        toilet.babyTrashCan = (snapshotValue?["omutuTrashCan"] as? Bool)!
-        if self.filter.omutuTrashCanFilter == true && toilet.babyTrashCan == false {
-            return
-        }
         
-        toilet.omutuSelling = (snapshotValue?["omutuSelling"] as? Bool)!
-        if self.filter.omutuSelling == true && toilet.omutuSelling == false {
-            return
+        
+        if self.filter.omutuSelling == true  {
+            toilet.omutuSelling = (snapshotValue?["omutuSelling"] as? Bool)!
+            if toilet.omutuSelling == false{
+                return
+            }
         }
 
         
         //Milk Room 3
         
-        toilet.babyRoomSink = (snapshotValue?["babySink"] as? Bool)!
-        if self.filter.babySinkFilter == true && toilet.babyRoomSink == false {
-            return
+        if self.filter.babySinkFilter == true {
+            toilet.babyRoomSink = (snapshotValue?["babySink"] as? Bool)!
+            if toilet.babyRoomSink == false{
+                return
+            }
         }
 
-        toilet.babyWashStand = (snapshotValue?["babyWashstand"] as? Bool)!
-        if self.filter.babyWashstandFilter == true && toilet.babyWashStand == false {
-            return
-        }
-        toilet.babyHotWater = (snapshotValue?["babyHotwater"] as? Bool)!
-        if self.filter.babyHotWaterFilter == true && toilet.babyHotWater == false {
-            return
-        }
-        toilet.babyMicroWave = (snapshotValue?["babyMicrowave"] as? Bool)!
-        if self.filter.babyMicrowaveFilter == true && toilet.babyMicroWave == false {
-            return
-        }
-        toilet.babyWaterSelling = (snapshotValue?["babyWaterSelling"] as? Bool)!
-        if self.filter.babySellingWaterFilter == true && toilet.babyWaterSelling == false {
-            return
-        }
-        toilet.babyFoddSelling = (snapshotValue?["babyFoodSelling"] as? Bool)!
-        if self.filter.babyFoodSellingFilter == true && toilet.babyFoddSelling == false {
-            return
-        }
+       
         
-        toilet.babyEatingSpace = (snapshotValue?["babyEatingSpace"] as? Bool)!
-        if self.filter.babyEatingSpaceFilter == true && toilet.babyEatingSpace == false {
-            return
+        if self.filter.babyWashstandFilter == true {
+            toilet.babyWashStand = (snapshotValue?["babyWashstand"] as? Bool)!
+            if toilet.babyWashStand == false{
+                return
+            }
         }
         
         
+        if self.filter.babyHotWaterFilter == true {
+            toilet.babyHotWater = (snapshotValue?["babyHotwater"] as? Bool)!
+            if toilet.babyHotWater == false{
+                return
+            }
+        }
+        
+        if self.filter.babyMicrowaveFilter == true {
+            toilet.babyMicroWave = (snapshotValue?["babyMicrowave"] as? Bool)!
+            if toilet.babyMicroWave == false{
+                return
+            }
+        }
+        
+        
+        if self.filter.babySellingWaterFilter == true {
+            toilet.babyWaterSelling = (snapshotValue?["babyWaterSelling"] as? Bool)!
+            if toilet.babyWaterSelling == false{
+                return
+            }
+        }
+        
+        
+        if self.filter.babyFoodSellingFilter == true {
+            toilet.babyFoddSelling = (snapshotValue?["babyFoodSelling"] as? Bool)!
+            if toilet.babyFoddSelling == false {
+                return
+            }
+        }
+        
+        
+        if self.filter.babyEatingSpaceFilter == true {
+            toilet.babyEatingSpace = (snapshotValue?["babyEatingSpace"] as? Bool)!
+            if toilet.babyEatingSpace == false{
+                return
+            }
+        }
         
         
         //Milk Room 4
         
         
-        toilet.babyChair = (snapshotValue?["babyChair"] as? Bool)!
-        if self.filter.babyChairFilter == true && toilet.babyChair == false {
-            return
+        
+        
+        if self.filter.babyChairFilter == true {
+            toilet.babyChair = (snapshotValue?["babyChair"] as? Bool)!
+            if toilet.babyChair == false{
+                return
+            }
         }
-        toilet.babySoffa = (snapshotValue?["babySoffa"] as? Bool)!
-        if self.filter.babySoffaFilter == true && toilet.babySoffa == false {
-            return
+        
+        
+        
+        
+        if self.filter.babySoffaFilter == true {
+            toilet.babySoffa = (snapshotValue?["babySoffa"] as? Bool)!
+            if toilet.babySoffa == false{
+                return
+            }
         }
 
-        toilet.babyKidsToilet = (snapshotValue?["kidsToilet"] as? Bool)!
-        if self.filter.babyToiletFilter == true && toilet.babyKidsToilet == false {
-            return
+       
+        
+        if self.filter.babyToiletFilter == true {
+            toilet.babyKidsToilet = (snapshotValue?["kidsToilet"] as? Bool)!
+            if toilet.babyKidsToilet == false{
+                return
+            }
         }
         
-        toilet.babyKidsSpace = (snapshotValue?["kidsSpace"] as? Bool)!
-        if self.filter.babyKidsSpaceFilter == true && toilet.babyKidsSpace == false {
-            return
+        
+        
+        if self.filter.babyKidsSpaceFilter == true{
+            toilet.babyKidsSpace = (snapshotValue?["kidsSpace"] as? Bool)!
+            if toilet.babyKidsSpace == false{
+                return
+            }
         }
         
         
-        toilet.babyHeightMeasure = (snapshotValue?["babyHeight"] as? Bool)!
-        if self.filter.babyHeightMeasureFilter == true && toilet.babyHeightMeasure == false {
-            return
+        if self.filter.babyHeightMeasureFilter == true {
+            toilet.babyHeightMeasure = (snapshotValue?["babyHeight"] as? Bool)!
+            if toilet.babyHeightMeasure == false{
+                return
+            }
         }
-        toilet.babyWeightMeasure = (snapshotValue?["babyWeight"] as? Bool)!
-        if self.filter.babyWeightMeasureFilter == true && toilet.babyWeightMeasure == false {
-            return
+        
+        
+        
+        
+        if self.filter.babyWeightMeasureFilter == true{
+            toilet.babyWeightMeasure = (snapshotValue?["babyWeight"] as? Bool)!
+            if toilet.babyWeightMeasure == false{
+                return
+            }
         }
+        
+        
 
-        toilet.babyToy = (snapshotValue?["babyToy"] as? Bool)!
-        if self.filter.babyToyFilter == true && toilet.babyToy == false {
-            return
+        
+        if self.filter.babyToyFilter == true {
+            toilet.babyToy = (snapshotValue?["babyToy"] as? Bool)!
+            if toilet.babyToy == false{
+                return
+            }
         }
-        toilet.babyFancy = (snapshotValue?["babyFancy"] as? Bool)!
-        if self.filter.babyRoomFancyFilter == true && toilet.babyFancy == false {
-            return
+        
+        
+        if self.filter.babyRoomFancyFilter == true {
+            toilet.babyFancy = (snapshotValue?["babyFancy"] as? Bool)!
+            if toilet.babyFancy == false{
+                return
+            }
         }
-        toilet.babySmellGood = (snapshotValue?["babySmellGood"] as? Bool)!
-        if self.filter.babyRoomSmellGoodFilter == true && toilet.babySmellGood == false {
-            return
+        
+        
+        if self.filter.babyRoomSmellGoodFilter == true { 
+            toilet.babySmellGood = (snapshotValue?["babySmellGood"] as? Bool)!
+            if toilet.babySmellGood == false{
+                return
+            }
         }
         
         

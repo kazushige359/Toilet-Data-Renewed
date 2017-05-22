@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>250788473181-p83f7el0p68fp49gr7bimi1t35e8qt6p.apps.googleusercontent.com</string>
+	<string>431158899380-juq25udgcvt2nrongd3a6d7ah7l2p9qi.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.250788473181-p83f7el0p68fp49gr7bimi1t35e8qt6p</string>
+	<string>com.googleusercontent.apps.431158899380-juq25udgcvt2nrongd3a6d7ah7l2p9qi</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDWH5HmmI10AucXGcVqtPsKt5DAHU6voAk</string>
+	<string>AIzaSyB1MFb9xiffTNDvzr_fWMrkHaxvElIWYfU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>250788473181</string>
+	<string>431158899380</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>Hiro-333.Problemsolving</string>
 	<key>PROJECT_ID</key>
-	<string>problemsolving-299e4</string>
+	<string>toilet-data</string>
 	<key>STORAGE_BUCKET</key>
-	<string>problemsolving-299e4.appspot.com</string>
+	<string>toilet-data.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:250788473181:ios:f87595d73ac5d3f0</string>
+	<string>1:431158899380:ios:f87595d73ac5d3f0</string>
 	<key>DATABASE_URL</key>
-	<string>https://problemsolving-299e4.firebaseio.com</string>
+	<string>https://toilet-data.firebaseio.com</string>
 </dict>
 </plist>
