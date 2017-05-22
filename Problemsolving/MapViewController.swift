@@ -289,7 +289,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if FIRAuth.auth()!.currentUser != nil{
             //Current user exists
             print("User Found")
-            let userID = FIRAuth.auth()!.currentUser!.uid
+           // let userID = FIRAuth.auth()!.currentUser!.uid
             
         } else {
             print("User Not Found")

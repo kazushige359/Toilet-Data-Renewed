@@ -136,7 +136,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             let tidKey = userReviewComment.tid
             
             
-            let toiletRef = self.firebaseRef.child("ToiletView").child(tidKey)
+            let toiletRef = self.firebaseRef.child("ToiletUserList").child(tidKey)
             toiletRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
                 
                 let snapshotValue = snapshot.value as? NSDictionary

@@ -600,6 +600,17 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                                                 "toiletFloor": 1,
                                                 "available": true]
             
+            let toiletUserListData: [String : Any] = ["name":name!,
+                                                "type": 0,
+                                                "urlOne":newUrlOne,
+                                                "averageStar":String(starView.rating) as String,
+                                                "reviewCount":1,
+                                                "averageWait": waitInt! as Int,
+                                                "toiletFloor": 1,
+                                                "latitude": Lat as Double,
+                                                "longitude": Lon as Double,
+                                                "available": true]
+            
             let unitOneData: [String : Any] = ["name":name!,
                                                "type": 0,
                                                "urlOne":newUrlOne,
@@ -1310,6 +1321,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             //uniqueRef.setValue(tdata)
             
             let mutipleData = ["NoFilter/\(toiletNewId)": noFilterData,
+                               "ToiletUserList/\(toiletNewId)": toiletUserListData,
                                "UnitOne/\(toiletNewId)": unitOneData,
                                "UnitTwo/\(toiletNewId)": unitTwoData,
                                "UnitThree/\(toiletNewId)": unitThreeData,
@@ -1415,7 +1427,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     
     
     func uploadPhotosToDatabase(){
-        let databaseRef = FIRDatabase.database().reference()
+        //let databaseRef = FIRDatabase.database().reference()
         let imagesFolder = FIRStorage.storage().reference().child("ToiletPhoto")
         
         //let photoRef = FIRDatabase.database().reference().child("Images")

@@ -884,6 +884,17 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                                                 "available": true]
             
             
+            let toiletUserListData: [String : Any] = ["name":name!,
+                                                "type": 0,
+                                                "urlOne":newUrlOne,
+                                                "averageStar":toilet.averageStar,
+                                                "averageWait":toilet.averageWait,
+                                                "reviewCount":toilet.reviewCount,
+                                                "toiletFloor": 1,
+                                                "latitude": Lat,
+                                                "longitude": Lon,
+                                                "available": true]
+            
             let unitOneData: [String : Any] = ["name":name!,
                                                "type": 0,
                                                "urlOne":newUrlOne,
@@ -1486,8 +1497,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                 "reviewCount":toilet.reviewCount,
                 "averageWait": toilet.averageWait,
                 "toiletFloor": toiletFloorPickedNumber,
-                "latitude": toilet.latitude,
-                "longitude": toilet.longitude,
+                "latitude": Lat,
+                "longitude": Lon,
                 "available": true,
                 "japanesetoilet": japaneseToiletSwitch.isOn as Bool,
                 "westerntoilet":westernToiletSwitch.isOn,
@@ -1596,6 +1607,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             
             let mutipleData = ["NoFilter/\(toilet.key)": noFilterData,
+                               "ToiletUserList/\(toilet.key)": toiletUserListData,
                                "UnitOne/\(toilet.key)": unitOneData,
                                "UnitTwo/\(toilet.key)": unitTwoData,
                                "UnitThree/\(toilet.key)": unitThreeData,

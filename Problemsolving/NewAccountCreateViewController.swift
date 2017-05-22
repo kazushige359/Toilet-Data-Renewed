@@ -87,16 +87,36 @@ class NewAccountCreateViewController: UIViewController {
                 
             } else {
                 print("all good... continue")
+                
+                let userPrivateData : [String : Any] = [
+                "password": self.passwordTextField.text! as String,
+                "userEmail": self.emailTextField.text! as String,
+                ]
+
+                
                 let userData : [String : Any] = [
                     "userName": self.userNameTextField.text! as String,
-                    "password": self.passwordTextField.text! as String,
                     "userPhoto": "",
-                    "userEmail": self.emailTextField.text! as String,
                     "totalLikedCount": 0,
                     "totalHelpedCount": 0,
                     "totalFavoriteCount": 0
                 ]
-                FIRDatabase.database().reference().child("Users").child(user!.uid).setValue(userData)
+                let firebaseRef = FIRDatabase.database().reference()
+                
+                let mutipleData = ["UserPrivateInfo/\(user!.uid)": userPrivateData,
+                                   "Users/\(user!.uid)": userData,
+                                    ] as [String : Any]
+                
+                firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in if error != nil{
+                        print("Error = \(String(describing: error))")
+                        
+                    }else{
+                        //Success
+                        
+                    }
+                })
+
+                //FIRDatabase.database().reference().child("Users").child(user!.uid).setValue(userData)
                 self.messageFrame.removeFromSuperview()
                 self.performSegue(withIdentifier:"goToMapFromNewAccountSegue", sender: nil)
                 
