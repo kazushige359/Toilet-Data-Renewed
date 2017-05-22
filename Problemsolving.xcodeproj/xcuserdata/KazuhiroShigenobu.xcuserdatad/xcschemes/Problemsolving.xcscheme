@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "241454971DE2C4F90066AB62"
-               BuildableName = "Toilet Data.app"
+               BuildableName = "Problemsolving.app"
                BlueprintName = "Problemsolving"
                ReferencedContainer = "container:Problemsolving.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "241454971DE2C4F90066AB62"
-            BuildableName = "Toilet Data.app"
+            BuildableName = "Problemsolving.app"
             BlueprintName = "Problemsolving"
             ReferencedContainer = "container:Problemsolving.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "241454971DE2C4F90066AB62"
-            BuildableName = "Toilet Data.app"
+            BuildableName = "Problemsolving.app"
             BlueprintName = "Problemsolving"
             ReferencedContainer = "container:Problemsolving.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "241454971DE2C4F90066AB62"
-            BuildableName = "Toilet Data.app"
+            BuildableName = "Problemsolving.app"
             BlueprintName = "Problemsolving"
             ReferencedContainer = "container:Problemsolving.xcodeproj">
          </BuildableReference>
