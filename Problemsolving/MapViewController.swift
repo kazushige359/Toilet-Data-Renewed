@@ -795,6 +795,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     //        toilets.sort() { $0.distance > $1.distance }
     //         self.tableView.reloadData()
     //    }
+    
+   
    
     func toiletsSearch(center: CLLocation){
         search.centerSearchLocation = center
@@ -809,7 +811,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             print("555'\(String(describing: key))' entered the search area and is at location '\(String(describing: location))'")
             
-            let toiletsRef = FIRDatabase.database().reference().child("Toilets")
+            
+            var queryPath = self.filter.queryPath
+            
+            if queryPath == ""{
+            queryPath = "NoFilter"
+                
+            }
+            
+            
+            
+            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             
             toiletsRef.child(key!).observe(FIRDataEventType.value, with: { snapshot in
 
@@ -832,6 +844,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let toilet = Toilet()
         
         print("555 createTableViewFor \(key)")
+        
+        print("555 snapshot = \(snapshot)")
         
         let snapshotValue = snapshot.value as? NSDictionary
         
@@ -856,12 +870,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         //Available Filter
+        
+        
+        
+       if self.filter.availableFilter == true{
         toilet.openHours = (snapshotValue?["openHours"] as? Int)!
         toilet.closeHours = (snapshotValue?["closeHours"] as? Int)!
-        
-//        if self.filter.availableFilter == true && toilet.openHours  {
-//            return
-//        }
+
+        //Do something to know its availble or not
+           return
+        }
         
         //Opening Hours Filter
        
@@ -1541,7 +1559,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         
-        if self.filter.babyRoomSmellGoodFilter == true { 
+        if self.filter.babyRoomSmellGoodFilter == true {
             toilet.babySmellGood = (snapshotValue?["babySmellGood"] as? Bool)!
             if toilet.babySmellGood == false{
                 return

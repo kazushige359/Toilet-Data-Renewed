@@ -296,7 +296,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     func dataQuery(queryKey: String){
         
         print("Data Query Called")
-        let toiletsRef = FIRDatabase.database().reference().child("Toilets")
+        let toiletsRef = FIRDatabase.database().reference().child("ToiletView")
         
         
         

@@ -1917,61 +1917,61 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         
         
         if queryPath.all == true{
-           filter.queryPath = 18
+           filter.queryPath = "AllFilter"
            return "All"
         } else if queryPath.half1 == true{
-           filter.queryPath = 16
+           filter.queryPath = "HalfOne"
            return "Half1"
         } else if queryPath.half2 == true{
-           filter.queryPath = 17
+           filter.queryPath = "HalfTwo"
            return "Half2"
         } else if queryPath.group1 == true{
-            filter.queryPath = 13
+            filter.queryPath = "GroupOne"
             return "Group1"
         } else if queryPath.group2 == true{
-            filter.queryPath = 14
+            filter.queryPath = "GroupTwo"
             return "Group2"
         }else if queryPath.group3 == true{
-            filter.queryPath = 15
+            filter.queryPath = "GroupThree"
             return "Group3"
         } else if queryPath.unit1 == true{
-            filter.queryPath = 1
+            filter.queryPath = "UnitOne"
             return "Unit1"
         } else if queryPath.unit2 == true{
-            filter.queryPath = 2
+            filter.queryPath = "UnitTwo"
             return "Unit2"
         } else if queryPath.unit3 == true{
-            filter.queryPath = 3
+            filter.queryPath = "UnitThree"
             return "Unit3"
         } else if queryPath.unit4 == true{
-            filter.queryPath = 4
+            filter.queryPath = "UnitFour"
             return "Unit4"
         } else if queryPath.unit5 == true{
-            filter.queryPath = 5
+            filter.queryPath = "UnitFive"
             return "Unit5"
         } else if queryPath.unit6 == true{
-            filter.queryPath = 6
+            filter.queryPath = "UnitSix"
             return "Unit6"
         } else if queryPath.unit7 == true{
-            filter.queryPath = 7
+            filter.queryPath = "UnitSeven"
             return "Unit7"
         } else if queryPath.unit8 == true{
-            filter.queryPath = 8
+            filter.queryPath = "UnitEight"
             return "Unit8"
         } else if queryPath.unit9 == true{
-            filter.queryPath = 9
+            filter.queryPath = "UnitNine"
             return "Unit9"
         } else if queryPath.unit10 == true{
-            filter.queryPath = 10
+            filter.queryPath = "UnitTen"
             return "Unit10"
         } else if queryPath.unit11 == true{
-            filter.queryPath = 11
+            filter.queryPath = "UnitEleven"
             return "Unit11"
         } else if queryPath.unit12 == true{
-            filter.queryPath = 12
+            filter.queryPath = "UnitTwelve"
             return "Unit12"
         } else {
-            filter.queryPath = 0
+            filter.queryPath = "NoFilter"
             return "NoFilter"
         
         }
