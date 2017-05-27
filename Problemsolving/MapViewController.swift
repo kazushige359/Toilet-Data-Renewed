@@ -820,7 +820,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
             
             
-            
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             
             toiletsRef.child(key!).observe(FIRDataEventType.value, with: { snapshot in
