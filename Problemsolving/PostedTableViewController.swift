@@ -84,6 +84,10 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         
         reviewListRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            if !snapshot.exists(){
+                return
+            }
+
             
             
         //reviewListRef.observe(FIRDataEventType.value, with: { snapshot in
@@ -116,6 +120,11 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         let reviewRef = firebaseRef.child("ReviewInfo").child(ridKey)
         
         reviewRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            if !snapshot.exists(){
+                return
+            }
+
         
          //reviewRef.queryOrderedByKey().observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
         
@@ -146,6 +155,11 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             
             let toiletRef = self.firebaseRef.child("ToiletUserList").child(tidKey)
                 toiletRef.observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
+                    
+                    if !snapshot.exists(){
+                        return
+                    }
+
 
 //            toiletRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
                 

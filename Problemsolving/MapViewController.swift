@@ -853,6 +853,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String, location: CLLocation?, center: CLLocation){
         let toilet = Toilet()
         
+        if !snapshot.exists(){
+                return
+        }
+        
         print("555 createTableViewFor \(key)")
         
         print("555 snapshot = \(snapshot)")
@@ -872,6 +876,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         
         //Star Filter
+        
         let averageStar = snapshotValue?["averageStar"] as? String
         toilet.star = Double(averageStar!)!
         

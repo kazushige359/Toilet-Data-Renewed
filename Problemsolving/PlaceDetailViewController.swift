@@ -855,9 +855,16 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         userRef.child(toilet.addedBy).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
             
+            if !snapshot.exists(){
+                return
+            }
+
+            
             //        userRef.child(toilet.addedBy).observe(FIRDataEventType.value, with: { snapshot in
             
             if self.firstEditerHelpCountAdded == false{
+                
+               
                 
                 let snapshotValue = snapshot.value as? NSDictionary
                 self.firstPosterNameLabel.text = (snapshotValue?["userName"] as? String!)!
@@ -896,6 +903,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let userRef = FIRDatabase.database().reference().child("Users")
         
         userRef.child(toilet.editedBy).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            if !snapshot.exists(){
+                return
+            }
+
             
             
             //userRef.child(toilet.editedBy).observe(FIRDataEventType.value, with: { snapshot in
@@ -948,6 +960,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         thumbsUpRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
             
+            if !snapshot.exists(){
+                return
+            }
+
+            
             //        thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             self.thumbsUpSet.insert(snapshot.key)
             print("ThumbSetQuery == \(self.thumbsUpSet)")
@@ -987,6 +1004,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         print("liked Query Called")
         let favoriteRef = FIRDatabase.database().reference().child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
         favoriteRef.observeSingleEvent(of:FIRDataEventType.childAdded, with: {(snapshot) in
+            
+            if !snapshot.exists(){
+                return
+            }
+
             //favoriteRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             self.favoriteSet.insert(snapshot.key)
             print("Favorite List insert\(snapshot.key)")
@@ -1012,6 +1034,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
         reviewsRef.child(ridOne).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            if !snapshot.exists(){
+                return
+            }
+
             
             //reviewsRef.child(ridOne).observe(FIRDataEventType.value, with: { snapshot in
             //if self.firebaseReviewOneLoadedOnce == false{
@@ -1050,6 +1077,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             let userRef = FIRDatabase.database().reference().child("Users")
             
             userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+                
+                if !snapshot.exists(){
+                    return
+                }
+
                 
                 
                 //userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
@@ -1136,6 +1168,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             ////reviewsRef.child(ridTwo).observe(FIRDataEventType.value, with: { snapshot in
             //if self.firebaseReviewTwoLoadedOnce == false{
+            
+            if !snapshot.exists(){
+                return
+            }
+
+            
                 let review = Review()
                 let snapshotValue = snapshot.value as? NSDictionary
                 
@@ -1179,7 +1217,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                     
                     //                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
                     //if self.firebaseReviewTwoLoadedOnce == false{
-                        
+                    
+                    if !snapshot.exists(){
+                        return
+                    }
+
                         
                         print("snapshot = \(snapshot)")
                         
@@ -1360,6 +1402,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
         addedTotalHelpedCountRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            
+            if !snapshot.exists(){
+                return
+            }
+
             //addedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentAdded == false{
                 print("FVFVsnapshot = \(snapshot)")
@@ -1373,6 +1420,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let editedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.editedBy).child("totalHelpedCount")
         editedTotalHelpedCountRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            
+            if !snapshot.exists(){
+                return
+            }
+
             
             // editedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentEdited == false{

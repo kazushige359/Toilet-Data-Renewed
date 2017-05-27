@@ -64,17 +64,27 @@ class ReviewTableViewController: UITableViewController {
         userRef.child(currentUserId!).observeSingleEvent(of: .value, with: { snapshot in
         //userRef.child(currentUserId!).observe(.value, with: { snapshot in
             
-            if ( snapshot.value is NSNull ) {
-                print("(User did not found)")
+            
+            if !snapshot.exists(){
                 self.reviewQuery()
-               
-                
             } else {
                 print("User Find")
                 self.thumbsUpQuery()
-
+                
                 self.userAlreadyLogin = true
             }
+
+//            if ( snapshot.value is NSNull ) {
+//                print("(User did not found)")
+//                self.reviewQuery()
+//               
+//                
+//            } else {
+//                print("User Find")
+//                self.thumbsUpQuery()
+//
+//                self.userAlreadyLogin = true
+//            }
         })
         
     }
@@ -549,6 +559,12 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         
         
         toiletReviewsRef.observeSingleEvent(of: .childAdded, with: { snapshot in
+            
+            if !snapshot.exists(){
+                return
+            }
+
+            
 //        toiletReviewsRef.observe(.childAdded, with: { snapshot in
         
             print("review Query Info 333 snap = \(snapshot)")
@@ -561,6 +577,11 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
             let ridKey = snapshot.key
             
             reviewsRef.child(ridKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+                
+                if !snapshot.exists(){
+                    return
+                }
+
 
             //reviewsRef.child(ridKey).observe(FIRDataEventType.value, with: { snapshot in
                 
@@ -606,6 +627,12 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
                 
                 let userRef = FIRDatabase.database().reference().child("Users")
                     userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+                        
+                        
+                        if !snapshot.exists(){
+                            return
+                        }
+
 
 //                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
                     //if self.firebaseLoadedOnce == false
@@ -667,6 +694,11 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         print("thumbsUpQuery( Called")
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
         thumbsUpRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+            
+            if !snapshot.exists(){
+                return
+            }
+
         //thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             self.thumbsUpSet.insert(snapshot.key)
             

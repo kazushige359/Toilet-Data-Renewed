@@ -62,6 +62,11 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     func firebaseQuery(){
         let firebaseRef = FIRDatabase.database().reference().child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
         firebaseRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+            
+            if !snapshot.exists(){
+                return
+            }
+
 
         //firebaseRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             print("First Snap!!")
@@ -72,6 +77,11 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
             
             
             firebaseRef.child("ToiletUserList").child(favkey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+                
+                if !snapshot.exists(){
+                    return
+                }
+
                 
             
             //firebaseRef.child("ToiletUserList").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in

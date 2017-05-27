@@ -62,6 +62,12 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
         let firebaseRef = FIRDatabase.database().reference().child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid)
         firebaseRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
             
+            
+            if !snapshot.exists(){
+                return
+            }
+
+            
         //firebaseRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             print("First Snap!!")
             print(snapshot)
@@ -72,6 +78,11 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
             
             
             firebaseRef.child("ToiletUserList").child(favkey).observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
+                
+                if !snapshot.exists(){
+                    return
+                }
+
                 
             //firebaseRef.child("ToiletUserList").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
                 print(snapshot)
