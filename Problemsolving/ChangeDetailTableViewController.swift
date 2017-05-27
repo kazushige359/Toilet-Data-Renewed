@@ -476,13 +476,15 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 //self.toiletDataUpload(Address: "")
                 
                 //Test 100
-                var number = 1
-                while number < 100 {
-                    number = number + 1
-                    self.toiletNewId = String(number)
-                    self.toiletDataUpload(Address: "")
-                    
-                }
+//                var number = 1
+//                while number < 100 {
+//                    number = number + 1
+//                    self.toiletNewId = String(number)
+//                    self.toiletDataUpload(Address: "")
+//                    
+//                }
+                
+                 self.toiletDataUpload(Address: "")
                 
                 //Test 100
                 
@@ -495,20 +497,23 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 //addressString = "\(pm!.thoroughfare)\(pm!.postalCode)\(pm!.locality)\(pm!.country)"
                 addressString =  (pm?.locality)! + "/" + (pm?.thoroughfare)! + "/" + (pm?.name)!
                 
+                //This gives me an error
+                
                 //addressString = String(describing: pm?.locality)
                 
                 
                 
                 //Test 100
-                var number = 1
-                while number < 100 {
-                    number = number + 1
-                    self.toiletNewId = String(number)
-                    self.toiletDataUpload(Address: addressString)
-                
-                }
+//                var number = 1
+//                while number < 100 {
+//                    number = number + 1
+//                    self.toiletNewId = String(number)
+//                    self.toiletDataUpload(Address: addressString)
+//                
+//                }
                 
                 //Test 100
+                self.toiletDataUpload(Address: addressString)
 
                 
                 
@@ -531,14 +536,16 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 //self.toiletDataUpload(Address: "")
                 
                 //Test 100
-                var number = 1
-                while number < 100 {
-                    number = number + 1
-                    self.toiletNewId = String(number)
-                    self.toiletDataUpload(Address: "")
-                    
-                }
+//                var number = 1
+//                while number < 100 {
+//                    number = number + 1
+//                    self.toiletNewId = String(number)
+//                    self.toiletDataUpload(Address: "")
+//                    
+//                }
                 
+                self.toiletDataUpload(Address: "")
+
                 //Test 100
                 
                 

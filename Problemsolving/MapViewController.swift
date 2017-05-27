@@ -149,12 +149,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var geoFireRef: FIRDatabaseReference!
     let queryannotations = MKPointAnnotation()
     var toilets: [Toilet] = []
-    var distance300: [Toilet] = []
-    var distance500: [Toilet] = []
-    var distance1000: [Toilet] = []
-    var distance3000: [Toilet] = []
-    var distance5000: [Toilet] = []
-    var distance10000: [Toilet] = []
+    var distance100: [String] = []
+    var distance200: [String] = []
+    var distance400: [String] = []
+    var distance600: [String] = []
+    var distance800: [String] = []
+    var distance1000: [String] = []
+    var distance3000: [String] = []
+    var distance5000: [String] = []
+    var distance10000: [String] = []
+    var distance20000: [String] = []
+    
     
     let toilet = Toilet()
     var search = Search()
@@ -816,42 +821,79 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         print("Radius = \(self.filter.distanceFilter)")
         
-        let circleQuery = geoFire.query(at: center, withRadius: self.filter.distanceFilter)
+        let circleQuery = geoFire.query(at: center, withRadius: 20.0)
+        
+//        let circleQuery = geoFire.query(at: center, withRadius: self.filter.distanceFilter)
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
             
             
             let date = NSDate()
             
         
-            print("555'\(String(describing: key))' entered  '\(String(describing: location)) and \(date.timeIntervalSince1970)'")
+           
             
             let distance = location?.distance(from: center)
             let distanceDouble = Double(distance!)
             
             print("distanceDouble = \(distanceDouble)")
             
-            
-            
-            if distanceDouble <= 300{
+            if distanceDouble <= 100{
                 
-                self.distance300.append(key)
-                print("<300")
+                self.distance100.append(key!)
+                print("555'\(String(describing: key))' entered <100 and @@@@@\(date.timeIntervalSince1970)'")
+                //print("<300")
+                
+            } else if distanceDouble <= 200{
+                
+                self.distance200.append(key!)
+               print("555'\(String(describing: key))' entered <200 and @@@@@\(date.timeIntervalSince1970)'")
+                //print("<300")
             
-            } else if distanceDouble <= 500{
-                self.distance500.append(key)
-                print("<500")
+            } else if distanceDouble <= 400{
+                
+                self.distance400.append(key!)
+                print("555'\(String(describing: key))' entered <400  and @@@@@\(date.timeIntervalSince1970)'")
+                //print("<300")
+                
+            } else if distanceDouble <= 600{
+                self.distance600.append(key!)
+                print("555'\(String(describing: key))' entered <600  and @@@@@\(date.timeIntervalSince1970)'")
+                
+                //print("<500")
             
+            } else if distanceDouble <= 800{
+                self.distance800.append(key!)
+                print("555'\(String(describing: key))' entered <800  and @@@@@\(date.timeIntervalSince1970)'")
+                
+                //print("<500")
+                
             } else if distanceDouble <= 1000{
-                self.distance1000.append(key)
-                print("<1000")
+                self.distance1000.append(key!)
+                print("555'\(String(describing: key))' entered <1000 and @@@@@\(date.timeIntervalSince1970)'")
+                
+                //print("<1000")
             
             } else if distanceDouble <= 3000{
-                self.distance3000.append(key)
-                print("<3000")
+                self.distance3000.append(key!)
+                print("555'\(String(describing: key))' entered <3000 and @@@@@\(date.timeIntervalSince1970)'")
+                
+                //print("<3000")
                 
             } else if distanceDouble <= 5000{
-                self.distance5000.append(key)
-                print("<5000")
+                self.distance5000.append(key!)
+                print("555'\(String(describing: key))' entered <5000 and @@@@@\(date.timeIntervalSince1970)'")
+                
+                //print("<5000")
+            } else if distanceDouble <= 10000{
+                self.distance5000.append(key!)
+                print("555'\(String(describing: key))' entered <10000 and @@@@@\(date.timeIntervalSince1970)'")
+                
+                //print("<5000")
+            }else if distanceDouble <= 20000{
+                self.distance5000.append(key!)
+                print("555'\(String(describing: key))' entered <20000 and @@@@@\(date.timeIntervalSince1970)'")
+                
+                //print("<5000")
             }
 
 
