@@ -718,12 +718,13 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
 
         }
         
-        if segue.identifier == "editTabletoDetailSegue"{
-            let nextV = segue.destination as! DetailViewController
-            
-            nextV.toilet = toilet
-            print("toilet.key = \(toilet.key)")
-        }
+//        if segue.identifier == "editTabletoDetailSegue"{
+//            let nextV = segue.destination as! DetailViewController
+//            
+//            nextV.toilet = toilet
+//            print("toilet.key = \(toilet.key)")
+//        }
+        //Not using detailViewCountroller anymore May 27
 
     }
     

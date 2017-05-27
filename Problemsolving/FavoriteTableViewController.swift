@@ -60,8 +60,10 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     
     ///aaaa
     func firebaseQuery(){
-        let firebaseRef = FIRDatabase.database().reference()
-        firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid).observe(FIRDataEventType.childAdded, with: {(snapshot) in
+        let firebaseRef = FIRDatabase.database().reference().child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
+        firebaseRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+
+        //firebaseRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             print("First Snap!!")
             print(snapshot)
             print(snapshot.value!)
@@ -69,7 +71,10 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
             let favkey = snapshot.key
             
             
-            firebaseRef.child("ToiletUserList").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+            firebaseRef.child("ToiletUserList").child(favkey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+                
+            
+            //firebaseRef.child("ToiletUserList").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
                 print(snapshot)
                 print(snapshot.key)
                 
@@ -109,100 +114,6 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
                 
                 
                 toilet.available = (snapshotValue?["available"] as? Bool)!
-//                toilet.japanesetoilet = (snapshotValue?["japanesetoilet"] as? Bool)!
-//                toilet.westerntoilet = (snapshotValue?["westerntoilet"] as? Bool)!
-//                toilet.onlyFemale = (snapshotValue?["onlyFemale"] as? Bool)!
-//                toilet.unisex = (snapshotValue?["unisex"] as? Bool)!
-//                
-//                
-//                
-//                
-//                
-//                toilet.washlet = (snapshotValue?["washlet"] as? Bool)!
-//                toilet.warmSeat = (snapshotValue?["warmSeat"] as? Bool)!
-//                toilet.autoOpen = (snapshotValue?["autoOpen"] as? Bool)!
-//                toilet.noVirus = (snapshotValue?["noVirus"] as? Bool)!
-//                toilet.paperForBenki = (snapshotValue?["paperForBenki"] as? Bool)!
-//                toilet.cleanerForBenki = (snapshotValue?["cleanerForBenki"] as? Bool)!
-//                toilet.autoToiletWash = (snapshotValue?["nonTouchWash"] as? Bool)!
-//                
-//                
-//                
-//                toilet.sensorHandWash = (snapshotValue?["sensorHandWash"] as? Bool)!
-//                toilet.handSoap = (snapshotValue?["handSoap"] as? Bool)!
-//                toilet.autoHandSoap = (snapshotValue?["nonTouchHandSoap"] as? Bool)!
-//                toilet.paperTowel = (snapshotValue?["paperTowel"] as? Bool)!
-//                toilet.handDrier = (snapshotValue?["handDrier"] as? Bool)!
-//                
-//                
-//                
-//                
-//                toilet.otohime = (snapshotValue?["otohime"] as? Bool)!
-//                toilet.napkinSelling = (snapshotValue?["napkinSelling"] as? Bool)!
-//                toilet.makeuproom = (snapshotValue?["makeuproom"] as? Bool)!
-//                toilet.clothes = (snapshotValue?["clothes"] as? Bool)!
-//                toilet.baggageSpace = (snapshotValue?["baggageSpace"] as? Bool)!
-//                
-//                
-//                toilet.wheelchair = (snapshotValue?["wheelchair"] as? Bool)!
-//                toilet.wheelchairAccess = (snapshotValue?["wheelchairAccess"] as? Bool)!
-//                toilet.autoDoor = (snapshotValue?["autoDoor"] as? Bool)!
-//                toilet.callHelp = (snapshotValue?["callHelp"] as? Bool)!
-//                toilet.ostomate = (snapshotValue?["ostomate"] as? Bool)!
-//                toilet.english = (snapshotValue?["english"] as? Bool)!
-//                toilet.braille = (snapshotValue?["braille"] as? Bool)!
-//                toilet.voiceGuide = (snapshotValue?["voiceGuide"] as? Bool)!
-//                
-//                
-//                
-//                
-//                
-//                toilet.fancy = (snapshotValue?["fancy"] as? Bool)!
-//                toilet.smell = (snapshotValue?["smell"] as? Bool)!
-//                toilet.conforatableWide = (snapshotValue?["confortable"] as? Bool)!
-//                toilet.noNeedAsk = (snapshotValue?["noNeedAsk"] as? Bool)!
-//                toilet.parking = (snapshotValue?["parking"] as? Bool)!
-//                toilet.airCondition = (snapshotValue?["airCondition"] as? Bool)!
-//                toilet.wifi = (snapshotValue?["wifi"] as? Bool)!
-//                
-//                toilet.milkspace = (snapshotValue?["milkspace"] as? Bool)!
-//                toilet.babyroomOnlyFemale = (snapshotValue?["babyRoomOnlyFemale"] as? Bool)!
-//                toilet.babyroomManCanEnter = (snapshotValue?["babyRoomMaleEnter"] as? Bool)!
-//                toilet.babyPersonalSpace = (snapshotValue?["babyRoomPersonalSpace"] as? Bool)!
-//                toilet.babyPersonalSpaceWithLock = (snapshotValue?["babyRoomPersonalSpaceWithLock"] as? Bool)!
-//                toilet.babyRoomWideSpace = (snapshotValue?["babyRoomWideSpace"] as? Bool)!
-//                
-//                toilet.babyCarRental = (snapshotValue?["babyCarRental"] as? Bool)!
-//                toilet.babyCarAccess = (snapshotValue?["babyCarAccess"] as? Bool)!
-//                toilet.omutu = (snapshotValue?["omutu"] as? Bool)!
-//                toilet.hipWashingStuff = (snapshotValue?["hipCleaningStuff"] as? Bool)!
-//                toilet.babyTrashCan = (snapshotValue?["omutuTrashCan"] as? Bool)!
-//                toilet.omutuSelling = (snapshotValue?["omutuSelling"] as? Bool)!
-//                
-//                
-//                
-//                
-//                
-//                
-//                toilet.babyRoomSink = (snapshotValue?["babySink"] as? Bool)!
-//                toilet.babyWashStand = (snapshotValue?["babyWashstand"] as? Bool)!
-//                toilet.babyHotWater = (snapshotValue?["babyHotwater"] as? Bool)!
-//                toilet.babyMicroWave = (snapshotValue?["babyMicrowave"] as? Bool)!
-//                toilet.babyWaterSelling = (snapshotValue?["babyWaterSelling"] as? Bool)!
-//                toilet.babyFoddSelling = (snapshotValue?["babyFoodSelling"] as? Bool)!
-//                toilet.babyEatingSpace = (snapshotValue?["babyEatingSpace"] as? Bool)!
-//                
-//                
-//                toilet.babyChair = (snapshotValue?["babyChair"] as? Bool)!
-//                toilet.babySoffa = (snapshotValue?["babySoffa"] as? Bool)!
-//                toilet.babyKidsToilet = (snapshotValue?["kidsToilet"] as? Bool)!
-//                toilet.babyKidsSpace = (snapshotValue?["kidsSpace"] as? Bool)!
-//                toilet.babyHeightMeasure = (snapshotValue?["babyHeight"] as? Bool)!
-//                toilet.babyWeightMeasure = (snapshotValue?["babyWeight"] as? Bool)!
-//                toilet.babyToy = (snapshotValue?["babyToy"] as? Bool)!
-//                toilet.babyFancy = (snapshotValue?["babyFancy"] as? Bool)!
-//                toilet.babySmellGood = (snapshotValue?["babySmellGood"] as? Bool)!
-//                
                 
                 
                 

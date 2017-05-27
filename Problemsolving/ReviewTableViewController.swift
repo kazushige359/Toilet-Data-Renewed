@@ -22,7 +22,7 @@ class ReviewTableViewController: UITableViewController {
     var review = Review()
     var reviewsSet = Set<String>()
     var thumbsUpSet = Set<String>()
-    var firebaseLoaded = false
+    //var firebaseLoaded = false
     
     let firebaseRef = FIRDatabase.database().reference()
     let currentUserId = FIRAuth.auth()?.currentUser?.uid
@@ -31,7 +31,7 @@ class ReviewTableViewController: UITableViewController {
     let imageColored = UIImage(named:"like_colored_25")
     let imageBlack = UIImage(named:"thumbsUp_black_image_25")
     
-    var firebaseOnceLoaded = false
+    //var firebaseOnceLoaded = false
     var postRid = ""
     //var reviewReportOnceUploaded = false
     //var userReportOnceUploaded = false
@@ -61,7 +61,8 @@ class ReviewTableViewController: UITableViewController {
         
         let userRef = firebaseRef.child("Users")
         
-        userRef.child(currentUserId!).observe(.value, with: { snapshot in
+        userRef.child(currentUserId!).observeSingleEvent(of: .value, with: { snapshot in
+        //userRef.child(currentUserId!).observe(.value, with: { snapshot in
             
             if ( snapshot.value is NSNull ) {
                 print("(User did not found)")
@@ -170,7 +171,7 @@ class ReviewTableViewController: UITableViewController {
         
         let buttonRow = sender.tag
         print("ButtonRow = \(buttonRow)")
-        self.firebaseLoaded = true
+        //self.firebaseLoaded = true
         
         
         
@@ -416,7 +417,11 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         let uid = FIRAuth.auth()!.currentUser!.uid
         userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
         
-        userWarningListCount()
+       // userWarningListCount()
+        
+        showYourReviewPostedMessage()
+        
+        
         
         
     }
@@ -425,17 +430,17 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
     
    
     
-        func userWarningListCount(){
-            let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
-    
-            userWarningsRef.child(suspiciosUserId).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
-    
-                    let countNumber = snapshot.childrenCount
-                    self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
-    
-                
-            })
-        }
+//        func userWarningListCount(){
+//            let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+//    
+//            userWarningsRef.child(suspiciosUserId).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+//    
+//                    let countNumber = snapshot.childrenCount
+//                    self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
+//    
+//                
+//            })
+//        }
 
     
 //    func userWarningListCount(){
@@ -455,14 +460,14 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
 //        })
 //    }
     
-    func userWarningCountUploadToDatabase(countNumber: Int){
-        let userWarningCountRef = FIRDatabase.database().reference().child("UserWarningCount")
-        
-        userWarningCountRef.child(suspiciosUserId).setValue(countNumber)
-        
-        
-        
-    }
+//    func userWarningCountUploadToDatabase(countNumber: Int){
+//        let userWarningCountRef = FIRDatabase.database().reference().child("UserWarningCount")
+//        
+//        userWarningCountRef.child(suspiciosUserId).setValue(countNumber)
+//        
+//        
+//        
+//    }
 
     
     
@@ -532,14 +537,22 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
     
     func reviewQuery(){
         
-        print("review Query TV Called")
+        print("review Query TV 333 Called")
         
        // let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
-        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toilet.key)
+        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReview").child(toilet.key)
+        
+        
         
         let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
-        toiletReviewsRef.observe(.childAdded, with: { snapshot in
+        
+        
+        toiletReviewsRef.observeSingleEvent(of: .childAdded, with: { snapshot in
+//        toiletReviewsRef.observe(.childAdded, with: { snapshot in
+        
+            print("review Query Info 333 snap = \(snapshot)")
+
             
             //get rid key 
             
@@ -547,17 +560,19 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
             
             let ridKey = snapshot.key
             
-            reviewsRef.child(ridKey).observe(FIRDataEventType.value, with: { snapshot in
+            reviewsRef.child(ridKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+
+            //reviewsRef.child(ridKey).observe(FIRDataEventType.value, with: { snapshot in
                 
-                if self.firebaseLoaded == false{
+                //if self.firebaseLoaded == false{
                
         
 //        reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
             //if self.firebaseLoadedOnce == false
             //{
-                print("snapshot = \(snapshot)")
-                print("snapshot.key = \(snapshot.key)")
-                print("snapshot.value = \(String(describing: snapshot.value))")
+                print("snapshot TV 333= \(snapshot)")
+                print("snapshot.key TV 333 = \(snapshot.key)")
+                print("snapshot.value TV 333 = \(String(describing: snapshot.value))")
                 let review = Review()
                 
                 let snapshotValue = snapshot.value as? NSDictionary
@@ -590,10 +605,12 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
                 
                 
                 let userRef = FIRDatabase.database().reference().child("Users")
-                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
+                    userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+
+//                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
                     //if self.firebaseLoadedOnce == false
                     //{
-                     if self.firebaseLoaded == false{
+                    // if self.firebaseLoaded == false{
                         print("userRef.child(uid!).observe(.childAdded, with: { snapshot in")
                         print("snapshot = \(snapshot)")
                         
@@ -629,7 +646,7 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
                        if self.thumbsUpSet.contains(review.rid){
                           print("thummbUPSet contails\(review.rid)")
                           review.userLiked = true
-                       }
+                      // }
                     }//Firebase Loaded Once == false
                     }
         
@@ -637,7 +654,7 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
                 }//Firebase Loaded Once == false
                 
                 
-                }
+               // }
             )
             }
             
@@ -649,9 +666,9 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         
         print("thumbsUpQuery( Called")
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
-        thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+        thumbsUpRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+        //thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             self.thumbsUpSet.insert(snapshot.key)
-            
             
         })
         

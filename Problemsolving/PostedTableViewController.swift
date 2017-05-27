@@ -82,7 +82,11 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         let reviewListRef = firebaseRef.child("ReviewList").child(FIRAuth.auth()!.currentUser!.uid)
         
-        reviewListRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+        
+        reviewListRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            
+        //reviewListRef.observe(FIRDataEventType.value, with: { snapshot in
             print(snapshot)
             
             
@@ -111,7 +115,11 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         let reviewRef = firebaseRef.child("ReviewInfo").child(ridKey)
         
-        reviewRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+        reviewRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        
+         //reviewRef.queryOrderedByKey().observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        
+        //reviewRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
             
              if self.firstViewLoaded == false {
             
@@ -137,7 +145,9 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             
             
             let toiletRef = self.firebaseRef.child("ToiletUserList").child(tidKey)
-            toiletRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+                toiletRef.observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
+
+//            toiletRef.queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
                 
                 let snapshotValue = snapshot.value as? NSDictionary
                 

@@ -822,11 +822,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             
-            toiletsRef.child(key!).observe(FIRDataEventType.value, with: { snapshot in
-
-            self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+        
+            toiletsRef.child(key!).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                
+                self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
-        })
+            
+//            toiletsRef.child(key!).observe(FIRDataEventType.value, with: { snapshot in
+//
+//            self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+//            })
+            //Commented for single event listener May 27
+            
+        }
+        
+        
+        )
         circleQuery?.observeReady({
             print("All initial data has been loaded and events have been fired!")
             self.allInitialDataLoaded = true

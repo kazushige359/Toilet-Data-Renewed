@@ -107,7 +107,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     var reviewTwoUserTotalLikeOriginalCount = 0
     //var reviewTwoUserTotalLikeUpdatedCount = 0
-
+    
     
     
     
@@ -155,7 +155,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     var newThumbsDownSet = Set<String>()
     var favoriteSet = Set<String>()
     var likeChangedList = [String: Bool]()
-    //added April 22 
+    //added April 22
     
     
     var toilet = Toilet()
@@ -165,19 +165,19 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     var favoriteAdded = false
     var youwentAdded = false
     var youwentEdited = false
-    var firebaseReviewOneLoadedOnce = false
-    var firebaseReviewTwoLoadedOnce = false
+    //    var firebaseReviewOneLoadedOnce = false
+    //    var firebaseReviewTwoLoadedOnce = false
     var favoriteButtonTapped = false
     var firstEditerHelpCountAdded = false
     var lastEditerHelpCountAdded = false
     var reviewOneLikeAlreadyTapped = false
     var reviewTwoLikeAlreadyTapped = false
     var userAlreadyLogin = false
-    var firebaseOnceLoaded = false
+    // var firebaseOnceLoaded = false
     var postRid = ""
     var suspiciosUserId = ""
-//    var reviewReportOnceUploaded = false
-//    var userReportOnceUploaded = false
+    //    var reviewReportOnceUploaded = false
+    //    var userReportOnceUploaded = false
     var reviewOnePoster = ""
     var reviewTwoPoster = ""
     var firstPosterFavoriteNumber = 0
@@ -244,7 +244,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let userRef = firebaseRef.child("Users")
         
-        userRef.child(currentUserId!).observe(.value, with: { snapshot in
+        
+        userRef.child(currentUserId!).observeSingleEvent(of: .value, with: { snapshot in
+            
+            
+            //userRef.child(currentUserId!).observe(.value, with: { snapshot in
             
             if ( snapshot.value is NSNull ) {
                 print("(User did not found)")
@@ -300,7 +304,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
         
-        toiletsRef.child(queryKey).observe(FIRDataEventType.value, with: { snapshot in
+        toiletsRef.child(queryKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            
+            
+            //toiletsRef.child(queryKey).observe(FIRDataEventType.value, with: { snapshot in
+            //For Single Event Listener
             
             self.toilet.key = queryKey
             let snapshotValue = snapshot.value as? NSDictionary
@@ -465,7 +474,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
             
             
-                        
+            
             
             if self.toilet.japanesetoilet{
                 self.booleans.append("japanese_toilet".localized)
@@ -767,7 +776,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             typeString = "restaurant".localized
         } else if toilet.type == 4{
             typeString = "shopping_center".localized
-
+            
         } else if toilet.type == 5{
             typeString = "tourist_places".localized
         } else if toilet.type == 6{
@@ -778,7 +787,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         } else if toilet.type == 8{
             typeString = "home_toilet".localized
         }
-
+        
         
         typeAndDistanceLabel.text = typeString + "/" + distanceText
         
@@ -843,7 +852,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     func firstPosterQuery(){
         let userRef = FIRDatabase.database().reference().child("Users")
-        userRef.child(toilet.addedBy).observe(FIRDataEventType.value, with: { snapshot in
+        
+        userRef.child(toilet.addedBy).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            //        userRef.child(toilet.addedBy).observe(FIRDataEventType.value, with: { snapshot in
             
             if self.firstEditerHelpCountAdded == false{
                 
@@ -882,7 +894,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     func lastEditerQuery(){
         let userRef = FIRDatabase.database().reference().child("Users")
-        userRef.child(toilet.editedBy).observe(FIRDataEventType.value, with: { snapshot in
+        
+        userRef.child(toilet.editedBy).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            
+            //userRef.child(toilet.editedBy).observe(FIRDataEventType.value, with: { snapshot in
             
             if self.lastEditerHelpCountAdded == false{
                 
@@ -929,7 +945,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         print("thumbsUpQuery( Called")
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
-        thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+        
+        thumbsUpRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+            
+            //        thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             self.thumbsUpSet.insert(snapshot.key)
             print("ThumbSetQuery == \(self.thumbsUpSet)")
             
@@ -945,29 +964,30 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.reviewTwoQuery(ridTwo: self.toilet.reviewTwo)
         }
         
-
+        
         
     }
     
-//    func thumbsUpUpload(){
-//        //delete all of them 
-//        
-//        
-//        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
-//        for item in thumbsUpSet{
-//            
-//            thumbsUpRef.child(item).setValue(true)
-//           // thumbsUpRef.updateChildValues()
-//            
-//        }
-//    }
+    //    func thumbsUpUpload(){
+    //        //delete all of them
+    //
+    //
+    //        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
+    //        for item in thumbsUpSet{
+    //
+    //            thumbsUpRef.child(item).setValue(true)
+    //           // thumbsUpRef.updateChildValues()
+    //
+    //        }
+    //    }
     
     
     func favoriteListQuery(){
         
         print("liked Query Called")
         let favoriteRef = FIRDatabase.database().reference().child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
-        favoriteRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
+        favoriteRef.observeSingleEvent(of:FIRDataEventType.childAdded, with: {(snapshot) in
+            //favoriteRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
             self.favoriteSet.insert(snapshot.key)
             print("Favorite List insert\(snapshot.key)")
             
@@ -990,105 +1010,117 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
-        reviewsRef.child(ridOne).observe(FIRDataEventType.value, with: { snapshot in
-            if self.firebaseReviewOneLoadedOnce == false{
-                let review = Review()
+        
+        reviewsRef.child(ridOne).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            //reviewsRef.child(ridOne).observe(FIRDataEventType.value, with: { snapshot in
+            //if self.firebaseReviewOneLoadedOnce == false{
+            let review = Review()
+            let snapshotValue = snapshot.value as? NSDictionary
+            
+            print("Snapshot 88888 = \(snapshot)")
+            
+            let star = snapshotValue?["star"] as? String
+            
+            review.star = Double(star!)!
+            let feedback = snapshotValue?["feedback"] as? String
+            review.feedback = feedback!
+            
+            let time = snapshotValue?["time"] as? String
+            review.time = time!
+            print("review.time = \(review.time)")
+            
+            let waitingtime = snapshotValue?["waitingtime"] as? String
+            review.waitingtime = waitingtime! + "分待ちました"
+            
+            let timeNumbers = snapshotValue?["timeNumbers"] as? Double
+            review.timeNumbers = timeNumbers!
+            
+            let likedCount = snapshotValue?["likedCount"] as? Int
+            review.likedCount = likedCount!
+            
+            let uid = snapshotValue?["uid"] as? String
+            review.uid = uid!
+            
+            self.reviewOnePoster = review.uid
+            
+            review.rid = snapshot.key
+            
+            
+            let userRef = FIRDatabase.database().reference().child("Users")
+            
+            userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+                
+                
+                //userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
+                //Comment for deleting queryOrderByKey() and single event
+                
+                //if self.firebaseReviewOneLoadedOnce == false{
+                print("snapshot = \(snapshot)")
+                
                 let snapshotValue = snapshot.value as? NSDictionary
                 
-                print("Snapshot 88888 = \(snapshot)")
+                let userName = snapshotValue?["userName"] as? String
+                review.userName = userName!
+                print("review.userName = \(review.userName)")
                 
-                let star = snapshotValue?["star"] as? String
+                let userPhoto = snapshotValue?["userPhoto"] as? String
+                review.userPhoto = userPhoto!
+                print("review.userPhoto = \(review.userPhoto)")
                 
-                review.star = Double(star!)!
-                let feedback = snapshotValue?["feedback"] as? String
-                review.feedback = feedback!
+                let totalFavoriteCount = snapshotValue?["totalFavoriteCount"] as? Int
+                review.totalFavoriteCount = totalFavoriteCount!
                 
-                let time = snapshotValue?["time"] as? String
-                review.time = time!
-                print("review.time = \(review.time)")
+                let totalHelpedCount = snapshotValue?["totalHelpedCount"] as? Int
+                review.totalHelpedCount = totalHelpedCount!
                 
-                let waitingtime = snapshotValue?["waitingtime"] as? String
-                review.waitingtime = waitingtime! + "分待ちました"
+                let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
+                review.totalLikedCount = totalLikedCount!
                 
-                let timeNumbers = snapshotValue?["timeNumbers"] as? Double
-                review.timeNumbers = timeNumbers!
-                
-                let likedCount = snapshotValue?["likedCount"] as? Int
-                review.likedCount = likedCount!
-                
-                let uid = snapshotValue?["uid"] as? String
-                review.uid = uid!
-                
-                self.reviewOnePoster = review.uid
-                
-                review.rid = snapshot.key
+                self.reviewOneThumbOriginalCount = review.likedCount
+                self.reviewOneUserTotalLikeOriginalCount = review.totalLikedCount
+                //let newThumbCount = review.likedCount + 1
+                //                        self.reviewOneThumbUpdatedCount = newThumbCount
+                //                        let newThumbTotalCount = review.totalLikedCount + 1
+                //                        self.reviewOneUSerTotalikeUpdatedCount = newThumbTotalCount
                 
                 
-                let userRef = FIRDatabase.database().reference().child("Users")
-                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
-                    if self.firebaseReviewOneLoadedOnce == false{
-                        print("snapshot = \(snapshot)")
-                        
-                        let snapshotValue = snapshot.value as? NSDictionary
-                        
-                        let userName = snapshotValue?["userName"] as? String
-                        review.userName = userName!
-                        print("review.userName = \(review.userName)")
-                        
-                        let userPhoto = snapshotValue?["userPhoto"] as? String
-                        review.userPhoto = userPhoto!
-                        print("review.userPhoto = \(review.userPhoto)")
-                        
-                        let totalFavoriteCount = snapshotValue?["totalFavoriteCount"] as? Int
-                        review.totalFavoriteCount = totalFavoriteCount!
-                        
-                        let totalHelpedCount = snapshotValue?["totalHelpedCount"] as? Int
-                        review.totalHelpedCount = totalHelpedCount!
-                        
-                        let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
-                        review.totalLikedCount = totalLikedCount!
-                        
-                        self.reviewOneThumbOriginalCount = review.likedCount
-                        self.reviewOneUserTotalLikeOriginalCount = review.totalLikedCount
-                        //let newThumbCount = review.likedCount + 1
-                        //                        self.reviewOneThumbUpdatedCount = newThumbCount
-//                        let newThumbTotalCount = review.totalLikedCount + 1
-//                        self.reviewOneUSerTotalikeUpdatedCount = newThumbTotalCount
-                        
-                        
-                        
-                        self.reviewOneUserImage.sd_setImage(with: URL(string: review.userPhoto))
-                        self.reviewOneUserNameLabel.text = review.userName
-                        
-                        self.reviewOneUserLikeCount.text = String(review.totalLikedCount)
-                        self.reviewOneUserFavoriteCount.text = String(review.totalFavoriteCount)
-                        self.reviewOneUserHelpCount.text = String(review.totalHelpedCount)
-                        
-                        self.reviewOneFeedbackTextView.text = review.feedback
-                        self.reviewOneThumbUpCountLabel.text = "いいね" + String(review.likedCount) + "件"
-                        self.reviewOneDateStringLabel.text = review.time
-                        self.reviewOneWaitingMinuteLabel.text = review.waitingtime
-                        
-                        self.firebaseReviewOneLoadedOnce = true
-                        
-                        if self.thumbsUpSet.contains(review.rid){
-                            self.reviewOneThumbUpButtonOutlet.setImage(self.imageColored, for: .normal)
-                            self.reviewOneLikeAlreadyTapped = true
-                            
-//                            let newReducedCount = review.likedCount - 1
-//                            self.reviewOneThumbUpdatedCount = newReducedCount
-//                            
-//                            let newReducedTotalCount = review.totalLikedCount - 1
-//                            self.reviewOneUSerTotalikeUpdatedCount = newReducedTotalCount
-                            
-                            
-//                            self.reviewOneUserLikeCount.text = String(self.reviewOneUSerTotalikeUpdatedCount)
-//                            self.reviewOneThumbUpCountLabel.text = "いいね" + String(self.reviewOneThumbUpdatedCount) + "件"
-                            
-                        }
-                        
-                    }})}
-        })
+                
+                self.reviewOneUserImage.sd_setImage(with: URL(string: review.userPhoto))
+                self.reviewOneUserNameLabel.text = review.userName
+                
+                self.reviewOneUserLikeCount.text = String(review.totalLikedCount)
+                self.reviewOneUserFavoriteCount.text = String(review.totalFavoriteCount)
+                self.reviewOneUserHelpCount.text = String(review.totalHelpedCount)
+                
+                self.reviewOneFeedbackTextView.text = review.feedback
+                self.reviewOneThumbUpCountLabel.text = "いいね" + String(review.likedCount) + "件"
+                self.reviewOneDateStringLabel.text = review.time
+                self.reviewOneWaitingMinuteLabel.text = review.waitingtime
+                
+                //self.firebaseReviewOneLoadedOnce = true
+                
+                if self.thumbsUpSet.contains(review.rid){
+                    self.reviewOneThumbUpButtonOutlet.setImage(self.imageColored, for: .normal)
+                    self.reviewOneLikeAlreadyTapped = true
+                    
+                    //                            let newReducedCount = review.likedCount - 1
+                    //                            self.reviewOneThumbUpdatedCount = newReducedCount
+                    //
+                    //                            let newReducedTotalCount = review.totalLikedCount - 1
+                    //                            self.reviewOneUSerTotalikeUpdatedCount = newReducedTotalCount
+                    
+                    
+                    //                            self.reviewOneUserLikeCount.text = String(self.reviewOneUSerTotalikeUpdatedCount)
+                    //                            self.reviewOneThumbUpCountLabel.text = "いいね" + String(self.reviewOneThumbUpdatedCount) + "件"
+                    
+                }
+                
+            }
+                //}
+            )}
+            // }
+        )
     }
     
     
@@ -1099,8 +1131,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
-        reviewsRef.child(ridTwo).observe(FIRDataEventType.value, with: { snapshot in
-            if self.firebaseReviewTwoLoadedOnce == false{
+        
+        reviewsRef.child(ridTwo).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            ////reviewsRef.child(ridTwo).observe(FIRDataEventType.value, with: { snapshot in
+            //if self.firebaseReviewTwoLoadedOnce == false{
                 let review = Review()
                 let snapshotValue = snapshot.value as? NSDictionary
                 
@@ -1130,18 +1165,20 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 review.rid = snapshot.key
                 
-//                if self.thumbsUpSet.contains(review.rid){
-//                    
-//                    print("self.likedSet.contains(review.rid)")
-//                    self.reviewTwoThumbUpButtonOutlet.setImage(self.imageColored, for: .normal)
-//                    self.reviewTwoLikeAlreadyTapped = true
-//                    review.userLiked = true
-//                }
+                //                if self.thumbsUpSet.contains(review.rid){
+                //
+                //                    print("self.likedSet.contains(review.rid)")
+                //                    self.reviewTwoThumbUpButtonOutlet.setImage(self.imageColored, for: .normal)
+                //                    self.reviewTwoLikeAlreadyTapped = true
+                //                    review.userLiked = true
+                //                }
                 
                 
                 let userRef = FIRDatabase.database().reference().child("Users")
-                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
-                    if self.firebaseReviewTwoLoadedOnce == false{
+                userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+                    
+                    //                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
+                    //if self.firebaseReviewTwoLoadedOnce == false{
                         
                         
                         print("snapshot = \(snapshot)")
@@ -1165,23 +1202,23 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                         let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
                         review.totalLikedCount = totalLikedCount!
                         
-//                        self.reviewOneLike = "いいね" + String(review.likedCount) + "件"
-//                        let newLikedCount = review.likedCount + 1
-//                        self.reviewOneUserLikeUpdatedCount = "いいね" + String(newLikedCount) + "件"
+                        //                        self.reviewOneLike = "いいね" + String(review.likedCount) + "件"
+                        //                        let newLikedCount = review.likedCount + 1
+                        //                        self.reviewOneUserLikeUpdatedCount = "いいね" + String(newLikedCount) + "件"
                         
                         self.reviewTwoThumbOriginalCount = review.likedCount
                         //let newThumbCount = review.likedCount + 1
-                       // self.reviewTwoThumbUpdatedCount = newThumbCount
+                        // self.reviewTwoThumbUpdatedCount = newThumbCount
                         self.reviewTwoUserTotalLikeOriginalCount = review.totalLikedCount
-                       // let newThumbTotalCount = review.totalLikedCount + 1
+                        // let newThumbTotalCount = review.totalLikedCount + 1
                         //self.reviewTwoUserTotalLikeUpdatedCount = newThumbTotalCount
                         
-//                        var reviewTwoThumbOriginalCount = ""
-//                        var reviewTwoThumbUpdatedCount = ""
-//                        var reviewTwoUserTotalLikeOriginalCount = ""
-//                        var reviewTwoUserTotalLikeUpdatedCount = ""
-
-//                        
+                        //                        var reviewTwoThumbOriginalCount = ""
+                        //                        var reviewTwoThumbUpdatedCount = ""
+                        //                        var reviewTwoUserTotalLikeOriginalCount = ""
+                        //                        var reviewTwoUserTotalLikeUpdatedCount = ""
+                        
+                        //
                         
                         
                         self.reviewTwoUserImage.sd_setImage(with: URL(string: review.userPhoto))
@@ -1196,29 +1233,32 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                         self.reviewTwoDateStringOutlet.text = review.time
                         self.reviewTwoWatingTImeLabel.text = review.waitingtime
                         
-                        self.firebaseReviewTwoLoadedOnce = true
+                        //self.firebaseReviewTwoLoadedOnce = true
                         
                         if self.thumbsUpSet.contains(review.rid){
                             self.reviewTwoThumbUpButtonOutlet.setImage(self.imageColored, for: .normal)
                             self.reviewTwoLikeAlreadyTapped = true
-//                            
-//                            let newReducedCount = review.likedCount - 1
-//                            self.reviewTwoThumbUpdatedCount = newReducedCount
-//                            
-//                            
-//                            let newReducedTotalCount = review.totalLikedCount - 1
-//                            self.reviewTwoUserTotalLikeUpdatedCount = newReducedTotalCount
-//                            
+                            //
+                            //                            let newReducedCount = review.likedCount - 1
+                            //                            self.reviewTwoThumbUpdatedCount = newReducedCount
+                            //
+                            //
+                            //                            let newReducedTotalCount = review.totalLikedCount - 1
+                            //                            self.reviewTwoUserTotalLikeUpdatedCount = newReducedTotalCount
+                            //
                             
-//                            self.reviewTwoUserLikeCount.text = String(self.reviewTwoUserTotalLikeUpdatedCount)
-//                            self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbUpdatedCount) + "件"
+                            //                            self.reviewTwoUserLikeCount.text = String(self.reviewTwoUserTotalLikeUpdatedCount)
+                            //                            self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbUpdatedCount) + "件"
                             
                             
-                        }
-
-                        
-                    }})}
-        })
+                    }
+                    
+                    
+                }
+                    //}
+            )}
+            //        }
+        )
     }
     
     
@@ -1235,13 +1275,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         if toilet.addedBy != ""{
             
-             print("afterFavoriteTappedAction Added")
+            print("afterFavoriteTappedAction Added")
             let firstPosterFavoriteCountRef = firebaseRef.child("Users").child(toilet.addedBy)
             
             let tdata : [String : Any] = ["totalFavoriteCount": firstPosterFavoriteNumber + 1]
             firstPosterFavoriteCountRef.updateChildValues(tdata)
             
-        
+            
         }
         
         if toilet.editedBy != ""{
@@ -1251,31 +1291,31 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             let tdata : [String : Any] = ["totalFavoriteCount": lastEditerFavoriteNumber + 1]
             lastEditerFavoriteCountRef.updateChildValues(tdata)
-
+            
         }
         
-//        totalFavoriteCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
-//            if self.favoriteAdded == false{
-//                print("FVFVsnapshot = \(snapshot)")
-//                print("FVFVsnapshot.key = \(snapshot.key)")
-//                print("FVFVsnapshot.value = \(String(describing: snapshot.value))")
-//                let snapValue = snapshot.value as? Int
-//                let newFavorite = snapValue! + 1
-//                totalFavoriteCountRef.setValue(newFavorite)
-//                self.favoriteAdded = true
-//            }})
+        //        totalFavoriteCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
+        //            if self.favoriteAdded == false{
+        //                print("FVFVsnapshot = \(snapshot)")
+        //                print("FVFVsnapshot.key = \(snapshot.key)")
+        //                print("FVFVsnapshot.value = \(String(describing: snapshot.value))")
+        //                let snapValue = snapshot.value as? Int
+        //                let newFavorite = snapValue! + 1
+        //                totalFavoriteCountRef.setValue(newFavorite)
+        //                self.favoriteAdded = true
+        //            }})
         
         
         
         
-        //Added single event observer May 16 
-        
-       
+        //Added single event observer May 16
         
         
         
         
-
+        
+        
+        
         
         let alertController = UIAlertController (title: "お気に入りに追加されました", message: "", preferredStyle: .alert)
         let addAction = UIAlertAction(title: "はい", style: .default, handler: nil)
@@ -1284,14 +1324,14 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
     }
     
-//    func deleteItInMyPage(){
-//        
-//        let alertController = UIAlertController (title: "お気に入りリストから削除するには、マイページのお気に入りリストから削除してください", message: "", preferredStyle: .alert)
-//        let addAction = UIAlertAction(title: "はい", style: .default, handler: nil)
-//        alertController.addAction(addAction)
-//        present(alertController, animated: true, completion: nil)
-//        
-//    }
+    //    func deleteItInMyPage(){
+    //
+    //        let alertController = UIAlertController (title: "お気に入りリストから削除するには、マイページのお気に入りリストから削除してください", message: "", preferredStyle: .alert)
+    //        let addAction = UIAlertAction(title: "はい", style: .default, handler: nil)
+    //        alertController.addAction(addAction)
+    //        present(alertController, animated: true, completion: nil)
+    //
+    //    }
     
     
     
@@ -1318,7 +1358,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let addedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.addedBy).child("totalHelpedCount")
         
-        addedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
+        
+        addedTotalHelpedCountRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            //addedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentAdded == false{
                 print("FVFVsnapshot = \(snapshot)")
                 print("FVFVsnapshot.key = \(snapshot.key)")
@@ -1330,7 +1372,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             }})
         
         let editedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.editedBy).child("totalHelpedCount")
-        editedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
+        editedTotalHelpedCountRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            
+            // editedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentEdited == false{
                 print("FVFVsnapshot = \(snapshot)")
                 print("FVFVsnapshot.key = \(snapshot.key)")
@@ -1573,11 +1617,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
         self.present(nextAlertController, animated: true, completion: nil)
-
         
-    
-    
-    
+        
+        
+        
+        
     }
     
     func toiletProblemUpload(problemString: String){
@@ -1598,18 +1642,18 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let interval = NSDate().timeIntervalSince1970
         
-       
-            
-            
+        
+        
+        
         
         let rpData : [String : Any] = ["uid": uid,
-                                           "tid": toilet.key,
-                                           "time": timeString,
-                                           "timeNumbers": interval,
-                                           "problem": problemString
-                
-            ]
+                                       "tid": toilet.key,
+                                       "time": timeString,
+                                       "timeNumbers": interval,
+                                       "problem": problemString
             
+        ]
+        
         toiletProblemsRef.child(rpid).setValue(rpData)
         
         suspiciosUserId = toilet.editedBy
@@ -1619,7 +1663,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
     }
     
-
+    
     
     
     
@@ -1646,13 +1690,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
             } else{
                 (sender as AnyObject).setImage(loveDark, for: .normal)
-
+                
                 let userRef = firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
                 userRef.child(toilet.key).removeValue()
-                 favoriteButtonTapped = false
+                favoriteButtonTapped = false
                 
                 
-
+                
             }
         }
     }
@@ -1749,9 +1793,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
         let userRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid)
         let reviewInfoRef = FIRDatabase.database().reference().child("ReviewInfo").child(self.toilet.reviewTwo)
-//        self.reviewOneThumbOriginalCount = review.likedCount
-//        self.reviewOneUserTotalLikeOriginalCount = review.totalLikedCount
-
+        //        self.reviewOneThumbOriginalCount = review.likedCount
+        //        self.reviewOneUserTotalLikeOriginalCount = review.totalLikedCount
+        
         
         if userAlreadyLogin == false{
             showPleaseLogin()
@@ -1766,12 +1810,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 //Tap
                 
                 (sender as AnyObject).setImage(imageColored, for: .normal)
-            
+                
                 //self.thumbsUpSet.insert(self.toilet.reviewOne)
                 thumbsUpRef.child(self.toilet.reviewOne).setValue(true)
                 
                 
-                                
+                
                 self.reviewOneUserTotalLikeOriginalCount = self.reviewOneUserTotalLikeOriginalCount + 1
                 self.reviewOneThumbOriginalCount = self.reviewOneThumbOriginalCount + 1
                 
@@ -1796,12 +1840,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 (sender as AnyObject).setImage(imageBlack, for: .normal)
                 
-               // self.thumbsUpSet.remove(self.toilet.reviewOne)
+                // self.thumbsUpSet.remove(self.toilet.reviewOne)
                 
                 thumbsUpRef.child(self.toilet.reviewOne).removeValue()
                 
                 self.reviewOneUserTotalLikeOriginalCount = self.reviewOneUserTotalLikeOriginalCount - 1
-                 self.reviewOneThumbOriginalCount = self.reviewOneThumbOriginalCount - 1
+                self.reviewOneThumbOriginalCount = self.reviewOneThumbOriginalCount - 1
                 
                 
                 self.reviewOneUserLikeCount.text = String(self.reviewOneUserTotalLikeOriginalCount)
@@ -1817,7 +1861,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 self.reviewOneLikeAlreadyTapped = false
                 
-
+                
                 
                 
                 
@@ -1899,9 +1943,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     }
     
     @IBAction func reviewOneReportButtonTapped(_ sender: Any) {
-       postRid = toilet.reviewOne
-       suspiciosUserId = reviewOnePoster
-       reviewReportStart()
+        postRid = toilet.reviewOne
+        suspiciosUserId = reviewOnePoster
+        reviewReportStart()
     }
     
     
@@ -2031,50 +2075,53 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let uid = FIRAuth.auth()!.currentUser!.uid
         reviewWarningsRef.child(postRid).child(uid).setValue(true)
         
-        reviewWarningListCount()
-        
-        
-        }
-    
-    func reviewWarningListCount(){
-        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
-        
-        
-        reviewWarningsRef.child(postRid).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
-            
-            let countNumber = snapshot.childrenCount
-            self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
-        })
-    }
-    
-//    func reviewWarningListCount(){
-//        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
-//        
-//        reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
-//            
-//            if self.reviewReportOnceUploaded == false{
-//                self.reviewReportOnceUploaded = true
-//                
-//                let countNumber = snapshot.childrenCount
-//                self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
-//                
-//                
-//                
-//            }
-//        })
-//    }
-    
-    func reviewWarningCountUploadToDatabase(countNumber: Int){
-        let reviewWarningCountRef = FIRDatabase.database().reference().child("ReviewWarningCount")
-        
-        reviewWarningCountRef.child(postRid).setValue(countNumber)
         
         showYourReviewPostedMessage()
         
+        //reviewWarningListCount()
         
-
+        
     }
     
+    //    func reviewWarningListCount(){
+    //        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+    //
+    //
+    //        reviewWarningsRef.child(postRid).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+    //
+    //            let countNumber = snapshot.childrenCount
+    //            self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
+    //        })
+    //    }
+    
+    //    func reviewWarningListCount(){
+    //        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+    //
+    //        reviewWarningsRef.child(postRid).observe(FIRDataEventType.value, with: { snapshot in
+    //
+    //            if self.reviewReportOnceUploaded == false{
+    //                self.reviewReportOnceUploaded = true
+    //
+    //                let countNumber = snapshot.childrenCount
+    //                self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
+    //
+    //
+    //
+    //            }
+    //        })
+    //    }
+    
+    //    func reviewWarningCountUploadToDatabase(countNumber: Int){
+    //        let reviewWarningCountRef = FIRDatabase.database().reference().child("ReviewWarningCount")
+    //
+    //        reviewWarningCountRef.child(postRid).setValue(countNumber)
+    //
+    //        showYourReviewPostedMessage()
+    //
+    //
+    //
+    //    }
+    //
     
     
     func userWarningListUpload(){
@@ -2082,53 +2129,53 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let uid = FIRAuth.auth()!.currentUser!.uid
         userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
         
-        userWarningListCount()
-        
-        
-    }
-    
-    func userWarningListCount(){
-        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
-        
-        userWarningsRef.child(suspiciosUserId).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
-            
-            let countNumber = snapshot.childrenCount
-            self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
-            
-            
-        })
-    }
-
-    
-    
-//    func userWarningListCount(){
-//        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
-//        
-//        userWarningsRef.child(suspiciosUserId).observe(FIRDataEventType.value, with: { snapshot in
-//            
-//            if self.userReportOnceUploaded == false{
-//                self.userReportOnceUploaded = true
-//                
-//                let countNumber = snapshot.childrenCount
-//                self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
-//                
-//                
-//                
-//            }
-//        })
-//    }
-    
-    func userWarningCountUploadToDatabase(countNumber: Int){
-        let userWarningCountRef = FIRDatabase.database().reference().child("UserWarningCount")
-        
-        userWarningCountRef.child(suspiciosUserId).setValue(countNumber)
-        
         showYourReviewPostedMessage()
         
         
-        
     }
-
+    
+    //    func userWarningListCount(){
+    //        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+    //
+    //        userWarningsRef.child(suspiciosUserId).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+    //
+    //            let countNumber = snapshot.childrenCount
+    //            self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
+    //
+    //
+    //        })
+    //    }
+    
+    
+    
+    //    func userWarningListCount(){
+    //        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+    //
+    //        userWarningsRef.child(suspiciosUserId).observe(FIRDataEventType.value, with: { snapshot in
+    //
+    //            if self.userReportOnceUploaded == false{
+    //                self.userReportOnceUploaded = true
+    //
+    //                let countNumber = snapshot.childrenCount
+    //                self.userWarningCountUploadToDatabase(countNumber: Int(countNumber))
+    //                
+    //                
+    //                
+    //            }
+    //        })
+    //    }
+    
+    //    func userWarningCountUploadToDatabase(countNumber: Int){
+    //        let userWarningCountRef = FIRDatabase.database().reference().child("UserWarningCount")
+    //        
+    //        userWarningCountRef.child(suspiciosUserId).setValue(countNumber)
+    //        
+    //        showYourReviewPostedMessage()
+    //        
+    //        
+    //        
+    //    }
+    
     
     
     
@@ -2142,7 +2189,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         present(alertController, animated: true, completion: nil)
     }
     
-
+    
     
     
     
