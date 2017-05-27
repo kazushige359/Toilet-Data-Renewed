@@ -635,26 +635,30 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
 
             
             let noFilterData: [String : Any] = ["name":name!,
-                                                "type": 0,
-                                                "urlOne":newUrlOne,
-                                                "averageStar":String(starView.rating) as String,
-                                                "reviewCount":1,
-                                                "averageWait": waitInt! as Int,
-                                                "toiletFloor": 1,
-                                                "available": true]
-            
-            let toiletUserListData: [String : Any] = ["name":name!,
-                                                "type": 0,
-                                                "urlOne":newUrlOne,
-                                                "averageStar":String(starView.rating) as String,
-                                                "reviewCount":1,
-                                                "averageWait": waitInt! as Int,
-                                                "toiletFloor": 1,
                                                 "latitude": Lat as Double,
                                                 "longitude": Lon as Double,
+                                                "type": 0,
+                                                "urlOne":newUrlOne,
+                                                "averageStar":String(starView.rating) as String,
+                                                "reviewCount":1,
+                                                "averageWait": waitInt! as Int,
+                                                "toiletFloor": 1,
                                                 "available": true]
             
+//            let toiletUserListData: [String : Any] = ["name":name!,
+//                                                "type": 0,
+//                                                "urlOne":newUrlOne,
+//                                                "averageStar":String(starView.rating) as String,
+//                                                "reviewCount":1,
+//                                                "averageWait": waitInt! as Int,
+//                                                "toiletFloor": 1,
+//                                                "latitude": Lat as Double,
+//                                                "longitude": Lon as Double,
+//                                                "available": true]
+            
             let unitOneData: [String : Any] = ["name":name!,
+                                               "latitude": Lat as Double,
+                                               "longitude": Lon as Double,
                                                "type": 0,
                                                "urlOne":newUrlOne,
                                                "averageStar":String(starView.rating) as String,
@@ -671,6 +675,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitTwoData: [String : Any] = ["name":name!,
+                                               "latitude": Lat as Double,
+                                               "longitude": Lon as Double,
                                                "type": 0,
                                                "urlOne":newUrlOne,
                                                "averageStar":String(starView.rating) as String,
@@ -689,6 +695,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitThreeData: [String : Any] = ["name":name!,
+                                                 "latitude": Lat as Double,
+                                                 "longitude": Lon as Double,
                                                  "type": 0,
                                                  "urlOne":newUrlOne,
                                                  "averageStar":String(starView.rating) as String,
@@ -704,6 +712,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitFourData: [String : Any] = ["name":name!,
+                                                "latitude": Lat as Double,
+                                                "longitude": Lon as Double,
                                                 "type": 0,
                                                 "urlOne":newUrlOne,
                                                 "averageStar":String(starView.rating) as String,
@@ -720,6 +730,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitFiveData: [String : Any] = ["name":name!,
+                                                "latitude": Lat as Double,
+                                                "longitude": Lon as Double,
                                                 "type": 0,
                                                 "urlOne":newUrlOne,
                                                 "averageStar":String(starView.rating) as String,
@@ -739,6 +751,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             
             let unitSixData: [String : Any] = ["name":name!,
+                                               "latitude": Lat as Double,
+                                               "longitude": Lon as Double,
                                                "type": 0,
                                                "urlOne":newUrlOne,
                                                "averageStar":String(starView.rating) as String,
@@ -756,6 +770,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitSevenData: [String : Any] = ["name":name!,
+                                                 "latitude": Lat as Double,
+                                                 "longitude": Lon as Double,
                                                  "type": 0,
                                                  "urlOne":newUrlOne,
                                                  "averageStar":String(starView.rating) as String,
@@ -771,6 +787,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitEightData: [String : Any] = ["name":name!,
+                                                 "latitude": Lat as Double,
+                                                 "longitude": Lon as Double,
                                                  "type": 0,
                                                  "urlOne":newUrlOne,
                                                  "averageStar":String(starView.rating) as String,
@@ -791,6 +809,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitNineData: [String : Any] = ["name":name!,
+                                                "latitude": Lat as Double,
+                                                "longitude": Lon as Double,
                                                 "type": 0,
                                                 "urlOne":newUrlOne,
                                                 "averageStar":String(starView.rating) as String,
@@ -809,6 +829,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             
             let unitTenData: [String : Any] = ["name":name!,
+                                               "latitude": Lat as Double,
+                                               "longitude": Lon as Double,
                                                "type": 0,
                                                "urlOne":newUrlOne,
                                                "averageStar":String(starView.rating) as String,
@@ -826,6 +848,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitElevenData: [String : Any] = ["name":name!,
+                                                  "latitude": Lat as Double,
+                                                  "longitude": Lon as Double,
                                                   "type": 0,
                                                   "urlOne":newUrlOne,
                                                   "averageStar":String(starView.rating) as String,
@@ -845,6 +869,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             ]
             
             let unitTwelveData: [String : Any] = ["name":name!,
+                                                  "latitude": Lat as Double,
+                                                  "longitude": Lon as Double,
                                                   "type": 0,
                                                   "urlOne":newUrlOne,
                                                   "averageStar":String(starView.rating) as String,
@@ -868,6 +894,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let groupOneData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat as Double,
+                 "longitude": Lon as Double,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
@@ -915,6 +943,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let groupTwoData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat as Double,
+                 "longitude": Lon as Double,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
@@ -949,6 +979,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let groupThreeData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat as Double,
+                 "longitude": Lon as Double,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
@@ -995,6 +1027,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let halfOneData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat as Double,
+                 "longitude": Lon as Double,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
@@ -1065,6 +1099,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let halfTwoData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat as Double,
+                 "longitude": Lon as Double,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
@@ -1132,6 +1168,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let allFilterData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat as Double,
+                 "longitude": Lon as Double,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "averageStar":String(starView.rating) as String,
@@ -1372,7 +1410,6 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             //uniqueRef.setValue(tdata)
             
             let mutipleData = ["NoFilter/\(toiletNewId)": noFilterData,
-                               "ToiletUserList/\(toiletNewId)": toiletUserListData,
                                "UnitOne/\(toiletNewId)": unitOneData,
                                "UnitTwo/\(toiletNewId)": unitTwoData,
                                "UnitThree/\(toiletNewId)": unitThreeData,

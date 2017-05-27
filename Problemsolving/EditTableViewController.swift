@@ -876,27 +876,31 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             print("after geoFire.setLocation")
             
             let noFilterData: [String : Any] = ["name":name!,
-                                                "type": 0,
-                                                "urlOne":newUrlOne,
-                                                "averageStar":toilet.averageStar,
-                                                "averageWait":toilet.averageWait,
-                                                "reviewCount":toilet.reviewCount,
-                                                "toiletFloor": 1,
-                                                "available": true]
-            
-            
-            let toiletUserListData: [String : Any] = ["name":name!,
-                                                "type": 0,
-                                                "urlOne":newUrlOne,
-                                                "averageStar":toilet.averageStar,
-                                                "averageWait":toilet.averageWait,
-                                                "reviewCount":toilet.reviewCount,
-                                                "toiletFloor": 1,
                                                 "latitude": Lat,
                                                 "longitude": Lon,
+                                                "type": 0,
+                                                "urlOne":newUrlOne,
+                                                "averageStar":toilet.averageStar,
+                                                "averageWait":toilet.averageWait,
+                                                "reviewCount":toilet.reviewCount,
+                                                "toiletFloor": 1,
                                                 "available": true]
             
+            
+//            let toiletUserListData: [String : Any] = ["name":name!,
+//                                                "type": 0,
+//                                                "urlOne":newUrlOne,
+//                                                "averageStar":toilet.averageStar,
+//                                                "averageWait":toilet.averageWait,
+//                                                "reviewCount":toilet.reviewCount,
+//                                                "toiletFloor": 1,
+//                                                "latitude": Lat,
+//                                                "longitude": Lon,
+//                                                "available": true]
+            
             let unitOneData: [String : Any] = ["name":name!,
+                                               "latitude": Lat,
+                                               "longitude": Lon,
                                                "type": 0,
                                                "urlOne":newUrlOne,
                                                "openHours":5000 as Int,
@@ -914,11 +918,14 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             
             
-             let unitTwoData: [String : Any] = ["name":name!,
-            "type": 0,
-            "urlOne":newUrlOne,
-            "available": true,
-            "averageStar":toilet.averageStar,
+            let unitTwoData: [String : Any] = [
+                "name":name!,
+                "latitude": Lat,
+                "longitude": Lon,
+                "type": 0,
+                "urlOne":newUrlOne,
+                "available": true,
+                "averageStar":toilet.averageStar,
             "averageWait":toilet.averageWait,
             "reviewCount":toilet.reviewCount,
             "toiletFloor": 1,
@@ -933,6 +940,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             ]
             
             let unitThreeData: [String : Any] = ["name":name!,
+                                                 "latitude": Lat,
+                                                 "longitude": Lon,
                                                  "type": 0,
                                                  "urlOne":newUrlOne,
                                                  "available": true,
@@ -948,6 +957,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             ]
             
             let unitFourData: [String : Any] = ["name":name!,
+                                                "latitude": Lat,
+                                                "longitude": Lon,
                                                 "type": 0,
                                                 "available": true,
                                                 "averageStar":toilet.averageStar,
@@ -964,6 +975,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             ]
             
             let unitFiveData: [String : Any] = ["name":name!,
+                                                "latitude": Lat,
+                                                "longitude": Lon,
                                                 "type": 0,
                                                 "urlOne":newUrlOne,
                                                 "available": true,
@@ -981,6 +994,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             
             let unitSixData: [String : Any] = ["name":name!,
+                                               "latitude": Lat,
+                                               "longitude": Lon,
                                                "type": 0,
                                                "available": true,
                                                "averageStar":toilet.averageStar,
@@ -998,6 +1013,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             ]
             
             let unitSevenData: [String : Any] = ["name":name!,
+                                                 "latitude": Lat,
+                                                 "longitude": Lon,
                                                  "type": 0,
                                                  "urlOne":newUrlOne,
                                                  "available": true,
@@ -1013,6 +1030,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             ]
             
             let unitEightData: [String : Any] = ["name":name!,
+                                                 "latitude": Lat,
+                                                 "longitude": Lon,
                                                  "type": 0,
                                                  "urlOne":newUrlOne,
                                                  "available": true,
@@ -1033,6 +1052,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             ]
             
             let unitNineData: [String : Any] = ["name":name!,
+                                                "latitude": Lat,
+                                                "longitude": Lon,
                                                 "type": 0,
                                                 "urlOne":newUrlOne,
                                                 "available": true,
@@ -1051,6 +1072,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             
             let unitTenData: [String : Any] = ["name":name!,
+                                               "latitude": Lat,
+                                               "longitude": Lon,
                                                "type": 0,
                                                "urlOne":newUrlOne,
                                                "available": true,
@@ -1068,6 +1091,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             ]
             
             let unitElevenData: [String : Any] = ["name":name!,
+                                                  "latitude": Lat,
+                                                  "longitude": Lon,
                                                   "type": 0,
                                                   "urlOne":newUrlOne,
                                                   "available": true,
@@ -1087,6 +1112,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             ]
             
             let unitTwelveData: [String : Any] = ["name":name!,
+                                                  "latitude": Lat,
+                                                  "longitude": Lon,
                                                   "type": 0,
                                                   "available": true,
                                                   "averageStar":toilet.averageStar,
@@ -1110,6 +1137,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             let groupOneData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat,
+                 "longitude": Lon,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "available": true,
@@ -1157,6 +1186,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             let groupTwoData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat,
+                 "longitude": Lon,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "available": true,
@@ -1190,6 +1221,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             let groupThreeData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat,
+                 "longitude": Lon,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "available": true,
@@ -1235,6 +1268,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             let halfOneData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat,
+                 "longitude": Lon,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "available": true,
@@ -1306,6 +1341,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             let halfTwoData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat,
+                 "longitude": Lon,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "available": true,
@@ -1373,6 +1410,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             let allFilterData: [String : Any] =
                 ["name":name!,
+                 "latitude": Lat,
+                 "longitude": Lon,
                  "type": 0,
                  "urlOne":newUrlOne,
                  "available": true,
@@ -1608,7 +1647,6 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             
             let mutipleData = ["NoFilter/\(toilet.key)": noFilterData,
-                               "ToiletUserList/\(toilet.key)": toiletUserListData,
                                "UnitOne/\(toilet.key)": unitOneData,
                                "UnitTwo/\(toilet.key)": unitTwoData,
                                "UnitThree/\(toilet.key)": unitThreeData,

@@ -149,16 +149,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var geoFireRef: FIRDatabaseReference!
     let queryannotations = MKPointAnnotation()
     var toilets: [Toilet] = []
-    var distance100: [String] = []
-    var distance200: [String] = []
-    var distance400: [String] = []
     var distance600: [String] = []
-    var distance800: [String] = []
-    var distance1000: [String] = []
-    var distance3000: [String] = []
-    var distance5000: [String] = []
+    var distance1200: [String] = []
+    var distance1800: [String] = []
+    var distance3600: [String] = []
+    var distance7200: [String] = []
     var distance10000: [String] = []
-    var distance20000: [String] = []
+    
+    var centerLocation = CLLocation()
     
     
     let toilet = Toilet()
@@ -199,6 +197,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         databaseRef = FIRDatabase.database().reference()
+        
+        
+       
+        
+        
+        
+        
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
         geoFireRef = FIRDatabase.database().reference().child("ToiletLocations")
@@ -817,11 +822,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         search.centerSearchLocation = center
         //Added April 10 2pm
         
+        centerLocation = center
+        
         print("center = \(center)")
         
         print("Radius = \(self.filter.distanceFilter)")
         
-        let circleQuery = geoFire.query(at: center, withRadius: 20.0)
+        let circleQuery = geoFire.query(at: center, withRadius: 10.0)
         
 //        let circleQuery = geoFire.query(at: center, withRadius: self.filter.distanceFilter)
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
@@ -829,93 +836,73 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             let date = NSDate()
             
-        
            
-            
             let distance = location?.distance(from: center)
             let distanceDouble = Double(distance!)
             
             print("distanceDouble = \(distanceDouble)")
             
-            if distanceDouble <= 100{
-                
-                self.distance100.append(key!)
-                print("555'\(String(describing: key))' entered <100 and @@@@@\(date.timeIntervalSince1970)'")
-                //print("<300")
-                
-            } else if distanceDouble <= 200{
-                
-                self.distance200.append(key!)
-               print("555'\(String(describing: key))' entered <200 and @@@@@\(date.timeIntervalSince1970)'")
-                //print("<300")
-            
-            } else if distanceDouble <= 400{
-                
-                self.distance400.append(key!)
-                print("555'\(String(describing: key))' entered <400  and @@@@@\(date.timeIntervalSince1970)'")
-                //print("<300")
-                
-            } else if distanceDouble <= 600{
-                self.distance600.append(key!)
-                print("555'\(String(describing: key))' entered <600  and @@@@@\(date.timeIntervalSince1970)'")
-                
-                //print("<500")
-            
-            } else if distanceDouble <= 800{
-                self.distance800.append(key!)
-                print("555'\(String(describing: key))' entered <800  and @@@@@\(date.timeIntervalSince1970)'")
-                
-                //print("<500")
-                
-            } else if distanceDouble <= 1000{
-                self.distance1000.append(key!)
+                if distanceDouble <= 600{
+                    
+                    self.distance600.append(key!)
+                    
+                //self.distance1000.append(key!)
                 print("555'\(String(describing: key))' entered <1000 and @@@@@\(date.timeIntervalSince1970)'")
                 
                 //print("<1000")
             
-            } else if distanceDouble <= 3000{
-                self.distance3000.append(key!)
+            } else if distanceDouble <= 1200{
+                self.distance1200.append(key!)
                 print("555'\(String(describing: key))' entered <3000 and @@@@@\(date.timeIntervalSince1970)'")
                 
                 //print("<3000")
                 
-            } else if distanceDouble <= 5000{
-                self.distance5000.append(key!)
+            } else if distanceDouble <= 1800{
+                self.distance1800.append(key!)
                 print("555'\(String(describing: key))' entered <5000 and @@@@@\(date.timeIntervalSince1970)'")
                 
                 //print("<5000")
-            } else if distanceDouble <= 10000{
-                self.distance5000.append(key!)
+            } else if distanceDouble <= 3600{
+                self.distance3600.append(key!)
                 print("555'\(String(describing: key))' entered <10000 and @@@@@\(date.timeIntervalSince1970)'")
                 
                 //print("<5000")
-            }else if distanceDouble <= 20000{
-                self.distance5000.append(key!)
+            }else if distanceDouble <= 7200{
+                self.distance7200.append(key!)
                 print("555'\(String(describing: key))' entered <20000 and @@@@@\(date.timeIntervalSince1970)'")
                 
                 //print("<5000")
+                } else {
+                    self.distance10000.append(key!)
             }
 
 
             
             
             
+            //@@@@@ May 27 separate by distance
             
-            var queryPath = self.filter.queryPath
+//            var queryPath = self.filter.queryPath
+//            
+//            if queryPath == ""{
+//            queryPath = "NoFilter"
+//                
+//            }
+//            
+//            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+//            
+//        
+//            toiletsRef.child(key!).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+//                
+//                self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+//            })
             
-            if queryPath == ""{
-            queryPath = "NoFilter"
-                
-            }
+            //@@@@@ May 27 separate by distance
             
             
-            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             
-        
-            toiletsRef.child(key!).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                
-                self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
-            })
+            
+            
             
 //            toiletsRef.child(key!).observe(FIRDataEventType.value, with: { snapshot in
 //
@@ -929,6 +916,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         )
         circleQuery?.observeReady({
             print(" 555 All initial data has been loaded and events have been fired!")
+            self.distance600Call()
             self.allInitialDataLoaded = true
             self.messageFrame.removeFromSuperview()
             self.tableView.reloadData()
@@ -937,9 +925,126 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
+    func distance600Call(){
+        
+        var queryPath = self.filter.queryPath
+        if queryPath == ""{
+            queryPath = "NoFilter"
+        }
+        
+        for item in distance600{
+            
+            let date = NSDate()
+            
+            print("item 4444 = \(item) @@@@@\(date.timeIntervalSince1970)")
+            
+            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                
+                
+                
+                self.createTableViewAndMarker(snapshot: snapshot, key: item)
+            })
+            
+            
+        }
+        let dat = NSDate()
+        print("toielts count 4444 = \(toilets.count) @@@@@\(dat.timeIntervalSince1970)'")
+    }
+    
+    func distance1200Call(){
+        
+        var queryPath = self.filter.queryPath
+        if queryPath == ""{
+            queryPath = "NoFilter"
+        }
+        
+        for item in distance1200{
+           
+            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                
+                
+               // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+            })
+            
+            
+        }
+    }
+    
+    func distance1800Call(){
+        
+        var queryPath = self.filter.queryPath
+        if queryPath == ""{
+            queryPath = "NoFilter"
+        }
+        
+        for item in distance1800{
+            
+            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                
+                //self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+            })
+            
+            
+        }
+    }
 
     
-    func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String, location: CLLocation?, center: CLLocation){
+    func distance3600Call(){
+        
+        var queryPath = self.filter.queryPath
+        if queryPath == ""{
+            queryPath = "NoFilter"
+        }
+        
+        for item in distance3600{
+            
+            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                
+               // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+            })
+            
+            
+        }
+    }
+
+    
+    func distance7200Call(){
+        
+        var queryPath = self.filter.queryPath
+        if queryPath == ""{
+            queryPath = "NoFilter"
+        }
+        
+//        for item in distance1000{
+//            
+//            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+//            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+//                
+//                //self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+//            })
+//            
+//        }
+    }
+
+    
+    
+    
+    
+    //func createTableViewAndMarker(snapshot: FIRDataSnapshot){
+
+        
+    
+        func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String){
+            
+        
+
+
+    
+//    func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String, location: CLLocation?, center: CLLocation){
         let toilet = Toilet()
         
         let date = NSDate()
@@ -1719,19 +1824,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let averageWait = snapshotValue?["averageWait"] as? Int
         toilet.averageWait = averageWait!
         
+            
+            
+        let center = centerLocation
+            
+        toilet.latitude = (snapshotValue?["latitude"] as? Double)!
+        toilet.longitude = (snapshotValue?["longitude"] as? Double)!
+
+            
+        let location = CLLocation(latitude: toilet.latitude, longitude: toilet.longitude)
+
         
         //let distance = location?.distance(from: center)
         
         //toilet.distance = Double(distance!)
         
         //  toilet.distance = self.distanceCalculationGetString(destination: location!, center: center)
+            
+            
         
-        toilet.distance = MapViewController.distanceCalculationGetString(destination: location!, center: center)
+        toilet.distance = MapViewController.distanceCalculationGetString(destination: location, center: center)
         
         print("THIS IS THE DISTANCE\(toilet.distance)")
         
         
         self.toilets.append(toilet)
+            
+        
+        
+        print("toilet count \(toilets.count)444 inside  @@@@@\(date.timeIntervalSince1970)' ")
         
         //let queryannotations = MKPointAnnotation()
         let starValueDouble = Double(toilet.star)
@@ -1743,7 +1864,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         print("starValueInt111 = \(starValueInt)")
         if starValueInt < 2{
-            let starOneMarker = StarOneMarker(coordinate: (location?.coordinate)!)
+            let starOneMarker = StarOneMarker(coordinate: (location.coordinate))
             
             
             starOneMarker.key = toilet.key
@@ -1751,20 +1872,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             starOneMarker.distance = toilet.distance
             starOneMarker.averageStar = toilet.averageStar
             starOneMarker.averageWait = toilet.averageWait
-            starOneMarker.coordinate = (location?.coordinate)!
+            starOneMarker.coordinate = (location.coordinate)
             starOneMarker.reviewCount = toilet.reviewCount
             
             self.mapView.addAnnotation(starOneMarker)
             
         } else if starValueInt < 3{
-            let starTwoMarker = StarTwoMarker(coordinate: (location?.coordinate)!)
+            let starTwoMarker = StarTwoMarker(coordinate: (location.coordinate))
             
             starTwoMarker.key = toilet.key
             starTwoMarker.name = toilet.name
             starTwoMarker.distance = toilet.distance
             starTwoMarker.averageStar = toilet.averageStar
             starTwoMarker.averageWait = toilet.averageWait
-            starTwoMarker.coordinate = (location?.coordinate)!
+            starTwoMarker.coordinate = (location.coordinate)
             starTwoMarker.reviewCount = toilet.reviewCount
             
             self.mapView.addAnnotation(starTwoMarker)
@@ -1772,7 +1893,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             
         } else if starValueInt < 4{
-            let starThreeMarker = StarThreeMarker(coordinate: (location?.coordinate)!)
+            let starThreeMarker = StarThreeMarker(coordinate: (location.coordinate))
             
             
             starThreeMarker.key = toilet.key
@@ -1780,13 +1901,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             starThreeMarker.distance = toilet.distance
             starThreeMarker.averageStar = toilet.averageStar
             starThreeMarker.averageWait = toilet.averageWait
-            starThreeMarker.coordinate = (location?.coordinate)!
+            starThreeMarker.coordinate = (location.coordinate)
             starThreeMarker.reviewCount = toilet.reviewCount
             
             self.mapView.addAnnotation(starThreeMarker)
             
         } else if starValueInt < 5{
-            let starFourMarker = StarFourMarker(coordinate: (location?.coordinate)!)
+            let starFourMarker = StarFourMarker(coordinate: (location.coordinate))
             
             
             starFourMarker.key = toilet.key
@@ -1794,13 +1915,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             starFourMarker.distance = toilet.distance
             starFourMarker.averageStar = toilet.averageStar
             starFourMarker.averageWait = toilet.averageWait
-            starFourMarker.coordinate = (location?.coordinate)!
+            starFourMarker.coordinate = (location.coordinate)
             starFourMarker.reviewCount = toilet.reviewCount
             
             self.mapView.addAnnotation(starFourMarker)
             
         } else if starValueInt == 5{
-            let starFiveMarker = StarFiveMarker(coordinate: (location?.coordinate)!)
+            let starFiveMarker = StarFiveMarker(coordinate: (location.coordinate))
             
             
             starFiveMarker.key = toilet.key
@@ -1808,7 +1929,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             starFiveMarker.distance = toilet.distance
             starFiveMarker.averageStar = toilet.averageStar
             starFiveMarker.averageWait = toilet.averageWait
-            starFiveMarker.coordinate = (location?.coordinate)!
+            starFiveMarker.coordinate = (location.coordinate)
             starFiveMarker.reviewCount = toilet.reviewCount
             
             self.mapView.addAnnotation(starFiveMarker)
@@ -1817,16 +1938,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } else{
             
             
-            let queryannotations = ToiletMarkers(coordinate: (location?.coordinate)!)
+            let queryannotations = ToiletMarkers(coordinate: (location.coordinate))
             
-            print("location Coodinates \(String(describing: location?.coordinate))")
+            print("location Coodinates \(String(describing: location.coordinate))")
             
             queryannotations.key = toilet.key
             queryannotations.name = toilet.name
             queryannotations.distance = toilet.distance
             queryannotations.averageStar = toilet.averageStar
             queryannotations.averageWait = toilet.averageWait
-            queryannotations.coordinate = (location?.coordinate)!
+            queryannotations.coordinate = (location.coordinate)
             queryannotations.reviewCount = toilet.reviewCount
             self.mapView.addAnnotation(queryannotations)
             
@@ -1855,6 +1976,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     }
+    
     
     
     

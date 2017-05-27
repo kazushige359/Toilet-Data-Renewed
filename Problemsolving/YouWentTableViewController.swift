@@ -77,7 +77,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
             
             
             
-            firebaseRef.child("ToiletUserList").child(favkey).observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
+            firebaseRef.child("NoFilter").child(favkey).observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
                 
                 if !snapshot.exists(){
                     return

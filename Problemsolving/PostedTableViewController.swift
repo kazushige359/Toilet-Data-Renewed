@@ -153,7 +153,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             let tidKey = userReviewComment.tid
             
             
-            let toiletRef = self.firebaseRef.child("ToiletUserList").child(tidKey)
+            let toiletRef = self.firebaseRef.child("NoFilter").child(tidKey)
                 toiletRef.observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
                     
                     if !snapshot.exists(){
