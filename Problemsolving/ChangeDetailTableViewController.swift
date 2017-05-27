@@ -473,7 +473,18 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             if error != nil {
                 print("Problem Reverse geocoder failed with error" + (error?.localizedDescription)!)
-                self.toiletDataUpload(Address: "")
+                //self.toiletDataUpload(Address: "")
+                
+                //Test 100
+                var number = 1
+                while number < 100 {
+                    number = number + 1
+                    self.toiletNewId = String(number)
+                    self.toiletDataUpload(Address: "")
+                    
+                }
+                
+                //Test 100
                 
                 //func call??
                 
@@ -488,7 +499,21 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 
                 
                 
-                self.toiletDataUpload(Address: addressString)
+                //Test 100
+                var number = 1
+                while number < 100 {
+                    number = number + 1
+                    self.toiletNewId = String(number)
+                    self.toiletDataUpload(Address: addressString)
+                
+                }
+                
+                //Test 100
+
+                
+                
+                
+                //self.toiletDataUpload(Address: addressString)
                 
                 
                 
@@ -503,7 +528,18 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             }
             else {
                 print("Problem with the data received from geocoder")
-                self.toiletDataUpload(Address: "")
+                //self.toiletDataUpload(Address: "")
+                
+                //Test 100
+                var number = 1
+                while number < 100 {
+                    number = number + 1
+                    self.toiletNewId = String(number)
+                    self.toiletDataUpload(Address: "")
+                    
+                }
+                
+                //Test 100
                 
                 
                 //func call??
@@ -1312,7 +1348,15 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                 "babyFancy":babyRoomFancySwitch.isOn,
                 "babySmellGood":babyRoomGoodSmellSwitch.isOn] as [String : Any]
             
+         
+           
             
+//            GeoHash geoHash = new GeoHash(new GeoLocation(latitude, longitude));
+//            Map<String, Object> updates = new HashMap<>();
+//            updates.put("items/" + itemId, item);
+//            updates.put("items_location/" + itemId + "/g", geoHash.getGeoHashString());
+//            updates.put("items_location/" + itemId + "/l", Arrays.asList(latitude, longitude));
+//            ref.updateChildren(updates);
             //let toiletsRef = FIRDatabase.database().reference().child("Toilets")
             //let uniqueRef = toiletsRef.child(toiletNewId)
             
@@ -1541,7 +1585,15 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     }
     
     @IBAction func postTabTapped(_ sender: Any) {
-        startUpload()
+        
+//        var number = 1
+//        while number < 100 {
+//            number = number + 1
+//            toiletNewId = String(number)
+//            
+            startUpload()
+//        }
+        
         //toiletDataUpload()
         //updateFirebase()
     }

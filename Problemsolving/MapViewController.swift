@@ -149,8 +149,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var geoFireRef: FIRDatabaseReference!
     let queryannotations = MKPointAnnotation()
     var toilets: [Toilet] = []
+    var distance300: [Toilet] = []
+    var distance500: [Toilet] = []
+    var distance1000: [Toilet] = []
+    var distance3000: [Toilet] = []
+    var distance5000: [Toilet] = []
+    var distance10000: [Toilet] = []
+    
     let toilet = Toilet()
     var search = Search()
+    
    // var passingData = PassingData()
     let Star = CosmosView()
     var polyline: MKPolyline?
@@ -159,6 +167,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var removedToilet = false
     var createdArray = false
     var wifiAlert = false
+    
+    
     
     @IBOutlet weak var tableViewConstraint: NSLayoutConstraint!
     
@@ -809,7 +819,44 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let circleQuery = geoFire.query(at: center, withRadius: self.filter.distanceFilter)
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
             
-            print("555'\(String(describing: key))' entered the search area and is at location '\(String(describing: location))'")
+            
+            let date = NSDate()
+            
+        
+            print("555'\(String(describing: key))' entered  '\(String(describing: location)) and \(date.timeIntervalSince1970)'")
+            
+            let distance = location?.distance(from: center)
+            let distanceDouble = Double(distance!)
+            
+            print("distanceDouble = \(distanceDouble)")
+            
+            
+            
+            if distanceDouble <= 300{
+                
+                self.distance300.append(key)
+                print("<300")
+            
+            } else if distanceDouble <= 500{
+                self.distance500.append(key)
+                print("<500")
+            
+            } else if distanceDouble <= 1000{
+                self.distance1000.append(key)
+                print("<1000")
+            
+            } else if distanceDouble <= 3000{
+                self.distance3000.append(key)
+                print("<3000")
+                
+            } else if distanceDouble <= 5000{
+                self.distance5000.append(key)
+                print("<5000")
+            }
+
+
+            
+            
             
             
             var queryPath = self.filter.queryPath
@@ -839,7 +886,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         )
         circleQuery?.observeReady({
-            print("All initial data has been loaded and events have been fired!")
+            print(" 555 All initial data has been loaded and events have been fired!")
             self.allInitialDataLoaded = true
             self.messageFrame.removeFromSuperview()
             self.tableView.reloadData()
@@ -853,11 +900,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String, location: CLLocation?, center: CLLocation){
         let toilet = Toilet()
         
+        let date = NSDate()
+        
+        
         if !snapshot.exists(){
                 return
         }
         
-        print("555 createTableViewFor \(key)")
+        print("555 createTableViewFor \(key) and \(date.timeIntervalSince1970)")
         
         print("555 snapshot = \(snapshot)")
         
@@ -1757,6 +1807,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if self.filter.orderReviewFilter == true{
             self.toilets.sort() { $0.reviewCount > $1.reviewCount }
         }
+        
+        print("555 createTableViewFor Done!!! and \(date.timeIntervalSince1970)")
+
     
     
     }
