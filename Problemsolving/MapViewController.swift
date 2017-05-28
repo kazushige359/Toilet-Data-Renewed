@@ -149,12 +149,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var geoFireRef: FIRDatabaseReference!
     let queryannotations = MKPointAnnotation()
     var toilets: [Toilet] = []
+    var query600 = false
+    var query1200 = false
+    var query1800 = false
+    var query3600 = false
+    var query7200 = false
+    var query10000 = false
+    
     var distance600: [String] = []
+    var distance600In: [String] = []
     var distance1200: [String] = []
+    var distance1200In: [String] = []
     var distance1800: [String] = []
+    var distance1800In: [String] = []
     var distance3600: [String] = []
+    var distance3600In: [String] = []
     var distance7200: [String] = []
+    var distance7200In: [String] = []
     var distance10000: [String] = []
+    var distance10000In: [String] = []
+
     
     var centerLocation = CLLocation()
     
@@ -927,10 +941,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func distance600Call(){
         
+        query600 = true
+        
         var queryPath = self.filter.queryPath
         if queryPath == ""{
             queryPath = "NoFilter"
         }
+        
+        if distance600.isEmpty{
+            print("distance600 is empty Call 1200 for in inside 666")
+            distance1200Call()
+            
+        }
+
         
         for item in distance600{
             
@@ -940,8 +963,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                
-                
                 
                 self.createTableViewAndMarker(snapshot: snapshot, key: item)
             })
@@ -954,6 +975,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func distance1200Call(){
         
+        query1200 = true
+        query600 = false
+        
+        if distance1200.isEmpty{
+            print("distance1200 is empty Call 1800 for in inside 666")
+            distance1800Call()
+            
+        }
+
+        
         var queryPath = self.filter.queryPath
         if queryPath == ""{
             queryPath = "NoFilter"
@@ -963,6 +994,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
            
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                 self.createTableViewAndMarker(snapshot: snapshot, key: item)
                 
                 
                // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
@@ -974,25 +1006,47 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func distance1800Call(){
         
+        query1800 = true
+        query1200 = false
+        
+        print("distance1800Call() function inside 666 ")
+
+        
         var queryPath = self.filter.queryPath
         if queryPath == ""{
             queryPath = "NoFilter"
         }
         
+        
+        if distance1800.isEmpty{
+            print("distance1800 is empty Call 3600 for in inside 666")
+            distance3600Call()
+            
+        }
+        
         for item in distance1800{
             
+            
+            print("distance1800Call() for in inside 666")
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                 self.createTableViewAndMarker(snapshot: snapshot, key: item)
                 
                 //self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
-            
-            
         }
     }
 
     
     func distance3600Call(){
+        
+        query3600 = true
+        query1800 = false
+        
+        if distance3600.isEmpty{
+            print("distance3600 is empty Call 7200 for in inside 666")
+            distance7200Call()
+        }
         
         var queryPath = self.filter.queryPath
         if queryPath == ""{
@@ -1003,6 +1057,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                 self.createTableViewAndMarker(snapshot: snapshot, key: item)
                 
                // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
@@ -1013,22 +1068,54 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
     
     func distance7200Call(){
+        query7200 = true
+        query3600 = false
+        
+        if distance7200.isEmpty{
+            print("distance7200 is empty Call 10000 for in inside 666")
+            distance10000Call()
+        }
+
         
         var queryPath = self.filter.queryPath
         if queryPath == ""{
             queryPath = "NoFilter"
         }
         
-//        for item in distance1000{
-//            
-//            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
-//            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-//                
-//                //self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
-//            })
-//            
-//        }
+        for item in distance7200{
+            
+            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                 self.createTableViewAndMarker(snapshot: snapshot, key: item)
+                
+                // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+            })
+            
+            
+        }
     }
+    
+    func distance10000Call(){
+        query10000 = true
+        query7200 = false
+        
+        var queryPath = self.filter.queryPath
+        if queryPath == ""{
+            queryPath = "NoFilter"
+        }
+        
+        for item in distance10000{
+            
+            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                 self.createTableViewAndMarker(snapshot: snapshot, key: item)
+                // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
+            })
+            
+            
+        }
+    }
+
 
     
     
@@ -1039,7 +1126,66 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     
         func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String){
+            
+            if !snapshot.exists(){
+                return
+            }
+            
+            
             let timeData = NSDate()
+            
+            if query600 == true{
+                distance600In.append(key)
+                if distance600In.count == distance600.count{
+                    if toilets.count < 4 {
+                        print("distance1200Call() Inside 666")
+                        distance1200Call()
+                    }
+                }
+            
+            } else if query1200 == true{
+                distance1200In.append(key)
+                if distance1200In.count == distance1200.count{
+                    if toilets.count < 4 {
+                        print("distance1800Call() Inside 666")
+                        distance1800Call()
+                    }
+                }
+            } else if query1800 == true{
+                print("distance == true Inside 666")
+                
+                distance1800In.append(key)
+                if distance1800In.count == distance1800.count{
+                    if toilets.count < 4 {
+                        print("distance3600Call() Inside 666")
+                        distance3600Call()
+                    }
+                }
+                
+                
+            } else if query3600 == true{
+                distance3600In.append(key)
+                if distance3600In.count == distance3600.count{
+                    if toilets.count < 4 {
+                        print("distance7200Call() Inside 666")
+                        distance7200Call()
+                    }
+                }
+                
+                
+            } else if query7200 == true{
+                distance7200In.append(key)
+                if distance7200In.count == distance7200.count{
+                    if toilets.count < 4 {
+                        print("distance1000Call() Inside 666")
+                        distance10000Call()
+                    }
+                }
+                
+                
+            }
+            
+            
             
              print("toilet count \(toilets.count)444 inside First  @@@@@\(timeData.timeIntervalSince1970)' ")
             
@@ -1053,9 +1199,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let date = NSDate()
         
         
-        if !snapshot.exists(){
-                return
-        }
+        
+            
+        
         
         print("555 createTableViewFor \(key) and \(date.timeIntervalSince1970)")
         
