@@ -2070,16 +2070,26 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         self.createdArray = true
         
-        self.tableView.reloadData()
+        
+            //self.tableView.reloadData()
+            
+            print("order by something  888")
+
         if self.filter.orderDistanceFilter == true {
+            print("order by distance true 888 ")
             self.toilets.sort() { $0.distance < $1.distance }
         }
         if self.filter.orderStarFilter == true{
+            print("order by star true 888 ")
             self.toilets.sort() { $0.star > $1.star }
         }
         if self.filter.orderReviewFilter == true{
+            print("order by review true 888 ")
             self.toilets.sort() { $0.reviewCount > $1.reviewCount }
         }
+            
+            
+            self.tableView.reloadData()
         
         print("555 createTableViewFor Done!!! and \(date.timeIntervalSince1970)")
 
