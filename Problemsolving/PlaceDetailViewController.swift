@@ -1957,6 +1957,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 //update firebase data
                 
+                //atomic
                 
                 
                 let userInfoUpdate: [String : Any] = ["totalLikedCount": self.reviewTwoUserTotalLikeOriginalCount]
@@ -2113,7 +2114,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             ]
             
             toiletProblemsRef.child(rpid).setValue(rpData)
-            
             
             
             reviewWarningListUpload()

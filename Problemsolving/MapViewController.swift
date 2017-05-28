@@ -956,21 +956,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         
         for item in distance600{
-            
-            let date = NSDate()
-            
-            print("item 4444 = \(item) @@@@@\(date.timeIntervalSince1970)")
-            
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                
                 self.createTableViewAndMarker(snapshot: snapshot, key: item)
             })
-            
-            
         }
-        let dat = NSDate()
-        print("toielts count 4444 = \(toilets.count) @@@@@\(dat.timeIntervalSince1970)'")
     }
     
     func distance1200Call(){
@@ -983,24 +973,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             distance1800Call()
             
         }
-
-        
         var queryPath = self.filter.queryPath
         if queryPath == ""{
             queryPath = "NoFilter"
         }
         
         for item in distance1200{
-           
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
                  self.createTableViewAndMarker(snapshot: snapshot, key: item)
-                
-                
-               // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
-            
-            
         }
     }
     
@@ -1021,18 +1003,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if distance1800.isEmpty{
             print("distance1800 is empty Call 3600 for in inside 666")
             distance3600Call()
-            
         }
         
         for item in distance1800{
-            
-            
             print("distance1800Call() for in inside 666")
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
                  self.createTableViewAndMarker(snapshot: snapshot, key: item)
-                
-                //self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
         }
     }
@@ -1054,15 +1031,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         for item in distance3600{
-            
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
                  self.createTableViewAndMarker(snapshot: snapshot, key: item)
-                
-               // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
-            
-            
         }
     }
 
@@ -1075,23 +1047,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             print("distance7200 is empty Call 10000 for in inside 666")
             distance10000Call()
         }
-
-        
         var queryPath = self.filter.queryPath
         if queryPath == ""{
             queryPath = "NoFilter"
         }
         
         for item in distance7200{
-            
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
                  self.createTableViewAndMarker(snapshot: snapshot, key: item)
-                
-                // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
-            
-            
         }
     }
     
@@ -1105,14 +1070,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         for item in distance10000{
-            
             let toiletsRef = FIRDatabase.database().reference().child(queryPath)
             toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
                  self.createTableViewAndMarker(snapshot: snapshot, key: item)
-                // self.createTableViewAndMarker(snapshot: snapshot, key: key!, location: location, center: center)
             })
-            
-            
         }
     }
 

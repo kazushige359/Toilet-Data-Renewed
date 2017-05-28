@@ -133,6 +133,8 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     @IBOutlet weak var starSearchField: UITextField!
     
+    let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
+    
     
     var distanceOption = ["less500".localized,"less1000".localized,"less3000".localized,"less5000".localized]
     
@@ -276,11 +278,13 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         autoToiletWashSwitchOutlet.isOn = false
         
         
+        
         sensorHandWashSwtichOutlet.isOn = false
         handSoapSwitchOutlet.isOn = false
         autoHandSoapSwitchOutlet.isOn = false
         paperTowelSwitchOutlet.isOn = false
         handDrierSwitchOutlet.isOn = false
+        
         
         
         //Other things one
@@ -292,8 +296,10 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         baggageSpaceSwitchOutlet.isOn = false
         
         
+        
         //Other things two
         noNeedAskSwitchOutlet.isOn = false
+        
         writtenEnglishSwitchOutlet.isOn = false
         parkingSwitchOutlet.isOn = false
         airConditionSwitchOutlet.isOn = false
