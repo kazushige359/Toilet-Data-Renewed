@@ -1039,6 +1039,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
     
         func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String){
+            let timeData = NSDate()
+            
+             print("toilet count \(toilets.count)444 inside First  @@@@@\(timeData.timeIntervalSince1970)' ")
             
         
 

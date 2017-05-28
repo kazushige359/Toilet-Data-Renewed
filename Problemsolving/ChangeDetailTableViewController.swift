@@ -495,7 +495,20 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             if (placemarks?.count)! > 0 {
                 let pm = placemarks?[0]
                 //addressString = "\(pm!.thoroughfare)\(pm!.postalCode)\(pm!.locality)\(pm!.country)"
-                addressString =  (pm?.locality)! + "/" + (pm?.thoroughfare)! + "/" + (pm?.name)!
+                
+                if pm?.locality != nil {
+                    addressString = addressString + (pm?.locality!)! + "/"
+                }
+                if pm?.thoroughfare != nil {
+                    addressString = addressString + (pm?.thoroughfare!)! + "/"
+                }
+                if pm?.name != nil {
+                    addressString = addressString + (pm?.name!)!
+                }
+                
+                
+                
+               // addressString =  (pm?.locality)! + "/" + (pm?.thoroughfare)! + "/" + (pm?.name)!
                 
                 //This gives me an error
                 
