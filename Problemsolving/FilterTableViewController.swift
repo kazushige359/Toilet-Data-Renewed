@@ -119,7 +119,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     
     
     
-    @IBOutlet weak var distanceField: UITextField!
+   // @IBOutlet weak var distanceField: UITextField!
     
     @IBOutlet weak var orderField: UITextField!
     
@@ -130,7 +130,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
     
     
-    var distanceOption = ["less500".localized,"less1000".localized,"less3000".localized,"less5000".localized]
+    //var distanceOption = ["less500".localized,"less1000".localized,"less3000".localized,"less5000".localized]
     
     
     
@@ -190,7 +190,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         view.addGestureRecognizer(tap)
         //Added for dismissing the keyboard 
         
-        distanceField.inputView = pickerView1
+        //distanceField.inputView = pickerView1
         orderField.inputView = pickerView2
         typeField.inputView = pickerView3
         starSearchField.inputView = pickerView4
@@ -201,11 +201,11 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         
         
        
-        if filter.distanceSetted == true{
-            distanceField.text = "\(filter.distanceFilter)km"
-        }else{
-            distanceField.placeholder = "3km"
-        }
+//        if filter.distanceSetted == true{
+//            distanceField.text = "\(filter.distanceFilter)km"
+//        }else{
+//            distanceField.placeholder = "3km"
+//        }
      
         if filter.myOrderSetted == true{
             if filter.orderDistanceFilter == true{
@@ -730,10 +730,10 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == pickerView1 {
-            //print("pickerView1")
-            returnCount = distanceOption.count
-        }
+//        if pickerView == pickerView1 {
+//            //print("pickerView1")
+//            returnCount = distanceOption.count
+//        }
         if pickerView == pickerView2 {
             //print("pickerView2")
             returnCount = orderOption.count
@@ -756,10 +756,10 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
    
         func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
             //pickerTextField.text = "待ち時間　\(pickOption[row])分"
-            if pickerView == pickerView1 {
-                
-                distanceField.text = "\(distanceOption[row])"
-            }
+//            if pickerView == pickerView1 {
+//                
+//                distanceField.text = "\(distanceOption[row])"
+//            }
             
             if pickerView == pickerView2 {
                 orderField.text = orderOption[row]
@@ -781,11 +781,11 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView == pickerView1 {
-            //print("pickerView1")
-            pickedOption = distanceOption[row]
-            
-        }
+//        if pickerView == pickerView1 {
+//            //print("pickerView1")
+//            pickedOption = distanceOption[row]
+//            
+//        }
         if pickerView == pickerView2 {
             //print("pickerView2")
             pickedOption = orderOption[row]
@@ -888,24 +888,24 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
 //        if availableLabelSwitch.isOn == true{
 //            filter.availableFilter = true
 //        }
-        
-        if pickedOption == distanceOption[0]{
-            filter.distanceFilter = 0.5
-            filter.distanceSetted = true
-        }
-        if pickedOption == distanceOption[1]{
-            filter.distanceFilter = 1
-            filter.distanceSetted = true
-        }
-        if pickedOption == distanceOption[2]{
-            filter.distanceFilter = 3
-            filter.distanceSetted = true
-        }
-        if pickedOption == distanceOption[3]{
-            filter.distanceFilter = 5
-            filter.distanceSetted = true
-        }
-               
+//        
+//        if pickedOption == distanceOption[0]{
+//            filter.distanceFilter = 0.5
+//            filter.distanceSetted = true
+//        }
+//        if pickedOption == distanceOption[1]{
+//            filter.distanceFilter = 1
+//            filter.distanceSetted = true
+//        }
+//        if pickedOption == distanceOption[2]{
+//            filter.distanceFilter = 3
+//            filter.distanceSetted = true
+//        }
+//        if pickedOption == distanceOption[3]{
+//            filter.distanceFilter = 5
+//            filter.distanceSetted = true
+//        }
+//               
         if pickedOption == orderOption[0]{
             filter.orderDistanceFilter = true
             filter.orderStarFilter = false
@@ -1972,8 +1972,137 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         
         }
     
+    }
+    
+    func removeAllFilterAndSearch(){
+        
+        
+        ///
+        
+       
+        filter.starFilterSetted = false
+        filter.starFilter = 1.0
+        filter.myOrderSetted = false
+        filter.orderDistanceFilter = false
+        filter.orderStarFilter = false
+        filter.orderReviewFilter = false
+        filter.typeFilterOn = false
+        filter.typeFilter = 0
+        
+        filter.availableFilter = false
+        filter.japaneseFilter = false
+        filter.westernFilter = false
+        filter.onlyFemaleFilter = false
+        filter.unisexFilter = false
+        
+        
+        filter.washletFilter = false
+        filter.warmSearFilter = false
+        filter.autoOpen = false
+        filter.noVirusFilter = false
+        filter.paperForBenkiFilter = false
+        filter.cleanerForBenkiFilter = false
+        filter.autoToiletWashFilter = false
+        
+        filter.sensorHandWashFilter = false
+        filter.handSoapFilter = false
+        filter.autoHandSoapFilter = false
+        filter.paperTowelFilter = false
+        filter.handDrierFilter = false
+        
+        
+        //others one
+        filter.fancy = false
+        filter.smell = false
+        filter.confortableWise = false
+        filter.clothes = false
+        filter.baggageSpaceFilter = false
+        
+        //others two
+        
+        filter.noNeedAsk = false
+        filter.writtenEnglish = false
+        filter.parking = false
+        filter.airConditionFilter = false
+        filter.wifiFilter = false
+        
+        
+        //for ladys
+        filter.otohime = false
+        filter.napkinSelling = false
+        filter.makeroomFilter = false
+        filter.ladyOmutu = false
+        filter.ladyBabyChair = false
+        filter.ladyBabyChairGood = false
+        filter.ladyBabyCarAccess = false
+        
+        
+        //for men
+        filter.maleOmutu = false
+        filter.maleBabyChair = false
+        filter.maleBabyChairgood = false
+        filter.maleBabyCarAccess = false
+        
+        //for family room
+        filter.wheelchairFilter = false
+        filter.wheelchairAccessFilter = false
+        filter.autoDoorFilter = false
+        filter.callHelpFilter = false
+        filter.ostomateFilter = false
+        filter.braille = false
+        filter.voiceGuideFilter = false
+        filter.familyOmutu = false
+        filter.familyBabyChair = false
+        
+        
+        
+        
+        
+        filter.milkspaceFilter = false
+        filter.babyRoomOnlyFemaleFilter = false
+        filter.babyRoomMaleCanEnterFilter = false
+        filter.babyRoomPersonalSpaceFilter = false
+        filter.babyRoomPersonalWithLockFilter = false
+        filter.babyRoomWideSpaceFilter = false
+        
+        
+        filter.babyCarRentalFilter = false
+        filter.babyCarAccessFilter = false
+        filter.omutuFilter = false
+        filter.babyHipWashingStuffFilter = false
+        filter.omutuTrashCanFilter = false
+        filter.omutuSelling = false
+        
+        
+        filter.babySinkFilter = false
+        filter.babyWashstandFilter = false
+        filter.babyHotWaterFilter = false
+        filter.babyMicrowaveFilter = false
+        filter.babySellingWaterFilter = false
+        filter.babyFoodSellingFilter = false
+        filter.babyEatingSpaceFilter = false
+        
+        
+        filter.babyChairFilter = false
+        filter.babySoffaFilter = false
+        filter.babyToiletFilter = false
+        filter.babyKidsSpaceFilter = false
+        filter.babyHeightMeasureFilter = false
+        filter.babyWeightMeasureFilter = false
+        filter.babyToyFilter = false
+        filter.babyRoomFancyFilter = false
+        filter.babyRoomSmellGoodFilter = false
+        
+        performSegue(withIdentifier: "CanneltoMapSegue", sender: nil)
+
+        ////
+    
+    }
     
     
+    @IBAction func removeFilterButtonTapped(_ sender: Any) {
+        print("Remove Filter")
+        removeAllFilterAndSearch()
     }
     
     

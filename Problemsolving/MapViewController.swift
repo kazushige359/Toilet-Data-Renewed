@@ -213,9 +213,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             filter.orderDistanceFilter = true
         }
         
-        if filter.distanceSetted == false{
-            filter.distanceFilter = 3
-        }
+//        if filter.distanceSetted == false{
+//            filter.distanceFilter = 3
+//        }
         
         print("search.searchOn = \(search.searchOn)")
         if search.searchOn == false {

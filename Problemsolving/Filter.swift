@@ -35,8 +35,8 @@ class Filter {
 //    var availableFilter = false
     
     var queryPath = "NoFilter";
-    var distanceSetted = false;
-    var distanceFilter = 3.0;
+    //var distanceSetted = false;
+    //var distanceFilter = 3.0;
     var starFilterSetted = false;
     var starFilter = 1.0;
     var myOrderSetted = false;

@@ -51,8 +51,8 @@ class UserPrivateAccountViewController: UIViewController {
         
 //        self.userImageView.sd_setImage(with: URL(string:"https://firebasestorage.googleapis.com/v0/b/problemsolving-299e4.appspot.com/o/images%2Fdefault%20picture.png?alt=media&token=b407a188-5a9d-4b0f-8b43-3bf6c2060573"))
         
-        userImageView.layer.masksToBounds = true
-        userImageView.layer.cornerRadius = 40.0
+//        userImageView.layer.masksToBounds = true
+//        userImageView.layer.cornerRadius = 40.0
         let myColor : UIColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.3)
         userImageView.layer.borderColor = myColor.cgColor
         userImageView.layer.borderWidth = 2

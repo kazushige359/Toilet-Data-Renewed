@@ -728,13 +728,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         howToAccessTextView.text = toilet.howtoaccess
         howToAccessTextView.isUserInteractionEnabled = false
         
-        let date = NSDate()
-        let calendar = Calendar.current
-        let day = calendar.component(.day, from:date as Date)
-        let month = calendar.component(.month, from:date as Date)
-        let year = calendar.component(.year, from:date as Date)
-        
-        //print("yearmonthday = \(year):\(month):\(day)")
+//        let date = NSDate()
+//        let calendar = Calendar.current
+//        let day = calendar.component(.day, from:date as Date)
+//        let month = calendar.component(.month, from:date as Date)
+//        let year = calendar.component(.year, from:date as Date)
+//        
+//        print("yearmonthday = \(year):\(month):\(day)")
         
         firstPosterQuery()
         lastEditerQuery()
@@ -763,9 +763,16 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 self.firstPosterNameLabel.text = (snapshotValue?["userName"] as? String!)!
                 let imageURL = (snapshotValue?["userPhoto"] as? String!)!
                 
+                
+                
                 if imageURL != ""{
                     //means user real picture not a default one...
                     self.firstPosterPicture.sd_setImage(with: URL(string: imageURL!))
+                } else {
+                //set default image
+                    
+                    //firstPosterPicture.image = UIImage
+                
                 }
                 
                 let userLikeCount = (snapshotValue?["totalLikedCount"] as? Int)!
@@ -1008,8 +1015,14 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 //                        self.reviewOneUSerTotalikeUpdatedCount = newThumbTotalCount
                 
                 
+                if review.userPhoto != ""{
+                    self.reviewOneUserImage.sd_setImage(with: URL(string: review.userPhoto))
+                }else {
+                    self.reviewOneUserImage.image = UIImage(named:"user_default_80")!
+                }
                 
-                self.reviewOneUserImage.sd_setImage(with: URL(string: review.userPhoto))
+                
+                //self.reviewOneUserImage.sd_setImage(with: URL(string: review.userPhoto))
                 self.reviewOneUserNameLabel.text = review.userName
                 
                 self.reviewOneUserLikeCount.text = String(review.totalLikedCount)
@@ -1152,9 +1165,15 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                         //                        var reviewTwoUserTotalLikeUpdatedCount = ""
                         
                         //
+                    
+                    if review.userPhoto != ""{
+                         self.reviewTwoUserImage.sd_setImage(with: URL(string: review.userPhoto))
+                    }else {
+                        self.reviewTwoUserImage.image = UIImage(named:"user_default_80")!
+                    }
+                    
                         
-                        
-                        self.reviewTwoUserImage.sd_setImage(with: URL(string: review.userPhoto))
+                        //self.reviewTwoUserImage.sd_setImage(with: URL(string: review.userPhoto))
                         self.reviewTwoUserNameLabel.text = review.userName
                         
                         self.reviewTwoUserLikeCount.text = String(review.totalLikedCount)

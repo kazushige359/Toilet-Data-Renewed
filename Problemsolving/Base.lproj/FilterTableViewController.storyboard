@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wg0-0K-Qyt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wg0-0K-Qyt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="距離" id="YbK-0S-N2V">
+                            <tableViewSection headerTitle="条件解除" id="YbK-0S-N2V">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="3e2-6y-qVx">
                                         <rect key="frame" x="0.0" y="56" width="320" height="60"/>
@@ -28,18 +28,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sks-KM-spa">
-                                                    <rect key="frame" x="12" y="6" width="296" height="47"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgR-9g-v7e">
+                                                    <rect key="frame" x="12" y="6" width="296" height="47.5"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="removeFilterButtonTapped:" destination="wg0-0K-Qyt" eventType="touchUpInside" id="rBu-oT-XJP"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="sks-KM-spa" firstAttribute="leading" secondItem="fdN-Xn-OcI" secondAttribute="leading" constant="12" id="Ygd-GV-yoL"/>
-                                                <constraint firstItem="sks-KM-spa" firstAttribute="top" secondItem="fdN-Xn-OcI" secondAttribute="top" constant="6" id="Z0d-0U-gGD"/>
-                                                <constraint firstAttribute="bottom" secondItem="sks-KM-spa" secondAttribute="bottom" constant="6" id="hhd-Td-gf9"/>
-                                                <constraint firstAttribute="trailing" secondItem="sks-KM-spa" secondAttribute="trailing" constant="12" id="rel-jd-0cl"/>
+                                                <constraint firstAttribute="bottom" secondItem="zgR-9g-v7e" secondAttribute="bottom" constant="6" id="E0z-NN-jS7"/>
+                                                <constraint firstItem="zgR-9g-v7e" firstAttribute="top" secondItem="fdN-Xn-OcI" secondAttribute="top" constant="6" id="LZt-Qh-2DF"/>
+                                                <constraint firstItem="zgR-9g-v7e" firstAttribute="leading" secondItem="fdN-Xn-OcI" secondAttribute="leading" constant="12" id="VFh-gm-2bt"/>
+                                                <constraint firstAttribute="trailing" secondItem="zgR-9g-v7e" secondAttribute="trailing" constant="12" id="tvS-ZB-n3f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -2513,7 +2514,6 @@
                         <outlet property="cleanerForBenkiFilterSwitchOutlet" destination="om7-Gp-3eK" id="3O6-H5-2AC"/>
                         <outlet property="clothesSwitchOutlet" destination="VFO-kq-kht" id="PTS-eT-kdv"/>
                         <outlet property="confortableWideToiletSwitchOutlet" destination="sYQ-Yq-7ZV" id="z6a-dK-ag8"/>
-                        <outlet property="distanceField" destination="sks-KM-spa" id="K9v-XJ-9pI"/>
                         <outlet property="familyBabyChairOutlet" destination="y55-LG-MwA" id="ZKB-5B-BO0"/>
                         <outlet property="familyOmutuOutlet" destination="irq-cW-9Gh" id="7IC-WY-BG6"/>
                         <outlet property="fancyToiletSwitchOutlet" destination="LP4-tz-sUf" id="A4F-t5-Ulh"/>
