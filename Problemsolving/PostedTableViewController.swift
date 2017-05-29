@@ -151,6 +151,8 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             userReviewComment.tid = (snapshotValue?["tid"] as? String)!
             
             let tidKey = userReviewComment.tid
+                
+                
             
             
             let toiletRef = self.firebaseRef.child("NoFilter").child(tidKey)

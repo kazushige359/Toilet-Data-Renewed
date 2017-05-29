@@ -871,13 +871,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             
         }
-        
 
-        
         let toilet = Toilet()
-        
-        let date = NSDate()
-        
         let snapshotValue = snapshot.value as? NSDictionary
         
         //Type Filter
@@ -888,10 +883,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         //Gotta Make sure the integet is the right  May 8
-        
-        
-        
-        
+    
         //Star Filter
         
         let averageStar = snapshotValue?["averageStar"] as? String

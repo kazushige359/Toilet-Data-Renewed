@@ -66,27 +66,19 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
             if !snapshot.exists(){
                 return
             }
-
-
-        //firebaseRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            print("First Snap!!")
-            print(snapshot)
-            print(snapshot.value!)
+            
             
             let favkey = snapshot.key
             
             
-            firebaseRef.child("NoFilter").child(favkey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            
+            FIRDatabase.database().reference().child("NoFilter").child(favkey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
                 
                 if !snapshot.exists(){
                     return
                 }
 
-                
-            
-            //firebaseRef.child("ToiletUserList").child(favkey).queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
-                print(snapshot)
-                print(snapshot.key)
                 
                 let toilet = Toilet()
                 toilet.key = favkey
@@ -95,10 +87,6 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
                 
                 let urlOne = snapshotValue?["urlOne"] as? String
                 toilet.urlOne = urlOne!
-                
-//                let type = snapshotValue?["type"] as? Int
-//                toilet.type = type!
-                // print("type = \(type)")
                 
                 let averageStar = snapshotValue?["averageStar"] as? String
                 toilet.star = Double(averageStar!)!
@@ -111,12 +99,6 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
                 toilet.type = (snapshotValue?["type"] as? Int)!
                 toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
                 toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
-                
-                
-                
-                
-                //toilet.openHours = (snapshotValue?["openHours"] as? Int)!
-                //toilet.closeHours = (snapshotValue?["closeHours"] as? Int)!
                 toilet.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
                 toilet.averageWait = (snapshotValue?["averageWait"] as? Int)!
                 
@@ -140,15 +122,6 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
                 
                 
                 self.toilet.loc = CLLocation(latitude: self.toilet.latitude, longitude: self.toilet.longitude)
-                //let distance = location?.distance(from: search.centerSearchLocation)
-                
-                
-                
-                //MapViewController.distanceCalculationGetString()
-                //                toilet.distance = MapViewController.distanceCalculationGetString(self.toilet.loc, self.search.centerSearchLocation)
-                //toilet.distance = MapViewController.distanceCalculationGetString(destination: CLLocation, center: CLLocation)
-                
-                
                 toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
                 
                 
@@ -203,9 +176,6 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
         
         
         return cell
-        
-        
-        // Configure the cell...
     }
     
     

@@ -38,35 +38,20 @@ class NewStartLoginViewController: UIViewController {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(NewStartLoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-
-        
     
-    
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
     @IBAction func buttonLoginActionStart(_ sender: UIButton) {
         userLogin()
         progressBarDisplayer(msg:"ログイン中", true)
-        
-        //performSegue(withIdentifier:"moveLoginViewToMapSegue", sender: nil)
-
-        
     }
     
     func userLogin(){
@@ -87,27 +72,20 @@ class NewStartLoginViewController: UIViewController {
                 }    
             } else {
                 print("We signed in successfully")
-                 self.messageFrame.removeFromSuperview()
-                
+                self.messageFrame.removeFromSuperview()
                 self.performSegue(withIdentifier:"moveLoginViewToMapSegue", sender: nil)
-                
             }
-        
-     
-        
         })}
     
     func firebaseLoginErrorShow(errorMessage: String){
         let alertController = UIAlertController (title: "エラー", message: errorMessage, preferredStyle: .alert)
-        //Changed to action Sheet
-        
         let errorGot = UIAlertAction(title: "了解", style: .default, handler: nil)
         alertController.addAction(errorGot)
         
         self.present(alertController, animated: true, completion: nil)
         
         
-            }
+    }
 
     
     
@@ -149,16 +127,4 @@ class NewStartLoginViewController: UIViewController {
         messageFrame.addSubview(strLabel)
         view.addSubview(messageFrame)
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
