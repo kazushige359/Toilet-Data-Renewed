@@ -304,7 +304,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
         let mutipleData = ["ReviewInfo/\(rid)": reviewData,
                            "ReviewList/\(uid)/\(rid)": true,
-                           "ToiletReviews/\(toilet.key)/\(rid)": true,
+                           "ToiletReview/\(toilet.key)/\(rid)": true,
                            "ToiletView/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "ToiletView/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "ToiletView/\(toilet.key)/reviewCount": newReviewCount as Int,

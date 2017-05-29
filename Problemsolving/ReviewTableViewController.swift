@@ -555,15 +555,19 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         
         
         
-        let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
+//        let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
         
-        toiletReviewsRef.observeSingleEvent(of: .childAdded, with: { snapshot in
+        
+        
+        toiletReviewsRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
             
             if !snapshot.exists(){
                 return
             }
 
+            
+            
             
 //        toiletReviewsRef.observe(.childAdded, with: { snapshot in
         
@@ -572,122 +576,250 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
             
             //get rid key 
             
-            
-            
-            let ridKey = snapshot.key
-            
-            reviewsRef.child(ridKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
-                
-                if !snapshot.exists(){
-                    return
-                }
-
-
-            //reviewsRef.child(ridKey).observe(FIRDataEventType.value, with: { snapshot in
-                
-                //if self.firebaseLoaded == false{
-               
-        
-//        reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
-            //if self.firebaseLoadedOnce == false
-            //{
-                print("snapshot TV 333= \(snapshot)")
-                print("snapshot.key TV 333 = \(snapshot.key)")
-                print("snapshot.value TV 333 = \(String(describing: snapshot.value))")
-                let review = Review()
-                
-                let snapshotValue = snapshot.value as? NSDictionary
-                
-                let star = snapshotValue?["star"] as? String
-                print("star = \(String(describing: star))!!!")
-                review.star = Double(star!)!
-                let feedback = snapshotValue?["feedback"] as? String
-                review.feedback = feedback!
-                
-                let time = snapshotValue?["time"] as? String
-                review.time = time!
-                print("review.time = \(review.time)")
-                
-                let waitingtime = snapshotValue?["waitingtime"] as? String
-                review.waitingtime = waitingtime!
-                
-                let timeNumbers = snapshotValue?["timeNumbers"] as? Double
-                review.timeNumbers = timeNumbers!
-                
-                let likedCount = snapshotValue?["likedCount"] as? Int
-                review.likedCount = likedCount!
-                
-                let uid = snapshotValue?["uid"] as? String
-                review.uid = uid!
-                
-                review.rid = snapshot.key
-                
-               
-                
-                
-                let userRef = FIRDatabase.database().reference().child("Users")
-                    userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
-                        
-                        
-                        if !snapshot.exists(){
-                            return
-                        }
-
-
-//                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
-                    //if self.firebaseLoadedOnce == false
-                    //{
-                    // if self.firebaseLoaded == false{
-                        print("userRef.child(uid!).observe(.childAdded, with: { snapshot in")
-                        print("snapshot = \(snapshot)")
-                        
-                        let snapshotValue = snapshot.value as? NSDictionary
-                        
-                        let userName = snapshotValue?["userName"] as? String
-                        review.userName = userName!
-                        print("review.userName = \(review.userName)")
-                        
-                        let userPhoto = snapshotValue?["userPhoto"] as? String
-                        review.userPhoto = userPhoto!
-                        print("review.userPhoto = \(review.userPhoto)")
-                        
-                        let totalFavoriteCount = snapshotValue?["totalFavoriteCount"] as? Int
-                        review.totalFavoriteCount = totalFavoriteCount!
-                        
-                        let totalHelpedCount = snapshotValue?["totalHelpedCount"] as? Int
-                        review.totalHelpedCount = totalHelpedCount!
-                        
-                        let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
-                        review.totalLikedCount = totalLikedCount!
-                        
-                        self.reviews.append(review)
-                        self.reviewsSet.insert(snapshot.key)
-                        self.reviews.sort(){$0.timeNumbers > $1.timeNumbers}
-                        self.tableView.reloadData()
-                        
-                        print("review Query TV End")
-                        
-                        //I moved codes above here because review tableview could not be loaded 26th
-                        //when the value is changed, tableveiw loads again and again
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots
+                {
+                    let newKey = snap.key
+                    self.reviewGetData(ridKey: newKey)
                     
-                       if self.thumbsUpSet.contains(review.rid){
-                          print("thummbUPSet contails\(review.rid)")
-                          review.userLiked = true
-                      // }
-                    }//Firebase Loaded Once == false
-                    }
-        
-                )
-                }//Firebase Loaded Once == false
-                
+                }
+            }
+            
+            
+           // let ridKey = snapshot.key
+            
+//            reviewsRef.child(ridKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+//                
+//                if !snapshot.exists(){
+//                    return
+//                }
+//
+//
+//            //reviewsRef.child(ridKey).observe(FIRDataEventType.value, with: { snapshot in
+//                
+//                //if self.firebaseLoaded == false{
+//               
+//        
+////        reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
+//            //if self.firebaseLoadedOnce == false
+//            //{
+//                print("snapshot TV 333= \(snapshot)")
+//                print("snapshot.key TV 333 = \(snapshot.key)")
+//                print("snapshot.value TV 333 = \(String(describing: snapshot.value))")
+//                let review = Review()
+//                
+//                let snapshotValue = snapshot.value as? NSDictionary
+//                
+//                let star = snapshotValue?["star"] as? String
+//                print("star = \(String(describing: star))!!!")
+//                review.star = Double(star!)!
+//                let feedback = snapshotValue?["feedback"] as? String
+//                review.feedback = feedback!
+//                
+//                let time = snapshotValue?["time"] as? String
+//                review.time = time!
+//                print("review.time = \(review.time)")
+//                
+//                let waitingtime = snapshotValue?["waitingtime"] as? String
+//                review.waitingtime = waitingtime!
+//                
+//                let timeNumbers = snapshotValue?["timeNumbers"] as? Double
+//                review.timeNumbers = timeNumbers!
+//                
+//                let likedCount = snapshotValue?["likedCount"] as? Int
+//                review.likedCount = likedCount!
+//                
+//                let uid = snapshotValue?["uid"] as? String
+//                review.uid = uid!
+//                
+//                review.rid = snapshot.key
+//                
+//               
+//                
+//                
+//                let userRef = FIRDatabase.database().reference().child("Users")
+//                    userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+//                        
+//                        
+//                        if !snapshot.exists(){
+//                            return
+//                        }
+//
+//
+////                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
+//                    //if self.firebaseLoadedOnce == false
+//                    //{
+//                    // if self.firebaseLoaded == false{
+//                        print("userRef.child(uid!).observe(.childAdded, with: { snapshot in")
+//                        print("snapshot = \(snapshot)")
+//                        
+//                        let snapshotValue = snapshot.value as? NSDictionary
+//                        
+//                        let userName = snapshotValue?["userName"] as? String
+//                        review.userName = userName!
+//                        print("review.userName = \(review.userName)")
+//                        
+//                        let userPhoto = snapshotValue?["userPhoto"] as? String
+//                        review.userPhoto = userPhoto!
+//                        print("review.userPhoto = \(review.userPhoto)")
+//                        
+//                        let totalFavoriteCount = snapshotValue?["totalFavoriteCount"] as? Int
+//                        review.totalFavoriteCount = totalFavoriteCount!
+//                        
+//                        let totalHelpedCount = snapshotValue?["totalHelpedCount"] as? Int
+//                        review.totalHelpedCount = totalHelpedCount!
+//                        
+//                        let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
+//                        review.totalLikedCount = totalLikedCount!
+//                        
+//                        self.reviews.append(review)
+//                        self.reviewsSet.insert(snapshot.key)
+//                        self.reviews.sort(){$0.timeNumbers > $1.timeNumbers}
+//                        self.tableView.reloadData()
+//                        
+//                        print("review Query TV End")
+//                        
+//                        //I moved codes above here because review tableview could not be loaded 26th
+//                        //when the value is changed, tableveiw loads again and again
+//                    
+//                       if self.thumbsUpSet.contains(review.rid){
+//                          print("thummbUPSet contails\(review.rid)")
+//                          review.userLiked = true
+//                      // }
+//                    }//Firebase Loaded Once == false
+//                        
+//                        
+//                    }
+//        
+//                )
+//                }//Firebase Loaded Once == false
+            
                 
                // }
-            )
-            }
+//            )
+           }
             
    )
 }
 
+    
+    func reviewGetData(ridKey: String){
+         let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
+        
+    
+        reviewsRef.child(ridKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            
+            if !snapshot.exists(){
+                return
+            }
+            
+            
+            //reviewsRef.child(ridKey).observe(FIRDataEventType.value, with: { snapshot in
+            
+            //if self.firebaseLoaded == false{
+            
+            
+            //        reviewsRef.queryOrdered(byChild: "tid").queryEqual(toValue: toilet.key).observe(.childAdded, with: { snapshot in
+            //if self.firebaseLoadedOnce == false
+            //{
+            print("snapshot TV 333= \(snapshot)")
+            print("snapshot.key TV 333 = \(snapshot.key)")
+            print("snapshot.value TV 333 = \(String(describing: snapshot.value))")
+            let review = Review()
+            
+            let snapshotValue = snapshot.value as? NSDictionary
+            
+            let star = snapshotValue?["star"] as? String
+            print("star = \(String(describing: star))!!!")
+            review.star = Double(star!)!
+            let feedback = snapshotValue?["feedback"] as? String
+            review.feedback = feedback!
+            
+            let time = snapshotValue?["time"] as? String
+            review.time = time!
+            print("review.time = \(review.time)")
+            
+            let waitingtime = snapshotValue?["waitingtime"] as? String
+            review.waitingtime = waitingtime!
+            
+            let timeNumbers = snapshotValue?["timeNumbers"] as? Double
+            review.timeNumbers = timeNumbers!
+            
+            let likedCount = snapshotValue?["likedCount"] as? Int
+            review.likedCount = likedCount!
+            
+            let uid = snapshotValue?["uid"] as? String
+            review.uid = uid!
+            
+            review.rid = snapshot.key
+            
+            
+            
+            
+            let userRef = FIRDatabase.database().reference().child("Users")
+            userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+                
+                
+                if !snapshot.exists(){
+                    return
+                }
+                
+                
+                //                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
+                //if self.firebaseLoadedOnce == false
+                //{
+                // if self.firebaseLoaded == false{
+                print("userRef.child(uid!).observe(.childAdded, with: { snapshot in")
+                print("snapshot = \(snapshot)")
+                
+                let snapshotValue = snapshot.value as? NSDictionary
+                
+                let userName = snapshotValue?["userName"] as? String
+                review.userName = userName!
+                print("review.userName = \(review.userName)")
+                
+                let userPhoto = snapshotValue?["userPhoto"] as? String
+                review.userPhoto = userPhoto!
+                print("review.userPhoto = \(review.userPhoto)")
+                
+                let totalFavoriteCount = snapshotValue?["totalFavoriteCount"] as? Int
+                review.totalFavoriteCount = totalFavoriteCount!
+                
+                let totalHelpedCount = snapshotValue?["totalHelpedCount"] as? Int
+                review.totalHelpedCount = totalHelpedCount!
+                
+                let totalLikedCount = snapshotValue?["totalLikedCount"] as? Int
+                review.totalLikedCount = totalLikedCount!
+                
+                self.reviews.append(review)
+                self.reviewsSet.insert(snapshot.key)
+                self.reviews.sort(){$0.timeNumbers > $1.timeNumbers}
+                self.tableView.reloadData()
+                
+                print("review Query TV End")
+                
+                //I moved codes above here because review tableview could not be loaded 26th
+                //when the value is changed, tableveiw loads again and again
+                
+                if self.thumbsUpSet.contains(review.rid){
+                    print("thummbUPSet contails\(review.rid)")
+                    review.userLiked = true
+                    // }
+                }//Firebase Loaded Once == false
+                
+                
+            }
+                
+            )
+        }//Firebase Loaded Once == false
+    
+    
+        )
+        
+    
+    
+    
+    }
     
     func thumbsUpQuery(){
         
