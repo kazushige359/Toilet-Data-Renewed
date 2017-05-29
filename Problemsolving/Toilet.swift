@@ -20,6 +20,7 @@ class  Toilet {
     var urlThree = ""
     //var distance = ""
     var distance = ""
+    var distanceNumber = 0.0
     var reviewOne = ""
     var reviewTwo = ""
     

@@ -825,10 +825,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.tableView.reloadData()
     }
     
-    //    func distanceFilter(){
-    //        toilets.sort() { $0.distance > $1.distance }
-    //         self.tableView.reloadData()
-    //    }
+    
+        func distanceFilter(){
+            toilets.sort() { $0.distance < $1.distance }
+             self.tableView.reloadData()
+        }
     
    
    
@@ -935,6 +936,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.messageFrame.removeFromSuperview()
             self.tableView.reloadData()
             self.changeStartCell()
+            
+            
         })
     }
     
@@ -1943,6 +1946,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
             
         let location = CLLocation(latitude: toilet.latitude, longitude: toilet.longitude)
+            
+            
+        let distance = location.distance(from: center)
+            
+        toilet.distanceNumber = distance
 
         
         //let distance = location?.distance(from: center)
@@ -2071,24 +2079,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.createdArray = true
         
         
-            self.tableView.reloadData()
+            //self.tableView.reloadData()
             
             print("order by something  888")
 
         if self.filter.orderDistanceFilter == true {
             print("order by distance true 888 ")
             
+            print("toilets sort before = \(toilets) 555")
+            
             //self.toilets.sorted(by: { $0.distance < $1.distance })
             //self.toilets.sorted { $0.distance < $1.distance }
-            self.toilets.sort() { $0.distance < $1.distance }
+            self.toilets.sort() { $0.distanceNumber < $1.distanceNumber }
+            self.tableView.reloadData()
+            print("toilets sort After = \(toilets) 555")
+
         }
         if self.filter.orderStarFilter == true{
             print("order by star true 888 ")
             self.toilets.sort() { $0.star > $1.star }
+            self.tableView.reloadData()
+
         }
         if self.filter.orderReviewFilter == true{
             print("order by review true 888 ")
             self.toilets.sort() { $0.reviewCount > $1.reviewCount }
+            
+            self.tableView.reloadData()
+
         }
             
             
@@ -2172,7 +2190,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
  
     @IBAction func accountButtonTapped(_ sender: Any) {
-        self.performSegue(withIdentifier: "userAccountInfoSegue", sender: nil)
+        
+        
+        
+        
+        
+        
+       self.performSegue(withIdentifier: "userAccountInfoSegue", sender: nil)
         
         //self.performSegue(withIdentifier: "mapToacTVSegue", sender: nil)
         //April 7th 10pm
