@@ -185,6 +185,8 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
                 userReviewComment.distance = MapViewController.distanceCalculationGetString(destination: destinationLoc, center: self.search.centerSearchLocation)
                 
                 self.commentData.append(userReviewComment)
+                //self.toilets.sort() { $0.distanceNumber < $1.distanceNumber }
+
                 self.tableView.reloadData()
                 
                 

@@ -59,105 +59,24 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
     
     func firebaseQuery(){
         let firebaseRef = FIRDatabase.database().reference().child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid)
-        firebaseRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
-            
+        firebaseRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+
+//        firebaseRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+            //Changed to value Event listener
+        
             if !snapshot.exists(){
                 return
             }
             
-            print("UserWentList Snap = \(snapshot) 000")
-            print("UserWentList Snap key = \(snapshot.key) 000" )
-            print("UserWentList Snap value= \(String(describing: snapshot.value)) 000")
-
-            
-            
-            
-//            let newKey = snapshot.key
-//            self.toiletDataQuery(key: newKey)
-            
-            
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-            
-        
             for snap in snapshots
-                
             {
-                print("UserWentList Snap for in = \(snapshot) 000")
-                print("UserWentList Snap key for in = \(snapshot.key) 000" )
-                print("UserWentList Snap value for in = \(String(describing: snapshot.value)) 000")
-
-                                let newKey = snap.key
-                                self.toiletDataQuery(key: newKey)
+                let newKey = snap.key
+                self.toiletDataQuery(key: newKey)
             }
-                }
-
-            
-            
-            
-            
-//
-//            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-//
-//            
-//            for snap in snapshots
-//            {
-//                let newKey = snap.key
-//                self.toiletDataQuery(key: newKey)
-//            }
-//
-//            
-//            }
-            
-            //let favkey = snapshot.key
-            
-//            FIRDatabase.database().reference().child("NoFilter").child(favkey).observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
-//                
-//                
-//                if !snapshot.exists(){
-//                    print("No Filter snapshot doesnt exist so return 000")
-//                    return
-//                }
-//                
-//                let toilet = Toilet()
-//                toilet.key = favkey
-//                
-//                let snapshotValue = snapshot.value as? NSDictionary
-//                
-//                let urlOne = snapshotValue?["urlOne"] as? String
-//                toilet.urlOne = urlOne!
-//                
-//                let averageStar = snapshotValue?["averageStar"] as? String
-//                toilet.star = Double(averageStar!)!
-//                toilet.name = (snapshotValue?["name"] as? String)!
-//                toilet.type = (snapshotValue?["type"] as? Int)!
-//                toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
-//                toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
-//                toilet.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
-//                toilet.averageWait = (snapshotValue?["averageWait"] as? Int)!
-//                
-//                
-//                
-//                
-//                toilet.available = (snapshotValue?["available"] as? Bool)!
-//                let reviewCount = snapshotValue?["reviewCount"] as? Int
-//                toilet.reviewCount = reviewCount!
-//                let averageWait = snapshotValue?["averageWait"] as? Int
-//                toilet.averageWait = averageWait!
-//                self.toilet.latitude = (snapshotValue?["latitude"] as? Double)!
-//                self.toilet.longitude = (snapshotValue?["longitude"] as? Double)!
-//                
-//                
-//                self.toilet.loc = CLLocation(latitude: self.toilet.latitude, longitude: self.toilet.longitude)
-//                
-//                toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
-//                
-//                self.toilets.append(toilet)
-//                self.tableView.reloadData()
-//            })
+            }
         }
-    
     )
-        
     }
     
     func toiletDataQuery(key: String){
@@ -165,11 +84,6 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
         
         FIRDatabase.database().reference().child("NoFilter").child(key).observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
             
-            
-            print("NoFilter Snap = \(snapshot) 000")
-            print("NoFilter Snap key = \(snapshot.key) 000" )
-            print("NoFilter Snap value= \(String(describing: snapshot.value)) 000")
-
             
             if !snapshot.exists(){
                 print("No Filter snapshot doesnt exist so return 000")
@@ -207,9 +121,14 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
             
             self.toilet.loc = CLLocation(latitude: self.toilet.latitude, longitude: self.toilet.longitude)
             
+            
+            toilet.distanceNumber = self.toilet.loc.distance(from: self.search.centerSearchLocation)
+            
             toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
             
             self.toilets.append(toilet)
+            self.toilets.sort() { $0.distanceNumber < $1.distanceNumber }
+
             self.tableView.reloadData()
         })
     }

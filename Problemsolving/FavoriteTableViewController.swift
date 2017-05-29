@@ -61,77 +61,87 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     ///aaaa
     func firebaseQuery(){
         let firebaseRef = FIRDatabase.database().reference().child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
-        firebaseRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+        firebaseRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
             }
             
             
-            let favkey = snapshot.key
-            
-            
-            
-            
-            FIRDatabase.database().reference().child("NoFilter").child(favkey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
-                
-                if !snapshot.exists(){
-                    return
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots
+                {
+                    let newKey = snap.key
+                    self.toiletDataGet(key: newKey)
                 }
-
-                
-                let toilet = Toilet()
-                toilet.key = favkey
-                
-                let snapshotValue = snapshot.value as? NSDictionary
-                
-                let urlOne = snapshotValue?["urlOne"] as? String
-                toilet.urlOne = urlOne!
-                
-                let averageStar = snapshotValue?["averageStar"] as? String
-                toilet.star = Double(averageStar!)!
-                
-                
-                
-                
-                
-                toilet.name = (snapshotValue?["name"] as? String)!
-                toilet.type = (snapshotValue?["type"] as? Int)!
-                toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
-                toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
-                toilet.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
-                toilet.averageWait = (snapshotValue?["averageWait"] as? Int)!
-                
-                
-                
-                
-                toilet.available = (snapshotValue?["available"] as? Bool)!
-                
-                
-                
-                let reviewCount = snapshotValue?["reviewCount"] as? Int
-                toilet.reviewCount = reviewCount!
-                print(" reviewCount= \(String(describing: reviewCount))")
-                
-                
-                let averageWait = snapshotValue?["averageWait"] as? Int
-                toilet.averageWait = averageWait!
-                self.toilet.latitude = (snapshotValue?["latitude"] as? Double)!
-                self.toilet.longitude = (snapshotValue?["longitude"] as? Double)!
-                
-                
-                
-                self.toilet.loc = CLLocation(latitude: self.toilet.latitude, longitude: self.toilet.longitude)
-                toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
-                
-                
-                self.toilets.append(toilet)
-                self.tableView.reloadData()
-            })
+            }
         }
+        )}
+    
+    func toiletDataGet(key: String){
+        FIRDatabase.database().reference().child("NoFilter").child(key).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
             
-        )
-        
+            if !snapshot.exists(){
+                return
+            }
+            
+            
+            let toilet = Toilet()
+            toilet.key = key
+            
+            let snapshotValue = snapshot.value as? NSDictionary
+            
+            let urlOne = snapshotValue?["urlOne"] as? String
+            toilet.urlOne = urlOne!
+            
+            let averageStar = snapshotValue?["averageStar"] as? String
+            toilet.star = Double(averageStar!)!
+            
+            
+            
+            
+            
+            toilet.name = (snapshotValue?["name"] as? String)!
+            toilet.type = (snapshotValue?["type"] as? Int)!
+            toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
+            toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
+            toilet.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
+            toilet.averageWait = (snapshotValue?["averageWait"] as? Int)!
+            
+            
+            
+            
+            toilet.available = (snapshotValue?["available"] as? Bool)!
+            
+            
+            
+            let reviewCount = snapshotValue?["reviewCount"] as? Int
+            toilet.reviewCount = reviewCount!
+            print(" reviewCount= \(String(describing: reviewCount))")
+            
+            
+            let averageWait = snapshotValue?["averageWait"] as? Int
+            toilet.averageWait = averageWait!
+            self.toilet.latitude = (snapshotValue?["latitude"] as? Double)!
+            self.toilet.longitude = (snapshotValue?["longitude"] as? Double)!
+            
+            
+            
+            self.toilet.loc = CLLocation(latitude: self.toilet.latitude, longitude: self.toilet.longitude)
+            toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
+            
+            
+            self.toilets.append(toilet)
+            toilet.distanceNumber = self.toilet.loc.distance(from: self.search.centerSearchLocation)
+            self.toilets.sort() { $0.distanceNumber < $1.distanceNumber }
+
+            self.tableView.reloadData()
+        })
+
+    
+    
+    
+    
     }
 
     
