@@ -1478,53 +1478,54 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         
     }
     
-    func reviewDataUpload(){
-        
-        if waitMinutesLabel.text == ""{
-            waitminute = "0"
-        }
-        if feedbackTextView.text == ""{
-            feedbackTextView.text = ""
-            
-        }
-        
-        
-        let date = NSDate()
-        let calendar = Calendar.current
-        
-        let day = calendar.component(.day, from:date as Date)
-        let month = calendar.component(.month, from:date as Date)
-        let year = calendar.component(.year, from:date as Date)
-        
-        let dateString = "\(year)-\(month)-\(day)"
-        
-        let uid = FIRAuth.auth()!.currentUser!.uid
-        
-        
-        let interval = NSDate().timeIntervalSince1970
-        
-        
-        
-        let reviewData : [String : Any] = ["uid": uid , "tid": toiletNewId, "star": String(starView.rating) as String, "waitingtime": self.waitminute ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
-        ]
-        
-        let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").child(reviewNewId)
-        
-        reviewRef.setValue(reviewData)
-        
-        
-        //let rid = reviewRef.key
-        
-        
-        let reviewListRef = FIRDatabase.database().reference().child("ReviewList").child(uid)
-        
-        reviewListRef.child(reviewNewId).setValue(true)
-        
-        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toiletNewId)
-        
-        toiletReviewsRef.child(reviewNewId).setValue(true)
-        
-    }
+//    func reviewDataUpload(){
+//        
+//        if waitMinutesLabel.text == ""{
+//            waitminute = "0"
+//        }
+//        if feedbackTextView.text == ""{
+//            feedbackTextView.text = ""
+//            
+//        }
+//        
+//        
+//        let date = NSDate()
+//        let calendar = Calendar.current
+//        
+//        let day = calendar.component(.day, from:date as Date)
+//        let month = calendar.component(.month, from:date as Date)
+//        let year = calendar.component(.year, from:date as Date)
+//        
+//        let dateString = "\(year)-\(month)-\(day)"
+//        
+//        let uid = FIRAuth.auth()!.currentUser!.uid
+//        
+//        
+//        let interval = NSDate().timeIntervalSince1970
+//        
+//        
+//        
+//        let reviewData : [String : Any] = ["uid": uid , "tid": toiletNewId, "star": String(starView.rating) as String, "waitingtime": self.waitminute ,"feedback": feedbackTextView.text as String, "available": true, "time": dateString, "timeNumbers":interval, "likedCount":0
+//        ]
+//        
+//        let reviewRef = FIRDatabase.database().reference().child("ReviewInfo").child(reviewNewId)
+//        
+//        reviewRef.setValue(reviewData)
+//        
+//        
+//        //let rid = reviewRef.key
+//        
+//        
+//        let reviewListRef = FIRDatabase.database().reference().child("ReviewList").child(uid)
+//        
+//        reviewListRef.child(reviewNewId).setValue(true)
+//        
+//        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toiletNewId)
+//        
+//        toiletReviewsRef.child(reviewNewId).setValue(true)
+//        
+//    }
+    //Commented this because there are multiple updates above
     
     
     func uploadPhotosToDatabase(){

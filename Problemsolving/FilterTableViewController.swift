@@ -60,12 +60,6 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var ladyBabyChairGoodOutlet: UISwitch!
     @IBOutlet weak var ladyBabyCarAccessOutlet: UISwitch!
     
-    
-    
-    
-    
-    
-    
     //For men
     
     @IBOutlet weak var maleOmutuOutlet: UISwitch!
@@ -277,8 +271,6 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         cleanerForBenkiFilterSwitchOutlet.isOn = false
         autoToiletWashSwitchOutlet.isOn = false
         
-        
-        
         sensorHandWashSwtichOutlet.isOn = false
         handSoapSwitchOutlet.isOn = false
         autoHandSoapSwitchOutlet.isOn = false
@@ -299,7 +291,6 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         
         //Other things two
         noNeedAskSwitchOutlet.isOn = false
-        
         writtenEnglishSwitchOutlet.isOn = false
         parkingSwitchOutlet.isOn = false
         airConditionSwitchOutlet.isOn = false
@@ -307,8 +298,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
 
         
         
-        //For ladys 
-        
+        //For ladys
         otohimeSwitchOutlet.isOn = false
         napkinSellingSwtichOutlet.isOn = false
         makeRoomSwitchOutlet.isOn = false
@@ -317,8 +307,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         ladyBabyChairGoodOutlet.isOn = false
         ladyBabyCarAccessOutlet.isOn = false
         
-        //For men 
-        
+        //For men
         maleOmutuOutlet.isOn = false
         maleBabyChiarOutlet.isOn = false
         maleBabyChairGood.isOn = false
@@ -706,13 +695,6 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         if filter.babyRoomSmellGoodFilter == true{
             babyRoomSmellGoodSwitchOutlet.isOn = true
         }
-        
-        
-        
-        
-    
-    
-    
     }
     
     func dismissKeyboard() {
@@ -930,18 +912,26 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
             filter.orderReviewFilter = false
             filter.myOrderSetted = true
         }
+        
         if pickedOption == orderOption[1]{
-            filter.orderStarFilter = true
-            filter.orderDistanceFilter = false
-            filter.orderReviewFilter = false
-            filter.myOrderSetted = true
-        }
-        if pickedOption == orderOption[2]{
             filter.orderReviewFilter = true
             filter.orderDistanceFilter = false
             filter.orderStarFilter = false
             filter.myOrderSetted = true
         }
+        
+        if pickedOption == orderOption[2]{
+            filter.orderStarFilter = true
+            filter.orderDistanceFilter = false
+            filter.orderReviewFilter = false
+            filter.myOrderSetted = true
+        }
+//        if pickedOption == orderOption[2]{
+//            filter.orderReviewFilter = true
+//            filter.orderDistanceFilter = false
+//            filter.orderStarFilter = false
+//            filter.myOrderSetted = true
+//        }
         
         if pickedOption == starOption[0]{
             filter.starFilter = 1.0
@@ -1983,23 +1973,13 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         }
     
     
-        
-    
-    
-    
-    
     
     }
     
     
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
-        print("cancelButtonTapped")
-        
-       
          performSegue(withIdentifier: "CanneltoMapSegue", sender: nil)
-//         _ = self.navigationController?.popViewController(animated: true)
-//        //previous one
     }
     
    

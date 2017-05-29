@@ -20,12 +20,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = UITableViewCell()
+        
         let cell = Bundle.main.loadNibNamed("BooleanTableViewCell", owner: self, options: nil)?.first as! BooleanTableViewCell
         
         cell.booleanName.text = booleans[indexPath.row]
-        
-        print(" cell.booleanName.text =  \(String(describing: cell.booleanName.text))")
         return cell
     }
     
@@ -47,9 +45,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var typeAndDistanceLabel: UILabel!
     @IBOutlet weak var availableTimeAndWaitingTImeLabel: UILabel!
     @IBOutlet weak var starImage: CosmosView!
-    
-    
-    
+
     @IBOutlet weak var reviewCountLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var picture1: UIImageView!
@@ -121,15 +117,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     
     @IBOutlet weak var reviewTwoThumbUpButtonOutlet: UIButton!
-    
     @IBOutlet weak var reviewTwoThumbUpCountLabel: UILabel!
-    
-    
     @IBOutlet weak var reviewTwoWatingTImeLabel: UILabel!
-    
     @IBOutlet weak var reviewTwoDateStringOutlet: UILabel!
-    
-    
     @IBOutlet weak var booleanTableViewLeftConstraint: NSLayoutConstraint!
     
     
@@ -165,8 +155,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     var favoriteAdded = false
     var youwentAdded = false
     var youwentEdited = false
-    //    var firebaseReviewOneLoadedOnce = false
-    //    var firebaseReviewTwoLoadedOnce = false
     var favoriteButtonTapped = false
     var firstEditerHelpCountAdded = false
     var lastEditerHelpCountAdded = false
@@ -176,8 +164,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     // var firebaseOnceLoaded = false
     var postRid = ""
     var suspiciosUserId = ""
-    //    var reviewReportOnceUploaded = false
-    //    var userReportOnceUploaded = false
     var reviewOnePoster = ""
     var reviewTwoPoster = ""
     var firstPosterFavoriteNumber = 0
@@ -201,10 +187,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         mapView.delegate = self
         mapView.isUserInteractionEnabled = false
         
-        print("Place Detail View Loaded")
-        
-        
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.hideTableView))
         view.addGestureRecognizer(tap)
         
@@ -217,26 +199,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let screenWidth = screenSize.width
         booleanTableViewLeftConstraint.constant = screenWidth
         
-        print("booleanTableViewLeftConstraint.constant = \(booleanTableViewLeftConstraint.constant)")
-        
-        
         dataQuery(queryKey: toilet.key)
-        
-        
-        
-        
-        
-        
-        //Commented for making table view... April 11 12pm
-        
-        
-        
-        //reviewQuery()
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        print("View Did Disappear!!!")
-        
         
     }
     
@@ -244,11 +207,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let userRef = firebaseRef.child("Users")
         
-        
         userRef.child(currentUserId!).observeSingleEvent(of: .value, with: { snapshot in
-            
-            
-            //userRef.child(currentUserId!).observe(.value, with: { snapshot in
             
             if ( snapshot.value is NSNull ) {
                 print("(User did not found)")
@@ -263,11 +222,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 
             } else {
-                print(snapshot.value!)
                 print("User Find")
                 self.favoriteListQuery()
                 self.thumbsUpQuery()
-                
                 self.userAlreadyLogin = true
             }
         })
@@ -291,25 +248,15 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         alertController.addAction(settingsAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
-        
-        
-        
     }
     
     
     func dataQuery(queryKey: String){
         
-        print("Data Query Called")
+        
         let toiletsRef = FIRDatabase.database().reference().child("ToiletView")
         
-        
-        
         toiletsRef.child(queryKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
-            
-            
-            
-            //toiletsRef.child(queryKey).observe(FIRDataEventType.value, with: { snapshot in
-            //For Single Event Listener
             
             self.toilet.key = queryKey
             let snapshotValue = snapshot.value as? NSDictionary
@@ -329,14 +276,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             print("Review One Query Called")
             self.toilet.reviewOne = (snapshotValue?["reviewOne"] as? String!)!
-            
             self.toilet.reviewTwo = (snapshotValue?["reviewTwo"] as? String!)!
             
-            
-            
-            
-            
-            
+    
             let averageStar = snapshotValue?["averageStar"] as? String
             self.toilet.star = Double(averageStar!)!
             
@@ -347,26 +289,16 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.urlOne = (snapshotValue?["urlOne"] as? String)!
             self.toilet.averageStar = (snapshotValue?["averageStar"] as? String)!
             
-            
-            
-            
             self.toilet.openHours = (snapshotValue?["openHours"] as? Int)!
             self.toilet.closeHours = (snapshotValue?["closeHours"] as? Int)!
             self.toilet.reviewCount = (snapshotValue?["reviewCount"] as? Int)!
             self.toilet.averageWait = (snapshotValue?["averageWait"] as? Int)!
-            
-            
-            
             
             self.toilet.available = (snapshotValue?["available"] as? Bool)!
             self.toilet.japanesetoilet = (snapshotValue?["japanesetoilet"] as? Bool)!
             self.toilet.westerntoilet = (snapshotValue?["westerntoilet"] as? Bool)!
             self.toilet.onlyFemale = (snapshotValue?["onlyFemale"] as? Bool)!
             self.toilet.unisex = (snapshotValue?["unisex"] as? Bool)!
-            
-            
-            
-            
             
             self.toilet.washlet = (snapshotValue?["washlet"] as? Bool)!
             self.toilet.warmSeat = (snapshotValue?["warmSeat"] as? Bool)!
@@ -376,16 +308,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.cleanerForBenki = (snapshotValue?["cleanerForBenki"] as? Bool)!
             self.toilet.autoToiletWash = (snapshotValue?["nonTouchWash"] as? Bool)!
             
-            
-            
             self.toilet.sensorHandWash = (snapshotValue?["sensorHandWash"] as? Bool)!
             self.toilet.handSoap = (snapshotValue?["handSoap"] as? Bool)!
             self.toilet.autoHandSoap = (snapshotValue?["nonTouchHandSoap"] as? Bool)!
             self.toilet.paperTowel = (snapshotValue?["paperTowel"] as? Bool)!
             self.toilet.handDrier = (snapshotValue?["handDrier"] as? Bool)!
-            
-            
-            
             
             self.toilet.otohime = (snapshotValue?["otohime"] as? Bool)!
             self.toilet.napkinSelling = (snapshotValue?["napkinSelling"] as? Bool)!
@@ -402,8 +329,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.english = (snapshotValue?["english"] as? Bool)!
             self.toilet.braille = (snapshotValue?["braille"] as? Bool)!
             self.toilet.voiceGuide = (snapshotValue?["voiceGuide"] as? Bool)!
-            
-            
             
             self.toilet.fancy = (snapshotValue?["fancy"] as? Bool)!
             self.toilet.smell = (snapshotValue?["smell"] as? Bool)!
@@ -452,7 +377,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             let reviewCount = snapshotValue?["reviewCount"] as? Int
             self.toilet.reviewCount = reviewCount!
-            print(" reviewCount= \(String(describing: reviewCount))")
             
             
             let averageWait = snapshotValue?["averageWait"] as? Int
@@ -461,15 +385,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.latitude = (snapshotValue?["latitude"] as? Double)!
             self.toilet.longitude = (snapshotValue?["longitude"] as? Double)!
             
-            print("self.toilet.latitude == \(self.toilet.latitude)")
-            print("self.toilet.longditude == \(self.toilet.longitude)")
-            
             
             self.toilet.loc = CLLocation(latitude: self.toilet.latitude, longitude: self.toilet.longitude)
-            print("toilet.loc == \(self.toilet.loc)")
             
-            
-            //print("center Place Detail = \(self.search.centerSearchLocation)")
             
             self.toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
             
@@ -701,10 +619,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             if self.toilet.babySmellGood{
                 self.booleans.append("良い香り")
             }
-            
-            
-            //                self.toilet.distance = Double(distance)
-            
             self.booleansTableView.reloadData()
             
             self.layoutInfoReady()
@@ -721,11 +635,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         // let coordinate1: CLLocationCoordinate2D = toilet.loc.coordinate
         
-        print("toilet.latitude222 == \(toilet.latitude)")
-        print("toilet.longditude222 == \(toilet.longitude)")
+        
+        
         
         let toiletCoordinate = CLLocationCoordinate2D(latitude: toilet.latitude, longitude: toilet.longitude)
-        print(" toiletCoordinate== \(toiletCoordinate)")
+        
         
         
         let pinAnnotation = MKPointAnnotation()
@@ -742,26 +656,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         mapView.tintColor = UIColor.blue
         let focusArea = 1200
         
-        //            if toilet.distance <= 50{
-        //                focusArea = 100}else
-        //                if toilet.distance <= 100{
-        //                    focusArea = 200}else
-        //                    if toilet.distance <= 300{
-        //                        focusArea = 600}else
-        //                        if toilet.distance <= 500{
-        //                            focusArea = 1200}else
-        //                            if toilet.distance <= 900{
-        //                                focusArea = 2000}
-        //
         
         let region = MKCoordinateRegionMakeWithDistance(toiletCoordinate, CLLocationDistance(focusArea), CLLocationDistance(focusArea))
         
-        //            let region = MKCoordinateRegionMakeWithDistance(coordinate1, CLLocationDistance(focusArea), CLLocationDistance(focusArea))
         mapView.setRegion(region, animated: true)
         
         let distanceText = toilet.distance
-        
-        print("toiletDistance22233 == \(toilet.distance)")
         
         var typeString = ""
         
@@ -802,14 +702,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         starImage.settings.filledBorderColor = UIColor.orange
         starImage.text = "\(toilet.averageStar)"
         starImage.settings.textColor = UIColor.orange
-        
         starImage.settings.textFont = UIFont.boldSystemFont(ofSize: 20.0)
         starImage.settings.textMargin = 5
-        
-        
-        //        starLabel.text = "\(toilet.averageStar)"
-        // pictureBackLabel.backgroundColor = UIColor.white
-        
         
         
         buttonGoOutlet.backgroundColor = primaryColor
@@ -840,7 +734,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let month = calendar.component(.month, from:date as Date)
         let year = calendar.component(.year, from:date as Date)
         
-        print("yearmonthday = \(year):\(month):\(day)")
+        //print("yearmonthday = \(year):\(month):\(day)")
         
         firstPosterQuery()
         lastEditerQuery()
@@ -859,7 +753,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 return
             }
 
-            
             //        userRef.child(toilet.addedBy).observe(FIRDataEventType.value, with: { snapshot in
             
             if self.firstEditerHelpCountAdded == false{
@@ -1082,8 +975,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                     return
                 }
 
-                
-                
                 //userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
                 //Comment for deleting queryOrderByKey() and single event
                 
@@ -1352,13 +1243,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         //Added single event observer May 16
         
-        
-        
-        
-        
-        
-        
-        
         let alertController = UIAlertController (title: "お気に入りに追加されました", message: "", preferredStyle: .alert)
         let addAction = UIAlertAction(title: "はい", style: .default, handler: nil)
         alertController.addAction(addAction)
@@ -1489,9 +1373,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             nextVC.toilet = toilet
             nextVC.filter = filter
             nextVC.search = search
-            
-            
-            
             
         }
         
@@ -1670,10 +1551,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         self.present(nextAlertController, animated: true, completion: nil)
         
-        
-        
-        
-        
     }
     
     func toiletProblemUpload(problemString: String){
@@ -1694,10 +1571,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let interval = NSDate().timeIntervalSince1970
         
-        
-        
-        
-        
         let rpData : [String : Any] = ["uid": uid,
                                        "tid": toilet.key,
                                        "time": timeString,
@@ -1711,15 +1584,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         suspiciosUserId = toilet.editedBy
         userWarningListUpload()
         
-        
-        
     }
-    
-    
-    
-    
-    
-    
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
         if userAlreadyLogin == false{
@@ -1730,8 +1595,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             print("Favorite Tapped")
             let loveColored = UIImage(named:"love_Icon_40")
             let loveDark = UIImage(named:"love_before_tap_40")
-            
-            
             
             if favoriteButtonTapped == false{
                 //sender.setImage(image, forControlState: .Normal)
@@ -1746,18 +1609,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 let userRef = firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
                 userRef.child(toilet.key).removeValue()
                 favoriteButtonTapped = false
-                
-                
-                
             }
         }
     }
     
     
     @IBAction func buttonShowDetailTapped(_ sender: Any) {
-        
         showUpTableView()
-        
     }
     
     
@@ -1767,10 +1625,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             showPleaseLogin()
             
         }else{
-            
-            
-            
-            
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let navigationContoller = storyboard.instantiateViewController(withIdentifier: "KansouNavigationViewController") as! UINavigationController
             let nextVC = navigationContoller.topViewController as! KansouViewController
@@ -1788,8 +1642,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             self.present(navigationContoller, animated: false, completion: nil)
         }
-        
-        
     }
     
     func progressBarDisplayer(msg:String, _ indicator:Bool ) {
@@ -1818,9 +1670,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             showPleaseLogin()
             
         }else{
-            
-            
-            print("edit tapped 11")
             progressBarDisplayer(msg:"", true)
             performSegue(withIdentifier:"placeDetailToEditSegue", sender: nil)
         }
@@ -1833,10 +1682,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBAction func buttonShowAllReviewsTapped(_ sender: Any) {
         print("Show Reviews Tapped")
         performSegue(withIdentifier:"placeDetailToReviewTVSegue", sender: nil)
-        
-        
-        //            performSegue(withIdentifier:"placeDetailToReviewTVSegue", withIdentifier: <#String#>, sender: nil)
-        //            "placeDetailToReviewTVSegue"
     }
     
     
@@ -1845,17 +1690,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
         let userRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid)
         let reviewInfoRef = FIRDatabase.database().reference().child("ReviewInfo").child(self.toilet.reviewTwo)
-        //        self.reviewOneThumbOriginalCount = review.likedCount
-        //        self.reviewOneUserTotalLikeOriginalCount = review.totalLikedCount
         
         
         if userAlreadyLogin == false{
             showPleaseLogin()
             
         }else{
-            
-            
-            
             
             if self.reviewOneLikeAlreadyTapped == false{
                 
@@ -1866,12 +1706,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 //self.thumbsUpSet.insert(self.toilet.reviewOne)
                 thumbsUpRef.child(self.toilet.reviewOne).setValue(true)
                 
-                
-                
                 self.reviewOneUserTotalLikeOriginalCount = self.reviewOneUserTotalLikeOriginalCount + 1
                 self.reviewOneThumbOriginalCount = self.reviewOneThumbOriginalCount + 1
-                
-                
                 
                 self.reviewOneUserLikeCount.text = String(self.reviewOneUserTotalLikeOriginalCount)
                 self.reviewOneThumbUpCountLabel.text = "いいね" + String(self.reviewOneThumbOriginalCount) + "件"
@@ -1883,9 +1719,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 reviewInfoRef.updateChildValues(reviewInfoUpdate)
                 
                 self.reviewOneLikeAlreadyTapped = true
-                
-                
-                
             }else {
                 
                 //UnTap
@@ -1903,8 +1736,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 self.reviewOneUserLikeCount.text = String(self.reviewOneUserTotalLikeOriginalCount)
                 self.reviewOneThumbUpCountLabel.text = "いいね" + String(self.reviewOneThumbOriginalCount) + "件"
                 
-                
-                
                 let userInfoUpdate: [String : Any] = ["totalLikedCount": self.reviewOneUserTotalLikeOriginalCount]
                 userRef.updateChildValues(userInfoUpdate)
                 
@@ -1913,16 +1744,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 self.reviewOneLikeAlreadyTapped = false
                 
-                
-                
-                
-                
             }
-            
         }
-        
-        
-        
     }
     
     
@@ -2228,9 +2051,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     //        
     //    }
     
-    
-    
-    
     func showYourReviewPostedMessage(){
         
         let alertController = UIAlertController (title: "ありがとうございます", message: "あなたの報告が完了しました", preferredStyle: .alert)
@@ -2240,9 +2060,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         present(alertController, animated: true, completion: nil)
     }
-    
-    
-    
     
     
 }

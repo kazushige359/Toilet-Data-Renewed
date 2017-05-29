@@ -78,34 +78,18 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         starRated.settings.filledColor = UIColor.yellow
         starRated.settings.emptyBorderColor = UIColor.orange
         starRated.settings.filledBorderColor = UIColor.orange
-        
-
-        
-      kansouButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+                
+        kansouButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
         textView.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 5, alpha: 0.25)
         textView.textColor = UIColor.gray
         textView.isScrollEnabled = false
-        print("viewdidload")
         textView.delegate = self
         starRated.rating = 3
-        print("self.starUpdated = \(self.starUpdated)")
-        print("self.reviewUpdated = \(self.reviewUpdated)")
         
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-
         
-        print("Kansou Toilet.key = \(toilet.key)")
-//        let userRef = FIRDatabase.database().reference().child("users").child(FIRAuth.auth()!.currentUser!.uid).child("userPhoto")
-//        userRef.queryOrderedByKey().observe(.value, with: { snapshot in
-//            
-//            let userPhoto = snapshot.value as? String
-//            print("userPhoto = \(userPhoto)")
-//        }
-//        )
-        
-        // Do any additional setup after loading the view.
     }
 
     func dismissKeyboard() {
@@ -268,40 +252,6 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
         
         
-        
-        
-       //  print("this is the new rid = \(rid) Print ")
-        
-       // let reviewListRef = FIRDatabase.database().reference().child("ReviewList").child(uid)
-        
-         // reviewListRef.child(rid).setValue(true)
-        
-      //  let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReviews").child(toilet.key)
-        
-        //  toiletReviewsRef.child(rid).setValue(true)
-        
-        //let toiletRef = FIRDatabase.database().reference().child("Toilets").child(toilet.key)
-        
-        //toiletRef.updateChildValues("averageStar": "3.0")
-        
-        //let newAvStar =
-        
-        
-        
-        
-      // let tdata : [String : Any] = ["averageStar": String(roundAvStar),
-        //                              "averageWait": newWaitingTime,
-          ///                            "reviewCount": newReviewCount,
-             //                         "available": self.available,
-               //                       "reviewOne": rid,
-                 //                     "reviewTwo": toilet.reviewOne
-                   //                         ]
-        
-        
-        
-        
-        
-        
         let mutipleData = ["ReviewInfo/\(rid)": reviewData,
                            "ReviewList/\(uid)/\(rid)": true,
                            "ToiletReview/\(toilet.key)/\(rid)": true,
@@ -382,12 +332,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
             }
         })
 
-        
         moveBackToPlaceDetailVeiwController()
-        
-        
-        
-        
     }
 
 
@@ -397,8 +342,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     @IBAction func kansouButtonTapped(_ sender: Any) {
         kansouPosting()
         
-        
-               }
+    }
     
     
     
