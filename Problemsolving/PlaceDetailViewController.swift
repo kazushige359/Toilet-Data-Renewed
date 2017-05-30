@@ -880,15 +880,22 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         print("thumbsUpQuery( Called")
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
         
-        thumbsUpRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+        thumbsUpRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
             }
 
             
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots
+                {
+                    let newKey = snap.key
+                    self.thumbsUpSet.insert(newKey)
+                }
+            }
             //        thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            self.thumbsUpSet.insert(snapshot.key)
+//            self.thumbsUpSet.insert(snapshot.key)
             print("ThumbSetQuery == \(self.thumbsUpSet)")
             
             
@@ -1115,6 +1122,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 return
             }
 
+            //review.waitingtime =  "waitTime".localized + waitingtime! + "minute".localized
+            //self.reviewTwoThumbUpCountLabel.text = String(review.likedCount) + "like".localized
             
                 let review = Review()
                 let snapshotValue = snapshot.value as? NSDictionary
@@ -1787,9 +1796,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     
     @IBAction func reviewOneLikeButtonTapped(_ sender: Any) {
+        
+        
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
         let userRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid)
-        let reviewInfoRef = FIRDatabase.database().reference().child("ReviewInfo").child(self.toilet.reviewTwo)
+        let reviewInfoRef = FIRDatabase.database().reference().child("ReviewInfo").child(self.toilet.reviewOne)
+        
         
         
         if userAlreadyLogin == false{
@@ -1810,7 +1822,14 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 self.reviewOneThumbOriginalCount = self.reviewOneThumbOriginalCount + 1
                 
                 self.reviewOneUserLikeCount.text = String(self.reviewOneUserTotalLikeOriginalCount)
-                self.reviewOneThumbUpCountLabel.text = "いいね" + String(self.reviewOneThumbOriginalCount) + "件"
+                
+                
+                //review.waitingtime =  "waitTime".localized + waitingtime! + "minute".localized
+                //self.reviewTwoThumbUpCountLabel.text = String(review.likedCount) + "like".localized
+               // self.reviewOneThumbUpCountLabel.text = "いいね" + String(self.reviewOneThumbOriginalCount) + "件"
+                
+                self.reviewOneThumbUpCountLabel.text = String(self.reviewOneThumbOriginalCount) + "like".localized
+
                 
                 let userInfoUpdate: [String : Any] = ["totalLikedCount": self.reviewOneUserTotalLikeOriginalCount]
                 userRef.updateChildValues(userInfoUpdate)
@@ -1834,7 +1853,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 
                 self.reviewOneUserLikeCount.text = String(self.reviewOneUserTotalLikeOriginalCount)
-                self.reviewOneThumbUpCountLabel.text = "いいね" + String(self.reviewOneThumbOriginalCount) + "件"
+                //self.reviewOneThumbUpCountLabel.text = "いいね" + String(self.reviewOneThumbOriginalCount) + "件"
+                self.reviewOneThumbUpCountLabel.text = String(self.reviewOneThumbOriginalCount) + "like".localized
+                
                 
                 let userInfoUpdate: [String : Any] = ["totalLikedCount": self.reviewOneUserTotalLikeOriginalCount]
                 userRef.updateChildValues(userInfoUpdate)
@@ -1875,7 +1896,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 
                 
                 self.reviewTwoUserLikeCount.text = String(self.reviewTwoUserTotalLikeOriginalCount)
-                self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbOriginalCount) + "件"
+                //self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbOriginalCount) + "件"
+                
+                self.reviewTwoThumbUpCountLabel.text = String(self.reviewTwoThumbOriginalCount) + "like".localized
+
                 
                 
                 //update firebase data
@@ -1903,7 +1927,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 thumbsUpRef.child(self.toilet.reviewTwo).removeValue()
                 
                 self.reviewTwoUserLikeCount.text = String(self.reviewTwoUserTotalLikeOriginalCount)
-                self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbOriginalCount) + "件"
+                //self.reviewTwoThumbUpCountLabel.text = "いいね" + String(self.reviewTwoThumbOriginalCount) + "件"
+                self.reviewTwoThumbUpCountLabel.text = String(self.reviewTwoThumbOriginalCount) + "like".localized
                 
                 let userInfoUpdate: [String : Any] = ["totalLikedCount": self.reviewTwoUserTotalLikeOriginalCount]
                 userRef.updateChildValues(userInfoUpdate)

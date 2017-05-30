@@ -96,7 +96,7 @@
 "mej-jG-kNV.text" = "0";
 
 /* Class = "UIButton"; normalTitle = "この施設に行く"; ObjectID = "mrK-Lq-Upb"; */
-"mrK-Lq-Upb.normalTitle" = "Go to this place";
+"mrK-Lq-Upb.normalTitle" = "Go to this Place";
 
 /* Class = "UITextView"; text = "トイレがとても綺麗でした。ありがとうございます。"; ObjectID = "mwX-wi-Qhg"; */
 "mwX-wi-Qhg.text" = "It was one of the best toilets I have ever seen in my life. It was awesome!!";

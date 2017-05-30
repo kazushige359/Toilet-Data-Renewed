@@ -126,7 +126,12 @@ class ReviewTableViewController: UITableViewController {
         cell.userNameLabel.text = reviews[indexPath.row].userName
         cell.dateLabel.text = reviews[indexPath.row].time
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.likedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount)件"
+        //String(self.reviewTwoThumbOriginalCount) + "like".localized
+
+        //cell.likedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount)件"
+        cell.likedCountLabel.text = String(reviews[indexPath.row].likedCount) + "like".localized
+
+
 
         cell.userHelpedCount.text = "\(reviews[indexPath.row].totalHelpedCount)"
         cell.userLikedCount.text = "\(reviews[indexPath.row].totalLikedCount)"
@@ -159,7 +164,8 @@ class ReviewTableViewController: UITableViewController {
          cell.likeButton.tag = indexPath.row
             
          cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount - 1)"
-         cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount - 1)件"
+         //cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount - 1)件"
+         cell.nextLikedCountLabel.text = String(reviews[indexPath.row].likedCount - 1) + "like".localized
             
          cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
             
@@ -170,7 +176,8 @@ class ReviewTableViewController: UITableViewController {
            
             cell.likeButton.tag = indexPath.row
             cell.nextUserLikedCount.text = "\(reviews[indexPath.row].totalLikedCount + 1)"
-            cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount + 1)件"
+            //cell.nextLikedCountLabel.text = "いいね\(reviews[indexPath.row].likedCount + 1)件"
+            cell.nextLikedCountLabel.text = String(reviews[indexPath.row].likedCount + 1) + "like".localized
             
             cell.likeButton.addTarget(self, action: #selector(ReviewTableViewController.reviewLikeButtonTapped(sender:)), for: .touchUpInside)
             
@@ -667,7 +674,7 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
                 //if self.firebaseLoadedOnce == false
                 //{
                 // if self.firebaseLoaded == false{
-                print("userRef.child(uid!).observe(.childAdded, with: { snapshot in")
+                
                 print("snapshot = \(snapshot)")
                 
                 let snapshotValue = snapshot.value as? NSDictionary
@@ -723,14 +730,22 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         
         print("thumbsUpQuery( Called")
         let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
-        thumbsUpRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
+        thumbsUpRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
             }
+            
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots
+                {
+                    let newKey = snap.key
+                    self.thumbsUpSet.insert(newKey)
+                }
+            }
 
         //thumbsUpRef.observe(FIRDataEventType.childAdded, with: {(snapshot) in
-            self.thumbsUpSet.insert(snapshot.key)
+            //self.thumbsUpSet.insert(snapshot.key)
             
         })
         
