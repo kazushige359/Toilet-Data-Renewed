@@ -76,12 +76,6 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(21)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMm-KD-Kzc">
-                                                        <rect key="frame" x="213" y="119" width="29" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuO-9T-DJf">
                                                         <rect key="frame" x="272" y="56" width="40" height="40"/>
                                                         <constraints>
@@ -103,12 +97,10 @@
                                                     <constraint firstAttribute="trailingMargin" secondItem="Tga-vc-bAH" secondAttribute="trailing" id="Qk6-ar-lix"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="g17-BU-J0V" secondAttribute="trailing" id="S6A-ds-cZA"/>
                                                     <constraint firstAttribute="height" constant="150" id="TiY-9z-XIf"/>
-                                                    <constraint firstItem="wMm-KD-Kzc" firstAttribute="centerY" secondItem="UDN-vi-5Qd" secondAttribute="centerY" id="VmF-sc-qi5"/>
                                                     <constraint firstAttribute="trailing" secondItem="JuO-9T-DJf" secondAttribute="trailing" constant="8" id="b6I-fA-ScS"/>
                                                     <constraint firstItem="Tga-vc-bAH" firstAttribute="leading" secondItem="F5m-5K-Il4" secondAttribute="leadingMargin" id="f0V-9E-zYu"/>
                                                     <constraint firstAttribute="trailingMargin" secondItem="voa-ve-Ctx" secondAttribute="trailing" constant="38" id="kM8-52-K2D"/>
                                                     <constraint firstItem="g17-BU-J0V" firstAttribute="top" secondItem="F5m-5K-Il4" secondAttribute="topMargin" constant="3" id="rym-2O-uZ3"/>
-                                                    <constraint firstItem="wMm-KD-Kzc" firstAttribute="leading" secondItem="UDN-vi-5Qd" secondAttribute="trailing" id="uLH-QQ-F65"/>
                                                     <constraint firstItem="Tga-vc-bAH" firstAttribute="top" secondItem="voa-ve-Ctx" secondAttribute="bottom" id="uUY-dz-hop"/>
                                                     <constraint firstItem="voa-ve-Ctx" firstAttribute="top" secondItem="g17-BU-J0V" secondAttribute="bottom" id="ySL-jh-Tk6"/>
                                                     <constraint firstItem="UDN-vi-5Qd" firstAttribute="leading" secondItem="F5m-5K-Il4" secondAttribute="leadingMargin" id="yZm-4t-zVg"/>
@@ -976,7 +968,6 @@
                         <outlet property="picture2" destination="1TS-Bx-yML" id="Wjy-BI-Ngt"/>
                         <outlet property="picture3" destination="dRJ-lH-7UZ" id="uow-JO-aYR"/>
                         <outlet property="placeNameLabel" destination="g17-BU-J0V" id="POj-66-Egf"/>
-                        <outlet property="reviewCountLabel" destination="wMm-KD-Kzc" id="zDI-KM-po4"/>
                         <outlet property="reviewOneDateStringLabel" destination="cSQ-kV-Ysa" id="FVi-G3-5gv"/>
                         <outlet property="reviewOneFeedbackTextView" destination="BEv-Yg-ucw" id="GkT-bL-mIy"/>
                         <outlet property="reviewOneStarImage" destination="953-8y-YNW" id="skf-hd-neH"/>

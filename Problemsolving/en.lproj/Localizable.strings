@@ -14,6 +14,7 @@
 
 
 
+
 //Filter Search
 
 "orderedByDistance" = "Distance";
@@ -45,6 +46,37 @@
 "yes" = "Yes";
 "no" = "No";
 
+
+
+
+//Place Detail View------
+
+"like" = " LIKES";
+"avWait" = "Average Wait ";
+"minute" = "m";
+"waitTime" = "Wait Time ";
+"reviewCount" = " Reviews";
+
+//Report
+"report" = "Report this";
+"problem" = "Is there something wrong?";
+
+
+"whatProblem" = "Help us understand the problem";
+"whatIsWrongWithReview" = "What is wrong with this Review";
+"wrongInfo" = "The Infomation is not right";
+
+
+"notAppropriate" = "The Review is not appropriate";
+"userPhotoNotAppropriate" = "The Photo of the User is not appropriate";
+"userNameNotAppropriate" = "The Name of the User is not appropriate";
+"cancel" = "Cancel";
+
+"placePhotoNotAppropriate" = "The Photo of this Place is not appropriate";
+"placeWrongInfo" = "The Infomation of this Place is not right";
+"fisrtPosterWrong" = "First Poster's Infomation is not appropriate";
+"lastEditerWrong" = "Last Editer's Infomation is not appropriate";
+//Place Detail View ------
 
 
 

@@ -28,6 +28,8 @@
 
 
 
+
+
 "one_star" = "★以上";
 "two_star" = "★★以上";
 "three_star" = "★★★以上";
@@ -40,6 +42,40 @@
 //Simple Strings
 "yes" = "はい";
 "no" = "いいえ";
+
+
+//Place Detail View-------
+"like" = "いいね";
+"avWait" = "平均待ち ";
+"minute" = "分";
+"waitTime" = "待ち ";
+"reviewCount" = " 件の感想";
+
+//Report
+"report" = "問題を報告する";
+"problem" = "この感想に問題がありますか";
+"whatProblem" = "お願い";
+"whatIsWrongWithReview" = "問題だと思う点を教えてください";
+"wrongInfo" = "感想の内容に誤りがある";
+"notAppropriate" = "感想の内容に不適切な表現がある";
+"userPhotoNotAppropriate" = "ユーザーの写真が適切ではないから";
+"userNameNotAppropriate" = "ユーザーの名前が適切ではないから";
+"cancel" = "いいえ、結構です";
+
+"placePhotoNotAppropriate" = "施設の写真が不適切である";
+"placeWrongInfo" = "施設の写真が正確でない";
+"fisrtPosterWrong" = "投稿者の名前または写真が適切でない";
+"lastEditerWrong" = "編集者の名前または写真が適切でない";
+//Place Detail View-------
+
+
+
+
+
+
+
+
+
 
 
 

@@ -52,7 +52,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var availableTimeAndWaitingTImeLabel: UILabel!
     @IBOutlet weak var starImage: CosmosView!
 
-    @IBOutlet weak var reviewCountLabel: UILabel!
+   // @IBOutlet weak var reviewCountLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var picture1: UIImageView!
     @IBOutlet weak var picture2: UIImageView!
@@ -703,11 +703,18 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         }
         
         
-        typeAndDistanceLabel.text = typeString + "/" + distanceText
+        typeAndDistanceLabel.text = typeString + "/" + toilet.openinghours + "/" + distanceText
         
-        reviewCountLabel.text = "(\(toilet.reviewCount)件)"
+        //reviewCountLabel.text = String(toilet.reviewCount)
         
-        availableTimeAndWaitingTImeLabel.text = toilet.openinghours + "/" + "平均待ち　\(toilet.averageWait)分"
+        
+        
+        //May 30 comment for localizaiton
+        //reviewCountLabel.text = "(\(toilet.reviewCount)件)"
+        
+        //availableTimeAndWaitingTImeLabel.text = String(toilet.reviewCount) + "reviewCount".localized + "/" + "平均待ち　\(toilet.averageWait)分"
+        availableTimeAndWaitingTImeLabel.text = String(toilet.reviewCount) + "reviewCount".localized + "/" + "avWait".localized + String(toilet.averageWait) + "minute".localized
+        
         
         
         starImage.rating = Double(toilet.averageStar)!
@@ -976,7 +983,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             print("review.time = \(review.time)")
             
             let waitingtime = snapshotValue?["waitingtime"] as? String
-            review.waitingtime = waitingtime! + "分待ちました"
+            review.waitingtime = "waitTime".localized + waitingtime! + "minute".localized
             
             let timeNumbers = snapshotValue?["timeNumbers"] as? Double
             review.timeNumbers = timeNumbers!
@@ -1048,7 +1055,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 self.reviewOneUserHelpCount.text = String(review.totalHelpedCount)
                 
                 self.reviewOneFeedbackTextView.text = review.feedback
-                self.reviewOneThumbUpCountLabel.text = "いいね" + String(review.likedCount) + "件"
+                self.reviewOneThumbUpCountLabel.text = String(review.likedCount) + "like".localized
                 self.reviewOneDateStringLabel.text = review.time
                 self.reviewOneWaitingMinuteLabel.text = review.waitingtime
                 
@@ -1123,7 +1130,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 print("review.time = \(review.time)")
                 
                 let waitingtime = snapshotValue?["waitingtime"] as? String
-                review.waitingtime = waitingtime! + "分待ちました"
+                review.waitingtime =  "waitTime".localized + waitingtime! + "minute".localized
                 
                 let timeNumbers = snapshotValue?["timeNumbers"] as? Double
                 review.timeNumbers = timeNumbers!
@@ -1212,9 +1219,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                         self.reviewTwoUserHelpCount.text = String(review.totalHelpedCount)
                         
                         self.reviewTwoUserFeedbackTextView.text = review.feedback
-                        self.reviewTwoThumbUpCountLabel.text = "いいね" + String(review.likedCount) + "件"
+                    
+                    
+                        self.reviewTwoThumbUpCountLabel.text = String(review.likedCount) + "like".localized
                         self.reviewTwoDateStringOutlet.text = review.time
                         self.reviewTwoWatingTImeLabel.text = review.waitingtime
+                    
                     
                     self.reviewTwoStarImage.rating = review.star
                     self.reviewTwoStarImage.settings.filledColor = UIColor.yellow
@@ -1556,13 +1566,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBAction func buttonReportTapped(_ sender: Any) {
         
         if userAlreadyLogin == true{
-            let alertController = UIAlertController (title: "", message: "情報の誤りを報告しますか", preferredStyle: .actionSheet)
+            let alertController = UIAlertController (title: "", message: "report".localized, preferredStyle: .actionSheet)
             
-            let yesAction = UIAlertAction(title: "報告する", style: .default) { (_) -> Void in
+            let yesAction = UIAlertAction(title: "yes".localized, style: .default) { (_) -> Void in
                 self.toiletReportStart()
                 
             }
-            let cancelAction = UIAlertAction(title: "報告しない", style: .default, handler: nil)
+            let cancelAction = UIAlertAction(title: "no".localized , style: .default, handler: nil)
             alertController.addAction(yesAction)
             alertController.addAction(cancelAction)
             present(alertController, animated: true, completion: nil)
@@ -1574,25 +1584,43 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
     }
     
+    
+//    "report" = "問題を報告する";
+//    "problem" = "この感想に問題がありますか";
+//    "whatProblem" = "お願い";
+//    "whatIsWrongWithReview" = "問題だと思う点を教えてください";
+//    "wrongInfo" = "感想の内容に誤りがある";
+//    "notAppropriate" = "感想の内容に不適切な表現がある";
+//    "userPhotoNotAppropriate" = "ユーザーの写真が適切ではないから";
+//    "userNameNotAppropriate" = "ユーザーの名前が適切ではないから";
+//    "cancel" = "いいえ、結構です";
+//
+    
+//    "placePhotoNotAppropriate" = "施設の写真が不適切である"
+//    "placeWrongInfo" = "施設の写真が正確でない"
+//    "fisrtPosterWrong" = "投稿者の名前または写真が適切でない"
+//    "lastEditerWrong" = "編集者の名前または写真が適切でない"
+    
+    
     func toiletReportStart(){
         
         var problemString = ""
-        let nextAlertController = UIAlertController (title: "お願い", message: "問題だと思う点を教えてください", preferredStyle: .actionSheet)
+        let nextAlertController = UIAlertController (title: "whatProblem".localized , message: "whatIsWrongWithReview".localized , preferredStyle: .actionSheet)
         
-        let wrongPhoto = UIAlertAction(title: "施設の写真が不適切である", style: .default, handler: {(alert:UIAlertAction!) in
+        let wrongPhoto = UIAlertAction(title: "placePhotoNotAppropriate".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
             problemString = "the picture of this place is not appropriate"
             self.toiletProblemUpload(problemString: problemString)
         })
         
-        let wrongInfo =  UIAlertAction(title: "施設の情報が正確でない", style: .default, handler: {(alert:UIAlertAction!) in
+        let wrongInfo =  UIAlertAction(title: "placeWrongInfo".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
             problemString = "the infomation of this place is not correct"
             self.toiletProblemUpload(problemString: problemString)
             
         })
         
-        let firstPosterNotAppropriate = UIAlertAction(title: "投稿者の名前または写真が適切ではない", style: .default, handler: {(alert:UIAlertAction!) in
+        let firstPosterNotAppropriate = UIAlertAction(title: "fisrtPosterWrong".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
             problemString = "Fisrt Poster Not Appropriate"
             self.toiletProblemUpload(problemString: problemString)
@@ -1600,7 +1628,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         })
         
         
-        let lastEditerNotAppropriate = UIAlertAction(title: "編集者の名前または写真が適切ではない", style: .default, handler: {(alert:UIAlertAction!) in
+        let lastEditerNotAppropriate = UIAlertAction(title: "lastEditerWrong".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
             problemString = "Last Editer Not Appropriate"
             self.toiletProblemUpload(problemString: problemString)
@@ -1609,7 +1637,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
         
-        let stillYes = UIAlertAction(title: "いいえ、問題はありません", style: .default, handler: {(alert:
+        let stillYes = UIAlertAction(title: "cancel".localized, style: .default, handler: {(alert:
             UIAlertAction!) in
             return
         })
@@ -1907,13 +1935,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     func reviewReportStart(){
         
         
-        let alertController = UIAlertController (title: "この感想に問題がありますか？", message: "Oh well", preferredStyle: .actionSheet)
+        let alertController = UIAlertController (title: "report".localized, message: "problem".localized, preferredStyle: .actionSheet)
         
-        let yesAction = UIAlertAction(title: "はい", style: .default, handler: {(alert:
+        let yesAction = UIAlertAction(title: "yes".localized, style: .default, handler: {(alert:
             UIAlertAction!) in
             self.whatIsTheProblem()
         })
-        let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "no".localized, style: .default, handler: nil)
         
         alertController.addAction(yesAction)
         alertController.addAction(cancelAction)
@@ -1922,25 +1950,38 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     }
     
     
+//    ///
+//    "report" = "問題を報告する";
+//    "problem" = "この感想に問題がありますか";
+//    "whatProblem" = "お願い";
+//    "whatIsWrongWithReview" = "問題だと思う点を教えてください";
+//    "wrongInfo" = "感想の内容に誤りがある";
+//    "notAppropriate" = "感想の内容に不適切な表現がある"
+//    "userPhotoNotAppropriate" = "ユーザーの写真が適切ではないから"
+//    "userNameNotAppropriate" = "ユーザーの名前が適切ではないから"
+//    "cancel" = "いいえ、結構です"
+//    
+//    ///
+    
     func whatIsTheProblem(){
         
         var problemString = ""
-        let nextAlertController = UIAlertController (title: "お願い", message: "問題だと思う点を教えてください", preferredStyle: .actionSheet)
+        let nextAlertController = UIAlertController (title: "whatProblem".localized, message: "whatIsWrongWithReview".localized, preferredStyle: .actionSheet)
         
-        let wrongInfo = UIAlertAction(title: "感想の内容に誤りがあるから", style: .default, handler: {(alert:UIAlertAction!) in
+        let wrongInfo = UIAlertAction(title: "wrongInfo".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
             problemString = "The content of the review is not correct"
             self.problemUpload(problemString: problemString)
         })
         
-        let reviewNotRelevent =  UIAlertAction(title: "感想の内容に不適切な表現があるから", style: .default, handler: {(alert:UIAlertAction!) in
+        let reviewNotRelevent =  UIAlertAction(title: "notAppropriate".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
             problemString = "The content of the review is not relevent"
             self.problemUpload(problemString: problemString)
             
         })
         
-        let pictureNotAppropriate = UIAlertAction(title: "感想を投稿したユーザーの写真が適切ではないから", style: .default, handler: {(alert:UIAlertAction!) in
+        let pictureNotAppropriate = UIAlertAction(title: "userPhotoNotAppropriate".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
             problemString = "The picture of the user is not appropriate"
             self.problemUpload(problemString: problemString)
@@ -1948,7 +1989,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         })
         
         
-        let nameNotAppropriate = UIAlertAction(title: "感想を投稿したユーザーの名前が適切ではないから", style: .default, handler: {(alert:UIAlertAction!) in
+        let nameNotAppropriate = UIAlertAction(title: "userNameNotAppropriate".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
             problemString = "The name of the user is not appropriate"
             self.problemUpload(problemString: problemString)
@@ -1957,7 +1998,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
         
-        let stillYes = UIAlertAction(title: "いいえ、問題はありません", style: .default, handler: {(alert:
+        let stillYes = UIAlertAction(title: "cancel".localized , style: .default, handler: {(alert:
             UIAlertAction!) in
             return
         })
