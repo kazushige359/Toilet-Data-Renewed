@@ -9,7 +9,18 @@
 
 
 //Map View
-"showAverageWait" = "Average";
+"showAverageWait" = "Ave Wait ";
+"mapReviews" = "R";
+"locationAccuracy" = "Location Accuracy";
+"WifiOn" = "You can improve the accuracy of your location by turning on Wifi";
+"settings" = "Settings";
+"settingIgnore" = "Ignore";
+
+
+//My Page
+"pleaseLoginMyPage" = "In order to use My Page you need to log in";
+"login" = "Login";
+"ignoreLogin" = "Ignore";
 
 
 

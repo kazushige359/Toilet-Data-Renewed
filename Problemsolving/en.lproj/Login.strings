@@ -15,7 +15,7 @@
 "9sL-La-f0P.normalTitle" = "Skip";
 
 /* Class = "UILabel"; text = "ログインすることにより、あなたはToilet Dataサービス利用規約と個人情報保護方針に同意することとします。"; ObjectID = "DoR-j3-LRQ"; */
-"DoR-j3-LRQ.text" = "ログインすることにより、あなたはToilet Dataサービス利用規約と個人情報保護方針に同意することとします。";
+"DoR-j3-LRQ.text" = "By logging in you are agreeing to Toilet Data Service Policy and Privacy Policy.";
  //I dont know
 
 /* Class = "UILabel"; text = "お届けします。"; ObjectID = "E2w-p6-C1Q"; */   //I dont know
@@ -24,7 +24,7 @@
 
 
 /* Class = "UIButton"; normalTitle = "個人情報保護方針"; ObjectID = "Hp9-Gw-pR8"; */ //I dont know
-"Hp9-Gw-pR8.normalTitle" = "個人情報保護方針";
+"Hp9-Gw-pR8.normalTitle" = "Privacy Policy";
 
 /* Class = "UILabel"; text = "Toilet Dataへようこそ"; ObjectID = "L93-cd-Bvx"; */
 "L93-cd-Bvx.text" = "Welcome To Toilet Data";
@@ -51,10 +51,10 @@
 "fZ1-Ln-A8r.placeholder" = "email";
 
 /* Class = "UIButton"; normalTitle = "個人情報保護方針"; ObjectID = "mhj-qY-N4d"; */
-"mhj-qY-N4d.normalTitle" = "個人情報保護方針";
+"mhj-qY-N4d.normalTitle" = "Privacy Policy";
 
 /* Class = "UILabel"; text = "アカウントを作成することにより、あなたはToilet Dataサービス利用規約と個人情報保護方針に同意することとします。"; ObjectID = "ns3-tA-mGk"; */
-"ns3-tA-mGk.text" = "アカウントを作成することにより、あなたはToilet Dataサービス利用規約と個人情報保護方針に同意することとします。";
+"ns3-tA-mGk.text" = "By signing up you are agreeing to Toilet Data Service Policy and Privacy Policy";
 
 /* Class = "UIBarButtonItem"; title = "戻る"; ObjectID = "pCi-5o-MD8"; */
 "pCi-5o-MD8.title" = "Cancel";

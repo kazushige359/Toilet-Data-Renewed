@@ -207,10 +207,11 @@ class UserPrivateAccountViewController: UIViewController {
 //        }
     }
     
-    func showPleaseLogin(){
-        let alertController = UIAlertController (title: "この機能を使用するためにはログインが必要です", message: "ログインをしますか？", preferredStyle: .alert)
         
-        let settingsAction = UIAlertAction(title: "はい", style: .default) { (_) -> Void in
+    func showPleaseLogin(){
+        let alertController = UIAlertController (title: "pleaseLoginMyPage".localized, message: "", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "login".localized, style: .default) { (_) -> Void in
             
             print("Move to first time view controller")
             let storyboard: UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
@@ -219,7 +220,7 @@ class UserPrivateAccountViewController: UIViewController {
             print("Move to first time view controller Over")
             self.present(vc, animated: true, completion: nil)
         }
-        let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "ignoreLogin".localized, style: .default, handler: nil)
         
         alertController.addAction(settingsAction)
         alertController.addAction(cancelAction)

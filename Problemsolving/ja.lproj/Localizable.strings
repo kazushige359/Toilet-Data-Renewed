@@ -7,6 +7,22 @@
 */
 
 
+//Map
+
+"showAverageWait" = "平均待ち";
+"mapReviews" = "件";
+"locationAccuracy" = "位置情報の精度";
+"WifiOn" = "Wifiをオンにすることで、位置情報の精度が上がります";
+"settings" = "設定";
+"settingIgnore" = "結構です";
+
+//My Page
+"pleaseLoginMyPage" = "マイページを利用するためにはログインが必要です";
+"login" = "ログイン";
+"ignoreLogin" = "結構です";
+
+
+
 
 //Filter Search
 
@@ -22,6 +38,7 @@
 "less5000" = "5km以内";
 
 "starNumber" = "星の数を検索";
+
 
 
 

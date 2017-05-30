@@ -204,7 +204,7 @@
 "FxL-sX-hie.text" = "Powder Room";
 
 /* Class = "UILabel"; text = "人数"; ObjectID = "GOM-Tv-Wvg"; */                          //The number of people you helped...
-"GOM-Tv-Wvg.text" = "Helped";
+"GOM-Tv-Wvg.text" = "Count";
 
 /* Class = "UILabel"; text = "オストメイト"; ObjectID = "GUC-BQ-GHq"; */
 "GUC-BQ-GHq.text" = "Stoma Toilet";
@@ -361,7 +361,7 @@
 "UOF-aU-hhe.placeholder" = "Waiting Time";
 
 /* Class = "UILabel"; text = "助けた"; ObjectID = "UXG-l3-m5v"; */                                         //I dont know
-"UXG-l3-m5v.text" = "People";
+"UXG-l3-m5v.text" = "View";
 
 /* Class = "UILabel"; text = "冷暖房"; ObjectID = "Ugl-wv-VbJ"; */
 "Ugl-wv-VbJ.text" = "Air Conditioning";

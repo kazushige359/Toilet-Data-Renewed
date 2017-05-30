@@ -37,7 +37,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             cell.mainImageView.sd_setImage(with: URL(string: toilets[indexPath.row].urlOne))
         }
         
-        cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
+        cell.waitminuteLabel.text = "showAverageWait".localized + String(toilets[indexPath.row].averageWait) + "minute".localized
+        
+        //cell.waitminuteLabel.text = "平均待ち　\(toilets[indexPath.row].averageWait)分"
         
         cell.Star.settings.filledColor = UIColor.yellow
         cell.Star.settings.emptyBorderColor = UIColor.orange
@@ -45,7 +47,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         cell.Star.rating = Double(toilets[indexPath.row].averageStar)!
         
         
-        cell.Star.text = "\(Double(toilets[indexPath.row].averageStar)!)(\(toilets[indexPath.row].reviewCount)件) "
+//        "showAverageWait" = "平均待ち";
+//        "mapReviews" = "件";
+        
+        cell.Star.text = String(Double(toilets[indexPath.row].averageStar)!) + "(" + String(toilets[indexPath.row].reviewCount) + "mapReviews".localized + ") "
+        
+       // cell.Star.text = "\(Double(toilets[indexPath.row].averageStar)!)(\(toilets[indexPath.row].reviewCount)件) "
         cell.Star.settings.textColor = UIColor.black
         cell.Star.settings.textMargin = 10
         cell.Star.settings.textFont.withSize(CGFloat(50.0))
@@ -334,9 +341,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if wifiAlert == false{
             wifiAlert = true
             
-            let alertController = UIAlertController (title: "Wifi設定", message: "マップ機能の精度が良くなります！", preferredStyle: .alert)
+           
+            let alertController = UIAlertController (title: "locationAccuracy".localized, message: "WifiOn".localized , preferredStyle: .alert)
             
-            let settingsAction = UIAlertAction(title: "はい", style: .default) { (_) -> Void in
+            let settingsAction = UIAlertAction(title: "settings".localized, style: .default) { (_) -> Void in
                 
                 guard let settingsUrl = URL(string: "App-Prefs:root=WIFI") else {
                     return
@@ -351,7 +359,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 
             }
             //let settingsAction = UIAlertAction(title: "はい", style: .default, handler: nil)
-            let cancelAction = UIAlertAction(title: "いいえ", style: .default, handler: nil)
+            let cancelAction = UIAlertAction(title: "settingIgnore".localized , style: .default, handler: nil)
             alertController.addAction(cancelAction)
             alertController.addAction(settingsAction)
             present(alertController, animated: true, completion: nil)
