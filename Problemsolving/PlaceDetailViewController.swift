@@ -39,7 +39,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var favoriteButtonOutlet: UIButton!
     
     @IBOutlet weak var booleansTableView: UITableView!
+    
+    
     @IBOutlet weak var backgroundScrollView: UIScrollView!
+    //Scroll View!!
+    
+    
+    
     @IBOutlet weak var bigPicture: UIImageView!
     @IBOutlet weak var placeNameLabel: UILabel!
     @IBOutlet weak var typeAndDistanceLabel: UILabel!
@@ -115,6 +121,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var reviewTwoUserHelpCount: UILabel!
     @IBOutlet weak var reviewTwoUserFeedbackTextView: UITextView!
     
+    @IBOutlet weak var reviewOneStarImage: CosmosView!
+    
     
     @IBOutlet weak var reviewTwoThumbUpButtonOutlet: UIButton!
     @IBOutlet weak var reviewTwoThumbUpCountLabel: UILabel!
@@ -122,6 +130,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var reviewTwoDateStringOutlet: UILabel!
     @IBOutlet weak var booleanTableViewLeftConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var reviewTwoStarImage: CosmosView!
     
     
     var messageFrame = UIView()
@@ -217,7 +226,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 }
                 
                 if self.toilet.reviewTwo != ""{
+                    print("self.toilet.reviewTwo !=  888")
                     self.reviewTwoQuery(ridTwo: self.toilet.reviewTwo)
+                } else {
+                    //Set scrollview constraints when review two data is null
+                    let screenSize: CGRect = UIScreen.main.bounds
+                    let width = screenSize.width
+                    self.backgroundScrollView.contentSize =  CGSize(width: width, height: 1425)
                 }
                 
                 
@@ -629,7 +644,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     func layoutInfoReady(){
         
         
-        
         placeNameLabel.text = toilet.name
         locationAuthStatus()
         
@@ -704,6 +718,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         starImage.settings.textColor = UIColor.orange
         starImage.settings.textFont = UIFont.boldSystemFont(ofSize: 20.0)
         starImage.settings.textMargin = 5
+        starImage.settings.updateOnTouch = false
         
         
         buttonGoOutlet.backgroundColor = primaryColor
@@ -879,10 +894,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         if self.toilet.reviewTwo != ""{
             self.reviewTwoQuery(ridTwo: self.toilet.reviewTwo)
+        } else {
+            //Set scrollview constraints when review two data is null
+            let screenSize: CGRect = UIScreen.main.bounds
+            let width = screenSize.width
+            self.backgroundScrollView.contentSize =  CGSize(width: width, height: 1425)
+        
         }
-        
-        
-        
     }
     
     //    func thumbsUpUpload(){
@@ -1034,6 +1052,19 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 self.reviewOneDateStringLabel.text = review.time
                 self.reviewOneWaitingMinuteLabel.text = review.waitingtime
                 
+                
+                self.reviewOneStarImage.rating = review.star
+                self.reviewOneStarImage.settings.filledColor = UIColor.yellow
+                self.reviewOneStarImage.settings.emptyBorderColor = UIColor.orange
+                self.reviewOneStarImage.settings.filledBorderColor = UIColor.orange
+                
+                self.reviewOneStarImage.settings.textColor = UIColor.orange
+                self.reviewOneStarImage.settings.textFont = UIFont.boldSystemFont(ofSize: 20.0)
+                self.reviewOneStarImage.settings.textMargin = 5
+                self.reviewOneStarImage.settings.updateOnTouch = false
+
+                
+                
                 //self.firebaseReviewOneLoadedOnce = true
                 
                 if self.thumbsUpSet.contains(review.rid){
@@ -1184,7 +1215,29 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                         self.reviewTwoThumbUpCountLabel.text = "いいね" + String(review.likedCount) + "件"
                         self.reviewTwoDateStringOutlet.text = review.time
                         self.reviewTwoWatingTImeLabel.text = review.waitingtime
-                        
+                    
+                    self.reviewTwoStarImage.rating = review.star
+                    self.reviewTwoStarImage.settings.filledColor = UIColor.yellow
+                    self.reviewTwoStarImage.settings.emptyBorderColor = UIColor.orange
+                    self.reviewTwoStarImage.settings.filledBorderColor = UIColor.orange
+                    
+                    self.reviewTwoStarImage.settings.textColor = UIColor.orange
+                    self.reviewTwoStarImage.settings.textFont = UIFont.boldSystemFont(ofSize: 20.0)
+                    self.reviewTwoStarImage.settings.textMargin = 5
+                    self.reviewTwoStarImage.settings.updateOnTouch = false
+
+                    
+//
+//
+//                    starImage.settings.filledColor = UIColor.yellow
+//                    starImage.settings.emptyBorderColor = UIColor.orange
+//                    starImage.settings.filledBorderColor = UIColor.orange
+//                    starImage.text = "\(toilet.averageStar)"
+//                    starImage.settings.textColor = UIColor.orange
+//                    starImage.settings.textFont = UIFont.boldSystemFont(ofSize: 20.0)
+//                    starImage.settings.textMargin = 5
+//                    starImage.settings.updateOnTouch = false
+                    
                         //self.firebaseReviewTwoLoadedOnce = true
                         
                         if self.thumbsUpSet.contains(review.rid){
