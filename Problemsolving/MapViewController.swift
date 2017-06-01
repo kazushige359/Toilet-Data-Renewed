@@ -119,17 +119,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var geoFireRef: FIRDatabaseReference!
     let queryannotations = MKPointAnnotation()
     var toilets: [Toilet] = []
+    
+    var query300 = false
     var query600 = false
+    var query900 = false
     var query1200 = false
+    var query1500 = false
     var query1800 = false
     var query3600 = false
     var query7200 = false
     var query10000 = false
     
+    var distance300: [String] = []
+    var distance300In: [String] = []
     var distance600: [String] = []
     var distance600In: [String] = []
+    var distance900: [String] = []
+    var distance900In: [String] = []
     var distance1200: [String] = []
     var distance1200In: [String] = []
+    var distance1500: [String] = []
+    var distance1500In: [String] = []
     var distance1800: [String] = []
     var distance1800In: [String] = []
     var distance3600: [String] = []
@@ -673,10 +683,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let distance = location?.distance(from: center)
             let distanceDouble = Double(distance!)
             
-            if distanceDouble <= 600{
+            if distanceDouble <= 300{
+                self.distance300.append(key!)
+            } else if distanceDouble <= 600{
                 self.distance600.append(key!)
+            } else if distanceDouble <= 900{
+                self.distance900.append(key!)
             } else if distanceDouble <= 1200{
                 self.distance1200.append(key!)
+            } else if distanceDouble <= 1500{
+                self.distance1500.append(key!)
             } else if distanceDouble <= 1800{
                 self.distance1800.append(key!)
             } else if distanceDouble <= 3600{
@@ -690,7 +706,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         })
         circleQuery?.observeReady({
             print(" 555 All initial data has been loaded and events have been fired!")
-            self.distance600Call()
+            self.distance300Call()
             self.allInitialDataLoaded = true
             self.messageFrame.removeFromSuperview()
             self.tableView.reloadData()
@@ -701,69 +717,88 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
+    func distance300Call(){
+        
+        query300 = true
+        
+        if distance300.isEmpty{
+            print("distance300 is empty Call 00 for in inside 666")
+            distance600Call()
+        }
+        
+        queryByDistaceArray(array: distance300)
+        
+    }
+    
+    
+
+    
     func distance600Call(){
         
-        query600 = true
         
-        var queryPath = self.filter.queryPath
-        if queryPath == ""{
-            queryPath = "NoFilter"
-        }
+        query600 = true
+        query300 = false
+
         if distance600.isEmpty{
+            print("distance600 is empty Call 1200 for in inside 666")
+            distance900Call()
+        }
+        
+        queryByDistaceArray(array: distance600)
+
+    }
+    
+    func distance900Call(){
+        
+        
+        query900 = true
+        query600 = false
+        
+        if distance900.isEmpty{
             print("distance600 is empty Call 1200 for in inside 666")
             distance1200Call()
         }
-        for item in distance600{
-            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
-            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                self.createTableViewAndMarker(snapshot: snapshot, key: item)
-            })
-        }
+        
+        queryByDistaceArray(array: distance900)
+        
     }
     
     func distance1200Call(){
         
         query1200 = true
-        query600 = false
+        query900 = false
         
         if distance1200.isEmpty{
-            print("distance1200 is empty Call 1800 for in inside 666")
-            distance1800Call()
+            distance1500Call()
             
         }
-        var queryPath = self.filter.queryPath
-        if queryPath == ""{
-            queryPath = "NoFilter"
-        }
-        
-        for item in distance1200{
-            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
-            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                self.createTableViewAndMarker(snapshot: snapshot, key: item)
-            })
-        }
+        queryByDistaceArray(array: distance1200)
+     
     }
+    
+    func distance1500Call(){
+        
+        query1500 = true
+        query1200 = false
+        
+        if distance1500.isEmpty{
+            distance1800Call()
+        }
+        queryByDistaceArray(array: distance1500)
+        
+    }
+
     
     func distance1800Call(){
         
         query1800 = true
-        query1200 = false
-        
-        var queryPath = self.filter.queryPath
-        if queryPath == ""{
-            queryPath = "NoFilter"
-        }
-        
+        query1500 = false
+  
         if distance1800.isEmpty{
             distance3600Call()
         }
-        
-        for item in distance1800{
-            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
-            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                self.createTableViewAndMarker(snapshot: snapshot, key: item)
-            })
-        }
+        queryByDistaceArray(array: distance1800)
+
     }
     
     
@@ -776,17 +811,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             distance7200Call()
         }
         
-        var queryPath = self.filter.queryPath
-        if queryPath == ""{
-            queryPath = "NoFilter"
-        }
-        
-        for item in distance3600{
-            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
-            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                self.createTableViewAndMarker(snapshot: snapshot, key: item)
-            })
-        }
+        queryByDistaceArray(array: distance3600)
+
     }
     
     
@@ -797,34 +823,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if distance7200.isEmpty{
             distance10000Call()
         }
-        var queryPath = self.filter.queryPath
-        if queryPath == ""{
-            queryPath = "NoFilter"
-        }
         
-        for item in distance7200{
-            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
-            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                self.createTableViewAndMarker(snapshot: snapshot, key: item)
-            })
-        }
+        queryByDistaceArray(array: distance7200)
+
     }
     
     func distance10000Call(){
         query10000 = true
         query7200 = false
         
+        queryByDistaceArray(array: distance10000)
+    }
+    
+    func queryByDistaceArray(array: Array<Any>){
+        
         var queryPath = self.filter.queryPath
         if queryPath == ""{
             queryPath = "NoFilter"
         }
         
-        for item in distance10000{
-            let toiletsRef = FIRDatabase.database().reference().child(queryPath)
-            toiletsRef.child(item).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
-                self.createTableViewAndMarker(snapshot: snapshot, key: item)
-            })
-        }
+        for item in array{
+                let toiletsRef = FIRDatabase.database().reference().child(queryPath)
+                toiletsRef.child(item as! String).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+                    self.createTableViewAndMarker(snapshot: snapshot, key: item as! String)
+                })
+            }
     }
     
     
@@ -834,10 +857,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return
         }
         
-        
-        if query600 == true{
+        if query300 == true{
+            distance300In.append(key)
+            if distance300In.count == distance300.count{
+                if toilets.count < 4 {
+                    distance600Call()
+                }
+            }
+            
+        } else if query600 == true{
             distance600In.append(key)
             if distance600In.count == distance600.count{
+                if toilets.count < 4 {
+                    distance900Call()
+                }
+            }
+            
+        } else if query900 == true{
+            distance900In.append(key)
+            if distance900In.count == distance900.count{
                 if toilets.count < 4 {
                     distance1200Call()
                 }
@@ -847,7 +885,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             distance1200In.append(key)
             if distance1200In.count == distance1200.count{
                 if toilets.count < 4 {
-                    distance1800Call()
+                    distance1500Call()
+                }
+            }
+        } else if query1500 == true{
+            distance1500In.append(key)
+            if distance1500In.count == distance1500.count{
+                if toilets.count < 4 {
+                    distance1500Call()
                 }
             }
         } else if query1800 == true{
