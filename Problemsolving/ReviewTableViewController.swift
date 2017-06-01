@@ -568,7 +568,7 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         
        // let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
-        let toiletReviewsRef = FIRDatabase.database().reference().child("ToiletReview").child(toilet.key)
+        let toiletReviewRef = FIRDatabase.database().reference().child("ToiletReview").child(toilet.key)
         
         
         
@@ -577,7 +577,7 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         
         
         
-        toiletReviewsRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        toiletReviewRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
             
             if !snapshot.exists(){
                 return
