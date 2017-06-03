@@ -1418,7 +1418,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             //let toiletsRef = FIRDatabase.database().reference().child("Toilets")
             //let uniqueRef = toiletsRef.child(toiletNewId)
             
-            print("AllFilter 333 = \(allFilterData)")
+            print("groupOneData 333 = \(groupOneData)")
             
             let firebaseRef = FIRDatabase.database().reference()
             

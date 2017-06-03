@@ -565,6 +565,7 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
     func reviewQuery(){
         
         print("review Query TV 333 Called")
+        print("review toilet key 333 = \(toilet.key)")
         
        // let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
@@ -577,33 +578,28 @@ func reviewWarningCountUploadToDatabase(countNumber: Int){
         
         
         
+        print("review before 333 = \(toilet.key)")
+
         toiletReviewRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
             
+            print("snapshot for reTV 333 = \(snapshot)")
             if !snapshot.exists(){
                 return
             }
-
-            
-            
-            
 //        toiletReviewsRef.observe(.childAdded, with: { snapshot in
-        
             print("review Query Info 333 snap = \(snapshot)")
-
-            
             //get rid key 
             
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshots
                 {
+                    print("review Query inside snap 333 snap = \(snapshot)")
                     let newKey = snap.key
                     self.reviewGetData(ridKey: newKey)
                     
                 }
             }
-            
         }
-            
    )
 }
 
