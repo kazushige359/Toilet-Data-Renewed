@@ -50,6 +50,7 @@
 		245E9F2F1E95F448006D8A31 /* StartLoginUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */; };
 		245E9F311E9605F1006D8A31 /* StartSignUpUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F301E9605F1006D8A31 /* StartSignUpUserViewController.swift */; };
 		245E9F331E963B20006D8A31 /* NewStartLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245E9F321E963B20006D8A31 /* NewStartLoginViewController.swift */; };
+		2473FAD81EE7D56200137E42 /* ReviewZeroMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2473FAD71EE7D56200137E42 /* ReviewZeroMarkers.swift */; };
 		247BB3AB1E0F26E600E4BED8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */; };
 		248DC1E41DFE6A51005C29BE /* ToiletMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DC1E31DFE6A51005C29BE /* ToiletMarkers.swift */; };
 		24A130B61DEFD300009C1A3F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A130B51DEFD300009C1A3F /* MapViewController.swift */; };
@@ -165,6 +166,7 @@
 		245E9F2E1E95F448006D8A31 /* StartLoginUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLoginUserViewController.swift; sourceTree = "<group>"; };
 		245E9F301E9605F1006D8A31 /* StartSignUpUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartSignUpUserViewController.swift; sourceTree = "<group>"; };
 		245E9F321E963B20006D8A31 /* NewStartLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewStartLoginViewController.swift; sourceTree = "<group>"; };
+		2473FAD71EE7D56200137E42 /* ReviewZeroMarkers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewZeroMarkers.swift; sourceTree = "<group>"; };
 		247BB3AA1E0F26E600E4BED8 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		248DC1E31DFE6A51005C29BE /* ToiletMarkers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToiletMarkers.swift; sourceTree = "<group>"; };
 		24A130B51DEFD300009C1A3F /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 				24CDD1C61EBC04B3002F7710 /* Localizer.swift */,
 				24B670F61EC012100087A11E /* Reachability.swift */,
 				24E87A611ED041B500D31D99 /* QueryPath.swift */,
+				2473FAD71EE7D56200137E42 /* ReviewZeroMarkers.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				24B6FB001E2B505C00E1330A /* Filter.swift in Sources */,
 				24B6FB061E30395900E1330A /* RighttoLeft.swift in Sources */,
 				24B7EC421EA0897900368644 /* ReviewTableViewController.swift in Sources */,
+				2473FAD81EE7D56200137E42 /* ReviewZeroMarkers.swift in Sources */,
 				243DFF261EA846600000BF71 /* StarThreeMarker.swift in Sources */,
 				2418B7DC1E1B6B5C004F7022 /* KansouViewController.swift in Sources */,
 				245E9F331E963B20006D8A31 /* NewStartLoginViewController.swift in Sources */,

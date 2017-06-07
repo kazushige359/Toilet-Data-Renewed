@@ -534,7 +534,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return nil
         }else{
             
-            if annotation.isKind(of: StarOneMarker.self){
+            if annotation.isKind(of: ReviewZeroMarkers.self){
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "image_review_zero_30")
+
+            
+            } else if annotation.isKind(of: StarOneMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
@@ -1505,7 +1512,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let starValueInt = Int(starValueDouble)
     
-        if starValueInt < 2{
+        if toilet.reviewCount == 0{
+            
+            let reviewZeroMarker = ReviewZeroMarkers(coordinate: (location.coordinate))
+            
+            reviewZeroMarker.key = toilet.key
+            reviewZeroMarker.name = toilet.name
+            reviewZeroMarker.distance = toilet.distance
+            reviewZeroMarker.averageStar = toilet.averageStar
+            reviewZeroMarker.averageWait = toilet.averageWait
+            reviewZeroMarker.coordinate = (location.coordinate)
+            reviewZeroMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(reviewZeroMarker)
+
+            
+            
+            
+            
+        
+        
+        
+        } else if starValueInt < 2{
             let starOneMarker = StarOneMarker(coordinate: (location.coordinate))
             
             

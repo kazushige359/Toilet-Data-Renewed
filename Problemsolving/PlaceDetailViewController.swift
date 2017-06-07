@@ -268,6 +268,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     func dataQuery(queryKey: String){
         
+        print("data Query 0")
+
         
         let toiletsRef = FIRDatabase.database().reference().child("ToiletView")
         
@@ -277,6 +279,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             let snapshotValue = snapshot.value as? NSDictionary
             
             self.booleans.append("この施設の設備")
+            
+            print("data Query 1")
             
             
             self.toilet.urlOne = (snapshotValue?["urlOne"] as? String!)!
@@ -294,9 +298,13 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.reviewTwo = (snapshotValue?["reviewTwo"] as? String!)!
             
     
+            
+            print("data Query 2")
             let averageStar = snapshotValue?["averageStar"] as? String
             self.toilet.star = Double(averageStar!)!
             
+            
+            print("data Query 3")
             
             
             self.toilet.name = (snapshotValue?["name"] as? String)!
@@ -314,6 +322,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.westerntoilet = (snapshotValue?["westerntoilet"] as? Bool)!
             self.toilet.onlyFemale = (snapshotValue?["onlyFemale"] as? Bool)!
             self.toilet.unisex = (snapshotValue?["unisex"] as? Bool)!
+            
+            print("data Query 4")
             
             self.toilet.washlet = (snapshotValue?["washlet"] as? Bool)!
             self.toilet.warmSeat = (snapshotValue?["warmSeat"] as? Bool)!
@@ -407,6 +417,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             self.toilet.distance = MapViewController.distanceCalculationGetString(destination: self.toilet.loc, center: self.search.centerSearchLocation)
             
             
+            print("data Query 5")
             
             
             if self.toilet.japanesetoilet{
@@ -717,6 +728,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         
         
+        
+        
         starImage.rating = Double(toilet.averageStar)!
         starImage.settings.filledColor = UIColor.yellow
         starImage.settings.emptyBorderColor = UIColor.orange
@@ -767,6 +780,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     }
     
     func firstPosterQuery(){
+        
+        if toilet.addedBy != ""{
+        
         let userRef = FIRDatabase.database().reference().child("Users")
         
         userRef.child(toilet.addedBy).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
@@ -815,14 +831,20 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 userRef.child(self.toilet.addedBy).updateChildValues(newData)
                 
                 self.firstEditerHelpCountAdded = true
+                
+            
+            
             }
         })
-        
+       
+        }
     }
     
     
     func lastEditerQuery(){
         let userRef = FIRDatabase.database().reference().child("Users")
+        
+        if toilet.editedBy != ""{
         
         userRef.child(toilet.editedBy).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
             
@@ -870,6 +892,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
         })
         
+        }
     }
     
     
