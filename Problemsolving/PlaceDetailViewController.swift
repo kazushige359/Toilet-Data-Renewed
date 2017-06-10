@@ -194,10 +194,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        mapView.isUserInteractionEnabled = false
+        //mapView.isUserInteractionEnabled = false
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.hideTableView))
-        view.addGestureRecognizer(tap)
+        
+        tapRecognizerReady()
         
         booleansTableView.delegate = self
         booleansTableView.dataSource = self
@@ -210,6 +210,40 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         dataQuery(queryKey: toilet.key)
         
+    }
+    
+    func tapRecognizerReady(){
+        
+        bigPicture.isUserInteractionEnabled = true
+        picture1.isUserInteractionEnabled = true
+        picture2.isUserInteractionEnabled = true
+        picture3.isUserInteractionEnabled = true
+        mapView.isUserInteractionEnabled = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.hideTableView))
+        view.addGestureRecognizer(tap)
+        
+        
+        
+        let bigPictureTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.imageTappedAction(_:)))
+        bigPicture.addGestureRecognizer(bigPictureTap)
+        
+        let pictureOneTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.imageTappedAction(_:)))
+        picture1.addGestureRecognizer(pictureOneTap)
+        
+        let pictureTwoTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.imageTappedAction(_:)))
+        picture2.addGestureRecognizer(pictureTwoTap)
+        
+        let pictureThreeTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.imageTappedAction(_:)))
+        picture3.addGestureRecognizer(pictureThreeTap)
+        
+        
+        let mapTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.mapTappedAndGoAction(_:)))
+        mapView.addGestureRecognizer(mapTap)
+        
+        
+    
+    
     }
     
     func userLoginCheck(){
@@ -284,6 +318,14 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             
             self.toilet.urlOne = (snapshotValue?["urlOne"] as? String!)!
+            
+            if self.toilet.urlOne != ""{
+                self.bigPicture.sd_setImage(with: URL(string: self.toilet.urlOne))
+            }else {
+                self.bigPicture.image = UIImage(named:"love_Icon_40")!
+                //photo_picture_default_100
+            }
+            
             self.toilet.urlTwo = (snapshotValue?["urlTwo"] as? String!)!
             self.toilet.urlThree = (snapshotValue?["urlThree"] as? String)!
             self.toilet.address = (snapshotValue?["address"] as? String)!
@@ -1381,22 +1423,39 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     //        }
     
     
+    func mapTappedAndGoAction(_ sender: UITapGestureRecognizer){
+        goAction()
+    }
+    
     func goAction() {
+        
+        print("goAction Called 444")
         
         var place: MKPlacemark!
         let coordinate1: CLLocationCoordinate2D = toilet.loc.coordinate
         place = MKPlacemark(coordinate: coordinate1)
+        
+         print("goAction Inside 0 444")
         let destination = MKMapItem(placemark: place)
         destination.name = toilet.name
         let regionDistance: CLLocationDistance = 1000
         let regionSpan = MKCoordinateRegionMakeWithDistance(coordinate1, regionDistance, regionDistance)
         
+         print("goAction Inside 1 444")
         let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey:  NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking] as [String : Any]
         
         let firebaseRef = FIRDatabase.database().reference()
         firebaseRef.child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).child(toilet.key).setValue(true)
         
+        print("goAction Inside 2 444")
+        
+        
+        if toilet.addedBy != ""{
+        
         let addedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.addedBy).child("totalHelpedCount")
+        
+        
+
         
         
         addedTotalHelpedCountRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
@@ -1404,6 +1463,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             if !snapshot.exists(){
                 return
             }
+            
+             print("goAction Inside 4 444")
 
             //addedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
             if self.youwentAdded == false{
@@ -1415,6 +1476,12 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 addedTotalHelpedCountRef.setValue(newHelped)
                 self.youwentAdded = true
             }})
+            
+        }
+        
+         print("goAction Inside 5 444")
+        
+        if toilet.editedBy != ""{
         
         let editedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.editedBy).child("totalHelpedCount")
         editedTotalHelpedCountRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
@@ -1422,6 +1489,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             if !snapshot.exists(){
                 return
             }
+            
+             print("goAction Inside 6 444")
 
             
             // editedTotalHelpedCountRef.observe(FIRDataEventType.value, with: {(snapshot) in
@@ -1434,7 +1503,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 editedTotalHelpedCountRef.setValue(newHelped)
                 self.youwentEdited = true
             }})
+            
+        }
         
+         print("goAction Inside 7 444")
         
         MKMapItem.openMaps(with: [destination], launchOptions: options)
     }
@@ -1815,6 +1887,41 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         print("Show Reviews Tapped")
         performSegue(withIdentifier:"placeDetailToReviewTVSegue", sender: nil)
     }
+    
+//    Image Tapped June 11
+    
+    
+    
+    
+    
+    
+    
+    
+    
+     func imageTappedAction(_ sender: UITapGestureRecognizer) {
+        print("Image Tapped Action Called 333")
+        
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = UIColor.groupTableViewBackground
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    
+    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
+    
     
     
     
