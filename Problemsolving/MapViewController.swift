@@ -534,10 +534,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return nil
         }else{
             
+            
+            
             if annotation.isKind(of: ReviewZeroMarkers.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
+                //Test June 12
                 view?.image = UIImage(named: "image_review_zero_30")
 
             
@@ -546,27 +549,53 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 view?.canShowCallout = false
                 
                 view?.image = UIImage(named: "pin_one_primary_30")
+            } else if annotation.isKind(of: StarOneRedMarker.self){
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)        //Red
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "red_pin_one")
             } else if annotation.isKind(of: StarTwoMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
                 view?.image = UIImage(named: "pin_two_primary_30")
-            } else if annotation.isKind(of: StarThreeMarker.self){
+            } else if annotation.isKind(of: StarTwoRedMarker.self){                                         //Red
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "red_pin_two")
+            }else if annotation.isKind(of: StarThreeMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
                 view?.image = UIImage(named: "pin_three_primary_ 30")
-            } else if annotation.isKind(of: StarFourMarker.self){
+            } else if annotation.isKind(of: StarThreeRedMarker.self){                                       //Red
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "pin_red_three")
+            }else if annotation.isKind(of: StarFourMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
                 view?.image = UIImage(named: "pin_four_primary_30")
-            } else if annotation.isKind(of: StarFiveMarker.self){
+            } else if annotation.isKind(of: StarFourRedMarker.self){                                       //Red
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "red_pin_four")
+            }else if annotation.isKind(of: StarFiveMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
                 
                 view?.image = UIImage(named: "pin_five_primary_30")
-            } else if view == nil {
+            } else if annotation.isKind(of: StarFiveRedMarker.self){                                       //Red
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                view?.image = UIImage(named: "red_pin_five")
+            }
+            else if view == nil {
                 
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
@@ -1527,14 +1556,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             self.mapView.addAnnotation(reviewZeroMarker)
 
             
-            
-            
-            
         
-        
-        
-        } else if starValueInt < 2{
+        } else if starValueInt < 2 && toilet.available == true{
             let starOneMarker = StarOneMarker(coordinate: (location.coordinate))
+            
             
             
             starOneMarker.key = toilet.key
@@ -1547,7 +1572,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             self.mapView.addAnnotation(starOneMarker)
             
-        } else if starValueInt < 3{
+        } else if starValueInt < 2 && toilet.available == false{
+            let starOneMarker = StarOneRedMarker(coordinate: (location.coordinate))
+            
+            
+            starOneMarker.key = toilet.key
+            starOneMarker.name = toilet.name
+            starOneMarker.distance = toilet.distance
+            starOneMarker.averageStar = toilet.averageStar
+            starOneMarker.averageWait = toilet.averageWait
+            starOneMarker.coordinate = (location.coordinate)
+            starOneMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starOneMarker)
+            
+        }
+            
+        else if starValueInt < 3 && toilet.available == true{
             let starTwoMarker = StarTwoMarker(coordinate: (location.coordinate))
             
             starTwoMarker.key = toilet.key
@@ -1562,7 +1603,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             
             
-        } else if starValueInt < 4{
+        } else if starValueInt < 3 && toilet.available == false{
+            let starTwoMarker = StarTwoRedMarker(coordinate: (location.coordinate))
+            
+            starTwoMarker.key = toilet.key
+            starTwoMarker.name = toilet.name
+            starTwoMarker.distance = toilet.distance
+            starTwoMarker.averageStar = toilet.averageStar
+            starTwoMarker.averageWait = toilet.averageWait
+            starTwoMarker.coordinate = (location.coordinate)
+            starTwoMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starTwoMarker)
+            
+            
+        } else if starValueInt < 4 && toilet.available == true{
             let starThreeMarker = StarThreeMarker(coordinate: (location.coordinate))
             
             
@@ -1576,7 +1631,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             self.mapView.addAnnotation(starThreeMarker)
             
-        } else if starValueInt < 5{
+        } else if starValueInt < 4 && toilet.available == false{
+            let starThreeMarker = StarThreeRedMarker(coordinate: (location.coordinate))
+            
+            
+            starThreeMarker.key = toilet.key
+            starThreeMarker.name = toilet.name
+            starThreeMarker.distance = toilet.distance
+            starThreeMarker.averageStar = toilet.averageStar
+            starThreeMarker.averageWait = toilet.averageWait
+            starThreeMarker.coordinate = (location.coordinate)
+            starThreeMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starThreeMarker)
+            
+        } else if starValueInt < 5 && toilet.available == true{
             let starFourMarker = StarFourMarker(coordinate: (location.coordinate))
             
             
@@ -1590,8 +1659,37 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             self.mapView.addAnnotation(starFourMarker)
             
-        } else if starValueInt == 5{
+        } else if starValueInt < 5 && toilet.available == false{
+            let starFourMarker = StarFourRedMarker(coordinate: (location.coordinate))
+            
+            
+            starFourMarker.key = toilet.key
+            starFourMarker.name = toilet.name
+            starFourMarker.distance = toilet.distance
+            starFourMarker.averageStar = toilet.averageStar
+            starFourMarker.averageWait = toilet.averageWait
+            starFourMarker.coordinate = (location.coordinate)
+            starFourMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starFourMarker)
+            
+        } else if starValueInt == 5 && toilet.available == true {
             let starFiveMarker = StarFiveMarker(coordinate: (location.coordinate))
+            
+            
+            starFiveMarker.key = toilet.key
+            starFiveMarker.name = toilet.name
+            starFiveMarker.distance = toilet.distance
+            starFiveMarker.averageStar = toilet.averageStar
+            starFiveMarker.averageWait = toilet.averageWait
+            starFiveMarker.coordinate = (location.coordinate)
+            starFiveMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(starFiveMarker)
+            
+            
+        } else if starValueInt == 5 && toilet.available == false {
+            let starFiveMarker = StarFiveRedMarker(coordinate: (location.coordinate))
             
             
             starFiveMarker.key = toilet.key
