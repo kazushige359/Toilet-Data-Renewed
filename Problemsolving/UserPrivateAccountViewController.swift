@@ -77,6 +77,13 @@ class UserPrivateAccountViewController: UIViewController {
         
         
         userLoginCheck()
+        
+        userImageView.isUserInteractionEnabled = true
+        
+        let userPictureTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UserPrivateAccountViewController.imageTappedAction(_:)))
+        userImageView.addGestureRecognizer(userPictureTap)
+        
+        
         //userInfo()
         
         
@@ -150,6 +157,32 @@ class UserPrivateAccountViewController: UIViewController {
 //            nextVC.search = search
 //        }
 //    }
+    
+    
+    func imageTappedAction(_ sender: UITapGestureRecognizer) {
+        print("Image Tapped Action Called 333")
+        
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = UIColor.groupTableViewBackground
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    
+    func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "newAcaddToiletSegue"{

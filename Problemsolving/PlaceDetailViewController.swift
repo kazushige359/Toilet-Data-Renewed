@@ -220,6 +220,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         picture3.isUserInteractionEnabled = true
         mapView.isUserInteractionEnabled = true
         
+        firstPosterPicture.isUserInteractionEnabled = true
+        lastEditerPicture.isUserInteractionEnabled = true
+        reviewOneUserImage.isUserInteractionEnabled = true
+        reviewTwoUserImage.isUserInteractionEnabled = true
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.hideTableView))
         view.addGestureRecognizer(tap)
         
@@ -240,6 +245,19 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         let mapTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.mapTappedAndGoAction(_:)))
         mapView.addGestureRecognizer(mapTap)
+        
+        
+        let firstPosterPictureTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.imageTappedAction(_:)))
+        firstPosterPicture.addGestureRecognizer(firstPosterPictureTap)
+        
+        let lastEditerPictureTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.imageTappedAction(_:)))
+            lastEditerPicture.addGestureRecognizer(lastEditerPictureTap)
+        
+        let reviewOnePictureTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.imageTappedAction(_:)))
+            reviewOneUserImage.addGestureRecognizer(reviewOnePictureTap)
+        
+        let reviewTwoPictureTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PlaceDetailViewController.imageTappedAction(_:)))
+            reviewTwoUserImage.addGestureRecognizer(reviewTwoPictureTap)
         
         
     
@@ -322,8 +340,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             if self.toilet.urlOne != ""{
                 self.bigPicture.sd_setImage(with: URL(string: self.toilet.urlOne))
             }else {
-                self.bigPicture.image = UIImage(named:"love_Icon_40")!
-                //photo_picture_default_100
+                self.bigPicture.image = UIImage(named:"photo_picture_default_100")!
+                
             }
             
             self.toilet.urlTwo = (snapshotValue?["urlTwo"] as? String!)!
