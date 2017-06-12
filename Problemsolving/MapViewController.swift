@@ -999,9 +999,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         
         
+        
+        
         toilet.available = (snapshotValue?["available"] as? Bool)!
         if toilet.available == false{
-            return
+            print("toilet available false 777 key= \(toilet.key)")
+            //return
         }
         
         

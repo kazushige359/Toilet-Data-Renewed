@@ -450,6 +450,8 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     }
     
     func problemUpload(problemString: String){
+        
+        print("problemUpload 777")
     
         let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletProblems")
         let tpid = UUID().uuidString
@@ -476,8 +478,54 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
                                        "problem": problemString
             
         ]
+        
+        
+        
+        
+        let firebaseRef = FIRDatabase.database().reference()
+        
+        
+        
+        
 
-        toiletProblemsRef.child(tpid).setValue(tpData)
+        
+        let mutipleData = ["ToiletProblems/\(toilet.key)": tpData,
+                           "NoFilter/\(toilet.key)/available": false,
+                           "UnitOne/\(toilet.key)/available": false,
+                           "UnitTwo/\(toilet.key)/available": false,
+                           "UnitThree/\(toilet.key)/available": false,
+                           "UnitFour/\(toilet.key)/available": false,
+                           "UnitFive/\(toilet.key)/available": false,
+                           "UnitSix/\(toilet.key)/available": false,
+                           "UnitSeven/\(toilet.key)/available": false,
+                           "UnitEight/\(toilet.key)/available": false,
+                           "UnitNine/\(toilet.key)/available": false,
+                           "UnitTen/\(toilet.key)/available": false,
+                           "UnitEleven/\(toilet.key)/available": false,
+                           "UnitTwelve/\(toilet.key)/available": false,
+                           "GroupOne/\(toilet.key)/available": false,
+                           "GroupTwo/\(toilet.key)/available": false,
+                           "GroupThree/\(toilet.key)/available": false,
+                           "HalfOne/\(toilet.key)/available": false,
+                           "HalfTwo/\(toilet.key)/available": false,
+                           "AllFilter/\(toilet.key)/available": false,
+                           "ToiletView/\(toilet.key)/available": false,
+                           
+                           ] as [String : Any]
+        
+        
+        firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
+            if error != nil{
+                print("Error 777 = \(String(describing: error))")
+                
+            }})
+            
+            
+
+        
+        
+
+        //toiletProblemsRef.child(tpid).setValue(tpData)
         
         toiletWarningListUpload()
         
@@ -489,7 +537,6 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         let toiletWarningsRef = FIRDatabase.database().reference().child("ToiletWarningList")
         let uid = FIRAuth.auth()!.currentUser!.uid
         toiletWarningsRef.child(toilet.key).child(uid).setValue(true)
-        
         
     }
     
