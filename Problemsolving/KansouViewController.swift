@@ -255,6 +255,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         let mutipleData = ["ReviewInfo/\(rid)": reviewData,
                            "ReviewList/\(uid)/\(rid)": true,
                            "ToiletReview/\(toilet.key)/\(rid)": true,
+                           "ToiletView/\(toilet.key)/available": true,
                            "ToiletView/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "ToiletView/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "ToiletView/\(toilet.key)/reviewCount": newReviewCount as Int,
@@ -263,60 +264,96 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
                            "NoFilter/\(toilet.key)/averageStar": String(roundAvStar),
                            "NoFilter/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "NoFilter/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "NoFilter/\(toilet.key)/available": true,
                            "UnitOne/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitOne/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitOne/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitOne/\(toilet.key)/available": true,
                            "UnitTwo/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitTwo/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitTwo/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitTwo/\(toilet.key)/available": true,
+
                            "UnitThree/\(toilet.key)/averageStar": String(roundAvStar)as String,
                            "UnitThree/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitThree/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitThree/\(toilet.key)/available": true,
+
                            "UnitFour/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitFour/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitFour/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitFour/\(toilet.key)/available": true,
+
                            "UnitFive/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitFive/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitFive/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitFive/\(toilet.key)/available": true,
+
                            "UnitSix/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitSix/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitSix/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitSix/\(toilet.key)/available": true,
+
                            "UnitSeven/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitSeven/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitSeven/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitSeven/\(toilet.key)/available": true,
+
                            "UnitEight/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitEight/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitEight/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitEight/\(toilet.key)/available": true,
+
                            "UnitNine/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitNine/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitNine/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitNine/\(toilet.key)/available": true,
+
                            "UnitTen/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitTen/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitTen/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitTen/\(toilet.key)/available": true,
+
                            "UnitEleven/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitEleven/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitEleven/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitEleven/\(toilet.key)/available": true,
+
                            "UnitTwelve/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "UnitTwelve/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "UnitTwelve/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "UnitTwelve/\(toilet.key)/available": true,
+
                            "GroupOne/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "GroupOne/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "GroupOne/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "GroupOne/\(toilet.key)/available": true,
+
                            "GroupTwo/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "GroupTwo/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "GroupTwo/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "GroupTwo/\(toilet.key)/available": true,
+
                            "GroupThree/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "GroupThree/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "GroupThree/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "GroupThree/\(toilet.key)/available": true,
+
                            "HalfOne/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "HalfOne/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "HalfOne/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "HalfOne/\(toilet.key)/available": true,
+
                            "HalfTwo/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "HalfTwo/\(toilet.key)/averageWait": newWaitingTime as Int,
                            "HalfTwo/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "HalfTwo/\(toilet.key)/available": true,
+
                            "AllFilter/\(toilet.key)/averageStar": String(roundAvStar) as String,
                            "AllFilter/\(toilet.key)/averageWait": newWaitingTime as Int,
-                           "AllFilter/\(toilet.key)/reviewCount": newReviewCount as Int
+                           "AllFilter/\(toilet.key)/reviewCount": newReviewCount as Int,
+                           "AllFilter/\(toilet.key)/available": true,
+
                            ] as [String : Any]
         
         let firebaseRef = FIRDatabase.database().reference()

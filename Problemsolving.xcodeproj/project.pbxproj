@@ -84,6 +84,7 @@
 		24C2F43D1EEE0B2900108716 /* StarThreeRedMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C2F43C1EEE0B2900108716 /* StarThreeRedMarker.swift */; };
 		24C2F43F1EEE0B3800108716 /* StarFourRedMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C2F43E1EEE0B3800108716 /* StarFourRedMarker.swift */; };
 		24C2F4411EEE0B5000108716 /* StarFiveRedMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C2F4401EEE0B5000108716 /* StarFiveRedMarker.swift */; };
+		24C2F4431EEE4E9700108716 /* ReviewZeroRedMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C2F4421EEE4E9700108716 /* ReviewZeroRedMarkers.swift */; };
 		24CD2B4C1E9E27A800F438CE /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CD2B4B1E9E27A800F438CE /* Post.swift */; };
 		24CDD1C71EBC04B3002F7710 /* Localizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CDD1C61EBC04B3002F7710 /* Localizer.swift */; };
 		24DA07F21E01357A00869655 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DA07F11E01357A00869655 /* MapKit.framework */; };
@@ -214,6 +215,7 @@
 		24C2F43C1EEE0B2900108716 /* StarThreeRedMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarThreeRedMarker.swift; sourceTree = "<group>"; };
 		24C2F43E1EEE0B3800108716 /* StarFourRedMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarFourRedMarker.swift; sourceTree = "<group>"; };
 		24C2F4401EEE0B5000108716 /* StarFiveRedMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarFiveRedMarker.swift; sourceTree = "<group>"; };
+		24C2F4421EEE4E9700108716 /* ReviewZeroRedMarkers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewZeroRedMarkers.swift; sourceTree = "<group>"; };
 		24CD2B4B1E9E27A800F438CE /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		24CDD1BF1EBC01F3002F7710 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		24CDD1C01EBC01F3002F7710 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Login.strings; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 				24C2F43C1EEE0B2900108716 /* StarThreeRedMarker.swift */,
 				24C2F43E1EEE0B3800108716 /* StarFourRedMarker.swift */,
 				24C2F4401EEE0B5000108716 /* StarFiveRedMarker.swift */,
+				24C2F4421EEE4E9700108716 /* ReviewZeroRedMarkers.swift */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				24CDD1C71EBC04B3002F7710 /* Localizer.swift in Sources */,
 				240128941E078244002FBDE1 /* Toilet.swift in Sources */,
 				24A130D01DF769AE009C1A3F /* GFQuery.m in Sources */,
+				24C2F4431EEE4E9700108716 /* ReviewZeroRedMarkers.swift in Sources */,
 				24A130CE1DF769AE009C1A3F /* GFGeoHash.m in Sources */,
 				2423A42B1E23839800DD2AF4 /* AddPinViewController.swift in Sources */,
 				2418B7D71E1A51B3004F7022 /* SettingTableViewController.swift in Sources */,

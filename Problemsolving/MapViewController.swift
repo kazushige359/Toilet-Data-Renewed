@@ -541,9 +541,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 view?.canShowCallout = false
                 
                 //Test June 12
-                view?.image = UIImage(named: "image_review_zero_30")
+                view?.image = UIImage(named: "image_review_zero_blue_30")
 
             
+            } else if annotation.isKind(of: ReviewZeroRedMarkers.self){
+                view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+                view?.canShowCallout = false
+                
+                //Test June 12
+                view?.image = UIImage(named: "pin_review_zero_red")
+                
+                
             } else if annotation.isKind(of: StarOneMarker.self){
                 view = AnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
                 view?.canShowCallout = false
@@ -1544,7 +1552,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let starValueInt = Int(starValueDouble)
     
-        if toilet.reviewCount == 0{
+        if toilet.reviewCount == 0 && toilet.available == true {
             
             let reviewZeroMarker = ReviewZeroMarkers(coordinate: (location.coordinate))
             
@@ -1560,6 +1568,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
             
         
+        } else if toilet.reviewCount == 0 && toilet.available == false {
+            
+            let reviewZeroMarker = ReviewZeroRedMarkers(coordinate: (location.coordinate))
+            
+            reviewZeroMarker.key = toilet.key
+            reviewZeroMarker.name = toilet.name
+            reviewZeroMarker.distance = toilet.distance
+            reviewZeroMarker.averageStar = toilet.averageStar
+            reviewZeroMarker.averageWait = toilet.averageWait
+            reviewZeroMarker.coordinate = (location.coordinate)
+            reviewZeroMarker.reviewCount = toilet.reviewCount
+            
+            self.mapView.addAnnotation(reviewZeroMarker)
+            
+            
+            
         } else if starValueInt < 2 && toilet.available == true{
             let starOneMarker = StarOneMarker(coordinate: (location.coordinate))
             
