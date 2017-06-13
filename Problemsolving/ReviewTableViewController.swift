@@ -298,7 +298,7 @@ class ReviewTableViewController: UITableViewController {
     
     func whatIsTheProblem(){
         
-        var problemString = ""
+        //var problemString = ""
         
         
         let nextAlertController = UIAlertController (title: "お願い", message: "問題だと思う点を教えてください", preferredStyle: .actionSheet)
@@ -306,29 +306,37 @@ class ReviewTableViewController: UITableViewController {
         
         let wrongInfo = UIAlertAction(title: "感想の内容に誤りがあるから", style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "The content of the review is not correct"
-            self.problemUpload(problemString: problemString)
+            self.problemUpload(problemInt: 0)
+            
+//            problemString = "The content of the review is not correct"
+//            self.problemUpload(problemString: problemString)
         })
         
         let reviewNotRelevent =  UIAlertAction(title: "感想の内容に不適切な表現があるから", style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "The content of the review is not relevent"
-            self.problemUpload(problemString: problemString)
+            self.problemUpload(problemInt: 1)
+//            
+//            problemString = "The content of the review is not relevent"
+//            self.problemUpload(problemString: problemString)
             
         })
         
         let pictureNotAppropriate = UIAlertAction(title: "感想を投稿したユーザーの写真が適切ではないから", style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "The picture of the user is not appropriate"
-            self.problemUpload(problemString: problemString)
+            self.problemUpload(problemInt: 2)
+            
+//            problemString = "The picture of the user is not appropriate"
+//            self.problemUpload(problemString: problemString)
             
         })
         
         
         let nameNotAppropriate = UIAlertAction(title: "感想を投稿したユーザーの名前が適切ではないから", style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "The name of the user is not appropriate"
-            self.problemUpload(problemString: problemString)
+            self.problemUpload(problemInt: 3)
+            
+//            problemString = "The name of the user is not appropriate"
+//            self.problemUpload(problemString: problemString)
             
         })
         
@@ -350,9 +358,9 @@ class ReviewTableViewController: UITableViewController {
     }
     
     
-    func problemUpload(problemString: String){
+    func problemUpload(problemInt: Int){
         
-        let toiletProblemsRef = FIRDatabase.database().reference().child("ReviewProblems")
+        //let toiletProblemsRef = FIRDatabase.database().reference().child("ReviewProblems")
         let rpid = UUID().uuidString
         let uid = FIRAuth.auth()!.currentUser!.uid
         let date = NSDate()
@@ -370,21 +378,62 @@ class ReviewTableViewController: UITableViewController {
         
         if postRid != ""{
         
-        
-        
-        
-        let rpData : [String : Any] = ["uid": uid,
-                                       "rid": postRid,
-                                       "time": timeString,
-                                       "timeNumbers": interval,
-                                       "problem": problemString
             
-        ]
+            let rpData : [String : Any] = ["uid": uid,
+                                           "rid": postRid,
+                                           "time": timeString,
+                                           "timeNumbers": interval,
+                                           "problem": problemInt
+                
+            ]
+
         
-        toiletProblemsRef.child(rpid).setValue(rpData)
+            
+            let firebaseRef = FIRDatabase.database().reference()
+            
+            
+            let mutipleData = ["ReviewProblems/\(rpid)": rpData,
+                               "ReviewWarningList/\(postRid)/\(uid)": true,
+                               "UserWarningList/\(suspiciosUserId)/\(uid)": true
+                
+                ] as [String : Any]
+            
+            
+            firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
+                if error != nil{
+                    print("Error 777 = \(String(describing: error))")
+                    
+                } else {
+                    self.showYourReviewPostedMessage()
+                }
+            })
+
+            
         
-        reviewWarningListUpload()
-        userWarningListUpload()
+        
+            
+        //toiletProblemsRef.child(rpid).setValue(rpData)
+        
+            
+            
+        
+        //reviewWarningListUpload()
+            
+//            let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+//            let uid = FIRAuth.auth()!.currentUser!.uid
+//            reviewWarningsRef.child(postRid).child(uid).setValue(true)
+//            
+//            
+//        //userWarningListUpload()
+//            let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+//            let uid = FIRAuth.auth()!.currentUser!.uid
+//            userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
+//            
+            // userWarningListCount()
+            
+            
+            
+            //showYourReviewPostedMessage()
         }
         
     }
@@ -393,26 +442,26 @@ class ReviewTableViewController: UITableViewController {
     
     
     ///
-    func reviewWarningListUpload(){
-    let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
-    let uid = FIRAuth.auth()!.currentUser!.uid
-    reviewWarningsRef.child(postRid).child(uid).setValue(true)
+//    func reviewWarningListUpload(){
+////    let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+////    let uid = FIRAuth.auth()!.currentUser!.uid
+////    reviewWarningsRef.child(postRid).child(uid).setValue(true)
+//    
+//    //reviewWarningListCount()
+//    
+//    
+//     }
     
-    reviewWarningListCount()
-    
-    
-     }
-    
-    func reviewWarningListCount(){
-        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
-        
-        
-        reviewWarningsRef.child(postRid).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
-            
-                let countNumber = snapshot.childrenCount
-                self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
-        })
-    }
+//    func reviewWarningListCount(){
+//        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+//        
+//        
+//        reviewWarningsRef.child(postRid).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+//            
+//                let countNumber = snapshot.childrenCount
+//                self.reviewWarningCountUploadToDatabase(countNumber: Int(countNumber))
+//        })
+//    }
 
 //    func reviewWarningListCount(){
 //    let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
@@ -434,30 +483,30 @@ class ReviewTableViewController: UITableViewController {
     
     
 
-func reviewWarningCountUploadToDatabase(countNumber: Int){
-    let reviewWarningCountRef = FIRDatabase.database().reference().child("ReviewWarningCount")
+//func reviewWarningCountUploadToDatabase(countNumber: Int){
+//    let reviewWarningCountRef = FIRDatabase.database().reference().child("ReviewWarningCount")
+//    
+//    reviewWarningCountRef.child(postRid).setValue(countNumber)
+//    
+//    showYourReviewPostedMessage()
+//    
+//    
+//    
+//}
     
-    reviewWarningCountRef.child(postRid).setValue(countNumber)
-    
-    showYourReviewPostedMessage()
-    
-    
-    
-}
-    
-    func userWarningListUpload(){
-        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
-        let uid = FIRAuth.auth()!.currentUser!.uid
-        userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
-        
-       // userWarningListCount()
-        
-        showYourReviewPostedMessage()
-        
-        
-        
-        
-    }
+//    func userWarningListUpload(){
+//        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+//        let uid = FIRAuth.auth()!.currentUser!.uid
+//        userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
+//        
+//       // userWarningListCount()
+//        
+//        showYourReviewPostedMessage()
+//        
+//        
+//        
+//        
+//    }
     
     
     

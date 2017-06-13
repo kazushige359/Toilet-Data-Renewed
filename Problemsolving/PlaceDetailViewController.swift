@@ -1726,34 +1726,42 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     func toiletReportStart(){
         
-        var problemString = ""
+       // var problemString = ""
         let nextAlertController = UIAlertController (title: "whatProblem".localized , message: "whatIsWrongWithReview".localized , preferredStyle: .actionSheet)
         
         let wrongPhoto = UIAlertAction(title: "placePhotoNotAppropriate".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "the picture of this place is not appropriate"
-            self.toiletProblemUpload(problemString: problemString)
+            //problemString = "the picture of this place is not appropriate"
+            self.toiletProblemUpload(problemInt: 0)
+            //self.toiletProblemUpload(problemString: problemString)
         })
         
         let wrongInfo =  UIAlertAction(title: "placeWrongInfo".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "the infomation of this place is not correct"
-            self.toiletProblemUpload(problemString: problemString)
+            //problemString = "the infomation of this place is not correct"
+            self.toiletProblemUpload(problemInt: 1)
+
+            //self.toiletProblemUpload(problemString: problemString)
             
         })
         
         let firstPosterNotAppropriate = UIAlertAction(title: "fisrtPosterWrong".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "Fisrt Poster Not Appropriate"
-            self.toiletProblemUpload(problemString: problemString)
+            //problemString = "Fisrt Poster Not Appropriate"
+            self.toiletProblemUpload(problemInt: 2)
+
+            //self.toiletProblemUpload(problemString: problemString)
             
         })
         
         
         let lastEditerNotAppropriate = UIAlertAction(title: "lastEditerWrong".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "Last Editer Not Appropriate"
-            self.toiletProblemUpload(problemString: problemString)
+            
+            self.toiletProblemUpload(problemInt: 3)
+
+//            problemString = "Last Editer Not Appropriate"
+//            self.toiletProblemUpload(problemString: problemString)
             
         })
         
@@ -1775,9 +1783,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
     }
     
-    func toiletProblemUpload(problemString: String){
+    func toiletProblemUpload(problemInt: Int){
         
-        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletInfoProblems")
+        //let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletInfoProblems")
         let rpid = UUID().uuidString
         let uid = FIRAuth.auth()!.currentUser!.uid
         let date = NSDate()
@@ -1797,15 +1805,36 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                                        "tid": toilet.key,
                                        "time": timeString,
                                        "timeNumbers": interval,
-                                       "problem": problemString
+                                       "problem": problemInt
             
         ]
         
-        toiletProblemsRef.child(rpid).setValue(rpData)
+        //toiletProblemsRef.child(rpid).setValue(rpData)
         
         suspiciosUserId = toilet.editedBy
-        userWarningListUpload()
+        //userWarningListUpload()
         
+        
+        let firebaseRef = FIRDatabase.database().reference()
+        
+        
+        let mutipleData = ["ToiletInfoProblems/\(rpid)": rpData,
+                           "UserWarningList/\(suspiciosUserId)/\(uid)": true
+                           ] as [String : Any]
+        
+        
+        
+        
+        firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
+            if error != nil{
+                print("Error 777 = \(String(describing: error))")
+                
+            } else {
+                self.showYourReviewPostedMessage()
+            }
+        })
+        
+
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {
@@ -1907,11 +1936,6 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     }
     
 //    Image Tapped June 11
-    
-    
-    
-    
-    
     
     
     
@@ -2138,34 +2162,48 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     func whatIsTheProblem(){
         
-        var problemString = ""
+        //var problemString = ""
         let nextAlertController = UIAlertController (title: "whatProblem".localized, message: "whatIsWrongWithReview".localized, preferredStyle: .actionSheet)
         
         let wrongInfo = UIAlertAction(title: "wrongInfo".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "The content of the review is not correct"
-            self.problemUpload(problemString: problemString)
+            
+            self.problemUpload(problemInt: 0)
+
+//            problemString = "The content of the review is not correct"
+//            self.problemUpload(problemString: problemString)
         })
         
         let reviewNotRelevent =  UIAlertAction(title: "notAppropriate".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "The content of the review is not relevent"
-            self.problemUpload(problemString: problemString)
+            
+             self.problemUpload(problemInt: 1)
+            
+//            problemString = "The content of the review is not relevent"
+//            self.problemUpload(problemString: problemString)
             
         })
         
         let pictureNotAppropriate = UIAlertAction(title: "userPhotoNotAppropriate".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "The picture of the user is not appropriate"
-            self.problemUpload(problemString: problemString)
+            
+             self.problemUpload(problemInt: 2)
+            
+//            
+//            problemString = "The picture of the user is not appropriate"
+//            self.problemUpload(problemString: problemString)
             
         })
         
         
         let nameNotAppropriate = UIAlertAction(title: "userNameNotAppropriate".localized , style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "The name of the user is not appropriate"
-            self.problemUpload(problemString: problemString)
+            
+             self.problemUpload(problemInt: 3)
+            
+            
+//            problemString = "The name of the user is not appropriate"
+//            self.problemUpload(problemString: problemString)
             
         })
         
@@ -2191,9 +2229,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     
     
-    func problemUpload(problemString: String){
+    
+    func problemUpload(problemInt: Int){
         
-        let toiletProblemsRef = FIRDatabase.database().reference().child("ReviewProblems")
+        //let toiletProblemsRef = FIRDatabase.database().reference().child("ReviewProblems")
         let rpid = UUID().uuidString
         let uid = FIRAuth.auth()!.currentUser!.uid
         let date = NSDate()
@@ -2218,31 +2257,68 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                                            "rid": postRid,
                                            "time": timeString,
                                            "timeNumbers": interval,
-                                           "problem": problemString
+                                           "problem": problemInt
                 
             ]
             
-            toiletProblemsRef.child(rpid).setValue(rpData)
+//            toiletProblemsRef.child(rpid).setValue(rpData)
+//            
+            
+            //reviewWarningListUpload()
+            
+//            let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+//            let uid = FIRAuth.auth()!.currentUser!.uid
+//            reviewWarningsRef.child(postRid).child(uid).setValue(true)
+//            
+            
+            //showYourReviewPostedMessage()
+
             
             
-            reviewWarningListUpload()
-            userWarningListUpload()
+            //userWarningListUpload()
+            
+//            let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+//            let uid = FIRAuth.auth()!.currentUser!.uid
+//            userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
+            
+            //showYourReviewPostedMessage()
+            
+            let firebaseRef = FIRDatabase.database().reference()
+            
+            
+            let mutipleData = ["ReviewProblems/\(rpid)": rpData,
+                               "ReviewWarningList/\(postRid)/\(uid)": true,
+                               "UserWarningList/\(suspiciosUserId)/\(uid)": true
+                
+                ] as [String : Any]
+            
+            
+            firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
+                if error != nil{
+                    print("Error 777 = \(String(describing: error))")
+                    
+                } else {
+                    self.showYourReviewPostedMessage()
+                }
+            })
+
+        
         }
         
     }
     
-    func reviewWarningListUpload(){
-        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
-        let uid = FIRAuth.auth()!.currentUser!.uid
-        reviewWarningsRef.child(postRid).child(uid).setValue(true)
-        
-        
-        showYourReviewPostedMessage()
-        
-        //reviewWarningListCount()
-        
-        
-    }
+//    func reviewWarningListUpload(){
+//        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
+//        let uid = FIRAuth.auth()!.currentUser!.uid
+//        reviewWarningsRef.child(postRid).child(uid).setValue(true)
+//        
+//        
+//        showYourReviewPostedMessage()
+//        
+//        //reviewWarningListCount()
+//        
+//        
+//    }
     
     //    func reviewWarningListCount(){
     //        let reviewWarningsRef = FIRDatabase.database().reference().child("ReviewWarningList")
@@ -2285,15 +2361,15 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     //
     
     
-    func userWarningListUpload(){
-        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
-        let uid = FIRAuth.auth()!.currentUser!.uid
-        userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
-        
-        showYourReviewPostedMessage()
-        
-        
-    }
+//    func userWarningListUpload(){
+////        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")
+////        let uid = FIRAuth.auth()!.currentUser!.uid
+////        userWarningsRef.child(suspiciosUserId).child(uid).setValue(true)
+////        
+////        showYourReviewPostedMessage()
+//        
+//        
+//    }
     
     //    func userWarningListCount(){
     //        let userWarningsRef = FIRDatabase.database().reference().child("UserWarningList")

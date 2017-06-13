@@ -78,9 +78,16 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         starRated.settings.filledColor = UIColor.yellow
         starRated.settings.emptyBorderColor = UIColor.orange
         starRated.settings.filledBorderColor = UIColor.orange
-                
-        kansouButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
-        textView.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 5, alpha: 0.25)
+        
+        let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
+        
+        
+        
+        kansouButton.backgroundColor = primaryColor
+        textView.backgroundColor = UIColor.groupTableViewBackground
+
+//        kansouButton.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 1.4, alpha: 0.7)
+//        textView.backgroundColor = UIColor(red: 0.4, green: 0.6, blue: 5, alpha: 0.25)
         textView.textColor = UIColor.gray
         textView.isScrollEnabled = false
         textView.delegate = self
@@ -421,7 +428,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
 
     func whatIsTheProblem(){
         
-        var problemString = ""
+        //var problemString = ""
         
         
     
@@ -430,41 +437,40 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
         let notfound = UIAlertAction(title: "トイレが見つからなかったから", style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "Could not find the Toilet"
-            self.problemUpload(problemString: problemString)
+            //problemString = "Could not find the Toilet"
+            self.problemUpload(problemInt:0)
         })
+        
+        let noToiletPaper = UIAlertAction(title: "トイレットペーパーが無かったから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+           // problemString = "No Toilet Paper"
+            self.problemUpload(problemInt:1)
+            
+        })
+        
+        let noFlash = UIAlertAction(title: "トイレの水が流れなかったから", style: .default, handler: {(alert:UIAlertAction!) in
+            
+            //problemString = "No Flush"
+            self.problemUpload(problemInt:2)
+            
+        })
+
+        
         
         let waterLeakage =  UIAlertAction(title: "漏水していたから", style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "Water Leakage"
-            self.problemUpload(problemString: problemString)
+           // problemString = "Water Leakage"
+            self.problemUpload(problemInt:3)
 
         })
 
         let waterOutage = UIAlertAction(title: "断水していたから", style: .default, handler: {(alert:UIAlertAction!) in
             
-            problemString = "Water Outage"
-            self.problemUpload(problemString: problemString)
+            //problemString = "Water Outage"
+            self.problemUpload(problemInt:4)
 
         })
     
-        
-        let noFlash = UIAlertAction(title: "トイレがつまっていたから", style: .default, handler: {(alert:UIAlertAction!) in
-            
-            problemString = "No Flush"
-            self.problemUpload(problemString: problemString)
-
-        })
-        
-
-        let noToiletPaper = UIAlertAction(title: "トイレットペーパーが無かったから", style: .default, handler: {(alert:UIAlertAction!) in
-            
-            problemString = "No Toilet Paper"
-            self.problemUpload(problemString: problemString)
-
-        })
-        
-        
         
         
         let stillYes = UIAlertAction(title: "いいえ、利用することができた", style: .default, handler: {(alert:
@@ -486,12 +492,12 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         self.present(nextAlertController, animated: true, completion: nil)
     }
     
-    func problemUpload(problemString: String){
+    func problemUpload(problemInt: Int){
         
         print("problemUpload 777")
     
-        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletProblems")
-        let tpid = UUID().uuidString
+//        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletProblems")
+//        let tpid = UUID().uuidString
         let uid = FIRAuth.auth()!.currentUser!.uid
         let date = NSDate()
         let calendar = Calendar.current
@@ -512,7 +518,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
                                        "tid": toilet.key,
                                        "time": timeString,
                                        "timeNumbers": interval,
-                                       "problem": problemString
+                                       "problem": problemInt
             
         ]
         
@@ -521,10 +527,6 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
         let firebaseRef = FIRDatabase.database().reference()
         
-        
-        
-        
-
         
         let mutipleData = ["ToiletProblems/\(toilet.key)": tpData,
                            "NoFilter/\(toilet.key)/available": false,
@@ -547,6 +549,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
                            "HalfTwo/\(toilet.key)/available": false,
                            "AllFilter/\(toilet.key)/available": false,
                            "ToiletView/\(toilet.key)/available": false,
+                           "ToiletWarningList/\(toilet.key)/\(uid)": true,
                            
                            ] as [String : Any]
         
@@ -554,28 +557,26 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
             if error != nil{
                 print("Error 777 = \(String(describing: error))")
-                
-            }})
-            
-            
-
+            } else {
+                self.showYourReviewPostedMessage()
+            }
         
+        })
         
-
         //toiletProblemsRef.child(tpid).setValue(tpData)
         
-        toiletWarningListUpload()
+        //toiletWarningListUpload()
         
     }
     
     
     ////
-    func toiletWarningListUpload(){
-        let toiletWarningsRef = FIRDatabase.database().reference().child("ToiletWarningList")
-        let uid = FIRAuth.auth()!.currentUser!.uid
-        toiletWarningsRef.child(toilet.key).child(uid).setValue(true)
-        
-    }
+//    func toiletWarningListUpload(){
+//        let toiletWarningsRef = FIRDatabase.database().reference().child("ToiletWarningList")
+//        let uid = FIRAuth.auth()!.currentUser!.uid
+//        toiletWarningsRef.child(toilet.key).child(uid).setValue(true)
+//        
+//    }
     
 
     func showYourReviewPostedMessage(){

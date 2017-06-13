@@ -197,6 +197,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.tableView.dataSource = self
         self.tableView.bounds = CGRect(x: 0, y: 0, width: mapView.bounds.width, height: self.tableView.bounds.height )
         
+//        let deleteRef = FIRDatabase.database().reference()
+//        
+//        deleteRef.removeValue();
+        
         viewLayout()
     }
     
