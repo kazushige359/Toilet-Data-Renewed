@@ -1759,6 +1759,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                     self.newUrlOne = downloadURL
                     self.toilet.urlOne = downloadURL
                     
+                    self.photoUrlMultipleUpdate(placeNumber: 0, photoUrl: downloadURL)
+                    
                 }
             })
 
@@ -1777,6 +1779,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                    // databaseRef.child("Toilets").child(tid).updateChildValues(["urlTwo": downloadURL])
                     self.newUrlTwo = downloadURL
                     self.toilet.urlTwo = downloadURL
+                    
+                    self.photoUrlMultipleUpdate(placeNumber: 1, photoUrl: downloadURL)
                     
                 }
             })
@@ -1798,6 +1802,8 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
                // databaseRef.child("Toilets").child(tid).updateChildValues(["urlThree": downloadURL])
                 self.newUrlThree = downloadURL
                 self.toilet.urlThree = downloadURL
+                
+                self.photoUrlMultipleUpdate(placeNumber: 2, photoUrl: downloadURL)
 
             }
         })
@@ -1805,6 +1811,65 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         }
   
     }
+    
+    func photoUrlMultipleUpdate(placeNumber: Int, photoUrl: String){
+        
+        print("photoUrlMultipleUpdate called 444")
+        let firebaseRef = FIRDatabase.database().reference()
+        
+        if placeNumber == 0{
+            // placeString = "urlOne"
+            
+            
+            
+            //uniqueRef.setValue(tdata)
+            
+            let mutipleData = ["NoFilter/\(toilet.key)/urlOne": photoUrl,
+                               "UnitOne/\(toilet.key)/urlOne": photoUrl,
+                               "UnitTwo/\(toilet.key)/urlOne": photoUrl,
+                               "UnitThree/\(toilet.key)/urlOne": photoUrl,
+                               "UnitFour/\(toilet.key)/urlOne": photoUrl,
+                               "UnitFive/\(toilet.key)/urlOne": photoUrl,
+                               "UnitSix/\(toilet.key)/urlOne": photoUrl,
+                               "UnitSeven/\(toilet.key)/urlOne": photoUrl,
+                               "UnitEight/\(toilet.key)/urlOne": photoUrl,
+                               "UnitNine/\(toilet.key)/urlOne": photoUrl,
+                               "UnitTen/\(toilet.key)/urlOne": photoUrl,
+                               "UnitEleven/\(toilet.key)/urlOne": photoUrl,
+                               "UnitTwelve/\(toilet.key)/urlOne": photoUrl,
+                               "GroupOne/\(toilet.key)/urlOne": photoUrl,
+                               "GroupTwo/\(toilet.key)/urlOne": photoUrl,
+                               "GroupThree/\(toilet.key)/urlOne": photoUrl,
+                               "HalfOne/\(toilet.key)/urlOne": photoUrl,
+                               "HalfTwo/\(toilet.key)/urlOne": photoUrl,
+                               "AllFilter/\(toilet.key)/urlOne": photoUrl,
+                               "ToiletView/\(toilet.key)/urlOne": photoUrl,
+                               ] as [String : Any]
+            
+            
+            firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
+                if error != nil{
+                    print("Error 444= \(String(describing: error))")
+                }else{
+                    print(" No Error Url One CHanged 444")
+                    
+                }
+            })
+            
+            
+        } else if placeNumber == 1{
+            
+            firebaseRef.child("ToiletView").child(toilet.key).updateChildValues(["urlTwo": photoUrl])
+            
+        } else if placeNumber == 2{
+            firebaseRef.child("ToiletView").child(toilet.key).updateChildValues(["urlThree": photoUrl])
+            
+        }
+        
+        
+        
+    }
+
     
     func safeBabyChairCondition(){
         

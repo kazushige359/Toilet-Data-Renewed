@@ -72,9 +72,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     @IBOutlet weak var ladyBabyChairGoodSwitch: UISwitch!
     @IBOutlet weak var ladyBabyCarAccessSwitch: UISwitch!
     
-    
-    
-    
+
     //For men
     
     @IBOutlet weak var maleOmutuSwitch: UISwitch!
@@ -97,9 +95,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     
     @IBOutlet weak var familyBabyChairSwitch: UISwitch!
     
-    
-    
-    
+
     @IBOutlet weak var milkSpaceSwitch: UISwitch!
     @IBOutlet weak var onlyFamaleBabyRoom: UISwitch!
     @IBOutlet weak var babyRoomMaleEnterSwitch: UISwitch!
@@ -238,7 +234,6 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         starView.settings.filledBorderColor = UIColor.orange
         
         
-        
         let pinAnnotation = MKPointAnnotation()
         pinAnnotation.coordinate = pincoodinate
         mapView.addAnnotation(pinAnnotation)
@@ -306,9 +301,6 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         }
         
         
-        
-        
-        
         return returnCount
     }
     
@@ -333,13 +325,9 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             //print("pickerView3")
             pickedOption = floorOption[row]
             
-            
         }
         
-        
         return pickedOption
-        
-        
         
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -428,6 +416,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     }
     
     func photoUpload(){
+         print("photoUpload 444 called")
         self.imagePicker.sourceType = .photoLibrary
         self.imagePicker.allowsEditing = true
         
@@ -438,6 +427,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         var uploadingPlace = mainImageView
+        
+        print("image picker 444 called")
         
         if mainImageReplace == true{
             uploadingPlace = mainImageView
@@ -455,6 +446,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         uploadingPlace?.image = image
         uploadingPlace?.backgroundColor = UIColor.clear
         imagePicker.dismiss(animated: true, completion: nil)
+        
+        uploadPhotosToDatabase()
     }
     
     
@@ -1462,6 +1455,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                         } else {
                             print("Saved location successfully!")
                             
+                            
+                            
                         }
                     }
                     
@@ -1470,8 +1465,10 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             
             
+            
+            
             //reviewDataUpload()
-            uploadPhotosToDatabase()
+            //uploadPhotosToDatabase()
             
             
             performSegue(withIdentifier: "addedToiletToNewAcSegue", sender: nil)
@@ -1531,6 +1528,8 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     
     
     func uploadPhotosToDatabase(){
+        
+         print("uploadPhotosToDatabase 444 called")
         //let databaseRef = FIRDatabase.database().reference()
         let imagesFolder = FIRStorage.storage().reference().child("ToiletPhoto")
         
@@ -1551,6 +1550,17 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                     print(metadata?.downloadURL() as Any)
                     let downloadURL = metadata!.downloadURL()!.absoluteString
                     self.newUrlOne = downloadURL
+                    
+                     print("photoUrl Upload Before call 444")
+                    
+                    self.photoUrlMultipleUpdate(placeNumber: 0, photoUrl: downloadURL)
+                    
+                    print("photoUrl Upload After call 444")
+                    
+                    
+                    //Multiple Update...
+                    
+                    
                     //databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlOne": downloadURL])
                     
                 }
@@ -1567,7 +1577,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let subOneUuid = UUID().uuidString
             
             imagesFolder.child(toiletNewId).child("\(subOneUuid).jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
-                print("We tried to upload!")
+                print("We tried to upload! 444")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
                 } else {
@@ -1575,6 +1585,14 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                     print(metadata?.downloadURL() as Any)
                     let downloadURL = metadata!.downloadURL()!.absoluteString
                     self.newUrlTwo = downloadURL
+                    
+                    print("photoUrl Upload Before call 444")
+                    
+                    self.photoUrlMultipleUpdate(placeNumber: 1, photoUrl: downloadURL)
+                    
+                    print("photoUrl Upload After call 444")
+
+
                     //databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlTwo": downloadURL]
                     
                     
@@ -1599,6 +1617,9 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
                     print(metadata?.downloadURL() as Any)
                     let downloadURL = metadata!.downloadURL()!.absoluteString
                     self.newUrlThree = downloadURL
+                    
+                    self.photoUrlMultipleUpdate(placeNumber: 2, photoUrl: downloadURL)
+
                     //databaseRef.child("Toilets").child(self.toiletNewId).updateChildValues(["urlThree": downloadURL])
                     
                 }
@@ -1607,6 +1628,65 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
         }
         
+    }
+    
+    
+    func photoUrlMultipleUpdate(placeNumber: Int, photoUrl: String){
+        
+        print("photoUrlMultipleUpdate called 444")
+        let firebaseRef = FIRDatabase.database().reference()
+        
+        if placeNumber == 0{
+           // placeString = "urlOne"
+            
+            
+            
+            //uniqueRef.setValue(tdata)
+            
+            let mutipleData = ["NoFilter/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitOne/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitTwo/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitThree/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitFour/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitFive/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitSix/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitSeven/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitEight/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitNine/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitTen/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitEleven/\(toiletNewId)/urlOne": photoUrl,
+                               "UnitTwelve/\(toiletNewId)/urlOne": photoUrl,
+                               "GroupOne/\(toiletNewId)/urlOne": photoUrl,
+                               "GroupTwo/\(toiletNewId)/urlOne": photoUrl,
+                               "GroupThree/\(toiletNewId)/urlOne": photoUrl,
+                               "HalfOne/\(toiletNewId)/urlOne": photoUrl,
+                               "HalfTwo/\(toiletNewId)/urlOne": photoUrl,
+                               "AllFilter/\(toiletNewId)/urlOne": photoUrl,
+                               "ToiletView/\(toiletNewId)/urlOne": photoUrl,
+                               ] as [String : Any]
+            
+            
+            firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
+                if error != nil{
+                    print("Error 444= \(String(describing: error))")
+                }else{
+                    print(" No Error Url One CHanged 444")
+
+                }
+            })
+            
+        
+        } else if placeNumber == 1{
+            
+            firebaseRef.child("ToiletView").child(toiletNewId).updateChildValues(["urlTwo": photoUrl])
+            
+        } else if placeNumber == 2{
+            firebaseRef.child("ToiletView").child(toiletNewId).updateChildValues(["urlThree": photoUrl])
+        
+        }
+        
+        
+    
     }
     
     func safeBabyChairCondition(){
