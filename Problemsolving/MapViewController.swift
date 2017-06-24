@@ -1350,9 +1350,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 return
             }
         }
+        
         if self.filter.babyRoomPersonalWithLockFilter == true{
             toilet.babyPersonalSpaceWithLock = (snapshotValue?["babyRoomPersonalSpaceWithLock"] as? Bool)!
-            if toilet.babyPersonalSpace == false{
+            if toilet.babyPersonalSpaceWithLock == false{
                 return
             }
         }
