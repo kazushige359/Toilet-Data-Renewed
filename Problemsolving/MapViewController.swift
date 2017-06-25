@@ -200,7 +200,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        let deleteRef = FIRDatabase.database().reference()
 //        
 //        deleteRef.removeValue();
-        
+//
         viewLayout()
     }
     
