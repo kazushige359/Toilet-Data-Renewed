@@ -97,7 +97,7 @@
 
 
 //Category
-"all_category" = "All Category";
+"all_category" = "All Categories";
 "public_restroom" = "Public Restroom";
 "convenience_store" = "Convenience Store";
 "caffe" = "Caffe";
@@ -109,14 +109,14 @@
 "home_toilet" = "Home Toilet (During Power Outage)";
 
 
-"japanese_toilet" = "Japanese Toilet";
-"western_toilet" = "Western Toilet";
+"japanese_toilet" = "Squat Toilet";
+"western_toilet" = "Sitting Toilet";
 "female_toilet" = "Female Toilet";
 "unisex_toilet" = "Unisex Toilet";
 "washlet" = "Washlet";
 
 "toilet_warm_seat" = "Toilet Warm Seat";
-"automated_open_toilet_seat" = "Automated Opening Toilet Seat";
+"automated_open_toilet_seat" = "Automatic Lid";
 "antibackterial_toilet_seat" = "Antibackterial Toilet Seat";
 "toilet_seat_paper" = "Toilet Seat Paper";
 "autoamted_washing" = "Automated Washing";
@@ -135,10 +135,10 @@
 "bag_hanger" = "Bag Hanger";
 
 
-"wheelchair" = "Wheelchair";
-"wheelchait_accessible" = "Wheelchair_Accessible";
-"automated_open_door" = "Automated Opem Door";
-"button_for_calling_help" = "Button for Calling Help";
+"wheelchair" = "Handicapped Toilet";
+"wheelchait_accessible" = "Wheelchair Accessible";
+"automated_open_door" = "Automated Opening Door";
+"button_for_calling_help" = "Emergency Button";
 "ostomate" = "Stoma Toilet";
 "english" = "Signs Written in English";
 "braille" = "Toilet Braille Sign";
@@ -147,9 +147,9 @@
 
 
 "fancy" = "Stylish Room";
-"smell" = "Smell Good";
-"confortable wide" = "Wide Space";
-"noNeedAsk" = "No need permission";
+"smell" = "Smells Good";
+"confortable wide" = "Large Room";
+"noNeedAsk" = "No Need to Ask";
 "parking" = "Parking Space";
 "airconditioner" = "Air Conditioner";
 "wifi" = "Free Wi-Fi";
