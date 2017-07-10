@@ -9,7 +9,7 @@
 "0Eu-Ik-lzp.text" = "Smells Good";
 
 /* Class = "UILabel"; text = "おしゃれ"; ObjectID = "14d-2O-hNl"; */
-"14d-2O-hNl.text" = "Stylish";
+"14d-2O-hNl.text" = "Stylish Room";
 
 /* Class = "UILabel"; text = "プライバシー"; ObjectID = "19z-64-gdy"; */
 "19z-64-gdy.text" = "Privacy";
@@ -36,10 +36,10 @@
 "1wM-pr-5xe.text" = "Hand Drier";
 
 /* Class = "UIButton"; normalTitle = "ピンの位置を変更する"; ObjectID = "1z4-z4-AeV"; */
-"1z4-z4-AeV.normalTitle" = "Change the Pin location";
+"1z4-z4-AeV.normalTitle" = "Change Pin location";
 
 /* Class = "UILabel"; text = "ベビーカーでアクセス可能"; ObjectID = "2YT-Lc-9wf"; */
-"2YT-Lc-9wf.text" = "Baby Car Accessible";
+"2YT-Lc-9wf.text" = "Baby Stroller Accessible";
 
 /* Class = "UILabel"; text = "ハンドソープ"; ObjectID = "2qB-xe-vIn"; */
 "2qB-xe-vIn.text" = "Hand Soap";
@@ -72,13 +72,13 @@
 "5my-as-XKR.headerTitle" = "Family Toilet";
 
 /* Class = "UIButton"; normalTitle = "写真を保存する"; ObjectID = "5xs-SA-KpD"; */
-"5xs-SA-KpD.normalTitle" = "Save the Photo";
+"5xs-SA-KpD.normalTitle" = "Save Photo";
 
 /* Class = "UITextField"; placeholder = "利用可能時間"; ObjectID = "6V7-W9-SW6"; */
 "6V7-W9-SW6.placeholder" = "Opening Hours";
 
 /* Class = "UIButton"; normalTitle = "この場所で投稿する"; ObjectID = "6p5-a1-q3q"; */
-"6p5-a1-q3q.normalTitle" = "Save this Pin";
+"6p5-a1-q3q.normalTitle" = "Save Pin";
 
 /* Class = "UILabel"; text = "キッズトイレ"; ObjectID = "7Tg-94-IIi"; */
 "7Tg-94-IIi.text" = "Kids Toilet";
@@ -108,7 +108,7 @@
 "8cd-zR-fnI.text" = "Trash Can for Diapers";
 
 /* Class = "UILabel"; text = "ベビーチェア"; ObjectID = "8cm-IW-Iqw"; */
-"8cm-IW-Iqw.text" = "Chair for Baby";
+"8cm-IW-Iqw.text" = "Baby Chair";
 
 /* Class = "UILabel"; text = "自動ドア"; ObjectID = "8gy-DJ-2Q2"; */
 "8gy-DJ-2Q2.text" = "Automated Door";
@@ -117,7 +117,7 @@
 "8iw-6c-AIx.normalTitle" = "Add Review";
 
 /* Class = "UILabel"; text = "和式トイレ"; ObjectID = "8kk-VB-eHd"; */
-"8kk-VB-eHd.text" = "Japanese Toilet";
+"8kk-VB-eHd.text" = "Squat Toilet";
 
 /* Class = "UINavigationItem"; title = "編集"; ObjectID = "99t-ep-xUe"; */
 "99t-ep-xUe.title" = "Edit Detail";
@@ -129,7 +129,7 @@
 "9vh-Vj-eyi.text" = "Female Exclusive";
 
 /* Class = "UILabel"; text = "広いスペース"; ObjectID = "APK-p2-gq2"; */
-"APK-p2-gq2.text" = "Wide Enough";
+"APK-p2-gq2.text" = "Large Room";
 
 /* Class = "UILabel"; text = "おむつ交換台"; ObjectID = "Ae6-8u-oyy"; */
 "Ae6-8u-oyy.text" = "Diaper Changing Table";
@@ -150,10 +150,10 @@
 "Bo3-9H-ug9.text" = "Paper Towel";
 
 /* Class = "UILabel"; text = "おしりふき"; ObjectID = "Bte-MY-zVd"; */
-"Bte-MY-zVd.text" = "Wipes For Babies";
+"Bte-MY-zVd.text" = "Baby Wipes";
 
 /* Class = "UILabel"; text = "荷物置き"; ObjectID = "BvA-DM-Mjm"; */
-"BvA-DM-Mjm.text" = "Bag Hanger";
+"BvA-DM-Mjm.text" = "Luggage Racks";
 
 /* Class = "UILabel"; text = "ベビーチェア"; ObjectID = "Cg7-Md-udI"; */
 "Cg7-Md-udI.text" = "Baby Chair";
@@ -195,7 +195,7 @@
 "FHE-Fp-yG4.title" = "Back";
 
 /* Class = "UILabel"; text = "ベビーカーでアクセス可能"; ObjectID = "FNN-dx-hu5"; */
-"FNN-dx-hu5.text" = "Baby Car Accessible";
+"FNN-dx-hu5.text" = "Baby Stroller Accessible";
 
 /* Class = "UILabel"; text = "ペーパータオル"; ObjectID = "Fjv-3Y-cZh"; */
 "Fjv-3Y-cZh.text" = "Paper Towel";
@@ -210,7 +210,7 @@
 "GUC-BQ-GHq.text" = "Stoma Toilet";
 
 /* Class = "UILabel"; text = "キッズスペース"; ObjectID = "GW5-gc-xRT"; */
-"GW5-gc-xRT.text" = "Space for children";
+"GW5-gc-xRT.text" = "Play Space";
 
 /* Class = "UILabel"; text = "自動開閉便座"; ObjectID = "HDH-sy-zhq"; */
 "HDH-sy-zhq.text" = "Automatic Lid";
@@ -255,7 +255,7 @@
 "JQz-bK-a2p.headerTitle" = "Map";
 
 /* Class = "UITableViewSection"; headerTitle = "女性トイレ"; ObjectID = "JoS-I4-qrz"; */
-"JoS-I4-qrz.headerTitle" = "Women Toilet";
+"JoS-I4-qrz.headerTitle" = "Female Toilet";
 
 /* Class = "UILabel"; text = "ベビーチェア"; ObjectID = "Jxo-Gk-jPb"; */
 "Jxo-Gk-jPb.text" = "Baby Chair";
@@ -264,10 +264,10 @@
 "KKi-xG-qLF.text" = "Sitting Toilet";
 
 /* Class = "UILabel"; text = "車イス対応"; ObjectID = "KoZ-mU-A2D"; */
-"KoZ-mU-A2D.text" = "Wheelchair Accessable";
+"KoZ-mU-A2D.text" = "Wheelchair Accessible";
 
 /* Class = "UILabel"; text = "荷物置き"; ObjectID = "KuM-LR-BHN"; */
-"KuM-LR-BHN.text" = "Bag Hanger";
+"KuM-LR-BHN.text" = "Luggage Racks";
 
 /* Class = "UILabel"; text = "無料Wi-Fi"; ObjectID = "L3Q-h8-OIL"; */
 "L3Q-h8-OIL.text" = "Free Wi-Fi";
@@ -300,7 +300,7 @@
 "Nog-no-GJp.text" = "Diaper Vending Machine";
 
 /* Class = "UIButton"; normalTitle = "この場所で投稿する"; ObjectID = "O1F-hi-14t"; */
-"O1F-hi-14t.normalTitle" = "Add This Pin";
+"O1F-hi-14t.normalTitle" = "Add Pin";
 
 /* Class = "UILabel"; text = "安全なベビーキープ"; ObjectID = "O75-qX-ceJ"; */
 "O75-qX-ceJ.text" = "Safe Baby Chair";
@@ -329,8 +329,8 @@
 /* Class = "UILabel"; text = "女性専用トイレ"; ObjectID = "Pa9-Qr-gFz"; */
 "Pa9-Qr-gFz.text" = "Female Toilet";
 
-/* Class = "UITableViewSection"; headerTitle = "2,その他"; ObjectID = "Q4r-Ff-H2L"; */             //I dont kknow
-"Q4r-Ff-H2L.headerTitle" = "2,その他";
+/* Class = "UITableViewSection"; headerTitle = "2,その他"; ObjectID = "Q4r-Ff-H2L"; */
+"Q4r-Ff-H2L.headerTitle" = "2,Miscellaneous";
 
 /* Class = "UILabel"; text = "良い香り"; ObjectID = "Qss-Sz-MIX"; */
 "Qss-Sz-MIX.text" = "Smells Good";
@@ -342,7 +342,7 @@
 "Sla-Lg-CU6.text" = "Coat Hooks";
 
 /* Class = "UITableViewSection"; headerTitle = "設備"; ObjectID = "Sly-V6-lcp"; */                    //I dont know
-"Sly-V6-lcp.headerTitle" = "設備";
+"Sly-V6-lcp.headerTitle" = "General Features";
 
 /* Class = "UILabel"; text = "身長計"; ObjectID = "TaF-b7-knk"; */
 "TaF-b7-knk.text" = "Height Measuring Device";
@@ -375,7 +375,7 @@
 "VZg-7l-jKS.text" = "Nursing Space";
 
 /* Class = "UILabel"; text = "ベビーカーでアクセス可能"; ObjectID = "W7u-xO-7Je"; */
-"W7u-xO-7Je.text" = "Baby Car Accessible";
+"W7u-xO-7Je.text" = "Baby Stroller Accessible";
 
 /* Class = "UILabel"; text = "おしゃれ"; ObjectID = "WWp-GS-fdZ"; */
 "WWp-GS-fdZ.text" = "Stylish Room";
@@ -519,7 +519,7 @@
 "i8l-10-Doa.headerTitle" = "Pin";
 
 /* Class = "UILabel"; text = "点字案内"; ObjectID = "iC5-q6-uyA"; */
-"iC5-q6-uyA.text" = "Braille Guide";
+"iC5-q6-uyA.text" = "Braille Signs";
 
 /* Class = "UILabel"; text = "洋式トイレ"; ObjectID = "iNl-yX-8kA"; */
 "iNl-yX-8kA.text" = "Sitting Toilet";
@@ -549,13 +549,13 @@
 "kOz-Sv-EB3.text" = "Toilet Seat Paper";
 
 /* Class = "UILabel"; text = "離乳食販売"; ObjectID = "kkm-mm-chI"; */
-"kkm-mm-chI.text" = "Baby Food Vending Machine";
+"kkm-mm-chI.text" = "Sells Baby Food";
 
 /* Class = "UITableViewSection"; headerTitle = "1,その他"; ObjectID = "l6u-Uu-Igs"; */                         //I dont know
 "l6u-Uu-Igs.headerTitle" = "1,Miscellaneous";
 
 /* Class = "UILabel"; text = "離乳食販売"; ObjectID = "lAc-cj-RA3"; */
-"lAc-cj-RA3.text" = "Baby Food Vending Machine";
+"lAc-cj-RA3.text" = "Sells Baby Food";
 
 /* Class = "UILabel"; text = "おむつ交換台"; ObjectID = "lCN-cq-Zju"; */
 "lCN-cq-Zju.text" = "Diaper Changing Table";
@@ -603,7 +603,7 @@
 "pCx-E1-Cng.text" = "About Toilet Data";
 
 /* Class = "UITableViewSection"; headerTitle = "2,その他"; ObjectID = "pDQ-RL-ZEb"; */                 // I dont know
-"pDQ-RL-ZEb.headerTitle" = "2,その他";
+"pDQ-RL-ZEb.headerTitle" = "2,Miscellaneous";
 
 /* Class = "UILabel"; text = "自動ドア"; ObjectID = "pP1-kZ-s1T"; */
 "pP1-kZ-s1T.text" = "Automated Door";
@@ -672,7 +672,7 @@
 "taf-CC-bJ5.text" = "Sanitary Napkin";
 
 /* Class = "UILabel"; text = "オストメイト"; ObjectID = "thg-vU-V0v"; */                  //Not sure spell is right
-"thg-vU-V0v.text" = "Stoma Toielt";
+"thg-vU-V0v.text" = "Stoma Toilet";
 
 /* Class = "UILabel"; text = "安全なベビーチェア"; ObjectID = "uCd-Mp-w2S"; */
 "uCd-Mp-w2S.text" = "Safe Baby Toilet";
@@ -686,8 +686,8 @@
 /* Class = "UILabel"; text = "利用可能"; ObjectID = "uMX-HQ-dpF"; */
 "uMX-HQ-dpF.text" = "Currently Available";
 
-/* Class = "UILabel"; text = "点字案内"; ObjectID = "ug6-4S-I7F"; */
-"ug6-4S-I7F.text" = "Braille Toilet Signs";
+/* Class = "UILabel"; text = "点字案内"; ObjectID = "ug6-4S-I7F"; */                //nnnnnnn
+"ug6-4S-I7F.text" = "Braille Signs";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "uge-RF-Deo"; */
 "uge-RF-Deo.text" = "Title";
@@ -735,7 +735,7 @@
 "xqh-rR-1py.text" = "The toilet was very clean. Thank you so much for letting me use it.";
 
 /* Class = "UILabel"; text = "ベビーカーでアクセス可能"; ObjectID = "xtF-EA-Txo"; */
-"xtF-EA-Txo.text" = "Baby Car Accessible";
+"xtF-EA-Txo.text" = "Baby Stroller Accessible";
 
 /* Class = "UILabel"; text = "鍵付き個室あり"; ObjectID = "yY3-2p-0Tg"; */                             //i dont know
 "yY3-2p-0Tg.text" = "Private Room With Lock";

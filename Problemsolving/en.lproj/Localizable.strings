@@ -132,7 +132,7 @@
 "sanitary_napkin_vending_machine" = "Sanitary Napkin Vending Machine";
 "powder_room" = "Powder Room";
 "clothes_hanger" = "Clothes Hanger";
-"bag_hanger" = "Bag Hanger";
+"bag_hanger" = "Luggage Racks";
 
 
 "wheelchair" = "Handicapped Toilet";
@@ -141,7 +141,7 @@
 "button_for_calling_help" = "Emergency Button";
 "ostomate" = "Stoma Toilet";
 "english" = "Signs Written in English";
-"braille" = "Toilet Braille Sign";
+"braille" = "Braille Signs";
 "voice_guide" = "Voice Guide";
 
 

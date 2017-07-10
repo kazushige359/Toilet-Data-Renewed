@@ -48,7 +48,7 @@
 "bDh-TY-vNm.placeholder" = "Password";
 
 /* Class = "UITextField"; placeholder = "メールアドレス"; ObjectID = "fZ1-Ln-A8r"; */
-"fZ1-Ln-A8r.placeholder" = "email";
+"fZ1-Ln-A8r.placeholder" = "Email";
 
 /* Class = "UIButton"; normalTitle = "個人情報保護方針"; ObjectID = "mhj-qY-N4d"; */
 "mhj-qY-N4d.normalTitle" = "Privacy Policy";

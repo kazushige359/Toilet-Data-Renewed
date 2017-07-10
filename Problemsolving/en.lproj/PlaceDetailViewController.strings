@@ -27,7 +27,7 @@
 "BE5-b3-CJn.text" = "First Poster";
 
 /* Class = "UITextView"; text = "トイレがとても綺麗でした。ありがとうございます。"; ObjectID = "BEv-Yg-ucw"; */
-"BEv-Yg-ucw.text" = "It was one of the best toilets I have ever seen in my life. It was awesome!!";
+"BEv-Yg-ucw.text" = "It was one of the best toilets I had ever seen in my life. It was awesome!!";
 
 /* Class = "UILabel"; text = "0"; ObjectID = "BvS-Q4-H52"; */
 "BvS-Q4-H52.text" = "0";
@@ -99,7 +99,7 @@
 "mrK-Lq-Upb.normalTitle" = "Go to this Place";
 
 /* Class = "UITextView"; text = "トイレがとても綺麗でした。ありがとうございます。"; ObjectID = "mwX-wi-Qhg"; */
-"mwX-wi-Qhg.text" = "It was one of the best toilets I have ever seen in my life. It was awesome!!";
+"mwX-wi-Qhg.text" = "It was one of the best toilets I had ever seen in my life. It was awesome!!";
 
 /* Class = "UIButton"; normalTitle = "詳細を見る"; ObjectID = "o9k-Q0-WAx"; */
 "o9k-Q0-WAx.normalTitle" = "More Details";
