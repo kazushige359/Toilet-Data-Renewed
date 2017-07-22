@@ -15,6 +15,7 @@
 "WifiOn" = "Wifiをオンにすることで、位置情報の精度が上がります";
 "settings" = "設定";
 "settingIgnore" = "結構です";
+"searchForToilets" = "トイレを検索中";
 
 //My Page
 "pleaseLoginMyPage" = "マイページを利用するためにはログインが必要です";
@@ -25,6 +26,8 @@
 
 
 //Filter Search
+
+"searchWithoutFilters" = "条件なしで検索";
 
 
 
@@ -67,6 +70,21 @@
 "minute" = "分";
 "waitTime" = "待ち ";
 "reviewCount" = " 件の感想";
+
+//Kansou View Controller
+"thankYou" = "ありがとうございました";
+"suceess" = "感想が投稿されました";
+"couldNotFindPlace" = "見つかりませんでした";
+"noToiletPaper" = "トイレットペーパーがありませんでした";
+"couldNotFlush" = "トイレが流れませんでした";
+"leaking" = "水が漏れていました";
+"waterOutage" = "断水していました";
+"noProblem" = "問題ありませんでした";
+"thisIsAvailable" = "利用可能";
+"notAvailable" = "利用不可";
+"userFeedback" = "トイレがとても綺麗でした。いつもお掃除ありがとうございます。";
+
+
 
 //Report
 "report" = "問題を報告する";

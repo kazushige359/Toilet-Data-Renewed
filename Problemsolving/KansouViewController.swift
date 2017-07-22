@@ -97,6 +97,9 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignInViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        textView.text = "userFeedback".localized
+        //Added June 22
+        
     }
 
     func dismissKeyboard() {
@@ -123,8 +126,11 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //pickerTextField.text = "待ち時間　\(pickOption[row])分"
         
-        pickerTextField.text = "待ち時間　\(pickOption[row])分"
-        print("pickOption[row] = \(pickOption[row])")
+        
+        
+        pickerTextField.text = "waitTime".localized + pickOption[row] + "minute".localized
+        //pickerTextField.text = "待ち時間　\(pickOption[row])分"
+        //print("pickOption[row] = \(pickOption[row])")
         numberPicked = true
         
       
@@ -145,8 +151,9 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-               if(textView.text == "トイレがとても綺麗でした。いつもお掃除ありがとうございます。"){
-        print("textView.text == トイレがとても綺麗でした。いつもお掃除ありがとうございます。")
+        if(textView.text == "userFeedback".localized){
+              // if(textView.text == "トイレがとても綺麗でした。いつもお掃除ありがとうございます。"){
+        //print("textView.text == トイレがとても綺麗でした。いつもお掃除ありがとうございます。")
         textView.text = ""
         textView.textColor = UIColor.black
                 //UIColor to gray 
@@ -159,7 +166,8 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
         if(textView.text == ""){
             print("textView.text == !!!")
-            textView.text = "トイレがとても綺麗でした。いつもお掃除ありがとうございます。"
+            textView.text = "userFeedback".localized
+            //textView.text = "トイレがとても綺麗でした。いつもお掃除ありがとうございます。"
             textView.textColor = UIColor.gray
             textView.resignFirstResponder()
             
@@ -394,9 +402,9 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     
     @IBAction func availableButtonTapped(_ sender: Any) {
         if availableSwitch.isOn {
-        availableLabel.text = "利用可能"
+        availableLabel.text = "thisIsAvailable".localized
         available = true} else {
-            availableLabel.text = "利用不可"
+            availableLabel.text = "notAvailable".localized
             available = false
             
             self.isThereProblem()
@@ -405,19 +413,19 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     }
     
     func isThereProblem(){
-        let alertController = UIAlertController (title: "確認", message: "このトイレが利用できませんでしたか？", preferredStyle: .actionSheet)
+        let alertController = UIAlertController (title: "", message: "problem".localized, preferredStyle: .actionSheet)
         
         
-        let noAction = UIAlertAction(title: "利用できなかった", style: .default, handler: {(alert:
+        let noAction = UIAlertAction(title: "yes".localized, style: .default, handler: {(alert:
             UIAlertAction!) in
             self.whatIsTheProblem()
 
        })
         
-        let yesAction = UIAlertAction(title: "利用できた", style: .default, handler: {(alert:
+        let yesAction = UIAlertAction(title: "no".localized, style: .default, handler: {(alert:
             UIAlertAction!) in
             self.availableSwitch.isOn = true
-            self.availableLabel.text = "利用可能"
+            self.availableLabel.text = "thisIsAvailable".localized
             self.available = true
         })
         alertController.addAction(yesAction)
@@ -431,24 +439,27 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         //var problemString = ""
         
         
+        
     
-        let nextAlertController = UIAlertController (title: "お願い", message: "トイレが利用できなかった理由を教えてください", preferredStyle: .actionSheet)
+        let nextAlertController = UIAlertController (title: "", message: "whatProblem".localized, preferredStyle: .actionSheet)
         
         
-        let notfound = UIAlertAction(title: "トイレが見つからなかったから", style: .default, handler: {(alert:UIAlertAction!) in
+        
+        
+        let notfound = UIAlertAction(title: "couldNotFindPlace".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
             //problemString = "Could not find the Toilet"
             self.problemUpload(problemInt:0)
         })
         
-        let noToiletPaper = UIAlertAction(title: "トイレットペーパーが無かったから", style: .default, handler: {(alert:UIAlertAction!) in
+        let noToiletPaper = UIAlertAction(title: "noToiletPaper".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
            // problemString = "No Toilet Paper"
             self.problemUpload(problemInt:1)
             
         })
         
-        let noFlash = UIAlertAction(title: "トイレの水が流れなかったから", style: .default, handler: {(alert:UIAlertAction!) in
+        let noFlash = UIAlertAction(title: "couldNotFlush".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
             //problemString = "No Flush"
             self.problemUpload(problemInt:2)
@@ -457,14 +468,14 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
 
         
         
-        let waterLeakage =  UIAlertAction(title: "漏水していたから", style: .default, handler: {(alert:UIAlertAction!) in
+        let waterLeakage =  UIAlertAction(title: "leaking".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
            // problemString = "Water Leakage"
             self.problemUpload(problemInt:3)
 
         })
 
-        let waterOutage = UIAlertAction(title: "断水していたから", style: .default, handler: {(alert:UIAlertAction!) in
+        let waterOutage = UIAlertAction(title: "waterOutage".localized, style: .default, handler: {(alert:UIAlertAction!) in
             
             //problemString = "Water Outage"
             self.problemUpload(problemInt:4)
@@ -473,10 +484,10 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     
         
         
-        let stillYes = UIAlertAction(title: "いいえ、利用することができた", style: .default, handler: {(alert:
+        let stillYes = UIAlertAction(title: "noProblem".localized, style: .default, handler: {(alert:
             UIAlertAction!) in
             self.availableSwitch.isOn = true
-            self.availableLabel.text = "利用可能"
+            self.availableLabel.text = "thisIsAvailable".localized
             self.available = true
             return
         })
@@ -581,10 +592,13 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
 
     func showYourReviewPostedMessage(){
         
-        let alertController = UIAlertController (title: "ありがとうございます", message: "あなたの感想が投稿されました", preferredStyle: .alert)
+        
+        
+        
+        let alertController = UIAlertController (title: "thankYou".localized, message: "suceess".localized, preferredStyle: .alert)
         
     
-        let yesAction = UIAlertAction(title: "はい", style: .default, handler: {(alert:
+        let yesAction = UIAlertAction(title: "yes".localized, style: .default, handler: {(alert:
             UIAlertAction!) in
             self.moveBackToPlaceDetailVeiwController()
            

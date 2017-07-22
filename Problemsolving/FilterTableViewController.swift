@@ -117,6 +117,7 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var babyRoomFancySwitchOutlet: UISwitch!
     @IBOutlet weak var babyRoomSmellGoodSwitchOutlet: UISwitch!
     
+    @IBOutlet weak var searchWithoutFiltersButton: UIButton!
     
     
    // @IBOutlet weak var distanceField: UITextField!
@@ -197,6 +198,12 @@ class FilterTableViewController: UITableViewController, UIPickerViewDelegate, UI
         
         
          print("search.searchOn = \(search.searchOn)")
+        
+        searchWithoutFiltersButton.setTitle("searchWithoutFilters".localized,for: .normal)
+        
+        
+        
+        
         
         
         

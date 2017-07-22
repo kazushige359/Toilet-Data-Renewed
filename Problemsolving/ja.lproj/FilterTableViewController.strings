@@ -156,7 +156,8 @@
 "Xtr-4t-MQ9.title" = "戻る";
 
 /* Class = "UITableViewSection"; headerTitle = "距離"; ObjectID = "YbK-0S-N2V"; */
-"YbK-0S-N2V.headerTitle" = "距離";
+"YbK-0S-N2V.headerTitle" = "条件なしで検索";
+//条件なしで検索
 
 /* Class = "UILabel"; text = "安全なベビーチェア"; ObjectID = "ZUQ-r2-1dm"; */
 "ZUQ-r2-1dm.text" = "安全なベビーチェア";

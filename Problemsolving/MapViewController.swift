@@ -286,7 +286,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.navigationController?.navigationBar.tintColor = primaryColor
         
         
-        progressBarDisplayer(msg:"トイレを検索中", true)
+        progressBarDisplayer(msg:"searchForToilets".localized, true)
+        //progressBarDisplayer(msg:"トイレを検索中", true) 
+        //July 22
         
         if FIRAuth.auth()!.currentUser != nil{
             //Current user exists

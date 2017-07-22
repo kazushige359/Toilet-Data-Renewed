@@ -15,6 +15,7 @@
 "WifiOn" = "You can improve the accuracy of your location by turning on Wifi";
 "settings" = "Settings";
 "settingIgnore" = "Ignore";
+"searchForToilets" = "Searching";
 
 
 //My Page
@@ -27,6 +28,8 @@
 
 
 //Filter Search
+
+"searchWithoutFilters" = "Search Without Filters";
 
 "orderedByDistance" = "Distance";
 "orderedByReviewCounts" = "Review Counts";
@@ -67,6 +70,21 @@
 "minute" = "m";
 "waitTime" = "Wait Time ";
 "reviewCount" = " Reviews";
+
+
+//Kansou View Controller
+"thankYou" = "Thank you";
+"suceess" = "Review has been successfully sent";
+"couldNotFindPlace" = "Could not find the place";
+"noToiletPaper" = "No Toilet Paper";
+"couldNotFlush" = "Toilet Won't Flush";
+"leaking" = "Water was leaking";
+"waterOutage" = "Water supply was stopped";
+"noProblem" = "There was no problem";
+"thisIsAvailable" = "Available";
+"notAvailable" = "Not Available";
+"userFeedback" = "It is one of the best toilets I have ever used. It's well-maintained.";
+
 
 //Report
 "report" = "Report this";

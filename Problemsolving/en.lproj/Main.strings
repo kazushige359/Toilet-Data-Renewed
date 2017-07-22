@@ -684,7 +684,7 @@
 "uJd-x7-m4v.text" = "Sanitary Napkin Vending Machine";
 
 /* Class = "UILabel"; text = "利用可能"; ObjectID = "uMX-HQ-dpF"; */
-"uMX-HQ-dpF.text" = "Currently Available";
+"uMX-HQ-dpF.text" = "Available";
 
 /* Class = "UILabel"; text = "点字案内"; ObjectID = "ug6-4S-I7F"; */                //nnnnnnn
 "ug6-4S-I7F.text" = "Braille Signs";
