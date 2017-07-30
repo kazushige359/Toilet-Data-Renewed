@@ -726,12 +726,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         centerLocation = center
         
+        var toiletCount = 0
         
-        let circleQuery = geoFire.query(at: center, withRadius: 10.0)
+        
+        let circleQuery = geoFire.query(at: center, withRadius: 1000.0)
+        //July 27 change radius 10.0 to 200.0
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
             
             let distance = location?.distance(from: center)
             let distanceDouble = Double(distance!)
+            
+            
+            
+            
             
             if distanceDouble <= 300{
                 self.distance300.append(key!)
@@ -753,14 +760,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 self.distance10000.append(key!)
             }
             
+            toiletCount = toiletCount + 1
+            print("count number 111 === \(toiletCount)")
+            
+            
         })
         circleQuery?.observeReady({
-            print(" 555 All initial data has been loaded and events have been fired!")
+            print(" 555 All initial data has been loaded and counts = \(toiletCount)!")
             self.distance300Call()
             self.allInitialDataLoaded = true
             self.messageFrame.removeFromSuperview()
             self.tableView.reloadData()
             self.changeStartCell()
+            
+            
             
             
         })
@@ -907,11 +920,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             return
         }
         
-        //Chnanged toilets.count < 4 to 100
+        //Chnanged toilets.count < 4 to 10000 July 27
         if query300 == true{
             distance300In.append(key)
             if distance300In.count == distance300.count{
-                if toilets.count < 100 {
+                if toilets.count < 10000 {
                     distance600Call()
                 }
             }
@@ -919,7 +932,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } else if query600 == true{
             distance600In.append(key)
             if distance600In.count == distance600.count{
-                if toilets.count < 100 {
+                if toilets.count < 10000 {
                     distance900Call()
                 }
             }
@@ -927,7 +940,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } else if query900 == true{
             distance900In.append(key)
             if distance900In.count == distance900.count{
-                if toilets.count < 100 {
+                if toilets.count < 10000 {
                     distance1200Call()
                 }
             }
@@ -935,14 +948,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } else if query1200 == true{
             distance1200In.append(key)
             if distance1200In.count == distance1200.count{
-                if toilets.count < 100 {
+                if toilets.count < 10000 {
                     distance1500Call()
                 }
             }
         } else if query1500 == true{
             distance1500In.append(key)
             if distance1500In.count == distance1500.count{
-                if toilets.count < 100 {
+                if toilets.count < 10000 {
                     distance1500Call()
                 }
             }
@@ -950,7 +963,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             distance1800In.append(key)
             if distance1800In.count == distance1800.count{
-                if toilets.count < 100 {
+                if toilets.count < 10000 {
                     distance3600Call()
                 }
             }
@@ -959,7 +972,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } else if query3600 == true{
             distance3600In.append(key)
             if distance3600In.count == distance3600.count{
-                if toilets.count < 100 {
+                if toilets.count < 10000 {
                     distance7200Call()
                 }
             }
@@ -968,7 +981,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } else if query7200 == true{
             distance7200In.append(key)
             if distance7200In.count == distance7200.count{
-                if toilets.count < 100 {
+                if toilets.count < 10000 {
                     distance10000Call()
                 }
             }
