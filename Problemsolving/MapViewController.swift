@@ -729,8 +729,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         var toiletCount = 0
         
         
-        let circleQuery = geoFire.query(at: center, withRadius: 1000.0)
-        //July 27 change radius 10.0 to 200.0
+        let circleQuery = geoFire.query(at: center, withRadius: 20.0)
+        //August 10 change radius 10.0 to 20.0
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
             
             let distance = location?.distance(from: center)
