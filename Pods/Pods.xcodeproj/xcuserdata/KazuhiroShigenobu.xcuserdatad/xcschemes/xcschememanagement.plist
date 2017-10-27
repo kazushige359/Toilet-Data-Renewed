@@ -9,6 +9,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Problemsolving.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,34 +39,18 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>leveldb-library.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>nanopb.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>2F0FE1E2A5B1EF15139E10A40F05CE94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6EA62F903831887F12D7B7C9B4CB9D22</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>983CADB2297F3E3CDEC74A48F8A58ED3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9C1A4D8359D0576F54BC44540BE715DB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FA599B27B1DA090F99A110F4339AB8EF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

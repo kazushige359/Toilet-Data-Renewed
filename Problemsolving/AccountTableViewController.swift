@@ -23,7 +23,7 @@ class AccountTableViewController: UITableViewController {
     
     @IBOutlet weak var helpedPeopleLabel: UILabel!
     
-    var firebaseRef = FIRDatabase.database().reference()
+    var firebaseRef = Database.database().reference()
     var filter = Filter()
     var search = Search()
     
@@ -43,8 +43,8 @@ class AccountTableViewController: UITableViewController {
     }
     
     func userInfo(){
-     let userRef = firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid)
-        userRef.observe(FIRDataEventType.value, with: {(snapshot) in
+        let userRef = firebaseRef.child("Users").child(Auth.auth().currentUser!.uid)
+        userRef.observe(DataEventType.value, with: {(snapshot) in
             let snapshotValue = snapshot.value as? NSDictionary
             let userName = snapshotValue?["userName"] as? String
             self.userNameLabel.text = userName

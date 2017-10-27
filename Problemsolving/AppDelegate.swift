@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ////        GMSServices.provideAPIKey("AIzaSyBlLfsKhDxHEiFIGWtowR4hYe8K8WdYbac")
         
         
-        FIRApp.configure()
+        FirebaseApp.configure()
         return true
     }
 

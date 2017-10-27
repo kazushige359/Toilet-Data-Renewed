@@ -246,7 +246,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
         let dateString = "\(year)-\(month)-\(day)"
         
-        let uid = FIRAuth.auth()!.currentUser!.uid
+        let uid = Auth.auth().currentUser!.uid
         //print("yearmonthday = \(year)年\(month)月\(day)日")
         
         let interval = NSDate().timeIntervalSince1970
@@ -371,7 +371,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
 
                            ] as [String : Any]
         
-        let firebaseRef = FIRDatabase.database().reference()
+        let firebaseRef = Database.database().reference()
         
         firebaseRef.updateChildValues(mutipleData, withCompletionBlock: { (error, FIRDatabaseReference) in
             if error != nil{
@@ -509,7 +509,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
     
 //        let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletProblems")
 //        let tpid = UUID().uuidString
-        let uid = FIRAuth.auth()!.currentUser!.uid
+        let uid = Auth.auth().currentUser!.uid
         let date = NSDate()
         let calendar = Calendar.current
         
@@ -536,7 +536,7 @@ class KansouViewController: UIViewController, UITextViewDelegate, UIPickerViewDe
         
         
         
-        let firebaseRef = FIRDatabase.database().reference()
+        let firebaseRef = Database.database().reference()
         
         
         let mutipleData = ["ToiletProblems/\(toilet.key)": tpData,

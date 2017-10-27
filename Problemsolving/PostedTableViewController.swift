@@ -24,10 +24,10 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
     var deleteArray: [String] = []
     var allRidArray: [String] = []
     var locationManager = CLLocationManager()
-    let firebaseRef = FIRDatabase.database().reference()
+    let firebaseRef = Database.database().reference()
     var multipleDeleteMode = false
     
-    let uid = FIRAuth.auth()!.currentUser!.uid
+    let uid = Auth.auth().currentUser!.uid
     var geoFire: GeoFire!
     var firstViewLoaded = false
     
@@ -80,10 +80,10 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         print("reviewRidQuery Called")
         
-        let reviewListRef = firebaseRef.child("ReviewList").child(FIRAuth.auth()!.currentUser!.uid)
+        let reviewListRef = firebaseRef.child("ReviewList").child(Auth.auth().currentUser!.uid)
         
         
-        reviewListRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        reviewListRef.observeSingleEvent(of: DataEventType.value, with: { snapshot in
             if !snapshot.exists(){
                 return
             }
@@ -94,7 +94,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             print(snapshot)
             
             
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 
                 for snap in snapshots
                 {
@@ -119,7 +119,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
         
         let reviewRef = firebaseRef.child("ReviewInfo").child(ridKey)
         
-        reviewRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        reviewRef.observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             if !snapshot.exists(){
                 return
@@ -156,7 +156,7 @@ class PostedTableViewController: UITableViewController, CLLocationManagerDelegat
             
             
             let toiletRef = self.firebaseRef.child("NoFilter").child(tidKey)
-                toiletRef.observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
+                toiletRef.observeSingleEvent(of:DataEventType.value, with: { snapshot in
                     
                     if !snapshot.exists(){
                         return

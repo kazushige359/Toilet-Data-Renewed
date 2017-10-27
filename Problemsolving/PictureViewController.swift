@@ -20,7 +20,7 @@ class PictureViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var savePicture: UIButton!
     
-    var databaseRef = FIRDatabase.database().reference()
+    var databaseRef = Database.database().reference()
     var uuid = NSUUID().uuidString
     var imagePicker = UIImagePickerController()
     
@@ -28,7 +28,7 @@ class PictureViewController: UIViewController,UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        databaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("userPhoto").queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+        databaseRef.child("Users").child(Auth.auth().currentUser!.uid).child("userPhoto").queryOrderedByKey().observe(DataEventType.value, with: { snapshot in
             //g to l at 2pm 20th
             
             self.imageView.sd_setImage(with: URL(string:snapshot.value as! String))
@@ -77,13 +77,13 @@ class PictureViewController: UIViewController,UIImagePickerControllerDelegate, U
     
     @IBAction func savePictureButtonTapped(_ sender: Any) {
         savePicture.isEnabled = false
-        let imagesFolder = FIRStorage.storage().reference().child("images")
+        let imagesFolder = Storage.storage().reference().child("images")
         
         let imageData = UIImageJPEGRepresentation(imageView.image!, 0.1)!
         
         
         
-        imagesFolder.child("\(uuid).jpg").put(imageData, metadata: nil, completion: {(metadata, error) in
+        imagesFolder.child("\(uuid).jpg").putData(imageData, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
                 print("We had an error:\(String(describing: error))")
@@ -91,7 +91,7 @@ class PictureViewController: UIViewController,UIImagePickerControllerDelegate, U
                 
                 print(metadata?.downloadURL() as Any)
                 let downloadURL = metadata!.downloadURL()!.absoluteString
-                self.databaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
+                self.databaseRef.child("Users").child(Auth.auth().currentUser!.uid).updateChildValues(["userPhoto": downloadURL])
 
                 self.performSegue(withIdentifier:"pcBackToAc", sender: metadata!.downloadURL()!.absoluteString)
             }

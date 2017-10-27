@@ -181,8 +181,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     
     
-    let firebaseRef = FIRDatabase.database().reference()
-    let currentUserId = FIRAuth.auth()?.currentUser?.uid
+    let firebaseRef = Database.database().reference()
+    let currentUserId = Auth.auth().currentUser?.uid
     
     let imageColored = UIImage(named:"like_colored_25")
     let imageBlack = UIImage(named:"thumbsUp_black_image_25")
@@ -323,9 +323,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         print("data Query 0")
 
         
-        let toiletsRef = FIRDatabase.database().reference().child("ToiletView")
+        let toiletsRef = Database.database().reference().child("ToiletView")
         
-        toiletsRef.child(queryKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        toiletsRef.child(queryKey).observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             self.toilet.key = queryKey
             let snapshotValue = snapshot.value as? NSDictionary
@@ -843,9 +843,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         if toilet.addedBy != ""{
         
-        let userRef = FIRDatabase.database().reference().child("Users")
+            let userRef = Database.database().reference().child("Users")
         
-        userRef.child(toilet.addedBy).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            userRef.child(toilet.addedBy).observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             if !snapshot.exists(){
                 return
@@ -902,11 +902,11 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     
     func lastEditerQuery(){
-        let userRef = FIRDatabase.database().reference().child("Users")
+        let userRef = Database.database().reference().child("Users")
         
         if toilet.editedBy != ""{
         
-        userRef.child(toilet.editedBy).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+            userRef.child(toilet.editedBy).observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             if !snapshot.exists(){
                 return
@@ -961,16 +961,16 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     func thumbsUpQuery(){
         
         print("thumbsUpQuery( Called")
-        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
+        let thumbsUpRef = Database.database().reference().child("ThumbsUpList").child(Auth.auth().currentUser!.uid)
         
-        thumbsUpRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+        thumbsUpRef.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
             }
 
             
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots
                 {
                     let newKey = snap.key
@@ -1017,8 +1017,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     func favoriteListQuery(){
         
         print("liked Query Called")
-        let favoriteRef = FIRDatabase.database().reference().child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
-        favoriteRef.observeSingleEvent(of:FIRDataEventType.childAdded, with: {(snapshot) in
+        let favoriteRef = Database.database().reference().child("FavoriteList").child(Auth.auth().currentUser!.uid)
+        favoriteRef.observeSingleEvent(of:DataEventType.childAdded, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
@@ -1045,10 +1045,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         print("Tid = \(toilet.key)")
         print("Rid One = \(ridOne)")
         
-        let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
+        let reviewsRef = Database.database().reference().child("ReviewInfo")
         
         
-        reviewsRef.child(ridOne).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        reviewsRef.child(ridOne).observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             if !snapshot.exists(){
                 return
@@ -1089,9 +1089,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             review.rid = snapshot.key
             
             
-            let userRef = FIRDatabase.database().reference().child("Users")
+            let userRef = Database.database().reference().child("Users")
             
-            userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            userRef.child(uid!).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
                 
                 if !snapshot.exists(){
                     return
@@ -1193,10 +1193,10 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         print("Rid Two = \(ridTwo)")
         
         
-        let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
+        let reviewsRef = Database.database().reference().child("ReviewInfo")
         
         
-        reviewsRef.child(ridTwo).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        reviewsRef.child(ridTwo).observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             ////reviewsRef.child(ridTwo).observe(FIRDataEventType.value, with: { snapshot in
             //if self.firebaseReviewTwoLoadedOnce == false{
@@ -1246,8 +1246,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 //                }
                 
                 
-                let userRef = FIRDatabase.database().reference().child("Users")
-                userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            let userRef = Database.database().reference().child("Users")
+            userRef.child(uid!).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
                     
                     //                userRef.child(uid!).queryOrderedByKey().observe(FIRDataEventType.value, with: {(snapshot) in
                     //if self.firebaseReviewTwoLoadedOnce == false{
@@ -1373,8 +1373,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     func afterFavoriteTappedAction()
     {
         //firebaseLoadedOnce = true
-        let firebaseRef = FIRDatabase.database().reference()
-        let userRef = firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
+        let firebaseRef = Database.database().reference()
+        let userRef = firebaseRef.child("FavoriteList").child(Auth.auth().currentUser!.uid)
         userRef.child(toilet.key).setValue(true)
         
         print("afterFavoriteTappedAction Called")
@@ -1462,8 +1462,8 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
          print("goAction Inside 1 444")
         let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey:  NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking] as [String : Any]
         
-        let firebaseRef = FIRDatabase.database().reference()
-        firebaseRef.child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).child(toilet.key).setValue(true)
+        let firebaseRef = Database.database().reference()
+        firebaseRef.child("UserWentList").child(Auth.auth().currentUser!.uid).child(toilet.key).setValue(true)
         
         print("goAction Inside 2 444")
         
@@ -1476,7 +1476,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
 
         
         
-        addedTotalHelpedCountRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            addedTotalHelpedCountRef.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
@@ -1502,7 +1502,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         if toilet.editedBy != ""{
         
         let editedTotalHelpedCountRef = firebaseRef.child("Users").child(toilet.editedBy).child("totalHelpedCount")
-        editedTotalHelpedCountRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            editedTotalHelpedCountRef.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
@@ -1787,7 +1787,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         //let toiletProblemsRef = FIRDatabase.database().reference().child("ToiletInfoProblems")
         let rpid = UUID().uuidString
-        let uid = FIRAuth.auth()!.currentUser!.uid
+        let uid = Auth.auth().currentUser!.uid
         let date = NSDate()
         let calendar = Calendar.current
         
@@ -1815,7 +1815,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         //userWarningListUpload()
         
         
-        let firebaseRef = FIRDatabase.database().reference()
+        let firebaseRef = Database.database().reference()
         
         
         let mutipleData = ["ToiletInfoProblems/\(rpid)": rpData,
@@ -1857,7 +1857,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             } else{
                 (sender as AnyObject).setImage(loveDark, for: .normal)
                 
-                let userRef = firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
+                let userRef = firebaseRef.child("FavoriteList").child(Auth.auth().currentUser!.uid)
                 userRef.child(toilet.key).removeValue()
                 favoriteButtonTapped = false
             }
@@ -1970,9 +1970,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBAction func reviewOneLikeButtonTapped(_ sender: Any) {
         
         
-        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
-        let userRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid)
-        let reviewInfoRef = FIRDatabase.database().reference().child("ReviewInfo").child(self.toilet.reviewOne)
+        let thumbsUpRef = Database.database().reference().child("ThumbsUpList").child(Auth.auth().currentUser!.uid)
+        let userRef = Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid)
+        let reviewInfoRef = Database.database().reference().child("ReviewInfo").child(self.toilet.reviewOne)
         
         
         
@@ -2043,9 +2043,9 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     
     @IBAction func reviewTwoLikeButtonTapped(_ sender: Any) {
-        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
-        let userRef = FIRDatabase.database().reference().child("Users").child(FIRAuth.auth()!.currentUser!.uid)
-        let reviewInfoRef = FIRDatabase.database().reference().child("ReviewInfo").child(self.toilet.reviewTwo)
+        let thumbsUpRef = Database.database().reference().child("ThumbsUpList").child(Auth.auth().currentUser!.uid)
+        let userRef = Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid)
+        let reviewInfoRef = Database.database().reference().child("ReviewInfo").child(self.toilet.reviewTwo)
         
         if userAlreadyLogin == false{
             showPleaseLogin()
@@ -2234,7 +2234,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         //let toiletProblemsRef = FIRDatabase.database().reference().child("ReviewProblems")
         let rpid = UUID().uuidString
-        let uid = FIRAuth.auth()!.currentUser!.uid
+        let uid = Auth.auth().currentUser!.uid
         let date = NSDate()
         let calendar = Calendar.current
         
@@ -2283,7 +2283,7 @@ class PlaceDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
             //showYourReviewPostedMessage()
             
-            let firebaseRef = FIRDatabase.database().reference()
+            let firebaseRef = Database.database().reference()
             
             
             let mutipleData = ["ReviewProblems/\(rpid)": rpData,

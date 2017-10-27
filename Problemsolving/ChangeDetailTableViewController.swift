@@ -198,12 +198,12 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     var subImageReplace2 = false
     
     let interval = NSDate().timeIntervalSince1970
-    let uid = FIRAuth.auth()!.currentUser!.uid
+    let uid = Auth.auth().currentUser!.uid
     
     var pincoodinate = CLLocationCoordinate2D()
     
     var geoFire: GeoFire!
-    var geoFireRef: FIRDatabaseReference!
+    var geoFireRef: DatabaseReference!
     
     var newUrlOne = ""
     var newUrlTwo = ""
@@ -579,7 +579,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             self.present(alertController, animated: true, completion: nil)
         } else {
             
-            let locationsRef = FIRDatabase.database().reference().child("ToiletLocations")
+            let locationsRef = Database.database().reference().child("ToiletLocations")
             let geoFire = GeoFire(firebaseRef: locationsRef)
             
             
@@ -634,7 +634,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             let dateString = "\(year)-\(month)-\(day)"
             
-            let uid = FIRAuth.auth()!.currentUser!.uid
+            let uid = Auth.auth().currentUser!.uid
             
             
             let interval = NSDate().timeIntervalSince1970
@@ -1413,7 +1413,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             
             print("groupOneData 333 = \(groupOneData)")
             
-            let firebaseRef = FIRDatabase.database().reference()
+            let firebaseRef = Database.database().reference()
             
             //uniqueRef.setValue(tdata)
             
@@ -1531,7 +1531,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
         
          print("uploadPhotosToDatabase 444 called")
         //let databaseRef = FIRDatabase.database().reference()
-        let imagesFolder = FIRStorage.storage().reference().child("ToiletPhoto")
+        let imagesFolder = Storage.storage().reference().child("ToiletPhoto")
         
         //let photoRef = FIRDatabase.database().reference().child("Images")
         
@@ -1541,7 +1541,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let mainImageData = UIImageJPEGRepresentation(mainImageView.image!, 0.1)!
             let mainUuid = UUID().uuidString
             
-            imagesFolder.child(toiletNewId).child("\(mainUuid).jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child(toiletNewId).child("\(mainUuid).jpg").putData(mainImageData, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1576,7 +1576,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let subImageData1 = UIImageJPEGRepresentation(subImageOne.image!, 0.1)!
             let subOneUuid = UUID().uuidString
             
-            imagesFolder.child(toiletNewId).child("\(subOneUuid).jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child(toiletNewId).child("\(subOneUuid).jpg").putData(subImageData1, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload! 444")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1608,7 +1608,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
             let subImageData2 = UIImageJPEGRepresentation(subImageTwo.image!, 0.1)!
             let subTwoUuid = UUID().uuidString
             
-            imagesFolder.child(toiletNewId).child("\(subTwoUuid).jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child(toiletNewId).child("\(subTwoUuid).jpg").putData(subImageData2, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1634,7 +1634,7 @@ class ChangeDetailTableViewController: UITableViewController,UIPickerViewDelegat
     func photoUrlMultipleUpdate(placeNumber: Int, photoUrl: String){
         
         print("photoUrlMultipleUpdate called 444")
-        let firebaseRef = FIRDatabase.database().reference()
+        let firebaseRef = Database.database().reference()
         
         if placeNumber == 0{
            // placeString = "urlOne"

@@ -25,7 +25,7 @@ class AccountViewController: UIViewController {
     
     @IBOutlet weak var toiletYouAddedButton: UIButton!
     
-    var firebaseRef = FIRDatabase.database().reference()
+    var firebaseRef = Database.database().reference()
     var filter = Filter()
     var search = Search()
 
@@ -33,7 +33,7 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("userPhoto").queryOrderedByKey().observe(FIRDataEventType.value, with: { snapshot in
+        firebaseRef.child("Users").child(Auth.auth().currentUser!.uid).child("userPhoto").queryOrderedByKey().observe(DataEventType.value, with: { snapshot in
             //g to l at 2pm 20th
            
             print("snapshot = \(snapshot)")

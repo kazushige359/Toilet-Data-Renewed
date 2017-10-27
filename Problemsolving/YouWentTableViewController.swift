@@ -20,7 +20,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
     var filter = Filter()
     var deleteArray: [String] = []
     var locationManager = CLLocationManager()
-    let firebaseRef = FIRDatabase.database().reference()
+    let firebaseRef = Database.database().reference()
     var multipleDeleteMode = false
     var geoFire: GeoFire!
     
@@ -43,7 +43,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
         print(indexPath.row)
         print(toilets[indexPath.row])
         print(toilets[indexPath.row].key)
-        firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("youwent").child(toilets[indexPath.row].key).removeValue { (error, ref) in
+        firebaseRef.child("Users").child(Auth.auth().currentUser!.uid).child("youwent").child(toilets[indexPath.row].key).removeValue { (error, ref) in
             if error != nil{
                 print("Failed to delete a cell",error!)
                 return
@@ -58,8 +58,8 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
     
     
     func firebaseQuery(){
-        let firebaseRef = FIRDatabase.database().reference().child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid)
-        firebaseRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+        let firebaseRef = Database.database().reference().child("UserWentList").child(Auth.auth().currentUser!.uid)
+        firebaseRef.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
 
 //        firebaseRef.observeSingleEvent(of: FIRDataEventType.childAdded, with: {(snapshot) in
             //Changed to value Event listener
@@ -68,7 +68,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
                 return
             }
             
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
             for snap in snapshots
             {
                 let newKey = snap.key
@@ -82,7 +82,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
     func toiletDataQuery(key: String){
         
         
-        FIRDatabase.database().reference().child("NoFilter").child(key).observeSingleEvent(of:FIRDataEventType.value, with: { snapshot in
+        Database.database().reference().child("NoFilter").child(key).observeSingleEvent(of:DataEventType.value, with: { snapshot in
             
             
             if !snapshot.exists(){
@@ -326,7 +326,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
     
     func multipleDeleteExecution(){
         for item in deleteArray{
-            firebaseRef.child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).child(item).removeValue { (error, ref) in
+            firebaseRef.child("UserWentList").child(Auth.auth().currentUser!.uid).child(item).removeValue { (error, ref) in
                 if error != nil{
                     print("Failed to delete a cell",error!)
                     return
@@ -345,7 +345,7 @@ class YouWentTableViewController: UITableViewController, CLLocationManagerDelega
     func deleteAll(){
         
         
-        firebaseRef.child("UserWentList").child(FIRAuth.auth()!.currentUser!.uid).removeValue { (error, ref) in
+        firebaseRef.child("UserWentList").child(Auth.auth().currentUser!.uid).removeValue { (error, ref) in
             if error != nil{
                 print("Failed to delete a cell",error!)
                 return

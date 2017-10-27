@@ -20,7 +20,7 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     var toilets: [Toilet] = []
     var deleteArray: [String] = []
     var locationManager = CLLocationManager()
-    let firebaseRef = FIRDatabase.database().reference()
+    let firebaseRef = Database.database().reference()
     var multipleDeleteMode = false
     
     var geoFire: GeoFire!
@@ -44,7 +44,7 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
         print(indexPath.row)
         print(toilets[indexPath.row])
         print(toilets[indexPath.row].key)
-        firebaseRef.child("Users").child(FIRAuth.auth()!.currentUser!.uid).child("favourite").child(toilets[indexPath.row].key).removeValue { (error, ref) in
+        firebaseRef.child("Users").child(Auth.auth().currentUser!.uid).child("favourite").child(toilets[indexPath.row].key).removeValue { (error, ref) in
             if error != nil{
                 print("Failed to delete a cell",error!)
                 return
@@ -60,15 +60,15 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     
     ///aaaa
     func firebaseQuery(){
-        let firebaseRef = FIRDatabase.database().reference().child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid)
-        firebaseRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+        let firebaseRef = Database.database().reference().child("FavoriteList").child(Auth.auth().currentUser!.uid)
+        firebaseRef.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
             }
             
             
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots
                 {
                     let newKey = snap.key
@@ -79,7 +79,7 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
         )}
     
     func toiletDataGet(key: String){
-        FIRDatabase.database().reference().child("NoFilter").child(key).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        Database.database().reference().child("NoFilter").child(key).observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             if !snapshot.exists(){
                 return
@@ -352,7 +352,7 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     func multipleDeleteExecution(){
         for item in deleteArray{
             
-              firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid).child(item).removeValue { (error, ref) in
+            firebaseRef.child("FavoriteList").child(Auth.auth().currentUser!.uid).child(item).removeValue { (error, ref) in
                 if error != nil{
                     print("Failed to delete a cell",error!)
                     return
@@ -371,7 +371,7 @@ class FavoriteTableViewController: UITableViewController, CLLocationManagerDeleg
     func deleteAll(){
         
     
-    firebaseRef.child("FavoriteList").child(FIRAuth.auth()!.currentUser!.uid).removeValue { (error, ref) in
+        firebaseRef.child("FavoriteList").child(Auth.auth().currentUser!.uid).removeValue { (error, ref) in
                 if error != nil{
                     print("Failed to delete a cell",error!)
                     return

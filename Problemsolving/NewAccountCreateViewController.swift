@@ -54,19 +54,20 @@ class NewAccountCreateViewController: UIViewController {
     }
     
     func createAccount(){
-        FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             
             if error != nil {
                 
-                if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+                if let errCode = AuthErrorCode(rawValue: error!._code) {
                     self.messageFrame.removeFromSuperview()
                     
                     switch errCode {
-                    case .errorCodeInvalidEmail:
-                        self.firebaseNewAccountError(errorMessage: "メールアドレスに誤りがあります。")
-                        
-                    case .errorCodeEmailAlreadyInUse:
-                        self.firebaseNewAccountError(errorMessage: "入力されたメールアドレスはすでに使われております。")
+//                    case .errorCodeInvalidEmail:
+//                        self.firebaseNewAccountError(errorMessage: "メールアドレスに誤りがあります。")
+//
+//                    case .errorCodeEmailAlreadyInUse:
+//                        self.firebaseNewAccountError(errorMessage: "入力されたメールアドレスはすでに使われております。")
+                        //Maybe Depreciated because of swift 4 October 27
                         
                     default:
                         self.firebaseNewAccountError(errorMessage: "入力された情報に誤りがあります。")
@@ -89,7 +90,7 @@ class NewAccountCreateViewController: UIViewController {
                     "totalHelpedCount": 0,
                     "totalFavoriteCount": 0
                 ]
-                let firebaseRef = FIRDatabase.database().reference()
+                let firebaseRef = Database.database().reference()
                 
                 let mutipleData = ["UserPrivateInfo/\(user!.uid)": userPrivateData,
                                    "Users/\(user!.uid)": userData,

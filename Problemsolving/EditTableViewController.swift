@@ -203,7 +203,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     var toiletFloorPickedNumber = 0
     
     var geoFire: GeoFire!
-    var geoFireRef: FIRDatabaseReference!
+    var geoFireRef: DatabaseReference!
     
     var newUrlOne = ""
     var newUrlTwo = ""
@@ -843,7 +843,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             
             
             
-            let locationsRef = FIRDatabase.database().reference().child("ToiletLocations")
+            let locationsRef = Database.database().reference().child("ToiletLocations")
             let geoFire = GeoFire(firebaseRef: locationsRef)
             
             
@@ -1643,7 +1643,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
             //let toiletsRef = FIRDatabase.database().reference().child("Toilets")
             //toiletsRef.child(toilet.key).updateChildValues(tdata)
             
-            let firebaseRef = FIRDatabase.database().reference()
+            let firebaseRef = Database.database().reference()
             
             
             let mutipleData = ["NoFilter/\(toilet.key)": noFilterData,
@@ -1740,14 +1740,14 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
 
     func uploadPhotosToDatabase(tid : String){
        // let databaseRef = FIRDatabase.database().reference()
-        let imagesFolder = FIRStorage.storage().reference().child("images")
+        let imagesFolder = Storage.storage().reference().child("images")
         //FIRDatabase
         
         if mainImageReplace == true
             
         {
             let mainImageData = UIImageJPEGRepresentation(mainImage.image!, 0.1)!
-            imagesFolder.child("\(tid).urlOne.jpg").put(mainImageData, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child("\(tid).urlOne.jpg").putData(mainImageData, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1768,7 +1768,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         
         if subImageReplace1 == true{
             let subImageData1 = UIImageJPEGRepresentation(subImage1.image!, 0.1)!
-            imagesFolder.child("\(tid).urlTwo.jpg").put(subImageData1, metadata: nil, completion: {(metadata, error) in
+            imagesFolder.child("\(tid).urlTwo.jpg").putData(subImageData1, metadata: nil, completion: {(metadata, error) in
                 print("We tried to upload!")
                 if error != nil {
                     print("We had an error:\(String(describing: error))")
@@ -1791,7 +1791,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
         
         let subImageData2 = UIImageJPEGRepresentation(subImage2.image!, 0.1)!
         
-        imagesFolder.child("\(tid).urlThree.jpg").put(subImageData2, metadata: nil, completion: {(metadata, error) in
+        imagesFolder.child("\(tid).urlThree.jpg").putData(subImageData2, metadata: nil, completion: {(metadata, error) in
             print("We tried to upload!")
             if error != nil {
                 print("We had an error:\(String(describing: error))")
@@ -1815,7 +1815,7 @@ class EditTableViewController: UITableViewController,UIPickerViewDelegate, UIPic
     func photoUrlMultipleUpdate(placeNumber: Int, photoUrl: String){
         
         print("photoUrlMultipleUpdate called 444")
-        let firebaseRef = FIRDatabase.database().reference()
+        let firebaseRef = Database.database().reference()
         
         if placeNumber == 0{
             // placeString = "urlOne"

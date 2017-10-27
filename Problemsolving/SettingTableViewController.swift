@@ -53,7 +53,7 @@ class SettingTableViewController: UITableViewController {
     
     func logoutStart(){
         print("LogoutStart 1")
-        try! FIRAuth.auth()!.signOut()
+        try! Auth.auth().signOut()
         
         print("LogoutStart 2")
         

@@ -56,15 +56,17 @@ class NewStartLoginViewController: UIViewController {
     
     func userLogin(){
         
-        FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
             print("We tried to sign in")
             self.messageFrame.removeFromSuperview()
-            if let errCode = FIRAuthErrorCode(rawValue: error!._code) {
+            if let errCode = AuthErrorCode(rawValue: error!._code) {
                 
                 switch errCode {
-                case .errorCodeInvalidEmail:
-                    print("invalid email")
-                    self.firebaseLoginErrorShow(errorMessage: "入力されたメールアドレスに誤りがあります")
+//                case .errorCodeInvalidEmail:
+//                    print("invalid email")
+//                    self.firebaseLoginErrorShow(errorMessage: "入力されたメールアドレスに誤りがあります")
+                    
+                    //Maybe Depreciated because of Swift 4
                 default:
                     print("Create User Error: \(String(describing: error))")
                     self.firebaseLoginErrorShow(errorMessage:"入力された情報に誤りがあります")

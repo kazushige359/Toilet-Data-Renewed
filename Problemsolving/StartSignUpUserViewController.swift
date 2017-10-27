@@ -76,7 +76,7 @@ class StartSignUpUserViewController: UIViewController
     func userSignUp(){
         
         print("User Sign UP Called")
-        FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
             print("We tried to sign in")
             if error != nil {
                 print("Hey we have an error : \(String(describing: error))")
@@ -90,7 +90,7 @@ class StartSignUpUserViewController: UIViewController
                     "totalHelpedCount": 0,
                     "totalFavoriteCount": 0
                 ]
-                FIRDatabase.database().reference().child("Users").child(user!.uid).setValue(userData)
+                Database.database().reference().child("Users").child(user!.uid).setValue(userData)
                 
                // self.performSegue(withIdentifier: "signinsegue", sender: nil)
             }

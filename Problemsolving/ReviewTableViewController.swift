@@ -24,8 +24,8 @@ class ReviewTableViewController: UITableViewController {
     var thumbsUpSet = Set<String>()
     //var firebaseLoaded = false
     
-    let firebaseRef = FIRDatabase.database().reference()
-    let currentUserId = FIRAuth.auth()?.currentUser?.uid
+    let firebaseRef = Database.database().reference()
+    let currentUserId = Auth.auth().currentUser?.uid
     
     var userAlreadyLogin = false
     let imageColored = UIImage(named:"like_colored_25")
@@ -211,9 +211,9 @@ class ReviewTableViewController: UITableViewController {
         print("reviews[buttonRow].rid = \(reviews[buttonRow].rid)")
        
         
-        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
-        let userRef = FIRDatabase.database().reference().child("Users").child(reviews[buttonRow].uid)
-        let reviewInfoRef = FIRDatabase.database().reference().child("ReviewInfo").child(reviews[buttonRow].rid)
+        let thumbsUpRef = Database.database().reference().child("ThumbsUpList").child(Auth.auth().currentUser!.uid)
+        let userRef = Database.database().reference().child("Users").child(reviews[buttonRow].uid)
+        let reviewInfoRef = Database.database().reference().child("ReviewInfo").child(reviews[buttonRow].rid)
         
         if userAlreadyLogin == false{
             //showPleaseLogin()
@@ -362,7 +362,7 @@ class ReviewTableViewController: UITableViewController {
         
         //let toiletProblemsRef = FIRDatabase.database().reference().child("ReviewProblems")
         let rpid = UUID().uuidString
-        let uid = FIRAuth.auth()!.currentUser!.uid
+        let uid = Auth.auth().currentUser!.uid
         let date = NSDate()
         let calendar = Calendar.current
         
@@ -389,7 +389,7 @@ class ReviewTableViewController: UITableViewController {
 
         
             
-            let firebaseRef = FIRDatabase.database().reference()
+            let firebaseRef = Database.database().reference()
             
             
             let mutipleData = ["ReviewProblems/\(rpid)": rpData,
@@ -624,7 +624,7 @@ class ReviewTableViewController: UITableViewController {
         
        // let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
         
-        let toiletReviewRef = FIRDatabase.database().reference().child("ToiletReview").child(toilet.key)
+        let toiletReviewRef = Database.database().reference().child("ToiletReview").child(toilet.key)
         
         
         
@@ -635,7 +635,7 @@ class ReviewTableViewController: UITableViewController {
         
         print("review before 333 = \(toilet.key)")
 
-        toiletReviewRef.observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        toiletReviewRef.observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             print("snapshot for reTV 333 = \(snapshot)")
             if !snapshot.exists(){
@@ -645,7 +645,7 @@ class ReviewTableViewController: UITableViewController {
             print("review Query Info 333 snap = \(snapshot)")
             //get rid key 
             
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots
                 {
                     print("review Query inside snap 333 snap = \(snapshot)")
@@ -660,10 +660,10 @@ class ReviewTableViewController: UITableViewController {
 
     
     func reviewGetData(ridKey: String){
-         let reviewsRef = FIRDatabase.database().reference().child("ReviewInfo")
+        let reviewsRef = Database.database().reference().child("ReviewInfo")
         
     
-        reviewsRef.child(ridKey).observeSingleEvent(of: FIRDataEventType.value, with: { snapshot in
+        reviewsRef.child(ridKey).observeSingleEvent(of: DataEventType.value, with: { snapshot in
             
             if !snapshot.exists(){
                 return
@@ -712,8 +712,8 @@ class ReviewTableViewController: UITableViewController {
             
             
             
-            let userRef = FIRDatabase.database().reference().child("Users")
-            userRef.child(uid!).observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+            let userRef = Database.database().reference().child("Users")
+            userRef.child(uid!).observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
                 
                 
                 if !snapshot.exists(){
@@ -780,14 +780,14 @@ class ReviewTableViewController: UITableViewController {
     func thumbsUpQuery(){
         
         print("thumbsUpQuery( Called")
-        let thumbsUpRef = FIRDatabase.database().reference().child("ThumbsUpList").child(FIRAuth.auth()!.currentUser!.uid)
-        thumbsUpRef.observeSingleEvent(of: FIRDataEventType.value, with: {(snapshot) in
+        let thumbsUpRef = Database.database().reference().child("ThumbsUpList").child(Auth.auth().currentUser!.uid)
+        thumbsUpRef.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
             
             if !snapshot.exists(){
                 return
             }
             
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapshots
                 {
                     let newKey = snap.key

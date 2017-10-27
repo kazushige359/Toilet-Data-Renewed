@@ -115,8 +115,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locationManager = CLLocationManager()
     var mapHasCenteredOnce = false
     var allInitialDataLoaded = false
+    
     var geoFire: GeoFire!
-    var geoFireRef: FIRDatabaseReference!
+    var geoFireRef: DatabaseReference!
     let queryannotations = MKPointAnnotation()
     var toilets: [Toilet] = []
     
@@ -168,7 +169,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var resultSearchController: UISearchController!
     var selectedPin: MKPlacemark?
-    var databaseRef: FIRDatabaseReference!
+    var databaseRef: DatabaseReference!
     let primaryColor : UIColor = UIColor(red:0.32, green:0.67, blue:0.95, alpha:1.0)
     
     
@@ -185,11 +186,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        databaseRef = FIRDatabase.database().reference()
+        databaseRef = Database.database().reference()
         
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
-        geoFireRef = FIRDatabase.database().reference().child("ToiletLocations")
+        geoFireRef = Database.database().reference().child("ToiletLocations")
         geoFire = GeoFire(firebaseRef: geoFireRef)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor.clear
@@ -290,7 +291,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         //progressBarDisplayer(msg:"トイレを検索中", true) 
         //July 22
         
-        if FIRAuth.auth()!.currentUser != nil{
+        if Auth.auth().currentUser != nil{
             //Current user exists
             print("User Found")
             // let userID = FIRAuth.auth()!.currentUser!.uid
@@ -306,7 +307,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func anonymousLogin(){
         print("anonymouLogin Called")
-        FIRAuth.auth()?.signInAnonymously(completion: { (user, error) in
+        Auth.auth().signInAnonymously(completion: { (user, error) in
             if error != nil{
                 print("Error \(String(describing: error))")
                 return
@@ -724,12 +725,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         search.centerSearchLocation = center
         
         
+        
         centerLocation = center
         
         var toiletCount = 0
         
+//        var geoFire: GeoFire!
+        
+        print("this is a center 2343 = \(center) & geofire = \(geoFire)")
+        
+        
+        
+        
+        
+        
         
         let circleQuery = geoFire.query(at: center, withRadius: 20.0)
+        
+        print("this is a center 23435 = \(center)")
         //August 10 change radius 10.0 to 20.0
         _ = circleQuery?.observe(.keyEntered, with: { (key: String?, location: CLLocation?) in
             
@@ -906,15 +919,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         for item in array{
-                let toiletsRef = FIRDatabase.database().reference().child(queryPath)
-                toiletsRef.child(item as! String).observeSingleEvent(of: FIRDataEventType.value, with:{ snapshot in
+            let toiletsRef = Database.database().reference().child(queryPath)
+            toiletsRef.child(item as! String).observeSingleEvent(of: DataEventType.value, with:{ snapshot in
                     self.createTableViewAndMarker(snapshot: snapshot, key: item as! String)
                 })
             }
     }
     
     
-    func createTableViewAndMarker(snapshot: FIRDataSnapshot, key: String){
+    func createTableViewAndMarker(snapshot: DataSnapshot, key: String){
         
         if !snapshot.exists(){
             return
