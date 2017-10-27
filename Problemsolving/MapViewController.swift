@@ -188,10 +188,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewDidLoad()
         databaseRef = Database.database().reference()
         
+        
+        print("view DID LOAD 121211")
+        
+        geoFireRef = Database.database().reference().child("ToiletLocations")
+        print("geoFireRef in viewDid Load 121211 = \(geoFireRef)")
+        
+        geoFire = GeoFire(firebaseRef: geoFireRef)
+        print("geoFire in View DID load 121211 = \(geoFire)")
+        
+        
         mapView.delegate = self
         mapView.userTrackingMode = MKUserTrackingMode.follow
-        geoFireRef = Database.database().reference().child("ToiletLocations")
-        geoFire = GeoFire(firebaseRef: geoFireRef)
+//        geoFireRef = Database.database().reference().child("ToiletLocations")
+//        print("geoFireRef in viewDid Load 121211 = \(geoFireRef)")
+//
+//        geoFire = GeoFire(firebaseRef: geoFireRef)
+//        print("geoFire in View DID load 121211 = \(geoFire)")
+        
+        
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor.clear
         self.tableView.delegate = self
@@ -202,7 +217,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 //        
 //        deleteRef.removeValue();
 //
+        
+        
         viewLayout()
+        print("view DID Load End 121211")
     }
     
     func viewLayout(){
@@ -722,6 +740,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     
     func toiletsSearch(center: CLLocation){
+        print("toiletsSearch Called 121211")
+        
         search.centerSearchLocation = center
         
         
@@ -732,7 +752,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
 //        var geoFire: GeoFire!
         
-        print("this is a center 2343 = \(center) & geofire = \(geoFire)")
+        print("this is a center 121211 = \(center) & geofire = \(geoFire)")
         
         
         
